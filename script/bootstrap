@@ -1,8 +1,44 @@
 #!/usr/bin/env ruby
 
-require 'thor'
-require 'thor/group'
-require 'thor/actions'
+require 'logger'
+
+def logger
+  @logger ||= Logger.new($stderr)
+end
+
+def require_gem(require_files, gem_name)
+tries = 3
+
+begin
+  require_files.each do |f|
+    require f
+  end
+rescue
+  tries -= 1
+
+  if tries > 0
+
+    logger.info "Installing \"#{gem_name}\" gem."
+    system("gem install #{gem_name}")
+
+    retry
+  else
+    logger.fatal "You need to install \"#{gem_name}\". I tried it #{tries} times, but was not successful."
+    exit 1
+  end
+end
+end
+
+require_gem(
+  %w[
+  thor
+  thor/group
+  thor/actions
+  ], 'thor'
+)
+
+require_gem([], 'bundler')
+
 
 class Cli < Thor::Group
   include Thor::Actions
@@ -29,6 +65,10 @@ class Cli < Thor::Group
     end
 
   }
+
+  def install_software
+    run 'bundle install'
+  end
 
   def cleanup_middleman
     remove_dir 'sources/'
