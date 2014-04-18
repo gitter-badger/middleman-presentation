@@ -2,8 +2,11 @@
 
 require 'thor'
 require 'thor/group'
+require 'thor/actions'
 
 class Cli < Thor::Group
+  include Thor::Actions
+
   no_commands {
     def self.source_root
       File.expand_path('../../', __FILE__)
@@ -35,6 +38,21 @@ class Cli < Thor::Group
     FileUtils.mv source_file('index.html'), source_file('documentation.html')
   end
 
+  def create_slides_directory
+    empty_directory 'sources/slides'
+  end
+
+  def create_layouts_directory
+    empty_directory 'sources/layouts'
+  end
+
+  def create_application_layout_file
+    copy_file 'templates/layout.erb', source_file('layout.erb')
+  end
+
+  def copy_index_html_template
+    copy_file 'templates/index.html.erb', source_file('index.html.erb')
+  end
 end
 
 Cli.start
