@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'thor/group'
+
+class Cli < Thor::Group
+  no_commands {
+    def self.source_root
+      File.expand_path('../../', __FILE__)
+    end
+
+    def clone_repository(source, destination)
+      system("git clone #{source} #{File.join(self.class.source_root, destination)}")
+    end
+
+    def sources_directory
+      File.join(self.class.source_root, 'sources')
+    end
+
+    def source_file(file)
+      File.join(sources_directory, file)
+    end
+
+  }
+
+  def cleanup_middleman
+    remove_dir 'sources/'
+  end
+
+  def clone_reveal_js
+    clone_repository('http://github.com/hakimel/reveal.js.git', 'sources')
+  end
+
+  def cleanup_reveal_js
+    FileUtils.mv source_file('index.html'), source_file('documentation.html')
+  end
+
+end
+
+Cli.start
