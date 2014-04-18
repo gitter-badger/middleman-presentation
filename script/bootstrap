@@ -24,6 +24,10 @@ class Cli < Thor::Group
       File.join(sources_directory, file)
     end
 
+    def root_file(file)
+      File.join(self.class.source_root, file)
+    end
+
   }
 
   def cleanup_middleman
@@ -53,6 +57,11 @@ class Cli < Thor::Group
   def copy_index_html_template
     copy_file 'templates/index.html.erb', source_file('index.html.erb')
   end
+
+  def copy_gitignore
+    copy_file 'templates/.gitignore', root_file('.gitignore')
+  end
+
 end
 
 Cli.start
