@@ -1,26 +1,7 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
-require_relative '_base'
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'presentation/helper'
 
-require_gem(
-  %w[
-  thor
-  thor/group
-  thor/actions
-  ], 'thor'
-)
-
-require_gem([], 'middleman')
-require_gem([], 'bundler')
-
-class Cli < Thor::Group
-  include Thor::Actions
-
-  def build_presentation
-    Dir.chdir File.expand_path('../../source', __FILE__) do
-      run 'middleman build'
-    end
-  end
-end
-
-Cli.start
+run_task 'presentation:build'

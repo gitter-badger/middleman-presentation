@@ -1,39 +1,7 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
 
-require_relative '_base'
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'presentation/helper'
 
-require_gem(
-  %w[
-  thor
-  thor/group
-  thor/actions
-  ], 'thor'
-)
-
-class Cli < Thor::Group
-  include Thor::Actions
-
-  no_commands {
-    def self.source_root
-      File.expand_path('../../', __FILE__)
-    end
-
-    def source_directory
-      File.join(self.class.source_root, 'source')
-    end
-
-    def build_directory
-      File.join(self.class.source_root, 'build')
-    end
-  }
-
-  def remove_source_directory
-    remove_dir source_directory
-  end
-
-  def remove_build_directory
-    remove_dir build_directory
-  end
-end
-
-Cli.start
+run_task 'presentation:clean'
