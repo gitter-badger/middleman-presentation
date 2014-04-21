@@ -8,11 +8,6 @@
 guard :shell do
   watch(%r{^source/slides/.+\.(?:erb|html)}) do
     $stderr.puts 'Running middleman'
-    `bundle exec 'middleman build'` 
+    $stderr.puts %x[bundle exec middleman build] 
   end
-
-  #watch(%r{^sources/.*}) do
-  #  $stderr.puts 'Running middleman'
-  #  `bundle exec 'middleman build'` 
-  #end
 end
