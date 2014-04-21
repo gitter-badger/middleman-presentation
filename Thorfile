@@ -117,8 +117,13 @@ module Presentation
       exit 1
     end
 
+    def cleanup_nodejs_modules
+      FileUtils.rm_r Dir.glob(File.join(source_directory, 'node_modules', '*', 'test'))
+    end
+
     def cleanup_reveal_js
       FileUtils.mv source_file('index.html'), source_file('documentation.html')
+      remove_dir File.join(source_directory, 'test')
     end
 
     def create_slides_directory
