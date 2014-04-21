@@ -14,3 +14,6 @@ gem 'pry'
 gem 'pry-debugger'
 gem 'debugger'
 
+gem 'guard'
+gem 'guard-shell'
+gem 'rb-inotify'
