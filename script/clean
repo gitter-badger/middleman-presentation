@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require_relative '_base'
+
+require_gem(
+  %w[
+  thor
+  thor/group
+  thor/actions
+  ], 'thor'
+)
+
+class Cli < Thor::Group
+  include Thor::Actions
+
+  no_commands {
+    def self.source_root
+      File.expand_path('../../', __FILE__)
+    end
+
+    def source_directory
+      File.join(self.class.source_root, 'source')
+    end
+  }
+
+  def remove_source_directory
+    remove_dir source_directory
+  end
+end
+
+Cli.start
