@@ -3,8 +3,9 @@
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'presentation/helper'
+include Presentation::Helper
 
-gem_install 'bundler'
-gem_install 'middleman'
+install_gem 'bundler'
+install_gem 'middleman'
 
 run_task 'presentation:bootstrap'

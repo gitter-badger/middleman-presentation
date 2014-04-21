@@ -8,12 +8,17 @@ module Presentation
     end
 
     def install_gem(gem_name)
+      unless %x[gem list -l #{gem_name}] == ''
+        logger.info "Gem #{gem_name} is already installed" 
+        return
+      end
+
       logger.info "Installing \"#{gem_name}\" gem."
       system("gem install #{gem_name}")
     end
 
     def run_task(task)
-      system("bundle exect thor #{task}")
+      system("bundle exec thor #{task}")
     end
 
     def require_gem(gem_name, require_files)

@@ -44,7 +44,7 @@ module Presentation
     include Presentation::CliHelper
 
     def self.source_root
-      File.expand_path('../../', __FILE__)
+      File.expand_path('../', __FILE__)
     end
   end
 
@@ -53,7 +53,7 @@ module Presentation
     include Presentation::CliHelper
 
     def self.source_root
-      File.expand_path('../../', __FILE__)
+      File.expand_path('../', __FILE__)
     end
   end
 
@@ -63,7 +63,7 @@ module Presentation
   class Build < ApplicationGroup
     def build_presentation
       unless File.exists? source_directory
-        logger.warn "Source directory \"#{source_directory}\" does not exist." 
+        logger.warn "Source directory \"#{source_directory}\" does not exist. Please run \"#{File.expand_path('../script/bootstrap', __FILE__)}\" to initialize project." 
         exit 1
       end
 

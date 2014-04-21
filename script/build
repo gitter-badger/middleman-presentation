@@ -3,5 +3,6 @@
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'presentation/helper'
+extend Presentation::Helper
 
 run_task 'presentation:build'
