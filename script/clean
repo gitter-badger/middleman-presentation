@@ -21,10 +21,18 @@ class Cli < Thor::Group
     def source_directory
       File.join(self.class.source_root, 'source')
     end
+
+    def build_directory
+      File.join(self.class.source_root, 'build')
+    end
   }
 
   def remove_source_directory
     remove_dir source_directory
+  end
+
+  def remove_build_directory
+    remove_dir build_directory
   end
 end
 
