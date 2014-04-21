@@ -4,9 +4,14 @@
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 
 require 'presentation/version'
+require 'logger'
 
 module Presentation
   module CliHelper
+    def logger
+      @logger ||= Logger.new($stderr)
+    end
+
     def source_directory
       File.join(self.class.source_root, 'source')
     end
@@ -57,7 +62,12 @@ end
 module Presentation
   class Build < ApplicationGroup
     def build_presentation
-      Dir.chdir File.expand_path('../../source', __FILE__) do
+      unless File.exists? source_directory
+        logger.warn "Source directory \"#{source_directory}\" does not exist." 
+        exit 1
+      end
+
+      Dir.chdir source_directory do
         run 'middleman build'
       end
     end
