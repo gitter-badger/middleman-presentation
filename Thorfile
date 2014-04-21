@@ -94,24 +94,27 @@ module Presentation
   end
 
   class Bootstrap < ApplicationGroup
-    def install_rubygems
-      run 'bundle install'
-    end
-    
-    def install_node_modules
-      run 'npm install'
-      run 'npm install -g grunt-cli'
-    rescue
-      logger.fatal 'Please make sure you configured npm correctly to use "install -g" as normal user.'
-      exit 1
-    end
 
     def cleanup_middleman
       remove_dir 'source/'
     end
 
+    def install_rubygems
+      run 'bundle install'
+    end
+
     def clone_reveal_js
       clone_repository('http://github.com/hakimel/reveal.js.git', 'source')
+    end
+    
+    def install_node_modules
+      inside source_directory do
+        run 'npm install'
+        run 'npm install -g grunt-cli'
+      end
+    rescue
+      logger.fatal 'Please make sure you configured npm correctly to use "install -g" as normal user.'
+      exit 1
     end
 
     def cleanup_reveal_js
