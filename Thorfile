@@ -68,7 +68,7 @@ module Presentation
       end
 
       Dir.chdir source_directory do
-        run 'middleman build'
+        run 'middleman build --verbose'
       end
     end
   end
@@ -83,9 +83,27 @@ module Presentation
     end
   end
 
+  class Uninstall < ApplicationGroup
+    def cleanup
+      thor 'presentation:clean'
+    end
+
+    def remove_nodejs_modules
+      remove_dir root_file('node_modules')
+    end
+  end
+
   class Bootstrap < ApplicationGroup
-    def install_software
+    def install_rubygems
       run 'bundle install'
+    end
+    
+    def install_node_modules
+      run 'npm install'
+      run 'npm install -g grunt-cli'
+    rescue
+      logger.fatal 'Please make sure you configured npm correctly to use "install -g" as normal user.'
+      exit 1
     end
 
     def cleanup_middleman
