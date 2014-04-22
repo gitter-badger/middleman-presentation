@@ -167,6 +167,10 @@ module Presentation
       copy_file 'templates/00.html.erb', source_file('slides/00.html.erb')
     end
 
+    def delete_git_ref_to_remote
+      system('git remote rm origin')
+    end
+
     def finalize_source_directory
       commit_changes root_directory
     end
