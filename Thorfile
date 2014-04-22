@@ -26,7 +26,7 @@ module Presentation
 
     def subtree_repository(source, destination)
       Dir.chdir self.class.source_root do
-        system("git subtree add -P #{destination} #{source} HEAD")
+        system("git subtree add --squash -P #{destination} #{source} HEAD")
       end
     end
 
