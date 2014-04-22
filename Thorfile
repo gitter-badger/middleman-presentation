@@ -135,7 +135,7 @@ module Presentation
     end
 
     def cleanup_nodejs_modules
-      FileUtils.rm_r Dir.glob(File.join(source_directory, 'node_modules', '*', 'test'))
+      FileUtils.rm_r Dir.glob(File.join(source_directory, 'node_modules', '**', 'test'))
     end
 
     def cleanup_reveal_js
