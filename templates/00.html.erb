@@ -2,8 +2,7 @@
   <h1><%= data.metadata.title %></h1>
   <h3><%= data.metadata.subtitle %></h3>
   <p>
-  <small><%= data.metadata.date %> &ndash;
-    <%- if data.metadata.homepage -%>
+  <small><%= data.metadata.date %>&nbsp;&ndash;&nbsp;<%- if data.metadata.homepage -%>
       <a href="<%= data.metadata.homepage %>"><%= data.metadata.author %></a>
     <%- else -%>
       <%= data.metadata.author %>
