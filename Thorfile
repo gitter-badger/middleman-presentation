@@ -30,6 +30,13 @@ module Presentation
       end
     end
 
+    def commit_changes(directory, message = 'Commited by bootstrap script')
+      Dir.chdir directory do
+        system('git add . -A')
+        system("git ct -m #{message}")
+      end
+    end
+
     def source_directory
       File.join(self.class.source_root, 'source')
     end
@@ -150,6 +157,10 @@ module Presentation
 
     def copy_gitignore
       copy_file 'templates/.gitignore', root_file('.gitignore')
+    end
+
+    def finalize_source_directory
+      commit_changes source_directory
     end
   end
 
