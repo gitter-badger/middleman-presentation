@@ -157,6 +157,11 @@ module Presentation
 
     def copy_gitignore
       copy_file 'templates/.gitignore', root_file('.gitignore')
+      sleep 1
+    end
+
+    def create_first_slide
+      copy_file 'templates/00.html.erb', source_file('slides/00.html.erb')
     end
 
     def finalize_source_directory
