@@ -2,6 +2,12 @@
   <h1><%= data.metadata.title %></h1>
   <h3><%= data.metadata.subtitle %></h3>
   <p>
-  <small><%= data.metadata.subtitle %> &ndash; <a href="<%= data.metadata.homepage %>"><%= data.metadata.author %></small>
+  <small><%= data.metadata.date %> &ndash;
+    <%- if data.metadata.homepage -%>
+      <a href="<%= data.metadata.homepage %>"><%= data.metadata.author %></a>
+    <%- else -%>
+      <%= data.metadata.author %>
+    <%- end -%>
+  </small>
   </p>
 </section>

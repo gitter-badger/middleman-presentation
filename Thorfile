@@ -12,6 +12,10 @@ module Presentation
       @logger ||= Logger.new($stderr)
     end
 
+    def root_directory
+      self.class.source_root
+    end
+
     def source_directory
       File.join(self.class.source_root, 'source')
     end
@@ -157,7 +161,6 @@ module Presentation
 
     def copy_gitignore
       copy_file 'templates/.gitignore', root_file('.gitignore')
-      sleep 1
     end
 
     def create_first_slide
@@ -165,7 +168,7 @@ module Presentation
     end
 
     def finalize_source_directory
-      commit_changes source_directory
+      commit_changes root_directory
     end
   end
 
