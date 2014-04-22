@@ -24,6 +24,12 @@ module Presentation
       system("git clone #{source} #{File.join(self.class.source_root, destination)}")
     end
 
+    def subtree_repository(source, destination)
+      Dir.chdir source_directory do
+        system("git subtree add -P #{destination} #{source} HEAD")
+      end
+    end
+
     def source_directory
       File.join(self.class.source_root, 'source')
     end
@@ -104,7 +110,7 @@ module Presentation
     end
 
     def clone_reveal_js
-      clone_repository('http://github.com/hakimel/reveal.js.git', 'source')
+      subtree_repository('http://github.com/hakimel/reveal.js.git', 'source')
     end
     
     def install_node_modules
