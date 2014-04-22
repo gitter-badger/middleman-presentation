@@ -32,8 +32,8 @@ module Presentation
 
     def commit_changes(directory, message = 'Commited by bootstrap script')
       Dir.chdir directory do
-        system('git add . -A')
-        system("git ct -m #{message}")
+        system('git add -A .')
+        system("git ct -m \"#{message}\"")
       end
     end
 
