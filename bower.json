@@ -1,0 +1,8 @@
+{
+  "name": "local_pac",
+  "dependencies": {
+    "jquery": "~1.11.0",
+    "open-sans": "latest"
+    "lightbox2": "https://github.com/lokesh/lightbox2/"
+  }
+}
