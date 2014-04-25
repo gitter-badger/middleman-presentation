@@ -7,13 +7,32 @@ group :middleman do
   gem 'tzinfo-data', platforms: [:mswin, :mingw]
 end
 
-gem 'rugged'
 gem 'thor'
 
-gem 'pry'
-gem 'pry-debugger'
-gem 'debugger'
-
-gem 'guard'
-gem 'guard-shell'
-gem 'rb-inotify'
+group :development, :test do
+  gem 'rspec', require: false
+  gem 'fuubar', require: false
+  gem 'simplecov', require: false
+  gem 'rubocop', require: false
+  gem 'coveralls', require: false
+  gem 'cucumber', require: false
+  gem 'aruba', require: false
+  gem 'rake', require: false
+  gem 'fedux_org-stdlib', require: false
+  gem 'bundler', require: false
+  gem 'erubis'
+  gem 'versionomy', require: false
+  gem 'activesupport', require: false
+  gem 'awesome_print', require: 'ap'
+  gem 'debugger'
+  gem 'debugger-completion'
+  gem 'foreman', require: false
+  gem 'github-markup'
+  gem 'pry'
+  gem 'pry-debugger', require: false
+  gem 'pry-doc', require: false
+  gem 'redcarpet', require: false
+  gem 'tmrb', require: false
+  gem 'yard', require: false
+  gem 'inch', require: false
+end

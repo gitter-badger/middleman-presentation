@@ -1,3 +1,8 @@
+$LOAD_PATH << File.expand_path('../lib', __FILE__)
+require 'middleman/yield_slides'
+
+activate :yield_slides
+
 ###
 # Compass
 ###
@@ -47,9 +52,9 @@
 #   end
 # end
 
-set :css_dir, 'stylesheets'
-set :js_dir, 'javascripts'
-set :images_dir, 'images'
+set :css_dir, 'app/stylesheets'
+set :js_dir, 'app/javascripts'
+set :images_dir, 'app/images'
 
 # Build-specific configuration
 configure :build do
@@ -69,4 +74,8 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+end
+
+ready do
+  sprockets.append_path File.join root, 'vendor', 'assets', 'components'
 end

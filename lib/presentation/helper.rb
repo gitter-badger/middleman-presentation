@@ -43,6 +43,5 @@ module Presentation
         end
       end
     end
-
   end
 end
