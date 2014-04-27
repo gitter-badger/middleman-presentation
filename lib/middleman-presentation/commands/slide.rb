@@ -28,11 +28,8 @@ module Middleman
           require 'pry'
           binding.pry
 
-          presentation_inst = shared_instance.presentation(nil)
-
-          path_template = presentation_inst.source_template
-
-          template presentation_inst.options.new_slide_template, File.join(shared_instance.source_dir, article_path + presentation_inst.options.default_extension)
+          presentation_inst = shared_instance.presentation
+          template presentation_inst.options.new_slide_template, File.join(shared_instance.source_dir, name + presentation_inst.options.default_extension)
         else
           raise Thor::Error.new "You need to activate the blog extension in config.rb before you can create an article"
         end
