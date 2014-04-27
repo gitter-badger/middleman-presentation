@@ -1,7 +1,8 @@
 $LOAD_PATH << File.expand_path('../lib', __FILE__)
-require 'middleman/yield_slides'
 
-activate :yield_slides
+require 'middleman-presentation'
+
+activate :presentation
 
 ###
 # Compass

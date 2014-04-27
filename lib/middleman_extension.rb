@@ -1,2 +1,2 @@
 # encoding: utf-8
-require 'middleman-revealjs'
+require 'middleman-presentation'
