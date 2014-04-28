@@ -81,9 +81,6 @@ module Middleman
           slides_directory = File.join shared_instance.source_dir, presentation_inst.options.slides_directory
           data_directory = File.join shared_instance.root, 'data'
 
-          #empty_directory slides_directory
-          #empty_directory data_directory
-
           template 'data/metadata.yml.tt', File.join(data_directory, 'metadata.yml')
           template 'data/config.yml.tt', File.join(data_directory, 'config.yml')
           template '.bowerrc.tt', File.join(shared_instance.root, '.bowerrc')

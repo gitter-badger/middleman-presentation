@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Helpers
+
       # Yield slides
       def yield_slides
         Presentation::Slide.clear
