@@ -26,8 +26,9 @@ module Middleman
         # This only exists when the config.rb sets it!
         if shared_instance.extensions.key? :presentation
           presentation_inst = shared_instance.extensions[:presentation]
+          slide_template = Presentation::SlideTemplate.new(name: name, base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory))
 
-          template presentation_inst.options.new_slide_template, File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, name + presentation_inst.options.default_extension)
+          template presentation_inst.options.public_send(:"slide_template_#{slide_template.type}"), slide_template.file_path
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end
