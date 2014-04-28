@@ -1,0 +1,6 @@
+bower_directory: <%= @bower_directory %>
+revealjs:
+  controls: <%= @revealjs_config[:controls] %>
+  progress: <%= @revealjs_config[:progress] %>
+  history: <%= @revealjs_config[:history] %>
+  center: <%= @revealjs_config[:center] %>

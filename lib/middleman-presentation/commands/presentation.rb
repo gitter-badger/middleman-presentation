@@ -31,24 +31,28 @@ module Middleman
       option :location, desc: 'Location where the presentation take place'
       option :audience, desc: 'Audience of presentation'
 
-      option :use_open_sans, type: :boolean, desc: 'Include open-sans'
-      option :use_jquery, type: :boolean, desc: 'Include jquery'
-      option :use_lightbox, type: :boolean, desc: 'Include lightbox 2'
+      option :use_open_sans, type: :boolean, default: true, desc: 'Include open-sans'
+      option :use_jquery, type: :boolean, default: true, desc: 'Include jquery'
+      option :use_lightbox, type: :boolean, default: true, desc: 'Include lightbox 2'
 
-      options :activate_controls, type: :boolean, default: true, desc: 'Activate controls in reveal.js'
-      options :activate_progress, type: :boolean, default: true, desc: 'Activate progress in reveal.js'
-      options :activate_history, type: :boolean, default: true, desc: 'Activate history in reveal.js'
-      options :activate_center, type: :boolean, default: true, desc: 'Activate center in reveal.js'
+      option :activate_controls, type: :boolean, default: true, desc: 'Activate controls in reveal.js'
+      option :activate_progress, type: :boolean, default: true, desc: 'Activate progress in reveal.js'
+      option :activate_history, type: :boolean, default: true, desc: 'Activate history in reveal.js'
+      option :activate_center, type: :boolean, default: true, desc: 'Activate center in reveal.js'
+
+      option :install_assets, type: :boolean, default: true, desc: 'Install assets'
 
       desc 'presentation ', 'Initialize a new presentation'
       def presentation(name)
+        source_paths << File.expand_path('../../../../templates', __FILE__)
+
         shared_instance = ::Middleman::Application.server.inst
 
         # This only exists when the config.rb sets it!
         if shared_instance.extensions.key? :presentation
           presentation_inst = shared_instance.extensions[:presentation]
 
-          @bower_directory = File.join shared_instance.source_dir, options[:bower_directory]
+          @bower_directory = options[:bower_directory]
 
           @author          = options[:author]
           @speaker         = options[:speaker]
@@ -75,18 +79,21 @@ module Middleman
           @revealjs_config[:center]   = options[:activate_center]
 
           slides_directory = File.join shared_instance.source_dir, presentation_inst.options.slides_directory
-          data_directory = File.join root, 'data'
+          data_directory = File.join shared_instance.root, 'data'
 
-          create_directory slides_directory
-          create_directory data_directory
+          #empty_directory slides_directory
+          #empty_directory data_directory
 
           template 'data/metadata.yml.tt', File.join(data_directory, 'metadata.yml')
-          template 'data/revealjs_config.yml.tt', File.join(data_directory, 'revealjs_config.yml')
-          template '.bowerrc.tt', File.join(root, '.bowerrc')
-          template 'bower.json.tt', File.join(root, 'bower.json')
+          template 'data/config.yml.tt', File.join(data_directory, 'config.yml')
+          template '.bowerrc.tt', File.join(shared_instance.root, '.bowerrc')
+          template 'bower.json.tt', File.join(shared_instance.root, 'bower.json')
 
           copy_file 'layout.erb', File.join(shared_instance.source_dir, 'layout.erb')
-          copy_file 'slides/00.html.erb', File.join(slides_directory, 'layout.erb')
+          copy_file 'slides/00.html.erb', File.join(slides_directory, '00.html.erb')
+          copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
+
+          run 'bower install' if options[:install_assets] == true
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end

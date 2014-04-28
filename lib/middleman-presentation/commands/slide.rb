@@ -1,5 +1,4 @@
-﻿require 'middleman-core/cli'
-
+﻿# encoding: utf-8
 module Middleman
   module Cli
     # This class provides an 'slide' command for the middleman CLI.
@@ -27,7 +26,7 @@ module Middleman
         if shared_instance.extensions.key? :presentation
           presentation_inst = shared_instance.extensions[:presentation]
 
-          slide_template = Presentation::SlideTemplate.new(name: name, base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory))
+          slide_template = ::Middleman::Presentation::SlideTemplate.new(name: name, base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory))
 
           template presentation_inst.options.public_send(:"slide_template_#{slide_template.type}"), slide_template.file_path
         else
