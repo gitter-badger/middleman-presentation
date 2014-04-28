@@ -1,4 +1,4 @@
 {
-  "directory": "source/<%= @bower_directory %>",
+  "directory": "<%= @bower_directory %>",
     "json": "bower.json"
 }

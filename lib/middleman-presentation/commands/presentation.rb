@@ -43,7 +43,7 @@ module Middleman
       option :install_assets, type: :boolean, default: true, desc: 'Install assets'
 
       desc 'presentation ', 'Initialize a new presentation'
-      def presentation(name)
+      def presentation
         source_paths << File.expand_path('../../../../templates', __FILE__)
 
         shared_instance = ::Middleman::Application.server.inst
@@ -68,15 +68,31 @@ module Middleman
 
           @external_assets = {}
           @external_assets["reveal.js"] = "latest"
+          @external_assets["highlight.js"] = "https://github.com/isagalaev/highlight.js.git"
           @external_assets["jquery"] = "~1.11.0"   if options[:use_jquery] == true
           @external_assets["open-sans"] = "latest" if options[:use_open_sans] == true
-          @external_assets["lightbox2"] = "https://github.com/lokesh/lightbox2/" if options[:use_lightbox] == true
+          @external_assets["lightbox2"] = "https://github.com/lokesh/lightbox2.git" if options[:use_lightbox] == true
 
           @revealjs_config = {}
           @revealjs_config[:controls] = options[:activate_controls]
           @revealjs_config[:progress] = options[:activate_progress]
           @revealjs_config[:history]  = options[:activate_history]
           @revealjs_config[:center]   = options[:activate_center]
+
+          @links_for_stylesheets = [
+            'reveal.js/css/reveal.min',
+            'reveal.js/css/theme/source/default',
+          ]
+
+          @links_for_javascripts = [
+            'reveal.js/lib/js/head.min',
+            'reveal.js/js/reveal.min',
+            #'reveal.js/lib/js/classList',
+            #'reveal.js/plugin/markdown/marked',
+            #'reveal.js/plugin/markdown/markdown',
+            #'reveal.js/plugin/zoom-js/zoom',
+            #'reveal.js/plugin/notes/notes', 
+          ]
 
           slides_directory = File.join shared_instance.source_dir, presentation_inst.options.slides_directory
           data_directory = File.join shared_instance.root, 'data'
@@ -86,8 +102,18 @@ module Middleman
           template '.bowerrc.tt', File.join(shared_instance.root, '.bowerrc')
           template 'bower.json.tt', File.join(shared_instance.root, 'bower.json')
 
+          append_to_file File.join(shared_instance.root, 'config.rb'), <<-EOS.strip_heredoc
+
+          ready do
+            sprockets.append_path File.join(root, '#{@bower_directory}')
+          end
+          EOS
+
+          template 'source/stylesheets/application.scss.tt', File.join(shared_instance.source_dir, 'stylesheets', 'application.scss')
+          template 'source/javascripts/application.js.tt', File.join(shared_instance.source_dir, 'javascripts', 'application.js')
+
           copy_file 'layout.erb', File.join(shared_instance.source_dir, 'layout.erb')
-          copy_file 'slides/00.html.erb', File.join(slides_directory, '00.html.erb')
+          copy_file 'source/slides/00.html.erb', File.join(slides_directory, '00.html.erb')
           copy_file 'index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 
