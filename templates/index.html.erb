@@ -1,4 +1,1 @@
-<% require 'pathname' %>
-<% Dir.glob(File.expand_path('../slides/*.*', __FILE__)).keep_if { |f| File.file? f }.collect { |f| Pathname.new(f).relative_path_from(Pathname.new(File.expand_path(File.expand_path('../slides', __FILE__)))).to_s} .each do |s| %>
-<%= partial File.join('slides', File.basename(s, '.*')) %>
-<% end %>
+<%= yield_slides %>

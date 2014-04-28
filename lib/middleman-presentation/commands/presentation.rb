@@ -91,6 +91,7 @@ module Middleman
 
           copy_file 'layout.erb', File.join(shared_instance.source_dir, 'layout.erb')
           copy_file 'slides/00.html.erb', File.join(slides_directory, '00.html.erb')
+          copy_file 'index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 
           run 'bower install' if options[:install_assets] == true
