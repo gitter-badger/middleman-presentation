@@ -1,0 +1,11 @@
+{
+  "name": "#{@title}",
+    "dependencies": {
+<% @external_assets.keys.each_with_index do |key, index| -%>
+<% if index == foo.length - 1 -%>
+    <%= @external_assets[key] %>
+<% else -%>
+    <%= @external_assets[key] %>,
+<% end -%>
+    }
+}

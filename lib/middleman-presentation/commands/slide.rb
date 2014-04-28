@@ -19,13 +19,14 @@ module Middleman
         true
       end
 
-      desc "slide ", "Create a new slide"
+      desc 'slide ', 'Create a new slide'
       def slide(name)
         shared_instance = ::Middleman::Application.server.inst
 
         # This only exists when the config.rb sets it!
         if shared_instance.extensions.key? :presentation
           presentation_inst = shared_instance.extensions[:presentation]
+
           slide_template = Presentation::SlideTemplate.new(name: name, base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory))
 
           template presentation_inst.options.public_send(:"slide_template_#{slide_template.type}"), slide_template.file_path
