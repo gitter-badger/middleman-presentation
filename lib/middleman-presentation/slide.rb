@@ -2,55 +2,29 @@
 module Middleman
   module Presentation
     class Slide
-
-      @database = Set.new
-
-      class << self
-        private
-
-        attr_accessor :database
-
-        public
-
-        def create(path)
-          database << new(path)
-        end
-
-        def load_from(directory)
-          Dir.glob(File.join(directory, '*')).keep_if { |f| File.file? f }.each do |f|
-            create(f)
-          end
-        end
-
-        def all
-          database
-        end
-
-        def clear
-          self.database = Set.new
-        end
-
-        # Count of available slides
-        #
-        # @return [Integer]
-        #   Count of slides
-        def count
-          database.size
-        end
-      end
-
       private
 
-      attr_reader :path
+      attr_reader :directory_path, :file_name
 
       public
 
       def initialize(path)
-        @path = Pathname.new(path)
+        pathname = Pathname.new(path)
+
+        @directory_path = pathname.dirname
+        @file_name = pathname.basename
       end
 
-      def relative_to_path(base)
-        path.relative_path_from(Pathname.new(base)).to_s
+      def relative_as_partial(base)
+        path = directory_path.relative_path_from(Pathname.new(base)) + basename
+
+        path.to_s
+      end
+
+      private
+
+      def basename
+        file_name.to_s.scan(/^([^.]+)\./).flatten.first
       end
     end
   end

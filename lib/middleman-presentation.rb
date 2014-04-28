@@ -9,6 +9,7 @@ require 'active_support/core_ext/object/blank'
 
 require 'middleman-presentation/version'
 require 'middleman-presentation/slide'
+require 'middleman-presentation/slide_repository'
 require 'middleman-presentation/slide_template'
 require 'middleman-presentation/helpers'
 require 'middleman-presentation/commands/slide'

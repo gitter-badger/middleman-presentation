@@ -9,10 +9,10 @@ SimpleCov.start
 require 'bundler'
 Bundler.require :default, :test, :development
 
-require 'middleman-revealjs'
+require 'middleman-presentation'
 
 # Loading support files
 Dir.glob(::File.expand_path('../support/*.rb', __FILE__)).each { |f| require_relative f }
 
 # Avoid writing "describe MyModule::MyClass do [..]" but "describe MyClass do [..]"
-include Middleman::Revealjs
+include Middleman::Presentation
