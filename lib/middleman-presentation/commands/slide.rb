@@ -19,6 +19,8 @@ module Middleman
       end
 
       desc 'slide ', 'Create a new slide'
+      option :edit, default: false, desc: 'Start ENV["EDITOR"] to edit slide.', aliases: %w{-e}
+      option :editor_parameters, desc: 'Parameters for ENV["EDITOR"], e.g. --remote for vim server'
       def slide(name)
         shared_instance = ::Middleman::Application.server.inst
 
@@ -29,6 +31,15 @@ module Middleman
           slide_template = ::Middleman::Presentation::SlideTemplate.new(name: name, base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory))
 
           template presentation_inst.options.public_send(:"slide_template_#{slide_template.type}"), slide_template.file_path
+
+          if options[:edit]
+            editor = []
+            editor << ENV['EDITOR']
+            editor << options[:editor_parameters] if options[:editor_parameters]
+            editor << slide_template.file_path
+
+            system(editor.join(" "))
+          end
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end
