@@ -81,6 +81,7 @@ module Middleman
           @links_for_stylesheets = [
             'reveal.js/css/reveal.min',
             'reveal.js/css/theme/source/default',
+            'reveal.js/lib/css/zenburn',
           ]
 
           @links_for_javascripts = [
