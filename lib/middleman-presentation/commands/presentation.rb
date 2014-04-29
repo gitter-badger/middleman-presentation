@@ -41,6 +41,7 @@ module Middleman
       option :activate_center, type: :boolean, default: true, desc: 'Activate center in reveal.js'
 
       option :install_assets, type: :boolean, default: true, desc: 'Install assets'
+      option :initialize_git, type: :boolean, default: true, desc: 'Initialize git repository'
 
       desc 'presentation ', 'Initialize a new presentation'
       def presentation
@@ -104,6 +105,12 @@ module Middleman
           end
           EOS
 
+          create_file File.join(shared_instance.root, '.gitignore'), <<-EOS.strip_heredoc
+          *.zip
+          *.tar.gz
+          tmp/
+          EOS
+
           template 'source/stylesheets/application.scss.tt', File.join(shared_instance.source_dir, 'stylesheets', 'application.scss')
           template 'source/javascripts/application.js.tt', File.join(shared_instance.source_dir, 'javascripts', 'application.js')
 
@@ -113,6 +120,11 @@ module Middleman
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 
           run 'bower install' if options[:install_assets] == true
+
+          if options[:initialize_git]
+            run 'git init'
+            run 'git add .'
+          end
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end
