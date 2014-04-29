@@ -103,7 +103,7 @@ module Middleman
           append_to_file File.join(shared_instance.root, 'config.rb'), <<-EOS.strip_heredoc
 
           ready do
-            sprockets.append_path File.join(root, '#{@bower_directory}')
+            sprockets.append_path File.join(root, 'source/#{@bower_directory}')
           end
           EOS
 
@@ -127,16 +127,16 @@ module Middleman
           template 'source/stylesheets/application.scss.tt', File.join(shared_instance.source_dir, 'stylesheets', 'application.scss')
           template 'source/javascripts/application.js.tt', File.join(shared_instance.source_dir, 'javascripts', 'application.js')
 
-          copy_file 'layout.erb', File.join(shared_instance.source_dir, 'layout.erb')
+          copy_file 'source/layout.erb', File.join(shared_instance.source_dir, 'layout.erb')
           copy_file 'source/slides/00.html.erb', File.join(slides_directory, '00.html.erb')
-          copy_file 'index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
+          copy_file 'source/index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 
           run 'bower install' if options[:install_assets] == true
 
           if options[:initialize_git]
             run 'git init'
-            run 'git add .'
+            run 'git add -A .'
           end
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
