@@ -21,7 +21,10 @@ module Middleman
       desc 'slide ', 'Create a new slide'
       option :edit, default: false, desc: 'Start ENV["EDITOR"] to edit slide.', aliases: %w{-e}
       option :editor_parameters, desc: 'Parameters for ENV["EDITOR"], e.g. --remote for vim server'
+      option :title, desc: 'Title of slide'
       def slide(name)
+        @title = options[:title]
+
         shared_instance = ::Middleman::Application.server.inst
 
         # This only exists when the config.rb sets it!

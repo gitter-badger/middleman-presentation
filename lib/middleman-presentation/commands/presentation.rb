@@ -107,7 +107,18 @@ module Middleman
           end
           EOS
 
-          create_file File.join(shared_instance.root, '.gitignore'), <<-EOS.strip_heredoc
+          append_to_file File.join(shared_instance.root, 'Gemfile'), <<-EOS.strip_heredoc
+          group :development, :test do
+            gem 'pry'
+            gem 'debugger'
+            gem 'pry-debugger'
+          end
+
+          gem 'redcarpet'
+          gem 'github-markup'
+          EOS
+
+          append_to_file File.join(shared_instance.root, '.gitignore'), <<-EOS.strip_heredoc
           *.zip
           *.tar.gz
           tmp/
