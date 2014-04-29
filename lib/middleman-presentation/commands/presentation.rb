@@ -68,7 +68,6 @@ module Middleman
 
           @external_assets = {}
           @external_assets["reveal.js"] = "latest"
-          @external_assets["highlight.js"] = "https://github.com/isagalaev/highlight.js.git"
           @external_assets["jquery"] = "~1.11.0"   if options[:use_jquery] == true
           @external_assets["open-sans"] = "latest" if options[:use_open_sans] == true
           @external_assets["lightbox2"] = "https://github.com/lokesh/lightbox2.git" if options[:use_lightbox] == true
@@ -87,11 +86,6 @@ module Middleman
           @links_for_javascripts = [
             'reveal.js/lib/js/head.min',
             'reveal.js/js/reveal.min',
-            #'reveal.js/lib/js/classList',
-            #'reveal.js/plugin/markdown/marked',
-            #'reveal.js/plugin/markdown/markdown',
-            #'reveal.js/plugin/zoom-js/zoom',
-            #'reveal.js/plugin/notes/notes', 
           ]
 
           slides_directory = File.join shared_instance.source_dir, presentation_inst.options.slides_directory
