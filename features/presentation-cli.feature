@@ -7,7 +7,7 @@ Feature: Initialize presentation
   @wip
   Scenario: Before init
     Given a fixture app "presentation-before_init-app"
-    When I successfully run `middleman presentation`
+    When I successfully run `middleman presentation --title "My Presentation --speaker "Me"`
     Then the file "config.rb" should contain:
     """
     activate :presentation

@@ -120,51 +120,8 @@ module Presentation
       run 'bundle install'
     end
 
-    def clone_reveal_js
-      subtree_repository('http://github.com/hakimel/reveal.js.git', 'source')
-    end
-    
-    def install_node_modules
-      inside source_directory do
-        run 'npm install'
-        run 'npm install -g grunt-cli'
-      end
-    rescue
-      logger.fatal 'Please make sure you configured npm correctly to use "install -g" as normal user.'
-      exit 1
-    end
-
-    def cleanup_nodejs_modules
-      FileUtils.rm_rf Dir.glob(File.join(source_directory, 'node_modules', '**', 'test'))
-    end
-
-    def cleanup_reveal_js
-      FileUtils.mv source_file('index.html'), source_file('documentation.html')
-      remove_dir File.join(source_directory, 'test')
-    end
-
-    def create_slides_directory
-      empty_directory 'source/slides'
-    end
-
-    def create_layouts_directory
-      empty_directory 'source/layouts'
-    end
-
-    def create_application_layout_file
-      copy_file 'templates/layout.erb', source_file('layout.erb')
-    end
-
-    def copy_index_html_template
-      copy_file 'templates/index.html.erb', source_file('index.html.erb')
-    end
-
-    def copy_gitignore
-      copy_file 'templates/.gitignore', root_file('.gitignore')
-    end
-
-    def create_first_slide
-      copy_file 'templates/00.html.erb', source_file('slides/00.html.erb')
+    def add_files_for_presentation
+      run 'bundle exec middleman presentation'
     end
 
     def delete_git_ref_to_remote

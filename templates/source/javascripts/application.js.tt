@@ -1,3 +1,1 @@
-<% @links_for_javascripts.each do |l| -%>
-//= require <%= l %>
-<% end -%>
+//= require fedux_org/js/fedux_org

@@ -31,9 +31,10 @@ module Middleman
       option :location, desc: 'Location where the presentation take place'
       option :audience, desc: 'Audience of presentation'
 
-      option :use_open_sans, type: :boolean, default: true, desc: 'Include open-sans'
-      option :use_jquery, type: :boolean, default: true, desc: 'Include jquery'
-      option :use_lightbox, type: :boolean, default: true, desc: 'Include lightbox 2'
+      option :use_open_sans, type: :boolean, default: false, desc: 'Include open-sans'
+      option :use_jquery, type: :boolean, default: false, desc: 'Include jquery'
+      option :use_lightbox, type: :boolean, default: false, desc: 'Include lightbox 2'
+      option :use_fedux_org_template, type: :boolean, default: true, desc: 'Use template of fedux_org'
 
       option :activate_controls, type: :boolean, default: true, desc: 'Activate controls in reveal.js'
       option :activate_progress, type: :boolean, default: true, desc: 'Activate progress in reveal.js'
@@ -72,6 +73,7 @@ module Middleman
           @external_assets["jquery"] = "~1.11.0"   if options[:use_jquery] == true
           @external_assets["open-sans"] = "latest" if options[:use_open_sans] == true
           @external_assets["lightbox2"] = "latest" if options[:use_lightbox] == true
+          @external_assets["reveal.js-template-fedux_org"] = "latest" if options[:use_fedux_org_template] == true
 
           @revealjs_config = {}
           @revealjs_config[:controls] = options[:activate_controls]
@@ -79,18 +81,23 @@ module Middleman
           @revealjs_config[:history]  = options[:activate_history]
           @revealjs_config[:center]   = options[:activate_center]
 
-          @links_for_stylesheets = [
-            'reveal.js/css/reveal.min',
-            'reveal.js/css/theme/source/default',
-            'reveal.js/lib/css/zenburn',
-          ]
+          @links_for_stylesheets = []
+          @links_for_javascripts = []
 
-          @links_for_javascripts = [
-            'reveal.js/lib/js/head.min',
-            'reveal.js/js/reveal.min',
-            'jquery/dist/jquery',
-            'lightbox2/js/lightbox',
-          ]
+          if options[:use_fedux_org_template] == true
+            @links_for_stylesheets << 'reveal.js-templates-fedux_org/scss/fedux_org'
+            @links_for_javascripts << 'reveal.js-templates-fedux_org/js/fedux_org'
+          end
+
+          if options[:use_jquery] == true    
+            @links_for_javascripts << 'jquery/dist/jquery'
+          end
+          if options[:use_open_sans] == true 
+            @links_for_stylesheets << 'open-sans/scss/open-sans'
+          end
+          if options[:use_lightbox] == true  
+            @links_for_javascripts << 'lightbox2/js/lightbox'
+          end
 
           slides_directory = File.join shared_instance.source_dir, presentation_inst.options.slides_directory
           data_directory = File.join shared_instance.root, 'data'
@@ -116,6 +123,7 @@ module Middleman
 
           gem 'redcarpet'
           gem 'github-markup'
+          gem 'liquid'
           EOS
 
           append_to_file File.join(shared_instance.root, '.gitignore'), <<-EOS.strip_heredoc
