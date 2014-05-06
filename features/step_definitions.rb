@@ -2,7 +2,9 @@
 Given(/^I initialized middleman for a new presentation$/) do
   step %Q{I successfully run `middleman init --skip-bundle`}
 
-  append_to_file('config.rb', 'activate :presentation')
-  append_to_file('Gemfile', 'gem "middleman-presentation"')
+  append_to_file('config.rb', "\nactivate :presentation\n")
+  append_to_file('Gemfile', "\ngem 'middleman-presentation', path: '#{File.expand_path('../../', __FILE__)}'\n")
+
+  step %Q{I successfully run `bundle install`}
 end
 

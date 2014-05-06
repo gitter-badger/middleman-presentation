@@ -20,16 +20,21 @@ module Middleman
 
       option :speaker, required: true, desc: 'Name of speaker'
       option :title, required: true, desc: 'Title of presentation'
+      option :date, required: true, default: Time.now.strftime('%d.%m.%Y'), desc: 'Date of presentation'
+      option :license, required: true, default: 'CC BY 4.0', desc: 'License of the presentation, e.g. CC BY'
+
       option :bower_directory, default: 'vendor/assets/components', desc: 'Directory for bower components in "source"-directory'
-      option :date, desc: 'Date of presentation'
       option :author, desc: 'Author of presentation'
       option :description, desc: 'Description for presentation'
       option :subtitle, desc: 'Subtitle of presentation'
       option :homepage, desc: 'Homepage of company and/or speaker'
       option :company, desc: 'Company or employer or organization of speaker'
-      option :license, desc: 'License of the presentation, e.g. CC BY'
       option :location, desc: 'Location where the presentation take place'
       option :audience, desc: 'Audience of presentation'
+
+      option :phone_number, desc: 'Phone number to contact speaker'
+      option :email_address, desc: 'Email address to contact speaker'
+      option :github_url, desc: 'Url to Github account of speaker'
 
       option :use_open_sans, type: :boolean, default: false, desc: 'Include open-sans'
       option :use_jquery, type: :boolean, default: false, desc: 'Include jquery'
@@ -46,18 +51,25 @@ module Middleman
 
       option :clear_source, type: :boolean, default: true, desc: 'Remove already existing source directory'
 
+      option :use_logo, type: :boolean, default: true, desc: 'Use logo on first slide'
+      option :install_contact_slide, type: :boolean, default: true, desc: 'Install contact slide'
+      option :install_question_slide, type: :boolean, default: true, desc: 'Install question slide'
+
+      option :language_slides, type: :string, default: 'de', desc: 'Language to use for translatable slide templates'
+
       desc 'presentation ', 'Initialize a new presentation'
       def presentation
         source_paths << File.expand_path('../../../../templates', __FILE__)
 
         shared_instance = ::Middleman::Application.server.inst
 
+        I18n.default_locale = options[:language_slides].to_sym
+
         # This only exists when the config.rb sets it!
         if shared_instance.extensions.key? :presentation
           presentation_inst = shared_instance.extensions[:presentation]
 
           @bower_directory = options[:bower_directory]
-
           @author          = options[:author]
           @speaker         = options[:speaker]
           @title           = options[:title]
@@ -70,10 +82,14 @@ module Middleman
           @location        = options[:location]
           @audience        = options[:audience]
 
+          @email_address   = options[:email_address]
+          @phone_number    = options[:phone_number]
+          @github_url      = options[:github_url]
+
           @external_assets = {}
           @external_assets["reveal.js"] = "latest"
           @external_assets["jquery"] = "~1.11.0"   if options[:use_jquery] == true
-          @external_assets["open-sans"] = "latest" if options[:use_open_sans] == true
+          @external_assets["open-sans"] = "https://github.com/bungeshea/open-sans.git" if options[:use_open_sans] == true
           @external_assets["lightbox2"] = "latest" if options[:use_lightbox] == true
           @external_assets["reveal.js-template-fedux_org"] = "https://github.com/maxmeyer/reveal.js-template-fedux_org.git" if options[:use_fedux_org_template] == true
 
@@ -87,8 +103,8 @@ module Middleman
           @links_for_javascripts = []
 
           if options[:use_fedux_org_template] == true
-            @links_for_stylesheets << 'reveal.js-templates-fedux_org/scss/fedux_org'
-            @links_for_javascripts << 'reveal.js-templates-fedux_org/js/fedux_org'
+            @links_for_stylesheets << 'reveal.js-template-fedux_org/scss/fedux_org'
+            @links_for_javascripts << 'reveal.js-template-fedux_org/js/fedux_org'
           end
 
           if options[:use_jquery] == true    
@@ -140,8 +156,13 @@ module Middleman
           template 'source/stylesheets/application.scss.tt', File.join(shared_instance.source_dir, 'stylesheets', 'application.scss')
           template 'source/javascripts/application.js.tt', File.join(shared_instance.source_dir, 'javascripts', 'application.js')
 
+          empty_directory 'source/images'
+
           copy_file 'source/layout.erb', File.join(shared_instance.source_dir, 'layout.erb')
-          copy_file 'source/slides/00.html.erb', File.join(slides_directory, '00.html.erb')
+          template 'source/slides/00.html.erb.tt', File.join(slides_directory, '00.html.erb')
+          template 'source/slides/999998.html.erb', File.join(slides_directory, '999998.html.erb') if options[:install_question_slide]
+          template 'source/slides/999999.html.erb', File.join(slides_directory, '999999.html.erb') if options[:install_contact_slide]
+
           copy_file 'source/index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 

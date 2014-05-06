@@ -1,0 +1,4 @@
+<section class="last_slide">
+  <h1><%= I18n.t('slides.questions.title') %></h1>
+  <img src="images/logo-question.png">
+</section>

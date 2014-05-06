@@ -1,0 +1,21 @@
+<section class="last_slide">
+  <h1><%= I18n.t('slides.contact.title') %></h1>
+  <img class="fd-with-list" src="images/logo-contact.png">
+  <ul class="fd-with-image fd-iconless-list">
+<% if @email_address -%>
+    <li>
+    <i class=fd-mail></i><a href="mailto:<%= @email_address %>" class="fd-external-url"><%= @email_address %></a>
+    </li>
+<% end -%>
+<% if @phone_number -%>
+    <li>
+    <i class=fd-phone></i><%= @phone_number %>
+    </li>
+<% end -%>
+<% if @github_url -%>
+    <li>
+    <i class=fd-github></i><a href="<%= @github_url %>" class="fd-external-url" target="_blank"><%= File.basename(URI.parse(@github_url).path) %></a>
+    </li>
+<% end -%>
+  </ul>
+</section>
