@@ -91,7 +91,7 @@ module Middleman
           @external_assets["reveal.js"] = "latest"
           @external_assets["jquery"] = "~1.11.0"   if options[:use_jquery] == true
           @external_assets["open-sans"] = "https://github.com/bungeshea/open-sans.git" if options[:use_open_sans] == true
-          @external_assets["lightbox2"] = "latest" if options[:use_lightbox] == true
+          @external_assets["lightbox2"] = "https://github.com/dg-vrnetze/revealjs-lightbox2" if options[:use_lightbox] == true
           @external_assets["reveal.js-template-fedux_org"] = "https://github.com/maxmeyer/reveal.js-template-fedux_org.git" if options[:use_fedux_org_template] == true
 
           @revealjs_config = {}
