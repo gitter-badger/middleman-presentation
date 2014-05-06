@@ -1,1 +1,3 @@
-@import 'fedux_org/scss/fedux_org';
+<% @links_for_stylesheets.each do |l| -%>
+@import '<%= l %>'
+<% end -%>

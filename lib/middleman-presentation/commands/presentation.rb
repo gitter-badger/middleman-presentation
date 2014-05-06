@@ -104,7 +104,7 @@ module Middleman
           slides_directory = File.join shared_instance.source_dir, presentation_inst.options.slides_directory
           data_directory = File.join shared_instance.root, 'data'
 
-          remove_dir 'source' if presentation_inst.options.clear_source
+          remove_dir 'source' if options[:clear_source]
 
           template 'data/metadata.yml.tt', File.join(data_directory, 'metadata.yml')
           template 'data/config.yml.tt', File.join(data_directory, 'config.yml')
