@@ -46,6 +46,9 @@ module Middleman
       option :activate_history, type: :boolean, default: true, desc: 'Activate history in reveal.js'
       option :activate_center, type: :boolean, default: true, desc: 'Activate center in reveal.js'
 
+      option :default_transition_type, type: :string, default: 'linear', enum: %w{default cube page concave zoom linear fade none}, desc: 'Default slide transition. Can be overwridden per slide.'
+      option :default_transition_speed, type: :string, default: 'default', enum: %w{default fast slow}, desc: 'Default speed for slide transition. Can be overwridden per slide.'
+
       option :install_assets, type: :boolean, default: true, desc: 'Install assets'
       option :initialize_git, type: :boolean, default: true, desc: 'Initialize git repository'
 
@@ -99,6 +102,8 @@ module Middleman
           @revealjs_config[:progress] = options[:activate_progress]
           @revealjs_config[:history]  = options[:activate_history]
           @revealjs_config[:center]   = options[:activate_center]
+          @revealjs_config[:default_transition_type]   = options[:default_transition_type]
+          @revealjs_config[:default_transition_speed]   = options[:default_transition_speed]
 
           @links_for_stylesheets = []
           @links_for_javascripts = []

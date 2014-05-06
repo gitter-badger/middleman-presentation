@@ -65,10 +65,9 @@
         progress: <%= data.config.revealjs.progress %>,
         history: <%= data.config.revealjs.history %>,
         center: <%= data.config.revealjs.center %>,
-
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
+        transitionSpeed: '<%= data.config.revealjs.default_transition_speed %>',
+        transition: Reveal.getQueryHash().transition || '<%= data.config.revealjs.default_transition_type %>', // default/cube/page/concave/zoom/linear/fade/none
+        //theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         // Parallax scrolling
         // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
         // parallaxBackgroundSize: '2100px 900px',
