@@ -109,6 +109,31 @@ overview.
 middleman help slide
 ```
 
+## Usage of external resources
+
+*Use Bower*
+
+You can use `bower` to make external resources within your presentation
+available. This works fine together with the asset pipeline `middleman` uses:
+[sprockets](https://github.com/sstephenson/sprockets). Just add resources to
+your (existing) `bower.json` and make yourself comfortable with bower:
+http://bower.io/.
+
+*Advantages for the use of bower*
+
+By using `bower` for external resources you can better separate the slide
+content from your styles.
+
+*Themes*
+
+An example for `bower`-enabled theme can be found at
+https://github.com/maxmeyer/reveal.js-template-fedux_org.
+
+*jquery etc.*
+
+Add those libraries to your `bower.json` and reference them from within your
+`javascripts/application.js` and/or `stylesheets/application.scss`
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/middleman-presentation/fork )
