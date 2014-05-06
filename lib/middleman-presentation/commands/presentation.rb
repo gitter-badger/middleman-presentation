@@ -54,6 +54,7 @@ module Middleman
       option :use_logo, type: :boolean, default: true, desc: 'Use logo on first slide'
       option :install_contact_slide, type: :boolean, default: true, desc: 'Install contact slide'
       option :install_question_slide, type: :boolean, default: true, desc: 'Install question slide'
+      option :install_end_slide, type: :boolean, default: true, desc: 'Install end slide'
 
       option :language_slides, type: :string, default: 'de', desc: 'Language to use for translatable slide templates'
 
@@ -160,8 +161,9 @@ module Middleman
 
           copy_file 'source/layout.erb', File.join(shared_instance.source_dir, 'layout.erb')
           template 'source/slides/00.html.erb.tt', File.join(slides_directory, '00.html.erb')
-          template 'source/slides/999998.html.erb', File.join(slides_directory, '999998.html.erb') if options[:install_question_slide]
-          template 'source/slides/999999.html.erb', File.join(slides_directory, '999999.html.erb') if options[:install_contact_slide]
+          template 'source/slides/999980.html.erb', File.join(slides_directory, '999980.html.erb') if options[:install_question_slide]
+          template 'source/slides/999981.html.erb', File.join(slides_directory, '999981.html.erb') if options[:install_contact_slide]
+          template 'source/slides/999982.html.erb', File.join(slides_directory, '999982.html.erb') if options[:install_end_slide]
 
           copy_file 'source/index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')

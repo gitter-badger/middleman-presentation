@@ -1,0 +1,3 @@
+<section>
+  <h1><%= I18.t('slides.end.title') %></h1>
+</section>
