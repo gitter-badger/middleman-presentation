@@ -133,6 +133,9 @@ module Middleman
           ready do
             sprockets.append_path File.join(root, 'source/#{@bower_directory}')
           end
+
+          set :markdown_engine, :redcarpet
+          set :redcarpet, fenced_code_blocks: true, autolink: true
           EOS
 
           append_to_file File.join(shared_instance.root, 'Gemfile'), <<-EOS.strip_heredoc
