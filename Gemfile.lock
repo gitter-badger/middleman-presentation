@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    middleman-presentation (0.0.3)
+    middleman-presentation (0.0.5)
       addressable (~> 2.3.5)
       middleman (~> 3.2)
       tzinfo (>= 0.3.0)
