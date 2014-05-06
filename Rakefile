@@ -9,6 +9,14 @@ def software
   gemspec.name
 end
 
+def module_name
+  software.gsub(/-/, '/').camelcase
+end
+
+def require_name
+  software
+end
+
 def gemspec
   eval File.read(Dir.glob(File.join(File.expand_path('../', __FILE__), '*.gemspec')).first)
 end
@@ -22,8 +30,8 @@ def archlinux_package_name
 end
 
 def version
-  require "#{software}/version"
-  "#{software.camelcase}::VERSION".constantize
+  require "#{require_name}/version"
+  "#{module_name}::VERSION".constantize
 end
 
 def root_directory

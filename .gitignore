@@ -27,3 +27,4 @@ source/*
 tmp/
 
 coverage/
+pkg/
