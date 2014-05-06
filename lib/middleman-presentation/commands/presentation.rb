@@ -171,6 +171,10 @@ module Middleman
           copy_file 'source/index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 
+          copy_file 'script/run', File.join(shared_instance.root, 'script', 'run')
+
+          chmod File.join(shared_instance.root, 'script', 'run'), 0755
+
           run 'bower install' if options[:install_assets] == true
 
           if options[:initialize_git]

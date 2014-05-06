@@ -4,6 +4,7 @@ Feature: Initialize presentation
   I want to create a new presentation
   In order to use it
 
+  @wip
   Scenario: Before init
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
@@ -24,5 +25,6 @@ Feature: Initialize presentation
     And a file named "source/index.html.erb" should exist
     And a file named "source/stylesheets/application.scss" should exist
     And a file named "source/javascripts/application.js" should exist
+    And a file named "script/run" should exist
     And a directory named "source/images" should exist
     And a directory named "source/vendor/assets/components" should exist
