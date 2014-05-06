@@ -12,6 +12,12 @@ And then execute:
 
     $ bundle
 
+And add the `activate`-statement to the `config.rb` of middleman:
+
+```ruby
+activate :presentation
+```
+
 ## Usage
 
 *Initialize presentation*
