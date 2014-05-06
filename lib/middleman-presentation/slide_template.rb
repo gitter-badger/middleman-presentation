@@ -17,6 +17,7 @@ module Middleman
         @extensions = {
           erb: '.html.erb',
           md: '.html.md',
+          liquid: '.html.liquid',
         }
       end
 
@@ -28,6 +29,8 @@ module Middleman
         return :erb if extension? name, '.erb'
         return :md  if extension? name, '.md'
         return :md  if extension? name, '.markdown'
+        return :liquid  if extension? name, '.liquid'
+        return :liquid  if extension? name, '.l'
 
         default_type
       end
@@ -38,6 +41,8 @@ module Middleman
         return extensions[:erb] if extension? name, '.erb'
         return extensions[:md]  if extension? name, '.md'
         return extensions[:md]  if extension? name, '.markdown'
+        return extensions[:liquid]  if extension? name, '.liquid'
+        return extensions[:liquid]  if extension? name, '.l'
 
         default_extension
       end

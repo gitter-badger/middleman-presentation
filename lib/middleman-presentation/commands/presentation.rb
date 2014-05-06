@@ -56,7 +56,7 @@ module Middleman
       option :install_question_slide, type: :boolean, default: true, desc: 'Install question slide'
       option :install_end_slide, type: :boolean, default: true, desc: 'Install end slide'
 
-      option :language_slides, type: :string, default: 'de', desc: 'Language to use for translatable slide templates'
+      option :language, type: :string, default: 'de', desc: 'Language to use for translatable slide templates'
 
       desc 'presentation ', 'Initialize a new presentation'
       def presentation
@@ -64,7 +64,7 @@ module Middleman
 
         shared_instance = ::Middleman::Application.server.inst
 
-        I18n.default_locale = options[:language_slides].to_sym
+        I18n.default_locale = options[:language].to_sym
 
         # This only exists when the config.rb sets it!
         if shared_instance.extensions.key? :presentation

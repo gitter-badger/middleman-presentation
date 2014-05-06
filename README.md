@@ -20,16 +20,33 @@ activate :presentation
 
 ## Usage
 
+*Initialize middleman*
+
+```bash
+middleman init my_presentation
+cd my_presentation
+```
+
+*Add dependency to Gemfile and activate plugin*
+
+```bash
+echo "gem 'middleman-presentation'" >> Gemfile
+echo "activate :presentation" >> config.rb
+```
+
 *Initialize presentation*
 
 This gem provides a helper to start a new presentatio from scratch. The given
 options below need to be given on command line.
 
 ```bash
-middleman presentation --title "my title" --speaker "Me"
+bundle exec middleman presentation --title "my title" --speaker "Me"
+bundle install
 ```
 
-The presentation helper provides a lot of more options. Use the help command to get an overview.
+The presentation helper provides a lot of more options. Use the help command to
+get an overview. If you want to switch the language for generated slides use
+the `--language`-switch.
 
 ```bash
 middleman help presentation

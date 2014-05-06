@@ -3,7 +3,7 @@ PATH
   specs:
     middleman-presentation (0.0.3)
       addressable (~> 2.3.5)
-      middleman-core (~> 3.2)
+      middleman (~> 3.2)
       tzinfo (>= 0.3.0)
 
 GEM
