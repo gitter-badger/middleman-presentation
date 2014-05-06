@@ -16,14 +16,12 @@ Feature: Add new slide
     Then the following files should exist:
       | source/slides/01.html.md |
 
-@wip
   Scenario: Liquid Template
     Given a fixture app "slides-source-app"
     When I successfully run `middleman slide 01.l`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
-@wip
   Scenario: Liquid Template (long file extension)
     Given a fixture app "slides-source-app"
     When I successfully run `middleman slide 01.liquid`
