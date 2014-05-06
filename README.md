@@ -57,6 +57,10 @@ middleman help presentation
 
 *Add new slide*
 
+
+**MAKE SURE YOU NEVER EVER GIVE TWO SLIDES THE SAME BASENAME**, eg. 01.html.erb
+and 01.html.md. This will not work with `middleman`.
+
 To add a new slide you can use the `slide`-helper.
 
 ```bash
@@ -70,7 +74,7 @@ middleman slide 01
 ```
 
 If you prefer another template language you can provide that information as
-part of the slide name. Today only `embedded ruby` and `markdown` are supported.
+part of the slide name. Today only `embedded ruby`, `markdown` and `liquid`-templates are supported.
 
 ```bash
 # embedded ruby
@@ -78,6 +82,11 @@ middleman slide 01.erb
 
 # markdown
 middleman slide 01.md
+middleman slide 01.markdown
+
+# liquid
+middleman slide 01.l
+middleman slide 01.liquid
 ```
 
 To set a title for the slide use the `--title`-switch.
