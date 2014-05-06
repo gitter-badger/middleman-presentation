@@ -44,6 +44,8 @@ module Middleman
       option :install_assets, type: :boolean, default: true, desc: 'Install assets'
       option :initialize_git, type: :boolean, default: true, desc: 'Initialize git repository'
 
+      option :clear_source, type: :boolean, default: true, desc: 'Remove already existing source directory'
+
       desc 'presentation ', 'Initialize a new presentation'
       def presentation
         source_paths << File.expand_path('../../../../templates', __FILE__)
@@ -73,7 +75,7 @@ module Middleman
           @external_assets["jquery"] = "~1.11.0"   if options[:use_jquery] == true
           @external_assets["open-sans"] = "latest" if options[:use_open_sans] == true
           @external_assets["lightbox2"] = "latest" if options[:use_lightbox] == true
-          @external_assets["reveal.js-template-fedux_org"] = "latest" if options[:use_fedux_org_template] == true
+          @external_assets["reveal.js-template-fedux_org"] = "https://github.com/maxmeyer/reveal.js-template-fedux_org.git" if options[:use_fedux_org_template] == true
 
           @revealjs_config = {}
           @revealjs_config[:controls] = options[:activate_controls]
@@ -102,6 +104,8 @@ module Middleman
           slides_directory = File.join shared_instance.source_dir, presentation_inst.options.slides_directory
           data_directory = File.join shared_instance.root, 'data'
 
+          remove_dir 'source' if presentation_inst.options.clear_source
+
           template 'data/metadata.yml.tt', File.join(data_directory, 'metadata.yml')
           template 'data/config.yml.tt', File.join(data_directory, 'config.yml')
           template '.bowerrc.tt', File.join(shared_instance.root, '.bowerrc')
@@ -115,6 +119,7 @@ module Middleman
           EOS
 
           append_to_file File.join(shared_instance.root, 'Gemfile'), <<-EOS.strip_heredoc
+
           group :development, :test do
             gem 'pry'
             gem 'debugger'
