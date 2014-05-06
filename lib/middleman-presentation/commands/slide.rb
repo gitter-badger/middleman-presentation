@@ -37,7 +37,7 @@ module Middleman
 
           if options[:edit]
             editor = []
-            editor << ENV['EDITOR']
+            editor << ENV.fetch('EDITOR', 'vim')
             editor << options[:editor_parameters] if options[:editor_parameters]
             editor << slide_template.file_path
 

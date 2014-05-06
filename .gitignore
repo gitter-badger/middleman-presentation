@@ -25,3 +25,5 @@ source/*
 
 # no tmp files
 tmp/
+
+coverage/
