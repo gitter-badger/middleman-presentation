@@ -32,6 +32,8 @@ cd my_presentation
 ```bash
 echo "gem 'middleman-presentation'" >> Gemfile
 echo "activate :presentation" >> config.rb
+
+bundle install
 ```
 
 *Initialize presentation*
@@ -41,6 +43,7 @@ options below need to be given on command line.
 
 ```bash
 bundle exec middleman presentation --title "my title" --speaker "Me"
+
 bundle install
 ```
 
