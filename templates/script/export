@@ -9,11 +9,11 @@ class Export < Thor::Group
 
   no_commands {
     def export_directory
-      File.expand_path('../../tmp', __FILE__)
+      File.expand_path('../../pkg', __FILE__)
     end
 
     def presentation_directory
-      File.basedir File.expand_path('../../', __FILE__)
+      File.basename File.expand_path('../../', __FILE__)
     end
 
     def export_file
@@ -22,7 +22,7 @@ class Export < Thor::Group
   }
 
   def create_export_directory
-    empty_directoy export_directory
+    empty_directory export_directory
   end
 
   def export_presentation
