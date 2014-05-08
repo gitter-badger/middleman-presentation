@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'middleman', '~> 3.2'
   s.add_dependency 'tzinfo', '>= 0.3.0'
   s.add_dependency 'addressable', '~> 2.3.5'
+  s.add_dependency 'launchy', '~> 2.4.2'
 end

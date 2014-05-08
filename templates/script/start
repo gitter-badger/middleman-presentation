@@ -1,3 +1,31 @@
-#!/bin/sh
+#!/usr/bin/env ruby
 
-bundle exec middleman server
+require 'optparse'
+require 'ostruct'
+require 'addressable/uri'
+
+uri = Addressable::URI.parse('http://127.0.0.1:1234')
+
+options = OpenStruct.new
+options.listen = uri
+
+OptionParser.new do |opts|
+  opts.banner = 'Usage: script/start [options]'
+
+  opts.on('-p PORT', '--port PORT', 'Port to listen on') do |p|
+    options.listen.port = p
+  end
+
+  opts.on('-h HOST', '--host HOST', 'Host to listen on') do |h|
+    options.listen.host = h
+  end
+
+end.parse!
+
+launchy_pid = fork do
+  system("bundle exec launchy #{options.listen.to_s}")
+end
+
+Process.waitpid(launchy_pid)
+
+system("bundle exec middleman server -p #{options.listen.port} -h #{options.listen.host}")
