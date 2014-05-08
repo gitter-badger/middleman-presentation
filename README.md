@@ -30,8 +30,8 @@ cd my_presentation
 *Add dependency to Gemfile and activate plugin*
 
 ```bash
-echo "gem 'middleman-presentation'" >> Gemfile
-echo "activate :presentation" >> config.rb
+echo -e "\ngem 'middleman-presentation'\n" >> Gemfile
+echo "\nactivate :presentation\n" >> config.rb
 
 bundle install
 ```
