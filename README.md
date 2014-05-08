@@ -31,7 +31,7 @@ cd my_presentation
 
 ```bash
 echo -e "\ngem 'middleman-presentation'\n" >> Gemfile
-echo "\nactivate :presentation\n" >> config.rb
+echo -e "\nactivate :presentation\n"       >> config.rb
 
 bundle install
 ```
