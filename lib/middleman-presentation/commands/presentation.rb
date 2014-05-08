@@ -176,9 +176,10 @@ module Middleman
           copy_file 'source/index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 
-          copy_file 'script/run', File.join(shared_instance.root, 'script', 'run')
-
-          chmod File.join(shared_instance.root, 'script', 'run'), 0755
+          %w{ start boostrap }.each do |s|
+            copy_file File.join('script', s), File.join(shared_instance.root, 'script', s)
+            chmod File.join(shared_instance.root, 'script', s), 0755
+          end
 
           run 'bower install' if options[:install_assets] == true
 
