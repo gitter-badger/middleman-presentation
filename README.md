@@ -109,6 +109,45 @@ overview.
 middleman help slide
 ```
 
+*Start presentation*
+
+To start your presentation use the `start`-script. It opens the presentation in
+your browser and starts `middleman`. After `middleman` has started you just
+need to reload the presentation in the browser.
+
+```bash
+script/start
+```
+
+*Export presentation*
+
+If you need to export the presentation, you can use the `export`-script. It
+creates tar-file in `<root>/pkg/<presentation_directory_name>.tar.gz`.
+
+```bash
+script/export
+```
+
+## Reuse existing presentation
+
+*Bootstrap*
+
+Bootstrap the presentation environment.
+
+```bash
+script/bootstrap
+# => Creates tar-file in <root>/pkg/<presentation_directory_name>.tar.gz
+```
+
+*Start presentation*
+
+To start your presentation use the `start`-script.
+
+```bash
+script/start
+```
+
+
 ## Usage of external resources
 
 *Use Bower*
