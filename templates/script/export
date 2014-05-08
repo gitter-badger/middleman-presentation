@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'thor/group'
+require 'thor/actions'
+
+class Export < Thor::Group
+  include Thor::Actions
+
+  no_commands {
+    def export_directory
+      File.expand_path('../../tmp', __FILE__)
+    end
+
+    def presentation_directory
+      File.basedir File.expand_path('../../', __FILE__)
+    end
+
+    def export_file
+      File.join(export_directory, "#{presentation_directory}.tar.gz")
+    end
+  }
+
+  def create_export_directory
+    empty_directoy export_directory
+  end
+
+  def export_presentation
+    run "git archive -o #{export_file} --prefix \"#{presentation_directory}/\" HEAD"
+  end
+end
+
+Export.start
