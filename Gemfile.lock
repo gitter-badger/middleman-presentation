@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    middleman-presentation (0.0.9)
+    middleman-presentation (0.0.10)
       addressable (~> 2.3.5)
       launchy (~> 2.4.2)
       middleman (~> 3.2)
