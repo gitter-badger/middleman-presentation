@@ -37,4 +37,5 @@ group :development, :test do
   gem 'tmrb', require: false
   gem 'yard', require: false
   gem 'inch', require: false
+  gem 'license_finder'
 end
