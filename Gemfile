@@ -13,6 +13,7 @@ gem 'thor'
 
 group :development, :test do
   gem 'rspec', require: false
+  gem 'rspec-legacy_formatters', require: false
   gem 'fuubar', require: false
   gem 'simplecov', require: false
   gem 'rubocop', require: false
