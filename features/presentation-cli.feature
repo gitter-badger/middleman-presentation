@@ -4,7 +4,6 @@ Feature: Initialize presentation
   I want to create a new presentation
   In order to use it
 
-  @wip
   Scenario: Before init
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
