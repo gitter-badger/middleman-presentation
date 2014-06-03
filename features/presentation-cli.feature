@@ -25,6 +25,6 @@ Feature: Initialize presentation
     And a file named "source/index.html.erb" should exist
     And a file named "source/stylesheets/application.scss" should exist
     And a file named "source/javascripts/application.js" should exist
-    And a file named "script/run" should exist
+    And a file named "script/start" should exist
     And a directory named "source/images" should exist
     And a directory named "source/vendor/assets/components" should exist
