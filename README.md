@@ -126,6 +126,7 @@ creates tar-file in `<root>/pkg/<presentation_directory_name>.tar.gz`.
 
 ```bash
 script/export
+# => Creates tar-file in <root>/pkg/<presentation_directory_name>.tar.gz
 ```
 
 ## Reuse existing presentation
@@ -136,7 +137,7 @@ Bootstrap the presentation environment.
 
 ```bash
 script/bootstrap
-# => Creates tar-file in <root>/pkg/<presentation_directory_name>.tar.gz
+# => Installs all needed software components
 ```
 
 *Start presentation*
