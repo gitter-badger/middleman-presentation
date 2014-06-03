@@ -3,7 +3,7 @@ module Middleman
   module Presentation
     module Helpers
       # Create image gallery
-      def image_gallery(images, title = nil, image_gallery_id = SecureRandom.hex)
+      def image_gallery(images, image_gallery_id:, title: nil)
         template = <<-EOS.strip_heredoc
          <a href="<% image_path %>" data-lightbox="<% image_gallery_id %>">
            <img src="<% image_path %>" alt="<% title %>" class="fd-preview-image">
