@@ -147,8 +147,8 @@ module Middleman
 
           group :development, :test do
             gem 'pry'
-            gem 'debugger'
-            gem 'pry-debugger'
+            gem 'byebug'
+            gem 'pry-byebug'
           end
 
           gem 'redcarpet'
