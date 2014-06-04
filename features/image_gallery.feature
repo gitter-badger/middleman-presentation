@@ -13,7 +13,8 @@ Feature: Image Gallery
     And a slide named "01.html.erb" with:
     """
     <section>
-    <%= image_gallery %W{ images/image01.png images/image02.png} %>
+    <h1>Image Gallery</h1>
+    <%= image_gallery %W{images/image01.png images/image02.png} %>
     </section>
     """
     And I go to "/"

@@ -16,5 +16,5 @@ Given(/^I created a new presentation with title "([^"]+)" for speaker "([^"]+)"$
 end
 
 Given(/^a slide named "(.*?)" with:$/) do |slide_name, string|
-  step %Q{a file named "#{slide_name}" with:}, string
+  step %Q{a file named "source/slides/#{slide_name}" with:}, string
 end
