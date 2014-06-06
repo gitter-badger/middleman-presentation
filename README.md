@@ -174,6 +174,11 @@ https://github.com/maxmeyer/reveal.js-template-fedux_org.
 Add those libraries to your `bower.json` and reference them from within your
 `javascripts/application.js` and/or `stylesheets/application.scss`
 
+## Development
+
+Make sure you've got a working internet connection before running the tests. To
+keep the source code repository lean the tests download assets via bower.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/middleman-presentation/fork )
