@@ -39,7 +39,7 @@ Feature: Image Gallery
     """
     <section>
     <h1>Image Gallery</h1>
-    <%= image_gallery images/image01.png: 'Title 1', images/image02.png: 'Title 2', image_gallery_id: 'test-gallery' %>
+    <%= image_gallery 'images/image01.png' => 'Title 1', 'images/image02.png' => 'Title 2', image_gallery_id: 'test-gallery' %>
     </section>
     """
     And the Server is running
