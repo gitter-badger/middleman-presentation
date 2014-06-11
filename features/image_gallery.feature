@@ -39,7 +39,7 @@ Feature: Image Gallery
     """
     <section>
     <h1>Image Gallery</h1>
-    <%= image_gallery 'images/image01.png' => 'Title 1', 'images/image02.png' => 'Title 2', image_gallery_id: 'test-gallery' %>
+    <%= image_gallery({'images/image01.png' => 'Title 1', 'images/image02.png' => 'Title 2'}, image_gallery_id: 'test-gallery') %>
     </section>
     """
     And the Server is running
@@ -49,10 +49,10 @@ Feature: Image Gallery
     <section>
     <h1>Image Gallery</h1>
     <a href="images/image01.png" data-lightbox="test-gallery">
-      <img src="images/image01.png" class="fd-preview-image">
+      <img src="images/image01.png" alt="Title 1" class="fd-preview-image">
     </a>
     <a href="images/image02.png" data-lightbox="test-gallery">
-      <img src="images/image02.png" class="fd-preview-image">
+      <img src="images/image02.png" alt="Title 2" class="fd-preview-image">
     </a>
     </section>
     """
