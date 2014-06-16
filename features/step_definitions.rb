@@ -26,6 +26,29 @@ Given(/^a slide named "(.*?)" with:$/) do |slide_name, string|
   step %Q{a file named "source/slides/#{slide_name}" with:}, string
 end
 
-Then /^going to "([^"]*)" should raise exception "([^"]*)"$/ do |url, exception|
-  expect { @browser.get(URI.escape(url)) }.to raise_error exception
+Then /^I go to "([^"]*)" and see the following error message:$/ do |url, message|
+  message = capture :stderr do
+    begin
+      @browser.get(URI.escape(url))
+    rescue StandardError
+    end
+  end
+
+  expect(message).to include message
 end
+
+Given(/^a home directory for testing$/) do
+  @_old_home = ENV['HOME']
+
+  ENV['HOME'] = File.expand_path(current_dir)
+end
+
+Before do
+  step %Q{a home directory for testing}
+end
+
+After do
+  ENV['HOME'] = @_old_home
+end
+
+

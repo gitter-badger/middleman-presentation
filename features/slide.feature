@@ -35,8 +35,7 @@ Feature: Slide
     </section>
     """
     And the Server is running
-    And I go to "/"
-    Then I should see:
+    And I go to "/" and see the following error message:
     """
-    undefined method `asdfasdf' for #<Middleman::Application:
+    NoMethodError: undefined method `asdfasdf
     """
