@@ -23,7 +23,6 @@ Feature: Slide
     Hello World
     """
 
-@wip
   Scenario: Malformed Slide
     Given a fixture app "image_gallery-app"
     And I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
@@ -35,8 +34,7 @@ Feature: Slide
     </section>
     """
     And the Server is running
-    And I go to "/"
-    Then I should see:
+    And I go to "/" and see the following error message:
     """
-    undefined method `asdfasdf' for #<Middleman::Application:
+    NoMethodError: undefined method `asdfasdf
     """

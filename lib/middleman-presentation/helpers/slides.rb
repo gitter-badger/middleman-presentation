@@ -13,7 +13,7 @@ module Middleman
 
             message = []
             message << "Rendering slide \"#{s.pathname}\" failed with"
-            message << e.message
+            message << e.class.to_s + ": " + e.message
             message << e.backtrace.join("\n")
 
             raise e.class, message.join("\n\n")

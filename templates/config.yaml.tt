@@ -1,0 +1,39 @@
+# middleman-presentation version <%= @version %>
+<% %W{ speaker
+       license
+       bower-directory
+       author
+       description
+       homepage
+       company
+       location
+       audience
+       phone_number
+       email_address
+       use_open_sans
+       use_jquery
+       use_lightbox
+       use_fedux_org_template
+       activate_controls
+       activate_progress
+       activate_history
+       activate_center
+       default_transition_type
+       default_transition_speed
+       install_assets
+       initialize_git
+       clear_source
+       use_logo
+       install_contact_slide
+       install_question_slide
+       install_end_slide
+       language
+    }.each do |field|
+-%>
+<% if @options[field] -%>
+# <%= field %>:
+<%= field %>: <%= @options[field] %>
+<% else -%>
+# <%= field %>:
+<% end -%>
+<% end -%>
