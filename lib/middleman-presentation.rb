@@ -16,6 +16,7 @@ require 'middleman-presentation/slide_template'
 require 'middleman-presentation/helpers'
 require 'middleman-presentation/commands/slide'
 require 'middleman-presentation/commands/presentation'
+require 'middleman-presentation/commands/presentation_init'
 
 ::Middleman::Extensions.register(:presentation) do
   require 'middleman-presentation/extension'

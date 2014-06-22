@@ -23,7 +23,6 @@ Feature: Slide
     Hello World
     """
 
-@wip
   Scenario: Malformed Slide
     Given a fixture app "image_gallery-app"
     And I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories

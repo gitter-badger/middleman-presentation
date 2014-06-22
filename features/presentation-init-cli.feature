@@ -6,9 +6,9 @@ Feature: Initialize middleman-presentation
 
   @wip
   Scenario: Before init
-    #Given a fixture app "presentation-before_init-app"
-    When I successfully run `middleman presentation-init`
-    Then the file "config.yaml" should contain:
+    Given a fixture app "presentation-before_init-app"
+    When I successfully run `middleman presentation_init`
+    Then the file "~/.config/middleman-presentation/config.yaml" should contain:
     """
     # speaker: 
     # license: CC BY 4.0
