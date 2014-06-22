@@ -19,7 +19,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'coveralls', require: false
   gem 'cucumber', require: false
-  gem 'aruba', require: false
+  gem 'aruba', require: false, git: 'https://github.com/dg-vrnetze/aruba.git', branch: 'integration/expand_path'
   gem 'rake', require: false
   gem 'fedux_org-stdlib', require: false
   gem 'bundler', require: false

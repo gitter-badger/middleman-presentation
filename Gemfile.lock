@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/dg-vrnetze/aruba.git
+  revision: f5394b2e2950faeb4f31134352d7a86d7d794136
+  branch: integration/expand_path
+  specs:
+    aruba (0.5.4)
+      childprocess (>= 0.3.6)
+      cucumber (>= 1.1.1)
+      rspec-expectations (>= 2.7.0)
+
 PATH
   remote: .
   specs:
@@ -17,10 +27,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    aruba (0.5.4)
-      childprocess (>= 0.3.6)
-      cucumber (>= 1.1.1)
-      rspec-expectations (>= 2.7.0)
     ast (2.0.0)
     awesome_print (1.2.0)
     blockenspiel (0.4.5)
@@ -248,7 +254,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
-  aruba
+  aruba!
   awesome_print
   bundler
   byebug (~> 3.1.2)
