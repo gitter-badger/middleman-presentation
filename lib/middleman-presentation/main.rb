@@ -2,7 +2,14 @@
 module Middleman
   module Presentation
 
+    @config = PresentationConfig.new 
+
     class << self
+
+      protected
+
+      attr_reader :config
+
       def root_path
         File.expand_path '../../../', __FILE__
       end

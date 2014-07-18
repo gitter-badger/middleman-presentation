@@ -30,9 +30,8 @@
        language
     }.each do |field|
 -%>
-<% if @options[field] -%>
-# <%= field %>:
-<%= field %>: <%= @options[field] %>
+<% if @config.public_send field  -%>
+<%= field %>: <%= @config.public_send field %>
 <% else -%>
 # <%= field %>:
 <% end -%>

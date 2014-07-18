@@ -21,7 +21,6 @@ group :development, :test do
   gem 'cucumber', require: false
   gem 'aruba', require: false
   gem 'rake', require: false
-  gem 'fedux_org-stdlib', require: false
   gem 'bundler', require: false
   gem 'erubis'
   gem 'versionomy', require: false

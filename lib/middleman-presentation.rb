@@ -3,6 +3,7 @@ require 'pathname'
 require 'middleman-core'
 require 'middleman-core/cli'
 require 'uri'
+require 'fedux_org_stdlib/app_config'
 
 require 'active_support/core_ext/string/strip'
 require 'active_support/core_ext/string/inflections'

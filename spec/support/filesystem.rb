@@ -1,11 +1,11 @@
 # encoding: utf-8
-require 'fedux_org/stdlib/filesystem'
+require 'fedux_org_stdlib/filesystem'
 
 module Middleman
   module Revealjs
     module SpecHelper
       module Filesystem
-        include FeduxOrg::Stdlib::Filesystem
+        include FeduxOrgStdlib::Filesystem
 
         def root_directory
           ::File.expand_path('../../../', __FILE__)

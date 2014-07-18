@@ -1,12 +1,11 @@
 # encoding: utf-8
-require 'fedux_org/stdlib/environment'
+require 'fedux_org_stdlib/environment'
 
 module Middleman
   module Revealjs
     module SpecHelper
       module Environment
-        include FeduxOrg::Stdlib::Environment
-        alias_method :with_environment, :isolated_environment 
+        include FeduxOrgStdlib::Environment
       end
     end
   end

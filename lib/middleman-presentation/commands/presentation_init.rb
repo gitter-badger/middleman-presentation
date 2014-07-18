@@ -24,7 +24,7 @@ module Middleman
         if ::Middleman::Application.server.inst.extensions.key? :presentation
 
           @version = Middleman::Presentation::VERSION
-          @options = options
+          @config = Middleman::Presentation.config
 
           template 'config.yaml.tt', File.expand_path("~/.config/middleman-presentation/config.yaml")
         else

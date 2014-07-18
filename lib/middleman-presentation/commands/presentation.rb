@@ -18,48 +18,48 @@ module Middleman
         true
       end
 
-      option :speaker, required: true, desc: 'Name of speaker'
+      option :speaker, required: true, default: Middleman::Presentation.config.speaker, desc: 'Name of speaker'
       option :title, required: true, desc: 'Title of presentation'
       option :date, required: true, default: Time.now.strftime('%d.%m.%Y'), desc: 'Date of presentation'
-      option :license, required: true, default: 'CC BY 4.0', desc: 'License of the presentation, e.g. CC BY'
+      option :license, required: true, default: Middleman::Presentation.config.speaker, desc: 'License of the presentation, e.g. CC BY'
 
-      option :bower_directory, default: 'vendor/assets/components', desc: 'Directory for bower components in "source"-directory'
-      option :author, desc: 'Author of presentation'
+      option :bower_directory, default: Middleman::Presentation.config.bower_directory, desc: 'Directory for bower components in "source"-directory'
+      option :author, default: Middleman::Presentation.config.author, desc: 'Author of presentation'
       option :description, desc: 'Description for presentation'
       option :subtitle, desc: 'Subtitle of presentation'
-      option :homepage, desc: 'Homepage of company and/or speaker'
-      option :company, desc: 'Company or employer or organization of speaker'
-      option :location, desc: 'Location where the presentation take place'
-      option :audience, desc: 'Audience of presentation'
+      option :homepage, default: Middleman::Presentation.config.homepage, desc: 'Homepage of company and/or speaker'
+      option :company, default: Middleman::Presentation.config.company, desc: 'Company or employer or organization of speaker'
+      option :location, default: Middleman::Presentation.config.location, desc: 'Location where the presentation take place'
+      option :audience, default: Middleman::Presentation.config.audience, desc: 'Audience of presentation'
 
-      option :phone_number, desc: 'Phone number to contact speaker'
-      option :email_address, desc: 'Email address to contact speaker'
-      option :github_url, desc: 'Url to Github account of speaker'
+      option :phone_number, default: Middleman::Presentation.config.phone_number, desc: 'Phone number to contact speaker'
+      option :email_address, default: Middleman::Presentation.config.email_address, desc: 'Email address to contact speaker'
+      option :github_url, default: Middleman::Presentation.config.github_url, desc: 'Url to Github account of speaker'
 
-      option :use_open_sans, type: :boolean, default: false, desc: 'Include open-sans'
-      option :use_jquery, type: :boolean, default: false, desc: 'Include jquery'
-      option :use_lightbox, type: :boolean, default: false, desc: 'Include lightbox 2'
-      option :use_fedux_org_template, type: :boolean, default: true, desc: 'Use template of fedux_org'
+      option :use_open_sans, type: :boolean, default: Middleman::Presentation.config.use_open_sans, desc: 'Include open-sans'
+      option :use_jquery, type: :boolean, default: Middleman::Presentation.config.use_jquery, desc: 'Include jquery'
+      option :use_lightbox, type: :boolean, default: Middleman::Presentation.config.use_lightbox, desc: 'Include lightbox 2'
+      option :use_fedux_org_template, type: :boolean, default: Middleman::Presentation.config.use_fedux_org_template, desc: 'Use template of fedux_org'
 
-      option :activate_controls, type: :boolean, default: true, desc: 'Activate controls in reveal.js'
-      option :activate_progress, type: :boolean, default: true, desc: 'Activate progress in reveal.js'
-      option :activate_history, type: :boolean, default: true, desc: 'Activate history in reveal.js'
-      option :activate_center, type: :boolean, default: true, desc: 'Activate center in reveal.js'
+      option :activate_controls, type: :boolean, default: Middleman::Presentation.config.activate_controls, desc: 'Activate controls in reveal.js'
+      option :activate_progress, type: :boolean, default: Middleman::Presentation.config.activate_progress, desc: 'Activate progress in reveal.js'
+      option :activate_history, type: :boolean, default: Middleman::Presentation.config.activate_history, desc: 'Activate history in reveal.js'
+      option :activate_center, type: :boolean, default: Middleman::Presentation.config.activate_center, desc: 'Activate center in reveal.js'
 
-      option :default_transition_type, type: :string, default: 'linear', enum: %w{default cube page concave zoom linear fade none}, desc: 'Default slide transition. Can be overwridden per slide.'
-      option :default_transition_speed, type: :string, default: 'default', enum: %w{default fast slow}, desc: 'Default speed for slide transition. Can be overwridden per slide.'
+      option :default_transition_type, default: Middleman::Presentation.config.default_transition_type, desc: 'Default slide transition. Can be overwridden per slide.'
+      option :default_transition_speed, default: Middleman::Presentation.config.default_transition_speed, desc: 'Default speed for slide transition. Can be overwridden per slide.'
 
-      option :install_assets, type: :boolean, default: true, desc: 'Install assets'
-      option :initialize_git, type: :boolean, default: true, desc: 'Initialize git repository'
+      option :install_assets, type: :boolean, default: Middleman::Presentation.config.install_assets, desc: 'Install assets'
+      option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: 'Initialize git repository'
 
-      option :clear_source, type: :boolean, default: true, desc: 'Remove already existing source directory'
+      option :clear_source, type: :boolean, default: Middleman::Presentation.config.clear_source, desc: 'Remove already existing source directory'
 
-      option :use_logo, type: :boolean, default: true, desc: 'Use logo on first slide'
-      option :install_contact_slide, type: :boolean, default: true, desc: 'Install contact slide'
-      option :install_question_slide, type: :boolean, default: true, desc: 'Install question slide'
-      option :install_end_slide, type: :boolean, default: true, desc: 'Install end slide'
+      option :use_logo, type: :boolean, default: Middleman::Presentation.config.use_logo, desc: 'Use logo on first slide'
+      option :install_contact_slide, type: :boolean, default: Middleman::Presentation.config.install_contact_slide, desc: 'Install contact slide'
+      option :install_question_slide, type: :boolean, default: Middleman::Presentation.config.install_question_slide, desc: 'Install question slide'
+      option :install_end_slide, type: :boolean, default: Middleman::Presentation.config.install_end_slide, desc: 'Install end slide'
 
-      option :language, type: :string, default: 'de', desc: 'Language to use for translatable slide templates'
+      option :language, default: Middleman::Presentation.config.language, desc: 'Language to use for translatable slide templates'
 
       desc 'presentation ', 'Initialize a new presentation'
       def presentation
