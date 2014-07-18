@@ -10,6 +10,7 @@ require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/object/blank'
 
 require 'middleman-presentation/version'
+require 'middleman-presentation/presentation_config'
 require 'middleman-presentation/main'
 require 'middleman-presentation/slide'
 require 'middleman-presentation/slide_repository'

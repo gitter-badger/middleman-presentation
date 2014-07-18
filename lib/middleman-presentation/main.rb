@@ -6,8 +6,6 @@ module Middleman
 
     class << self
 
-      protected
-
       attr_reader :config
 
       def root_path

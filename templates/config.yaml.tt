@@ -1,7 +1,7 @@
 # middleman-presentation version <%= @version %>
 <% %W{ speaker
        license
-       bower-directory
+       bower_directory
        author
        description
        homepage
@@ -28,11 +28,7 @@
        install_question_slide
        install_end_slide
        language
-    }.each do |field|
+    }.sort.each do |field|
 -%>
-<% if @config.public_send field  -%>
-<%= field %>: <%= @config.public_send field %>
-<% else -%>
-# <%= field %>:
-<% end -%>
+# <%= field %>: <%= @config.public_send field %>
 <% end -%>

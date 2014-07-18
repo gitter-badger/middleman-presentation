@@ -17,6 +17,7 @@ module Middleman
       end
 
       desc 'presentation_init ', 'Initialize system for use of middleman-presentation'
+      option :configuration_file, default: Middleman::Presentation.config.preferred_configuration_file, desc: 'Path to configuration file'
       def presentation_init
         source_paths << File.expand_path('../../../../templates', __FILE__)
 
@@ -26,7 +27,9 @@ module Middleman
           @version = Middleman::Presentation::VERSION
           @config = Middleman::Presentation.config
 
-          template 'config.yaml.tt', File.expand_path("~/.config/middleman-presentation/config.yaml")
+          $stderr.puts ENV['HOME']
+
+          template 'config.yaml.tt', options[:configuration_file]
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end

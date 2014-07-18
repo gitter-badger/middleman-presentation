@@ -19,18 +19,18 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'coveralls', require: false
   gem 'cucumber', require: false
-  gem 'aruba', require: false
+  gem 'aruba', require: false, git: 'https://github.com/dg-vrnetze/aruba.git', branch: 'integration/expand_path'
   gem 'rake', require: false
   gem 'bundler', require: false
   gem 'erubis'
   gem 'versionomy', require: false
   gem 'activesupport', require: false
   gem 'awesome_print', require: 'ap'
-  gem 'byebug', '~>3.1.2'
+  gem 'byebug'
   gem 'foreman', require: false
   gem 'github-markup'
   gem 'pry'
-  #gem 'pry-byebug', require: false
+  gem 'pry-byebug', require: false
   gem 'pry-doc', require: false
   gem 'redcarpet', require: false
   gem 'tmrb', require: false
