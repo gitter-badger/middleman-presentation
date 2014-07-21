@@ -74,7 +74,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
-    fedux_org-stdlib (0.6.14)
+    fedux_org-stdlib (0.6.17)
       activesupport
     ffi (1.9.3)
     foreman (0.74.0)
@@ -223,7 +223,7 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
-    slop (3.5.0)
+    slop (3.6.0)
     sparkr (0.4.1)
     sprockets (2.12.1)
       hike (~> 1.2)
@@ -247,7 +247,7 @@ GEM
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
     uber (0.0.7)
-    uglifier (2.5.1)
+    uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     versionomy (0.4.4)

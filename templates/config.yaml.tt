@@ -1,4 +1,5 @@
 # middleman-presentation version <%= @version %>
+---
 <% %W{ speaker
        license
        bower_directory
