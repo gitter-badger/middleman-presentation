@@ -37,4 +37,7 @@ group :development, :test do
   gem 'yard', require: false
   gem 'inch', require: false
   gem 'license_finder'
+  gem 'filegen', require: false
+  gem 'travis-lint', require: false
+  gem 'command_exec', require: false
 end

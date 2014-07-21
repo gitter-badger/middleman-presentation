@@ -1,7 +1,7 @@
 #!/usr/bin/env rake
 
 require 'filegen'
-require 'fedux_org/stdlib/rake'
+require 'fedux_org_stdlib/rake_tasks'
 require 'active_support/all'
 require 'open3'
 
