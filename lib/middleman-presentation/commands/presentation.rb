@@ -21,7 +21,7 @@ module Middleman
       option :speaker, required: true, default: Middleman::Presentation.config.speaker, desc: 'Name of speaker'
       option :title, required: true, desc: 'Title of presentation'
       option :date, required: true, default: Time.now.strftime('%d.%m.%Y'), desc: 'Date of presentation'
-      option :license, required: true, default: Middleman::Presentation.config.speaker, desc: 'License of the presentation, e.g. CC BY'
+      option :license, required: true, default: Middleman::Presentation.config.license, desc: 'License of the presentation, e.g. CC BY'
 
       option :bower_directory, default: Middleman::Presentation.config.bower_directory, desc: 'Directory for bower components in "source"-directory'
       option :author, default: Middleman::Presentation.config.author, desc: 'Author of presentation'
