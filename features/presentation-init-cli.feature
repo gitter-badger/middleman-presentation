@@ -43,7 +43,6 @@ Feature: Initialize middleman-presentation
     # use_open_sans: false
     """
 
-@wip
   Scenario: Overwrite existing config file
     Given a mocked home directory
     And I set the environment variables to:
