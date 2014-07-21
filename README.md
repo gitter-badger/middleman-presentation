@@ -30,12 +30,12 @@ middleman_presentation_init
 ```
 
 This will create a configuration file at
-`$HOME/.config/middleman/presentation/config.yaml`. The configuration options
+`$HOME/.config/middleman/presentation/presentations.yaml`. The configuration options
 given there will be used for all presentations created with
 `middleman-presentation`. After running the command on a pristine system it
 will contain the defaults.
 
-Please run `cat $HOME/.config/middleman/presentation/config.yaml` to view them.
+Please run `cat $HOME/.config/middleman/presentation/presentations.yaml` to view them.
 
 *Initialize middleman*
 
