@@ -27,3 +27,19 @@ Feature: Initialize presentation
     And a file named "script/start" should exist
     And a directory named "source/images" should exist
     And a directory named "source/vendor/assets/components" should exist
+
+  #@wip @announce
+  Scenario: Existing configuration file
+    Given a mocked home directory
+    And  a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    """
+    author: TestUser
+    company: MyCompany
+    email_address: test_user@example.com
+    homepage: http://example.com
+    language: en
+    speaker: TestUser
+    """
+    And a fixture app "presentation-before_init-app"
+    And I initialized middleman for a new presentation
+    When I successfully run `middleman presentation --title "My Presentation"`

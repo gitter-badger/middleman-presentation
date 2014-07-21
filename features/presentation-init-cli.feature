@@ -4,13 +4,13 @@ Feature: Initialize middleman-presentation
   I want to initialize middleman-presentation
   In order to have defaults for all presentations created with middleman-presentation
 
+@wip
   Scenario: Before init
-    Given a fixture app "presentation-before_init-app"
-    And a mocked home directory
+    Given a mocked home directory
     And I set the environment variables to:
     | variable | value  |
     | USER     | my_user|
-    When I successfully run `middleman presentation_init`
+    When I successfully run `middleman_presentation_init`
     Then the file "~/.config/middleman/presentation/presentations.yaml" should contain:
     """
     # activate_center: true

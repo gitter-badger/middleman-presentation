@@ -1,11 +1,14 @@
+#!/usr/bin/env ruby
 # encoding: utf-8
+$LOAD_PATH << File.expand_path('../../lib', __FILE__)
+
+require 'middleman-presentation'
+
 module Middleman
   module Cli
     # This class provides an 'slide' command for the middleman CLI.
     class PresentationInit < Thor
       include Thor::Actions
-
-      namespace :presentation_init
 
       def self.source_root
         ENV['MM_ROOT']
@@ -16,9 +19,9 @@ module Middleman
         true
       end
 
-      desc 'presentation_init ', 'Initialize system for use of middleman-presentation'
+      desc 'init ', 'Initialize system for use of middleman-presentation'
       option :configuration_file, default: Middleman::Presentation.config.preferred_configuration_file, desc: 'Path to configuration file'
-      def presentation_init
+      def init
         source_paths << File.expand_path('../../../../templates', __FILE__)
 
         @version = Middleman::Presentation::VERSION
@@ -28,6 +31,8 @@ module Middleman
 
         template 'config.yaml.tt', options[:configuration_file]
       end
+
+      default_command :init
     end
   end
 end

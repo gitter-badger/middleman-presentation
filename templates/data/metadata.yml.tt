@@ -48,3 +48,18 @@ audience: <%= @audience %>
 <% else -%>
 #audience:
 <% end -%>
+<% if @email_address -%>
+email_address: <%= @email_address %>
+<% else -%>
+#email_address:
+<% end -%>
+<% if @phone_number -%>
+phone_number: <%= @phone_number %>
+<% else -%>
+#phone_number:
+<% end -%>
+<% if @github_url -%>
+github_url: <%= @github_url %>
+<% else -%>
+#github_url:
+<% end -%>
