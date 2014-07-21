@@ -42,3 +42,47 @@ Feature: Initialize middleman-presentation
     # use_logo: true
     # use_open_sans: false
     """
+
+@wip
+  Scenario: Overwrite existing config file
+    Given a mocked home directory
+    And I set the environment variables to:
+    | variable | value  |
+    | USER     | my_user|
+    And a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    """
+    # activate_center: true
+    """
+    When I successfully run `middleman_presentation_init --force`
+    Then the file "~/.config/middleman/presentation/presentations.yaml" should contain:
+    """
+    # activate_center: true
+    # activate_controls: true
+    # activate_history: true
+    # activate_progress: true
+    # audience: 
+    # author: my_user
+    # bower_directory: vendor/assets/components
+    # clear_source: true
+    # company: 
+    # default_transition_speed: default
+    # default_transition_type: linear
+    # description: 
+    # email_address: 
+    # homepage: 
+    # initialize_git: true
+    # install_assets: true
+    # install_contact_slide: true
+    # install_end_slide: true
+    # install_question_slide: true
+    # language: de
+    # license: CC BY 4.0
+    # location: 
+    # phone_number: 
+    # speaker: my_user
+    # use_fedux_org_template: true
+    # use_jquery: false
+    # use_lightbox: false
+    # use_logo: true
+    # use_open_sans: false
+    """

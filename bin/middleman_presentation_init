@@ -4,32 +4,35 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 
 require 'middleman-presentation'
 
+# Restore original behaviour of thor
+class ::Thor::Actions::CreateFile
+  def on_conflict_behavior(&block)
+    if identical?
+      say_status :identical, :blue
+    else
+      options = base.options.merge(config)
+      force_or_skip_or_conflict(options[:force], options[:skip], &block)
+    end
+  end
+end
+
 module Middleman
   module Cli
     # This class provides an 'slide' command for the middleman CLI.
     class PresentationInit < Thor
       include Thor::Actions
 
-      def self.source_root
-        ENV['MM_ROOT']
-      end
-
-      # Tell Thor to exit with a nonzero exit code on failure
-      def self.exit_on_failure?
-        true
-      end
-
       desc 'init ', 'Initialize system for use of middleman-presentation'
       option :configuration_file, default: Middleman::Presentation.config.preferred_configuration_file, desc: 'Path to configuration file'
+      option :force, type: :boolean, desc: 'Force creation of config file'
       def init
         source_paths << File.expand_path('../../templates', __FILE__)
 
         @version = Middleman::Presentation::VERSION
         @config = Middleman::Presentation.config
 
-        $stderr.puts ENV['HOME']
-
-        template 'config.yaml.tt', options[:configuration_file]
+        opts = options.dup.deep_symbolize_keys
+        template 'config.yaml.tt', opts.delete(:configuration_file), **opts
       end
 
       default_command :init
