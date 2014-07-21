@@ -22,7 +22,7 @@ module Middleman
       desc 'init ', 'Initialize system for use of middleman-presentation'
       option :configuration_file, default: Middleman::Presentation.config.preferred_configuration_file, desc: 'Path to configuration file'
       def init
-        source_paths << File.expand_path('../../../../templates', __FILE__)
+        source_paths << File.expand_path('../../templates', __FILE__)
 
         @version = Middleman::Presentation::VERSION
         @config = Middleman::Presentation.config
@@ -36,3 +36,5 @@ module Middleman
     end
   end
 end
+
+Middleman::Cli::PresentationInit.start
