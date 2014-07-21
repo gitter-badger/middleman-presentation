@@ -28,7 +28,6 @@ Feature: Initialize presentation
     And a directory named "source/images" should exist
     And a directory named "source/vendor/assets/components" should exist
 
-  @wip @announce
   Scenario: Existing configuration file
     Given a mocked home directory
     And  a file named "~/.config/middleman/presentation/presentations.yaml" with:

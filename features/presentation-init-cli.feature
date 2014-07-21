@@ -4,7 +4,6 @@ Feature: Initialize middleman-presentation
   I want to initialize middleman-presentation
   In order to have defaults for all presentations created with middleman-presentation
 
-@wip
   Scenario: Before init
     Given a mocked home directory
     And I set the environment variables to:
