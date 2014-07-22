@@ -29,9 +29,9 @@ module Middleman
         result = sprockets.each_file.find { |f| f.to_s.include? substring }
 
         if result.blank? 
-          I18n.t('errors.asset_not_found', substring)
+          I18n.t('errors.asset_not_found', asset: substring)
         else
-          result.relative_path_from(Pathname.new(source_dir))
+          result.relative_path_from(Pathname.new(source_dir)).to_s
         end
       end
     end
