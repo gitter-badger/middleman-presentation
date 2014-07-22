@@ -154,6 +154,7 @@ module Middleman
           gem 'redcarpet'
           gem 'github-markup'
           gem 'liquid'
+          gem 'rake'
           EOS
 
           append_to_file File.join(shared_instance.root, '.gitignore'), <<-EOS.strip_heredoc

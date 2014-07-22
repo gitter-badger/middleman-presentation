@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+task :default => :start
+
+task :bootstrap do
+  sh 'script/bootstrap'
+end
+
+task :start do
+  sh 'script/start'
+end
+
+namespace :export do
+  task :tar do
+    sh 'script/export'
+  end
+end
+
+task :export => 'export:tar'
