@@ -5,7 +5,7 @@ en:
     argument_error: The value "%{value}" for "%{argument}" is invalid.
     undefined_arguments: At least one argument of %{arguments} needs to be defined.
     template_is_undefined: You need to provide information about your default template within presentations.yaml.
-    asset_not_found: I cannot find asset "%{asset}". Please check the path and try again.
+    asset_not_found: I cannot find asset '%{asset}'. Please check the path and try again.
   slides:
     contact:
       title: Contact
