@@ -28,8 +28,10 @@
        install_end_slide
        language
        edit
-       editor
-       editor_parameters
+       editor_client
+       editor_client_parameters
+       editor_server
+       editor_server_parameters
     }.sort.each do |field|
 -%>
 # <%= field %>: <%= @config.public_send field %>

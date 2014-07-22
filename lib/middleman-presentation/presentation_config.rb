@@ -32,8 +32,10 @@ module Middleman
       option :language, :de
 
       option :edit, false
-      option :editor, process_environment.fetch('EDITOR', 'vim')
-      option :editor_parameters, nil
+      option :editor_client, process_environment.fetch('EDITOR', 'vim')
+      option :editor_client_parameters, nil
+      option :editor_server, process_environment.fetch('EDITOR', 'vim')
+      option :editor_server_parameters, nil
     end
   end
 end

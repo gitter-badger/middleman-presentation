@@ -13,7 +13,3 @@ en:
       title: Questions
     end:
       title: The End
-  views:
-    presentations:
-      init:
-        messages:
