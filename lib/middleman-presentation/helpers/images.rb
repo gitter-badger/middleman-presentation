@@ -26,7 +26,13 @@ module Middleman
       # Find asset for substring
       def find_asset(substring)
         #sprockets.each_logical_path.find { |f| f.to_s.include? substring }
-        sprockets.each_file.find { |f| f.to_s.include? substring }.relative_path_from(Pathname.new(source_dir))
+        result = sprockets.each_file.find { |f| f.to_s.include? substring }
+
+        if result.blank? 
+          I18n.t('errors.asset_not_found', substring)
+        else
+          result.relative_path_from(Pathname.new(source_dir))
+        end
       end
     end
   end
