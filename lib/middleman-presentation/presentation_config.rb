@@ -14,10 +14,8 @@ module Middleman
       option :phone_number,  nil
       option :email_address,  nil
       option :github_url,  nil
-      option :use_open_sans,  false
-      option :use_jquery,  false
-      option :use_lightbox,  false
-      option :use_fedux_org_template, true
+      option :template, :default
+      option :components, []
       option :activate_controls, true
       option :activate_progress, true
       option :activate_history, true

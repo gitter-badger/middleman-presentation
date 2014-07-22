@@ -1,4 +1,6 @@
 ﻿# encoding: utf-8
+require 'middleman-presentation'
+
 module Middleman
   module Cli
     # This class provides an 'slide' command for the middleman CLI.

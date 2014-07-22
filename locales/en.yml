@@ -1,5 +1,10 @@
 ---
 en:
+  errors:
+    invalid_template: The template "%{template}" was invalid. It needs to be of "<github_account>/<repository>.git".
+    argument_error: The value "%{value}" for "%{argument}" is invalid.
+    undefined_arguments: At least one argument of %{arguments} needs to be defined.
+    template_is_undefined: You need to provide information about your default template within presentations.yaml.
   slides:
     contact:
       title: Contact
@@ -7,3 +12,7 @@ en:
       title: Questions
     end:
       title: The End
+  views:
+    presentations:
+      init:
+        messages:

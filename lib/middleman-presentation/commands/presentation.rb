@@ -36,10 +36,8 @@ module Middleman
       option :email_address, default: Middleman::Presentation.config.email_address, desc: 'Email address to contact speaker'
       option :github_url, default: Middleman::Presentation.config.github_url, desc: 'Url to Github account of speaker'
 
-      option :use_open_sans, type: :boolean, default: Middleman::Presentation.config.use_open_sans, desc: 'Include open-sans'
-      option :use_jquery, type: :boolean, default: Middleman::Presentation.config.use_jquery, desc: 'Include jquery'
-      option :use_lightbox, type: :boolean, default: Middleman::Presentation.config.use_lightbox, desc: 'Include lightbox 2'
-      option :use_fedux_org_template, type: :boolean, default: Middleman::Presentation.config.use_fedux_org_template, desc: 'Use template of fedux_org'
+      #option :components, type: :array, default: Middleman::Presentation.config.components, desc: 'Install given additional frontend components, e.g. jQuery, D3'
+      #option :template, type: :string, default: Middleman::Presentation.config.template, desc: 'Use template for presentation'
 
       option :activate_controls, type: :boolean, default: Middleman::Presentation.config.activate_controls, desc: 'Activate controls in reveal.js'
       option :activate_progress, type: :boolean, default: Middleman::Presentation.config.activate_progress, desc: 'Activate progress in reveal.js'
@@ -90,12 +88,22 @@ module Middleman
           @phone_number    = options[:phone_number]
           @github_url      = options[:github_url]
 
-          @external_assets = {}
-          @external_assets["reveal.js"] = "latest"
-          @external_assets["jquery"] = "~1.11.0"   if options[:use_jquery] == true
-          @external_assets["open-sans"] = "https://github.com/bungeshea/open-sans.git" if options[:use_open_sans] == true
-          @external_assets["lightbox2"] = "https://github.com/dg-vrnetze/revealjs-lightbox2" if options[:use_lightbox] == true
-          @external_assets["reveal.js-template-fedux_org"] = "https://github.com/maxmeyer/reveal.js-template-fedux_org.git" if options[:use_fedux_org_template] == true
+          @external_assets = []
+          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'reveal.js', resource_locator: 'latest')
+          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'lightbox2', github: 'dg-vrnetze/revealjs-lightbox2', javascripts: %w[lightbox2/js/lightbox] )
+
+          @external_assets.concat Middleman::Presentation::FrontendComponent.parse Middleman::Presentation.config.components
+
+          if Middleman::Presentation.config.template.blank?
+            @external_assets.concat Middleman::Presentation::FrontendComponent.new(
+              name: 'fedux_org',
+              github: maxmeyer/reveal.js-template-fedux_org,
+              javascripts: %w[reveal.js-template-fedux_org/js/fedux_org],
+              stylesheets: %w[reveal.js-template-fedux_org/scss/fedux_org]
+            )
+          else
+            @external_assets.concat Middleman::Presentation::FrontendComponent.parse Middleman::Presentation.config.template
+          end
 
           @revealjs_config = {}
           @revealjs_config[:controls] = options[:activate_controls]
@@ -107,21 +115,6 @@ module Middleman
 
           @links_for_stylesheets = []
           @links_for_javascripts = []
-
-          if options[:use_fedux_org_template] == true
-            @links_for_stylesheets << 'reveal.js-template-fedux_org/scss/fedux_org'
-            @links_for_javascripts << 'reveal.js-template-fedux_org/js/fedux_org'
-          end
-
-          if options[:use_jquery] == true    
-            @links_for_javascripts << 'jquery/dist/jquery'
-          end
-          if options[:use_open_sans] == true 
-            @links_for_stylesheets << 'open-sans/scss/open-sans'
-          end
-          if options[:use_lightbox] == true  
-            @links_for_javascripts << 'lightbox2/js/lightbox'
-          end
 
           slides_directory = File.join shared_instance.source_dir, presentation_inst.options.slides_directory
           data_directory = File.join shared_instance.root, 'data'

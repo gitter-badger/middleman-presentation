@@ -1,12 +1,8 @@
 {
   "name": "<%= @title %>",
     "dependencies": {
-<% @external_assets.keys.each_with_index do |key, index| -%>
-<% if index == @external_assets.length - 1 -%>
-    "<%= key %>": "<%= @external_assets[key] %>"
-<% else -%>
-    "<%= key %>": "<%= @external_assets[key] %>",
-<% end -%>
+<% @external_assets.each do |asset| -%>
+    "<%= asset.name %>": "<%= asset.resource_locator %>"<% if asset.equal? @external_assets.last -%>,<% end %>
 <% end -%>
     }
 }

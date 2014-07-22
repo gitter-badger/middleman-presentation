@@ -11,10 +11,8 @@
        audience
        phone_number
        email_address
-       use_open_sans
-       use_jquery
-       use_lightbox
-       use_fedux_org_template
+       components
+       template
        activate_controls
        activate_progress
        activate_history
