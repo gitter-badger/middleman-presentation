@@ -89,20 +89,22 @@ module Middleman
           @github_url      = options[:github_url]
 
           @external_assets = []
-          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'reveal.js', resource_locator: 'latest')
-          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'lightbox2', github: 'dg-vrnetze/revealjs-lightbox2', javascripts: %w[lightbox2/js/lightbox] )
+          
+          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'jquery', version: '~1.11', javascripts: %w{ dist/jquery })
+          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'reveal.js', version: 'latest', javascripts: %w{ lib/js/head.min js/reveal.min })
+          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'lightbox2', github: 'dg-vrnetze/revealjs-lightbox2', javascripts: %w{ js/lightbox })
 
-          @external_assets.concat Middleman::Presentation::FrontendComponent.parse Middleman::Presentation.config.components
+          @external_assets.concat Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.components)
 
           if Middleman::Presentation.config.template.blank?
-            @external_assets.concat Middleman::Presentation::FrontendComponent.new(
+            @external_assets << Middleman::Presentation::FrontendComponent.new(
               name: 'fedux_org',
-              github: maxmeyer/reveal.js-template-fedux_org,
-              javascripts: %w[reveal.js-template-fedux_org/js/fedux_org],
-              stylesheets: %w[reveal.js-template-fedux_org/scss/fedux_org]
+              github: 'maxmeyer/reveal.js-template-fedux_org',
+              javascripts: %w[js/fedux_org],
+              stylesheets: %w[scss/fedux_org]
             )
           else
-            @external_assets.concat Middleman::Presentation::FrontendComponent.parse Middleman::Presentation.config.template
+            @external_assets << Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.template)
           end
 
           @revealjs_config = {}
@@ -125,6 +127,7 @@ module Middleman
           template 'data/config.yml.tt', File.join(data_directory, 'config.yml')
           template '.bowerrc.tt', File.join(shared_instance.root, '.bowerrc')
           template 'bower.json.tt', File.join(shared_instance.root, 'bower.json')
+          template 'Rakefile', File.join(shared_instance.root, 'Rakefile')
 
           append_to_file File.join(shared_instance.root, 'config.rb'), <<-EOS.strip_heredoc
 

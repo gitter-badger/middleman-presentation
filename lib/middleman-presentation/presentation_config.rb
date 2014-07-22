@@ -14,7 +14,7 @@ module Middleman
       option :phone_number,  nil
       option :email_address,  nil
       option :github_url,  nil
-      option :template, :default
+      option :template, {}
       option :components, []
       option :activate_controls, true
       option :activate_progress, true

@@ -3,12 +3,6 @@ require 'spec_helper'
 
 RSpec.describe FrontendComponent do
   context '#initialize' do
-    it 'requires a resource locator' do
-      expect {
-        FrontendComponent.new(resource_locator: 'latest')
-      }.not_to raise_error
-    end
-
     it 'supports a full url as resource locator' do
       expect {
         FrontendComponent.new(resource_locator: 'http://www.example.org/test')
@@ -30,6 +24,18 @@ RSpec.describe FrontendComponent do
     it 'fails if name is empty when extracted from url' do
       expect {
         FrontendComponent.new(resource_locator: 'http://www.example.org')
+      }.to raise_error ArgumentError
+    end
+
+    it 'requires name if version is given' do
+      expect {
+        FrontendComponent.new(version: '1.1.1', name: 'blub')
+      }.not_to raise_error
+    end
+
+    it 'fails if version is given but no name' do
+      expect {
+        FrontendComponent.new(version: '1.1.1')
       }.to raise_error ArgumentError
     end
   end
@@ -63,19 +69,19 @@ RSpec.describe FrontendComponent do
     end
 
     it 'reads data from array of hashes' do
-      component = FrontendComponent.parse(hashes)
-      expect(component.name).to eq 'name'
-      expect(component.resource_locator).to eq 'https://example.org/test'
-      expect(component.javascripts.first).to eq 'path/to/file.js'
-      expect(component.stylesheets.first).to eq 'path/to/file.scss'
+      components = FrontendComponent.parse(hashes)
+      expect(components.first.name).to eq 'name'
+      expect(components.first.resource_locator).to eq 'https://example.org/test'
+      expect(components.first.javascripts.first).to eq 'name/path/to/file.js'
+      expect(components.first.stylesheets.first).to eq 'name/path/to/file.scss'
     end
 
     it 'reads data from hash' do
-      component = FrontendComponent.parse(hashes.first)
-      expect(component.name).to eq 'name'
-      expect(component.resource_locator).to eq 'https://example.org/test'
-      expect(component.javascripts.first).to eq 'path/to/file.js'
-      expect(component.stylesheets.first).to eq 'path/to/file.scss'
+      components = FrontendComponent.parse(hashes.first)
+      expect(components.first.name).to eq 'name'
+      expect(components.first.resource_locator).to eq 'https://example.org/test'
+      expect(components.first.javascripts.first).to eq 'name/path/to/file.js'
+      expect(components.first.stylesheets.first).to eq 'name/path/to/file.scss'
     end
   end
 end

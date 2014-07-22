@@ -2,7 +2,7 @@
 module Middleman
   module Presentation
     class FrontendComponent
-      attr_reader :name, :javascripts, :stylesheets
+      attr_reader :name
 
       class << self
         # Parse line
@@ -10,11 +10,7 @@ module Middleman
         # @param [Array, String] hashes
         #   Options read from config file
         def parse(*hashes)
-          results = hashes.flatten.map { |h| new(**h) }
-
-          return results.first if results.size == 1
-
-          results
+          hashes.flatten.map { |h| new(**h) }
         end
       end
 
@@ -28,20 +24,28 @@ module Middleman
       #
       # @param [String] github
       #   Name of github repository, e.g. <account>/<repository>
-      def initialize(resource_locator: nil, name: nil, github: nil, javascripts: [], stylesheets: [])
-        @resource_locator = if github
+      def initialize(resource_locator: nil, version: nil, name: nil, github: nil, javascripts: [], stylesheets: [])
+        @resource_locator = if version
+                             Class.new do
+                               attr_reader :to_s
+
+                               def initialize(value)
+                                 @to_s = value
+                               end
+                             end.new(version)
+                            elsif github
                              Addressable::URI.heuristic_parse format('https://github.com/%s.git', github)
                            elsif resource_locator =~ /\A#{URI::regexp}\z/
                              Addressable::URI.heuristic_parse resource_locator
-                           elsif resource_locator == nil and github == nil
-                             nil
                            else
-                             OpenStruct.new(path: resource_locator, to_s: resource_locator)
+                             nil
                            end
 
-        raise ArgumentError, JSON.dump(message: I18n.t('errors.undefined_arguments', arguments: %w{resource_locator github}.to_list)) if @resource_locator.blank?
+        raise ArgumentError, JSON.dump(message: I18n.t('errors.undefined_arguments', arguments: %w{resource_locator github version}.to_list)) if @resource_locator.blank?
 
-        @name = if name.blank?
+        @name = if version
+                  name
+                elsif name.blank?
                   File.basename(@resource_locator.path)
                 else
                   name
@@ -59,6 +63,18 @@ module Middleman
       #   The resource locator
       def resource_locator
         @resource_locator.to_s
+      end
+
+      # @!attribute [r] javascripts
+      #   Return the paths to javascripts prepended with "name/"
+      def javascripts
+        @javascripts.map { |j| format '%s/%s', name, j }
+      end
+
+      # @!attribute [r] stylesheets
+      #   Return the paths to stylesheets prepended with "name/"
+      def stylesheets
+        @stylesheets.map { |s| format '%s/%s', name, s }
       end
     end
   end

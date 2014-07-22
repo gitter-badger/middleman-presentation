@@ -2,7 +2,7 @@
   "name": "<%= @title %>",
     "dependencies": {
 <% @external_assets.each do |asset| -%>
-    "<%= asset.name %>": "<%= asset.resource_locator %>"<% if asset.equal? @external_assets.last -%>,<% end %>
+    "<%= asset.name %>": "<%= asset.resource_locator %>"<% unless asset.equal? @external_assets.last -%>,<% end %>
 <% end -%>
     }
 }
