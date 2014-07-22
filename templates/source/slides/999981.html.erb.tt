@@ -1,6 +1,6 @@
 <section class="last_slide">
   <h1><%= I18n.t('slides.contact.title') %></h1>
-  <img class="fd-with-list" src="images/logo-contact.png">
+  <img src="<%%= find_asset('logo-contact.png') %>" alt="Contact Image" class="fd-with-list">
   <ul class="fd-with-image fd-iconless-list">
 <% if @email_address -%>
     <li>

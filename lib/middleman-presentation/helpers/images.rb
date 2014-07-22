@@ -17,6 +17,17 @@ module Middleman
           memo
         end.join("\n")
       end
+
+      # Create entry for single image
+      def image(image)
+        image_gallery Array(image), image_gallery_id: SecureRandom.hex
+      end
+
+      # Find asset for substring
+      def find_asset(substring)
+        #sprockets.each_logical_path.find { |f| f.to_s.include? substring }
+        sprockets.each_file.find { |f| f.to_s.include? substring }.relative_path_from(Pathname.new(source_dir))
+      end
     end
   end
 end

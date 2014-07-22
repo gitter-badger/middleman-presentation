@@ -4,6 +4,7 @@ require 'middleman-core'
 require 'middleman-core/cli'
 require 'uri'
 require 'addressable/uri'
+require 'securerandom'
 require 'fedux_org_stdlib/app_config'
 require 'fedux_org_stdlib/core_ext/array'
 
