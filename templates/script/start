@@ -8,6 +8,7 @@ uri = Addressable::URI.parse('http://127.0.0.1:1234')
 
 options = OpenStruct.new
 options.listen = uri
+options.verbose = false
 
 OptionParser.new do |opts|
   opts.banner = 'Usage: script/start [options]'
@@ -20,6 +21,10 @@ OptionParser.new do |opts|
     options.listen.host = h
   end
 
+  opts.on('-v', '--verbose', 'Verbose mode') do |h|
+    options.verbose = true
+  end
+
 end.parse!
 
 launchy_pid = fork do
@@ -28,4 +33,11 @@ end
 
 Process.waitpid(launchy_pid)
 
-system("bundle exec middleman server -p #{options.listen.port} -h #{options.listen.host}")
+command = []
+command << 'bundle exec'
+command << 'middleman server'
+command << "-p #{options.listen.port}"
+command << "-h #{options.listen.host}"
+command << '--verbose' if options.verbose
+
+system(command.join(" "))
