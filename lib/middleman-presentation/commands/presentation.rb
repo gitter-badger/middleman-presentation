@@ -135,8 +135,8 @@ module Middleman
             sprockets.append_path File.join(root, 'source/#{@bower_directory}')
           end
 
-          set :markdown_engine, :redcarpet
-          set :redcarpet, fenced_code_blocks: true, autolink: true
+          set :markdown_engine, :kramdown
+          set :markdown, parse_block_html: true
           EOS
 
           append_to_file File.join(shared_instance.root, 'Gemfile'), <<-EOS.strip_heredoc
@@ -147,7 +147,7 @@ module Middleman
             gem 'pry-byebug'
           end
 
-          gem 'redcarpet'
+          gem 'kramdown'
           gem 'github-markup'
           gem 'liquid'
           gem 'rake'
