@@ -131,9 +131,7 @@ module Middleman
 
           append_to_file File.join(shared_instance.root, 'config.rb'), <<-EOS.strip_heredoc
 
-          ready do
-            sprockets.append_path File.join(root, 'source/#{@bower_directory}')
-          end
+          sprockets.append_path File.join(root, 'source/#{@bower_directory}')
 
           set :markdown_engine, :kramdown
           set :markdown, parse_block_html: true
