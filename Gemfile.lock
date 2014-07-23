@@ -40,7 +40,7 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.2.5)
+    middleman-presentation (0.3.0)
       addressable (~> 2.3.5)
       fedux_org-stdlib (>= 0.6.17)
       launchy (~> 2.4.2)
