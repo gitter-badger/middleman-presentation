@@ -43,3 +43,10 @@ Feature: Add new slide
     """
     01.html.md
     """
+
+  Scenario: Create multiple slides
+    And a fixture app "slides-source-app"
+    When I successfully run `middleman slide 01 02`
+    Then the following files should exist:
+      | source/slides/01.html.erb |
+      | source/slides/02.html.erb |

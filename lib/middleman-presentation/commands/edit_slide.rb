@@ -22,27 +22,34 @@ module Middleman
         true
       end
 
-      desc 'edit_slide NAME', 'Edit existing slide. The given name can be a substring of the full file name, e.g. 01 instead of 01.html.erb'
+      desc 'edit_slide NAME(S)', 'Edit existing slide(s). The given name can be a substring of the full file name, e.g. 01 instead of 01.html.erb. If you want to edit multiple slides enter them with a space between the names "01 02 03"'
       option :editor_command, default: Middleman::Presentation.config.editor_command, desc: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
-      def edit_slide(name)
+      def edit_slide(*names)
         shared_instance = ::Middleman::Application.server.inst
 
         # This only exists when the config.rb sets it!
         if shared_instance.extensions.key? :presentation
-          candidate = Dir.glob(File.join(shared_instance.source_dir, 'slides', "#{name}*")).first
+          candidates = find_files directory: shared_instance.source_dir, patterns: names
+          invoke('slide:slide', names - candidates) if candidates.size != names.size
 
-          if candidate.blank?
-            invoke 'slide:slide', [name], edit: true, **options.deep_symbolize_keys
-          else
-            editor = []
-            editor << options[:editor_command]
-            editor << candidate
-            editor << '2>/dev/null'
+          editor = []
+          editor << options[:editor_command]
+          editor.concat find_files(directory: shared_instance.source_dir, patterns: names)
+          editor << '2>/dev/null'
 
-            system(editor.join(" "))
-          end
+          system(editor.join(" "))
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
+        end
+      end
+
+      no_commands do
+        def find_files(directory:, patterns:)
+          patterns.inject([]) do |memo, pattern|
+            memo << Dir.glob(File.join(directory, 'slides', "#{pattern}*")).first
+
+            memo
+          end.compact
         end
       end
     end
