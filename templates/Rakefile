@@ -31,10 +31,6 @@ namespace :edit do
   desc 'Edit all user defined slides'
   task :slides => 'slides:user_defined'
 
-  task :server do
-    sh "#{Middleman::Presentation.config.editor_server} #{Middleman::Presentation.config.editor_server_parameters}"
-  end
-
   namespace :slides do
     desc 'Edit all user-defined slides'
     task :user_defined do
@@ -42,14 +38,14 @@ namespace :edit do
         l.exclude 'source/slides/999*'
       end
 
-      sh "#{Middleman::Presentation.config.editor} #{Middleman::Presentation.config.editor_parameters} #{slides.join(" ")}"
+      sh "#{Middleman::Presentation.config.editor_command} #{slides.join(" ")}"
     end
 
     desc 'Edit all slides'
     task :all do
       slides = Rake::FileList.new('source/slides/*')
 
-      sh "#{Middleman::Presentation.config.editor} #{Middleman::Presentation.config.editor_parameters} #{slides.join(" ")}"
+      sh "#{Middleman::Presentation.config.editor_command} #{slides.join(" ")}"
     end
   end
 end

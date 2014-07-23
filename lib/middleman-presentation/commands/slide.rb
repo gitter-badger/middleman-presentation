@@ -22,8 +22,7 @@ module Middleman
 
       desc 'slide ', 'Create a new slide'
       option :edit, default: Middleman::Presentation.config.edit, desc: 'Start ENV["EDITOR"] to edit slide.', aliases: %w{-e}
-      option :editor, default: Middleman::Presentation.config.editor_client, desc: 'Editor to use, defaults to ENV["EDITOR"]'
-      option :editor_parameters, default: Middleman::Presentation.config.editor_client_parameters, desc: 'Parameters for ENV["EDITOR"], e.g. --remote for vim server'
+      option :editor_command, default: Middleman::Presentation.config.editor_command, desc: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
       option :title, desc: 'Title of slide'
       def slide(name)
         @title = options[:title]
@@ -40,9 +39,9 @@ module Middleman
 
           if options[:edit]
             editor = []
-            editor << options[:editor]
-            editor << options[:editor_parameters] if options[:editor_parameters]
+            editor << options[:editor_command]
             editor << slide_template.file_path
+            editor << '2>/dev/null'
 
             system(editor.join(" "))
           end

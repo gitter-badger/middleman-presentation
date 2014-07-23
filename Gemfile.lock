@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/dg-vrnetze/aruba.git
-  revision: f14a53b8ca322908143fedd97b7760da33114a1a
+  revision: 832da2bc6edf83a8f0faffa210c8c34b578a27e1
   branch: integration/expand_path
   specs:
-    aruba (0.5.4)
+    aruba (0.6.0)
       childprocess (>= 0.3.6)
       cucumber (>= 1.1.1)
       rspec-expectations (>= 2.7.0)
@@ -40,7 +40,7 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.2.3)
+    middleman-presentation (0.2.5)
       addressable (~> 2.3.5)
       fedux_org-stdlib (>= 0.6.17)
       launchy (~> 2.4.2)
@@ -210,17 +210,17 @@ GEM
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
       rspec-mocks (~> 3.0.0)
-    rspec-core (3.0.2)
+    rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
-    rspec-expectations (3.0.2)
+    rspec-expectations (3.0.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.0.0)
     rspec-legacy_formatters (1.0.0)
       rspec-core (>= 3.0.0.beta2)
       rspec-support (>= 3.0.0.beta2)
-    rspec-mocks (3.0.2)
+    rspec-mocks (3.0.3)
       rspec-support (~> 3.0.0)
-    rspec-support (3.0.2)
+    rspec-support (3.0.3)
     rubocop (0.24.1)
       json (>= 1.7.7, < 2)
       parser (>= 2.2.0.pre.3, < 3.0)

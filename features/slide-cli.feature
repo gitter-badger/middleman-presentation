@@ -33,3 +33,13 @@ Feature: Add new slide
     When I successfully run `middleman slide 01.markdown`
     Then the following files should exist:
       | source/slides/01.html.md |
+
+  Scenario: Open slide with ENV['EDITOR'] after creation
+    And a fixture app "slides-source-app"
+    When I successfully run `middleman slide 01.markdown --edit --editor-command echo`
+    Then the following files should exist:
+      | source/slides/01.html.md |
+    And the output should contain:
+    """
+    01.html.md
+    """
