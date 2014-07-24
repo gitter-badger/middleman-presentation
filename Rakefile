@@ -102,6 +102,14 @@ Coveralls::RakeTask.new
 namespace :test do
   desc 'Test with coveralls'
   task :coveralls => ['test:rspec', 'test:cucumber', 'coveralls:push']
+
+  task :rspec do
+    sh 'bundle exec rspec'
+  end
+
+  task :cucumber do
+    sh 'bundle exec cucumber'
+  end
 end
 
 namespace :gem do
