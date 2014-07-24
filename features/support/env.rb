@@ -9,6 +9,10 @@ require 'middleman-core/step_definitions'
 require 'bundler'
 Bundler.require :default, :test, :development
 
+require 'simplecov'
+SimpleCov.command_name 'cucumber'
+SimpleCov.start
+
 ENV["TEST"] = "true"
 ENV["AUTOLOAD_SPROCKETS"] = "false"
  
