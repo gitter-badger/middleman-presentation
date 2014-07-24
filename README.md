@@ -20,7 +20,7 @@ activate :presentation
 
 ## Usage
 
-*Initialize middleman presentation globally*
+### Initialize middleman presentation globally
 
 To create a global configuration file for `middleman-presentation` you need to
 run the following command:
@@ -37,14 +37,14 @@ will contain the defaults.
 
 Please run `cat $HOME/.config/middleman/presentation/presentations.yaml` to view them.
 
-*Initialize middleman*
+### Initialize middleman
 
 ```bash
 middleman init my_presentation
 cd my_presentation
 ```
 
-*Add dependency to Gemfile and activate plugin*
+### Add dependency to Gemfile and activate plugin
 
 ```bash
 echo -e "\ngem 'middleman-presentation'" >> Gemfile
@@ -53,7 +53,7 @@ echo -e "\nactivate :presentation"       >> config.rb
 bundle install
 ```
 
-*Initialize presentation*
+### Initialize presentation
 
 This gem provides a helper to start a new presentatio from scratch. The given
 options below need to be given on command line.
@@ -72,7 +72,7 @@ the `--language`-switch.
 middleman help presentation
 ```
 
-*Add new slide*
+### Add new slide
 
 
 **MAKE SURE YOU NEVER EVER GIVE TWO SLIDES THE SAME BASENAME**, eg. 01.html.erb
@@ -112,13 +112,6 @@ To set a title for the slide use the `--title`-switch.
 middleman slide 01 --title 'my Title'
 ```
 
-To edit the slide after creating it use the `--edit`-switch. It uses the
-`$EDITOR`-environment variable and falls back to `vim`.
-
-```bash
-middleman slide 01 --edit
-```
-
 There are some more options available. Please use the `help`-command to get an
 overview.
 
@@ -126,7 +119,27 @@ overview.
 middleman help slide
 ```
 
-*Start presentation*
+### Edit slide
+
+To edit the slide after creating it use the `--edit`-switch. It uses the
+`$EDITOR`-environment variable and falls back to `vim`.
+
+```bash
+middleman slide 01 --edit
+```
+
+If you want to edit an alread created slide, you can use the
+`edit_slide`-command. If you want to mix existing and non-existing slides, this
+is possible too. `middleman-presentation` will create a slide, if it does not exist
+
+```bash
+middleman edit_slide 01 02 03
+```
+
+In some cases mi
+
+
+### Start presentation
 
 To start your presentation use the `start`-script. It opens the presentation in
 your browser and starts `middleman`. After `middleman` has started you just
@@ -136,7 +149,7 @@ need to reload the presentation in the browser.
 script/start
 ```
 
-*Export presentation*
+### Export presentation
 
 If you need to export the presentation, you can use the `export`-script. It
 creates tar-file in `<root>/pkg/<presentation_directory_name>.tar.gz`.
@@ -164,7 +177,6 @@ To start your presentation use the `start`-script.
 ```bash
 script/start
 ```
-
 
 ## Usage of external resources
 
