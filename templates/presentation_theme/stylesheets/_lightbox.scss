@@ -1,0 +1,7 @@
+$lb-image-path: image-path('lightbox2/img');
+
+@import "lightbox2/sass/lightbox";
+
+.lightboxOverlay {
+  overflow: scroll;
+}

@@ -36,9 +36,6 @@ module Middleman
       option :email_address, default: Middleman::Presentation.config.email_address, desc: 'Email address to contact speaker'
       option :github_url, default: Middleman::Presentation.config.github_url, desc: 'Url to Github account of speaker'
 
-      #option :components, type: :array, default: Middleman::Presentation.config.components, desc: 'Install given additional frontend components, e.g. jQuery, D3'
-      #option :template, type: :string, default: Middleman::Presentation.config.template, desc: 'Use template for presentation'
-
       option :activate_controls, type: :boolean, default: Middleman::Presentation.config.activate_controls, desc: 'Activate controls in reveal.js'
       option :activate_progress, type: :boolean, default: Middleman::Presentation.config.activate_progress, desc: 'Activate progress in reveal.js'
       option :activate_history, type: :boolean, default: Middleman::Presentation.config.activate_history, desc: 'Activate history in reveal.js'
@@ -96,7 +93,7 @@ module Middleman
 
           @external_assets.concat Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.components)
 
-          if Middleman::Presentation.config.template.blank?
+          if Middleman::Presentation.config.theme.blank?
             @external_assets << Middleman::Presentation::FrontendComponent.new(
               name: 'fedux_org',
               github: 'maxmeyer/reveal.js-template-fedux_org',
@@ -104,7 +101,7 @@ module Middleman
               stylesheets: %w[scss/fedux_org]
             )
           else
-            @external_assets << Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.template)
+            @external_assets << Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.theme)
           end
 
           @revealjs_config = {}

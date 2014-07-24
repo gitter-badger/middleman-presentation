@@ -1,0 +1,9 @@
+$fd-img-path: image-path('<%= @theme_name %>/images') !default;
+
+img.fd-logo-contact {
+  background-image: url("#{$fd-img-path}/logo-contact.png");
+}
+
+img.fd-logo-question {
+  background-image: url("#{$fd-img-path}/logo-question.png");
+}

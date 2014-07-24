@@ -1,0 +1,11 @@
+Feature: Create new presentation theme
+
+  As a presentator
+  I want to create my own presentation template
+  In order to have a default theme for all presentations created with middleman-presentation
+
+  @wip
+  Scenario: Non existing template
+  Given a presentation theme named "new_theme" does not exist
+  When I successfully run `middleman create_theme new_theme`
+  Then a presentation theme named "new_theme" should exist with default files/directories created

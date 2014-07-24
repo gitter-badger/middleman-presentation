@@ -14,7 +14,7 @@ module Middleman
       option :phone_number,  nil
       option :email_address,  nil
       option :github_url,  nil
-      option :template, {}
+      option :theme, {}
       option :components, []
       option :activate_controls, true
       option :activate_progress, true
@@ -30,6 +30,10 @@ module Middleman
       option :install_question_slide, true
       option :install_end_slide, true
       option :language, :de
+
+      option :create_stylesheets_directory, true
+      option :create_javascripts_directory, true
+      option :create_images_directory, true
 
       option :edit, false
       option :editor_command, process_environment.fetch('EDITOR', 'vim')

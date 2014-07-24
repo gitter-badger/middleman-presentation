@@ -26,6 +26,19 @@ Given(/^a slide named "(.*?)" with:$/) do |slide_name, string|
   step %Q{a file named "source/slides/#{slide_name}" with:}, string
 end
 
+Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
+  step %Q{I remove the directory "#{name}"}
+end
+
+Then(/^a presentation theme named "(.*?)" should exist( with default files\/directories created)?$/) do |name, default_files|
+  step %Q{a directory named "#{name}" should exist}
+
+  if default_files
+    step %Q{a directory named "#{name}/stylesheets" should exist}
+    step %Q{a directory named "#{name}/javascripts" should exist}
+  end
+end
+
 Then /^I go to "([^"]*)" and see the following error message:$/ do |url, message|
   message = capture :stderr do
     begin
