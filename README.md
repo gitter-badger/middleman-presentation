@@ -34,6 +34,10 @@ And add the `activate`-statement to the `config.rb` of middleman:
 activate :presentation
 ```
 
+## Supported rubies
+
+* MRI 2.1.x
+
 ## Getting Started
 
 ### Initialize middleman presentation globally
