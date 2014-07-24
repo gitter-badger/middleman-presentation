@@ -1,6 +1,16 @@
 # middleman-presentation
 
-This gem provide helpers to use `middleman` together with `reveal.js`
+This projects supports you building wonderful presentations based on
+[HTML](http://www.w3.org/html/) and JavaScript. The JavaScript-part is powered
+by [`reveal.js`](https://github.com/hakimel/reveal.js), a great framework to
+build HTML-/JavaScript-presentations. The infrastructure behind
+`middleman-presentation` is powered by `middleman`, a flexible static site
+generator which also offers a live preview of your presentation.
+
+To get started with `middleman-presentation` you should know a little bit about
+HTML, JavaScript, reveal.js and [Ruby](https://www.ruby-lang.org/en).
+`middleman-presentation` will then helps you where it can to make your life
+easier with presentations.
 
 ## Installation
 
@@ -18,7 +28,7 @@ And add the `activate`-statement to the `config.rb` of middleman:
 activate :presentation
 ```
 
-## Usage
+## Getting Started
 
 ### Initialize middleman presentation globally
 
@@ -112,6 +122,13 @@ To set a title for the slide use the `--title`-switch.
 middleman slide 01 --title 'my Title'
 ```
 
+If you want to create multiple slides at once, this is possible to. Just ask
+`middleman-presentation` to do this.
+
+```bash
+middleman slide 01 02 03
+```
+
 There are some more options available. Please use the `help`-command to get an
 overview.
 
@@ -136,8 +153,13 @@ is possible too. `middleman-presentation` will create a slide, if it does not ex
 middleman edit_slide 01 02 03
 ```
 
-In some cases mi
+In some cases you might want to use a different editor-command. To change the
+editor used or the arguments used, you can run `middleman-presentation` with
+the `--editor-command`-switch.
 
+```bash
+middleman edit_slide --editor-command "nano" 01 02 03
+```
 
 ### Start presentation
 
@@ -202,6 +224,21 @@ https://github.com/maxmeyer/reveal.js-template-fedux_org.
 
 Add those libraries to your `bower.json` and reference them from within your
 `javascripts/application.js` and/or `stylesheets/application.scss`
+
+
+## Creating slides
+
+You need to decide if you want to create slides in pure HTML or if you want to
+use [`Markdown`](http://daringfireball.net/projects/markdown/syntax). It's up
+to you to make your choice. In most cases you should get along with `Markdown`
+&#9786;.
+
+The 
+
+From version `0.6.0` onwards
+[`kramdown`](http://kramdown.gettalong.org/syntax.html) is the default
+-engine. It 
+supports "Attribute List Definitions".
 
 ## Development
 
