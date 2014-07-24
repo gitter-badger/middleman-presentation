@@ -1,0 +1,10 @@
+/**
+ * <%= @theme_name %>
+ *
+ * Copyright (C) <%= @year %>- <%= @author %>
+ */
+
+@import 'font'
+@import 'images'
+@import 'lightbox'
+@import 'theme'

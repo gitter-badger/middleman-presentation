@@ -195,6 +195,7 @@ module Middleman
           if options[:initialize_git]
             run 'git init'
             run 'git add -A .'
+            run 'git commit -m Init'
           end
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
