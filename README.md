@@ -1,6 +1,5 @@
 # middleman-presentation
 
-
 [![Build Status](https://travis-ci.org/maxmeyer/middleman-presentation.png?branch=master)](https://travis-ci.org/maxmeyer/middleman-presentation)
 [![Code Climate](https://codeclimate.com/github/maxmeyer/middleman-presentation.png)](https://codeclimate.com/github/maxmeyer/middleman-presentation)
 [![Coverage Status](https://coveralls.io/repos/maxmeyer/middleman-presentation/badge.png?branch=master)](https://coveralls.io/r/maxmeyer/middleman-presentation?branch=master)
