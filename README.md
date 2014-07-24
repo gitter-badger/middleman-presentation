@@ -264,5 +264,5 @@ keep the source code repository lean the tests download assets via bower.
 
 ## Contributing
 
-Please see the [CONTRIBUTING.md](CONTRIBUTING) file.
+Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
