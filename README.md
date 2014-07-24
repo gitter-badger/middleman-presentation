@@ -227,8 +227,7 @@ To reference an arbitrary type you can use the both *ruby* helpers mentioned abo
 reference a JavaScript-file use `asset_path(:js,
 '<component>/<path>/<file>.js')`.
 
-* `font-path(name)`, `font-url(name)`:
-* `image-path(name)`, `image-url(name)`:
+* `font-path(name)`, `font-url(name)`, `image-path(name)`, `image-url(name)`:
 
 The helpers above can be used to reference assets in Sass-files. You need to
 provide name to reference the asset, e.g.
