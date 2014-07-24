@@ -202,28 +202,51 @@ script/start
 
 ## Usage of external resources
 
-*Use Bower*
-
-You can use `bower` to make external resources within your presentation
+I encourage you to use `bower` to make external resources within your presentation
 available. This works fine together with the asset pipeline `middleman` uses:
 [sprockets](https://github.com/sstephenson/sprockets). Just add resources to
 your (existing) `bower.json` and make yourself comfortable with bower:
-http://bower.io/.
-
-*Advantages for the use of bower*
+http://bower.io/. Reference the resources from within your
+`javascripts/application.js` and/or
+`stylesheets/application.scss`
 
 By using `bower` for external resources you can better separate the slide
 content from your styles.
 
+If you created your presentation using the `middleman presentation`-command,
+files named "bower.json" and ".bowerrc" should exist. Within "bower.json" you
+define the dependencies of your presentation. The last one can be used to tell
+bower where to store the downloaded components.
+
+To reference your assets you should use helpers. There are helpers avaiable for
+Ruby-code and for Sass-code.
+
+* `asset_path(type, name)`, `asset_url(type, name)`:
+
+To reference an arbitrary type you can use the both *ruby* helpers mentioned above. To
+reference a JavaScript-file use `asset_path(:js,
+'<component>/<path>/<file>.js')`.
+
+* `font-path(name)`, `font-url(name)`:
+* `image-path(name)`, `image-url(name)`:
+
+The helpers above can be used to reference assets in Sass-files. You need to
+provide name to reference the asset, e.g.
+`font-path('<component>/<path>/<file>.ttf')`.
+
+To import Css- and Sass-files you should use the `@import`-command. To import
+JavaScript-files from JavaScript-files you should use the `//=
+require`-command.
+
+Please see [sass](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
+and [sprockets](https://github.com/sstephenson/sprockets) for more information
+about that topic.
+
 *Themes*
 
-An example for `bower`-enabled theme can be found at
+An example for a `bower`-enabled theme can be found at
 https://github.com/maxmeyer/reveal.js-template-fedux_org.
 
-*jquery etc.*
-
-Add those libraries to your `bower.json` and reference them from within your
-`javascripts/application.js` and/or `stylesheets/application.scss`
 
 
 ## Creating slides
