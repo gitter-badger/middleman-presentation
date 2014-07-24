@@ -1,4 +1,6 @@
 # encoding: utf-8
+require 'middleman-sprockets/extension'
+
 module Middleman
   class SprocketsExtension
     # Add sitemap resource for every image in the sprockets load path

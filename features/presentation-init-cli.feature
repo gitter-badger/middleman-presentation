@@ -16,16 +16,19 @@ Feature: Initialize middleman-presentation
     # activate_controls: true
     # activate_history: true
     # activate_progress: true
-    # audience: 
+    # audience:
     # author: my_user
     # bower_directory: vendor/assets/components
     # clear_source: true
-    # company: 
+    # company:
+    # components: []
     # default_transition_speed: default
     # default_transition_type: linear
-    # description: 
-    # email_address: 
-    # homepage: 
+    # description:
+    # edit: false
+    # editor_command: vim
+    # email_address:
+    # homepage:
     # initialize_git: true
     # install_assets: true
     # install_contact_slide: true
@@ -33,14 +36,11 @@ Feature: Initialize middleman-presentation
     # install_question_slide: true
     # language: de
     # license: CC BY 4.0
-    # location: 
-    # phone_number: 
+    # location:
+    # phone_number:
     # speaker: my_user
-    # use_fedux_org_template: true
-    # use_jquery: false
-    # use_lightbox: false
+    # template: {}
     # use_logo: true
-    # use_open_sans: false
     """
 
   Scenario: Overwrite existing config file
@@ -59,16 +59,19 @@ Feature: Initialize middleman-presentation
     # activate_controls: true
     # activate_history: true
     # activate_progress: true
-    # audience: 
+    # audience:
     # author: my_user
     # bower_directory: vendor/assets/components
     # clear_source: true
-    # company: 
+    # company:
+    # components: []
     # default_transition_speed: default
     # default_transition_type: linear
-    # description: 
-    # email_address: 
-    # homepage: 
+    # description:
+    # edit: false
+    # editor_command: vim
+    # email_address:
+    # homepage:
     # initialize_git: true
     # install_assets: true
     # install_contact_slide: true
@@ -76,12 +79,9 @@ Feature: Initialize middleman-presentation
     # install_question_slide: true
     # language: de
     # license: CC BY 4.0
-    # location: 
-    # phone_number: 
+    # location:
+    # phone_number:
     # speaker: my_user
-    # use_fedux_org_template: true
-    # use_jquery: false
-    # use_lightbox: false
+    # template: {}
     # use_logo: true
-    # use_open_sans: false
     """

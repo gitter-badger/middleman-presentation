@@ -141,6 +141,8 @@ module Middleman
             '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
             '.js',                                    # Javascript
           ].map { |e| File.join('#{@bower_directory}', "**", "*\#{e}" ) }
+
+          require 'rake/file_list'
           
           Rake::FileList.new(*patterns) do |l|
             l.exclude(/src/)

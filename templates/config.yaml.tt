@@ -1,35 +1,40 @@
 # middleman-presentation version <%= @version %>
 ---
-<% %W{ speaker
-       license
-       bower_directory
-       author
-       description
-       homepage
-       company
-       location
-       audience
-       phone_number
-       email_address
-       components
-       template
-       activate_controls
-       activate_progress
-       activate_history
-       activate_center
-       default_transition_type
-       default_transition_speed
-       install_assets
-       initialize_git
-       clear_source
-       use_logo
-       install_contact_slide
-       install_question_slide
-       install_end_slide
-       language
-       edit
-       editor_command
+<% %W{ 
+  activate_center
+  activate_controls
+  activate_history
+  activate_progress
+  audience
+  author
+  bower_directory
+  clear_source
+  company
+  components
+  default_transition_speed
+  default_transition_type
+  description
+  edit
+  editor_command
+  email_address
+  homepage
+  initialize_git
+  install_assets
+  install_contact_slide
+  install_end_slide
+  install_question_slide
+  language
+  license
+  location
+  phone_number
+  speaker
+  template
+  use_logo
     }.sort.each do |field|
 -%>
+<% if @config.public_send(field).nil? -%>
+# <%= field %>:
+<% else -%>
 # <%= field %>: <%= @config.public_send field %>
+<% end -%>
 <% end -%>
