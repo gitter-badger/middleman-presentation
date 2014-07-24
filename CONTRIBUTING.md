@@ -42,4 +42,3 @@ Ideally, a bug report should include a pull request with failing specs.
 [fork]: http://help.github.com/fork-a-repo/
 [branch]: https://help.github.com/articles/fork-a-repo#create-branches
 [pr]: http://help.github.com/send-pull-requests/
-
