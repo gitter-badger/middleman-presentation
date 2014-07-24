@@ -191,7 +191,7 @@ module Middleman
             chmod File.join(shared_instance.root, 'script', s), 0755
           end
 
-          run 'bower install' if options[:install_assets] == true
+          run 'bower update' if options[:install_assets] == true
 
           if options[:initialize_git]
             run 'git init'
