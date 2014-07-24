@@ -53,6 +53,9 @@ set :css_dir, 'app/stylesheets'
 set :js_dir, 'app/javascripts'
 set :images_dir, 'app/images'
 
+set :markdown_engine, :kramdown
+set :markdown, parse_block_html: true
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
@@ -73,6 +76,18 @@ configure :build do
   # set :http_prefix, "/Content/images/"
 end
 
-ready do
-  sprockets.append_path File.join root, 'vendor', 'assets', 'components'
+sprockets.append_path File.join(root, Middleman::Presentation.config.bower_directory)
+
+patterns = [
+  '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+  '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+  '.js',                                    # Javascript
+].map { |e| File.join(Middleman::Presentation.config.bower_directory, "**", "*#{e}" ) }
+
+Rake::FileList.new(*patterns) do |l|
+  l.exclude(/src/)
+  l.exclude(/test/)
+  l.exclude(/demo/)
+end.keep_if { |f| File.file? f }.each do |f|
+  sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new(Middleman::Presentation.config.bower_directory))
 end

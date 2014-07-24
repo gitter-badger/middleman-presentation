@@ -131,10 +131,25 @@ module Middleman
 
           append_to_file File.join(shared_instance.root, 'config.rb'), <<-EOS.strip_heredoc
 
-          sprockets.append_path File.join(root, 'source/#{@bower_directory}')
-
           set :markdown_engine, :kramdown
           set :markdown, parse_block_html: true
+
+          sprockets.append_path File.join(root, #{@bower_directory})
+          
+          patterns = [
+            '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+            '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+            '.js',                                    # Javascript
+          ].map { |e| File.join(#{@bower_directory}, "**", "*#{e}" ) }
+          
+          Rake::FileList.new(*patterns) do |l|
+            l.exclude(/src/)
+            l.exclude(/test/)
+            l.exclude(/demo/)
+            l.exclude { |f| !File.file? f }
+          end.each do |f|
+            sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new(#{@bower_directory}))
+          end
           EOS
 
           append_to_file File.join(shared_instance.root, 'Gemfile'), <<-EOS.strip_heredoc
