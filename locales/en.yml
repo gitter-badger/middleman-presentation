@@ -8,6 +8,7 @@ en:
     asset_not_found: I cannot find asset '%{asset}'. Please check the path and try again.
     duplicate_slide_names: "I found duplicate slide names: %{slide_names}."
     missing_argument: You need to define argument "%{argument}".
+    missing_data_attribute: You need to define an option in one of your config or data files: %{message}.
   slides:
     contact:
       title: Contact
