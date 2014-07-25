@@ -173,7 +173,17 @@ editor used or the arguments used, you can run `middleman-presentation` with
 the `--editor-command`-switch.
 
 ```bash
-middleman edit_slide --editor-command "nano" 01 02 03
+middleman slide --edit --editor-command "nano" 01 02 03
+```
+
+The `editor-command`-string is also parsed by Erubis which makes the data
+available in `metadata.yml` accessible to you. You can use this to start a vim server
+with the presentation's project id as server name. This can be handy if you work more
+or less simultaneously on diffent presentations. To make the use of the project
+id as server name more stable you should use [`Shellwords.shellescape`](http://www.ruby-doc.org/stdlib-2.1.2/libdoc/shellwords/rdoc/Shellwords.html#method-c-shellescape).
+
+```bash
+middleman slide --edit --editor-command "vim --servername <%= Shellwords.shellescape(project_id) %> --remote-tab 2>/dev/null" 01 02 03
 ```
 
 ### Start presentation
