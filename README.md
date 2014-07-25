@@ -14,8 +14,8 @@ generator which also offers a live preview of your presentation.
 
 To get started with `middleman-presentation` you should know a little bit about
 HTML, JavaScript, reveal.js and [Ruby](https://www.ruby-lang.org/en).
-`middleman-presentation` will then helps you where it can to make your life
-easier with presentations.
+`middleman-presentation` will then help you wherever it can to make your life
+easy with presentations.
 
 ## Installation
 
