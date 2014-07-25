@@ -21,7 +21,6 @@ module Middleman
       end
 
       desc 'create NAME(S)', 'Create a new slide(s). If you want to create multiple slides enter them with a space between the names "01 02 03".', hidden: true
-      option :editor_command, default: Middleman::Presentation.config.editor_command, desc: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
       option :title, desc: 'Title of slide'
       def create(*names)
         @title = options[:title]
@@ -32,11 +31,9 @@ module Middleman
         if shared_instance.extensions.key? :presentation
           presentation_inst = shared_instance.extensions[:presentation]
 
-          files = names.collect do |name|
+          names.each do |name|
             slide_template = ::Middleman::Presentation::SlideTemplate.new(name: name, base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory))
             template presentation_inst.options.public_send(:"slide_template_#{slide_template.type}"), slide_template.file_path
-
-            slide_template.file_path
           end
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
@@ -44,6 +41,7 @@ module Middleman
       end
 
       desc 'slide NAME(S)', 'Create a new slide(s) or edit existing ones. If you want to create multiple slides enter them with a space between the names "01 02 03".'
+      option :edit, default: Middleman::Presentation.config.edit, desc: 'Start ENV["EDITOR"] to edit slide.', aliases: %w{-e}
       option :editor_command, default: Middleman::Presentation.config.editor_command, desc: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
       option :title, desc: 'Title of slide'
       def slide(*names)
@@ -52,13 +50,15 @@ module Middleman
         # This only exists when the config.rb sets it!
         if shared_instance.extensions.key? :presentation
           candidates = find_files directory: shared_instance.source_dir, patterns: names
-          invoke('slide:create', names - candidates) if candidates.size != names.size
+          invoke('slide:create', names - candidates, title: options[:title]) if candidates.size != names.size
 
-          editor = []
-          editor << options[:editor_command]
-          editor.concat find_files(directory: shared_instance.source_dir, patterns: names)
+          if options[:edit]
+            editor = []
+            editor << options[:editor_command]
+            editor.concat find_files(directory: shared_instance.source_dir, patterns: names)
 
-          system(editor.join(" "))
+            system(editor.join(" "))
+          end
         else
           raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end

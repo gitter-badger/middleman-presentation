@@ -35,7 +35,7 @@ module Middleman
       option :create_javascripts_directory, true
       option :create_images_directory, true
 
-      option :edit, false
+      option :edit, true
       option :editor_command, process_environment.fetch('EDITOR', 'vim')
     end
   end
