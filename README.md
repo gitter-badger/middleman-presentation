@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/maxmeyer/middleman-presentation/badge.png?branch=master)](https://coveralls.io/r/maxmeyer/middleman-presentation?branch=master)
 [![Gem Version](https://badge.fury.io/rb/test_server.png)](http://badge.fury.io/rb/test_server)
 
-This projects supports you building wonderful presentations based on
+This project helps you to build wonderful presentations based on
 [HTML](http://www.w3.org/html/) and JavaScript. The JavaScript-part is powered
 by [`reveal.js`](https://github.com/hakimel/reveal.js), a great framework to
 build HTML-/JavaScript-presentations. The infrastructure behind
