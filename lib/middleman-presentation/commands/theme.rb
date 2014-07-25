@@ -2,10 +2,10 @@
 module Middleman
   module Cli
     # This class provides an 'slide' command for the middleman CLI.
-    class CreateTheme < Thor
+    class Theme < Thor
       include Thor::Actions
 
-      namespace :create_theme
+      namespace :theme
 
       def self.source_root
         ENV['MM_ROOT']
@@ -16,14 +16,14 @@ module Middleman
         true
       end
 
-      desc 'create_theme NAME', 'Create a new presentation theme for middleman-presentation'
+      desc 'theme NAME', 'Create a new presentation theme for middleman-presentation'
       option :stylesheets_directory, default: Middleman::Presentation.config.create_stylesheets_directory, desc: 'Create stylesheets directory'
       option :javascripts_directory, default: Middleman::Presentation.config.create_javascripts_directory, desc: 'Create javascripts directory'
       option :images_directory, default: Middleman::Presentation.config.create_images_directory, desc: 'Create images directory'
       option :author, default: Middleman::Presentation.config.author, desc: 'Author of theme'
       option :year, default: Time.now.strftime('%Y'), desc: 'Copyright year for theme'
       option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: 'initialize git'
-      def create_theme(name)
+      def theme(name)
         source_paths << File.expand_path('../../../../templates', __FILE__)
 
         @theme_name = name
