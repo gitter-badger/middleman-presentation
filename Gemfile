@@ -20,7 +20,6 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'cucumber', require: false
   gem 'aruba', require: false, git: 'https://github.com/dg-vrnetze/aruba.git', branch: 'integration/expand_path'
-  gem 'rake', require: false
   gem 'bundler', require: false
   gem 'erubis'
   gem 'versionomy', require: false

@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'addressable', '~> 2.3.5'
   spec.add_dependency 'launchy', '~> 2.4.2'
   spec.add_dependency 'fedux_org-stdlib', '>= 0.6.17'
+  spec.add_dependency 'rake'
 end

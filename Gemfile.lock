@@ -45,6 +45,7 @@ PATH
       fedux_org-stdlib (>= 0.6.17)
       launchy (~> 2.4.2)
       middleman (~> 3.3)
+      rake
       tzinfo (>= 0.3.0)
 
 GEM
@@ -296,7 +297,6 @@ DEPENDENCIES
   pry
   pry-byebug
   pry-doc
-  rake
   redcarpet
   rspec
   rspec-legacy_formatters
