@@ -110,7 +110,7 @@ middleman slide 01
 ```
 
 If you enter duplicate slide names, e.g. "02.md" and "02.erb", the
-`slide-command` will fail. It is not possible to serve files with the same base
+`slide`-command will fail. It is not possible to serve files with the same base
 name - e.g. "02" - via `middleman`.
 
 ```bash
