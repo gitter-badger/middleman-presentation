@@ -28,6 +28,10 @@ Feature: Initialize presentation
     And a file named "Rakefile" should exist
     And a directory named "source/images" should exist
     And a directory named "vendor/assets/components" should exist
+    And the file "data/metadata.yml" should contain:
+    """
+    project_id:
+    """
 
   Scenario: Existing configuration file
     Given a mocked home directory

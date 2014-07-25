@@ -27,6 +27,8 @@ module Middleman
       def slide(*names)
         fail ArgumentError, I18n.t('errors.missing_argument', argument: 'name') if names.blank?
 
+            require 'pry'
+            binding.pry
         shared_instance = ::Middleman::Application.server.inst
 
         # This only exists when the config.rb sets it!
@@ -45,6 +47,7 @@ module Middleman
           if options[:edit]
             editor = []
             editor << options[:editor_command]
+            #editor << Erubis::Eruby.new(options[:editor_command]).result(metadata: shared_instance.data.metadata.dup)
             editor.concat slide_list.existing_slides
 
             system(editor.join(" "))

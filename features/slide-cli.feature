@@ -134,3 +134,15 @@ Feature: Add new slide
     """
     You need to define argument "name"
     """
+
+    @wip
+  Scenario: Using eruby in editor command
+    Given a fixture app "presentation-before_init-app"
+    And I initialized middleman for a new presentation
+    And I successfully run `middleman presentation --title "My Presentation"`
+    #When I successfully run `middleman slide 02 03 --edit --editor-command "echo <%= project_id %>"`
+    When I successfully run `middleman slide 02 03 --edit --editor-command echo`
+    Then the output should contain:
+    """
+    my-presentation_
+    """

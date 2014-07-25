@@ -6,60 +6,66 @@ title: <%= @title %>
 <% if @date -%>
 date: <%= @date %>
 <% else -%>
-#date:
+# date:
 <% end -%>
 <% if @author -%>
 author: <%= @author %>
 <% else -%>
-#author:
+# author:
 <% end -%>
 <% if @description -%>
 description: <%= @description %>
 <% else -%>
-#description:
+# description:
 <% end -%>
 <% if @subtitle -%>
 subtitle: <%= @subtitle %>
 <% else -%>
-#subtitle:
+# subtitle:
 <% end -%>
 <% if @homepage -%>
 homepage: <%= @homepage %>
 <% else -%>
-#homepage:
+# homepage:
 <% end -%>
 <% if @company -%>
 company: <%= @company %>
 <% else -%>
-#company:
+# company:
 <% end -%>
 <% if @license -%>
 license: <%= @license %>
 <% else -%>
-#license:
+# license:
 <% end -%>
 <% if @location -%>
 location: <%= @location %>
 <% else -%>
-#location:
+# location:
 <% end -%>
 <% if @audience -%>
 audience: <%= @audience %>
 <% else -%>
-#audience:
+# audience:
 <% end -%>
 <% if @email_address -%>
 email_address: <%= @email_address %>
 <% else -%>
-#email_address:
+# email_address:
 <% end -%>
 <% if @phone_number -%>
 phone_number: <%= @phone_number %>
 <% else -%>
-#phone_number:
+# phone_number:
 <% end -%>
 <% if @github_url -%>
 github_url: <%= @github_url %>
 <% else -%>
-#github_url:
+# github_url:
+<% end -%>
+
+<% if @project_id -%>
+project_id: <%= @project_id %>
+<% else -%>
+# project_id:
 <% end -%>
