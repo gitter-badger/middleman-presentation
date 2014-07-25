@@ -126,3 +126,11 @@ Feature: Add new slide
     """
     I found duplicate slide names: "02.erb", "02.md"
     """
+
+  Scenario: Missing slide name
+    Given a fixture app "slides-source-app"
+    When I run `middleman slide`
+    Then the output should contain:
+    """
+    asdf
+    """

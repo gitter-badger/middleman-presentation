@@ -25,6 +25,8 @@ module Middleman
       option :editor_command, default: Middleman::Presentation.config.editor_command, desc: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
       option :title, desc: 'Title of slide'
       def slide(*names)
+        fail ArgumentError, I18n.t('errors.missing_argument', argument: 'name') if names.blank?
+
         shared_instance = ::Middleman::Application.server.inst
 
         # This only exists when the config.rb sets it!
