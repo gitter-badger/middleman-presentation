@@ -155,6 +155,8 @@ module Middleman
           end
           EOS
 
+          gsub_file 'Gemfile', %r{http://rubygems.org}, 'https://rubygems.org'
+
           append_to_file File.join(shared_instance.root, 'Gemfile'), <<-EOS.strip_heredoc
 
           group :development, :test do
