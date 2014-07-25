@@ -6,31 +6,31 @@ Feature: Add new slide
 
   Scenario: Embbeded Ruby Template
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01 --no-edit`
+    When I successfully run `middleman slide 01`
     Then the following files should exist:
       | source/slides/01.html.erb |
 
   Scenario: Markdown Template
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01.md --no-edit`
+    When I successfully run `middleman slide 01.md`
     Then the following files should exist:
       | source/slides/01.html.md |
 
   Scenario: Liquid Template
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01.l --no-edit`
+    When I successfully run `middleman slide 01.l`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
   Scenario: Liquid Template (long file extension)
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01.liquid --no-edit`
+    When I successfully run `middleman slide 01.liquid`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
   Scenario: Markdown Template (long file extension)
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01.markdown --no-edit`
+    When I successfully run `middleman slide 01.markdown`
     Then the following files should exist:
       | source/slides/01.html.md |
 
@@ -46,7 +46,7 @@ Feature: Add new slide
 
   Scenario: Create multiple slides
     And a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01 02 --no-edit`
+    When I successfully run `middleman slide 01 02`
     Then the following files should exist:
       | source/slides/01.html.erb |
       | source/slides/02.html.erb |
@@ -59,7 +59,7 @@ Feature: Add new slide
     <h1>Headline</h1>
     </section>
     """
-    When I successfully run `middleman slide 02 --editor-command echo`
+    When I successfully run `middleman slide 02 --edit --editor-command echo`
     And the output should contain:
     """
     02.html.erb
@@ -67,7 +67,7 @@ Feature: Add new slide
 
   Scenario: Edit non-existing slide with ENV['EDITOR']
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 02 --editor-command echo`
+    When I successfully run `middleman slide 02 --edit --editor-command echo`
     And the output should contain:
     """
     create
@@ -85,7 +85,7 @@ Feature: Add new slide
     <h1>Headline</h1>
     </section>
     """
-    When I successfully run `middleman slide 02 03 --editor-command echo`
+    When I successfully run `middleman slide 02 03 --edit --editor-command echo`
     And the output should contain:
     """
     02.html.erb
@@ -109,7 +109,7 @@ Feature: Add new slide
     <h1>Headline</h1>
     </section>
     """
-    When I successfully run `middleman slide 02 03 --editor-command echo`
+    When I successfully run `middleman slide 02 03 --edit --editor-command echo`
     And the output should contain:
     """
     02.html.erb

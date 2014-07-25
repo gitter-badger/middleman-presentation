@@ -25,7 +25,7 @@ Feature: Initialize middleman-presentation
     # default_transition_speed: default
     # default_transition_type: linear
     # description:
-    # edit: true
+    # edit: false
     # editor_command: vim
     # email_address:
     # homepage:
@@ -68,7 +68,7 @@ Feature: Initialize middleman-presentation
     # default_transition_speed: default
     # default_transition_type: linear
     # description:
-    # edit: true
+    # edit: false
     # editor_command: vim
     # email_address:
     # homepage:

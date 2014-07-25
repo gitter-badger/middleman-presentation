@@ -165,7 +165,7 @@ middleman slide 01 --edit
 ```
 
 If you want to edit an alread created slide, you can use the
-`slide`-command as well. It creates slide if they do not exist and opens them
+`slide`-command as well. It creates slides if they do not exist and opens them
 in your favorit editor (ENV['EDITOR']) if they already exist.
 
 In some cases you might want to use a different editor-command. To change the
