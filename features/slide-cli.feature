@@ -8,7 +8,7 @@ Feature: Add new slide
     Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 01`
     Then the following files should exist:
-      | source/slides/01.html.erb |
+      | source/slides/01.html.md |
 
   Scenario: Markdown Template
     Given a fixture app "presentation-after_init-app"
@@ -48,8 +48,8 @@ Feature: Add new slide
     Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 01 02`
     Then the following files should exist:
-      | source/slides/01.html.erb |
-      | source/slides/02.html.erb |
+      | source/slides/01.html.md |
+      | source/slides/02.html.md |
 
   Scenario: Edit existing slide with ENV['EDITOR']
     Given a fixture app "presentation-after_init-app"
@@ -62,7 +62,7 @@ Feature: Add new slide
     When I successfully run `middleman slide 02 --edit --editor-command echo`
     And the output should contain:
     """
-    02.html.erb
+    02.html.md
     """
 
   Scenario: Edit non-existing slide with ENV['EDITOR']
@@ -74,7 +74,7 @@ Feature: Add new slide
     """
     And the output should contain:
     """
-    02.html.erb
+    02.html.md
     """
 
   Scenario: Edit mixing existing and non-existing slides with ENV['EDITOR']
@@ -88,22 +88,22 @@ Feature: Add new slide
     When I successfully run `middleman slide 02 03 --edit --editor-command echo`
     And the output should contain:
     """
-    02.html.erb
+    02.html.md
     """
     And the output should contain:
     """
-    03.html.erb
+    03.html.md
     """
 
   Scenario: Edit existing multiple slides with ENV['EDITOR']
     Given a fixture app "presentation-after_init-app"
-    And a slide named "02.html.erb" with:
+    And a slide named "02.html.md" with:
     """
     <section>
     <h1>Headline</h1>
     </section>
     """
-    And a slide named "03.html.erb" with:
+    And a slide named "03.html.md" with:
     """
     <section>
     <h1>Headline</h1>
@@ -112,11 +112,11 @@ Feature: Add new slide
     When I successfully run `middleman slide 02 03 --edit --editor-command echo`
     And the output should contain:
     """
-    02.html.erb
+    02.html.md
     """
     And the output should contain:
     """
-    03.html.erb
+    03.html.md
     """
 
   Scenario: Fails on duplicate slide names

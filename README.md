@@ -93,7 +93,6 @@ middleman help presentation
 
 ### Add new slide
 
-
 **MAKE SURE YOU NEVER EVER GIVE TWO SLIDES THE SAME BASENAME**, eg. 01.html.erb
 and 01.html.md. This will not work with `middleman`.
 
@@ -103,7 +102,10 @@ To add a new slide you can use the `slide`-helper.
 middleman slide <name>
 ```
 
-It is recommended to use a number as name greater than `00`, e.g. `01`.
+It is recommended to use a number as name greater than `00`, e.g. `01`. If you
+leave out the file extension the `slide`-helper will create a Markdown-slide by
+default - this is hardcoded: :-) Give Markdown a try, because I chose to use
+`kramdown` as Markdown-parser you are not that limited.
 
 ```bash
 middleman slide 01
@@ -117,7 +119,6 @@ name - e.g. "02" - via `middleman`.
 middleman slide 02.md 02.erb
 # => will fail
 ```
-
 
 If you prefer another template language you can provide that information as
 part of the slide name. Today only `embedded ruby`, `markdown` and `liquid`-templates are supported.
@@ -277,9 +278,9 @@ You need to decide if you want to create slides in pure HTML or if you want to
 use [`Markdown`](http://daringfireball.net/projects/markdown/syntax). It's up
 to you to make your choice. In most cases you should get along with `Markdown`
 &#9786;. From version `0.6.0` onwards
-[`kramdown`](http://kramdown.gettalong.org/syntax.html) is the default -engine.
-It supports "Attribute List Definitions" which can be used, to provide
-HTML-attributes to Markdown-elements. Something similar to what
+[`kramdown`](http://kramdown.gettalong.org/syntax.html) is used to parsed
+Markdown. because it supports "Attribute List Definitions" which can be used,
+to provide HTML-attributes to Markdown-elements. Something similar to what
 [reveal.js](https://github.com/hakimel/reveal.js/#element-attributes) does.
 
 ## Development

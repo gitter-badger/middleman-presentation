@@ -16,8 +16,8 @@ module Middleman
             slide.file_name = "#{basename}.html.liquid"
             template_file = template('slide.liquid.tt')
           else
-            slide.file_name = "#{basename}.html.erb"
-            template_file = template('slide.erb.tt')
+            slide.file_name = "#{basename}.html.md"
+            template_file = template('slide.md.tt')
           end
 
           slide.template = Erubis::Eruby.new(File.read(template_file))
