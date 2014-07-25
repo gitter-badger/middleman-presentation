@@ -20,7 +20,7 @@ module Middleman
             template_file = template('slide.erb.tt')
           end
 
-          slide.template = Erubis::Eruby.new(template_file)
+          slide.template = Erubis::Eruby.new(File.read(template_file))
 
           slide
         end

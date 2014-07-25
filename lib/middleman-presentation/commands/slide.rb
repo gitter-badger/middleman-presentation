@@ -37,8 +37,7 @@ module Middleman
           end
 
           slide_list.each_new { |slide| 
-            $stderr.puts I18n.t 'views.slide.create_slide', slide: slide.name
-            create_file slide.content(title: options[:title]), slide.path
+            create_file slide.path, slide.content(title: options[:title])
           }
 
           if options[:edit]

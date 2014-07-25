@@ -26,6 +26,10 @@ module Middleman
       def extname
         File.extname(name)
       end
+
+      def to_s
+        path
+      end
     end
   end
 end

@@ -13,6 +13,3 @@ en:
       title: Questions
     end:
       title: The End
-  views:
-    slide:
-      create_slide: Creating slide "%{slide}"
