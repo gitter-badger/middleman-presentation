@@ -28,7 +28,7 @@
   location
   phone_number
   speaker
-  template
+  theme
   use_logo
     }.sort.each do |field|
 -%>

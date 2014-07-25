@@ -10,10 +10,14 @@ module Middleman
       public
 
       def initialize(names, slide_builder: NewSlide, &block)
-        @slides = Array(names).map { |n| slide_builder.new(name: n) }
+        names = Array(names)
+
+        @slides = names.map { |n| slide_builder.new(name: n) }.uniq
+        difference = names - @slides.map { |s| s.name }
+
+        fail ArgumentError, I18n.t('errors.duplicate_slide_names', slide_names: difference.to_list) unless difference.blank?
 
         block.call(self) if block_given?
-          #invoke('slide:create', names - candidates, title: options[:title]) if candidates.size != names.size
       end
 
       def transform_with(transformer)

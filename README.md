@@ -155,12 +155,8 @@ middleman slide 01 --edit
 ```
 
 If you want to edit an alread created slide, you can use the
-`edit_slide`-command. If you want to mix existing and non-existing slides, this
-is possible too. `middleman-presentation` will create a slide, if it does not exist
-
-```bash
-middleman edit_slide 01 02 03
-```
+`slide`-command as well. It creates slide if they do not exist and opens them
+in your favorit editor (ENV['EDITOR']) if they already exist.
 
 In some cases you might want to use a different editor-command. To change the
 editor used or the arguments used, you can run `middleman-presentation` with

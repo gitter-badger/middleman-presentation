@@ -6,31 +6,31 @@ Feature: Add new slide
 
   Scenario: Embbeded Ruby Template
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01`
+    When I successfully run `middleman slide 01 --no-edit`
     Then the following files should exist:
       | source/slides/01.html.erb |
 
   Scenario: Markdown Template
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01.md`
+    When I successfully run `middleman slide 01.md --no-edit`
     Then the following files should exist:
       | source/slides/01.html.md |
 
   Scenario: Liquid Template
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01.l`
+    When I successfully run `middleman slide 01.l --no-edit`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
   Scenario: Liquid Template (long file extension)
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01.liquid`
+    When I successfully run `middleman slide 01.liquid --no-edit`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
   Scenario: Markdown Template (long file extension)
     Given a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01.markdown`
+    When I successfully run `middleman slide 01.markdown --no-edit`
     Then the following files should exist:
       | source/slides/01.html.md |
 
@@ -46,7 +46,7 @@ Feature: Add new slide
 
   Scenario: Create multiple slides
     And a fixture app "slides-source-app"
-    When I successfully run `middleman slide 01 02`
+    When I successfully run `middleman slide 01 02 --no-edit`
     Then the following files should exist:
       | source/slides/01.html.erb |
       | source/slides/02.html.erb |

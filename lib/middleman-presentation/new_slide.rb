@@ -2,6 +2,8 @@
 module Middleman
   module Presentation
     class NewSlide
+      include Comparable
+
       attr_accessor :name, :template, :path, :file_name
 
       def initialize(name:)
@@ -29,6 +31,22 @@ module Middleman
 
       def to_s
         path
+      end
+
+      def basename
+        name.scan(/^([^.]+)(?:\..+)?/).flatten.first
+      end
+
+      def <=>(other)
+        basename <=> other.basename
+      end
+
+      def eql?(other)
+        basename.eql? other.basename
+      end
+
+      def hash
+        basename.hash
       end
     end
   end
