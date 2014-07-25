@@ -109,6 +109,16 @@ It is recommended to use a number as name greater than `00`, e.g. `01`.
 middleman slide 01
 ```
 
+If you enter duplicate slide names, e.g. "02.md" and "02.erb", the
+`slide-command` will fail. It is not possible to serve files with the same base
+name - e.g. "02" - via `middleman`.
+
+```bash
+middleman slide 02.md 02.erb
+# => will fail
+```
+
+
 If you prefer another template language you can provide that information as
 part of the slide name. Today only `embedded ruby`, `markdown` and `liquid`-templates are supported.
 

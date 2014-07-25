@@ -118,3 +118,11 @@ Feature: Add new slide
     """
     03.html.erb
     """
+
+  Scenario: Fails on duplicate slide names
+    Given a fixture app "slides-source-app"
+    When I run `middleman slide 02.erb 02.md`
+    And the output should contain:
+    """
+    I found duplicate slide names: "02.erb", "02.md"
+    """
