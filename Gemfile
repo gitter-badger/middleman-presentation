@@ -25,12 +25,16 @@ group :development, :test do
   gem 'versionomy', require: false
   gem 'activesupport', require: false
   gem 'awesome_print', require: 'ap'
-  gem 'byebug'
+
+  unless ENV['CI']
+    gem 'byebug'
+    gem 'pry'
+    gem 'pry-byebug', require: false
+    gem 'pry-doc', require: false
+  end
+
   gem 'foreman', require: false
   gem 'github-markup'
-  gem 'pry'
-  gem 'pry-byebug', require: false
-  gem 'pry-doc', require: false
   gem 'redcarpet', require: false
   gem 'tmrb', require: false
   gem 'yard', require: false
