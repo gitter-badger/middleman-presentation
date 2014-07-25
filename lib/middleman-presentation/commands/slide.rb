@@ -53,7 +53,7 @@ module Middleman
             begin
               editor << Erubis::Eruby.new(options[:editor_command]).result(data)
             rescue NameError => e
-              $stderr.puts I18n.t('error.missing_data_attribute', message: e.message)
+              $stderr.puts I18n.t('errors.missing_data_attribute', message: e.message)
             end
             editor.concat slide_list.existing_slides
 
