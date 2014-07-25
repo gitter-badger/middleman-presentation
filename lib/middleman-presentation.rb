@@ -8,6 +8,7 @@ require 'securerandom'
 require 'fedux_org_stdlib/app_config'
 require 'fedux_org_stdlib/core_ext/array'
 require 'securerandom'
+require 'shellwords'
 
 require 'active_support/core_ext/string/strip'
 require 'active_support/core_ext/string/inflections'

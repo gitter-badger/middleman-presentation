@@ -46,8 +46,7 @@ module Middleman
 
           if options[:edit]
             editor = []
-            editor << options[:editor_command]
-            #editor << Erubis::Eruby.new(options[:editor_command]).result(metadata: shared_instance.data.metadata.dup)
+            editor << Erubis::Eruby.new(options[:editor_command]).result(shared_instance.data.metadata.dup)
             editor.concat slide_list.existing_slides
 
             system(editor.join(" "))

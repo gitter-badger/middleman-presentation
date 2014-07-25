@@ -128,21 +128,25 @@ Feature: Add new slide
     """
 
   Scenario: Missing slide name
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I run `middleman slide`
     Then the output should contain:
     """
     You need to define argument "name"
     """
 
-    @wip
   Scenario: Using eruby in editor command
-    Given a fixture app "presentation-before_init-app"
-    And I initialized middleman for a new presentation
-    And I successfully run `middleman presentation --title "My Presentation"`
-    #When I successfully run `middleman slide 02 03 --edit --editor-command "echo <%= project_id %>"`
-    When I successfully run `middleman slide 02 03 --edit --editor-command echo`
+    Given a fixture app "presentation-after_init-app"
+    When I successfully run `middleman slide 02 03 --edit --editor-command "echo <%= project_id %>"`
     Then the output should contain:
     """
-    my-presentation_
+    my-title-aasdfasfd
+    """
+
+  Scenario: Using eruby in editor command and shell escape
+    Given a fixture app "presentation-after_init-app"
+    When I successfully run `middleman slide 02 03 --edit --editor-command "echo <%= Shellwords.shellescape(project_id) %>"`
+    Then the output should contain:
+    """
+    my-title-aasdfasfd
     """

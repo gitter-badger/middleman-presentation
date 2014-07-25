@@ -85,7 +85,7 @@ module Middleman
           @phone_number    = options[:phone_number]
           @github_url      = options[:github_url]
 
-          @project_id      = format '%s_%s', options[:title].parameterize, SecureRandom.hex
+          @project_id      = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
 
           @external_assets = []
           

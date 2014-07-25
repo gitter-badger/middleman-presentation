@@ -47,3 +47,32 @@ Feature: Initialize presentation
     And a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "My Presentation"`
+    Then the file "data/metadata.yml" should contain:
+    """
+    author: TestUser
+    """
+    Then the file "data/metadata.yml" should contain:
+    """
+    company: MyCompany
+    """
+    Then the file "data/metadata.yml" should contain:
+    """
+    email_address: test_user@example.com
+    """
+    Then the file "data/metadata.yml" should contain:
+    """
+    homepage: http://example.com
+    """
+    Then the file "data/metadata.yml" should contain:
+    """
+    speaker: TestUser
+    """
+
+  Scenario: German umlauts, French accents and special chars are not a problem for project id
+    Given a fixture app "presentation-before_init-app"
+    And I initialized middleman for a new presentation
+    When I successfully run `middleman presentation --title "üöà~?§$%&/()=#!"`
+    And the file "data/metadata.yml" should contain:
+    """
+    project_id: uoa
+    """
