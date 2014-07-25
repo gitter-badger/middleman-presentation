@@ -1,0 +1,26 @@
+{
+  "name": "fedux_org-revealjs-theme",
+  "description": "Theme for reveal.js presentation framework",
+  "license": "CC BY 4.0",
+  "main": [
+    "scss/fedux_org.scss",
+    "js/fedux_org.js"
+  ],
+  "ignore": [],
+  "dependencies": {
+    "jquery": ">= 1.10.0",
+    "fontawesome": ">= 4.0.3",
+    "open-sans": ">= 1.1.0",
+    "d3": "latest"
+  },
+  "homepage": "https://github.com/maxmeyer/reveal.js-template-fedux_org",
+  "_release": "07e33d35eb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "07e33d35eb7612c23e19c7f4d89fd8eb9f7109f9"
+  },
+  "_source": "https://github.com/maxmeyer/reveal.js-template-fedux_org.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/maxmeyer/reveal.js-template-fedux_org.git"
+}

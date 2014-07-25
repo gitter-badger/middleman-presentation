@@ -1,0 +1,8 @@
+bower_directory: vendor/assets/components
+revealjs:
+  controls: true
+  progress: true
+  history: true
+  center: true
+  default_transition_type: linear
+  default_transition_speed: default

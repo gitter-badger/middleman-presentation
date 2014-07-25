@@ -5,37 +5,37 @@ Feature: Add new slide
   In order do build it
 
   Scenario: Embbeded Ruby Template
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 01`
     Then the following files should exist:
       | source/slides/01.html.erb |
 
   Scenario: Markdown Template
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 01.md`
     Then the following files should exist:
       | source/slides/01.html.md |
 
   Scenario: Liquid Template
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 01.l`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
   Scenario: Liquid Template (long file extension)
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 01.liquid`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
   Scenario: Markdown Template (long file extension)
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 01.markdown`
     Then the following files should exist:
       | source/slides/01.html.md |
 
   Scenario: Open slide with ENV['EDITOR'] after creation
-    And a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 01.markdown --edit --editor-command echo`
     Then the following files should exist:
       | source/slides/01.html.md |
@@ -45,14 +45,14 @@ Feature: Add new slide
     """
 
   Scenario: Create multiple slides
-    And a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 01 02`
     Then the following files should exist:
       | source/slides/01.html.erb |
       | source/slides/02.html.erb |
 
   Scenario: Edit existing slide with ENV['EDITOR']
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     And a slide named "02.html.erb" with:
     """
     <section>
@@ -66,7 +66,7 @@ Feature: Add new slide
     """
 
   Scenario: Edit non-existing slide with ENV['EDITOR']
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I successfully run `middleman slide 02 --edit --editor-command echo`
     And the output should contain:
     """
@@ -78,7 +78,7 @@ Feature: Add new slide
     """
 
   Scenario: Edit mixing existing and non-existing slides with ENV['EDITOR']
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     And a slide named "02.html.erb" with:
     """
     <section>
@@ -96,7 +96,7 @@ Feature: Add new slide
     """
 
   Scenario: Edit existing multiple slides with ENV['EDITOR']
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     And a slide named "02.html.erb" with:
     """
     <section>
@@ -120,7 +120,7 @@ Feature: Add new slide
     """
 
   Scenario: Fails on duplicate slide names
-    Given a fixture app "slides-source-app"
+    Given a fixture app "presentation-after_init-app"
     When I run `middleman slide 02.erb 02.md`
     And the output should contain:
     """

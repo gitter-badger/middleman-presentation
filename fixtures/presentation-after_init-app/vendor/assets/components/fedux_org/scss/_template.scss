@@ -1,0 +1,275 @@
+@import "reveal.js/css/theme/template/mixins";
+@import "reveal.js/css/theme/template/settings";
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Open Sans', sans-serif;
+$mainColor: #000000;
+$headingFont: 'Open Sans', sans-serif;
+$headingColor: #000000;
+$headingLetterSpacing: -0.08em;
+$headingTextShadow: none;
+$backgroundColor: #ffffff;
+$linkColor: #2f2f2f;
+$linkColorHover: #0061b2;
+$selectionBackgroundColor: #858585;
+$bulletPointColor: #2f2f2f;
+
+// Fix links so they are not cut off
+//.reveal a:not(.image) {
+//	line-height: 1.3rem;
+//}
+
+// Theme template ------------------------------
+@import "reveal.js/css/theme/template/theme";
+// ---------------------------------------------
+
+section.start_slide {
+
+  h1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 4.5rem;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 2rem;
+    //color: #0061b2;
+    color: #2f2f2f;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  .headline {
+    display: inline-block;
+    width: 70%;
+  }
+
+  .author {
+    font-size: 2rem;
+    color: #2f2f2f;
+    line-height: 1rem;
+    margin: 0px;
+    margin-bottom: 5px;
+  }
+
+  .license {
+    font-size: 1rem;
+    color: #2f2f2f;
+    line-height: 1rem;
+    margin: 0px;
+  }
+}
+
+.reveal section img {
+  padding: 10px;
+  border: none;
+  box-shadow: none;
+}
+
+.hidden_step {
+  list-style-type: none;
+}
+
+.reveal .inline_code {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); 
+  padding-right: 4px;
+  padding-bottom: 0px;
+}
+
+.reveal h1 {
+  font-size: 4rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.reveal h2 {
+  font-size: 3rem;
+  color: #2f2f2f;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.reveal h3 {
+  font-family: "Open Sans", sans-serif;
+  color: #2f2f2f;
+  font-size: 2rem;
+  text-transform: none;
+}
+
+.reveal pre {
+  width: 100%;
+}
+
+.reveal code {
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+   width: 12px;
+}
+
+.reveal blockquote {
+  box-shadow: none;
+  position: relative;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  border: 1px black;
+}
+
+blockquote:before { 
+  display: block;
+  font-size: 10em;
+  position: absolute;
+  left: -0.5em;
+  top: 0.3em;
+  //content: "„";
+  content: "“";
+  color: #ff530a; 
+}
+
+blockquote cite:before {
+  content: "\2014 \2009";
+}
+
+.reveal blockquote cite {
+  font-size: 0.7em;
+  color: grey;
+  display: block;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #ff530a; 
+  border-radius: 10px;
+}
+
+//::-webkit-scrollbar-track-piece  {
+//  background-color: #ff530a;
+//}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px #ff530a; 
+  background-color: #ff530a;
+  border-radius: 10px;
+}
+
+.reveal ul li {
+  margin-bottom: 20px;
+}
+
+.reveal ul li ul li {
+  margin-bottom: 5px;
+}
+
+.reveal ul li ul {
+  list-style-type: circle;
+}
+
+.hidden {
+  display: none;
+}
+
+#proxy_round_trip {
+  @extend .hidden;
+}
+
+#logo-engagement {
+  @extend .hidden;
+  margin: 0px;
+  max-width: 250px;
+}
+
+#logo-idea {
+  display: inline-block;
+  margin: 0px;
+  max-width: 250px;
+}
+
+li>i.fd-hint {
+  @extend .fa;
+  @extend .fa-exclamation-triangle;
+  margin-right: 15px;
+  font-size: 1em;
+}
+
+section>i.fd-question {
+  @extend .fa;
+  @extend .fa-question;
+  margin-right: 15px;
+  font-size: 5em;
+}
+
+ul > li {
+  margin-left: 2em;
+}
+
+ul.fd-with-image {
+  vertical-align: middle;
+}
+
+img.fd-with-list {
+  vertical-align: middle;
+}
+
+.reveal ul.fd-iconless-list {
+  list-style-type: none;
+}
+
+li > i.fd-phone {
+  @extend .fa;
+  @extend .fa-phone;
+  margin-right: 15px;
+}
+
+li > i.fd-mail {
+  @extend .fa;
+  @extend .fa-envelope;
+  margin-right: 15px;
+}
+
+li > i.fd-github {
+  @extend .fa;
+  @extend .fa-github;
+  margin-right: 15px;
+}
+
+a.fd-external-url:after {
+  font-family: "FontAwesome";
+  content: "\f08e"; 
+  margin-left: 12px;
+  margin-right: 12px;
+  font-size: 0.7em;
+}
+
+img.fd-preview-image {
+  max-width: 300px;
+  max-height: 300px;
+  display: inline-block;
+  margin: 5px auto;
+  box-shadow: rgba(0,0,0,0.2) 0px 2px 3px, inset rgba(0,0,0,0.2) 0px -1px 2px;
+  border-radius: 10px;
+}
+
+footer#site-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  z-index: 99;
+}
+
+#fd-copyright-notice {
+  min-height: 10px;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+a#fd-print-link {
+}
+
+i.fd-print {
+  @extend .fa;
+  @extend .fa-print;
+  margin-left: 5px;
+}
