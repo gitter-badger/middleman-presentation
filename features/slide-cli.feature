@@ -132,5 +132,5 @@ Feature: Add new slide
     When I run `middleman slide`
     Then the output should contain:
     """
-    asdf
+    You need to define argument "name"
     """
