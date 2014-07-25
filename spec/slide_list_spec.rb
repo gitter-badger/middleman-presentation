@@ -71,7 +71,6 @@ RSpec.describe SlideList do
     it 'iterates over all non existing slides because they are assumed to be new' do
       slide = double('Slide')
       expect(slide).to receive(:exist?).and_return false
-      expect(slide).to receive(:name).and_return '01'
 
       slide_builder = double('Middleman::Presentation::NewSlide')
       allow(slide_builder).to receive(:new).and_return slide
@@ -84,7 +83,6 @@ RSpec.describe SlideList do
     it 'returns all existing slides' do
       slide = double('Slide')
       expect(slide).to receive(:exist?).and_return true
-      expect(slide).to receive(:name).and_return '01'
 
       slide_builder = double('Middleman::Presentation::NewSlide')
       allow(slide_builder).to receive(:new).and_return slide

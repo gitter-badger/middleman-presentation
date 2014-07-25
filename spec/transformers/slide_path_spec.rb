@@ -19,7 +19,7 @@ RSpec.describe Transformers::SlidePath do
       expect(slide).to receive(:file_name).and_return file_name
       expect(slide).to receive(:path=).with File.join(base_path, file_name)
 
-      transformer = Transformers::SlidePath.new(base_path: 'path')
+      transformer = Transformers::SlidePath.new('path')
       transformer.transform slide
     end
   end
