@@ -11,12 +11,12 @@ RSpec.describe Transformers::TemplateFinder do
   end
 
   context '#transform' do
-    it 'sets file name to <>.html.erb if no extension is given' do
+    it 'sets file name to <>.html.md if no extension is given' do
       slide = instance_double('Middleman::Presentation::NewSlide')
       allow(slide).to receive(:name).and_return '01'
       allow(slide).to receive(:extname).and_return nil
       expect(slide).to receive(:template=).with(kind_of(Erubis::Eruby))
-      expect(slide).to receive(:file_name=).with "01.html.erb"
+      expect(slide).to receive(:file_name=).with "01.html.md"
 
       transformer = Transformers::TemplateFinder.new
       transformer.transform slide
