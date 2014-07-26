@@ -50,10 +50,14 @@ Then /^I go to "([^"]*)" and see the following error message:$/ do |url, message
   expect(message).to include message
 end
 
-
 Then(/^a directory named "(.*?)" is a git repository$/) do |name|
   step %Q{a directory named "#{name}/.git" should exist}
 end
+
+Then /^the status code should be "([^\"]*)"$/ do |expected|
+  expect(@browser.last_response.status).to eq expected.to_i
+end
+
 
 #Given(/^a home directory for testing$/) do
 #  @_old_home = ENV['HOME']
