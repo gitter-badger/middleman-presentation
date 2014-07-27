@@ -4,19 +4,13 @@ module Middleman
     module Transformers
       class TemplateFinder
         def transform(slide)
-          basename = File.basename(slide.name, '.*')
-
-          if slide.extname == '.erb'
-            slide.file_name = "#{basename}.html.erb"
+          if slide.type == :erb
             template_file = template('slide.erb.tt')
-          elsif slide.extname == '.md' or slide.extname == '.markdown'
-            slide.file_name = "#{basename}.html.md"
+          elsif slide.type == :md
             template_file = template('slide.md.tt')
-          elsif slide.extname == '.l' or slide.extname == '.liquid'
-            slide.file_name = "#{basename}.html.liquid"
+          elsif slide.type == :liquid
             template_file = template('slide.liquid.tt')
           else
-            slide.file_name = "#{basename}.html.md"
             template_file = template('slide.md.tt')
           end
 

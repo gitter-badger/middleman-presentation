@@ -4,7 +4,7 @@ module Middleman
     class NewSlide
       include Comparable
 
-      attr_accessor :name, :template, :path, :file_name
+      attr_accessor :name, :template, :path, :file_name, :content, :type
 
       def initialize(name:)
         @name     = name
@@ -16,6 +16,8 @@ module Middleman
       end
 
       def content(**data)
+        return @content if content
+
         template.result(data)
       end
 

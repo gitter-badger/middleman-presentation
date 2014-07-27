@@ -4,7 +4,11 @@ module Middleman
     module Helpers
       # Yield slides
       def yield_slides
-        repo = Presentation::SlideRepository.new(File.join(source_dir, extensions[:presentation].options.slides_directory))
+        
+        list = SlidList.new File.join(source_dir, extensions[:presentation].options.slides_directory) do |l|
+          l.transform_with IgnoreSlides.new File.join(root, extensions[:presentation].options.ignore_file)
+          l.transform_with SortSlides.new
+        end
 
         repo.all.sort.collect do |s|
           begin

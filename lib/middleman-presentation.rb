@@ -28,6 +28,10 @@ require 'middleman-presentation/commands/presentation'
 require 'middleman-presentation/commands/theme'
 require 'middleman-presentation/transformers/slide_path'
 require 'middleman-presentation/transformers/template_finder'
+require 'middleman-presentation/transformers/slide_name'
+require 'middleman-presentation/transformers/sort_slides'
+require 'middleman-presentation/transformers/remove_duplicate_slides'
+require 'middleman-presentation/transformers/ignore_slides'
 require 'middleman-presentation/sprocket_extension_overwrite'
 
 ::Middleman::Extensions.register(:presentation) do
