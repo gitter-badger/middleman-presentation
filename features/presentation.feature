@@ -4,7 +4,6 @@ Feature: Run presentation
   I want to run an already created presentation
   In order to use it
 
-  @wip
   Scenario: Run it
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation

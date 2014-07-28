@@ -8,6 +8,10 @@ Given(/^I initialized middleman for a new presentation$/) do
   step %Q{I successfully run `bundle install`}
 end
 
+Given(/I install bundle/) do
+  step %Q{I successfully run `bundle update`}
+end
+
 Given(/^I created a new presentation with title "([^"]+)" for speaker "([^"]+)"$/) do |title, speaker|
   step %Q{I initialized middleman for a new presentation}
   step %Q{I successfully run `bundle install`}
