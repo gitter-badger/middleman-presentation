@@ -1,19 +1,17 @@
 # encoding: utf-8
+require 'spec_helper'
+
 RSpec.describe Transformers::SortSlides do
   context '#transform' do
     it 'sorts slides' do
-      slide1 = instance_double('Middleman::Presentation::Slide')
-      allow(slide1).to receive(:file_name).and_return('01.html.erb')
-
-      slide2 = instance_double('Middleman::Presentation::Slide')
-      allow(slide2).to receive(:file_name).and_return('02.html.erb')
-
       slides = []
-      slides << slide2
-      slides << slide1
+      slides << 1
+      slides << 3
+      slides << 2
 
       slides = Transformers::SortSlides.new.transform(slides)
-      expect(slides.first).to be slide1
+      expect(slides.first).to eq 1
+      expect(slides.last).to eq 3
     end
   end
 end
