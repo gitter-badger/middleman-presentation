@@ -44,16 +44,10 @@ RSpec.describe SlideList do
       list = SlideList.new(%w{ 01 02 03 }, slide_builder: slide_builder)
       expect(list.all.size).to eq 3
     end
-
-    it 'fails on duplicate slide names' do
-      expect {
-        SlideList.new(%w{01.erb 01.md})
-      }.to raise_error ArgumentError
-    end
   end
 
   context '#transform_with' do
-    it 'takes a transformer an to modify each entry' do
+    it 'takes a transformer to modify each entry' do
       slide = double('Middleman::Presentation::Slide')
       allow(slide).to receive(:name).and_return '01'
 
@@ -63,7 +57,9 @@ RSpec.describe SlideList do
       transformer = double('Transformer')
       expect(transformer).to receive(:transform)
 
-      SlideList.new(%w{01}, slide_builder: slide_builder).transform_with transformer
+      SlideList.new(%w{01}, slide_builder: slide_builder) do |l|
+        l.transform_with transformer
+      end
     end
   end
 

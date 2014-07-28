@@ -11,73 +11,37 @@ RSpec.describe Transformers::TemplateFinder do
   end
 
   context '#transform' do
-    it 'sets file name to <>.html.erb if no extension is given' do
+    it 'sets template for erb slide' do
       slide = instance_double('Middleman::Presentation::Slide')
-      allow(slide).to receive(:name).and_return '01'
-      allow(slide).to receive(:extname).and_return nil
-      expect(slide).to receive(:template=).with(kind_of(Erubis::Eruby))
-      expect(slide).to receive(:file_name=).with "01.html.erb"
       expect(slide).to receive(:type).and_return :erb
+      expect(slide).to receive(:template=)
 
       transformer = Transformers::TemplateFinder.new
       transformer.transform [slide]
     end
 
-    it 'sets file name to <>.html.erb if extension is erb' do
+    it 'sets template for markdown slide' do
       slide = instance_double('Middleman::Presentation::Slide')
-      allow(slide).to receive(:name).and_return '01'
-      allow(slide).to receive(:extname).and_return '.erb'
-      expect(slide).to receive(:template=).with(kind_of(Erubis::Eruby))
-      expect(slide).to receive(:file_name=).with "01.html.erb"
-      expect(slide).to receive(:type).and_return :erb
-
-      transformer = Transformers::TemplateFinder.new
-      transformer.transform [slide]
-    end
-
-    it 'sets file name to <>.html.md if extension is md' do
-      slide = instance_double('Middleman::Presentation::Slide')
-      allow(slide).to receive(:name).and_return '01'
-      allow(slide).to receive(:extname).and_return '.md'
-      expect(slide).to receive(:template=).with(kind_of(Erubis::Eruby))
-      expect(slide).to receive(:file_name=).with "01.html.md"
       expect(slide).to receive(:type).and_return :md
+      expect(slide).to receive(:template=)
 
       transformer = Transformers::TemplateFinder.new
       transformer.transform [slide]
     end
 
-    it 'sets file name to <>.html.md if extension is markdown' do
+    it 'sets template for markdown slide' do
       slide = instance_double('Middleman::Presentation::Slide')
-      allow(slide).to receive(:name).and_return '01'
-      allow(slide).to receive(:extname).and_return '.markdown'
-      expect(slide).to receive(:template=).with(kind_of(Erubis::Eruby))
-      expect(slide).to receive(:file_name=).with "01.html.md"
-      expect(slide).to receive(:type).and_return :md
+      expect(slide).to receive(:type).and_return :xz
+      expect(slide).to receive(:template=)
 
       transformer = Transformers::TemplateFinder.new
       transformer.transform [slide]
     end
 
-    it 'sets file name to <>.html.liquid if extension is l' do
+    it 'sets template for liquid slide' do
       slide = instance_double('Middleman::Presentation::Slide')
-      allow(slide).to receive(:name).and_return '01'
-      allow(slide).to receive(:extname).and_return '.l'
-      expect(slide).to receive(:template=).with(kind_of(Erubis::Eruby))
-      expect(slide).to receive(:file_name=).with "01.html.liquid"
       expect(slide).to receive(:type).and_return :liquid
-
-      transformer = Transformers::TemplateFinder.new
-      transformer.transform [slide]
-    end
-
-    it 'sets file name to <>.html.liquid if extension is liquid' do
-      slide = instance_double('Middleman::Presentation::Slide')
-      allow(slide).to receive(:name).and_return '01'
-      allow(slide).to receive(:extname).and_return '.liquid'
-      expect(slide).to receive(:template=).with(kind_of(Erubis::Eruby))
-      expect(slide).to receive(:file_name=).with "01.html.liquid"
-      expect(slide).to receive(:type).and_return :liquid
+      expect(slide).to receive(:template=)
 
       transformer = Transformers::TemplateFinder.new
       transformer.transform [slide]
