@@ -16,7 +16,7 @@ module Middleman
                               template('slide.md.tt')
                             end
 
-            slide.template = Erubis::Eruby.new(File.read(template_file)) if slide.respond_to? :template
+            slide.template = Erubis::Eruby.new(File.read(template_file))
 
             slide
           end
