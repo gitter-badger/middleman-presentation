@@ -136,7 +136,7 @@ Feature: Add new slide
     When I run `middleman slide 02.erb 02.md 03.erb 03.md 03.liquid`
     And the output should contain:
     """
-    I found duplicate slide names: "02.erb", "02.md"
+    Your input will result in duplicate slide file names: "02.html.md", "02.html.erb". Maybe there are any existing slide names conflicting your input, e.g. 01.html.md (markdown) already exists and you try to create 01.html.erb (eruby)
     """
 
   Scenario: Missing slide name
