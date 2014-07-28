@@ -10,15 +10,12 @@ module Middleman
       public
 
       def initialize(names, slide_builder: NewSlide, &block)
-        names = Array(names)
-        @slides = names.map { |n| slide_builder.new(name: n) }
+        @slides = Array(names).map { |n| slide_builder.new(name: n) }
         @transformers = []
-
-        fail ArgumentError, I18n.t('errors.duplicate_slide_names', slide_names: duplicates.map { |d| d.name }.to_list) unless duplicates.blank?
 
         block.call(self) if block_given?
 
-        transformers.inject(slides) { |slides, t| t.transform(s) }
+        @slides = transformers.inject(@slides) { |memo, t| t.transform(memo) }
       end
 
       def transform_with(transformer)

@@ -5,19 +5,19 @@ module Middleman
 
       private
 
-      attr_reader :consider, :ignore
+      attr_reader :unignore, :ignore
 
       public
 
       def initialize(ignore_file:)
-        @consider = []
+        @unignore = []
         @ignore   = []
 
         File.open(ignore_file, 'r') do |l|
           if l =~ /^!/
-            @consider << Regexp.new(l)
+            @unignore << Regexp.new(l)
           else
-            @allowed  << Regexp.new(l)
+            @ignore   << Regexp.new(l)
           end
         end
       end

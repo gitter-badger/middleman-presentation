@@ -19,15 +19,12 @@ module Middleman
       private
 
       def duplicates(slides, raise_error)
-        duplicate_slide = slides.find { |e| slides.count(e) > 1 }
+        duplicate_slides = slides.find { |e| slides.count(e) > 1 }
 
-        if duplicate_slide.blank? 
-          unless raise_error
-          return [] i
-          raise_error
-        fail ArgumentError, I18n.t('errors.duplicate_slide_names', slide_names: duplicates.map { |d| d.name }.to_list) unless duplicate_slide.blank?
+        fail ArgumentError, I18n.t('errors.duplicate_slide_names', slide_names: duplicate_slides.map(&:name).to_list) if duplicate_slides.blank? and raise_error
+        return [] if duplicate_slides.blank? 
 
-        slides.find_all { |s| s.basename == duplicate_slide.basename }
+        slides.find_all { |s| s.basename == duplicate_slides.basename }
       end
     end
   end

@@ -34,7 +34,6 @@ module Middleman
           presentation_inst = shared_instance.extensions[:presentation]
 
           slide_list = Middleman::Presentation::SlideList.new(names) do |l|
-            l.transform_with Middleman::Presentation::Transformers::SlideName.new
             l.transform_with Middleman::Presentation::Transformers::SlidePath.new File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
             l.transform_with Middleman::Presentation::Transformers::TemplateFinder.new
             l.transform_with Middleman::Presentation::Transformers::RemoveDuplicateSlides.new(use: Middleman::Presentation::SlideList.new(shared_instance.source_dir, extensions[:presentation].options.slides_directory))

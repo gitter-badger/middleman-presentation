@@ -1,9 +1,11 @@
 # encoding: utf-8
 module Middleman
   module Presentation
-    class SortSlides
-      def transform(slides)
-        slides.sort
+    module Transformers
+      class SortSlides
+        def transform(slides)
+          slides.sort
+        end
       end
     end
   end

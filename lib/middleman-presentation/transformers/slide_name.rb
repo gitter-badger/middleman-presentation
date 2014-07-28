@@ -21,7 +21,6 @@ module Middleman
 
         slide
       end
-
     end
   end
 end
