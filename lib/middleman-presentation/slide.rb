@@ -13,7 +13,7 @@ module Middleman
       end
 
       def write(**data)
-        File.open(path, 'w:b') do |f|
+        File.open(path, 'wb') do |f|
           f.write(content(**data))
         end
       end
@@ -63,6 +63,8 @@ module Middleman
       end
 
       def similar?(other)
+        return true if eql? other
+
         basename == other.basename
       end
 
