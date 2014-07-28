@@ -10,19 +10,20 @@ module Middleman
       public
 
       def initialize(ignore_file:)
-        @unignore = []
-        @ignore   = []
+        @unignore = Regexp.new
+        @ignore   = Regexp.new
 
         File.open(ignore_file, 'r') do |l|
           if l =~ /^!/
-            @unignore << Regexp.new(l)
+            @unignore = @unignore.union Regexp.new(l)
           else
-            @ignore   << Regexp.new(l)
+            @unignore = @ignore.union Regexp.new(l)
           end
         end
       end
 
       def transform(slides)
+        slides.keep_if { |s| unignore === s.path && !(ignore === s.path) }
       end
     end
   end
