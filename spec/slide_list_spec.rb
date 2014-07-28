@@ -5,10 +5,10 @@ RSpec.describe SlideList do
 
   context '#initialize' do
     it 'requires a list of patterns' do
-      slide = double('Middleman::Presentation::NewSlide')
+      slide = double('Middleman::Presentation::Slide')
       allow(slide).to receive(:name).and_return '01'
 
-      slide_builder = double('Middleman::Presentation::NewSlide')
+      slide_builder = double('Middleman::Presentation::Slide')
       allow(slide_builder).to receive(:new).and_return slide
 
       expect {
@@ -17,10 +17,10 @@ RSpec.describe SlideList do
     end
 
     it 'accepts a block' do
-      slide = double('Middleman::Presentation::NewSlide')
+      slide = double('Middleman::Presentation::Slide')
       allow(slide).to receive(:name).and_return '01'
 
-      slide_builder = double('Middleman::Presentation::NewSlide')
+      slide_builder = double('Middleman::Presentation::Slide')
       allow(slide_builder).to receive(:new).and_return slide
 
       expect {
@@ -35,7 +35,7 @@ RSpec.describe SlideList do
       create_file '01'
       create_file '02'
 
-      slide_builder = double('Middleman::Presentation::NewSlide')
+      slide_builder = double('Middleman::Presentation::Slide')
 
       %w{01 02 03}.each do |name|
         expect(slide_builder).to receive(:new).with(name: name).and_return(OpenStruct.new(name: name))
@@ -54,10 +54,10 @@ RSpec.describe SlideList do
 
   context '#transform_with' do
     it 'takes a transformer an to modify each entry' do
-      slide = double('Middleman::Presentation::NewSlide')
+      slide = double('Middleman::Presentation::Slide')
       allow(slide).to receive(:name).and_return '01'
 
-      slide_builder = double('Middleman::Presentation::NewSlide')
+      slide_builder = double('Middleman::Presentation::Slide')
       allow(slide_builder).to receive(:new).and_return slide
 
       transformer = double('Transformer')
@@ -72,7 +72,7 @@ RSpec.describe SlideList do
       slide = double('Slide')
       expect(slide).to receive(:exist?).and_return false
 
-      slide_builder = double('Middleman::Presentation::NewSlide')
+      slide_builder = double('Middleman::Presentation::Slide')
       allow(slide_builder).to receive(:new).and_return slide
 
       SlideList.new(%w{01}, slide_builder: slide_builder).each_new { }
@@ -84,7 +84,7 @@ RSpec.describe SlideList do
       slide = double('Slide')
       expect(slide).to receive(:exist?).and_return true
 
-      slide_builder = double('Middleman::Presentation::NewSlide')
+      slide_builder = double('Middleman::Presentation::Slide')
       allow(slide_builder).to receive(:new).and_return slide
 
       existing_slides = SlideList.new(%w{01}, slide_builder: slide_builder).existing_slides
