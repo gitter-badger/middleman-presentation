@@ -9,7 +9,7 @@ module Middleman
 
       public
 
-      def initialize(names, slide_builder: NewSlide, &block)
+      def initialize(names, slide_builder: Slide, &block)
         @slides = Array(names).map { |n| slide_builder.new(name: n) }
         @transformers = []
 

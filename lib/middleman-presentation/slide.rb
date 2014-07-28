@@ -1,10 +1,10 @@
 # encoding: utf-8
 module Middleman
   module Presentation
-    class NewSlide
+    class Slide
       include Comparable
 
-      attr_accessor :name, :template, :path, :file_name, :content, :type
+      attr_accessor :name, :template, :path, :file_name, :content, :type, :partial_path
 
       def initialize(name:)
         @name     = name
