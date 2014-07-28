@@ -4,7 +4,8 @@ module Middleman
     class Slide
       include Comparable
 
-      attr_accessor :name, :template, :path, :file_name, :content, :type, :partial_path
+      attr_accessor :name, :template, :path, :file_name, :type, :partial_path
+      attr_writer :content
 
       def initialize(name:)
         @name     = name
@@ -12,11 +13,13 @@ module Middleman
       end
 
       def write(**data)
-        File.write(content(**data), path)
+        File.open(path, 'w:b') do |f|
+          f.write(content(**data))
+        end
       end
 
       def content(**data)
-        #return @content unless @content.blank?
+        return @content unless @content.blank?
 
         template.result(data)
       end
@@ -28,7 +31,15 @@ module Middleman
       end
 
       def extname
-        File.extname(name)
+        return '' unless file_name
+
+        File.extname(file_name)
+      end
+
+      def has_extname?(*extensions)
+        return false unless file_name
+
+        extensions.all? { |e| extname == e }
       end
 
       def to_s
@@ -40,10 +51,14 @@ module Middleman
       end
 
       def <=>(other)
+        return false unless file_name
+
         file_name <=> other.file_name
       end
 
       def eql?(other)
+        return false unless file_name
+
         file_name.eql? other.file_name
       end
 
