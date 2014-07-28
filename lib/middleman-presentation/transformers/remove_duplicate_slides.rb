@@ -1,30 +1,34 @@
 # encoding: utf-8
 module Middleman
   module Presentation
-    class RemoveDuplicateSlides
-      private
+    module Transformers
+      class RemoveDuplicateSlides
+        private
 
-      attr_reader :additional_slides
+        attr_reader :additional_slides, :raise_error
 
-      public
+        public
 
-      def initialize(additional_slides: nil, raise_error: false)
-        @additional_slides =  additional_slides
-      end
+        def initialize(additional_slides: [], raise_error: false)
+          @additional_slides = additional_slides
+          @raise_error       = raise_error
+        end
 
-      def transform(slides)
-        duplicates(slides + additional_slides, raise_error) 
-      end
+        def transform(slides)
+          temp_slides = (Array(slides) + Array(additional_slides)).uniq
 
-      private
+          duplicate_slides = temp_slides.inject([]) do |memo, t|
+            memo << slides.find_all do |s| 
+              t.similar?(s) && !t.eql?(s) 
+            end
 
-      def duplicates(slides, raise_error)
-        duplicate_slides = slides.find { |e| slides.count(e) > 1 }
+            memo
+          end.flatten
 
-        fail ArgumentError, I18n.t('errors.duplicate_slide_names', slide_names: duplicate_slides.map(&:name).to_list) if duplicate_slides.blank? and raise_error
-        return [] if duplicate_slides.blank? 
+          fail ArgumentError, I18n.t('errors.duplicate_slide_names', slide_names: duplicate_slides.map(&:file_name).to_list) if !duplicate_slides.blank? and raise_error
 
-        slides.find_all { |s| s.basename == duplicate_slides.basename }
+          slides - duplicate_slides
+        end
       end
     end
   end

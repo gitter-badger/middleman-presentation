@@ -3,10 +3,23 @@ module Middleman
   module Presentation
     module Transformers
       class TemplateFinder
-        def transform(slide)
-          slide.template = Erubis::Eruby.new(File.read(template_file)) if slide.respond_to? :template
+        def transform(slides)
+          slides.map do |slide|
+            template_file = case slide.type 
+                            when :erb
+                              template('slide.erb.tt')
+                            when :md
+                              template('slide.md.tt')
+                            when :liquid
+                              template('slide.liquid.tt')
+                            else
+                              template('slide.md.tt')
+                            end
 
-          slide
+            slide.template = Erubis::Eruby.new(File.read(template_file)) if slide.respond_to? :template
+
+            slide
+          end
         end
 
         private

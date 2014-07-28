@@ -1,29 +1,31 @@
 # encoding: utf-8
 module Middleman
   module Presentation
-    class IgnoreDuplicates
+    module Transformers
+      class IgnoreDuplicates
 
-      private
+        private
 
-      attr_reader :unignore, :ignore
+        attr_reader :unignore, :ignore
 
-      public
+        public
 
-      def initialize(ignore_file:)
-        @unignore = Regexp.new
-        @ignore   = Regexp.new
+        def initialize(ignore_file:)
+          @unignore = Regexp.new
+          @ignore   = Regexp.new
 
-        File.open(ignore_file, 'r') do |l|
-          if l =~ /^!/
-            @unignore = @unignore.union Regexp.new(l)
-          else
-            @unignore = @ignore.union Regexp.new(l)
+          File.open(ignore_file, 'r') do |l|
+            if l =~ /^!/
+              @unignore = @unignore.union Regexp.new(l)
+            else
+              @unignore = @ignore.union Regexp.new(l)
+            end
           end
         end
-      end
 
-      def transform(slides)
-        slides.keep_if { |s| unignore === s.path && !(ignore === s.path) }
+        def transform(slides)
+          slides.keep_if { |s| unignore === s.path && !(ignore === s.path) }
+        end
       end
     end
   end

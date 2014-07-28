@@ -16,7 +16,7 @@ module Middleman
       end
 
       def content(**data)
-        return @content if content
+        #return @content unless @content.blank?
 
         template.result(data)
       end
@@ -36,19 +36,23 @@ module Middleman
       end
 
       def basename
-        name.scan(/^([^.]+)(?:\..+)?/).flatten.first
+        File.basename(name).scan(/^([^.]+)(?:\..+)?/).flatten.first
       end
 
       def <=>(other)
-        basename <=> other.basename
+        file_name <=> other.file_name
       end
 
       def eql?(other)
-        basename.eql? other.basename
+        file_name.eql? other.file_name
+      end
+
+      def similar?(other)
+        basename == other.basename
       end
 
       def hash
-        basename.hash
+        file_name.hash
       end
     end
   end

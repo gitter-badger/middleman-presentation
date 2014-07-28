@@ -5,7 +5,7 @@ module Middleman
 
       private
 
-      attr_accessor :slides, :transformers
+      attr_accessor :transformers
 
       public
 
@@ -23,7 +23,7 @@ module Middleman
       end
 
       def all
-        slides.uniq.dup
+        @slides.dup
       end
 
       def each_new(&block)
@@ -32,6 +32,10 @@ module Middleman
 
       def existing_slides
         all.keep_if { |s| s.respond_to? :exist? and s.exist? }
+      end
+
+      def to_a
+        all
       end
     end
   end

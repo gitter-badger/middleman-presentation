@@ -6,7 +6,9 @@ module Middleman
       def yield_slides
         
         list = SlideList.new Dir.glob(File.join(source_dir, extensions[:presentation].options.slides_directory, '*')) do |l|
+          l.transform_with Transformers::FileKeeper.new
           l.transform_with Transformers::SlidePath.new File.join(source_dir, extensions[:presentation].options.slides_directory)
+          l.transform_with Transformers::RemoveDuplicateSlides.new
           #l.transform_with Transformers::IgnoreSlides.new File.join(root, extensions[:presentation].options.ignore_file)
           l.transform_with Transformers::SortSlides.new
         end

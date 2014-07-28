@@ -37,6 +37,7 @@ module Middleman
 
       option :edit, false
       option :editor_command, process_environment.fetch('EDITOR', 'vim')
+      option :error_on_duplicates, true
     end
   end
 end

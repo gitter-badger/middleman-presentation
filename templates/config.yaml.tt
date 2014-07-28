@@ -27,6 +27,7 @@
   license
   location
   phone_number
+  error_on_duplicates
   speaker
   theme
   use_logo
