@@ -105,6 +105,11 @@ module Middleman
       def hash
         path.hash
       end
+
+      # Checks if slide is in group 
+      def has_group?(g)
+        group == g
+      end
     end
   end
 end

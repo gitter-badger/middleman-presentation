@@ -23,6 +23,7 @@ module Middleman
         end
 
         private
+
         def extract_group_name(slide)
           name, group  = Pathname.new(slide.name).relative_path_from(Pathname.new(base_path)).split.reverse.map { |s| s.to_s.gsub(%r{/}, ':') }
 

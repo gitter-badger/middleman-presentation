@@ -193,4 +193,19 @@ RSpec.describe Slide do
     end
   end
 
+  context '#has_group?' do
+    it 'succeeds if slide has group' do
+      slide = Slide.new(name: '02')
+      slide.group = 'group'
+
+      expect(slide).to have_group 'group'
+    end
+
+    it 'fails if slide has not group' do
+      slide = Slide.new(name: '02')
+
+      expect(slide).not_to have_group 'group'
+    end
+  end
+
 end
