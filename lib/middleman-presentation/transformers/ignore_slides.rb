@@ -2,29 +2,20 @@
 module Middleman
   module Presentation
     module Transformers
-      class IgnoreDuplicates
+      class IgnoreSlides
 
         private
 
-        attr_reader :unignore, :ignore
+        attr_reader :ignore_file
 
         public
 
-        def initialize(ignore_file:)
-          @unignore = Regexp.new
-          @ignore   = Regexp.new
-
-          File.open(ignore_file, 'r') do |l|
-            if l =~ /^!/
-              @unignore = @unignore.union Regexp.new(l)
-            else
-              @unignore = @ignore.union Regexp.new(l)
-            end
-          end
+        def initialize(ignore_file:, ignore_file_builder: IgnoreFile)
+          @ignore_file = ignore_file_builder.new(ignore_file)
         end
 
         def transform(slides)
-          slides.keep_if { |s| unignore === s.path && !(ignore === s.path) }
+          slides.delete_if { |slide| ignore_file.ignore? slide }
         end
       end
     end

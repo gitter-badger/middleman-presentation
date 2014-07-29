@@ -1,3 +1,4 @@
+@announce
 Feature: Add new slide
 
   As a presentator

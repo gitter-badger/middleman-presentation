@@ -62,19 +62,6 @@ Then /^the status code should be "([^\"]*)"$/ do |expected|
   expect(@browser.last_response.status).to eq expected.to_i
 end
 
-
-#Given(/^a home directory for testing$/) do
-#  @_old_home = ENV['HOME']
-#
-#  ENV['HOME'] = File.expand_path(current_dir)
-#end
-#
-#Before do
-#  step %Q{a home directory for testing}
-#end
-#
-#After do
-#  ENV['HOME'] = @_old_home
-#end
-#
-#
+Then /^I should not see:$/ do |expected|
+  expect(@browser.last_response.body).not_to include(expected.chomp)
+end

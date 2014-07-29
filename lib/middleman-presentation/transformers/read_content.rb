@@ -6,6 +6,8 @@ module Middleman
         def transform(slides)
           slides.map do |slide|
             slide.content = File.read(slide.path) if slide.exist?
+
+            slide
           end
         end
       end

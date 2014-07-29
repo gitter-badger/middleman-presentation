@@ -6,20 +6,20 @@ RSpec.describe Slide do
   context '#<=>' do
     it 'compares slides with same file name' do
       slide1 = Slide.new(name: '01.md')
-      slide1.file_name = '01.html.md'
+      slide1.path = '01.html.md'
 
       slide2 = Slide.new(name: '01.md')
-      slide2.file_name = '01.html.md'
+      slide2.path = '01.html.md'
 
       expect(slide1).to eq slide2
     end
 
     it 'compares slides with different file names' do
       slide1 = Slide.new(name: '01.erb')
-      slide1.file_name = '01.html.erb'
+      slide1.path = '01.html.erb'
 
       slide2 = Slide.new(name: '01.md')
-      slide2.file_name = '01.html.md'
+      slide2.path = '01.html.md'
 
       expect(slide1).not_to eq slide2
     end
@@ -28,18 +28,18 @@ RSpec.describe Slide do
   context '#eql?' do
     it 'succeeds on eqal file names' do
       slide1 = Slide.new(name: '01')
-      slide1.file_name = '01.html.erb'
+      slide1.path = '01.html.erb'
       slide2 = Slide.new(name: '01')
-      slide2.file_name = '01.html.erb'
+      slide2.path = '01.html.erb'
 
       expect(slide1.eql?(slide2)).to be_truthy
     end
 
     it 'fails on different names' do
       slide1 = Slide.new(name: '01')
-      slide1.file_name = '01.html.erb'
+      slide1.path = '01.html.erb'
       slide2 = Slide.new(name: '02')
-      slide2.file_name = '02.html.erb'
+      slide2.path = '02.html.erb'
 
       expect(slide1.eql?(slide2)).to be_falsey
     end
@@ -126,7 +126,7 @@ RSpec.describe Slide do
   context '#extname' do
     it 'returns file extension' do
       slide = Slide.new(name: '02')
-      slide.file_name = '02.html.erb'
+      slide.path = '02.html.erb'
       expect(slide.extname).to eq '.erb'
     end
 
@@ -144,14 +144,20 @@ RSpec.describe Slide do
   context '#extname?' do
     it 'checks on a single file extension' do
       slide = Slide.new(name: '02')
-      slide.file_name = '02.html.erb'
+      slide.path = '02.html.erb'
       expect(slide).to have_extname '.erb'
     end
 
     it 'checks on multiple file extensions' do
       slide = Slide.new(name: '02')
-      slide.file_name = '02.html.erb'
+      slide.path = '02.html.erb'
       expect(slide).not_to have_extname '.xz', '.ab'
+    end
+
+    it 'succeeds if one the extensions is successfull' do
+      slide = Slide.new(name: '02')
+      slide.path = '02.html.erb'
+      expect(slide).to have_extname '.xz', '.erb'
     end
   end
 
@@ -166,8 +172,24 @@ RSpec.describe Slide do
   context '#basename' do
     it 'reduces slide file name to minimum' do
       slide = Slide.new(name: '02')
-      slide.file_name = File.join(working_directory, '02.html.md')
+      slide.path = File.join(working_directory, '02.html.md')
       expect(slide.basename).to eq '02'
+    end
+  end
+
+  context '#match?' do
+    it 'matches full path' do
+      slide = Slide.new(name: '02')
+      slide.path = File.join(working_directory, '02.html.md')
+
+      expect(slide).to be_match(/02/)
+    end
+
+    it 'supports string' do
+      slide = Slide.new(name: '02')
+      slide.path = File.join(working_directory, '02.html.md')
+
+      expect(slide).to be_match('02')
     end
   end
 

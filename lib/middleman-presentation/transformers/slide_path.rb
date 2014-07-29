@@ -17,21 +17,20 @@ module Middleman
         def transform(slides)
           slides.map do |slide|
             if slide.has_extname? '.erb'
-              slide.file_name = "#{slide.basename}.html.erb"
+              slide.path = File.join(base_path, "#{slide.basename}.html.erb")
               slide.type = :erb
             elsif slide.has_extname? '.md', '.markdown', '.mkd'
-              slide.file_name = "#{slide.basename}.html.md"
+              slide.path = File.join(base_path, "#{slide.basename}.html.md")
               slide.type = :md
             elsif slide.has_extname? '.l', '.liquid'
-              slide.file_name = "#{slide.basename}.html.liquid"
+              slide.path = File.join(base_path, "#{slide.basename}.html.liquid")
               slide.type = :liquid
             else
-              slide.file_name = "#{slide.basename}.html.md"
+              slide.path = File.join(base_path, "#{slide.basename}.html.md")
               slide.type = :md
             end
 
             slide.partial_path = File.join(File.basename(base_path), "#{slide.basename}.html")
-            slide.path         = File.join(base_path, slide.file_name)
 
             slide
           end

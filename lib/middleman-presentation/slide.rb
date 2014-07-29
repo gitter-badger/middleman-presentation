@@ -4,7 +4,7 @@ module Middleman
     class Slide
       include Comparable
 
-      attr_accessor :name, :template, :path, :file_name, :type, :partial_path
+      attr_accessor :name, :template, :path, :type, :partial_path
       attr_writer :content
 
       def initialize(name:)
@@ -16,6 +16,10 @@ module Middleman
         File.open(path, 'wb') do |f|
           f.write(content(**data))
         end
+      end
+
+      def file_name
+        File.basename path.to_s
       end
 
       def content(**data)
@@ -31,19 +35,29 @@ module Middleman
       end
 
       def extname
-        return '' if !file_name and !name
+        return '' if !path and !name
 
-        if file_name.blank?
-         File.extname(name)
+        if path.blank?
+          File.extname(name)
         else
-          File.extname(file_name.to_s)
+          File.extname(path)
         end
       end
 
-      def has_extname?(*extensions)
-        return false if !file_name and !name
+      def match?(string_or_regex)
+        regex = if string_or_regex.is_a? String
+                  Regexp.new(string_or_regex)
+                else
+                  string_or_regex
+                end
 
-        extensions.all? { |e| extname == e }
+        regex === path
+      end
+
+      def has_extname?(*extensions)
+        return false if !path and !name
+
+        extensions.any? { |e| extname == e }
       end
 
       def to_s
@@ -55,15 +69,15 @@ module Middleman
       end
 
       def <=>(other)
-        return false unless file_name
+        return false unless path
 
-        file_name <=> other.file_name
+        path <=> other.path
       end
 
       def eql?(other)
-        return false unless file_name
+        return false unless path
 
-        file_name.eql? other.file_name
+        path.eql? other.path
       end
 
       def similar?(other)
@@ -73,7 +87,7 @@ module Middleman
       end
 
       def hash
-        file_name.hash
+        path.hash
       end
     end
   end
