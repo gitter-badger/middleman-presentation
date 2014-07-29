@@ -73,24 +73,26 @@ end
 
 activate :presentation
 
-set :markdown_engine, :kramdown
-set :markdown, parse_block_html: true
+if respond_to? :sprockets and sprockets.respond_to? :import_asset
+  set :markdown_engine, :kramdown
+  set :markdown, parse_block_html: true
 
-sprockets.append_path File.join(root, 'vendor/assets/components')
+  sprockets.append_path File.join(root, 'vendor/assets/components')
 
-patterns = [
-  '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
-  '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
-  '.js',                                    # Javascript
-].map { |e| File.join('vendor/assets/components', "**", "*#{e}" ) }
+  patterns = [
+    '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+    '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+    '.js',                                    # Javascript
+  ].map { |e| File.join('vendor/assets/components', "**", "*#{e}" ) }
 
-require 'rake/file_list'
+  require 'rake/file_list'
 
-Rake::FileList.new(*patterns) do |l|
-  l.exclude(/src/)
-  l.exclude(/test/)
-  l.exclude(/demo/)
-  l.exclude { |f| !File.file? f }
-end.each do |f|
-  sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new('vendor/assets/components'))
+  Rake::FileList.new(*patterns) do |l|
+    l.exclude(/src/)
+    l.exclude(/test/)
+    l.exclude(/demo/)
+    l.exclude { |f| !File.file? f }
+  end.each do |f|
+    sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new('vendor/assets/components'))
+  end
 end
