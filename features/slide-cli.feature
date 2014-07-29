@@ -1,4 +1,3 @@
-@announce
 Feature: Add new slide
 
   As a presentator
@@ -62,7 +61,7 @@ Feature: Add new slide
   Scenario: Edit existing slide with ENV['EDITOR']
     Given a fixture app "presentation-after_init-app"
     And I install bundle
-    And a slide named "02.html.erb" with:
+    And a slide named "02.html.md" with:
     """
     <section>
     <h1>Headline</h1>
@@ -90,7 +89,7 @@ Feature: Add new slide
   Scenario: Edit mixing existing and non-existing slides with ENV['EDITOR']
     Given a fixture app "presentation-after_init-app"
     And I install bundle
-    And a slide named "02.html.erb" with:
+    And a slide named "02.html.md" with:
     """
     <section>
     <h1>Headline</h1>
@@ -137,7 +136,7 @@ Feature: Add new slide
     When I run `middleman slide 02.erb 02.md 03.erb 03.md 03.liquid`
     And the output should contain:
     """
-    Your input will result in duplicate slide file names: "02.html.md", "02.html.erb". Maybe there are any existing slide names conflicting your input, e.g. 01.html.md (markdown) already exists and you try to create 01.html.erb (eruby)
+    Your input will result in duplicate slide file names: "02.html.md", "02.html.erb", "03.html.md", "03.html.liquid", "03.html.erb", "03.html.liquid", "03.html.erb", "03.html.md"
     """
 
   Scenario: Missing slide name
