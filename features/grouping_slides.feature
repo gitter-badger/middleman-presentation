@@ -60,7 +60,6 @@ Feature: Grouping slides
     </section>
     """
 
-  @wip
   Scenario: Read multiple slides within multiple groups from filesystem
     Given a fixture app "presentation-after_init-app"
     And I install bundle
