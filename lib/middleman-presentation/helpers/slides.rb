@@ -13,15 +13,20 @@ module Middleman
           l.transform_with Transformers::IgnoreSlides.new ignore_file: File.join(root, extensions[:presentation].options.slides_ignore_file)
           l.transform_with Transformers::ReadContent.new
           l.transform_with Transformers::SortSlides.new
+          l.transform_with Transformers::GroupSlides.new template: Erubis::Eruby.new(File.read(File.expand_path('../../../../templates/slides/group.erb.tt', __FILE__)))
         end
 
         list.all.map do |slide|
           begin
-            partial slide.partial_path
+            if slide.group?
+              File.read(slide.partial_path)
+            else
+              partial slide.partial_path
+            end
           rescue StandardError => e
 
             message = []
-            message << "Rendering slide \"#{s.relative_path}\" failed with"
+            message << "Rendering slide \"#{slide.partial_path}\" failed with"
             message << e.class.to_s + ": " + e.message
             message << e.backtrace.join("\n")
 

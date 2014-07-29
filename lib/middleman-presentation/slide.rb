@@ -80,6 +80,11 @@ module Middleman
         File.basename(name).scan(/^([^.]+)(?:\..+)?/).flatten.first
       end
 
+      # Check if basename is equal
+      def has_basename?(b)
+        basename == b
+      end
+
       # @private
       def <=>(other)
         return false unless path
@@ -98,7 +103,7 @@ module Middleman
       def similar?(other)
         return true if eql? other
 
-        basename == other.basename
+        has_basename?(other.basename) && has_group?(other.group)
       end
 
       # @private
@@ -109,6 +114,11 @@ module Middleman
       # Checks if slide is in group 
       def has_group?(g)
         group == g
+      end
+
+      # Is group?
+      def group?
+        false
       end
     end
   end
