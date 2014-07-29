@@ -103,10 +103,9 @@ Feature: Grouping slides
     <h1>Hello World #1.1</h1>
     </section>
     <section>
-    <h1>Hello World #1.2</h1>
+      <h1 id="hello-world-12">Hello World #1.2</h1>
     </section>
     </section>
-    
     <section>
     <section>
     <h1>Hello World #2.1</h1>

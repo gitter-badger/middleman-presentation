@@ -21,8 +21,9 @@ module Middleman
             if element.group?
               result = []
               result << element.header
-              result.concat element.slides.map { |e| partial e.partial_path }
-              result << element.header
+              result.concat element.slides.map { |e| partial(e.partial_path).chomp }
+              result << element.footer
+              result.join("\n")
             else
               partial element.partial_path
             end

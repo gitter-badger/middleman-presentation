@@ -5,7 +5,7 @@ module Middleman
       class ReadContent
         def transform(slides)
           slides.map do |slide|
-            slide.content = File.read(slide.path) if slide.exist?
+            slide.content = File.read(slide.path).chomp if slide.exist?
 
             slide
           end
