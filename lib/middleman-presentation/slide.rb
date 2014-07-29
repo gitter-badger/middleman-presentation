@@ -4,7 +4,7 @@ module Middleman
     class Slide
       include Comparable
 
-      attr_accessor :name, :template, :path, :type, :partial_path
+      attr_accessor :name, :template, :path, :type, :partial_path, :group
       attr_writer :content
 
       def initialize(name:)

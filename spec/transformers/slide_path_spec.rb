@@ -20,6 +20,7 @@ RSpec.describe Transformers::SlidePath do
       slide = instance_double('Middleman::Presentation::Slide')
       expect(slide).to receive(:has_extname?).with('.erb').and_return(true)
       expect(slide).to receive(:basename).twice.and_return(base_name)
+      expect(slide).to receive(:group).and_return nil
       expect(slide).to receive(:partial_path=).with(File.join('slides', "#{base_name}.html"))
       expect(slide).to receive(:path=).with File.join(base_path, file_name)
       expect(slide).to receive(:type=).with type
@@ -38,6 +39,7 @@ RSpec.describe Transformers::SlidePath do
       allow(slide).to receive(:has_extname?).with('.erb').and_return(false)
       expect(slide).to receive(:has_extname?).with('.md', '.markdown', '.mkd').and_return(true)
       expect(slide).to receive(:basename).twice.and_return(base_name)
+      expect(slide).to receive(:group).and_return nil
       expect(slide).to receive(:partial_path=).with(File.join('slides', "#{base_name}.html"))
       expect(slide).to receive(:path=).with File.join(base_path, file_name)
       expect(slide).to receive(:type=).with type
@@ -57,6 +59,7 @@ RSpec.describe Transformers::SlidePath do
       allow(slide).to receive(:has_extname?).with('.md', '.markdown', '.mkd').and_return(false)
       allow(slide).to receive(:has_extname?).with('.l', '.liquid').and_return(true)
       expect(slide).to receive(:basename).twice.and_return(base_name)
+      expect(slide).to receive(:group).and_return nil
       expect(slide).to receive(:partial_path=).with(File.join('slides', "#{base_name}.html"))
       expect(slide).to receive(:path=).with File.join(base_path, file_name)
       expect(slide).to receive(:type=).with type
@@ -74,6 +77,7 @@ RSpec.describe Transformers::SlidePath do
       slide = instance_double('Middleman::Presentation::Slide')
       allow(slide).to receive(:has_extname?).and_return(false)
       expect(slide).to receive(:basename).twice.and_return(base_name)
+      expect(slide).to receive(:group).and_return nil
       expect(slide).to receive(:partial_path=).with(File.join('slides', "#{base_name}.html"))
       expect(slide).to receive(:path=).with File.join(base_path, file_name)
       expect(slide).to receive(:type=).with type
@@ -91,6 +95,7 @@ RSpec.describe Transformers::SlidePath do
       slide = instance_double('Middleman::Presentation::Slide')
       allow(slide).to receive(:has_extname?).and_return(false)
       expect(slide).to receive(:basename).twice.and_return(base_name)
+      expect(slide).to receive(:group).and_return nil
       expect(slide).to receive(:partial_path=).with(File.join('slides', "#{base_name}.html"))
       expect(slide).to receive(:path=).with File.join(base_path, file_name)
       expect(slide).to receive(:type=).with type

@@ -34,12 +34,14 @@ module Middleman
         if shared_instance.extensions.key? :presentation
           presentation_inst = shared_instance.extensions[:presentation]
 
-          existing_slides = Middleman::Presentation::SlideList.new(Dir.glob(File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, '*'))) do |l| 
+          existing_slides = Middleman::Presentation::SlideList.new(Dir.glob(File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, '**', '*'))) do |l| 
+            l.transform_with Middleman::Presentation::Transformers::GroupNameFilesystem.new File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
             l.transform_with Middleman::Presentation::Transformers::SlidePath.new File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
             l.transform_with Middleman::Presentation::Transformers::FileKeeper.new
           end
 
           slide_list = Middleman::Presentation::SlideList.new(names) do |l|
+            l.transform_with Middleman::Presentation::Transformers::GroupNameCmdline.new
             l.transform_with Middleman::Presentation::Transformers::SlidePath.new File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
             l.transform_with Middleman::Presentation::Transformers::TemplateFinder.new
             l.transform_with Middleman::Presentation::Transformers::RemoveDuplicateSlides.new(additional_slides: existing_slides, raise_error: options[:error_on_duplicates])
