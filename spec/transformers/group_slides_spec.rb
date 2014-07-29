@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-RSpec.describe Transformers::GroupSlides, :focus do
+RSpec.describe Transformers::GroupSlides do
   context '#initialize' do 
     it 'requires a base directory' do
       template = double('Template')

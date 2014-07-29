@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-RSpec.describe SlideGroup, :focus do
+RSpec.describe SlideGroup do
   context '#initialize' do 
     it 'requires a name, slides and template' do
       template = double('Template')
