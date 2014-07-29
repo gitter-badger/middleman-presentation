@@ -6,7 +6,7 @@ en:
     doubled_arguments: Only one argument of %{arguments} is allowed to be defined.
     template_is_undefined: You need to provide information about your default template within presentations.yaml.
     asset_not_found: I cannot find asset '%{asset}'. Please check the path and try again.
-    duplicate_slide_names: "I found duplicate slide names: %{slide_names}."
+    duplicate_slide_names: "Your input will result in duplicate slide file names: %{slide_names}. Maybe there are any existing slide names conflicting your input, e.g. 01.html.md (markdown) already exists and you try to create 01.html.erb (eruby)."
     missing_argument: You need to define argument "%{argument}".
     missing_data_attribute: "You need to define an option in one of your config or data files: %{message}."
   slides:

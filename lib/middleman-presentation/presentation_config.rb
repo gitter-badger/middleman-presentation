@@ -31,12 +31,16 @@ module Middleman
       option :install_end_slide, true
       option :language, :de
 
+      option :slides_directory, 'slides'
+      option :slides_ignore_file, '.slidesignore'
+
       option :create_stylesheets_directory, true
       option :create_javascripts_directory, true
       option :create_images_directory, true
 
       option :edit, false
       option :editor_command, process_environment.fetch('EDITOR', 'vim')
+      option :error_on_duplicates, true
     end
   end
 end

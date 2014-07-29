@@ -28,6 +28,7 @@ Feature: Initialize middleman-presentation
     # edit: false
     # editor_command: vim
     # email_address:
+    # error_on_duplicates: true
     # homepage:
     # initialize_git: true
     # install_assets: true
@@ -71,6 +72,7 @@ Feature: Initialize middleman-presentation
     # edit: false
     # editor_command: vim
     # email_address:
+    # error_on_duplicates: true
     # homepage:
     # initialize_git: true
     # install_assets: true

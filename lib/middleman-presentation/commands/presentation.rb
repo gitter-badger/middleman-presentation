@@ -133,7 +133,7 @@ module Middleman
           set :markdown_engine, :kramdown
           set :markdown, parse_block_html: true
 
-          #if respond_to? :sprockets and sprockets.respond_to? :import_asset
+          if respond_to? :sprockets and sprockets.respond_to? :import_asset
             sprockets.append_path File.join(root, '#{@bower_directory}')
             
             patterns = [
@@ -152,7 +152,7 @@ module Middleman
             end.each do |f|
               sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new('#{@bower_directory}'))
             end
-          #end
+          end
           EOS
 
           gsub_file 'Gemfile', %r{http://rubygems.org}, 'https://rubygems.org'

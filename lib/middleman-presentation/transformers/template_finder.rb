@@ -3,26 +3,23 @@ module Middleman
   module Presentation
     module Transformers
       class TemplateFinder
-        def transform(slide)
-          basename = File.basename(slide.name, '.*')
+        def transform(slides)
+          slides.map do |slide|
+            template_file = case slide.type 
+                            when :erb
+                              template('slide.erb.tt')
+                            when :md
+                              template('slide.md.tt')
+                            when :liquid
+                              template('slide.liquid.tt')
+                            else
+                              template('slide.md.tt')
+                            end
 
-          if slide.extname == '.erb'
-            slide.file_name = "#{basename}.html.erb"
-            template_file = template('slide.erb.tt')
-          elsif slide.extname == '.md' or slide.extname == '.markdown'
-            slide.file_name = "#{basename}.html.md"
-            template_file = template('slide.md.tt')
-          elsif slide.extname == '.l' or slide.extname == '.liquid'
-            slide.file_name = "#{basename}.html.liquid"
-            template_file = template('slide.liquid.tt')
-          else
-            slide.file_name = "#{basename}.html.md"
-            template_file = template('slide.md.tt')
+            slide.template = Erubis::Eruby.new(File.read(template_file))
+
+            slide
           end
-
-          slide.template = Erubis::Eruby.new(File.read(template_file))
-
-          slide
         end
 
         private
