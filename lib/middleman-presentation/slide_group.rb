@@ -3,42 +3,23 @@ module Middleman
   module Presentation
     class SlideGroup
 
-      private
-
-      attr_reader :template
-
       public
 
-      attr_reader :name, :slides
+      attr_reader :name, :slides, :header, :footer
 
-      def initialize(name:, slides:, template:)
+      def initialize(name:, slides:, header:, footer:)
         @name     = name
         @slides   = slides
-        @template = template
+        @header   = File.read(header).chomp
+        @footer   = File.read(footer).chomp
       end
 
       def partial_path
-        group_file.path
+        slides.map(&:partial_path).to_list
       end
 
       def group?
         true
-      end
-
-      private
-
-      def slides_content
-        slides.inject([]) { |memo, s| memo << s.content; memo }.join("\n")
-      end
-
-      def group_file
-        return @file if @file
-     
-        @file = Tempfile.new("_#{SecureRandom.hex}")
-        @file.write template.result slides: slides_content
-        @file.rewind
-
-        @file
       end
     end
   end

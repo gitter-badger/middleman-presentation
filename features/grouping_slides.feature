@@ -60,19 +60,26 @@ Feature: Grouping slides
     </section>
     """
 
+  @wip
   Scenario: Read multiple slides within multiple groups from filesystem
     Given a fixture app "presentation-after_init-app"
     And I install bundle
+    And a slide named "01.html.md" with:
+    """
+    <section>
+    # Test
+    </section>
+    """
     And a slide named "01namespace/01.html.erb" with:
     """
     <section>
     <h1>Hello World #1.1</h1>
     </section>
     """
-    And a slide named "01namespace/02.html.erb" with:
+    And a slide named "01namespace/02.html.md" with:
     """
     <section>
-    <h1>Hello World #1.2</h1>
+    # Hello World #1.2
     </section>
     """
     And a slide named "02namespace/01.html.erb" with:

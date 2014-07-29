@@ -140,6 +140,7 @@ module Middleman
               '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
               '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
               '.js',                                    # Javascript
+              '.html',                                  # HTML
             ].map { |e| File.join('#{@bower_directory}', "**", "*\#{e}" ) }
 
             require 'rake/file_list'

@@ -42,7 +42,12 @@ module Middleman
               slide.type = :md
             end
 
-            slide.partial_path = File.join(File.basename(base_path), "#{slide.basename}.html")
+            partial_path = []
+            partial_path << File.basename(base_path)
+            partial_path << slide.group if slide.group
+            partial_path << "#{slide.basename}.html"
+
+            slide.partial_path = File.join(*partial_path)
 
             slide
           end

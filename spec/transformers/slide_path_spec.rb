@@ -103,5 +103,23 @@ RSpec.describe Transformers::SlidePath do
       transformer = Transformers::SlidePath.new(base_path)
       transformer.transform [slide]
     end
+
+    it 'handles group for partial path and full path', :focus do
+      base_path = 'path/to/slides'
+      base_name = '01.erb.asdf.md'
+      file_name = "#{base_name}.html.md"
+      type      = :md
+
+      slide = instance_double('Middleman::Presentation::Slide')
+      allow(slide).to receive(:has_extname?).and_return(false)
+      expect(slide).to receive(:basename).twice.and_return(base_name)
+      expect(slide).to receive(:group).and_return 'group'
+      expect(slide).to receive(:partial_path=).with(File.join('slides', 'group', "#{base_name}.html"))
+      expect(slide).to receive(:path=).with File.join(base_path, 'group', file_name)
+      expect(slide).to receive(:type=).with type
+
+      transformer = Transformers::SlidePath.new(base_path)
+      transformer.transform [slide]
+    end
   end
 end

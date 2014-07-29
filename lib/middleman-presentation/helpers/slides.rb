@@ -13,15 +13,18 @@ module Middleman
           l.transform_with Transformers::IgnoreSlides.new ignore_file: File.join(root, extensions[:presentation].options.slides_ignore_file)
           l.transform_with Transformers::ReadContent.new
           l.transform_with Transformers::SortSlides.new
-          l.transform_with Transformers::GroupSlides.new template: Erubis::Eruby.new(File.read(File.expand_path('../../../../templates/slides/group.erb.tt', __FILE__)))
+          l.transform_with Transformers::GroupSlides.new header: File.expand_path('../../../../templates/slides/group.header.erb.tt', __FILE__), footer: File.expand_path('../../../../templates/slides/group.footer.erb.tt', __FILE__)
         end
 
-        list.all.map do |slide|
+        list.all.map do |element|
           begin
-            if slide.group?
-              File.read(slide.partial_path)
+            if element.group?
+              result = []
+              result << element.header
+              result.concat element.slides.map { |e| partial e.partial_path }
+              result << element.header
             else
-              partial slide.partial_path
+              partial element.partial_path
             end
           rescue StandardError => e
 

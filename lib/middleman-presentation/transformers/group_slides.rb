@@ -6,12 +6,13 @@ module Middleman
 
         private
 
-        attr_reader :template
+        attr_reader :header, :footer
 
         public
 
-        def initialize(template:)
-          @template = template
+        def initialize(header:, footer:)
+          @header = header
+          @footer = footer
         end
 
         def transform(slides)
@@ -19,7 +20,7 @@ module Middleman
 
           new_slides = slides.map do |slide|
             if slide.group and groups.none? { |g| g.name == slide.group }
-              slide = group = SlideGroup.new name: slide.group, slides: slides.find_all { |s| s.has_group? slide.group }, template: template
+              slide = group = SlideGroup.new name: slide.group, slides: slides.find_all { |s| s.has_group? slide.group }, header: header, footer: footer
               groups << group
             end
 
