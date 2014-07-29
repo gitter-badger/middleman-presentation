@@ -120,6 +120,11 @@ module Middleman
       def group?
         false
       end
+
+      # Render slide
+      def render(&block)
+        block.call(partial_path)
+      end
     end
   end
 end
