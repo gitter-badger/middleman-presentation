@@ -134,6 +134,11 @@ RSpec.describe Slide do
       slide = Slide.new(name: '02')
       expect(slide.extname).to eq ''
     end
+
+    it 'returns file extension considering name as well' do
+      slide = Slide.new(name: '02.erb')
+      expect(slide.extname).to eq '.erb'
+    end
   end
 
   context '#extname?' do

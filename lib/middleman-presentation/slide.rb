@@ -31,13 +31,17 @@ module Middleman
       end
 
       def extname
-        return '' unless file_name
+        return '' if !file_name and !name
 
-        File.extname(file_name)
+        if file_name.blank?
+         File.extname(name)
+        else
+          File.extname(file_name.to_s)
+        end
       end
 
       def has_extname?(*extensions)
-        return false unless file_name
+        return false if !file_name and !name
 
         extensions.all? { |e| extname == e }
       end
