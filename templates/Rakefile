@@ -16,6 +16,11 @@ task :start do
   sh 'script/start'
 end
 
+desc 'Build presentation'
+task :build do
+  sh 'script/build'
+end
+
 namespace :export do
   desc 'Export presentation as tar-archive'
   task :tar do
