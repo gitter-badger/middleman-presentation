@@ -293,20 +293,20 @@ to provide HTML-attributes to Markdown-elements. Something similar to what
 To use this feature you need to place slides grouped together in a directory.
 
 ```
-# Single slide
+# Single slide without namespace
 01.html.erb
 
-# Group "02_hello" of three slides
+# Group "02_hello" of three slides namespace by 02_hello
 02_hello/01.html.erb
 02_hello/02.html.erb
 02_hello/03.html.erb
 
-# Group "03_world" of two slides
+# Group "03_world" of two slides namespace by 03_world
 03_world/01.html.erb
 03_world/02.html.erb
 ```
 
-If you prefer to use the `slide`-command to create your slides you can create a
+If you prefer to use the `slide`-command to create your slides, you can create a
 namespaced slide by using the following synatx:
 
 ```
@@ -317,7 +317,7 @@ middleman slide 02_hello:01
 middleman slide 02_hello/01
 ```
 
-Those commands will create a directory named `02_hello` and a file name `01.html.erb`.
+Those commands will create a directory named `02_hello` and a file named `01.html.erb`.
 
 ## Creating templates
 
