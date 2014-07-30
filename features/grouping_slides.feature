@@ -21,7 +21,7 @@ Feature: Grouping slides
     </section>
     """
     And the Server is running
-    And I go to "/"
+    When I go to "/"
     Then I should see:
     """
     <section>
