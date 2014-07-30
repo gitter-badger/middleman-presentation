@@ -61,7 +61,6 @@ Feature: Using different templates for slides and groups
     </section>
     """
 
-@wip
   Scenario: Group template
     Given a fixture app "presentation-after_init-app"
     And I install bundle

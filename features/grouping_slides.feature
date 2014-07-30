@@ -11,6 +11,13 @@ Feature: Grouping slides
     Then the following files should exist:
       | source/slides/01namespace/01.html.md |
 
+  Scenario: Create slides in subfolder with different separator
+    Given a fixture app "presentation-after_init-app"
+    And I install bundle
+    When I successfully run `middleman slide 01namespace/01`
+    Then the following files should exist:
+      | source/slides/01namespace/01.html.md |
+
   Scenario: Read slides from filesystem
     Given a fixture app "presentation-after_init-app"
     And I install bundle
