@@ -5,7 +5,7 @@ RSpec.describe Transformers::TemplateFinder do
   context '#initialize' do 
     it 'requires a base directory' do
       expect {
-        Transformers::TemplateFinder.new
+        Transformers::TemplateFinder.new 'path'
       }.not_to raise_error
     end
   end
@@ -16,7 +16,7 @@ RSpec.describe Transformers::TemplateFinder do
       expect(slide).to receive(:type).and_return :erb
       expect(slide).to receive(:template=)
 
-      transformer = Transformers::TemplateFinder.new
+      transformer = Transformers::TemplateFinder.new 'path'
       transformer.transform [slide]
     end
 
@@ -25,7 +25,7 @@ RSpec.describe Transformers::TemplateFinder do
       expect(slide).to receive(:type).and_return :md
       expect(slide).to receive(:template=)
 
-      transformer = Transformers::TemplateFinder.new
+      transformer = Transformers::TemplateFinder.new 'path'
       transformer.transform [slide]
     end
 
@@ -34,7 +34,7 @@ RSpec.describe Transformers::TemplateFinder do
       expect(slide).to receive(:type).and_return :xz
       expect(slide).to receive(:template=)
 
-      transformer = Transformers::TemplateFinder.new
+      transformer = Transformers::TemplateFinder.new 'path'
       transformer.transform [slide]
     end
 
@@ -43,7 +43,7 @@ RSpec.describe Transformers::TemplateFinder do
       expect(slide).to receive(:type).and_return :liquid
       expect(slide).to receive(:template=)
 
-      transformer = Transformers::TemplateFinder.new
+      transformer = Transformers::TemplateFinder.new 'path'
       transformer.transform [slide]
     end
   end
