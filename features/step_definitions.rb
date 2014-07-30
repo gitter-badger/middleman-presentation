@@ -26,8 +26,16 @@ Given(/^I created a new presentation with title "(.*?)" for speaker "(.*?)" but 
   step %Q{I successfully run `bundle install`}
 end
 
-Given(/^a slide named "(.*?)" with:$/) do |slide_name, string|
-  step %Q{a file named "source/slides/#{slide_name}" with:}, string
+Given(/^a slide named "(.*?)" with:$/) do |name, string|
+  step %Q{a file named "source/slides/#{name}" with:}, string
+end
+
+Given(/^a project template named "(.*?)" with:$/) do |name, string|
+  step %Q{a file named "templates/#{name}" with:}, string
+end
+
+Given(/^a user template named "(.*?)" with:$/) do |name, string|
+  step %Q{a file named "~/.config/middleman/presentation/templates/#{name}" with:}, string
 end
 
 Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
@@ -43,7 +51,7 @@ Then(/^a presentation theme named "(.*?)" should exist( with default files\/dire
   end
 end
 
-Then /^I go to "([^"]*)" and see the following error message:$/ do |url, message|
+Then(/^I go to "([^"]*)" and see the following error message:$/) do |url, message|
   message = capture :stderr do
     begin
       @browser.get(URI.escape(url))
@@ -58,10 +66,15 @@ Then(/^a directory named "(.*?)" is a git repository$/) do |name|
   step %Q{a directory named "#{name}/.git" should exist}
 end
 
-Then /^the status code should be "([^\"]*)"$/ do |expected|
+Then(/^the status code should be "([^\"]*)"$/)do |expected|
   expect(@browser.last_response.status).to eq expected.to_i
 end
 
-Then /^I should not see:$/ do |expected|
+Then(/^I should not see:$/) do |expected|
   expect(@browser.last_response.body).not_to include(expected.chomp)
 end
+
+Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
+  step %Q{the file "source/slides/#{name}" should contain:}, string
+end
+
