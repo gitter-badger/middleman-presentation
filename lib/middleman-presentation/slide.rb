@@ -77,7 +77,7 @@ module Middleman
 
       # Return basename of slide
       def basename
-        File.basename(name).scan(/^([^.]+)(?:\..+)?/).flatten.first
+        File.basename(name, '.*')
       end
 
       # Check if basename is equal

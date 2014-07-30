@@ -37,3 +37,28 @@ Feature: Run presentation
     """
     slideNumber: true
     """
+
+  @broken
+  Scenario: Stacked slide templates
+    Given a fixture app "presentation-before_init-app"
+    And I initialized middleman for a new presentation
+    And I successfully run `middleman presentation --title "Test" --author "Author123"`
+    And a slide named "02.html.md.erb" with:
+    """
+    <section>
+
+    # Headline
+
+    <%= data.metadata.speaker -%>
+
+    </section>
+    """
+    And the Server is running
+    When I go to "/"
+    Then I should see:
+    """
+    <section>
+    <h1>Headline</h1>
+    Author123
+    </section>
+    """

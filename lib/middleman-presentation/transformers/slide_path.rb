@@ -21,22 +21,22 @@ module Middleman
             path_parts << slide.group if slide.group
 
             if slide.has_extname? '.erb'
-              path_parts << "#{slide.basename}.html.erb"
+              path_parts << "#{slide.basename}.erb"
 
               slide.path = File.join(*path_parts)
               slide.type = :erb
             elsif slide.has_extname? '.md', '.markdown', '.mkd'
-              path_parts << "#{slide.basename}.html.md"
+              path_parts << "#{slide.basename}.md"
 
               slide.path = File.join(*path_parts)
               slide.type = :md
             elsif slide.has_extname? '.l', '.liquid'
-              path_parts << "#{slide.basename}.html.liquid"
+              path_parts << "#{slide.basename}.liquid"
 
               slide.path = File.join(*path_parts)
               slide.type = :liquid
             else
-              path_parts << "#{slide.basename}.html.md"
+              path_parts << "#{slide.basename}.md"
 
               slide.path = File.join(*path_parts)
               slide.type = :md
@@ -45,7 +45,7 @@ module Middleman
             partial_path = []
             partial_path << File.basename(base_path)
             partial_path << slide.group if slide.group
-            partial_path << "#{slide.basename}.html"
+            partial_path << slide.basename
 
             slide.partial_path = File.join(*partial_path)
 
