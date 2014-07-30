@@ -1,2 +1,2 @@
-default: --tags @wip:3
-all: --tags ~@wip 
+default: --tags @wip:3 --tags ~@broken
+all: --tags ~@wip --tags ~@broken
