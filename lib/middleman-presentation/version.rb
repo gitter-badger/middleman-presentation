@@ -2,6 +2,6 @@
 # Middleman
 module Middleman
   module Presentation
-    VERSION = '0.11.16'
+    VERSION = '0.12.0'
   end
 end
