@@ -342,6 +342,11 @@ There are four different templates available:
 Make sure you've got a working internet connection before running the tests. To
 keep the source code repository lean there tests that download assets via bower.
 
+If you care about licensing, please have a look at [LICENSE.txt](LICENSE.txt).
+As this software would not be possible without the wonderful gems out there,
+there's also an overview about all the licenses used by the required gems at
+[doc/licenses/dependencies.html](doc/licenses/dependencies.html). 
+
 ## Contributing
 
 Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
