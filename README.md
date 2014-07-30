@@ -274,6 +274,8 @@ https://github.com/maxmeyer/reveal.js-template-fedux_org.
 
 ## Creating slides
 
+### Introduction
+
 You need to decide if you want to create slides in pure HTML or if you want to
 use [`Markdown`](http://daringfireball.net/projects/markdown/syntax). It's up
 to you to make your choice. In most cases you should get along with `Markdown`
@@ -283,10 +285,62 @@ Markdown. because it supports "Attribute List Definitions" which can be used,
 to provide HTML-attributes to Markdown-elements. Something similar to what
 [reveal.js](https://github.com/hakimel/reveal.js/#element-attributes) does.
 
+### Grouping Slides
+<a name="grouping_slides"></a>
+
+`reveal.js` has a feature called "vertical slides". You can use this to add
+"additional" slides to you presentation to add some auxiliary information.
+To use this feature you need to place slides grouped together in a directory.
+
+```
+# Single slide
+01.html.erb
+
+# Group "02_hello" of three slides
+02_hello/01.html.erb
+02_hello/02.html.erb
+02_hello/03.html.erb
+
+# Group "03_world" of two slides
+03_world/01.html.erb
+03_world/02.html.erb
+```
+
+If you prefer to use the `slide`-command to create your slides you can create a
+namespaced slide by using the following synatx:
+
+```
+# 1st version
+middleman slide 02_hello:01
+
+# 2nd version
+middleman slide 02_hello/01
+```
+
+Those commands will create a directory named `02_hello` and a file name `01.html.erb`.
+
+## Creating templates
+
+To create slides using the `slide`-command I use templates. They are written in
+Eruby (erb). For a good documentation about Eruby see the [Erubis User
+Guide](http://www.kuwata-lab.com/erubis/users-guide.html). Since `0.11.4`. you
+can have your templates. 
+
+You can store those templates in different directories:
+* presentation local (`<presentation root>/templates/<template>`)
+* user local (`~/.config/middleman/presentation/templates/<template>`, `~/.middleman/presentation/templates/<template>`)
+* system local templates (`/etc/middleman/presentation/templates/<template>`)
+
+There are four different templates available:
+* Erb (`erb.tt`): Templates for generating `Erb`-slides
+* Markdown (`markdown.tt`): Templates for generating `markdown`-slides
+* Liquid (`liquid.tt`): Templates for generating `liquid`-slides
+* Group (`group.tt`): Templates for groups of slides - see (Grouping Slides)[#grouping_slides].
+
 ## Development
 
 Make sure you've got a working internet connection before running the tests. To
-keep the source code repository lean the tests download assets via bower.
+keep the source code repository lean there tests that download assets via bower.
 
 ## Contributing
 
