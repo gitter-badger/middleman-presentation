@@ -140,7 +140,7 @@ module Middleman
               '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
               '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
               '.js',                                    # Javascript
-              '.html',                                  # HTML
+             #'.html',                                  # HTML
             ].map { |e| File.join('#{@bower_directory}', "**", "*\#{e}" ) }
 
             require 'rake/file_list'
@@ -192,7 +192,7 @@ module Middleman
           copy_file 'source/index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 
-          %w{ start bootstrap }.each do |s|
+          %w{ start bootstrap s p slide presentation }.each do |s|
             copy_file File.join('script', s), File.join(shared_instance.root, 'script', s)
             chmod File.join(shared_instance.root, 'script', s), 0755
           end
