@@ -42,7 +42,6 @@ require 'middleman-presentation/transformers/ignore_slides'
 require 'middleman-presentation/transformers/remove_duplicate_slides'
 require 'middleman-presentation/transformers/ignore_slides'
 require 'middleman-presentation/transformers/file_keeper'
-require 'middleman-presentation/sprocket_extension_overwrite'
 
 ::Middleman::Extensions.register(:presentation) do
   require 'middleman-presentation/extension'

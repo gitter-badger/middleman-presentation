@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.1.0'
 
   spec.add_dependency 'middleman', '~> 3.3'
+  spec.add_dependency 'middleman-sprockets', '>= 3.3.4'
   spec.add_dependency 'tzinfo', '>= 0.3.0'
   spec.add_dependency 'addressable', '~> 2.3.5'
   spec.add_dependency 'launchy', '~> 2.4.2'
