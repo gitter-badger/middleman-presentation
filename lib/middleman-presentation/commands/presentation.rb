@@ -196,7 +196,7 @@ module Middleman
           copy_file 'source/index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 
-          %w{ start bootstrap s p slide presentation }.each do |s|
+          %w{ start bootstrap slide presentation build }.each do |s|
             copy_file File.join('script', s), File.join(shared_instance.root, 'script', s)
             chmod File.join(shared_instance.root, 'script', s), 0755
           end
