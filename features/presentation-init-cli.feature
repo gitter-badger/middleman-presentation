@@ -16,6 +16,7 @@ Feature: Initialize middleman-presentation
     # activate_controls: true
     # activate_history: true
     # activate_progress: true
+    # activate_slide_number: true
     # audience:
     # author: my_user
     # bower_directory: vendor/assets/components
@@ -60,6 +61,7 @@ Feature: Initialize middleman-presentation
     # activate_controls: true
     # activate_history: true
     # activate_progress: true
+    # activate_slide_number: true
     # audience:
     # author: my_user
     # bower_directory: vendor/assets/components

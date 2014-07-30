@@ -5,6 +5,7 @@
   activate_controls
   activate_history
   activate_progress
+  activate_slide_number
   audience
   author
   bower_directory

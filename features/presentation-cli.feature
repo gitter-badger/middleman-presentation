@@ -76,12 +76,3 @@ Feature: Initialize presentation
     """
     project_id: uoa
     """
-
-  Scenario: Slide number
-    Given a fixture app "presentation-before_init-app"
-    And I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "Test"`
-    And the file "data/config.yml" should contain:
-    """
-    slide_number: true
-    """
