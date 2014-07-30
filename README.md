@@ -310,11 +310,7 @@ If you prefer to use the `slide`-command to create your slides, you can create a
 namespaced slide by using the following synatx:
 
 ```
-# 1st version
 middleman slide 02_hello:01
-
-# 2nd version
-middleman slide 02_hello/01
 ```
 
 Those commands will create a directory named `02_hello` and a file named `01.html.erb`.
