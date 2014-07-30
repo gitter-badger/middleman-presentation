@@ -40,11 +40,12 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.11.10)
+    middleman-presentation (0.11.11)
       addressable (~> 2.3.5)
       fedux_org-stdlib (>= 0.6.17)
       launchy (~> 2.4.2)
       middleman (~> 3.3)
+      middleman-sprockets (>= 3.3.4)
       rake
       tzinfo (>= 0.3.0)
 
