@@ -285,8 +285,8 @@ Markdown. because it supports "Attribute List Definitions" which can be used,
 to provide HTML-attributes to Markdown-elements. Something similar to what
 [reveal.js](https://github.com/hakimel/reveal.js/#element-attributes) does.
 
-<a name="grouping_slides"></a>
 ### Grouping Slides
+<a name="grouping_slides"></a>
 
 `reveal.js` has a feature called "vertical slides". You can use this to add
 "additional" slides to you presentation to add some auxiliary information.
