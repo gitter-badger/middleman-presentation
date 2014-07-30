@@ -40,6 +40,7 @@ module Middleman
       option :activate_progress, type: :boolean, default: Middleman::Presentation.config.activate_progress, desc: 'Activate progress in reveal.js'
       option :activate_history, type: :boolean, default: Middleman::Presentation.config.activate_history, desc: 'Activate history in reveal.js'
       option :activate_center, type: :boolean, default: Middleman::Presentation.config.activate_center, desc: 'Activate center in reveal.js'
+      option :activate_slide_number, type: :boolean, default: Middleman::Presentation.config.activate_slide_number, desc: 'Activate slide number in reveal.js'
 
       option :default_transition_type, default: Middleman::Presentation.config.default_transition_type, desc: 'Default slide transition. Can be overwridden per slide.'
       option :default_transition_speed, default: Middleman::Presentation.config.default_transition_speed, desc: 'Default speed for slide transition. Can be overwridden per slide.'
@@ -107,12 +108,13 @@ module Middleman
           end
 
           @revealjs_config = {}
-          @revealjs_config[:controls] = options[:activate_controls]
-          @revealjs_config[:progress] = options[:activate_progress]
-          @revealjs_config[:history]  = options[:activate_history]
-          @revealjs_config[:center]   = options[:activate_center]
-          @revealjs_config[:default_transition_type]   = options[:default_transition_type]
-          @revealjs_config[:default_transition_speed]   = options[:default_transition_speed]
+          @revealjs_config[:controls]                 = options[:activate_controls]
+          @revealjs_config[:progress]                 = options[:activate_progress]
+          @revealjs_config[:history]                  = options[:activate_history]
+          @revealjs_config[:center]                   = options[:activate_center]
+          @revealjs_config[:slide_number]             = options[:activate_slide_number]
+          @revealjs_config[:default_transition_type]  = options[:default_transition_type]
+          @revealjs_config[:default_transition_speed] = options[:default_transition_speed]
 
           @links_for_stylesheets = []
           @links_for_javascripts = []

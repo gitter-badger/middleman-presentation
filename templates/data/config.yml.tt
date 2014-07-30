@@ -3,6 +3,7 @@ revealjs:
   controls: <%= @revealjs_config[:controls] %>
   progress: <%= @revealjs_config[:progress] %>
   history: <%= @revealjs_config[:history] %>
+  slide_number: <%= @revealjs_config[:slide_number] %>
   center: <%= @revealjs_config[:center] %>
   default_transition_type: <%= @revealjs_config[:default_transition_type] %>
   default_transition_speed: <%= @revealjs_config[:default_transition_speed] %>

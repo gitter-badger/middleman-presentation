@@ -20,6 +20,7 @@ module Middleman
       option :activate_progress, true
       option :activate_history, true
       option :activate_center, true
+      option :activate_slide_number, true
       option :default_transition_type, 'linear'
       option :default_transition_speed, 'default'
       option :install_assets, true
