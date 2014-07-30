@@ -289,7 +289,7 @@ to provide HTML-attributes to Markdown-elements. Something similar to what
 <a name="grouping_slides"></a>
 
 `reveal.js` has a feature called "vertical slides". You can use this to add
-"additional" slides to you presentation to add some auxiliary information.
+"additional" slides to your presentation to add some auxiliary information.
 To use this feature you need to place slides grouped together in a directory.
 
 ```
