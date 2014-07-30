@@ -14,7 +14,7 @@ module Middleman
         private
 
         def extract_group_name(slide)
-          result = slide.name.split(/:/)
+          result = slide.name.split(%r{:|/})
 
           name = result.pop
           group = result.join(':')
