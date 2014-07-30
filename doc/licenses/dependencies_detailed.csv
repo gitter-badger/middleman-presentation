@@ -1,8 +1,9 @@
-activesupport,4.1.1,MIT,A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.,"A toolkit of support libraries and Ruby core extensions extracted from the Rails framework. Rich support for multibyte strings, internationalization, time zones, and testing."
+activesupport,4.1.4,MIT,A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.,"A toolkit of support libraries and Ruby core extensions extracted from the Rails framework. Rich support for multibyte strings, internationalization, time zones, and testing."
 addressable,2.3.6,Apache 2.0,URI Implementation,"Addressable is a replacement for the URI implementation that is part of
 Ruby's standard library. It more closely conforms to the relevant RFCs and
 adds support for IRIs and URI templates."
 bundler,1.6.2,MIT,The best way to manage your application's dependencies,"Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably"
+celluloid,0.15.2,MIT,Actor-based concurrent object framework for Ruby,Celluloid enables people to build concurrent programs out of concurrent objects just as easily as they build sequential programs out of sequential objects
 chunky_png,1.3.1,MIT,"Pure ruby library for read/write, chunk-level access to PNG files","This pure Ruby library can read and write PNG images without depending on an external 
     image library, like RMagick. It tries to be memory efficient and reasonably fast.
     
@@ -19,13 +20,13 @@ chunky_png,1.3.1,MIT,"Pure ruby library for read/write, chunk-level access to PN
     Also, have a look at OilyPNG at http://github.com/wvanbergen/oily_png. OilyPNG is a 
     drop in mixin module that implements some of the ChunkyPNG algorithms in C, which 
     provides a massive speed boost to encoding and decoding."
-coffee-script,2.2.0,MIT,Ruby CoffeeScript Compiler,Ruby CoffeeScript is a bridge to the JS CoffeeScript compiler.
-coffee-script-source,1.7.0,MIT,The CoffeeScript Compiler,"CoffeeScript is a little language that compiles into JavaScript.
+coffee-script,2.3.0,MIT,Ruby CoffeeScript Compiler,Ruby CoffeeScript is a bridge to the JS CoffeeScript compiler.
+coffee-script-source,1.7.1,MIT,The CoffeeScript Compiler,"CoffeeScript is a little language that compiles into JavaScript.
     Underneath all of those embarrassing braces and semicolons,
     JavaScript has always had a gorgeous object model at its heart.
     CoffeeScript is an attempt to expose the good parts of JavaScript
     in a simple way."
-compass,0.12.6,MIT,A Real Stylesheet Framework,Compass is a Sass-based Stylesheet Framework that streamlines the creation and maintenance of CSS.
+compass,0.12.7,MIT,A Real Stylesheet Framework,Compass is a Sass-based Stylesheet Framework that streamlines the creation and maintenance of CSS.
 compass-import-once,1.0.4,MIT,Speed up your Sass compilation by making @import only import each file once.,Changes the behavior of Sass's @import directive to only import a file once.
 em-websocket,0.5.1,MIT,EventMachine based WebSocket server,EventMachine based WebSocket server
 erubis,2.7.0,MIT,a fast and extensible eRuby implementation which supports multi-language,"Erubis is an implementation of eRuby and has the following features:
@@ -50,7 +51,8 @@ communications protocol. Implementations of several standard network protocols
 are provided with the package, primarily to serve as examples. The real goal
 of EventMachine is to enable programs to easily interface with other programs
 using TCP/IP, especially if custom protocols are required."
-execjs,2.1.0,MIT,Run JavaScript code from Ruby,ExecJS lets you run JavaScript code from Ruby.
+execjs,2.2.1,MIT,Run JavaScript code from Ruby,ExecJS lets you run JavaScript code from Ruby.
+fedux_org-stdlib,0.6.28,MIT,Collection of useful libraries. It maybe depend on external libraries.,""
 ffi,1.9.3,BSD,Ruby FFI,Ruby FFI library
 fssm,0.2.10,MIT,File System State Monitor,"The File System State Monitor keeps track of the state of any number of paths and will fire events when said state changes (create/update/delete). FSSM supports using FSEvents on MacOS, Inotify on GNU/Linux, and polling anywhere else."
 haml,4.0.5,MIT,"An elegant, structured (X)HTML/XML templating engine.","Haml (HTML Abstraction Markup Language) is a layer on top of HTML or XML that's
@@ -61,18 +63,18 @@ but it can function as a stand-alone templating engine."
 hike,1.2.3,MIT,Find files in a set of paths,A Ruby library for finding files in a set of paths.
 hooks,0.4.0,MIT,Generic hooks with callbacks for Ruby.,"Declaratively define hooks, add callbacks and run them with the options you like."
 http_parser.rb,0.6.0,MIT,Simple callback-based HTTP request/response parser,Ruby bindings to http://github.com/ry/http-parser and http://github.com/a2800276/http-parser.java
-i18n,0.6.9,MIT,New wave Internationalization support for Ruby,New wave Internationalization support for Ruby.
+i18n,0.6.11,MIT,New wave Internationalization support for Ruby,New wave Internationalization support for Ruby.
 json,1.8.1,ruby,This json is bundled with Ruby,""
-kramdown,1.3.3,MIT,"kramdown is a fast, pure-Ruby Markdown-superset converter.","kramdown is yet-another-markdown-parser but fast, pure Ruby,
+kramdown,1.4.0,MIT,"kramdown is a fast, pure-Ruby Markdown-superset converter.","kramdown is yet-another-markdown-parser but fast, pure Ruby,
 using a strict syntax definition and supporting several common extensions."
 launchy,2.4.2,ISC,Launchy is helper class for launching cross-platform applications in a fire and forget manner.,"Launchy is helper class for launching cross-platform applications in a fire and forget manner. There are application concepts (browser, email client, etc) that are common across all platforms, and they may be launched differently on each platform. Launchy is here to make a common approach to launching external application from within ruby programs."
-listen,1.3.1,MIT,Listen to file modifications,The Listen gem listens to file modifications and notifies you about the changes. Works everywhere!
+listen,2.7.9,MIT,Listen to file modifications,The Listen gem listens to file modifications and notifies you about the changes. Works everywhere!
 middleman,3.3.3,MIT,Hand-crafted frontend development,"A static site generator. Provides dozens of templating languages (Haml, Sass, Compass, Slim, CoffeeScript, and more). Makes minification, compression, cache busting, Yaml data (and more) an easy part of your development cycle."
 middleman-core,3.3.3,MIT,Hand-crafted frontend development,"A static site generator. Provides dozens of templating languages (Haml, Sass, Compass, Slim, CoffeeScript, and more). Makes minification, compression, cache busting, Yaml data (and more) an easy part of your development cycle."
-middleman-livereload,3.3.3,MIT,LiveReload support for Middleman,LiveReload support for Middleman
-middleman-presentation,0.0.10,MIT,Presentation engine for Middleman,Presentation engine for Middleman
-middleman-sprockets,3.3.3,MIT,Sprockets support for Middleman,Sprockets support for Middleman
-minitest,5.3.4,MIT,"minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking","minitest provides a complete suite of testing facilities supporting
+middleman-livereload,3.3.4,MIT,LiveReload support for Middleman,LiveReload support for Middleman
+middleman-presentation,0.11.5,MIT,Presentation engine for Middleman,""
+middleman-sprockets,3.3.4,MIT,Sprockets support for Middleman,Sprockets support for Middleman
+minitest,5.4.0,MIT,"minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking","minitest provides a complete suite of testing facilities supporting
 TDD, BDD, mocking, and benchmarking.
 
     ""I had a class with Jim Weirich on testing last week and we were
@@ -140,19 +142,41 @@ rack-test,0.6.2,MIT,Simple testing API built on Rack,"Rack::Test is a small, sim
 own or as a reusable starting point for Web frameworks and testing libraries
 to build on. Most of its initial functionality is an extraction of Merb 1.0's
 request helpers feature."
+rake,10.3.2,MIT,Rake is a Make-like program implemented in Ruby,"Rake is a Make-like program implemented in Ruby. Tasks and dependencies are
+specified in standard Ruby syntax.
+
+Rake has the following features:
+
+* Rakefiles (rake's version of Makefiles) are completely defined in
+  standard Ruby syntax.  No XML files to edit.  No quirky Makefile
+  syntax to worry about (is that a tab or a space?)
+
+* Users can specify tasks with prerequisites.
+
+* Rake supports rule patterns to synthesize implicit tasks.
+
+* Flexible FileLists that act like arrays but know about manipulating
+  file names and paths.
+
+* A library of prepackaged tasks to make building rakefiles easier. For example,
+  tasks for building tarballs and publishing to FTP or SSH sites.  (Formerly
+  tasks for building RDoc and Gems were included in rake but they're now
+  available in RDoc and RubyGems respectively.)
+
+* Supports parallel execution of tasks."
 rb-fsevent,0.9.4,MIT,Very simple & usable FSEvents API,FSEvents API with Signals catching (without RubyCocoa)
-rb-inotify,0.9.4,MIT,"A Ruby wrapper for Linux's inotify, using FFI","A Ruby wrapper for Linux's inotify, using FFI"
-rb-kqueue,0.2.2,MIT,"A Ruby wrapper for BSD's kqueue, using FFI","A Ruby wrapper for BSD's kqueue, using FFI"
+rb-inotify,0.9.5,MIT,"A Ruby wrapper for Linux's inotify, using FFI","A Ruby wrapper for Linux's inotify, using FFI"
 sass,3.2.19,MIT,A powerful but elegant CSS compiler that makes CSS fun again.,"Sass makes CSS fun again. Sass is an extension of CSS3, adding
       nested rules, variables, mixins, selector inheritance, and more.
       It's translated to well-formatted, standard CSS using the
       command line tool or a web-framework plugin."
 sprockets,2.12.1,MIT,Rack-based asset packaging system,"Sprockets is a Rack-based asset packaging system that concatenates and serves JavaScript, CoffeeScript, CSS, LESS, Sass, and SCSS."
 sprockets-helpers,1.1.0,MIT,Asset path helpers for Sprockets 2.x applications,Asset path helpers for Sprockets 2.x applications
-sprockets-sass,1.1.0,MIT,Better Sass integration with Sprockets 2.0,"When using Sprockets 2.0 with Sass you will eventually run into a pretty big issue. `//= require` directives will not allow Sass mixins, variables, etc. to be shared between files. So you'll try to use `@import`, and that'll also blow up in your face. `sprockets-sass` fixes all of this by creating a Sass::Importer that is Sprockets aware."
+sprockets-sass,1.2.0,MIT,Better Sass integration with Sprockets 2.0,"When using Sprockets 2.0 with Sass you will eventually run into a pretty big issue. `//= require` directives will not allow Sass mixins, variables, etc. to be shared between files. So you'll try to use `@import`, and that'll also blow up in your face. `sprockets-sass` fixes all of this by creating a Sass::Importer that is Sprockets aware."
 thor,0.19.1,MIT,Thor is a toolkit for building powerful command-line interfaces.,Thor is a toolkit for building powerful command-line interfaces.
 thread_safe,0.3.4,Apache 2.0,A collection of data structures and utilities to make thread-safe programming in Ruby easier,Thread-safe collections and utilities for Ruby
 tilt,1.4.1,MIT,Generic interface to multiple Ruby template engines,Generic interface to multiple Ruby template engines
+timers,1.1.0,MIT,"Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout",Pure Ruby one-shot and periodic timers
 tzinfo,1.2.1,MIT,Daylight savings aware timezone library,TZInfo provides daylight savings aware transformations between times in different time zones.
-uber,0.0.6,MIT,"Gem-authoring tools like class method inheritance in modules, dynamic options and more.",A gem-authoring framework.
-uglifier,2.5.0,MIT,Ruby wrapper for UglifyJS JavaScript compressor,Uglifier minifies JavaScript files by wrapping UglifyJS to be accessible in Ruby
+uber,0.0.7,MIT,"Gem-authoring tools like class method inheritance in modules, dynamic options and more.",A gem-authoring framework.
+uglifier,2.5.3,MIT,Ruby wrapper for UglifyJS JavaScript compressor,Uglifier minifies JavaScript files by wrapping UglifyJS to be accessible in Ruby

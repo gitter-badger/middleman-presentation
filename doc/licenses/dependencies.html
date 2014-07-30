@@ -29,37 +29,22 @@
       <div class="span5">
         <h2>Dependencies</h2>
 
-        <p>As of June  3, 2014  1:00pm</p>
+        <p>As of July 30, 2014  7:11am</p>
 
-        <h4>48 total</h4>
+        <h4>51 total</h4>
 
         <ul>
-                      <li>42 MIT</li>
+                      <li>45 MIT</li>
                       <li>2 Apache 2.0</li>
                       <li>2 ruby</li>
                       <li>1 ISC</li>
                       <li>1 BSD</li>
                   </ul>
       </div>
-              <div class="action-items span5">
-          <h2>Action Items</h2>
-          <h4>
-            1 unapproved
-            <span class="badge badge-important">&#x2717;</span>
-          </h4>
-          <ul>
-                          <li>
-              <a href='#launchy'>
-                launchy
-              </a>
-              (ISC)
-              </li>
-                      </ul>
-        </div>
           </div>
   </div>
   <div class="dependencies">
-          <div id="activesupport" class="approved">
+          <div id="activesupport" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -69,20 +54,20 @@
                   </blockquote>
         <h2>
           <a href="http://www.rubyonrails.org">activesupport</a>
-          <small>v4.1.1 (development, test)</small>
+          <small>v4.1.4 (development, test)</small>
         </h2>
         <h4>A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.</h4>
         <p>A toolkit of support libraries and Ruby core extensions extracted from the Rails framework. Rich support for multibyte strings, internationalization, time zones, and testing.</p>
                   <dl>
             <dt>activesupport is required by:</dt>
-            <dd>i18n, padrino-support, middleman-core</dd>
+            <dd>padrino-support, middleman-core, fedux_org-stdlib</dd>
           </dl>
                           <dl>
             <dt>activesupport relies on:</dt>
             <dd>i18n, json, tzinfo, minitest, thread_safe</dd>
           </dl>
               </div>
-          <div id="addressable" class="approved">
+          <div id="addressable" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a>
@@ -105,10 +90,10 @@ adds support for IRIs and URI templates.
           </dl>
                           <dl>
             <dt>addressable relies on:</dt>
-            <dd>launchy</dd>
+            <dd>launchy, rake</dd>
           </dl>
               </div>
-          <div id="bundler" class="approved">
+          <div id="bundler" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -127,7 +112,30 @@ adds support for IRIs and URI templates.
             <dd>compass-import-once, rb-fsevent, listen, thor, middleman-core, multi_json, uglifier</dd>
           </dl>
                       </div>
-          <div id="chunky_png" class="approved">
+          <div id="celluloid" class="clearfix approved">
+        <blockquote class="pull-right">
+                      <p>
+              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+              whitelisted
+              <span class="badge badge-success">&#x2713;</span>
+            </p>
+                  </blockquote>
+        <h2>
+          <a href="https://github.com/celluloid/celluloid">celluloid</a>
+          <small>v0.15.2</small>
+        </h2>
+        <h4>Actor-based concurrent object framework for Ruby</h4>
+        <p>Celluloid enables people to build concurrent programs out of concurrent objects just as easily as they build sequential programs out of sequential objects</p>
+                  <dl>
+            <dt>celluloid is required by:</dt>
+            <dd>listen</dd>
+          </dl>
+                          <dl>
+            <dt>celluloid relies on:</dt>
+            <dd>timers, rake</dd>
+          </dl>
+              </div>
+          <div id="chunky_png" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -161,8 +169,12 @@ adds support for IRIs and URI templates.
             <dt>chunky_png is required by:</dt>
             <dd>compass</dd>
           </dl>
-                      </div>
-          <div id="coffee-script" class="approved">
+                          <dl>
+            <dt>chunky_png relies on:</dt>
+            <dd>rake</dd>
+          </dl>
+              </div>
+          <div id="coffee-script" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -172,7 +184,7 @@ adds support for IRIs and URI templates.
                   </blockquote>
         <h2>
           <a href="http://github.com/josh/ruby-coffee-script">coffee-script</a>
-          <small>v2.2.0</small>
+          <small>v2.3.0</small>
         </h2>
         <h4>Ruby CoffeeScript Compiler</h4>
         <p>    Ruby CoffeeScript is a bridge to the JS CoffeeScript compiler.
@@ -183,10 +195,10 @@ adds support for IRIs and URI templates.
           </dl>
                           <dl>
             <dt>coffee-script relies on:</dt>
-            <dd>coffee-script-source, execjs</dd>
+            <dd>coffee-script-source, execjs, json, rake</dd>
           </dl>
               </div>
-          <div id="coffee-script-source" class="approved">
+          <div id="coffee-script-source" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -196,7 +208,7 @@ adds support for IRIs and URI templates.
                   </blockquote>
         <h2>
           <a href="http://jashkenas.github.com/coffee-script/">coffee-script-source</a>
-          <small>v1.7.0</small>
+          <small>v1.7.1</small>
         </h2>
         <h4>The CoffeeScript Compiler</h4>
         <p>    CoffeeScript is a little language that compiles into JavaScript.
@@ -210,7 +222,7 @@ adds support for IRIs and URI templates.
             <dd>coffee-script, sprockets</dd>
           </dl>
                       </div>
-          <div id="compass" class="approved">
+          <div id="compass" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -220,7 +232,7 @@ adds support for IRIs and URI templates.
                   </blockquote>
         <h2>
           <a href="http://compass-style.org">compass</a>
-          <small>v0.12.6</small>
+          <small>v0.12.7</small>
         </h2>
         <h4>A Real Stylesheet Framework</h4>
         <p>Compass is a Sass-based Stylesheet Framework that streamlines the creation and maintenance of CSS.</p>
@@ -233,7 +245,7 @@ adds support for IRIs and URI templates.
             <dd>sass, chunky_png, fssm</dd>
           </dl>
               </div>
-          <div id="compass-import-once" class="approved">
+          <div id="compass-import-once" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -253,10 +265,10 @@ adds support for IRIs and URI templates.
           </dl>
                           <dl>
             <dt>compass-import-once relies on:</dt>
-            <dd>sass, bundler</dd>
+            <dd>sass, bundler, rake</dd>
           </dl>
               </div>
-          <div id="em-websocket" class="approved">
+          <div id="em-websocket" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -279,7 +291,7 @@ adds support for IRIs and URI templates.
             <dd>eventmachine, http_parser.rb</dd>
           </dl>
               </div>
-          <div id="erubis" class="approved">
+          <div id="erubis" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -310,7 +322,7 @@ adds support for IRIs and URI templates.
             <dd>tilt, middleman-core</dd>
           </dl>
                       </div>
-          <div id="eventmachine" class="approved">
+          <div id="eventmachine" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://www.ruby-lang.org/en/LICENSE.txt">ruby</a>
@@ -338,7 +350,7 @@ using TCP/IP, especially if custom protocols are required.</p>
             <dd>em-websocket</dd>
           </dl>
                       </div>
-          <div id="execjs" class="approved">
+          <div id="execjs" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -348,7 +360,7 @@ using TCP/IP, especially if custom protocols are required.</p>
                   </blockquote>
         <h2>
           <a href="https://github.com/sstephenson/execjs">execjs</a>
-          <small>v2.1.0</small>
+          <small>v2.2.1</small>
         </h2>
         <h4>Run JavaScript code from Ruby</h4>
         <p>ExecJS lets you run JavaScript code from Ruby.</p>
@@ -356,8 +368,35 @@ using TCP/IP, especially if custom protocols are required.</p>
             <dt>execjs is required by:</dt>
             <dd>coffee-script, sprockets, uglifier, middleman</dd>
           </dl>
-                      </div>
-          <div id="ffi" class="approved">
+                          <dl>
+            <dt>execjs relies on:</dt>
+            <dd>rake</dd>
+          </dl>
+              </div>
+          <div id="fedux_org-stdlib" class="clearfix approved">
+        <blockquote class="pull-right">
+                      <p>
+              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+              whitelisted
+              <span class="badge badge-success">&#x2713;</span>
+            </p>
+                  </blockquote>
+        <h2>
+          fedux_org-stdlib
+          <small>v0.6.28</small>
+        </h2>
+        <h4>Collection of useful libraries. It maybe depend on external libraries.</h4>
+        <p></p>
+                  <dl>
+            <dt>fedux_org-stdlib is required by:</dt>
+            <dd>middleman-presentation</dd>
+          </dl>
+                          <dl>
+            <dt>fedux_org-stdlib relies on:</dt>
+            <dd>activesupport</dd>
+          </dl>
+              </div>
+          <div id="ffi" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://en.wikipedia.org/wiki/BSD_licenses#4-clause_license_.28original_.22BSD_License.22.29">BSD</a>
@@ -373,10 +412,14 @@ using TCP/IP, especially if custom protocols are required.</p>
         <p>Ruby FFI library</p>
                   <dl>
             <dt>ffi is required by:</dt>
-            <dd>http_parser.rb, rb-inotify, rb-kqueue</dd>
+            <dd>http_parser.rb, rb-inotify</dd>
           </dl>
-                      </div>
-          <div id="fssm" class="approved">
+                          <dl>
+            <dt>ffi relies on:</dt>
+            <dd>rake</dd>
+          </dl>
+              </div>
+          <div id="fssm" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -394,8 +437,12 @@ using TCP/IP, especially if custom protocols are required.</p>
             <dt>fssm is required by:</dt>
             <dd>compass</dd>
           </dl>
-                      </div>
-          <div id="haml" class="approved">
+                          <dl>
+            <dt>fssm relies on:</dt>
+            <dd>rake</dd>
+          </dl>
+              </div>
+          <div id="haml" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -423,7 +470,7 @@ but it can function as a stand-alone templating engine.
             <dd>tilt, minitest</dd>
           </dl>
               </div>
-          <div id="hike" class="approved">
+          <div id="hike" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -441,8 +488,12 @@ but it can function as a stand-alone templating engine.
             <dt>hike is required by:</dt>
             <dd>sprockets</dd>
           </dl>
-                      </div>
-          <div id="hooks" class="approved">
+                          <dl>
+            <dt>hike relies on:</dt>
+            <dd>rake</dd>
+          </dl>
+              </div>
+          <div id="hooks" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -462,10 +513,10 @@ but it can function as a stand-alone templating engine.
           </dl>
                           <dl>
             <dt>hooks relies on:</dt>
-            <dd>uber, minitest</dd>
+            <dd>uber, minitest, rake</dd>
           </dl>
               </div>
-          <div id="http_parser.rb" class="approved">
+          <div id="http_parser.rb" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -488,7 +539,7 @@ but it can function as a stand-alone templating engine.
             <dd>json, ffi</dd>
           </dl>
               </div>
-          <div id="i18n" class="approved">
+          <div id="i18n" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -498,7 +549,7 @@ but it can function as a stand-alone templating engine.
                   </blockquote>
         <h2>
           <a href="http://github.com/svenfuchs/i18n">i18n</a>
-          <small>v0.6.9</small>
+          <small>v0.6.11</small>
         </h2>
         <h4>New wave Internationalization support for Ruby</h4>
         <p>New wave Internationalization support for Ruby.</p>
@@ -506,12 +557,8 @@ but it can function as a stand-alone templating engine.
             <dt>i18n is required by:</dt>
             <dd>activesupport, padrino-helpers, middleman-core</dd>
           </dl>
-                          <dl>
-            <dt>i18n relies on:</dt>
-            <dd>activesupport</dd>
-          </dl>
-              </div>
-          <div id="json" class="approved">
+                      </div>
+          <div id="json" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://www.ruby-lang.org/en/LICENSE.txt">ruby</a>
@@ -527,10 +574,10 @@ but it can function as a stand-alone templating engine.
         <p></p>
                   <dl>
             <dt>json is required by:</dt>
-            <dd>activesupport, http_parser.rb, sprockets, uglifier</dd>
+            <dd>activesupport, http_parser.rb, sprockets, uglifier, coffee-script</dd>
           </dl>
                       </div>
-          <div id="kramdown" class="approved">
+          <div id="kramdown" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -540,7 +587,7 @@ but it can function as a stand-alone templating engine.
                   </blockquote>
         <h2>
           <a href="http://kramdown.gettalong.org">kramdown</a>
-          <small>v1.3.3</small>
+          <small>v1.4.0</small>
         </h2>
         <h4>kramdown is a fast, pure-Ruby Markdown-superset converter.</h4>
         <p>kramdown is yet-another-markdown-parser but fast, pure Ruby,
@@ -555,13 +602,17 @@ using a strict syntax definition and supporting several common extensions.
             <dd>minitest</dd>
           </dl>
               </div>
-          <div id="launchy" class="unapproved">
+          <div id="launchy" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
-            <a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a>
-            unapproved
-            <span class="badge badge-important">&#x2717;</span>
+              <a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a>
+              manually approved
+              <span class="badge badge-success">&#x2713;</span>
             </p>
+            <p></p>
+            <small>
+                            <time datetime="2014-07-30T05:11:47Z">2014-07-30</time>
+            </small>
                   </blockquote>
         <h2>
           <a href="http://github.com/copiousfreetime/launchy">launchy</a>
@@ -575,10 +626,10 @@ using a strict syntax definition and supporting several common extensions.
           </dl>
                           <dl>
             <dt>launchy relies on:</dt>
-            <dd>addressable, minitest</dd>
+            <dd>addressable, minitest, rake</dd>
           </dl>
               </div>
-          <div id="listen" class="approved">
+          <div id="listen" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -588,7 +639,7 @@ using a strict syntax definition and supporting several common extensions.
                   </blockquote>
         <h2>
           <a href="https://github.com/guard/listen">listen</a>
-          <small>v1.3.1</small>
+          <small>v2.7.9</small>
         </h2>
         <h4>Listen to file modifications</h4>
         <p>The Listen gem listens to file modifications and notifies you about the changes. Works everywhere!</p>
@@ -598,10 +649,10 @@ using a strict syntax definition and supporting several common extensions.
           </dl>
                           <dl>
             <dt>listen relies on:</dt>
-            <dd>rb-fsevent, rb-inotify, rb-kqueue, bundler</dd>
+            <dd>rb-fsevent, rb-inotify, bundler, celluloid, rake</dd>
           </dl>
               </div>
-          <div id="middleman" class="approved">
+          <div id="middleman" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -624,7 +675,7 @@ using a strict syntax definition and supporting several common extensions.
             <dd>middleman-core, middleman-sprockets, haml, sass, compass-import-once, compass, uglifier, coffee-script, execjs, kramdown</dd>
           </dl>
               </div>
-          <div id="middleman-core" class="approved">
+          <div id="middleman-core" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -647,7 +698,7 @@ using a strict syntax definition and supporting several common extensions.
             <dd>bundler, rack, tilt, erubis, hooks, rack-test, thor, activesupport, padrino-helpers, listen, i18n</dd>
           </dl>
               </div>
-          <div id="middleman-livereload" class="approved">
+          <div id="middleman-livereload" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -657,7 +708,7 @@ using a strict syntax definition and supporting several common extensions.
                   </blockquote>
         <h2>
           <a href="https://github.com/middleman/middleman-livereload">middleman-livereload</a>
-          <small>v3.3.3 (middleman)</small>
+          <small>v3.3.4 (middleman)</small>
         </h2>
         <h4>LiveReload support for Middleman</h4>
         <p>LiveReload support for Middleman</p>
@@ -666,7 +717,7 @@ using a strict syntax definition and supporting several common extensions.
             <dd>middleman-core, rack-livereload, em-websocket</dd>
           </dl>
               </div>
-          <div id="middleman-presentation" class="approved">
+          <div id="middleman-presentation" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -676,16 +727,16 @@ using a strict syntax definition and supporting several common extensions.
                   </blockquote>
         <h2>
           <a href="https://github.com/maxmeyer/middleman-presentation">middleman-presentation</a>
-          <small>v0.0.10 (default)</small>
+          <small>v0.11.5 (default)</small>
         </h2>
         <h4>Presentation engine for Middleman</h4>
-        <p>Presentation engine for Middleman</p>
+        <p></p>
                           <dl>
             <dt>middleman-presentation relies on:</dt>
-            <dd>middleman, tzinfo, addressable, launchy</dd>
+            <dd>middleman, tzinfo, addressable, launchy, fedux_org-stdlib, rake</dd>
           </dl>
               </div>
-          <div id="middleman-sprockets" class="approved">
+          <div id="middleman-sprockets" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -695,7 +746,7 @@ using a strict syntax definition and supporting several common extensions.
                   </blockquote>
         <h2>
           <a href="https://github.com/middleman/middleman-sprockets">middleman-sprockets</a>
-          <small>v3.3.3</small>
+          <small>v3.3.4</small>
         </h2>
         <h4>Sprockets support for Middleman</h4>
         <p>Sprockets support for Middleman</p>
@@ -708,7 +759,7 @@ using a strict syntax definition and supporting several common extensions.
             <dd>middleman-core, sprockets, sprockets-sass, sprockets-helpers</dd>
           </dl>
               </div>
-          <div id="minitest" class="approved">
+          <div id="minitest" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -718,7 +769,7 @@ using a strict syntax definition and supporting several common extensions.
                   </blockquote>
         <h2>
           <a href="https://github.com/seattlerb/minitest">minitest</a>
-          <small>v5.3.4</small>
+          <small>v5.4.0</small>
         </h2>
         <h4>minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking</h4>
         <p>minitest provides a complete suite of testing facilities supporting
@@ -776,10 +827,10 @@ learn ruby to use minitest and all of your regular OO practices like
 extract-method refactorings still apply.</p>
                   <dl>
             <dt>minitest is required by:</dt>
-            <dd>thread_safe, activesupport, haml, uber, hooks, kramdown, launchy</dd>
+            <dd>thread_safe, activesupport, haml, uber, hooks, kramdown, launchy, rake</dd>
           </dl>
                       </div>
-          <div id="multi_json" class="approved">
+          <div id="multi_json" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -802,7 +853,7 @@ extract-method refactorings still apply.</p>
             <dd>bundler</dd>
           </dl>
               </div>
-          <div id="padrino-helpers" class="approved">
+          <div id="padrino-helpers" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -825,7 +876,7 @@ extract-method refactorings still apply.</p>
             <dd>padrino-support, tilt, i18n</dd>
           </dl>
               </div>
-          <div id="padrino-support" class="approved">
+          <div id="padrino-support" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -848,7 +899,7 @@ extract-method refactorings still apply.</p>
             <dd>activesupport</dd>
           </dl>
               </div>
-          <div id="rack" class="approved">
+          <div id="rack" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -873,8 +924,12 @@ Also see http://rack.github.com/.
             <dt>rack is required by:</dt>
             <dd>rack-test, middleman-core, sprockets, rack-livereload</dd>
           </dl>
-                      </div>
-          <div id="rack-livereload" class="approved">
+                          <dl>
+            <dt>rack relies on:</dt>
+            <dd>rake</dd>
+          </dl>
+              </div>
+          <div id="rack-livereload" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -894,10 +949,10 @@ Also see http://rack.github.com/.
           </dl>
                           <dl>
             <dt>rack-livereload relies on:</dt>
-            <dd>rack</dd>
+            <dd>rack, rake</dd>
           </dl>
               </div>
-          <div id="rack-test" class="approved">
+          <div id="rack-test" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -923,7 +978,51 @@ request helpers feature.</p>
             <dd>rack</dd>
           </dl>
               </div>
-          <div id="rb-fsevent" class="approved">
+          <div id="rake" class="clearfix approved">
+        <blockquote class="pull-right">
+                      <p>
+              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+              whitelisted
+              <span class="badge badge-success">&#x2713;</span>
+            </p>
+                  </blockquote>
+        <h2>
+          <a href="https://github.com/jimweirich/rake">rake</a>
+          <small>v10.3.2</small>
+        </h2>
+        <h4>Rake is a Make-like program implemented in Ruby</h4>
+        <p>Rake is a Make-like program implemented in Ruby. Tasks and dependencies are
+specified in standard Ruby syntax.
+
+Rake has the following features:
+
+* Rakefiles (rake's version of Makefiles) are completely defined in
+  standard Ruby syntax.  No XML files to edit.  No quirky Makefile
+  syntax to worry about (is that a tab or a space?)
+
+* Users can specify tasks with prerequisites.
+
+* Rake supports rule patterns to synthesize implicit tasks.
+
+* Flexible FileLists that act like arrays but know about manipulating
+  file names and paths.
+
+* A library of prepackaged tasks to make building rakefiles easier. For example,
+  tasks for building tarballs and publishing to FTP or SSH sites.  (Formerly
+  tasks for building RDoc and Gems were included in rake but they're now
+  available in RDoc and RubyGems respectively.)
+
+* Supports parallel execution of tasks.</p>
+                  <dl>
+            <dt>rake is required by:</dt>
+            <dd>thread_safe, addressable, timers, celluloid, chunky_png, execjs, coffee-script, fssm, compass-import-once, ffi, hike, uber, hooks, launchy, listen, rack, sprockets, sprockets-helpers, sprockets-sass, uglifier, rack-livereload, middleman-presentation</dd>
+          </dl>
+                          <dl>
+            <dt>rake relies on:</dt>
+            <dd>minitest</dd>
+          </dl>
+              </div>
+          <div id="rb-fsevent" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -946,7 +1045,7 @@ request helpers feature.</p>
             <dd>bundler</dd>
           </dl>
               </div>
-          <div id="rb-inotify" class="approved">
+          <div id="rb-inotify" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -956,7 +1055,7 @@ request helpers feature.</p>
                   </blockquote>
         <h2>
           <a href="http://github.com/nex3/rb-inotify">rb-inotify</a>
-          <small>v0.9.4</small>
+          <small>v0.9.5</small>
         </h2>
         <h4>A Ruby wrapper for Linux's inotify, using FFI</h4>
         <p>A Ruby wrapper for Linux's inotify, using FFI</p>
@@ -969,30 +1068,7 @@ request helpers feature.</p>
             <dd>ffi</dd>
           </dl>
               </div>
-          <div id="rb-kqueue" class="approved">
-        <blockquote class="pull-right">
-                      <p>
-              <a href="http://opensource.org/licenses/mit-license">MIT</a>
-              whitelisted
-              <span class="badge badge-success">&#x2713;</span>
-            </p>
-                  </blockquote>
-        <h2>
-          <a href="http://github.com/mat813/rb-kqueue">rb-kqueue</a>
-          <small>v0.2.2</small>
-        </h2>
-        <h4>A Ruby wrapper for BSD's kqueue, using FFI</h4>
-        <p>A Ruby wrapper for BSD's kqueue, using FFI</p>
-                  <dl>
-            <dt>rb-kqueue is required by:</dt>
-            <dd>listen</dd>
-          </dl>
-                          <dl>
-            <dt>rb-kqueue relies on:</dt>
-            <dd>ffi</dd>
-          </dl>
-              </div>
-          <div id="sass" class="approved">
+          <div id="sass" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -1015,7 +1091,7 @@ request helpers feature.</p>
             <dd>compass, compass-import-once, tilt, sprockets, sprockets-sass, middleman</dd>
           </dl>
                       </div>
-          <div id="sprockets" class="approved">
+          <div id="sprockets" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -1035,10 +1111,10 @@ request helpers feature.</p>
           </dl>
                           <dl>
             <dt>sprockets relies on:</dt>
-            <dd>hike, multi_json, rack, tilt, coffee-script, coffee-script-source, execjs, json, rack-test, sass, uglifier</dd>
+            <dd>hike, multi_json, rack, tilt, coffee-script, coffee-script-source, execjs, json, rack-test, sass, uglifier, rake</dd>
           </dl>
               </div>
-          <div id="sprockets-helpers" class="approved">
+          <div id="sprockets-helpers" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -1058,10 +1134,10 @@ request helpers feature.</p>
           </dl>
                           <dl>
             <dt>sprockets-helpers relies on:</dt>
-            <dd>sprockets</dd>
+            <dd>sprockets, rake</dd>
           </dl>
               </div>
-          <div id="sprockets-sass" class="approved">
+          <div id="sprockets-sass" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -1071,7 +1147,7 @@ request helpers feature.</p>
                   </blockquote>
         <h2>
           <a href="http://github.com/petebrowne/sprockets-sass">sprockets-sass</a>
-          <small>v1.1.0</small>
+          <small>v1.2.0</small>
         </h2>
         <h4>Better Sass integration with Sprockets 2.0</h4>
         <p>When using Sprockets 2.0 with Sass you will eventually run into a pretty big issue. `//= require` directives will not allow Sass mixins, variables, etc. to be shared between files. So you'll try to use `@import`, and that'll also blow up in your face. `sprockets-sass` fixes all of this by creating a Sass::Importer that is Sprockets aware.</p>
@@ -1081,10 +1157,10 @@ request helpers feature.</p>
           </dl>
                           <dl>
             <dt>sprockets-sass relies on:</dt>
-            <dd>sprockets, tilt, sprockets-helpers, sass, compass</dd>
+            <dd>sprockets, tilt, sprockets-helpers, sass, compass, rake</dd>
           </dl>
               </div>
-          <div id="thor" class="approved">
+          <div id="thor" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -1107,7 +1183,7 @@ request helpers feature.</p>
             <dd>bundler</dd>
           </dl>
               </div>
-          <div id="thread_safe" class="approved">
+          <div id="thread_safe" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a>
@@ -1127,10 +1203,10 @@ request helpers feature.</p>
           </dl>
                           <dl>
             <dt>thread_safe relies on:</dt>
-            <dd>minitest</dd>
+            <dd>minitest, rake</dd>
           </dl>
               </div>
-          <div id="tilt" class="approved">
+          <div id="tilt" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -1153,7 +1229,30 @@ request helpers feature.</p>
             <dd>coffee-script, erubis, haml, kramdown, sass</dd>
           </dl>
               </div>
-          <div id="tzinfo" class="approved">
+          <div id="timers" class="clearfix approved">
+        <blockquote class="pull-right">
+                      <p>
+              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+              whitelisted
+              <span class="badge badge-success">&#x2713;</span>
+            </p>
+                  </blockquote>
+        <h2>
+          <a href="https://github.com/tarcieri/timers">timers</a>
+          <small>v1.1.0</small>
+        </h2>
+        <h4>Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout</h4>
+        <p>Pure Ruby one-shot and periodic timers</p>
+                  <dl>
+            <dt>timers is required by:</dt>
+            <dd>celluloid</dd>
+          </dl>
+                          <dl>
+            <dt>timers relies on:</dt>
+            <dd>rake</dd>
+          </dl>
+              </div>
+          <div id="tzinfo" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -1176,7 +1275,7 @@ request helpers feature.</p>
             <dd>thread_safe</dd>
           </dl>
               </div>
-          <div id="uber" class="approved">
+          <div id="uber" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -1186,7 +1285,7 @@ request helpers feature.</p>
                   </blockquote>
         <h2>
           <a href="https://github.com/apotonick/uber">uber</a>
-          <small>v0.0.6</small>
+          <small>v0.0.7</small>
         </h2>
         <h4>Gem-authoring tools like class method inheritance in modules, dynamic options and more.</h4>
         <p>A gem-authoring framework.</p>
@@ -1196,10 +1295,10 @@ request helpers feature.</p>
           </dl>
                           <dl>
             <dt>uber relies on:</dt>
-            <dd>minitest</dd>
+            <dd>minitest, rake</dd>
           </dl>
               </div>
-          <div id="uglifier" class="approved">
+          <div id="uglifier" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
               <a href="http://opensource.org/licenses/mit-license">MIT</a>
@@ -1209,7 +1308,7 @@ request helpers feature.</p>
                   </blockquote>
         <h2>
           <a href="http://github.com/lautis/uglifier">uglifier</a>
-          <small>v2.5.0</small>
+          <small>v2.5.3</small>
         </h2>
         <h4>Ruby wrapper for UglifyJS JavaScript compressor</h4>
         <p>Uglifier minifies JavaScript files by wrapping UglifyJS to be accessible in Ruby</p>
@@ -1219,7 +1318,7 @@ request helpers feature.</p>
           </dl>
                           <dl>
             <dt>uglifier relies on:</dt>
-            <dd>execjs, json, bundler</dd>
+            <dd>execjs, json, bundler, rake</dd>
           </dl>
               </div>
       </div>

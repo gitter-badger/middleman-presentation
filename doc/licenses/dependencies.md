@@ -1,26 +1,21 @@
 # middleman-presentation
 
-As of June  3, 2014  1:00pm. 48 total
+As of July 30, 2014  7:11am. 51 total
 
 ## Summary
-* 42 MIT
+* 45 MIT
 * 2 Apache 2.0
 * 2 ruby
 * 1 ISC
 * 1 BSD
 
 
-## Action
-1 *unapproved*
-
-* <a href='#launchy'>launchy</a> (ISC)
-
 
 ## Items
 
 
 <a name="activesupport"></a>
-### <a href="http://www.rubyonrails.org">activesupport</a> v4.1.1 (development, test)
+### <a href="http://www.rubyonrails.org">activesupport</a> v4.1.4 (development, test)
 #### A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -45,6 +40,14 @@ adds support for IRIs and URI templates.
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
 
 Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably
+
+<a name="celluloid"></a>
+### <a href="https://github.com/celluloid/celluloid">celluloid</a> v0.15.2
+#### Actor-based concurrent object framework for Ruby
+
+<a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
+
+Celluloid enables people to build concurrent programs out of concurrent objects just as easily as they build sequential programs out of sequential objects
 
 <a name="chunky_png"></a>
 ### <a href="http://wiki.github.com/wvanbergen/chunky_png">chunky_png</a> v1.3.1
@@ -71,7 +74,7 @@ Bundler manages an application's dependencies through its entire life, across ma
 
 
 <a name="coffee-script"></a>
-### <a href="http://github.com/josh/ruby-coffee-script">coffee-script</a> v2.2.0
+### <a href="http://github.com/josh/ruby-coffee-script">coffee-script</a> v2.3.0
 #### Ruby CoffeeScript Compiler
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -80,7 +83,7 @@ Bundler manages an application's dependencies through its entire life, across ma
 
 
 <a name="coffee-script-source"></a>
-### <a href="http://jashkenas.github.com/coffee-script/">coffee-script-source</a> v1.7.0
+### <a href="http://jashkenas.github.com/coffee-script/">coffee-script-source</a> v1.7.1
 #### The CoffeeScript Compiler
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -93,7 +96,7 @@ Bundler manages an application's dependencies through its entire life, across ma
 
 
 <a name="compass"></a>
-### <a href="http://compass-style.org">compass</a> v0.12.6
+### <a href="http://compass-style.org">compass</a> v0.12.7
 #### A Real Stylesheet Framework
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -154,12 +157,19 @@ of EventMachine is to enable programs to easily interface with other programs
 using TCP/IP, especially if custom protocols are required.
 
 <a name="execjs"></a>
-### <a href="https://github.com/sstephenson/execjs">execjs</a> v2.1.0
+### <a href="https://github.com/sstephenson/execjs">execjs</a> v2.2.1
 #### Run JavaScript code from Ruby
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
 
 ExecJS lets you run JavaScript code from Ruby.
+
+<a name="fedux_org-stdlib"></a>
+### fedux_org-stdlib v0.6.28
+#### Collection of useful libraries. It maybe depend on external libraries.
+
+<a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
+
 
 <a name="ffi"></a>
 ### <a href="http://wiki.github.com/ffi/ffi">ffi</a> v1.9.3
@@ -215,7 +225,7 @@ Declaratively define hooks, add callbacks and run them with the options you like
 Ruby bindings to http://github.com/ry/http-parser and http://github.com/a2800276/http-parser.java
 
 <a name="i18n"></a>
-### <a href="http://github.com/svenfuchs/i18n">i18n</a> v0.6.9
+### <a href="http://github.com/svenfuchs/i18n">i18n</a> v0.6.11
 #### New wave Internationalization support for Ruby
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -230,7 +240,7 @@ New wave Internationalization support for Ruby.
 
 
 <a name="kramdown"></a>
-### <a href="http://kramdown.gettalong.org">kramdown</a> v1.3.3
+### <a href="http://kramdown.gettalong.org">kramdown</a> v1.4.0
 #### kramdown is a fast, pure-Ruby Markdown-superset converter.
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -243,12 +253,16 @@ using a strict syntax definition and supporting several common extensions.
 ### <a href="http://github.com/copiousfreetime/launchy">launchy</a> v2.4.2
 #### Launchy is helper class for launching cross-platform applications in a fire and forget manner.
 
-<a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> _**unapproved**_
+<a href="http://en.wikipedia.org/wiki/ISC_license">ISC</a> manually approved
+
+>
+
+><cite>  2014-07-30</cite>
 
 Launchy is helper class for launching cross-platform applications in a fire and forget manner. There are application concepts (browser, email client, etc) that are common across all platforms, and they may be launched differently on each platform. Launchy is here to make a common approach to launching external application from within ruby programs.
 
 <a name="listen"></a>
-### <a href="https://github.com/guard/listen">listen</a> v1.3.1
+### <a href="https://github.com/guard/listen">listen</a> v2.7.9
 #### Listen to file modifications
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -272,7 +286,7 @@ A static site generator. Provides dozens of templating languages (Haml, Sass, Co
 A static site generator. Provides dozens of templating languages (Haml, Sass, Compass, Slim, CoffeeScript, and more). Makes minification, compression, cache busting, Yaml data (and more) an easy part of your development cycle.
 
 <a name="middleman-livereload"></a>
-### <a href="https://github.com/middleman/middleman-livereload">middleman-livereload</a> v3.3.3 (middleman)
+### <a href="https://github.com/middleman/middleman-livereload">middleman-livereload</a> v3.3.4 (middleman)
 #### LiveReload support for Middleman
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -280,15 +294,14 @@ A static site generator. Provides dozens of templating languages (Haml, Sass, Co
 LiveReload support for Middleman
 
 <a name="middleman-presentation"></a>
-### <a href="https://github.com/maxmeyer/middleman-presentation">middleman-presentation</a> v0.0.10 (default)
+### <a href="https://github.com/maxmeyer/middleman-presentation">middleman-presentation</a> v0.11.5 (default)
 #### Presentation engine for Middleman
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
 
-Presentation engine for Middleman
 
 <a name="middleman-sprockets"></a>
-### <a href="https://github.com/middleman/middleman-sprockets">middleman-sprockets</a> v3.3.3
+### <a href="https://github.com/middleman/middleman-sprockets">middleman-sprockets</a> v3.3.4
 #### Sprockets support for Middleman
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -296,7 +309,7 @@ Presentation engine for Middleman
 Sprockets support for Middleman
 
 <a name="minitest"></a>
-### <a href="https://github.com/seattlerb/minitest">minitest</a> v5.3.4
+### <a href="https://github.com/seattlerb/minitest">minitest</a> v5.4.0
 #### minitest provides a complete suite of testing facilities supporting TDD, BDD, mocking, and benchmarking
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -413,6 +426,35 @@ own or as a reusable starting point for Web frameworks and testing libraries
 to build on. Most of its initial functionality is an extraction of Merb 1.0's
 request helpers feature.
 
+<a name="rake"></a>
+### <a href="https://github.com/jimweirich/rake">rake</a> v10.3.2
+#### Rake is a Make-like program implemented in Ruby
+
+<a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
+
+Rake is a Make-like program implemented in Ruby. Tasks and dependencies are
+specified in standard Ruby syntax.
+
+Rake has the following features:
+
+* Rakefiles (rake's version of Makefiles) are completely defined in
+  standard Ruby syntax.  No XML files to edit.  No quirky Makefile
+  syntax to worry about (is that a tab or a space?)
+
+* Users can specify tasks with prerequisites.
+
+* Rake supports rule patterns to synthesize implicit tasks.
+
+* Flexible FileLists that act like arrays but know about manipulating
+  file names and paths.
+
+* A library of prepackaged tasks to make building rakefiles easier. For example,
+  tasks for building tarballs and publishing to FTP or SSH sites.  (Formerly
+  tasks for building RDoc and Gems were included in rake but they're now
+  available in RDoc and RubyGems respectively.)
+
+* Supports parallel execution of tasks.
+
 <a name="rb-fsevent"></a>
 ### <a href="http://rubygems.org/gems/rb-fsevent">rb-fsevent</a> v0.9.4
 #### Very simple & usable FSEvents API
@@ -422,20 +464,12 @@ request helpers feature.
 FSEvents API with Signals catching (without RubyCocoa)
 
 <a name="rb-inotify"></a>
-### <a href="http://github.com/nex3/rb-inotify">rb-inotify</a> v0.9.4
+### <a href="http://github.com/nex3/rb-inotify">rb-inotify</a> v0.9.5
 #### A Ruby wrapper for Linux's inotify, using FFI
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
 
 A Ruby wrapper for Linux's inotify, using FFI
-
-<a name="rb-kqueue"></a>
-### <a href="http://github.com/mat813/rb-kqueue">rb-kqueue</a> v0.2.2
-#### A Ruby wrapper for BSD's kqueue, using FFI
-
-<a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
-
-A Ruby wrapper for BSD's kqueue, using FFI
 
 <a name="sass"></a>
 ### <a href="http://sass-lang.com/">sass</a> v3.2.19
@@ -466,7 +500,7 @@ Sprockets is a Rack-based asset packaging system that concatenates and serves Ja
 Asset path helpers for Sprockets 2.x applications
 
 <a name="sprockets-sass"></a>
-### <a href="http://github.com/petebrowne/sprockets-sass">sprockets-sass</a> v1.1.0
+### <a href="http://github.com/petebrowne/sprockets-sass">sprockets-sass</a> v1.2.0
 #### Better Sass integration with Sprockets 2.0
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -497,6 +531,14 @@ Thread-safe collections and utilities for Ruby
 
 Generic interface to multiple Ruby template engines
 
+<a name="timers"></a>
+### <a href="https://github.com/tarcieri/timers">timers</a> v1.1.0
+#### Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout
+
+<a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
+
+Pure Ruby one-shot and periodic timers
+
 <a name="tzinfo"></a>
 ### <a href="http://tzinfo.github.io">tzinfo</a> v1.2.1
 #### Daylight savings aware timezone library
@@ -506,7 +548,7 @@ Generic interface to multiple Ruby template engines
 TZInfo provides daylight savings aware transformations between times in different time zones.
 
 <a name="uber"></a>
-### <a href="https://github.com/apotonick/uber">uber</a> v0.0.6
+### <a href="https://github.com/apotonick/uber">uber</a> v0.0.7
 #### Gem-authoring tools like class method inheritance in modules, dynamic options and more.
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -514,7 +556,7 @@ TZInfo provides daylight savings aware transformations between times in differen
 A gem-authoring framework.
 
 <a name="uglifier"></a>
-### <a href="http://github.com/lautis/uglifier">uglifier</a> v2.5.0
+### <a href="http://github.com/lautis/uglifier">uglifier</a> v2.5.3
 #### Ruby wrapper for UglifyJS JavaScript compressor
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
