@@ -335,7 +335,7 @@ There are four different templates available:
 * Erb (`erb.tt`): Templates for generating `Erb`-slides
 * Markdown (`markdown.tt`): Templates for generating `markdown`-slides
 * Liquid (`liquid.tt`): Templates for generating `liquid`-slides
-* Group (`group.tt`): Templates for groups of slides - see (Grouping Slides)[#grouping_slides].
+* Group (`group.tt`): Templates for groups of slides - see [Grouping Slides](#grouping_slides).
 
 ## Development
 
