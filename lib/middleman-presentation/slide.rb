@@ -123,7 +123,11 @@ module Middleman
 
       # Render slide
       def render(&block)
-        block.call(partial_path)
+        result = []
+        result << "<!-- #{path} -->"
+        result << block.call(partial_path).to_s
+
+        result.join("\n")
       end
     end
   end
