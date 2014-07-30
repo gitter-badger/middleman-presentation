@@ -165,3 +165,18 @@ Feature: Add new slide
     """
     my-title-aasdfasfd
     """
+
+  Scenario: Use * expansion in shell to open slides
+    Given a fixture app "presentation-after_init-app"
+    And I install bundle
+    And a slide named "02.html.md" with:
+    """
+    <section>
+    <h1>Headline</h1>
+    </section>
+    """
+    When I successfully run `middleman slide source/slides/* --edit --editor-command echo`
+    And the output should contain:
+    """
+    02.html.md
+    """
