@@ -4,7 +4,7 @@ module Middleman
     class Slide
       include Comparable
 
-      attr_accessor :name, :template, :path, :type, :partial_path, :group
+      attr_accessor :name, :template, :path, :type, :partial_path, :relative_path, :group
       attr_writer :content
 
       def initialize(name:)
@@ -124,7 +124,7 @@ module Middleman
       # Render slide
       def render(&block)
         result = []
-        result << "<!-- #{path} -->"
+        result << "<!-- #{relative_path} -->"
         result << block.call(partial_path).to_s
 
         result.join("\n")

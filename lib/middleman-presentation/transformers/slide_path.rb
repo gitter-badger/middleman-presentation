@@ -45,9 +45,16 @@ module Middleman
             partial_path = []
             partial_path << File.basename(base_path)
             partial_path << slide.group if slide.group
-            partial_path << "#{slide.basename}.html"
+            partial_path << slide.basename
 
             slide.partial_path = File.join(*partial_path)
+
+            relative_path = []
+            relative_path << File.basename(File.dirname(base_path))
+            relative_path << slide.group if slide.group
+            relative_path << slide.file_name
+
+            slide.relative_path = File.join(*relative_path)
 
             slide
           end
