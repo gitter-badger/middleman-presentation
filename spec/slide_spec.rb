@@ -123,41 +123,17 @@ RSpec.describe Slide do
     end
   end
 
-  context '#extname' do
-    it 'returns file extension' do
-      slide = Slide.new(name: '02')
-      slide.path = '02.html.erb'
-      expect(slide.extname).to eq '.erb'
-    end
-
-    it 'returns empty string if file name is not set' do
-      slide = Slide.new(name: '02')
-      expect(slide.extname).to eq ''
-    end
-
-    it 'returns file extension considering name as well' do
-      slide = Slide.new(name: '02.erb')
-      expect(slide.extname).to eq '.erb'
-    end
-  end
-
-  context '#extname?' do
+  context '#has_type?' do
     it 'checks on a single file extension' do
       slide = Slide.new(name: '02')
-      slide.path = '02.html.erb'
-      expect(slide).to have_extname '.erb'
+      slide.path = '02.html.md'
+      expect(slide).to have_type :md
     end
 
-    it 'checks on multiple file extensions' do
+    it 'fails if has not type' do
       slide = Slide.new(name: '02')
       slide.path = '02.html.erb'
-      expect(slide).not_to have_extname '.xz', '.ab'
-    end
-
-    it 'succeeds if one the extensions is successfull' do
-      slide = Slide.new(name: '02')
-      slide.path = '02.html.erb'
-      expect(slide).to have_extname '.xz', '.erb'
+      expect(slide).not_to have_type :md
     end
   end
 

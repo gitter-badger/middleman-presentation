@@ -16,12 +16,11 @@ module Middleman
 
         def transform(slides)
           slides.map do |slide|
-            template_file = case slide.type 
-                            when :erb
+            template_file = if slide.has_type? :erb
                               ErbTemplate.new(working_directory: base_path)
-                            when :md
+                            elsif slide.has_type? :md
                               MarkdownTemplate.new(working_directory: base_path)
-                            when :liquid
+                            elsif slide.has_type? :liquid
                               LiquidTemplate.new(working_directory: base_path)
                             else
                               MarkdownTemplate.new(working_directory: base_path)

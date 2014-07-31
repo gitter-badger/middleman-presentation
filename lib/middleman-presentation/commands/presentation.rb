@@ -157,7 +157,7 @@ module Middleman
             end
 
             Rake::FileList.new(File.join('vendor/assets/components', "**", 'notes.html' )).each do |f|
-              sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new('vendor/assets/components')), 'javascripts'
+              sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new('vendor/assets/components'))) { 'javascripts' }
             end
           end
           EOS

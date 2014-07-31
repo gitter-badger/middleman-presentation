@@ -25,6 +25,7 @@ Feature: Grouping slides
     Then I should see:
     """
     <section>
+    <!-- source/slides/01namespace/01.html.erb -->
     <section>
     <h1>Hello World</h1>
     </section>
@@ -51,9 +52,11 @@ Feature: Grouping slides
     Then I should see:
     """
     <section>
+    <!-- source/slides/01namespace/01.html.erb -->
     <section>
     <h1>Hello World #1</h1>
     </section>
+    <!-- source/slides/01namespace/02.html.erb -->
     <section>
     <h1>Hello World #2</h1>
     </section>
@@ -98,17 +101,21 @@ Feature: Grouping slides
     Then I should see:
     """
     <section>
+    <!-- source/slides/01namespace/01.html.erb -->
     <section>
     <h1>Hello World #1.1</h1>
     </section>
+    <!-- source/slides/01namespace/02.html.md -->
     <section>
       <h1 id="hello-world-12">Hello World #1.2</h1>
     </section>
     </section>
     <section>
+    <!-- source/slides/02namespace/01.html.erb -->
     <section>
     <h1>Hello World #2.1</h1>
     </section>
+    <!-- source/slides/02namespace/02.html.erb -->
     <section>
     <h1>Hello World #2.2</h1>
     </section>

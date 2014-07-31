@@ -25,7 +25,7 @@ module Middleman
       end
 
       # Generate slide content
-      # 
+      #
       # It either uses previously set content or generates content by using a
       # predefined template
       def content(**data)
@@ -63,12 +63,28 @@ module Middleman
         regex === path
       end
 
+      # Check type of slide
+      def has_type?(t)
+        type == t
+      end
+
+      # Determine type of slide
+      def type
+        return :erb    if has_extname? '.erb'
+        return :md     if has_extname? '.md', '.markdown', '.mkd'
+        return :liquid if has_extname? '.l', '.liquid'
+
+        :md
+      end
+      private :type
+
       # Check if slide has given extensions
       def has_extname?(*extensions)
         return false if !path and !name
 
         extensions.any? { |e| extname == e }
       end
+      private :has_extname?
 
       # Return string representation of self
       def to_s
@@ -84,6 +100,7 @@ module Middleman
       def has_basename?(b)
         basename == b
       end
+      private :has_basename?
 
       # @private
       def <=>(other)
@@ -111,7 +128,7 @@ module Middleman
         path.hash
       end
 
-      # Checks if slide is in group 
+      # Checks if slide is in group
       def has_group?(g)
         group == g
       end
