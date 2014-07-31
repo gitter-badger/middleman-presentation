@@ -24,7 +24,7 @@ module Middleman
 
       # Call block for each slide
       def render(&block)
-        slides_content = slides.inject([]) { |memo, s| memo << block.call(s.partial_path); memo }.join("\n")
+        slides_content = slides.inject([]) { |memo, s| memo << s.render(&block); memo }.join("\n")
 
         template.result(slides: slides_content)
       end
