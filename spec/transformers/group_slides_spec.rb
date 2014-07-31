@@ -19,16 +19,19 @@ RSpec.describe Transformers::GroupSlides do
       allow(slide1).to receive(:group).and_return 'group'
       allow(slide1).to receive(:has_group?).and_return true
       allow(slide1).to receive(:partial_path).and_return 'slides/01.html.erb'
+      allow(slide1).to receive(:render).and_return '01'
 
       slide2 = instance_double('Middleman::Presentation::Slide')
       allow(slide2).to receive(:group).and_return 'group'
       allow(slide2).to receive(:has_group?).and_return true
       allow(slide2).to receive(:partial_path).and_return 'slides/02.html.erb'
+      allow(slide2).to receive(:render).and_return '02'
 
       slide3 = instance_double('Middleman::Presentation::Slide')
       allow(slide3).to receive(:group).and_return nil
       allow(slide3).to receive(:has_group?).and_return false
       allow(slide3).to receive(:partial_path).and_return 'slides/03.html.erb'
+      allow(slide3).to receive(:render).and_return '03'
 
       transformer = Transformers::GroupSlides.new(template: Erubis::Eruby.new('<%= slides %>'))
       result = transformer.transform [slide1, slide2, slide3]
@@ -38,7 +41,7 @@ RSpec.describe Transformers::GroupSlides do
       expect(result).to include slide3
 
       group = result.first
-      expect(group.render { |s| s }).to include "slides/01.html.erb\nslides/02.html.erb"
+      expect(group.render { |s| s }).to include "01\n02"
     end
   end
 end
