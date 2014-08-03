@@ -225,6 +225,27 @@ To start your presentation use the `start`-script.
 script/start
 ```
 
+### Ignore slides
+
+*Introduction*
+
+Sometimes you may want to slides to be available in the filesystem, but not
+part of your presentation. To make this possible you can use the
+`.slidesignore`-file. If you prefer a different name, change the
+configuration-option `:slides_ignore_file`.
+
+*Patterns*
+
+Every line is a regular expression checked against the file names of existing
+slides. To "unignore" particular slides, you can prefix your pattern with "!".
+
+```config
+# ignore all slides ending with *.md
+.*\.md
+# unignore 01.html.md
+!01.html.md
+```
+
 ## Usage of external resources
 
 I encourage you to use `bower` to make external resources within your presentation
@@ -331,6 +352,20 @@ There are four different templates available:
 * Markdown (`markdown.tt`): Templates for generating `markdown`-slides
 * Liquid (`liquid.tt`): Templates for generating `liquid`-slides
 * Group (`group.tt`): Templates for groups of slides - see [Grouping Slides](#grouping_slides).
+
+## Configuration
+
+`middleman-presentation` will try its configuration file at different places:
+
+1. User local: `~/.config/middleman/presentation/presentations.yaml`, `~/.middleman/presentation/presentations.yaml`
+2. System local: `/etc/middleman/presentation/presentations`
+
+To get a full list of available configuration options, run the following command
+
+```
+middleman config
+```
+
 
 ## Development
 
