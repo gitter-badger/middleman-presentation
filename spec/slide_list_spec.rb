@@ -24,7 +24,7 @@ RSpec.describe SlideList do
       allow(slide_builder).to receive(:new).and_return slide
 
       expect {
-        SlideList.new('01', slide_builder: slide_builder) do |l|
+        SlideList.new('01', slide_builder: slide_builder) do |_l|
         end
       }.not_to raise_error
     end
@@ -37,11 +37,11 @@ RSpec.describe SlideList do
 
       slide_builder = double('Middleman::Presentation::Slide')
 
-      %w{01 02 03}.each do |name|
+      %w(01 02 03).each do |name|
         expect(slide_builder).to receive(:new).with(name: name).and_return(OpenStruct.new(name: name))
       end
 
-      list = SlideList.new(%w{ 01 02 03 }, slide_builder: slide_builder)
+      list = SlideList.new(%w(01 02 03), slide_builder: slide_builder)
       expect(list.all.size).to eq 3
     end
   end
@@ -57,7 +57,7 @@ RSpec.describe SlideList do
       transformer = double('Transformer')
       expect(transformer).to receive(:transform)
 
-      SlideList.new(%w{01}, slide_builder: slide_builder) do |l|
+      SlideList.new(%w(01), slide_builder: slide_builder) do |l|
         l.transform_with transformer
       end
     end
@@ -71,7 +71,7 @@ RSpec.describe SlideList do
       slide_builder = double('Middleman::Presentation::Slide')
       allow(slide_builder).to receive(:new).and_return slide
 
-      SlideList.new(%w{01}, slide_builder: slide_builder).each_new { }
+      SlideList.new(%w(01), slide_builder: slide_builder).each_new {}
     end
   end
 
@@ -83,7 +83,7 @@ RSpec.describe SlideList do
       slide_builder = double('Middleman::Presentation::Slide')
       allow(slide_builder).to receive(:new).and_return slide
 
-      existing_slides = SlideList.new(%w{01}, slide_builder: slide_builder).existing_slides
+      existing_slides = SlideList.new(%w(01), slide_builder: slide_builder).existing_slides
       expect(existing_slides).to include slide
     end
   end

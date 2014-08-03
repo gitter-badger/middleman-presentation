@@ -89,10 +89,10 @@ module Middleman
           @project_id      = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
 
           @external_assets = []
-          
-          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'jquery', version: '~1.11', javascripts: %w{ dist/jquery })
-          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'reveal.js', version: 'latest', javascripts: %w{ lib/js/head.min js/reveal.min })
-          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'lightbox2', github: 'dg-vrnetze/revealjs-lightbox2', javascripts: %w{ js/lightbox })
+
+          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'jquery', version: '~1.11', javascripts: %w(dist/jquery))
+          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'reveal.js', version: 'latest', javascripts: %w(lib/js/head.min js/reveal.min))
+          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'lightbox2', github: 'dg-vrnetze/revealjs-lightbox2', javascripts: %w(js/lightbox))
 
           @external_assets.concat Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.components)
 
@@ -100,8 +100,8 @@ module Middleman
             @external_assets << Middleman::Presentation::FrontendComponent.new(
               name: 'fedux_org',
               github: 'maxmeyer/reveal.js-template-fedux_org',
-              javascripts: %w[js/fedux_org],
-              stylesheets: %w[scss/fedux_org]
+              javascripts: %w(js/fedux_org),
+              stylesheets: %w(scss/fedux_org)
             )
           else
             @external_assets << Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.theme)
@@ -137,7 +137,7 @@ module Middleman
 
           if respond_to? :sprockets and sprockets.respond_to? :import_asset
             sprockets.append_path File.join(root, '#{@bower_directory}')
-            
+
             patterns = [
               '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
               '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
@@ -146,7 +146,7 @@ module Middleman
             ].map { |e| File.join('#{@bower_directory}', "**", "*\#{e}" ) }
 
             require 'rake/file_list'
-            
+
             Rake::FileList.new(*patterns) do |l|
               l.exclude(/src/)
               l.exclude(/test/)
@@ -198,7 +198,7 @@ module Middleman
           copy_file 'source/index.html.erb', File.join(shared_instance.source_dir, 'index.html.erb')
           copy_file 'LICENSE.presentation', File.join(shared_instance.root, 'LICENSE.presentation')
 
-          %w{ start bootstrap slide presentation build }.each do |s|
+          %w(start bootstrap slide presentation build).each do |s|
             copy_file File.join('script', s), File.join(shared_instance.root, 'script', s)
             chmod File.join(shared_instance.root, 'script', s), 0755
           end
@@ -211,7 +211,7 @@ module Middleman
             run 'git commit -m Init'
           end
         else
-          raise Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
+          fail Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end
       end
     end

@@ -10,7 +10,7 @@ module Middleman
          </a>
         EOS
 
-        images.inject([]) do |memo, (image, title)|
+        images.reduce([]) do |memo, (image, title)|
           engine = Erubis::Eruby.new(template)
           memo << engine.result(image_path: image, image_gallery_id: image_gallery_id, title: title)
 
@@ -25,10 +25,10 @@ module Middleman
 
       # Find asset for substring
       def find_asset(substring)
-        #sprockets.each_logical_path.find { |f| f.to_s.include? substring }
+        # sprockets.each_logical_path.find { |f| f.to_s.include? substring }
         result = sprockets.each_file.find { |f| f.to_s.include? substring }
 
-        if result.blank? 
+        if result.blank?
           I18n.t('errors.asset_not_found', asset: substring)
         else
           result.relative_path_from(Pathname.new(source_dir)).to_s

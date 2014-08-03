@@ -2,7 +2,6 @@
 module Middleman
   module Presentation
     class SlideList
-
       private
 
       attr_accessor :transformers
@@ -15,7 +14,7 @@ module Middleman
 
         block.call(self) if block_given?
 
-        @slides = transformers.inject(@slides) { |memo, t| t.transform(memo) }
+        @slides = transformers.reduce(@slides) { |memo, t| t.transform(memo) }
       end
 
       def transform_with(transformer)

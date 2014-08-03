@@ -3,7 +3,6 @@ module Middleman
   module Presentation
     module Transformers
       class TemplateFinder
-
         private
 
         attr_reader :base_path
@@ -35,7 +34,7 @@ module Middleman
         private
 
         def template(template_name)
-          File.expand_path("../../../../templates/slides/#{template_name}", __FILE__ )
+          File.expand_path("../../../../templates/slides/#{template_name}", __FILE__)
         end
       end
     end

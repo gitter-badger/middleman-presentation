@@ -4,15 +4,15 @@ require 'spec_helper'
 RSpec.describe IgnoreFile do
   context '#initialize' do
     it 'succeeds if path is given' do
-      expect {
+      expect do
         IgnoreFile.new create_file 'ignore_file'
-      }.not_to raise_error
+      end.not_to raise_error
     end
 
     it 'fails if path is missing' do
-      expect {
+      expect do
         IgnoreFile.new
-      }.to raise_error ArgumentError
+      end.to raise_error ArgumentError
     end
 
     context '#ignore?' do

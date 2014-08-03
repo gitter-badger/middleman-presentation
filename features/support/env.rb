@@ -13,7 +13,7 @@ require 'simplecov'
 SimpleCov.command_name 'cucumber'
 SimpleCov.start
 
-ENV["TEST"] = "true"
-ENV["AUTOLOAD_SPROCKETS"] = "false"
- 
+ENV['TEST'] = 'true'
+ENV['AUTOLOAD_SPROCKETS'] = 'false'
+
 PROJECT_ROOT_PATH = File.expand_path('../../../', __FILE__)

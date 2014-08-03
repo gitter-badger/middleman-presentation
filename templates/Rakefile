@@ -4,7 +4,7 @@ require 'bundler'
 Bundler.require :default, :development
 
 desc 'Start presentation'
-task :default => :start
+task default: :start
 
 desc 'Bootstrap presentation'
 task :bootstrap do
@@ -29,12 +29,12 @@ namespace :export do
 end
 
 desc 'Export presentation as tar-archive'
-task :export => 'export:tar'
+task export: 'export:tar'
 
 namespace :edit do
 
   desc 'Edit all user defined slides'
-  task :slides => 'slides:user_defined'
+  task slides: 'slides:user_defined'
 
   namespace :slides do
     desc 'Edit all user-defined slides'
@@ -43,17 +43,17 @@ namespace :edit do
         l.exclude 'source/slides/999*'
       end
 
-      sh "#{Middleman::Presentation.config.editor_command} #{slides.join(" ")}"
+      sh "#{Middleman::Presentation.config.editor_command} #{slides.join(' ')}"
     end
 
     desc 'Edit all slides'
     task :all do
       slides = Rake::FileList.new('source/slides/*')
 
-      sh "#{Middleman::Presentation.config.editor_command} #{slides.join(" ")}"
+      sh "#{Middleman::Presentation.config.editor_command} #{slides.join(' ')}"
     end
   end
 end
 
 desc 'Edit all user defined slides'
-task :edit => 'edit:slides'
+task edit: 'edit:slides'

@@ -22,7 +22,7 @@ def gemspec
 end
 
 def hardware_architecture
-  %x[uname -m].chomp
+  `uname -m`.chomp
 end
 
 def archlinux_package_name
@@ -62,7 +62,7 @@ def gem_directory
   ::File.join(root_directory, 'vendor', 'cache')
 end
 
-task :default => 'package:gem'
+task default: 'package:gem'
 
 file tmp_directory do
   FileUtils.mkdir_p tmp_directory
@@ -73,7 +73,7 @@ file archlinux_build_directory do
 end
 
 def extract_sha
-  %x[makepkg -g 2>/dev/null].split(/\n/).find { |l| l =~ /sha256/ }
+  `makepkg -g 2>/dev/null`.split(/\n/).find { |l| l =~ /sha256/ }
 end
 
 namespace :package do
@@ -99,13 +99,12 @@ end
 require 'coveralls/rake/task'
 Coveralls::RakeTask.new
 
-
 desc 'Run test suite'
-task :test => ['test:rspec', 'test:cucumber', 'test:rubocop']
+task test: ['test:rspec', 'test:cucumber', 'test:rubocop']
 
 namespace :test do
   desc 'Test with coveralls'
-  task :coveralls => ['test', 'coveralls:push']
+  task coveralls: ['test', 'coveralls:push']
 
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new
@@ -135,7 +134,7 @@ namespace :archlinux do
   end
 
   desc 'Prepare package build'
-  task :prepare => ['package:gem', archlinux_build_directory] do
+  task prepare: ['package:gem', archlinux_build_directory] do
     generator = Filegen::Rubygen.new
     template = File.read(File.expand_path('../share/archlinux/PKGBUILD.sh.erb', __FILE__))
     build_file = File.expand_path('../share/archlinux/PKGBUILD', __FILE__)
@@ -144,13 +143,13 @@ namespace :archlinux do
       package_file = ::File.join(pkg_directory, "#{software}-#{version}.gem")
       source       = ''
     else
-      #package_file = '$pkgname-$pkgver.gem'
+      # package_file = '$pkgname-$pkgver.gem'
       package_file = '$pkgname'
       source       = 'http://gems.rubyforge.org/gems/$pkgname-$pkgver.gem'
     end
 
-    data = { 
-      sha: nil, 
+    data = {
+      sha: nil,
       version: version,
       package: package_file,
       source: source,
@@ -158,7 +157,7 @@ namespace :archlinux do
 
     Dir.chdir(archlinux_build_directory) do
       File.open(build_file, 'w') do |f|
-        f.write generator.run(template, data )
+        f.write generator.run(template, data)
       end
 
       data = {
@@ -175,16 +174,16 @@ namespace :archlinux do
   end
 
   desc 'Build package'
-  task :build => 'archlinux:prepare' do
+  task build: 'archlinux:prepare' do
     Dir.chdir(archlinux_build_directory) do
-      sh "makepkg -f"
+      sh 'makepkg -f'
     end
   end
 
   desc 'Build source package for aur'
-  task :build_source => 'archlinux:prepare' do
+  task build_source: 'archlinux:prepare' do
     Dir.chdir(archlinux_build_directory) do
-      sh "makepkg --source"
+      sh 'makepkg --source'
     end
   end
 end

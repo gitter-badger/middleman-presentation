@@ -4,7 +4,6 @@ module Middleman
     module Helpers
       # Yield slides
       def yield_slides
-        
         list = SlideList.new Dir.glob(File.join(source_dir, extensions[:presentation].options.slides_directory, '**', '*')) do |l|
           l.transform_with Transformers::GroupNameFilesystem.new File.join(source_dir, extensions[:presentation].options.slides_directory)
           l.transform_with Transformers::SlidePath.new File.join(source_dir, extensions[:presentation].options.slides_directory)
@@ -22,7 +21,7 @@ module Middleman
           rescue StandardError => e
             message = []
             message << "Rendering slide \"#{element.partial_path}\" failed with"
-            message << e.class.to_s + ": " + e.message
+            message << e.class.to_s + ': ' + e.message
             message << e.backtrace.join("\n")
 
             raise e.class, message.join("\n\n")

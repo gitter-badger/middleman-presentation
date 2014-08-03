@@ -3,7 +3,6 @@ module Middleman
   module Presentation
     module Transformers
       class GroupNameFilesystem
-
         private
 
         attr_reader :base_path
@@ -35,7 +34,6 @@ module Middleman
 
           [name, group]
         end
-
       end
     end
   end

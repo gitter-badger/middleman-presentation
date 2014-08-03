@@ -3,7 +3,6 @@ module Middleman
   module Presentation
     module Transformers
       class SlidePath
-
         private
 
         attr_reader :slides_directory

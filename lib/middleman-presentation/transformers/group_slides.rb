@@ -3,7 +3,6 @@ module Middleman
   module Presentation
     module Transformers
       class GroupSlides
-
         private
 
         attr_reader :template
@@ -19,14 +18,14 @@ module Middleman
 
           new_slides = slides.map do |slide|
             if slide.group and groups.none? { |g| g.name == slide.group }
-              slide = group = SlideGroup.new name: slide.group, slides: slides.find_all { |s| s.has_group? slide.group }, template: template
+              slide = group = SlideGroup.new name: slide.group, slides: slides.select { |s| s.has_group? slide.group }, template: template
               groups << group
             end
 
             slide
           end
 
-          new_slides - groups.collect { |g| g.slides }.flatten
+          new_slides - groups.map { |g| g.slides }.flatten
         end
       end
     end

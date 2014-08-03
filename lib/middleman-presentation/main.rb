@@ -1,11 +1,9 @@
 # encoding: utf-8
 module Middleman
   module Presentation
-
-    @config = PresentationConfig.new 
+    @config = PresentationConfig.new
 
     class << self
-
       attr_reader :config
 
       def root_path

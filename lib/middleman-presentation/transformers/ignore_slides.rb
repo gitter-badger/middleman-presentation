@@ -3,7 +3,6 @@ module Middleman
   module Presentation
     module Transformers
       class IgnoreSlides
-
         private
 
         attr_reader :ignore_file

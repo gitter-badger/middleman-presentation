@@ -17,9 +17,9 @@ module Middleman
         def transform(slides)
           temp_slides = (Array(slides) + Array(additional_slides)).uniq
 
-          duplicate_slides = temp_slides.inject([]) do |memo, t|
-            memo << slides.find_all do |s| 
-              t.similar?(s) && !t.eql?(s) 
+          duplicate_slides = temp_slides.reduce([]) do |memo, t|
+            memo << slides.select do |s|
+              t.similar?(s) && !t.eql?(s)
             end
 
             memo

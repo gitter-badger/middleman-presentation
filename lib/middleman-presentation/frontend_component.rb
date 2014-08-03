@@ -26,22 +26,22 @@ module Middleman
       #   Name of github repository, e.g. <account>/<repository>
       def initialize(resource_locator: nil, version: nil, name: nil, github: nil, javascripts: [], stylesheets: [])
         @resource_locator = if version
-                             Class.new do
-                               attr_reader :to_s
+                              Class.new do
+                                attr_reader :to_s
 
-                               def initialize(value)
-                                 @to_s = value
-                               end
-                             end.new(version)
+                                def initialize(value)
+                                  @to_s = value
+                                end
+                              end.new(version)
                             elsif github
-                             Addressable::URI.heuristic_parse format('https://github.com/%s.git', github)
-                           elsif resource_locator =~ /\A#{URI::regexp}\z/
-                             Addressable::URI.heuristic_parse resource_locator
+                              Addressable::URI.heuristic_parse format('https://github.com/%s.git', github)
+                           elsif resource_locator =~ /\A#{URI.regexp}\z/
+                              Addressable::URI.heuristic_parse resource_locator
                            else
                              nil
                            end
 
-        raise ArgumentError, JSON.dump(message: I18n.t('errors.undefined_arguments', arguments: %w{resource_locator github version}.to_list)) if @resource_locator.blank?
+        fail ArgumentError, JSON.dump(message: I18n.t('errors.undefined_arguments', arguments: %w(resource_locator github version).to_list)) if @resource_locator.blank?
 
         @name = if version
                   name
@@ -51,7 +51,7 @@ module Middleman
                   name
                 end
 
-        raise ArgumentError, JSON.dump(message: I18n.t('errors.argument_error', argument: :name, value: @name)) if @name.blank?
+        fail ArgumentError, JSON.dump(message: I18n.t('errors.argument_error', argument: :name, value: @name)) if @name.blank?
 
         @javascripts = Array(javascripts)
         @stylesheets = Array(stylesheets)

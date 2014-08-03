@@ -43,7 +43,7 @@ module Middleman
 
       # Return file extension
       def extname
-        return '' if !path and !name
+        return '' if !path && !name
 
         if path.blank?
           File.extname(name)
@@ -80,7 +80,7 @@ module Middleman
 
       # Check if slide has given extensions
       def has_extname?(*extensions)
-        return false if !path and !name
+        return false if !path && !name
 
         extensions.any? { |e| extname == e }
       end

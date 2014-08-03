@@ -2,7 +2,6 @@
 module Middleman
   module Presentation
     class IgnoreFile
-
       private
 
       attr_reader :unignore, :ignore, :path
@@ -35,7 +34,7 @@ module Middleman
 
           if l =~ /^!/
             self.unignore = Regexp.union(
-              unignore, 
+              unignore,
               Regexp.new(
                 l.sub(/^!/, '')
               )
@@ -44,7 +43,6 @@ module Middleman
             self.ignore = Regexp.union(ignore, Regexp.new(l))
           end
         end
-
       end
     end
   end

@@ -1,5 +1,5 @@
 # encoding: utf-8
-$:.push File.expand_path('../lib', __FILE__)
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
 require 'middleman-presentation/version'
 
 Gem::Specification.new do |spec|
@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors               = ['Max Meyer', 'Dennis Guennewig']
   spec.email                 = ['dev@fedux.org', 'dg1@vrnetze.de']
   spec.homepage              = 'https://github.com/maxmeyer/middleman-presentation'
-  spec.summary               = %q{Presentation engine for Middleman}
+  spec.summary               = 'Presentation engine for Middleman'
 
   spec.license               = 'MIT'
   spec.files                 = `git ls-files -z`.split("\x0")

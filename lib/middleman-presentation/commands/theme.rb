@@ -46,9 +46,9 @@ module Middleman
 
       private
 
-      no_commands {
+      no_commands do
         attr_reader :theme_name
-      }
+      end
     end
   end
 end

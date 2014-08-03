@@ -2,11 +2,11 @@
 require 'spec_helper'
 
 RSpec.describe Transformers::TemplateFinder do
-  context '#initialize' do 
+  context '#initialize' do
     it 'requires a base directory' do
-      expect {
+      expect do
         Transformers::TemplateFinder.new 'path'
-      }.not_to raise_error
+      end.not_to raise_error
     end
   end
 

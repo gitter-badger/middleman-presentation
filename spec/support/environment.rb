@@ -14,4 +14,3 @@ end
 RSpec.configure do |c|
   c.include Middleman::Revealjs::SpecHelper::Environment
 end
-

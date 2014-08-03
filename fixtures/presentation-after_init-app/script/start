@@ -21,14 +21,14 @@ OptionParser.new do |opts|
     options.listen.host = h
   end
 
-  opts.on('-v', '--verbose', 'Verbose mode') do |h|
+  opts.on('-v', '--verbose', 'Verbose mode') do |_h|
     options.verbose = true
   end
 
 end.parse!
 
 launchy_pid = fork do
-  system("bundle exec launchy #{options.listen.to_s}")
+  system("bundle exec launchy #{options.listen}")
 end
 
 Process.waitpid(launchy_pid)
@@ -40,4 +40,4 @@ command << "-p #{options.listen.port}"
 command << "-h #{options.listen.host}"
 command << '--verbose' if options.verbose
 
-system(command.join(" "))
+system(command.join(' '))

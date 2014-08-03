@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 RSpec.describe Transformers::GroupSlides do
-  context '#initialize' do 
+  context '#initialize' do
     it 'requires a base directory' do
       template = double('Template')
       allow(template).to receive(:result)
@@ -35,7 +35,7 @@ RSpec.describe Transformers::GroupSlides do
 
       transformer = Transformers::GroupSlides.new(template: Erubis::Eruby.new('<%= slides %>'))
       result = transformer.transform [slide1, slide2, slide3]
-      
+
       expect(result).not_to include slide1
       expect(result).not_to include slide2
       expect(result).to include slide3

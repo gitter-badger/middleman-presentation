@@ -83,7 +83,7 @@ if respond_to? :sprockets and sprockets.respond_to? :import_asset
     '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
     '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
     '.js',                                    # Javascript
-  ].map { |e| File.join('vendor/assets/components', "**", "*#{e}" ) }
+  ].map { |e| File.join('vendor/assets/components', '**', "*#{e}") }
 
   require 'rake/file_list'
 

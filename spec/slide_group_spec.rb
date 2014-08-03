@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 RSpec.describe SlideGroup do
-  context '#initialize' do 
+  context '#initialize' do
     it 'requires a name, slides and template' do
       template = double('Template')
       allow(template).to receive(:result).and_return "01\n02"
@@ -14,7 +14,7 @@ RSpec.describe SlideGroup do
       allow(slide2).to receive(:content).and_return '02'
 
       expect {
-        SlideGroup.new(name: 'group', slides: [ slide1, slide2 ], template: template)
+        SlideGroup.new(name: 'group', slides: [slide1, slide2], template: template)
       }.not_to raise_error
     end
   end
@@ -30,7 +30,7 @@ RSpec.describe SlideGroup do
       slide2 = instance_double('Middleman::Presentation::Slide')
       allow(slide2).to receive(:content).and_return '02'
 
-      group = SlideGroup.new(name: 'group', slides: [ slide1, slide2 ], template: template)
+      group = SlideGroup.new(name: 'group', slides: [slide1, slide2], template: template)
       expect(group).to respond_to :partial_path
     end
   end
@@ -46,7 +46,7 @@ RSpec.describe SlideGroup do
       slide2 = instance_double('Middleman::Presentation::Slide')
       allow(slide2).to receive(:content).and_return '02'
 
-      group = SlideGroup.new(name: 'group', slides: [ slide1, slide2 ], template: template)
+      group = SlideGroup.new(name: 'group', slides: [slide1, slide2], template: template)
       expect(group.slides).to include slide1, slide2
     end
   end
@@ -62,7 +62,7 @@ RSpec.describe SlideGroup do
       slide2 = instance_double('Middleman::Presentation::Slide')
       allow(slide2).to receive(:content).and_return '02'
 
-      group = SlideGroup.new(name: 'group', slides: [ slide1, slide2 ], template: template)
+      group = SlideGroup.new(name: 'group', slides: [slide1, slide2], template: template)
       expect(group.name).to eq 'group'
     end
   end

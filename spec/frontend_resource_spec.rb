@@ -4,39 +4,39 @@ require 'spec_helper'
 RSpec.describe FrontendComponent do
   context '#initialize' do
     it 'supports a full url as resource locator' do
-      expect {
+      expect do
         FrontendComponent.new(resource_locator: 'http://www.example.org/test')
-      }.not_to raise_error
+      end.not_to raise_error
     end
 
     it 'fails if neither github nor resource_locator is given' do
-      expect {
+      expect do
         FrontendComponent.new
-      }.to raise_error ArgumentError
+      end.to raise_error ArgumentError
     end
 
     it 'build github url' do
-      expect {
+      expect do
         FrontendComponent.new(github: 'example/example')
-      }.not_to raise_error
+      end.not_to raise_error
     end
 
     it 'fails if name is empty when extracted from url' do
-      expect {
+      expect do
         FrontendComponent.new(resource_locator: 'http://www.example.org')
-      }.to raise_error ArgumentError
+      end.to raise_error ArgumentError
     end
 
     it 'requires name if version is given' do
-      expect {
+      expect do
         FrontendComponent.new(version: '1.1.1', name: 'blub')
-      }.not_to raise_error
+      end.not_to raise_error
     end
 
     it 'fails if version is given but no name' do
-      expect {
+      expect do
         FrontendComponent.new(version: '1.1.1')
-      }.to raise_error ArgumentError
+      end.to raise_error ArgumentError
     end
   end
 
@@ -53,7 +53,7 @@ RSpec.describe FrontendComponent do
   end
 
   context '.parse' do
-    let(:hashes) do 
+    let(:hashes) do
       [
         {
           name: 'name',

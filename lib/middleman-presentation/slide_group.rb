@@ -2,7 +2,6 @@
 module Middleman
   module Presentation
     class SlideGroup
-
       private
 
       attr_reader :template
@@ -24,7 +23,7 @@ module Middleman
 
       # Call block for each slide
       def render(&block)
-        slides_content = slides.inject([]) { |memo, s| memo << s.render(&block); memo }.join("\n")
+        slides_content = slides.reduce([]) { |memo, s| memo << s.render(&block); memo }.join("\n")
 
         template.result(slides: slides_content)
       end
@@ -36,4 +35,3 @@ module Middleman
     end
   end
 end
-

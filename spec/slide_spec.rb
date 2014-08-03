@@ -67,7 +67,7 @@ RSpec.describe Slide do
       expect(slide).to respond_to :hash
     end
   end
-  
+
   context '#content' do
     it 'evaluates given template with data' do
       slide = Slide.new(name: '02')
