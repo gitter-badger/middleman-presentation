@@ -99,16 +99,25 @@ end
 require 'coveralls/rake/task'
 Coveralls::RakeTask.new
 
+
+desc 'Run test suite'
+task :test => ['test:rspec', 'test:cucumber', 'test:rubocop']
+
 namespace :test do
   desc 'Test with coveralls'
-  task :coveralls => ['test:rspec', 'test:cucumber', 'coveralls:push']
+  task :coveralls => ['test', 'coveralls:push']
 
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
+
+  desc 'run rspec'
   task :rspec do
     sh 'bundle exec rspec'
   end
 
+  desc 'run cucumber'
   task :cucumber do
-    sh 'bundle exec cucumber'
+    sh 'bundle exec cucumber -p all'
   end
 end
 
