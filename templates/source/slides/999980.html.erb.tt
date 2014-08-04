@@ -1,4 +1,4 @@
 <section class="last_slide">
   <h1><%= I18n.t('slides.questions.title') %></h1>
-  <img src="<%%= image_path('fedux_org/images/logo-question.png') %>" alt="Question Image">
+  <div class="mp-logo-question"></div>
 </section>

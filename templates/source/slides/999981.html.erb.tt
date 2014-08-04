@@ -1,6 +1,6 @@
 <section class="last_slide">
   <h1><%= I18n.t('slides.contact.title') %></h1>
-  <img src="<%%= image_path('fedux_org/images/logo-contact.png') %>" alt="Contact Image" class="mp-with-list">
+  <div class="mp-logo-contact mp-with-list"></div>
   <ul class="mp-with-image mp-iconless-list">
 <% if @email_address -%>
     <li>
