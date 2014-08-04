@@ -68,6 +68,42 @@ Feature: Initialize presentation
     speaker: TestUser
     """
 
+  Scenario: Use german language in slides
+    Given a fixture app "presentation-before_init-app"
+    And I set the environment variables to:
+      | variable | content |
+      | LANG     | de_DE.utf-8|
+    And I initialized middleman for a new presentation
+    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    And the file "source/slides/999980.html.erb" should contain:
+    """
+    Fragen
+    """
+
+  Scenario: Use englisch language in slides
+    Given a fixture app "presentation-before_init-app"
+    And I set the environment variables to:
+      | variable | content |
+      | LANG     | asdf |
+    And I initialized middleman for a new presentation
+    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    And the file "source/slides/999980.html.erb" should contain:
+    """
+    Questions
+    """
+
+  Scenario: Use englisch language in slides
+    Given a fixture app "presentation-before_init-app"
+    And I set the environment variables to:
+      | variable | content |
+      | LANG     | asdf |
+    And I initialized middleman for a new presentation
+    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language en`
+    And the file "data/config.yml" should contain:
+    """
+    Questions
+    """
+
   Scenario: German umlauts, French accents and special chars are not a problem for project id
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation

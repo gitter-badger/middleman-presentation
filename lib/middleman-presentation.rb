@@ -10,6 +10,7 @@ require 'securerandom'
 require 'fedux_org_stdlib/app_config'
 require 'fedux_org_stdlib/file_template'
 require 'fedux_org_stdlib/core_ext/array'
+require 'fedux_org_stdlib/shell_language_detector'
 require 'securerandom'
 require 'shellwords'
 

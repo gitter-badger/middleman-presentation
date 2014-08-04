@@ -54,7 +54,7 @@ module Middleman
       option :install_question_slide, type: :boolean, default: Middleman::Presentation.config.install_question_slide, desc: 'Install question slide'
       option :install_end_slide, type: :boolean, default: Middleman::Presentation.config.install_end_slide, desc: 'Install end slide'
 
-      option :language, default: Middleman::Presentation.config.language, desc: 'Language to use for translatable slide templates'
+      option :language, type: :array, desc: 'Language to use for translatable slide templates, e.g. "de", "en"'
       option :version, default: Middleman::Presentation.config.default_version_number, desc: 'Version number for your presentation'
 
       desc 'presentation ', 'Initialize a new presentation'
@@ -63,7 +63,10 @@ module Middleman
 
         shared_instance = ::Middleman::Application.server.inst
 
-        I18n.default_locale = options[:language].to_sym
+        language_detector = FeduxOrgStdlib::ShellLanguageDetector.new
+        language = language_detector.detect allowed: I18n.available_locales, overwrite: options[:language]
+
+        I18n.default_locale = language.language_code
 
         # This only exists when the config.rb sets it!
         if shared_instance.extensions.key? :presentation
