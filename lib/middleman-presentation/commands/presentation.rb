@@ -101,10 +101,10 @@ module Middleman
 
           if Middleman::Presentation.config.theme.blank?
             @external_assets << Middleman::Presentation::FrontendComponent.new(
-              name: 'fedux_org',
-              github: 'maxmeyer/reveal.js-template-fedux_org',
-              javascripts: %w(js/fedux_org),
-              stylesheets: %w(scss/fedux_org)
+              name: 'middleman-presentation',
+              github: 'maxmeyer/middleman-presentation-theme-default',
+              javascripts: %w(js/middleman-presentation),
+              stylesheets: %w(scss/middleman-presentation)
             )
           else
             @external_assets << Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.theme)

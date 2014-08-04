@@ -22,10 +22,10 @@ Feature: Image Gallery
     <section>
     <h1>Image Gallery</h1>
     <a href="images/image01.png" data-lightbox="test-gallery">
-      <img src="images/image01.png" class="fd-preview-image">
+      <img src="images/image01.png" class="mp-preview-image">
     </a>
     <a href="images/image02.png" data-lightbox="test-gallery">
-      <img src="images/image02.png" class="fd-preview-image">
+      <img src="images/image02.png" class="mp-preview-image">
     </a>
     </section>
     """
@@ -48,10 +48,10 @@ Feature: Image Gallery
     <section>
     <h1>Image Gallery</h1>
     <a href="images/image01.png" data-lightbox="test-gallery">
-      <img src="images/image01.png" alt="Title 1" class="fd-preview-image">
+      <img src="images/image01.png" alt="Title 1" class="mp-preview-image">
     </a>
     <a href="images/image02.png" data-lightbox="test-gallery">
-      <img src="images/image02.png" alt="Title 2" class="fd-preview-image">
+      <img src="images/image02.png" alt="Title 2" class="mp-preview-image">
     </a>
     </section>
     """
