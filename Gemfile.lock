@@ -45,7 +45,7 @@ PATH
       fedux_org-stdlib (>= 0.6.17)
       launchy (~> 2.4.2)
       middleman (~> 3.3)
-      middleman-sprockets (>= 3.3.4)
+      middleman-sprockets (~> 3.3.5)
       rake
       tzinfo (>= 0.3.0)
 
