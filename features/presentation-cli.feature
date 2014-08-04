@@ -77,8 +77,6 @@ Feature: Initialize presentation
     project_id: uoa
     """
 
-    @wip
-    @announce
   Scenario: Use lang from environment as language in slides
     Given a fixture app "presentation-before_init-app"
     And I set the environment variables to:
@@ -134,7 +132,7 @@ Feature: Initialize presentation
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
-    And the file "data/config.yml" should contain:
+    And the file "source/slides/999980.html.erb" should contain:
     """
     Questions
     """
