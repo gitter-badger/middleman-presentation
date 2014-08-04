@@ -1,5 +1,10 @@
 * 0.13
   * Support version number for presentation
+  * Detect user language based on ENV['LANG']-variable
+  * Show slide path in rendered output to make troubleshooting easier 
+  * Improved possibilities to style slides by using more css
+  * Improved style of code by integrating rubocop in development workflow
+  * Improved documentation
 
 * 0.12
   * Show slide number

@@ -32,6 +32,11 @@ And add the `activate`-statement to the `config.rb` of middleman:
 activate :presentation
 ```
 
+## Release Notes
+
+You find the release notes [here](RELEASE_NOTES.md) or on
+[github](https://github.com/maxmeyer/middleman-presentation/blob/master/RELEASE_NOTES.md]).
+
 ## Supported rubies
 
 * MRI 2.1.x
@@ -365,7 +370,6 @@ To get a full list of available configuration options, run the following command
 ```
 middleman config
 ```
-
 
 ## Development
 
