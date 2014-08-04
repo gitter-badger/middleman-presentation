@@ -25,6 +25,7 @@ Feature: Initialize middleman-presentation
     # components: []
     # default_transition_speed: default
     # default_transition_type: linear
+    # default_version_number: v0.0.1
     # description:
     # edit: false
     # editor_command: vim
@@ -70,6 +71,7 @@ Feature: Initialize middleman-presentation
     # components: []
     # default_transition_speed: default
     # default_transition_type: linear
+    # default_version_number: v0.0.1
     # description:
     # edit: false
     # editor_command: vim
