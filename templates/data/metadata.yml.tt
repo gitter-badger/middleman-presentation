@@ -69,3 +69,9 @@ project_id: <%= @project_id %>
 <% else -%>
 # project_id:
 <% end -%>
+
+<% if @version -%>
+version: <%= @version %>
+<% else -%>
+# version:
+<% end -%>

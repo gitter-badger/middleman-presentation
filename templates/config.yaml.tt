@@ -32,6 +32,7 @@
   speaker
   theme
   use_logo
+  default_version_number
     }.sort.each do |field|
 -%>
 <% if @config.public_send(field).nil? -%>

@@ -32,6 +32,7 @@ module Middleman
       option :install_question_slide, true
       option :install_end_slide, true
       option :language, :de
+      option :default_version_number, 'v0.0.1'
 
       option :slides_directory, 'slides'
       option :slides_ignore_file, '.slidesignore'

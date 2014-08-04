@@ -56,6 +56,7 @@ module Middleman
       option :install_end_slide, type: :boolean, default: Middleman::Presentation.config.install_end_slide, desc: 'Install end slide'
 
       option :language, default: Middleman::Presentation.config.language, desc: 'Language to use for translatable slide templates'
+      option :version, default: Middleman::Presentation.config.default_version_number, desc: 'Version number for your presentation'
 
       desc 'presentation ', 'Initialize a new presentation'
       def presentation
@@ -85,6 +86,8 @@ module Middleman
           @email_address   = options[:email_address]
           @phone_number    = options[:phone_number]
           @github_url      = options[:github_url]
+
+          @version         = options[:version]
 
           @project_id      = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
 

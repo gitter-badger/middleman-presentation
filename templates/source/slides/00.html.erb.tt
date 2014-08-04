@@ -11,11 +11,16 @@
 <%%- end -%>
     </small>
     </p>
-    <p class="license">
-<%%- if data.metadata.license -%>
-      <%%= data.metadata.license %>
-<%%- end -%>
+<%%- if data.metadata.version -%>
+    <p class="version">
+      <%%= data.metadata.version %>
     </p>
+<%%- end -%>
+<%%- if data.metadata.license -%>
+    <p class="license">
+      <%%= data.metadata.license %>
+    </p>
+<%%- end -%>
   </div>
 
 <% if @use_logo -%>
