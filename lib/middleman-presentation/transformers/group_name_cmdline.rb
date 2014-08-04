@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Transformers
+      # Set group name based on commandline information
       class GroupNameCmdline
         def transform(slides)
           slides.map do |slide|
@@ -14,7 +15,7 @@ module Middleman
         private
 
         def extract_group_name(slide)
-          result = slide.name.split(%r{:})
+          result = slide.name.split(/:/)
 
           name = result.pop
           group = result.join(':')

@@ -147,12 +147,14 @@ module Middleman
 
             require 'rake/file_list'
 
-            Rake::FileList.new(*patterns) do |l|
+            list = Rake::FileList.new(*patterns) do |l|
               l.exclude(/src/)
               l.exclude(/test/)
               l.exclude(/demo/)
               l.exclude { |f| !File.file? f }
-            end.each do |f|
+            end
+
+            list.each do |f|
               sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new('#{@bower_directory}'))
             end
 
@@ -211,7 +213,7 @@ module Middleman
             run 'git commit -m Init'
           end
         else
-          fail Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
+          fail Thor::Error, 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end
       end
     end

@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Transformers
+      # Ignore slides in list: delete them from list
       class IgnoreSlides
         private
 

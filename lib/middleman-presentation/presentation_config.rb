@@ -1,6 +1,7 @@
 # encoding, utf-8
 module Middleman
   module Presentation
+    # Configuration for presentation extension
     class PresentationConfig < FeduxOrgStdlib::AppConfig
       option :speaker, process_environment.fetch('USER')
       option :license, 'CC BY 4.0'

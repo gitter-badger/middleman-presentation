@@ -73,7 +73,7 @@ end
 
 activate :presentation
 
-if respond_to? :sprockets and sprockets.respond_to? :import_asset
+if respond_to?(:sprockets) && sprockets.respond_to?(:import_asset)
   set :markdown_engine, :kramdown
   set :markdown, parse_block_html: true
 
@@ -87,12 +87,14 @@ if respond_to? :sprockets and sprockets.respond_to? :import_asset
 
   require 'rake/file_list'
 
-  Rake::FileList.new(*patterns) do |l|
+  list = Rake::FileList.new(*patterns) do |l|
     l.exclude(/src/)
     l.exclude(/test/)
     l.exclude(/demo/)
     l.exclude { |f| !File.file? f }
-  end.each do |f|
+  end
+
+  list.each do |f|
     sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new('vendor/assets/components'))
   end
 end

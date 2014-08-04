@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Helper module
     module Helpers
       # Create image gallery
       def image_gallery(images, image_gallery_id:)
@@ -10,11 +11,9 @@ module Middleman
          </a>
         EOS
 
-        images.reduce([]) do |memo, (image, title)|
+        images.each_with_object([]) do |memo, (image, title)|
           engine = Erubis::Eruby.new(template)
           memo << engine.result(image_path: image, image_gallery_id: image_gallery_id, title: title)
-
-          memo
         end.join("\n")
       end
 

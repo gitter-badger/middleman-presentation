@@ -2,8 +2,10 @@
 require 'fedux_org_stdlib/environment'
 
 module Middleman
-  module Revealjs
+  module Presentation
+    # Spec Helpers
     module SpecHelper
+      # Helpers for environment
       module Environment
         include FeduxOrgStdlib::Environment
       end
@@ -12,5 +14,5 @@ module Middleman
 end
 
 RSpec.configure do |c|
-  c.include Middleman::Revealjs::SpecHelper::Environment
+  c.include Middleman::Presentation::SpecHelper::Environment
 end

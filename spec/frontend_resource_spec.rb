@@ -59,11 +59,11 @@ RSpec.describe FrontendComponent do
           name: 'name',
           resource_locator: 'https://example.org/test',
           javascripts: [
-            'path/to/file.js',
+            'path/to/file.js'
           ],
           stylesheets: [
-            'path/to/file.scss',
-          ],
+            'path/to/file.scss'
+          ]
         }
       ]
     end

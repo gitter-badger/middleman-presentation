@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Transformers
+      # Set group name based on filesystem information
       class GroupNameFilesystem
         private
 
@@ -24,7 +25,7 @@ module Middleman
         private
 
         def extract_group_name(slide)
-          name, group  = Pathname.new(slide.name).relative_path_from(Pathname.new(base_path)).split.reverse.map { |s| s.to_s.gsub(%r{/}, ':') }
+          name, group  = Pathname.new(slide.name).relative_path_from(Pathname.new(base_path)).split.reverse.map { |s| s.to_s.gsub(/\//, ':') }
 
           group = if group == '.'
                     nil

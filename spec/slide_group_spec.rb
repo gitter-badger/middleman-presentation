@@ -13,9 +13,9 @@ RSpec.describe SlideGroup do
       slide2 = instance_double('Middleman::Presentation::Slide')
       allow(slide2).to receive(:content).and_return '02'
 
-      expect {
+      expect do
         SlideGroup.new(name: 'group', slides: [slide1, slide2], template: template)
-      }.not_to raise_error
+      end.not_to raise_error
     end
   end
 

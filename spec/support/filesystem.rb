@@ -2,8 +2,9 @@
 require 'fedux_org_stdlib/filesystem'
 
 module Middleman
-  module Revealjs
+  module Presentation
     module SpecHelper
+      # Helpers for filesystem
       module Filesystem
         include FeduxOrgStdlib::Filesystem
 
@@ -16,6 +17,6 @@ module Middleman
 end
 
 RSpec.configure do |c|
-  c.include Middleman::Revealjs::SpecHelper::Filesystem
+  c.include Middleman::Presentation::SpecHelper::Filesystem
   c.before(:each) { cleanup_working_directory }
 end

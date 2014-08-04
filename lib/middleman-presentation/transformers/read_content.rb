@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Transformers
+      # Read content of slide from filesystem
       class ReadContent
         def transform(slides)
           slides.map do |slide|

@@ -1,6 +1,9 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # The ignore file uses to ignore slides
+    #
+    # @see [Transformers::IgnoreSlides]
     class IgnoreFile
       private
 

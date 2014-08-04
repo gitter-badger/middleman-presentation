@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # A group of slides
     class SlideGroup
       private
 
@@ -23,7 +24,7 @@ module Middleman
 
       # Call block for each slide
       def render(&block)
-        slides_content = slides.reduce([]) { |memo, s| memo << s.render(&block); memo }.join("\n")
+        slides_content = slides.each_with_object([]) { |memo, s| memo << s.render(&block) }.join("\n")
 
         template.result(slides: slides_content)
       end

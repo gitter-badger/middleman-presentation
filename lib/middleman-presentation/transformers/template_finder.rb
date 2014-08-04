@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Transformers
+      # Find template for slide
       class TemplateFinder
         private
 
@@ -15,11 +16,11 @@ module Middleman
 
         def transform(slides)
           slides.map do |slide|
-            template_file = if slide.has_type? :erb
+            template_file = if slide.type? :erb
                               ErbTemplate.new(working_directory: base_path)
-                            elsif slide.has_type? :md
+                            elsif slide.type? :md
                               MarkdownTemplate.new(working_directory: base_path)
-                            elsif slide.has_type? :liquid
+                            elsif slide.type? :liquid
                               LiquidTemplate.new(working_directory: base_path)
                             else
                               MarkdownTemplate.new(working_directory: base_path)

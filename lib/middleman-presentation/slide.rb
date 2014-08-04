@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # A slide
     class Slide
       include Comparable
 
@@ -60,31 +61,33 @@ module Middleman
                   string_or_regex
                 end
 
+        # rubocop:disable Style/CaseEquality:
         regex === path
+        # rubocop:enable Style/CaseEquality:
       end
 
       # Check type of slide
-      def has_type?(t)
+      def type?(t)
         type == t
       end
 
       # Determine type of slide
       def type
-        return :erb    if has_extname? '.erb'
-        return :md     if has_extname? '.md', '.markdown', '.mkd'
-        return :liquid if has_extname? '.l', '.liquid'
+        return :erb    if extname? '.erb'
+        return :md     if extname? '.md', '.markdown', '.mkd'
+        return :liquid if extname? '.l', '.liquid'
 
         :md
       end
       private :type
 
       # Check if slide has given extensions
-      def has_extname?(*extensions)
+      def extname?(*extensions)
         return false if !path && !name
 
         extensions.any? { |e| extname == e }
       end
-      private :has_extname?
+      private :extname?
 
       # Return string representation of self
       def to_s
@@ -97,10 +100,10 @@ module Middleman
       end
 
       # Check if basename is equal
-      def has_basename?(b)
+      def basename?(b)
         basename == b
       end
-      private :has_basename?
+      private :basename?
 
       # @private
       def <=>(other)
@@ -120,7 +123,7 @@ module Middleman
       def similar?(other)
         return true if eql? other
 
-        has_basename?(other.basename) && has_group?(other.group)
+        basename?(other.basename) && group?(other.group)
       end
 
       # @private
@@ -129,7 +132,7 @@ module Middleman
       end
 
       # Checks if slide is in group
-      def has_group?(g)
+      def group?(g)
         group == g
       end
 

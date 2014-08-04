@@ -18,7 +18,9 @@ def require_name
 end
 
 def gemspec
+  # rubocop:disable Lint/Eval
   eval File.read(Dir.glob(File.join(File.expand_path('../', __FILE__), '*.gemspec')).first)
+  # rubocop:enable Lint/Eval
 end
 
 def hardware_architecture
@@ -152,7 +154,7 @@ namespace :archlinux do
       sha: nil,
       version: version,
       package: package_file,
-      source: source,
+      source: source
     }
 
     Dir.chdir(archlinux_build_directory) do
@@ -164,7 +166,7 @@ namespace :archlinux do
         sha: extract_sha,
         version: version,
         package: package_file,
-        source: source,
+        source: source
       }
 
       File.open(build_file, 'w') do |f|

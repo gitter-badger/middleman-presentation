@@ -11,9 +11,9 @@ RSpec.describe SlideList do
       slide_builder = double('Middleman::Presentation::Slide')
       allow(slide_builder).to receive(:new).and_return slide
 
-      expect {
+      expect do
         SlideList.new('01', slide_builder: slide_builder)
-      }.not_to raise_error
+      end.not_to raise_error
     end
 
     it 'accepts a block' do
@@ -23,10 +23,10 @@ RSpec.describe SlideList do
       slide_builder = double('Middleman::Presentation::Slide')
       allow(slide_builder).to receive(:new).and_return slide
 
-      expect {
+      expect do
         SlideList.new('01', slide_builder: slide_builder) do |_l|
         end
-      }.not_to raise_error
+      end.not_to raise_error
     end
   end
 

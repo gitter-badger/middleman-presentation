@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Helpers modules
     module Helpers
     end
   end

@@ -53,10 +53,12 @@ end
 
 Then(/^I go to "([^"]*)" and see the following error message:$/) do |url, message|
   message = capture :stderr do
+    # rubocop:disable Lint/HandleExceptions:
     begin
       @browser.get(URI.escape(url))
     rescue StandardError
     end
+    # rubocop:enable Lint/HandleExceptions:
   end
 
   expect(message).to include message

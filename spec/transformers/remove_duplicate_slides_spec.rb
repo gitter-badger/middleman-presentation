@@ -30,9 +30,9 @@ RSpec.describe Transformers::RemoveDuplicateSlides do
 
       transformer = Transformers::RemoveDuplicateSlides.new raise_error: true
 
-      expect {
+      expect do
         transformer.transform([slide1, slide2])
-      }.to raise_error ArgumentError
+      end.to raise_error ArgumentError
     end
 
     it 'considers additional slides which will be not part of the output' do

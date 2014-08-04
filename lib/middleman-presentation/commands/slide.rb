@@ -48,9 +48,9 @@ module Middleman
             l.transform_with Middleman::Presentation::Transformers::SortSlides.new
           end
 
-          slide_list.each_new { |slide|
+          slide_list.each_new do |slide|
             create_file slide.path, slide.content(title: options[:title])
-          }
+          end
 
           data = if shared_instance.data.respond_to? :metadata
                    shared_instance.data.metadata.dup
@@ -70,7 +70,7 @@ module Middleman
             system(editor.join(' '))
           end
         else
-          fail Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
+          fail Thor::Error, 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end
       end
     end

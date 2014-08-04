@@ -28,7 +28,7 @@ module Middleman
         if shared_instance.extensions.key? :presentation
           puts Middleman::Presentation.config.to_s
         else
-          fail Thor::Error.new 'You need to activate the presentation extension in config.rb before you can create a slide.'
+          fail Thor::Error, 'You need to activate the presentation extension in config.rb before you can create a slide.'
         end
       end
     end

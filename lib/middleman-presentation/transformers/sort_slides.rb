@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Transformers
+      # Sort slides
       class SortSlides
         def transform(slides)
           slides.sort

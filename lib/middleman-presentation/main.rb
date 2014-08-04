@@ -1,5 +1,7 @@
 # encoding: utf-8
+# Main
 module Middleman
+  # Presentation extension
   module Presentation
     @config = PresentationConfig.new
 

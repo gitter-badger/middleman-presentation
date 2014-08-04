@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Transformers
+      # Determine path of slide
       class SlidePath
         private
 
@@ -19,11 +20,11 @@ module Middleman
             path_parts << slides_directory
             path_parts << slide.group if slide.group
 
-            path_parts << if slide.has_type? :erb
+            path_parts << if slide.type? :erb
                             "#{slide.basename}.html.erb"
-                          elsif slide.has_type? :md
+                          elsif slide.type? :md
                             "#{slide.basename}.html.md"
-                          elsif slide.has_type? :liquid
+                          elsif slide.type? :liquid
                             "#{slide.basename}.html.liquid"
                           else
                             "#{slide.basename}.html.md"

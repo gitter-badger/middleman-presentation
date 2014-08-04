@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # A frontend component
     class FrontendComponent
       attr_reader :name
 
@@ -35,11 +36,11 @@ module Middleman
                               end.new(version)
                             elsif github
                               Addressable::URI.heuristic_parse format('https://github.com/%s.git', github)
-                           elsif resource_locator =~ /\A#{URI.regexp}\z/
+                            elsif resource_locator =~ /\A#{URI.regexp}\z/
                               Addressable::URI.heuristic_parse resource_locator
-                           else
-                             nil
-                           end
+                            else
+                              nil
+                            end
 
         fail ArgumentError, JSON.dump(message: I18n.t('errors.undefined_arguments', arguments: %w(resource_locator github version).to_list)) if @resource_locator.blank?
 

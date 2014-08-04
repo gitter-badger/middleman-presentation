@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Helper module
     module Helpers
       # Yield slides
       def yield_slides

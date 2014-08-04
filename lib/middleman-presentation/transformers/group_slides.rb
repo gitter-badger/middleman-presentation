@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Transformers
+      # Group slides together
       class GroupSlides
         private
 
@@ -17,8 +18,8 @@ module Middleman
           groups = Set.new
 
           new_slides = slides.map do |slide|
-            if slide.group and groups.none? { |g| g.name == slide.group }
-              slide = group = SlideGroup.new name: slide.group, slides: slides.select { |s| s.has_group? slide.group }, template: template
+            if slide.group && groups.none? { |g| g.name == slide.group }
+              slide = group = SlideGroup.new name: slide.group, slides: slides.select { |s| s.group? slide.group }, template: template
               groups << group
             end
 

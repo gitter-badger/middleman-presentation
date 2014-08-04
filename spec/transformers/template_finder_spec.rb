@@ -13,8 +13,8 @@ RSpec.describe Transformers::TemplateFinder do
   context '#transform' do
     it 'sets template for erb slide' do
       slide = instance_double('Middleman::Presentation::Slide')
-      expect(slide).to receive(:has_type?).with(:erb).and_return true
-      allow(slide).to receive(:has_type?).and_return false
+      expect(slide).to receive(:type?).with(:erb).and_return true
+      allow(slide).to receive(:type?).and_return false
       expect(slide).to receive(:template=)
 
       transformer = Transformers::TemplateFinder.new 'path'
@@ -23,8 +23,8 @@ RSpec.describe Transformers::TemplateFinder do
 
     it 'sets template for markdown slide' do
       slide = instance_double('Middleman::Presentation::Slide')
-      expect(slide).to receive(:has_type?).with(:md).and_return true
-      allow(slide).to receive(:has_type?).and_return false
+      expect(slide).to receive(:type?).with(:md).and_return true
+      allow(slide).to receive(:type?).and_return false
       expect(slide).to receive(:template=)
 
       transformer = Transformers::TemplateFinder.new 'path'
@@ -33,7 +33,7 @@ RSpec.describe Transformers::TemplateFinder do
 
     it 'sets template for unknown type' do
       slide = instance_double('Middleman::Presentation::Slide')
-      allow(slide).to receive(:has_type?).and_return false
+      allow(slide).to receive(:type?).and_return false
       expect(slide).to receive(:template=)
 
       transformer = Transformers::TemplateFinder.new 'path'
@@ -42,8 +42,8 @@ RSpec.describe Transformers::TemplateFinder do
 
     it 'sets template for liquid slide' do
       slide = instance_double('Middleman::Presentation::Slide')
-      expect(slide).to receive(:has_type?).with(:liquid).and_return true
-      allow(slide).to receive(:has_type?).and_return false
+      expect(slide).to receive(:type?).with(:liquid).and_return true
+      allow(slide).to receive(:type?).and_return false
       expect(slide).to receive(:template=)
 
       transformer = Transformers::TemplateFinder.new 'path'

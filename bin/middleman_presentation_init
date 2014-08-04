@@ -5,8 +5,9 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 require 'middleman-presentation'
 
 # Restore original behaviour of thor
-module ::Thor
+module Thor
   module Actions
+    # Create file helper class
     class CreateFile
       def on_conflict_behavior(&block)
         if identical?
@@ -22,7 +23,7 @@ end
 
 module Middleman
   module Cli
-    # This class provides an 'slide' command for the middleman CLI.
+    # This class provides an 'presentation init' command for the middleman CLI.
     class PresentationInit < Thor
       include Thor::Actions
 

@@ -123,17 +123,17 @@ RSpec.describe Slide do
     end
   end
 
-  context '#has_type?' do
+  context '#type?' do
     it 'checks on a single file extension' do
       slide = Slide.new(name: '02')
       slide.path = '02.html.md'
-      expect(slide).to have_type :md
+      expect(slide).to be_type :md
     end
 
     it 'fails if has not type' do
       slide = Slide.new(name: '02')
       slide.path = '02.html.erb'
-      expect(slide).not_to have_type :md
+      expect(slide).not_to be_type :md
     end
   end
 
@@ -169,18 +169,18 @@ RSpec.describe Slide do
     end
   end
 
-  context '#has_group?' do
+  context '#group?' do
     it 'succeeds if slide has group' do
       slide = Slide.new(name: '02')
       slide.group = 'group'
 
-      expect(slide).to have_group 'group'
+      expect(slide).to be_group 'group'
     end
 
     it 'fails if slide has not group' do
       slide = Slide.new(name: '02')
 
-      expect(slide).not_to have_group 'group'
+      expect(slide).not_to be_group 'group'
     end
   end
 

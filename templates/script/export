@@ -4,10 +4,11 @@ require 'thor'
 require 'thor/group'
 require 'thor/actions'
 
+# Export command
 class Export < Thor::Group
   include Thor::Actions
 
-  no_commands {
+  no_commands do
     def export_directory
       File.expand_path('../../pkg', __FILE__)
     end
@@ -19,7 +20,7 @@ class Export < Thor::Group
     def export_file
       File.join(export_directory, "#{presentation_directory}.tar.gz")
     end
-  }
+  end
 
   def create_export_directory
     empty_directory export_directory

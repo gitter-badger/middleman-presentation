@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Transformers
+      # Remove duplicates slides from list
       class RemoveDuplicateSlides
         private
 
@@ -17,15 +18,13 @@ module Middleman
         def transform(slides)
           temp_slides = (Array(slides) + Array(additional_slides)).uniq
 
-          duplicate_slides = temp_slides.reduce([]) do |memo, t|
+          duplicate_slides = temp_slides.each_with_object([]) do |memo, t|
             memo << slides.select do |s|
               t.similar?(s) && !t.eql?(s)
             end
-
-            memo
           end.flatten
 
-          fail ArgumentError, I18n.t('errors.duplicate_slide_names', slide_names: duplicate_slides.map(&:file_name).to_list) if !duplicate_slides.blank? and raise_error
+          fail ArgumentError, I18n.t('errors.duplicate_slide_names', slide_names: duplicate_slides.map(&:file_name).to_list) if !duplicate_slides.blank? && raise_error
 
           slides - duplicate_slides
         end

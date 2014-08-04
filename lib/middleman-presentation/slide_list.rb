@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # List of slides
     class SlideList
       private
 
@@ -14,7 +15,7 @@ module Middleman
 
         block.call(self) if block_given?
 
-        @slides = transformers.reduce(@slides) { |memo, t| t.transform(memo) }
+        @slides = transformers.reduce(@slides) { |a, e| e.transform(a) }
       end
 
       def transform_with(transformer)
@@ -26,11 +27,11 @@ module Middleman
       end
 
       def each_new(&block)
-        all.keep_if { |s| s.respond_to? :exist? and !s.exist? }.each(&block)
+        all.keep_if { |s| s.respond_to?(:exist?) && !s.exist? }.each(&block)
       end
 
       def existing_slides
-        all.keep_if { |s| s.respond_to? :exist? and s.exist? }
+        all.keep_if { |s| s.respond_to?(:exist?) && s.exist? }
       end
 
       def to_a

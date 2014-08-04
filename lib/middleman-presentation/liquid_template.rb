@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Liquid template for creating slides
     class LiquidTemplate < FeduxOrgStdlib::FileTemplate
       def _fallback_template_directory
         File.expand_path('../../../templates/slides', __FILE__)
