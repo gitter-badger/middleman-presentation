@@ -68,14 +68,6 @@ Then(/^a directory named "(.*?)" is a git repository$/) do |name|
   step %Q(a directory named "#{name}/.git" should exist)
 end
 
-Then(/^the status code should be "([^\"]*)"$/)do |expected|
-  expect(@browser.last_response.status).to eq expected.to_i
-end
-
-Then(/^I should not see:$/) do |expected|
-  expect(@browser.last_response.body).not_to include(expected.chomp)
-end
-
 Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
   step %Q(the file "source/slides/#{name}" should contain:), string
 end
