@@ -43,7 +43,6 @@ Feature: Initialize middleman-presentation
     # phone_number:
     # speaker: my_user
     # theme: {}
-    # use_logo: true
     """
 
   Scenario: Overwrite existing config file
@@ -89,5 +88,4 @@ Feature: Initialize middleman-presentation
     # phone_number:
     # speaker: my_user
     # theme: {}
-    # use_logo: true
     """

@@ -50,7 +50,6 @@ module Middleman
 
       option :clear_source, type: :boolean, default: Middleman::Presentation.config.clear_source, desc: 'Remove already existing source directory'
 
-      option :use_logo, type: :boolean, default: Middleman::Presentation.config.use_logo, desc: 'Use logo on first slide'
       option :install_contact_slide, type: :boolean, default: Middleman::Presentation.config.install_contact_slide, desc: 'Install contact slide'
       option :install_question_slide, type: :boolean, default: Middleman::Presentation.config.install_question_slide, desc: 'Install question slide'
       option :install_end_slide, type: :boolean, default: Middleman::Presentation.config.install_end_slide, desc: 'Install end slide'

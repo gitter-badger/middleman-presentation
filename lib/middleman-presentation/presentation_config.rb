@@ -27,7 +27,6 @@ module Middleman
       option :install_assets, true
       option :initialize_git, true
       option :clear_source, true
-      option :use_logo, true
       option :install_contact_slide, true
       option :install_question_slide, true
       option :install_end_slide, true
