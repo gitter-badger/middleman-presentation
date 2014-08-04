@@ -1,9 +1,9 @@
-<section class="start_slide">
-  <div class="headline">
+<section class="mp-start-slide">
+  <div class="mp-headline">
     <h1><%%= data.metadata.title %></h1>
     <h2><%%= data.metadata.subtitle %></h2>
 
-    <p class="speaker">
+    <p class="mp-speaker">
     <small><%%= data.metadata.date %>&nbsp;&ndash;&nbsp;
     <%%= data.metadata.speaker -%>
 <%%- if data.metadata.company -%>
@@ -12,18 +12,16 @@
     </small>
     </p>
 <%%- if data.metadata.version -%>
-    <p class="version">
+    <p class="mp-version">
       <%%= data.metadata.version %>
     </p>
 <%%- end -%>
 <%%- if data.metadata.license -%>
-    <p class="license">
+    <p class="mp-license">
       <%%= data.metadata.license %>
     </p>
 <%%- end -%>
   </div>
 
-<% if @use_logo -%>
-  <img id="logo" src="images/logo.png" alt="logo">
-<% end -%>
+  <div class="mp-logo"></div>
 </section>
