@@ -8,42 +8,16 @@ GIT
       cucumber (>= 1.1.1)
       rspec-expectations (>= 2.7.0)
 
-GIT
-  remote: https://github.com/dg-vrnetze/middleman.git
-  revision: 1fa1709236dc61254849a74e0d7285635dc9d9c5
-  branch: feature/explicit_monkey_patching_thor
-  specs:
-    middleman (3.3.3)
-      coffee-script (~> 2.2)
-      compass (>= 0.12.4)
-      compass-import-once (= 1.0.4)
-      execjs (~> 2.0)
-      haml (>= 4.0.5)
-      kramdown (~> 1.2)
-      middleman-core (= 3.3.3)
-      middleman-sprockets (>= 3.1.2)
-      sass (>= 3.2.17, < 4.0)
-      uglifier (~> 2.5)
-    middleman-core (3.3.3)
-      activesupport (~> 4.1.0)
-      bundler (~> 1.1)
-      erubis
-      hooks (~> 0.3)
-      i18n (~> 0.6.9)
-      listen (>= 2.7.9, < 3.0)
-      padrino-helpers (~> 0.12.1)
-      rack (>= 1.4.5, < 2.0)
-      rack-test (~> 0.6.2)
-      thor (>= 0.15.2, < 2.0)
-      tilt (~> 1.4.1, < 2.0)
-
 PATH
   remote: .
   specs:
     middleman-presentation (0.13.2)
       addressable (~> 2.3.5)
+      erubis
       fedux_org-stdlib (>= 0.6.17)
+      kramdown
       launchy (~> 2.4.2)
+      liquid
       middleman (~> 3.3)
       middleman-sprockets (~> 3.3.5)
       rake
@@ -153,11 +127,35 @@ GEM
       sqlite3
       thor
       xml-simple
+    liquid (2.6.1)
     listen (2.7.9)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     method_source (0.8.2)
+    middleman (3.3.4)
+      coffee-script (~> 2.2)
+      compass (>= 0.12.4)
+      compass-import-once (= 1.0.4)
+      execjs (~> 2.0)
+      haml (>= 4.0.5)
+      kramdown (~> 1.2)
+      middleman-core (= 3.3.4)
+      middleman-sprockets (>= 3.1.2)
+      sass (>= 3.2.17, < 4.0)
+      uglifier (~> 2.5)
+    middleman-core (3.3.4)
+      activesupport (~> 4.1.0)
+      bundler (~> 1.1)
+      erubis
+      hooks (~> 0.3)
+      i18n (~> 0.6.9)
+      listen (>= 2.7.9, < 3.0)
+      padrino-helpers (~> 0.12.1)
+      rack (>= 1.4.5, < 2.0)
+      rack-test (~> 0.6.2)
+      thor (>= 0.15.2, < 2.0)
+      tilt (~> 1.4.1, < 2.0)
     middleman-livereload (3.3.4)
       em-websocket (~> 0.5.1)
       middleman-core (~> 3.2)
@@ -292,7 +290,7 @@ DEPENDENCIES
   github-markup
   inch
   license_finder
-  middleman (~> 3.3.2)!
+  middleman (~> 3.3.2)
   middleman-livereload
   middleman-presentation!
   pry
