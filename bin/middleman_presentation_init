@@ -6,7 +6,7 @@ require 'middleman-presentation'
 
 # Restore original behaviour of thor
 # rubocop:disable Style/ClassAndModuleChildren
-module ::Thor
+class ::Thor
   # rubocop:enable Style/ClassAndModuleChildren
   module Actions
     # Create file helper class
