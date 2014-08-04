@@ -24,13 +24,13 @@ module Middleman
 
       # Call block for each slide
       def render(&block)
-        slides_content = slides.each_with_object([]) { |memo, s| memo << s.render(&block) }.join("\n")
+        slides_content = slides.each_with_object([]) { |e, a| a << e.render(&block) }.join("\n")
 
         template.result(slides: slides_content)
       end
 
       # Is group
-      def group?
+      def group_object?
         true
       end
     end

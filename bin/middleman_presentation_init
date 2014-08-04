@@ -5,7 +5,9 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 require 'middleman-presentation'
 
 # Restore original behaviour of thor
-module Thor
+# rubocop:disable Style/ClassAndModuleChildren
+module ::Thor
+  # rubocop:enable Style/ClassAndModuleChildren
   module Actions
     # Create file helper class
     class CreateFile

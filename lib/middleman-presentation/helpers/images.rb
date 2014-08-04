@@ -11,7 +11,7 @@ module Middleman
          </a>
         EOS
 
-        images.each_with_object([]) do |memo, (image, title)|
+        images.each_with_object([]) do |(image, title), memo|
           engine = Erubis::Eruby.new(template)
           memo << engine.result(image_path: image, image_gallery_id: image_gallery_id, title: title)
         end.join("\n")

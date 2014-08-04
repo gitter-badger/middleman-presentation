@@ -137,7 +137,7 @@ module Middleman
       end
 
       # Is group?
-      def group?
+      def group_object?
         false
       end
 
