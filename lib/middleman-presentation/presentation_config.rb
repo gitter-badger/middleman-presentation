@@ -42,6 +42,10 @@ module Middleman
       option :edit, false
       option :editor_command, process_environment.fetch('EDITOR', 'vim')
       option :error_on_duplicates, true
+
+      option :plugin_mode, :strict # :permissive
+      option :plugin_blacklist, []
+      option :plugin_whitelist, []
     end
   end
 end
