@@ -31,13 +31,28 @@ Feature: Create new presentation theme
     Then a presentation theme named "new_theme" should exist
     And a directory named "new_theme/images" should not exist
 
-  Scenario: Available css classes
-    Given I successfully run `middleman style`
-    Then the output should contain:
+    @wip
+  Scenario: Cleaned css classes
+    Given a presentation theme named "new_theme" does not exist
+    When I successfully run `middleman theme new_theme --clean-css`
+    Then the file "new_theme/stylesheets/_theme.scss" should contain:
     """
-    Available css classes in templates used by middleman-presentation:
+    // "999981.html.erb.tt"
+    .mp-external-url {
+    }
     """
-    And the output should contain:
+
+    @wip
+  Scenario: Predefined css classes
+    Given a presentation theme named "new_theme" does not exist
+    When I successfully run `middleman theme new_theme`
+    Then the file "new_theme/stylesheets/_theme.scss" should contain:
     """
-    mp-external-url: "999981.html.erb.tt"
+    a.mp-external-url:after {
+      font-family: "FontAwesome";
+      content: "\f08e"; 
+      margin-left: 12px;
+      margin-right: 12px;
+      font-size: 0.7em;
+    }
     """

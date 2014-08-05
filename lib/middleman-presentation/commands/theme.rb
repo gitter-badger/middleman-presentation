@@ -27,7 +27,8 @@ module Middleman
       option :version, default: '0.0.1', required: true, desc: 'Project url'
       option :year, default: Time.now.strftime('%Y'), desc: 'Copyright year for theme'
       option :license, default: 'MIT', required: true, desc: 'License of theme'
-      option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: 'initialize git'
+      option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: 'Initialize git'
+      option :clean_css, type: :boolean, default: false, desc: 'Generate clean css without any classes defined'
       def theme(name)
         source_paths << File.expand_path('../../../../templates', __FILE__)
 
@@ -43,6 +44,7 @@ module Middleman
         @license    = options[:license]
         @email      = options[:email]
         @version    = options[:version]
+        @clean_css  = options[:clean_css]
 
         empty_directory name
 

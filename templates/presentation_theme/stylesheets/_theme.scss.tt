@@ -1,10 +1,10 @@
-@Import "reveal.js/css/theme/template/mixins";
+@import "reveal.js/css/theme/template/mixins";
 @import "reveal.js/css/theme/template/settings";
 
 // Override theme settings (see ../template/settings.scss)
-$mainFont: 'Open Sans', sans-serif;
+$mainFont: sans-serif;
 $mainColor: #000000;
-$headingFont: 'Open Sans', sans-serif;
+$headingFont: sans-serif;
 $headingColor: #000000;
 $headingLetterSpacing: -0.08em;
 $headingTextShadow: none;
@@ -14,36 +14,37 @@ $linkColorHover: #0061b2;
 $selectionBackgroundColor: #858585;
 $bulletPointColor: #2f2f2f;
 
-// Fix links so they are not cut off
-//.reveal a:not(.image) {
-//	line-height: 1.3rem;
-//}
-
 // Theme template ------------------------------
 @import "reveal.js/css/theme/template/theme";
 // ---------------------------------------------
 
-section.start_slide {
+<% if @clean_css -%>
+<% Middleman::Presentation::CssClassExtracter.new.extract(Middleman::Presentation.stylable_files, ignore: %w(slides reveal)).each do |klass| -%>
+// <%= klass.files.to_list %>
+.<%= klass.name %> {
+}
 
+<% end -%>
+<% else -%>
+section.mp-start-slide {
   h1 {
-    font-family: "Open Sans", sans-serif;
+    font-family: sans-serif;
     font-size: 4.5rem;
     font-weight: bold;
   }
 
   h2 {
     font-size: 2rem;
-    //color: #0061b2;
     color: #2f2f2f;
-    font-family: "Open Sans", sans-serif;
+    font-family: sans-serif;
   }
 
-  .headline {
+  .mp-headline {
     display: inline-block;
     width: 70%;
   }
 
-  .author {
+  .mp-author {
     font-size: 2rem;
     color: #2f2f2f;
     line-height: 1rem;
@@ -51,7 +52,7 @@ section.start_slide {
     margin-bottom: 5px;
   }
 
-  .license {
+  .mp-license {
     font-size: 1rem;
     color: #2f2f2f;
     line-height: 1rem;
@@ -65,11 +66,7 @@ section.start_slide {
   box-shadow: none;
 }
 
-.hidden_step {
-  list-style-type: none;
-}
-
-.reveal .inline_code {
+.reveal .mp-inline-code {
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); 
   padding-right: 4px;
   padding-bottom: 0px;
@@ -77,7 +74,7 @@ section.start_slide {
 
 .reveal h1 {
   font-size: 4rem;
-  font-family: "Open Sans", sans-serif;
+  font-family: sans-serif;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -85,13 +82,13 @@ section.start_slide {
 .reveal h2 {
   font-size: 3rem;
   color: #2f2f2f;
-  font-family: "Open Sans", sans-serif;
+  font-family: sans-serif;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .reveal h3 {
-  font-family: "Open Sans", sans-serif;
+  font-family: sans-serif;
   color: #2f2f2f;
   font-size: 2rem;
   text-transform: none;
@@ -123,7 +120,6 @@ blockquote:before {
   position: absolute;
   left: -0.5em;
   top: 0.3em;
-  //content: "„";
   content: "“";
   color: #ff530a; 
 }
@@ -143,10 +139,6 @@ blockquote cite:before {
   border-radius: 10px;
 }
 
-//::-webkit-scrollbar-track-piece  {
-//  background-color: #ff530a;
-//}
-
 ::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px #ff530a; 
   background-color: #ff530a;
@@ -165,24 +157,8 @@ blockquote cite:before {
   list-style-type: circle;
 }
 
-.hidden {
+.mp-hidden {
   display: none;
-}
-
-#proxy_round_trip {
-  @extend .hidden;
-}
-
-#logo-engagement {
-  @extend .hidden;
-  margin: 0px;
-  max-width: 250px;
-}
-
-#logo-idea {
-  display: inline-block;
-  margin: 0px;
-  max-width: 250px;
 }
 
 li>i.mp-hint {
@@ -250,7 +226,7 @@ img.mp-preview-image {
   border-radius: 10px;
 }
 
-footer#site-footer {
+footer#mp-site-footer {
   position: absolute;
   bottom: 20px;
   left: 0px;
@@ -273,3 +249,4 @@ i.mp-print {
   @extend .fa-print;
   margin-left: 5px;
 }
+<% end -%>
