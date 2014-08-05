@@ -77,7 +77,7 @@ module Middleman
         return :md     if extname? '.md', '.markdown', '.mkd'
         return :liquid if extname? '.l', '.liquid'
 
-        :md
+        :custom
       end
       private :type
 

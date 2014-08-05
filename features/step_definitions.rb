@@ -71,3 +71,7 @@ end
 Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
   step %Q(the file "source/slides/#{name}" should contain:), string
 end
+
+Before do
+  @aruba_timeout_seconds = 120
+end

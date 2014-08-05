@@ -71,13 +71,14 @@ RSpec.describe Transformers::SlidePath do
     it 'sets the paths of unknown type slide' do
       base_path = File.expand_path('source/slides')
       base_name = '01'
-      file_name = "#{base_name}.html.md"
+      file_name = "#{base_name}.html"
 
       slide = instance_double('Middleman::Presentation::Slide')
       expect(slide).to receive(:file_name).and_return(file_name)
       allow(slide).to receive(:type?).and_return(false)
       allow(slide).to receive(:basename).twice.and_return(base_name)
       allow(slide).to receive(:group).and_return nil
+      allow(slide).to receive(:path).and_return '01.html'
       expect(slide).to receive(:partial_path=).with(File.join('slides', '01'))
       expect(slide).to receive(:relative_path=).with(File.join(File.basename(File.dirname(base_path)), File.basename(base_path), file_name))
       expect(slide).to receive(:path=).with File.join(base_path, file_name)
@@ -89,13 +90,14 @@ RSpec.describe Transformers::SlidePath do
     it 'handles group for partial path and full path' do
       base_path = File.expand_path('source/slides')
       base_name = '01'
-      file_name = "#{base_name}.html.md"
+      file_name = "#{base_name}.html"
 
       slide = instance_double('Middleman::Presentation::Slide')
       expect(slide).to receive(:file_name).and_return(file_name)
       allow(slide).to receive(:type?).and_return(false)
       allow(slide).to receive(:basename).twice.and_return(base_name)
       allow(slide).to receive(:group).and_return 'group'
+      allow(slide).to receive(:path).and_return '01.html'
       expect(slide).to receive(:partial_path=).with(File.join('slides', 'group', '01'))
       expect(slide).to receive(:relative_path=).with(File.join(File.basename(File.dirname(base_path)), File.basename(base_path), 'group', file_name))
       expect(slide).to receive(:path=).with File.join(base_path, 'group', file_name)

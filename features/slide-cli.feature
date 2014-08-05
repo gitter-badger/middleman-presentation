@@ -4,35 +4,42 @@ Feature: Add new slide
   I want to add a new slide
   In order do build it
 
-  Scenario: Embbeded Ruby Template
+  Scenario: Custom Slide
     Given a fixture app "presentation-after_init-app"
     And I install bundle
     When I successfully run `middleman slide 01`
     Then the following files should exist:
       | source/slides/01.html.md |
 
-  Scenario: Markdown Template
+  Scenario: Embedded Ruby Slide
+    Given a fixture app "presentation-after_init-app"
+    And I install bundle
+    When I successfully run `middleman slide 01.erb`
+    Then the following files should exist:
+      | source/slides/01.html.erb |
+
+  Scenario: Markdown Slide
     Given a fixture app "presentation-after_init-app"
     And I install bundle
     When I successfully run `middleman slide 01.md`
     Then the following files should exist:
       | source/slides/01.html.md |
 
-  Scenario: Liquid Template
+  Scenario: Liquid Slide
     Given a fixture app "presentation-after_init-app"
     And I install bundle
     When I successfully run `middleman slide 01.l`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
-  Scenario: Liquid Template (long file extension)
+  Scenario: Liquid Slide (long file extension)
     Given a fixture app "presentation-after_init-app"
     And I install bundle
     When I successfully run `middleman slide 01.liquid`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
-  Scenario: Markdown Template (long file extension)
+  Scenario: Markdown Slide (long file extension)
     Given a fixture app "presentation-after_init-app"
     And I install bundle
     When I successfully run `middleman slide 01.markdown`
@@ -179,4 +186,130 @@ Feature: Add new slide
     And the output should contain:
     """
     02.html.md
+    """
+
+  Scenario: Project Erb Slide template
+    Given a fixture app "presentation-after_init-app"
+    And I install bundle
+    And a project template named "erb.tt" with:
+    """
+    <section>
+    <h1>New Template</h1>
+    <h2><%= title %></h2>
+    </section>
+    """
+    When I successfully run `middleman slide 01.erb --title "My Title"`
+    Then a slide named "01.html.erb" exist with:
+    """
+    <section>
+    <h1>New Template</h1>
+    <h2>My Title</h2>
+    </section>
+    """
+
+  Scenario: Project Markdown Slide template
+    Given a fixture app "presentation-after_init-app"
+    And I install bundle
+    And a project template named "markdown.tt" with:
+    """
+    <section>
+    # New Template
+    ## <%= title %>
+    </section>
+    """
+    When I successfully run `middleman slide 01.md --title "My Title"`
+    Then a slide named "01.html.md" exist with:
+    """
+    <section>
+    # New Template
+    ## My Title
+    </section>
+    """
+
+  Scenario: Project Liquid Slide template
+    Given a fixture app "presentation-after_init-app"
+    And I install bundle
+    And a project template named "liquid.tt" with:
+    """
+    <section>
+    <h1>{{ page_title }}</h1>
+    <h2><%= title %><h2>
+    </section>
+    """
+    When I successfully run `middleman slide 01.liquid --title "My Title"`
+    Then a slide named "01.html.liquid" exist with:
+    """
+    <section>
+    <h1>{{ page_title }}</h1>
+    <h2>My Title<h2>
+    </section>
+    """
+
+  Scenario: User template
+    Given a mocked home directory
+    And a user template named "liquid.tt" with:
+    """
+    <section>
+    <h1>{{ page_title }}</h1>
+    <h2><%= title %><h2>
+    </section>
+    """
+    And a fixture app "presentation-after_init-app"
+    And I install bundle
+    When I successfully run `middleman slide 01.liquid --title "My Title"`
+    Then a slide named "01.html.liquid" exist with:
+    """
+    <section>
+    <h1>{{ page_title }}</h1>
+    <h2>My Title<h2>
+    </section>
+    """
+
+  Scenario: Custom default template
+    Given a fixture app "presentation-after_init-app"
+    And I install bundle
+    When I successfully run `middleman slide 01 --title "My Title"`
+    Then a slide named "01.html.md" exist with:
+    """
+    <section>
+
+    # My Title
+
+    </section>
+    """
+
+  Scenario: Custom user markdown template
+    Given a mocked home directory
+    And a user template named "custom.md.tt" with:
+    """
+    <section>
+    # <%= title %>
+    </section>
+    """
+    And a fixture app "presentation-after_init-app"
+    And I install bundle
+    When I successfully run `middleman slide 01 --title "My Title"`
+    Then a slide named "01.html.md" exist with:
+    """
+    <section>
+    # My Title
+    </section>
+    """
+
+  Scenario: Custom user erb template
+    Given a mocked home directory
+    And a user template named "custom.erb.tt" with:
+    """
+    <section>
+    <h1><%= title %></h1>
+    </section>
+    """
+    And a fixture app "presentation-after_init-app"
+    And I install bundle
+    When I successfully run `middleman slide 01 --title "My Title"`
+    Then a slide named "01.html.erb" exist with:
+    """
+    <section>
+    <h1>My Title</h1>
+    </section>
     """

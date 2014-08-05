@@ -27,7 +27,7 @@ module Middleman
                           elsif slide.type? :liquid
                             "#{slide.basename}.html.liquid"
                           else
-                            "#{slide.basename}.html.md"
+                            "#{slide.basename}.html"  # custom slide => file extension depends on template and is set later by template finder
                           end
 
             slide.path = File.join(*path_parts)

@@ -85,7 +85,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
-    fedux_org-stdlib (0.6.37)
+    fedux_org-stdlib (0.6.39)
       activesupport
     ffi (1.9.3)
     filegen (0.4.3)
@@ -160,7 +160,7 @@ GEM
       em-websocket (~> 0.5.1)
       middleman-core (~> 3.2)
       rack-livereload (~> 0.3.15)
-    middleman-sprockets (3.3.5)
+    middleman-sprockets (3.3.6)
       middleman-core (~> 3.3)
       sprockets (~> 2.12.1)
       sprockets-helpers (~> 1.1.0)

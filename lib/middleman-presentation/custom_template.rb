@@ -1,8 +1,8 @@
 # encoding: utf-8
 module Middleman
   module Presentation
-    # Markdown template to create new slides
-    class MarkdownTemplate < FeduxOrgStdlib::FileTemplate
+    # Custom template for a new slide
+    class CustomTemplate < FeduxOrgStdlib::FileTemplate
       def fallback_template_directory
         File.expand_path('../../../templates/slides', __FILE__)
       end

@@ -37,3 +37,42 @@ Feature: Run presentation
     """
     slideNumber: true
     """
+
+  Scenario: Project Group template
+    Given a fixture app "presentation-after_init-app"
+    And I install bundle
+    And a project template named "group.tt" with:
+    """
+    <section>
+    <h1>Group Title</h1>
+    <%= slides %>
+    </section>
+    """
+    And a slide named "01namespace/01.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    And a slide named "01namespace/02.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    And the Server is running
+    When I go to "/"
+    Then I should see:
+    """
+    <section>
+    <h1>Group Title</h1>
+    <!-- source/slides/01namespace/01.html.erb -->
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    <!-- source/slides/01namespace/02.html.erb -->
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    </section>
+    """

@@ -34,6 +34,7 @@ RSpec.describe Transformers::TemplateFinder do
     it 'sets template for unknown type' do
       slide = instance_double('Middleman::Presentation::Slide')
       allow(slide).to receive(:type?).and_return false
+      allow(slide).to receive(:path).and_return '01.html'
       expect(slide).to receive(:template=)
 
       transformer = Transformers::TemplateFinder.new 'path'

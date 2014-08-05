@@ -16,15 +16,16 @@ module Middleman
 
         def transform(slides)
           slides.map do |slide|
-            template_file = if slide.type? :erb
-                              ErbTemplate.new(working_directory: base_path)
-                            elsif slide.type? :md
-                              MarkdownTemplate.new(working_directory: base_path)
-                            elsif slide.type? :liquid
-                              LiquidTemplate.new(working_directory: base_path)
-                            else
-                              MarkdownTemplate.new(working_directory: base_path)
-                            end
+            if slide.type? :erb
+              template_file = ErbTemplate.new(working_directory: base_path)
+            elsif slide.type? :md
+              template_file = MarkdownTemplate.new(working_directory: base_path)
+            elsif slide.type? :liquid
+              template_file = LiquidTemplate.new(working_directory: base_path)
+            else
+              template_file = CustomTemplate.new(working_directory: base_path)
+              slide.path << template_file.proposed_extname
+            end
 
             slide.template = Erubis::Eruby.new(template_file.content)
 
