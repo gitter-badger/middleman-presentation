@@ -4,7 +4,7 @@ require 'spec_helper'
 RSpec.describe Transformers::IgnoreSlides do
   context '#transform' do
     it 'ignores slides based on file name' do
-      ignore_file = create_file '.slideignore', <<-EOS.strip_heredoc
+      ignore_file = create_file '.slidesignore', <<-EOS.strip_heredoc
       02.html.md
       EOS
 
@@ -26,7 +26,7 @@ RSpec.describe Transformers::IgnoreSlides do
     end
 
     it 'unignores slides based on file name' do
-      ignore_file = create_file '.slideignore', <<-EOS.strip_heredoc
+      ignore_file = create_file '.slidesignore', <<-EOS.strip_heredoc
       .md$
       !02.html.md
       EOS
