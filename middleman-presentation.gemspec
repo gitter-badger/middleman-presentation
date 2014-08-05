@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'liquid'
   spec.add_dependency 'erubis'
   spec.add_dependency 'kramdown'
+  spec.add_dependency 'nokogiri'
 end

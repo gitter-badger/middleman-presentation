@@ -387,6 +387,16 @@ theme:
 If you prefer to learn by example, look at the default-theme at
 [github](https://github.com/maxmeyer/middleman-presentation-theme-default).
 
+To give you an overview about all css-classes used within templates, issue the
+`style`-command. This will print every available css-class to style existing
+templates. Each of those classes is prefixed with `mp-`.
+
+```bash
+bundle exec middleman style
+# => mp-speaker
+# => [...]
+```
+
 ## Creating slide templates
 
 ### Normal slide templates

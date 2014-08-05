@@ -33,8 +33,12 @@ Feature: Create new presentation theme
 
   @wip
   Scenario: Available css classes
-    Given I successfully run `middleman theme new_theme --css-classes`
+    Given I successfully run `middleman style`
     Then the output should contain:
     """
-    asdf
+    Available css classes in templates used by middleman-presentation:
+    """
+    And the output should contain:
+    """
+      mp-speaker
     """
