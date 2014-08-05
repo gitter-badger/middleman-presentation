@@ -272,9 +272,7 @@ Feature: Add new slide
     Then a slide named "01.html.md" exist with:
     """
     <section>
-
     # My Title
-
     </section>
     """
 
