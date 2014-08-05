@@ -31,7 +31,6 @@ Feature: Create new presentation theme
     Then a presentation theme named "new_theme" should exist
     And a directory named "new_theme/images" should not exist
 
-  @wip
   Scenario: Available css classes
     Given I successfully run `middleman style`
     Then the output should contain:
@@ -40,5 +39,5 @@ Feature: Create new presentation theme
     """
     And the output should contain:
     """
-      mp-speaker
+    mp-external-url: "999981.html.erb.tt"
     """
