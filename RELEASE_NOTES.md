@@ -1,7 +1,7 @@
 * 0.13
-  * Support version number for presentation
-  * Support custom-slide-template
-  * Support for own theme
+  * Support for version number for presentation added
+  * Support for custom-slide-template added
+  * Support for own theme added
   * Detect user language based on ENV['LANG']-variable
   * Output warning if invalid ignore file is detected
   * Show slide path in rendered output to make troubleshooting easier 
