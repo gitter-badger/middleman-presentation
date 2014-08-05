@@ -135,6 +135,8 @@ module Middleman
           template 'bower.json.tt', File.join(shared_instance.root, 'bower.json')
           template 'Rakefile', File.join(shared_instance.root, 'Rakefile')
 
+          create_file '.slidesignore', "# empty\n"
+
           append_to_file File.join(shared_instance.root, 'config.rb'), <<-EOS.strip_heredoc
 
           set :markdown_engine, :kramdown
