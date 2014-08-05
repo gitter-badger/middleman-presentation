@@ -105,11 +105,11 @@ module Middleman
             @external_assets << Middleman::Presentation::FrontendComponent.new(
               name: 'middleman-presentation',
               github: 'maxmeyer/middleman-presentation-theme-default',
-              javascripts: %w(js/middleman-presentation),
-              stylesheets: %w(scss/middleman-presentation)
+              javascripts: %w(javascripts/middleman-presentation),
+              stylesheets: %w(stylesheets/middleman-presentation)
             )
           else
-            @external_assets << Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.theme)
+            @external_assets.concat Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.theme)
           end
 
           @revealjs_config = {}

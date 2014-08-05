@@ -42,6 +42,46 @@ Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
   step %Q(I remove the directory "#{name}")
 end
 
+Given(/^git is configured with username "(.*?)" and email-address "(.*?)"$/) do |name, email|
+  step %Q(I successfully run `git config --global user.email "#{email}"`)
+  step %Q(I successfully run `git config --global user.name "#{name}"`)
+end
+
+#Given(/^I configured bower correctly$/) do
+#  http_proxy = %w(http_proxy HTTP_PROXY).find { |v| !ENV[v].blank? }
+#  if http_proxy
+#    http_proxy = Adressable::URI.heuristic_parse(ENV[variable])
+#    http_proxy = "http://#{http_proxy.host}:#{http_proxy.port}"
+#  end
+#
+#  https_proxy = %w(https_proxy HTTPS_PROXY).find { |v| !ENV[v].blank? }
+#  if https_proxy
+#    https_proxy = Adressable::URI.heuristic_parse(ENV[variable])
+#    https_proxy = "http://#{http_proxy.host}:#{http_proxy.port}"
+#  end
+#
+#  template = Erubis::Eruby.new <<-EOS.strip_heredoc
+#    {
+#  <% if http_proxy -%>
+#      "proxy": "#{http_proxy}",
+#  <% end -%>
+#  <% if https_proxy -%>
+#      "https-proxy": "#{https_proxy}"
+#  <% end -%>
+#    }
+#  EOS
+#
+#  if http_proxy || https_proxy
+#
+#    data = template.result(
+#      http_proxy: http_proxy,
+#      https_proxy: https_proxy,
+#    )
+#
+#    step %Q(a file named ".bowerrc" with:), data
+#  end
+#end
+
 Then(/^a presentation theme named "(.*?)" should exist( with default files\/directories created)?$/) do |name, default_files|
   step %Q(a directory named "#{name}" should exist)
 

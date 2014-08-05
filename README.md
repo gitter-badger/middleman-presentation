@@ -267,51 +267,6 @@ slides. To "unignore" particular slides, you can prefix your pattern with "!".
 !01.html.md
 ```
 
-## Usage of external resources
-
-I encourage you to use `bower` to make external resources within your presentation
-available. This works fine together with the asset pipeline `middleman` uses:
-[sprockets](https://github.com/sstephenson/sprockets). Just add resources to
-your (existing) `bower.json` and make yourself comfortable with bower:
-http://bower.io/. Reference the resources from within your
-`javascripts/application.js` and/or
-`stylesheets/application.scss`
-
-By using `bower` for external resources you can better separate the slide
-content from your styles.
-
-If you created your presentation using the `middleman presentation`-command,
-files named "bower.json" and ".bowerrc" should exist. Within "bower.json" you
-define the dependencies of your presentation. The last one can be used to tell
-bower where to store the downloaded components.
-
-To reference your assets you should use helpers. There are helpers avaiable for
-Ruby-code and for Sass-code.
-
-* `asset_path(type, name)`, `asset_url(type, name)`:
-
-To reference an arbitrary type you can use the both *ruby* helpers mentioned above. To
-reference a JavaScript-file use `asset_path(:js,
-'<component>/<path>/<file>.js')`.
-
-* `font-path(name)`, `font-url(name)`, `image-path(name)`, `image-url(name)`:
-
-The helpers above can be used to reference assets in Sass-files. You need to
-provide name to reference the asset, e.g.
-`font-path('<component>/<path>/<file>.ttf')`.
-
-To import Css- and Sass-files you should use the `@import`-command. To import
-JavaScript-files from JavaScript-files you should use the `//=
-require`-command.
-
-Please see [sass](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
-and [sprockets](https://github.com/sstephenson/sprockets) for more information
-about that topic.
-
-*Themes*
-
-An example for a `bower`-enabled theme can be found at
-https://github.com/maxmeyer/reveal.js-template-fedux_org.
 
 ## Creating slides
 
@@ -356,9 +311,85 @@ bundle exec middleman slide 02_hello:01
 
 Those commands will create a directory named `02_hello` and a file named `01.html.erb`.
 
-## Creating templates
+## Use external resources
 
-### Normal templates
+I encourage you to use `bower` to make external resources within your presentation
+available. This works fine together with the asset pipeline `middleman` uses:
+[sprockets](https://github.com/sstephenson/sprockets). Just add resources to
+your (existing) `bower.json` and make yourself comfortable with bower:
+http://bower.io/. Reference the resources from within your
+`javascripts/application.js` and/or
+`stylesheets/application.scss`
+
+By using `bower` for external resources you can better separate the slide
+content from your styles.
+
+If you created your presentation using the `middleman presentation`-command,
+files named "bower.json" and ".bowerrc" should exist. Within "bower.json" you
+define the dependencies of your presentation. The last one can be used to tell
+bower where to store the downloaded components.
+
+To reference your assets you should use helpers. There are helpers avaiable for
+Ruby-code and for Sass-code.
+
+* `asset_path(type, name)`, `asset_url(type, name)`:
+
+To reference an arbitrary type you can use the both *ruby* helpers mentioned above. To
+reference a JavaScript-file use `asset_path(:js,
+'<component>/<path>/<file>.js')`.
+
+* `font-path(name)`, `font-url(name)`, `image-path(name)`, `image-url(name)`:
+
+The helpers above can be used to reference assets in Sass-files. You need to
+provide name to reference the asset, e.g.
+`font-path('<component>/<path>/<file>.ttf')`.
+
+To import Css- and Sass-files you should use the `@import`-command. To import
+JavaScript-files from JavaScript-files you should use the `//=
+require`-command.
+
+Please see [sass](http://sass-lang.com/documentation/file.SASS_REFERENCE.html)
+and [sprockets](https://github.com/sstephenson/sprockets) for more information
+about that topic.
+
+## Creating themes
+
+To create your own theme for `middleman-presentation`, you should use the
+`theme`-command. It will create a new directory in the current directory
+(`$PWD`) based on the name for the template, e.g. `new_theme`.
+
+```
+cd my_presentation
+bundle exec middleman theme new_theme
+```
+
+After that a directory `new_theme` exists with some sub-directories:
+
+* `javascripts`: Javascript-file go here
+* `stylesheets`: Stylesheets (CSS, SCSS, ..) go here
+* `images`: Image go here
+
+To use your newly created files you need to modify the
+`middleman-presentation`-configuration file and add the following yaml-snippet
+to the file - see [Configuration](#configuration) for more about the
+`middleman-presentation`-configuration file.
+
+```yaml
+theme:
+  name: new_theme
+  github: <github_account>/<repository>
+  javascripts:
+    - javascripts/<name>
+  stylesheets:
+    - stylesheets/<name>
+```
+
+If you prefer to learn by example, look at the default-theme at
+[github](https://github.com/maxmeyer/middleman-presentation-theme-default).
+
+## Creating slide templates
+
+### Normal slide templates
 
 To create slides using the `slide`-command templates are used. They are written in
 Eruby (erb). For a good documentation about Eruby see the [Erubis User
@@ -380,7 +411,7 @@ There are four different templates available:
 * Liquid (`liquid.tt`): Templates for generating `liquid`-slides
 * Group (`group.tt`): Templates for groups of slides - see [Grouping Slides](#grouping_slides).
 
-### Custom templates
+### Custom slide templates
 
 <a name="custom_templates"></a>
 
@@ -389,6 +420,8 @@ is used for the resulting slide. Given a template `custom.erb.tt` it becomes
 `01.html.erb` when running `middleman slide 01`.
 
 ## Configuration
+
+<a name="configuration"></a>
 
 `middleman-presentation` will try its configuration file at different places:
 

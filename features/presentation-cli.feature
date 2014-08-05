@@ -136,3 +136,21 @@ Feature: Initialize presentation
     """
     Questions
     """
+
+  Scenario: Use different theme
+    Given a mocked home directory
+    And a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    """
+    theme:
+      name: fedux_org
+      github: maxmeyer/middleman-presentation-theme-fedux_org
+      javascripts:
+        - javascripts/fedux_org
+      stylesheets:
+        - stylesheets/fedux_org
+        """
+    And git is configured with username "User" and email-address "email@example.com"
+    And a fixture app "presentation-before_init-app"
+    And I initialized middleman for a new presentation
+    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
+    Then a directory named "vendor/assets/components/fedux_org" should exist

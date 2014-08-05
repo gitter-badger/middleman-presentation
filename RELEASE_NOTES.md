@@ -1,5 +1,6 @@
 * 0.13
   * Support version number for presentation
+  * Support custom-slide-template
   * Detect user language based on ENV['LANG']-variable
   * Show slide path in rendered output to make troubleshooting easier 
   * Improved possibilities to style slides by using more css
