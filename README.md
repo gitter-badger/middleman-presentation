@@ -108,8 +108,8 @@ middleman slide <name>
 
 It is recommended to use a number as name greater than `00`, e.g. `01`. If you
 leave out the file extension the `slide`-helper will create a Markdown-slide by
-default - this is hardcoded: :-) Give Markdown a try, because I chose to use
-`kramdown` as Markdown-parser you are not that limited.
+default. If you want to overwrite this, please create a custom-slide-template -
+see [Custom Templates](#custom_templates) for more information.
 
 ```bash
 middleman slide 01
@@ -342,21 +342,35 @@ Those commands will create a directory named `02_hello` and a file named `01.htm
 
 ## Creating templates
 
-To create slides using the `slide`-command I use templates. They are written in
+### Normal templates
+
+To create slides using the `slide`-command templates are used. They are written in
 Eruby (erb). For a good documentation about Eruby see the [Erubis User
 Guide](http://www.kuwata-lab.com/erubis/users-guide.html). Since `0.11.4`. you
-can have your templates. 
+can have your own templates which overwrite the default templates.
 
-You can store those templates in different directories:
-* presentation local (`<presentation root>/templates/<template>`)
-* user local (`~/.config/middleman/presentation/templates/<template>`, `~/.middleman/presentation/templates/<template>`)
-* system local templates (`/etc/middleman/presentation/templates/<template>`)
+You can store those templates in different directories. They are read in the
+given order.
+
+1. presentation local (`<presentation root>/templates/<template>`)
+2. user local (`~/.config/middleman/presentation/templates/<template>`, `~/.middleman/presentation/templates/<template>`)
+3. system local templates (`/etc/middleman/presentation/templates/<template>`)
+
 
 There are four different templates available:
+
 * Erb (`erb.tt`): Templates for generating `Erb`-slides
 * Markdown (`markdown.tt`): Templates for generating `markdown`-slides
 * Liquid (`liquid.tt`): Templates for generating `liquid`-slides
 * Group (`group.tt`): Templates for groups of slides - see [Grouping Slides](#grouping_slides).
+
+### Custom templates
+
+<a name="custom_templates"></a>
+
+Addiontionlly users can define one `custom`-slide-template. It's file extension
+is used for the resulting slide. Given a template `custom.erb.tt` it becomes
+`01.html.erb` when running `middleman slide 01`.
 
 ## Configuration
 
