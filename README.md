@@ -160,6 +160,21 @@ overview.
 middleman help slide
 ```
 
+### Start your presentation
+
+To start your presentation, you can run one of the following commands.
+
+```bash
+# Short
+script/start
+
+# Long
+bundle exec middleman server
+```
+
+Both provide the possibility to change the port where middleman should listen
+on. Use `-h` check on available options.
+
 ### Edit slide
 
 To edit the slide after creating it use the `--edit`-switch. It uses the
