@@ -27,3 +27,11 @@ Feature: Create new presentation theme
   When I successfully run `middleman theme new_theme --no-images-directory`
   Then a presentation theme named "new_theme" should exist
   And a directory named "new_theme/images" should not exist
+
+  @wip
+  Scenario: Available css classes
+  Given I successfully run `middleman theme new_theme --css-classes`
+  Then the output should contain:
+  """
+  asdf
+  """

@@ -154,8 +154,6 @@ Feature: Initialize presentation
     theme:
       name: middleman-presentation-theme-fedux_org
       github: maxmeyer/middleman-presentation-theme-fedux_org
-      javascripts:
-        - javascripts/middleman-presentation-theme-fedux_org
       stylesheets:
         - stylesheets/middleman-presentation-theme-fedux_org
         """
