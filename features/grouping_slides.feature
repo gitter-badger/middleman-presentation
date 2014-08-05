@@ -4,6 +4,9 @@ Feature: Grouping slides
   I want to group slides
   In order to use vertical slides feature
 
+  Background:
+    Given a mocked home directory
+
   Scenario: Create slides in subfolder
     Given a fixture app "presentation-after_init-app"
     And I install bundle

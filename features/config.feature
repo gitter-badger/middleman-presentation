@@ -4,6 +4,9 @@ Feature: Configuration
   I want to a list of configuration options
   In order to use it
 
+  Background:
+    Given a mocked home directory
+
   Scenario: Show config
     Given a fixture app "presentation-after_init-app"
     And I install bundle

@@ -4,6 +4,9 @@ Feature: Slide
   I want to show slides
   In order to spent as less time as possible on it
 
+  Background:
+    Given a mocked home directory
+
   Scenario: Simple Slide
     Given a fixture app "image_gallery-app"
     And I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories

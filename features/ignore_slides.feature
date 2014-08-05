@@ -4,6 +4,9 @@ Feature: Ignore slides
   I want to ignore some slides in output
   In order to make them invisible
 
+  Background:
+    Given a mocked home directory
+
   Scenario: Ignore a slide by basename
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation

@@ -4,6 +4,9 @@ Feature: Image Gallery
   I want to create image galleries easily
   In order to spent as less time as possible on it
 
+  Background:
+    Given a mocked home directory
+
   Scenario: Images only
     Given a fixture app "image_gallery-app"
     And I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories

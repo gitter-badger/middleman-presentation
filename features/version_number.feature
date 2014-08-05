@@ -4,6 +4,9 @@ Feature: Show version number
   I want to add a version number to a new presentation
   In order to display it
 
+  Background:
+    Given a mocked home directory
+
   Scenario: Default version number
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation

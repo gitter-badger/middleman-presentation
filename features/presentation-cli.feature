@@ -4,9 +4,11 @@ Feature: Initialize presentation
   I want to create a new presentation
   In order to use it
 
-  Scenario: Before init
+  Background:
     Given a mocked home directory
-    And a fixture app "presentation-before_init-app"
+
+  Scenario: Before init
+    Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the file "config.rb" should contain:
@@ -44,8 +46,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Existing configuration file
-    Given a mocked home directory
-    And  a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    Given  a file named "~/.config/middleman/presentation/presentations.yaml" with:
     """
     author: TestUser
     company: MyCompany
@@ -148,8 +149,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Use different theme
-    Given a mocked home directory
-    And a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    Given a file named "~/.config/middleman/presentation/presentations.yaml" with:
     """
     theme:
       name: middleman-presentation-theme-fedux_org

@@ -4,9 +4,11 @@ Feature: Initialize middleman-presentation
   I want to initialize middleman-presentation
   In order to have defaults for all presentations created with middleman-presentation
 
-  Scenario: Before init
+  Background:
     Given a mocked home directory
-    And I set the environment variables to:
+
+  Scenario: Before init
+    Given I set the environment variables to:
     | variable | value  |
     | USER     | my_user|
     When I successfully run `middleman_presentation_init`
@@ -46,8 +48,7 @@ Feature: Initialize middleman-presentation
     """
 
   Scenario: Overwrite existing config file
-    Given a mocked home directory
-    And I set the environment variables to:
+    Given I set the environment variables to:
     | variable | value  |
     | USER     | my_user|
     And a file named "~/.config/middleman/presentation/presentations.yaml" with:

@@ -4,6 +4,9 @@ Feature: Add new slide
   I want to add a new slide
   In order do build it
 
+  Background:
+    Given a mocked home directory
+
   Scenario: Custom Slide
     Given a fixture app "presentation-after_init-app"
     And I install bundle
@@ -246,8 +249,7 @@ Feature: Add new slide
     """
 
   Scenario: User template
-    Given a mocked home directory
-    And a user template named "liquid.tt" with:
+    Given a user template named "liquid.tt" with:
     """
     <section>
     <h1>{{ page_title }}</h1>
@@ -277,8 +279,7 @@ Feature: Add new slide
     """
 
   Scenario: Custom user markdown template
-    Given a mocked home directory
-    And a user template named "custom.md.tt" with:
+    Given a user template named "custom.md.tt" with:
     """
     <section>
     # <%= title %>
@@ -295,8 +296,7 @@ Feature: Add new slide
     """
 
   Scenario: Custom user erb template
-    Given a mocked home directory
-    And a user template named "custom.erb.tt" with:
+    Given a user template named "custom.erb.tt" with:
     """
     <section>
     <h1><%= title %></h1>
