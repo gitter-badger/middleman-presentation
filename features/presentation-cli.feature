@@ -4,7 +4,6 @@ Feature: Initialize presentation
   I want to create a new presentation
   In order to use it
 
-  @wip
   Scenario: Before init
     Given a mocked home directory
     And a fixture app "presentation-before_init-app"
@@ -148,7 +147,6 @@ Feature: Initialize presentation
     Questions
     """
 
-    @wip
   Scenario: Use different theme
     Given a mocked home directory
     And a file named "~/.config/middleman/presentation/presentations.yaml" with:
