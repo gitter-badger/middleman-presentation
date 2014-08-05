@@ -65,6 +65,7 @@ Please run `cat $HOME/.config/middleman/presentation/presentations.yaml` to view
 ```bash
 middleman init my_presentation
 cd my_presentation
+
 ```
 
 ### Add dependency to Gemfile and activate plugin
@@ -92,7 +93,7 @@ get an overview. If you want to switch the language for generated slides use
 the `--language`-switch.
 
 ```bash
-middleman help presentation
+bundle exec middleman help presentation
 ```
 
 ### Add new slide
@@ -103,7 +104,7 @@ and 01.html.md. This will not work with `middleman`.
 To add a new slide you can use the `slide`-helper.
 
 ```bash
-middleman slide <name>
+bundle exec middleman slide <name>
 ```
 
 It is recommended to use a number as name greater than `00`, e.g. `01`. If you
@@ -112,7 +113,7 @@ default. If you want to overwrite this, please create a custom-slide-template -
 see [Custom Templates](#custom_templates) for more information.
 
 ```bash
-middleman slide 01
+bundle exec middleman slide 01
 ```
 
 If you enter duplicate slide names, e.g. "02.md" and "02.erb", the
@@ -120,7 +121,7 @@ If you enter duplicate slide names, e.g. "02.md" and "02.erb", the
 name - e.g. "02" - via `middleman`.
 
 ```bash
-middleman slide 02.md 02.erb
+bundle exec middleman slide 02.md 02.erb
 # => will fail
 ```
 
@@ -129,35 +130,35 @@ part of the slide name. Today only `embedded ruby`, `markdown` and `liquid`-temp
 
 ```bash
 # embedded ruby
-middleman slide 01.erb
+bundle exec middleman slide 01.erb
 
 # markdown
-middleman slide 01.md
-middleman slide 01.markdown
+bundle exec middleman slide 01.md
+bundle exec middleman slide 01.markdown
 
 # liquid
-middleman slide 01.l
-middleman slide 01.liquid
+bundle exec middleman slide 01.l
+bundle exec middleman slide 01.liquid
 ```
 
 To set a title for the slide use the `--title`-switch.
 
 ```bash
-middleman slide 01 --title 'my Title'
+bundle exec middleman slide 01 --title 'my Title'
 ```
 
 If you want to create multiple slides at once, this is possible to. Just ask
 `middleman-presentation` to do this.
 
 ```bash
-middleman slide 01 02 03
+bundle exec middleman slide 01 02 03
 ```
 
 There are some more options available. Please use the `help`-command to get an
 overview.
 
 ```bash
-middleman help slide
+bundle exec middleman help slide
 ```
 
 ### Start your presentation
@@ -181,7 +182,7 @@ To edit the slide after creating it use the `--edit`-switch. It uses the
 `$EDITOR`-environment variable and falls back to `vim`.
 
 ```bash
-middleman slide 01 --edit
+bundle exec middleman slide 01 --edit
 ```
 
 If you want to edit an alread created slide, you can use the
@@ -193,7 +194,7 @@ editor used or the arguments used, you can run `middleman-presentation` with
 the `--editor-command`-switch.
 
 ```bash
-middleman slide --edit --editor-command "nano" 01 02 03
+bundle exec middleman slide --edit --editor-command "nano" 01 02 03
 ```
 
 The `editor-command`-string is also parsed by Erubis which makes the data
@@ -203,7 +204,7 @@ or less simultaneously on diffent presentations. To make the use of the project
 id as server name more stable you should use [`Shellwords.shellescape`](http://www.ruby-doc.org/stdlib-2.1.2/libdoc/shellwords/rdoc/Shellwords.html#method-c-shellescape).
 
 ```bash
-middleman slide --edit --editor-command "vim --servername <%= Shellwords.shellescape(project_id) %> --remote-tab 2>/dev/null" 01 02 03
+bundle exec middleman slide --edit --editor-command "vim --servername <%= Shellwords.shellescape(project_id) %> --remote-tab 2>/dev/null" 01 02 03
 ```
 
 ### Start presentation
@@ -350,7 +351,7 @@ If you prefer to use the `slide`-command to create your slides, you can create a
 namespaced slide by using the following synatx:
 
 ```
-middleman slide 02_hello:01
+bundle exec middleman slide 02_hello:01
 ```
 
 Those commands will create a directory named `02_hello` and a file named `01.html.erb`.
@@ -397,7 +398,7 @@ is used for the resulting slide. Given a template `custom.erb.tt` it becomes
 To get a full list of available configuration options, run the following command
 
 ```
-middleman config
+bundle exec middleman config
 ```
 
 ## Development
