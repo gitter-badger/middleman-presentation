@@ -15,9 +15,8 @@ module Middleman
 
           invalid_ignore_file = Pathname.new(ignore_file).dirname + Pathname.new('.slideignore')
 
-          if invalid_ignore_file.exist? 
-            Middleman::Presentation.logger.warn "Invalid ignore file \"#{invalid_ignore_file}\" detected. I'm going to ignore it. Please use the correct one \"#{ignore_file}\"." 
-          end
+          message = "Invalid ignore file \"#{invalid_ignore_file}\" detected. I'm going to ignore it. Please use the correct one \"#{ignore_file}\"."
+          Middleman::Presentation.logger.warn message if invalid_ignore_file.exist?
         end
 
         def transform(slides)

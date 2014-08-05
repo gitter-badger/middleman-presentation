@@ -98,7 +98,11 @@ module Middleman
           @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'jquery', version: '~1.11', javascripts: %w(dist/jquery))
           @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'reveal.js', version: 'latest', javascripts: %w(lib/js/head.min js/reveal.min))
           @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'lightbox2', github: 'dg-vrnetze/revealjs-lightbox2', javascripts: %w(js/lightbox))
-          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'middleman-presentation-theme-common', github: 'dg-vrnetze/middleman-presentation-theme-common', stylesheets: %w(stylesheets/middleman-presentation-theme-common))
+          @external_assets << Middleman::Presentation::FrontendComponent.new(
+            name: 'middleman-presentation-theme-common',
+            github: 'dg-vrnetze/middleman-presentation-theme-common',
+            stylesheets: %w(stylesheets/middleman-presentation-theme-common)
+          )
 
           @external_assets.concat Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.components)
 

@@ -47,7 +47,7 @@ Given(/^git is configured with username "(.*?)" and email-address "(.*?)"$/) do 
   step %Q(I successfully run `git config --global user.name "#{name}"`)
 end
 
-#Given(/^I configured bower correctly$/) do
+# Given(/^I configured bower correctly$/) do
 #  http_proxy = %w(http_proxy HTTP_PROXY).find { |v| !ENV[v].blank? }
 #  if http_proxy
 #    http_proxy = Adressable::URI.heuristic_parse(ENV[variable])
@@ -80,7 +80,7 @@ end
 #
 #    step %Q(a file named ".bowerrc" with:), data
 #  end
-#end
+# end
 
 Then(/^a presentation theme named "(.*?)" should exist( with default files\/directories created)?$/) do |name, default_files|
   step %Q(a directory named "#{name}" should exist)
