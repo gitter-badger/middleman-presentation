@@ -1,11 +1,13 @@
 * 0.13
   * Support version number for presentation
   * Support custom-slide-template
+  * Support for own theme
   * Detect user language based on ENV['LANG']-variable
+  * Output warning if invalid ignore file is detected
   * Show slide path in rendered output to make troubleshooting easier 
   * Improved possibilities to style slides by using more css
   * Improved style of code by integrating rubocop in development workflow
-  * Improved documentation
+  * Improved documentation a lot
 
 * 0.12
   * Show slide number

@@ -77,3 +77,13 @@ Feature: Ignore slides
     #When I go to "images/lightbox2/img/close.png"
     #Then the status code should be "200"
 
+    @wip
+  Scenario: Warning on invalid ignore file
+    Given a fixture app "presentation-after_init-app"
+    And I install bundle
+    And an empty file named ".slideignore"
+    When I run `middleman build`
+    Then the output should contain:
+    """
+    Invalid ignore file
+    """

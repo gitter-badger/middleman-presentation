@@ -4,9 +4,10 @@ module Middleman
   # Presentation extension
   module Presentation
     @config = PresentationConfig.new
+    @logger = Logger.new
 
     class << self
-      attr_reader :config
+      attr_reader :config, :logger
 
       def root_path
         File.expand_path '../../../', __FILE__
