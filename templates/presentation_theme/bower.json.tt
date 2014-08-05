@@ -1,0 +1,20 @@
+{
+  name: '<%= @name %>',
+  version: '<%= @version %>',
+<% if @url -%>
+  homepage: '<%= @url %>',
+<% end -%>
+<% if @author and @email-%>
+  authors: [
+    '<% @author %> <<%= @email %>>'
+  ],
+<% end -%>
+  license: '<%= @license %>',
+  ignore: [
+    '**/.*',
+    'node_modules',
+    'bower_components',
+    'test',
+    'tests'
+  ]
+}

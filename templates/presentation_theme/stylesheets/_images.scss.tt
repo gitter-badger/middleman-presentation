@@ -1,9 +1,5 @@
-$mp-img-path: image-path('<%= @theme_name %>/images') !default;
-
-img.mp-logo-contact {
-  background-image: url("#{$mp-img-path}/logo-contact.png");
+div.mp-logo-contact {
 }
 
-img.mp-logo-question {
-  background-image: url("#{$mp-img-path}/logo-question.png");
+div.mp-logo-question {
 }

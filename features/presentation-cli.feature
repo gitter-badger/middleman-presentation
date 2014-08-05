@@ -4,8 +4,10 @@ Feature: Initialize presentation
   I want to create a new presentation
   In order to use it
 
+  @wip
   Scenario: Before init
-    Given a fixture app "presentation-before_init-app"
+    Given a mocked home directory
+    And a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the file "config.rb" should contain:
@@ -31,6 +33,15 @@ Feature: Initialize presentation
     And the file "data/metadata.yml" should contain:
     """
     project_id:
+    """
+    Then a directory named "vendor/assets/components/middleman-presentation-theme-default" should exist
+    And the file "source/stylesheets/application.scss" should contain:
+    """
+    @import 'middleman-presentation-theme-common/stylesheets/middleman-presentation-theme-common';
+    """
+    And the file "source/stylesheets/application.scss" should contain:
+    """
+    @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
     """
 
   Scenario: Existing configuration file
@@ -137,20 +148,29 @@ Feature: Initialize presentation
     Questions
     """
 
+    @wip
   Scenario: Use different theme
     Given a mocked home directory
     And a file named "~/.config/middleman/presentation/presentations.yaml" with:
     """
     theme:
-      name: fedux_org
+      name: middleman-presentation-theme-fedux_org
       github: maxmeyer/middleman-presentation-theme-fedux_org
       javascripts:
-        - javascripts/fedux_org
+        - javascripts/middleman-presentation-theme-fedux_org
       stylesheets:
-        - stylesheets/fedux_org
+        - stylesheets/middleman-presentation-theme-fedux_org
         """
     And git is configured with username "User" and email-address "email@example.com"
     And a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
-    Then a directory named "vendor/assets/components/fedux_org" should exist
+    Then a directory named "vendor/assets/components/middleman-presentation-theme-fedux_org" should exist
+    And the file "source/stylesheets/application.scss" should contain:
+    """
+    @import 'middleman-presentation-theme-common/stylesheets/middleman-presentation-theme-common';
+    """
+    And the file "source/stylesheets/application.scss" should contain:
+    """
+    @import 'middleman-presentation-theme-fedux_org/stylesheets/middleman-presentation-theme-fedux_org';
+    """

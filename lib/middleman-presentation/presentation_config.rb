@@ -39,6 +39,7 @@ module Middleman
       option :create_stylesheets_directory, true
       option :create_javascripts_directory, true
       option :create_images_directory, true
+      option :theme_prefix, 'middleman-presentation-theme'
 
       option :edit, false
       option :editor_command, process_environment.fetch('EDITOR', 'vim')

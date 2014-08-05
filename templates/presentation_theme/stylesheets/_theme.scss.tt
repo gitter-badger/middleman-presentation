@@ -1,5 +1,3 @@
-@import 'reveal.js/css/reveal.min';
-@import 'reveal.js/lib/css/zenburn';
 @Import "reveal.js/css/theme/template/mixins";
 @import "reveal.js/css/theme/template/settings";
 
