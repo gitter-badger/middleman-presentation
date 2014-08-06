@@ -4,7 +4,6 @@ Feature: Show available default css classes
   I want to get a list of css classess which are used in default templates
   In order to know what needs to be defined
 
-  @wip
   Scenario: Available css classes
     Given I successfully run `middleman style`
     Then the output should contain:

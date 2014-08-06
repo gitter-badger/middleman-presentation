@@ -31,7 +31,6 @@ Feature: Create new presentation theme
     Then a presentation theme named "new_theme" should exist
     And a directory named "new_theme/images" should not exist
 
-    @wip
   Scenario: Cleaned css classes
     Given a presentation theme named "new_theme" does not exist
     When I successfully run `middleman theme new_theme --clean-css`
@@ -42,7 +41,6 @@ Feature: Create new presentation theme
     }
     """
 
-    @wip
   Scenario: Predefined css classes
     Given a presentation theme named "new_theme" does not exist
     When I successfully run `middleman theme new_theme`
