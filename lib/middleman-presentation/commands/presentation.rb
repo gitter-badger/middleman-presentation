@@ -227,7 +227,7 @@ module Middleman
 
           result = run('bower update', capture: true) if options[:install_assets] == true
 
-          fail Thor::Error, "Error executing `bower`-command. Please fix your setup and run again:\n#{result}" unless $?.exitstatus == 0
+          fail Thor::Error, "Error executing `bower`-command. Please fix your setup and run again:\n#{result}" unless  $CHILD_STATUS.exitstatus == 0
 
           if options[:initialize_git]
             run 'git init'
