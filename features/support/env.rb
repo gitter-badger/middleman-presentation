@@ -13,7 +13,6 @@ require 'middleman-core/step_definitions'
 require 'bundler'
 Bundler.require :default, :test, :development
 
-
 ENV['TEST'] = 'true'
 ENV['AUTOLOAD_SPROCKETS'] = 'false'
 
