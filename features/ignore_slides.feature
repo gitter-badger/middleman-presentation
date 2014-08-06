@@ -44,8 +44,6 @@ Feature: Ignore slides
     #When I go to "images/lightbox2/img/close.png"
     #Then the status code should be "200"
 
-  @announce
-  @wip
   Scenario: Unignore a slide
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
