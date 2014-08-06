@@ -147,15 +147,17 @@ module Middleman
           set :markdown_engine, :kramdown
           set :markdown, parse_block_html: true
 
+          bower_directory = '#{@bower_directory}'
+
           if respond_to? :sprockets and sprockets.respond_to? :import_asset
-            sprockets.append_path File.join(root, '#{@bower_directory}')
+            sprockets.append_path File.join(root, bower_directory )
 
             patterns = [
               '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
               '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
               '.js',                                    # Javascript
              #'.html',                                  # HTML
-            ].map { |e| File.join('#{@bower_directory}', "**", "*\#{e}" ) }
+            ].map { |e| File.join(bower_directory, "**", "*\#{e}" ) }
 
             require 'rake/file_list'
 
@@ -167,15 +169,15 @@ module Middleman
             end
 
             list.each do |f|
-              sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new('#{@bower_directory}'))
+              sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new(bower_directory))
             end
 
             Rake::FileList.new(File.join('vendor/assets/components', "**", 'notes.html' )).each do |f|
-              sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new('vendor/assets/components'))) { |local_path| Pathname.new('javascripts') + local_path }
+              sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new(bower_directory))) { |local_path| Pathname.new('javascripts') + local_path }
             end
 
             Rake::FileList.new(File.join('vendor/assets/components', "**", 'pdf.css' )).each do |f|
-              sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new('vendor/assets/components'))) { |local_path| Pathname.new('stylesheets') + local_path }
+              sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new(bower_directory))) { |local_path| Pathname.new('stylesheets') + local_path }
             end
           end
           EOS
