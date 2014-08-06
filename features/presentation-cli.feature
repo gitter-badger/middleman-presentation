@@ -163,17 +163,15 @@ Feature: Initialize presentation
     """
     @import 'middleman-presentation-theme-fedux_org/stylesheets/middleman-presentation-theme-fedux_org';
     """
-
   Scenario: Fails if bower is not installed
     Given I initialized middleman for a new presentation
     And only the executables of gems "middleman-core" can be found in PATH
     When I run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the output should contain:
     """
-    `bower`-command is not installed. Please install it and try again.
+    cannot be found in PATH
     """
 
-    @wip
   Scenario: Fails if bower update fails
     Given I initialized middleman for a new presentation
     And a file named "~/bin/bower" with mode "0755" and with:
