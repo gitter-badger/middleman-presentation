@@ -1,6 +1,10 @@
 # encoding: utf-8
 require 'aruba/cucumber'
 
+require 'simplecov'
+SimpleCov.command_name 'cucumber'
+SimpleCov.start
+
 # middleman
 require 'middleman-core'
 require 'middleman-core/step_definitions'
@@ -9,9 +13,6 @@ require 'middleman-core/step_definitions'
 require 'bundler'
 Bundler.require :default, :test, :development
 
-require 'simplecov'
-SimpleCov.command_name 'cucumber'
-SimpleCov.start
 
 ENV['TEST'] = 'true'
 ENV['AUTOLOAD_SPROCKETS'] = 'false'
