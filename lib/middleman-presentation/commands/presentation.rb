@@ -225,7 +225,9 @@ module Middleman
 
           fail Thor::Error, '`bower`-command is not installed. Please install it and try again.' if options[:check_for_bower] && File.which('bower').blank?
 
-          run 'bower update' if options[:install_assets] == true
+          result = run('bower update', capture: true) if options[:install_assets] == true
+
+          fail Thor::Error, "Error executing `bower`-command. Please fix your setup and run again:\n#{result}" unless $?.exitstatus == 0
 
           if options[:initialize_git]
             run 'git init'

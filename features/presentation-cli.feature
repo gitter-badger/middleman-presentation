@@ -172,3 +172,22 @@ Feature: Initialize presentation
     """
     `bower`-command is not installed. Please install it and try again.
     """
+
+  @broken-external
+  Scenario: Fails if bower update fails
+    Given I initialized middleman for a new presentation
+    And a file named "~/bin/bower" with mode "0755" and with:
+    """
+    #!/bin/bash
+    echo "Failed" >&2
+    exit 1
+    """
+    And only the executables of gems "middleman-core" can be found in PATH
+    And I set the environment variables to:
+      | variable | value  | action |
+      | PATH     | ~/bin: | .      |
+    When I run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    Then the output should contain:
+    """
+    Failed
+    """
