@@ -498,6 +498,22 @@ As this software would not be possible without the wonderful gems out there,
 there's also an overview about all the licenses used by the required gems at
 [doc/licenses/dependencies.html](doc/licenses/dependencies.html). 
 
+If you get some weird errors during testing, make sure have got enough space at
+`/tmp`. This directory is used by `bower` to temporary store downloaded assets.
+
+To check which file consumes the whole space at `/tmp` you can use the following command:
+
+```bash
+# output sizes in mebibytes and sort numerically
+du -ms /tmp/* | sort -n
+```
+
+To find the process which uses this file, run this command:
+
+```bash
+lsof <file>
+```
+
 ## Contributing
 
 Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
