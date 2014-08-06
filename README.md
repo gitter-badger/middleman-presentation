@@ -41,6 +41,13 @@ You find the release notes [here](RELEASE_NOTES.md) or on
 
 * MRI 2.1.x
 
+## Find help
+
+* This [README.md](README.m)
+* A good [tutorial](http://htmlcheats.com/reveal-js/reveal-js-tutorial-reveal-js-for-beginners/) tutorial about `reveal.js`
+* The [documentation](https://github.com/hakimel/reveal.js/) of `reveal.js`
+* The [documentation](http://middlemanapp.com/) of `middleman`
+
 ## Getting Started
 
 ### Initialize middleman presentation globally
