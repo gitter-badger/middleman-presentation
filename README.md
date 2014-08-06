@@ -44,7 +44,7 @@ want to follow my advise.
 
 1. Create `.npmrc`
 
-  ```
+  ```javascript
   # Change <user> to your user
   prefix = /home/<user>/.local/share/npm
   
