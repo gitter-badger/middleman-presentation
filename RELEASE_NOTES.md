@@ -5,6 +5,7 @@
   * F: Detect user language based on ENV['LANG']-variable
   * F: Output warning if invalid ignore file is detected
   * F: Show slide path in rendered output to make troubleshooting easier 
+  * F: Add link for easier access to printable layout for presentation
   * F: Improved possibilities to style slides by using more css
   * F: Improved style of code by integrating rubocop in development workflow
   * F: Improved documentation a lot
