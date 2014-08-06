@@ -9,6 +9,7 @@
   * F: Improved possibilities to style slides by using more css
   * F: Improved style of code by integrating rubocop in development workflow
   * F: Improved documentation a lot
+  * F: Check if bower is installed, if not -> fail
   * B: Make reveal.js' presenter view accessible
 
 * 0.12
