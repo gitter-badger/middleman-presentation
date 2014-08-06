@@ -42,6 +42,17 @@
       <div class="slides">
         <%= yield %>
       </div>
+      <footer id="mp-site-footer">
+        <div id="mp-copyright-notice">
+          &copy; <%= Time.now.strftime('%Y') %>&nbsp;&nbsp;<%= data.metadata.author -%>,&nbsp;
+        <span class="mp-license">
+          <%- if data.metadata.license -%>
+            <%= data.metadata.license %>
+        <%- end -%>
+        </span>
+        <a id="mp-print-link" href="?print-pdf"><i class="mp-print"></i></a>
+      </div>
+      </footer>
     </div>
 
     <%= javascript_include_tag 'application' %>
