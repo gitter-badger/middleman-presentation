@@ -6,6 +6,7 @@ Feature: Configuration
 
   Background:
     Given a mocked home directory
+    And git is configured with username "User" and email-address "email@example.com"
 
   Scenario: Show config
     Given a fixture app "presentation-after_init-app"

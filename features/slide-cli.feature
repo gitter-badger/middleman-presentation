@@ -6,6 +6,7 @@ Feature: Add new slide
 
   Background:
     Given a mocked home directory
+    And git is configured with username "User" and email-address "email@example.com"
     And a fixture app "presentation-after_init-app"
     And I install bundle
 

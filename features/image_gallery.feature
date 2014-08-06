@@ -6,6 +6,7 @@ Feature: Image Gallery
 
   Background:
     Given a mocked home directory
+    And git is configured with username "User" and email-address "email@example.com"
     And a fixture app "image_gallery-app"
 
   Scenario: Images only

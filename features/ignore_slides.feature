@@ -6,6 +6,7 @@ Feature: Ignore slides
 
   Background:
     Given a mocked home directory
+    And git is configured with username "User" and email-address "email@example.com"
 
   Scenario: Ignore a slide by basename
     Given a fixture app "presentation-before_init-app"
@@ -43,6 +44,8 @@ Feature: Ignore slides
     #When I go to "images/lightbox2/img/close.png"
     #Then the status code should be "200"
 
+  @announce
+  @wip
   Scenario: Unignore a slide
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation

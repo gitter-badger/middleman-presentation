@@ -6,6 +6,7 @@ Feature: Initialize middleman-presentation
 
   Background:
     Given a mocked home directory
+    And git is configured with username "User" and email-address "email@example.com"
 
   Scenario: Before init
     Given I set the environment variables to:

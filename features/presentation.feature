@@ -6,6 +6,7 @@ Feature: Run presentation
 
   Background:
     Given a mocked home directory
+    And git is configured with username "User" and email-address "email@example.com"
 
   Scenario: Run it
     Given a fixture app "presentation-before_init-app"
