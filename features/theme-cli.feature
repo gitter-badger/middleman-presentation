@@ -6,6 +6,8 @@ Feature: Create new presentation theme
 
   Background:
     Given a mocked home directory
+    And a fixture app "presentation-after_init-app"
+    And I install bundle
 
   Scenario: Non existing template
     Given a presentation theme named "new_theme" does not exist

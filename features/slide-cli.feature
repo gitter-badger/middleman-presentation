@@ -6,52 +6,40 @@ Feature: Add new slide
 
   Background:
     Given a mocked home directory
+    And a fixture app "presentation-after_init-app"
+    And I install bundle
 
   Scenario: Custom Slide
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01`
     Then the following files should exist:
       | source/slides/01.html.md |
 
   Scenario: Embedded Ruby Slide
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01.erb`
     Then the following files should exist:
       | source/slides/01.html.erb |
 
   Scenario: Markdown Slide
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01.md`
     Then the following files should exist:
       | source/slides/01.html.md |
 
   Scenario: Liquid Slide
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01.l`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
   Scenario: Liquid Slide (long file extension)
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01.liquid`
     Then the following files should exist:
       | source/slides/01.html.liquid |
 
   Scenario: Markdown Slide (long file extension)
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01.markdown`
     Then the following files should exist:
       | source/slides/01.html.md |
 
   Scenario: Open slide with ENV['EDITOR'] after creation
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01.markdown --edit --editor-command echo`
     Then the following files should exist:
       | source/slides/01.html.md |
@@ -61,16 +49,12 @@ Feature: Add new slide
     """
 
   Scenario: Create multiple slides
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01 02`
     Then the following files should exist:
       | source/slides/01.html.md |
       | source/slides/02.html.md |
 
   Scenario: Edit existing slide with ENV['EDITOR']
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     And a slide named "02.html.md" with:
     """
     <section>
@@ -84,8 +68,6 @@ Feature: Add new slide
     """
 
   Scenario: Edit non-existing slide with ENV['EDITOR']
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 02 --edit --editor-command echo`
     And the output should contain:
     """
@@ -97,8 +79,6 @@ Feature: Add new slide
     """
 
   Scenario: Edit mixing existing and non-existing slides with ENV['EDITOR']
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     And a slide named "02.html.md" with:
     """
     <section>
@@ -116,8 +96,6 @@ Feature: Add new slide
     """
 
   Scenario: Edit existing multiple slides with ENV['EDITOR']
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     And a slide named "02.html.md" with:
     """
     <section>
@@ -141,8 +119,6 @@ Feature: Add new slide
     """
 
   Scenario: Fails on duplicate slide names
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I run `middleman slide 02.erb 02.md 03.erb 03.md 03.liquid`
     And the output should contain:
     """
@@ -150,8 +126,6 @@ Feature: Add new slide
     """
 
   Scenario: Missing slide name
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I run `middleman slide`
     Then the output should contain:
     """
@@ -159,8 +133,6 @@ Feature: Add new slide
     """
 
   Scenario: Using eruby in editor command
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 02 03 --edit --editor-command "echo <%= project_id %>"`
     Then the output should contain:
     """
@@ -168,8 +140,6 @@ Feature: Add new slide
     """
 
   Scenario: Using eruby in editor command and shell escape
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 02 03 --edit --editor-command "echo <%= Shellwords.shellescape(project_id) %>"`
     Then the output should contain:
     """
@@ -177,8 +147,6 @@ Feature: Add new slide
     """
 
   Scenario: Use * expansion in shell to open slides
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     And a slide named "02.html.md" with:
     """
     <section>
@@ -192,8 +160,6 @@ Feature: Add new slide
     """
 
   Scenario: Project Erb Slide template
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     And a project template named "erb.tt" with:
     """
     <section>
@@ -211,8 +177,6 @@ Feature: Add new slide
     """
 
   Scenario: Project Markdown Slide template
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     And a project template named "markdown.tt" with:
     """
     <section>
@@ -230,8 +194,6 @@ Feature: Add new slide
     """
 
   Scenario: Project Liquid Slide template
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     And a project template named "liquid.tt" with:
     """
     <section>
@@ -256,8 +218,6 @@ Feature: Add new slide
     <h2><%= title %><h2>
     </section>
     """
-    And a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01.liquid --title "My Title"`
     Then a slide named "01.html.liquid" exist with:
     """
@@ -268,8 +228,6 @@ Feature: Add new slide
     """
 
   Scenario: Custom default template
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01 --title "My Title"`
     Then a slide named "01.html.md" exist with:
     """
@@ -285,8 +243,6 @@ Feature: Add new slide
     # <%= title %>
     </section>
     """
-    And a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01 --title "My Title"`
     Then a slide named "01.html.md" exist with:
     """
@@ -302,8 +258,6 @@ Feature: Add new slide
     <h1><%= title %></h1>
     </section>
     """
-    And a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01 --title "My Title"`
     Then a slide named "01.html.erb" exist with:
     """

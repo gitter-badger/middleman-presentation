@@ -6,10 +6,10 @@ Feature: Slide
 
   Background:
     Given a mocked home directory
+    And a fixture app "image_gallery-app"
 
   Scenario: Simple Slide
-    Given a fixture app "image_gallery-app"
-    And I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
+    Given I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
     And a directory named "images"
     And a slide named "01.html.erb" with:
     """
@@ -27,8 +27,7 @@ Feature: Slide
     """
 
   Scenario: Malformed Slide
-    Given a fixture app "image_gallery-app"
-    And I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
+    Given I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
     And a directory named "images"
     And a slide named "01.html.erb" with:
     """

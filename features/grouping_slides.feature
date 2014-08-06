@@ -6,18 +6,16 @@ Feature: Grouping slides
 
   Background:
     Given a mocked home directory
+    And a fixture app "presentation-after_init-app"
+    And I install bundle
 
   Scenario: Create slides in subfolder
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman slide 01namespace:01`
     Then the following files should exist:
       | source/slides/01namespace/01.html.md |
 
   Scenario: Read slides from filesystem
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
-    And a slide named "01namespace/01.html.erb" with:
+    Given a slide named "01namespace/01.html.erb" with:
     """
     <section>
     <h1>Hello World</h1>
@@ -36,9 +34,7 @@ Feature: Grouping slides
     """
 
   Scenario: Read multiple slides from filesystem
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
-    And a slide named "01namespace/01.html.erb" with:
+    Given a slide named "01namespace/01.html.erb" with:
     """
     <section>
     <h1>Hello World #1</h1>
@@ -67,9 +63,7 @@ Feature: Grouping slides
     """
 
   Scenario: Read multiple slides within multiple groups from filesystem
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
-    And a slide named "01.html.md" with:
+    Given a slide named "01.html.md" with:
     """
     <section>
     # Test

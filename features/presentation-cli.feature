@@ -6,10 +6,10 @@ Feature: Initialize presentation
 
   Background:
     Given a mocked home directory
+    And a fixture app "presentation-before_init-app"
 
   Scenario: Before init
-    Given a fixture app "presentation-before_init-app"
-    And I initialized middleman for a new presentation
+    Given I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the file "config.rb" should contain:
     """
@@ -55,7 +55,6 @@ Feature: Initialize presentation
     language: en
     speaker: TestUser
     """
-    And a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "My Presentation"`
     Then the file "data/metadata.yml" should contain:
@@ -80,8 +79,7 @@ Feature: Initialize presentation
     """
 
   Scenario: German umlauts, French accents and special chars are not a problem for project id
-    Given a fixture app "presentation-before_init-app"
-    And I initialized middleman for a new presentation
+    Given I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "üöà~?§$%&/()=#!"`
     And the file "data/metadata.yml" should contain:
     """
@@ -89,8 +87,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Use lang from environment as language in slides
-    Given a fixture app "presentation-before_init-app"
-    And I set the environment variables to:
+    Given I set the environment variables to:
       | variable | value      |
       | LANG     | de_DE.UTF-8|
     And I initialized middleman for a new presentation
@@ -102,8 +99,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Use lang from command line as language in slides
-    Given a fixture app "presentation-before_init-app"
-    And I set the environment variables to:
+    Given I set the environment variables to:
       | variable | value      |
       | LANG     | de_DE.UTF-8|
     And I initialized middleman for a new presentation
@@ -115,8 +111,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Ignore case of lang value
-    Given a fixture app "presentation-before_init-app"
-    And I set the environment variables to:
+    Given I set the environment variables to:
       | variable | value      |
       | LANG     | de_de.utf-8|
     And I initialized middleman for a new presentation
@@ -128,8 +123,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Use englisch language in slides based if garbabe in environment variable
-    Given a fixture app "presentation-before_init-app"
-    And I set the environment variables to:
+    Given I set the environment variables to:
       | variable | value |
       | LANG     | asdf  |
     And I initialized middleman for a new presentation
@@ -140,8 +134,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Use englisch language in slides if given garbabe on command line
-    Given a fixture app "presentation-before_init-app"
-    And I initialized middleman for a new presentation
+    Given I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
     And the file "source/slides/999980.html.erb" should contain:
     """
@@ -158,7 +151,6 @@ Feature: Initialize presentation
         - stylesheets/middleman-presentation-theme-fedux_org
         """
     And git is configured with username "User" and email-address "email@example.com"
-    And a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
     When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
     Then a directory named "vendor/assets/components/middleman-presentation-theme-fedux_org" should exist
