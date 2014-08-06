@@ -1,7 +1,9 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Extract css classes from html files
     class CssClassExtracter
+      # Extracted css class
       class CssClass
         attr_reader :name, :files
 
@@ -13,7 +15,7 @@ module Middleman
 
       def extract(paths, ignore: [])
         classes = build(paths)
-        classes.delete_if { |klass| ignore.include? klass }.sort_by { |klass, _| klass }.collect { |klass, files| CssClass.new(name: klass, files: files) }
+        classes.delete_if { |klass| ignore.include? klass }.sort_by { |klass, _| klass }.map { |klass, files| CssClass.new(name: klass, files: files) }
       end
 
       private
