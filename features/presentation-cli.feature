@@ -173,7 +173,7 @@ Feature: Initialize presentation
     `bower`-command is not installed. Please install it and try again.
     """
 
-  @broken-external
+    @wip
   Scenario: Fails if bower update fails
     Given I initialized middleman for a new presentation
     And a file named "~/bin/bower" with mode "0755" and with:

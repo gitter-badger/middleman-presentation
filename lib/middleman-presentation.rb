@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 require 'set'
-require 'ptools'
+#require 'ptools'
 require 'pathname'
 require 'middleman-core'
 require 'middleman-core/cli'
@@ -22,6 +22,7 @@ require 'active_support/core_ext/string/strip'
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/object/blank'
 
+require 'middleman-presentation/file_extensions'
 require 'middleman-presentation/version'
 require 'middleman-presentation/logger'
 require 'middleman-presentation/frontend_component'
