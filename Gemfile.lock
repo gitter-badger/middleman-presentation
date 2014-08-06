@@ -21,6 +21,7 @@ PATH
       middleman (~> 3.3)
       middleman-sprockets (~> 3.3.5)
       nokogiri
+      ptools
       rake
       tzinfo (>= 0.3.0)
 
@@ -196,6 +197,7 @@ GEM
     pry-doc (0.6.0)
       pry (~> 0.9)
       yard (~> 0.8)
+    ptools (1.2.6)
     rack (1.5.2)
     rack-livereload (0.3.15)
       rack

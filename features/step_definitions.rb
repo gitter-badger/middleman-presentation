@@ -12,6 +12,13 @@ Given(/I install bundle/) do
   step 'I successfully run `bundle update`'
 end
 
+Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
+  dirs = gems.split(/,/).map(&:strip).each_with_object([]) { |e, a| a << Gem::Specification.find_by_name(e).bin_dir }
+  dirs << '/usr/bin'
+
+  set_env 'PATH', dirs.join(':')
+end
+
 Given(/^I created a new presentation with title "([^"]+)" for speaker "([^"]+)"$/) do |title, speaker|
   step 'I initialized middleman for a new presentation'
   step 'I successfully run `bundle install`'

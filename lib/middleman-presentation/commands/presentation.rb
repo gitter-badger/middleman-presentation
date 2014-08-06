@@ -222,6 +222,8 @@ module Middleman
             chmod File.join(shared_instance.root, 'script', s), 0755
           end
 
+          fail Thor::Error, '`bower`-command is not installed. Please install it and try again.' unless File.which 'bower' 
+
           run 'bower update' if options[:install_assets] == true
 
           if options[:initialize_git]

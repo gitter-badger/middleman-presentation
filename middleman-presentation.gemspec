@@ -31,4 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'erubis'
   spec.add_dependency 'kramdown'
   spec.add_dependency 'nokogiri'
+  spec.add_dependency 'ptools'
 end

@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'set'
+require 'ptools'
 require 'pathname'
 require 'middleman-core'
 require 'middleman-core/cli'
