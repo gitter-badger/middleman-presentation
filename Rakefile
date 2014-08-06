@@ -102,7 +102,7 @@ require 'coveralls/rake/task'
 Coveralls::RakeTask.new
 
 desc 'Run test suite'
-task test: ['test:rspec', 'test:cucumber', 'test:rubocop']
+task test: ['test:rspec', 'test:rubocop', 'test:cucumber']
 
 namespace :test do
   desc 'Test with coveralls'
