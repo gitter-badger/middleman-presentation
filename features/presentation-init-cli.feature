@@ -23,6 +23,7 @@ Feature: Initialize middleman-presentation
     # audience:
     # author: my_user
     # bower_directory: vendor/assets/components
+    # check_for_bower: true
     # clear_source: true
     # company:
     # components: []
@@ -67,6 +68,7 @@ Feature: Initialize middleman-presentation
     # audience:
     # author: my_user
     # bower_directory: vendor/assets/components
+    # check_for_bower: true
     # clear_source: true
     # company:
     # components: []

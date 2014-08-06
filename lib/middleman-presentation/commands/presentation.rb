@@ -47,6 +47,7 @@ module Middleman
 
       option :install_assets, type: :boolean, default: Middleman::Presentation.config.install_assets, desc: 'Install assets'
       option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: 'Initialize git repository'
+      option :check_for_bower, type: :boolean, default: Middleman::Presentation.config.check_for_bower, desc: 'Check if bower is installed on the system'
 
       option :clear_source, type: :boolean, default: Middleman::Presentation.config.clear_source, desc: 'Remove already existing source directory'
 
@@ -222,7 +223,7 @@ module Middleman
             chmod File.join(shared_instance.root, 'script', s), 0755
           end
 
-          fail Thor::Error, '`bower`-command is not installed. Please install it and try again.' unless File.which 'bower' 
+          fail Thor::Error, '`bower`-command is not installed. Please install it and try again.' if options[:check_for_bower] && File.which('bower').blank?
 
           run 'bower update' if options[:install_assets] == true
 

@@ -26,6 +26,7 @@ module Middleman
       option :default_transition_speed, 'default'
       option :install_assets, true
       option :initialize_git, true
+      option :check_for_bower, true
       option :clear_source, true
       option :install_contact_slide, true
       option :install_question_slide, true
