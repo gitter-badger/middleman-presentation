@@ -135,3 +135,8 @@ Style/TrailingComma:
 # Cop supports --auto-correct.
 Style/TrailingWhitespace:
   Enabled: true
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Style/ClassLength:
+  Max: 160

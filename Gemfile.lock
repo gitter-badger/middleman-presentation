@@ -21,7 +21,7 @@ PATH
       middleman (~> 3.3)
       middleman-sprockets (~> 3.3.5)
       nokogiri
-      ptools
+      ptools (>= 1.2.6)
       rake
       tzinfo (>= 0.3.0)
 

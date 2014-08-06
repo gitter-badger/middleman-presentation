@@ -18,3 +18,8 @@ Style/MethodLength:
 Style/ClassLength:
   Max: 160
   Enabled: false
+
+# Offense count: 3
+Style/CyclomaticComplexity:
+  Max: 9
+  Enabled: false
