@@ -18,6 +18,8 @@ easy with presentations.
 
 ## Installation
 
+### Gem
+
 Add this line to your middleman application's Gemfile:
 
     gem 'middleman-presentation'
@@ -31,6 +33,41 @@ And add the `activate`-statement to the `config.rb` of middleman:
 ```ruby
 activate :presentation
 ```
+
+### External Dependencies
+
+You need to install [`bower`](http://www.bower.io). I do not like installing
+external packages as root if they are not installed via the package manager of
+the distribution I use. Therefor I configured `nodejs` to use a different
+root to install those packages as normal user. It is up to you to decide if
+want to follow my advise.
+
+1. Create `.npmrc`
+
+  ```
+  # Change <user> to your user
+  prefix = /home/<user>/.local/share/npm
+  
+  # If you need to use a coporate proxy, add those lines as well.
+  # Be careful `https-proxy` needs use a `http`-url, not a `https`-one
+  # proxy = http://localhost:3128
+  # https-proxy = http://localhost:3128
+  ```
+  
+2. Install bower
+
+  ```bash
+  npm install -g bower
+  ```
+
+3. Make executables of nodejs-packages available
+
+   Add `npm`-bin dir to your PATH-variable via `.bashrc`, `.zshrc` or whatever
+   initialization-script your shell use.
+
+    ```bash
+    export PATH=~/.local/share/npm/bin:$PATH
+    ```
 
 ## Release Notes
 
