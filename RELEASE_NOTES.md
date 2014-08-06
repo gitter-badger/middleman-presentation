@@ -6,6 +6,7 @@
   * F: Output warning if invalid ignore file is detected
   * F: Show slide path in rendered output to make troubleshooting easier 
   * F: Add link for easier access to printable layout for presentation
+  * I: Refactored themes, default theme should now work again (was broken during refactoring)
   * F: Improved possibilities to style slides by using more css
   * F: Improved style of code by integrating rubocop in development workflow
   * F: Improved documentation a lot
