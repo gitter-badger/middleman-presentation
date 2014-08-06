@@ -1,13 +1,14 @@
 * 0.13
-  * Support for version number for presentation added
-  * Support for custom-slide-template added
-  * Support for own theme added
-  * Detect user language based on ENV['LANG']-variable
-  * Output warning if invalid ignore file is detected
-  * Show slide path in rendered output to make troubleshooting easier 
-  * Improved possibilities to style slides by using more css
-  * Improved style of code by integrating rubocop in development workflow
-  * Improved documentation a lot
+  * F: Support for version number for presentation added
+  * F: Support for custom-slide-template added
+  * F: Support for own theme added
+  * F: Detect user language based on ENV['LANG']-variable
+  * F: Output warning if invalid ignore file is detected
+  * F: Show slide path in rendered output to make troubleshooting easier 
+  * F: Improved possibilities to style slides by using more css
+  * F: Improved style of code by integrating rubocop in development workflow
+  * F: Improved documentation a lot
+  * B: Make reveal.js' presenter view accessible
 
 * 0.12
   * Show slide number
