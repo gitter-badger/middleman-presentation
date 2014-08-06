@@ -11,10 +11,10 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.13.3)
+    middleman-presentation (0.13.4)
       addressable (~> 2.3.5)
       erubis
-      fedux_org-stdlib (>= 0.6.17)
+      fedux_org-stdlib (>= 0.6.39)
       kramdown
       launchy (~> 2.4.2)
       liquid
