@@ -9,6 +9,7 @@
   audience
   author
   bower_directory
+  check_for_bower
   clear_source
   company
   components
