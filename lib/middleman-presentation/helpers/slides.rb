@@ -5,13 +5,10 @@ module Middleman
     module Helpers
       # Yield slides
       def yield_slides
-        list = SlideList.new Dir.glob(File.join(source_dir, extensions[:presentation].options.slides_directory, '**', '*')) do |l|
-          l.transform_with Transformers::GroupNameFilesystem.new File.join(source_dir, extensions[:presentation].options.slides_directory)
-          l.transform_with Transformers::SlidePath.new File.join(source_dir, extensions[:presentation].options.slides_directory)
+        list = SlideList.new(Dir.glob(File.join(source_dir, extensions[:presentation].options.slides_directory, '**', '*')), slide_builder: ExistingSlide, base_path: source_dir) do |l|
           l.transform_with Transformers::FileKeeper.new
           l.transform_with Transformers::RemoveDuplicateSlides.new raise_error: true
           l.transform_with Transformers::IgnoreSlides.new ignore_file: File.join(root, extensions[:presentation].options.slides_ignore_file)
-          l.transform_with Transformers::ReadContent.new
           l.transform_with Transformers::SortSlides.new
           l.transform_with Transformers::GroupSlides.new template: Erubis::Eruby.new(GroupTemplate.new(working_directory: root).content)
         end

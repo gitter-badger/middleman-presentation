@@ -8,7 +8,7 @@ module Middleman
       attr_accessor :name, :template, :path, :type, :partial_path, :relative_path, :group
       attr_writer :content
 
-      def initialize(name:)
+      def initialize(name)
         @name     = name
         @template = Erubis::Eruby.new ''
       end

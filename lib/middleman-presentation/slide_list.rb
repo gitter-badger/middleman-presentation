@@ -9,8 +9,8 @@ module Middleman
 
       public
 
-      def initialize(names, slide_builder: Slide, &block)
-        @slides = Array(names).map { |n| slide_builder.new(name: n) }
+      def initialize(names, slide_builder: Slide, **args, &block)
+        @slides = Array(names).map { |n| slide_builder.new(n, **args) }
         @transformers = []
 
         block.call(self) if block_given?

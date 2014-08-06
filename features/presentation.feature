@@ -70,11 +70,11 @@ Feature: Run presentation
     """
     <section>
     <h1>Group Title</h1>
-    <!-- source/slides/01namespace/01.html.erb -->
+    <!-- slides/01namespace/01.html.erb -->
     <section>
     <h1>Hello World</h1>
     </section>
-    <!-- source/slides/01namespace/02.html.erb -->
+    <!-- slides/01namespace/02.html.erb -->
     <section>
     <h1>Hello World</h1>
     </section>
