@@ -22,7 +22,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'css/print/pdf.css';
+        link.href = '<%= asset_path(:css, "reveal.js/css/print/pdf.css") %>';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         window.print();
@@ -42,15 +42,15 @@
       <div class="slides">
         <%= yield %>
       </div>
-      <footer id="mp-site-footer">
-        <div id="mp-copyright-notice">
+      <footer class="mp-site-footer">
+        <div class="mp-copyright-notice">
           &copy; <%= Time.now.strftime('%Y') %>&nbsp;&nbsp;<%= data.metadata.author -%>,&nbsp;
         <span class="mp-license">
           <%- if data.metadata.license -%>
             <%= data.metadata.license %>
         <%- end -%>
         </span>
-        <a id="mp-print-link" href="?print-pdf"><i class="mp-print"></i></a>
+        <a href="?print-pdf" class="mp-print-link"><i class="mp-print"></i></a>
       </div>
       </footer>
     </div>
@@ -83,7 +83,6 @@
           { src: '<%= asset_path(:js, "reveal.js/plugin/notes/notes.js") %>', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
-
     </script>
 
   </body>

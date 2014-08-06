@@ -1,4 +1,4 @@
-<section class="mp-start-slide">
+<section class="mp-start-slide" data-state="mp-start-slide">
   <div class="mp-headline">
     <h1><%%= data.metadata.title %></h1>
     <h2><%%= data.metadata.subtitle %></h2>
@@ -12,14 +12,10 @@
     </small>
     </p>
 <%%- if data.metadata.version -%>
-    <p class="mp-version">
-      <%%= data.metadata.version %>
-    </p>
+    <p class="mp-version"><%%= data.metadata.version %></p>
 <%%- end -%>
 <%%- if data.metadata.license -%>
-    <p class="mp-license">
-      <%%= data.metadata.license %>
-    </p>
+    <p class="mp-license"><%%= data.metadata.license %></p>
 <%%- end -%>
   </div>
 
