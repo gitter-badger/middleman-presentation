@@ -101,7 +101,8 @@ module Middleman
           @external_assets << Middleman::Presentation::FrontendComponent.new(
             name: 'middleman-presentation-theme-common',
             github: 'dg-vrnetze/middleman-presentation-theme-common',
-            stylesheets: %w(stylesheets/middleman-presentation-theme-common)
+            stylesheets: %w(stylesheets/middleman-presentation-theme-common),
+            javascripts: %w(javascripts/middleman-presentation-theme-common)
           )
 
           @external_assets.concat Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.components)
@@ -171,6 +172,10 @@ module Middleman
 
             Rake::FileList.new(File.join('vendor/assets/components', "**", 'notes.html' )).each do |f|
               sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new('vendor/assets/components'))) { |local_path| Pathname.new('javascripts') + local_path }
+            end
+
+            Rake::FileList.new(File.join('vendor/assets/components', "**", 'pdf.css' )).each do |f|
+              sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new('vendor/assets/components'))) { |local_path| Pathname.new('stylesheets') + local_path }
             end
           end
           EOS
