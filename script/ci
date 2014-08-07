@@ -1,3 +1,4 @@
 #!/bin/sh
 
-bundle exec rake test:coveralls
+#bundle exec rake test:coveralls
+bundle exec cucumber
