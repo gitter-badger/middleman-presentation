@@ -52,7 +52,7 @@ module Middleman
           end
 
           slide_list.each_old do |slide|
-            $stderr.puts format("%-20s %-s", 'exist'.colorize(color: :blue, mode: :bold), slide.relative_path)
+            $stderr.puts format('%-20s %-s', 'exist'.colorize(color: :blue, mode: :bold), slide.relative_path)
           end
 
           slide_list.each_new do |slide|

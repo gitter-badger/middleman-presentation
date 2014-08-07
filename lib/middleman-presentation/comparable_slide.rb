@@ -1,22 +1,23 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # All methods needed to compare slides
     module ComparableSlide
       include Comparable
 
       # Needs to be implemented to make the other methods work
       def path
-        raise MethodNotImplemented
+        fail MethodNotImplemented
       end
 
       # Needs to be implemented to make the other methods work
       def base_name
-        raise MethodNotImplemented
+        fail MethodNotImplemented
       end
 
       # Needs to be implemented to make the other methods work
       def group
-        raise MethodNotImplemented
+        fail MethodNotImplemented
       end
 
       # @private

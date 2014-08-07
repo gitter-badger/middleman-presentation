@@ -63,9 +63,7 @@ module Middleman
       def partial_path
         dirname, base = relative_path.split
 
-        while !base.extname.blank? do 
-          base = base.basename('.*')
-        end
+        base = base.basename('.*') until base.extname.blank?
 
         dirname + base
       end
@@ -73,9 +71,7 @@ module Middleman
       def base_name
         base = relative_path.basename
 
-        while !base.extname.blank? do 
-          base = base.basename('.*')
-        end
+        base = base.basename('.*') until base.extname.blank?
 
         base.to_s
       end
@@ -134,4 +130,4 @@ end
 #
 #    end
 #  end
-#end
+# end

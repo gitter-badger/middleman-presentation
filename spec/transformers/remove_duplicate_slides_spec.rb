@@ -114,7 +114,7 @@ RSpec.describe Transformers::RemoveDuplicateSlides do
       expect(result).not_to include slide1
       expect(result).not_to include slide2
       expect(result).not_to include slide4
-      expect(result).to include slide3 
+      expect(result).to include slide3
     end
   end
 end
