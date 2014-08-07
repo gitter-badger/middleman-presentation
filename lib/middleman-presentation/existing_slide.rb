@@ -2,7 +2,7 @@
 module Middleman
   module Presentation
     class ExistingSlide
-      include Comparable
+      include ComparableSlide
 
       attr_reader :path
 
@@ -33,55 +33,6 @@ module Middleman
 
       def exist?
         path.exist?
-      end
-
-      # Return file extension
-      def extname
-        path.extname
-      end
-
-      # Check if string/regex matches path
-      def match?(string_or_regex)
-        regex = if string_or_regex.is_a? String
-                  Regexp.new(string_or_regex)
-                else
-                  string_or_regex
-                end
-
-        # rubocop:disable Style/CaseEquality:
-        regex === relative_path.to_s
-        # rubocop:enable Style/CaseEquality:
-      end
-
-      # @private
-      def <=>(other)
-        return false unless path
-
-        path <=> other.path
-      end
-
-      # @private
-      def eql?(other)
-        return false unless path
-
-        path.eql? other.path
-      end
-
-      # Is slide similar to another slide
-      def similar?(other)
-        return true if eql? other
-
-        basename?(other.basename) && group?(other.group)
-      end
-
-      # @private
-      def hash
-        path.hash
-      end
-
-      # Checks if slide is in group
-      def group?(g)
-        group == g
       end
 
       # Is group?
@@ -116,7 +67,7 @@ module Middleman
         dirname + base
       end
 
-      def basename
+      def base_name
         base = relative_path.basename
 
         while !base.extname.blank? do 
@@ -128,18 +79,10 @@ module Middleman
 
       private
 
-      def basename?(b)
-        basename == b
-      end
-
       def extract_group
         group  = relative_path.dirname.basename
 
-        group = if group == relative_path.dirname
-                  nil
-                else
-                  group
-                end
+        return nil if group == relative_path.dirname
 
         group
       end
