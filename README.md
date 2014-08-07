@@ -140,6 +140,20 @@ the `--language`-switch.
 bundle exec middleman help presentation
 ```
 
+### Start your presentation
+
+To start your presentation use the `start`-script. It opens the presentation in
+your browser and starts `middleman`. After `middleman` has started you just
+need to reload the presentation in the browser.
+
+```bash
+# Short
+script/start
+
+# Long
+bundle exec middleman server
+```
+
 ### Add new slide
 
 **MAKE SURE YOU NEVER EVER GIVE TWO SLIDES THE SAME BASENAME**, eg. 01.html.erb
@@ -205,18 +219,6 @@ overview.
 bundle exec middleman help slide
 ```
 
-### Start your presentation
-
-To start your presentation, you can run one of the following commands.
-
-```bash
-# Short
-script/start
-
-# Long
-bundle exec middleman server
-```
-
 Both provide the possibility to change the port where middleman should listen
 on. Use `-h` check on available options.
 
@@ -251,15 +253,11 @@ id as server name more stable you should use [`Shellwords.shellescape`](http://w
 bundle exec middleman slide --edit --editor-command "vim --servername <%= Shellwords.shellescape(project_id) %> --remote-tab 2>/dev/null" 01 02 03
 ```
 
-### Start presentation
+### Remove a slide
 
-To start your presentation use the `start`-script. It opens the presentation in
-your browser and starts `middleman`. After `middleman` has started you just
-need to reload the presentation in the browser.
-
-```bash
-script/start
-```
+If you remove a slide while `middleman` is showing the presentation, you might
+experience some weird errors. Please restart `middleman` after you removed a
+slide and everything will be fine again.
 
 ### Export presentation
 
@@ -407,6 +405,14 @@ cd my_presentation
 bundle exec middleman theme new_theme
 ```
 
+Or if you want to get a more or less empty stylesheet, run it with
+`--clean-css`.
+
+```
+cd my_presentation
+bundle exec middleman theme new_theme --clean-css
+```
+
 After that a directory `new_theme` exists with some sub-directories:
 
 * `javascripts`: Javascript-file go here
@@ -472,6 +478,40 @@ There are four different templates available:
 Addiontionlly users can define one `custom`-slide-template. It's file extension
 is used for the resulting slide. Given a template `custom.erb.tt` it becomes
 `01.html.erb` when running `middleman slide 01`.
+
+**Example**
+
+Given you want to create a presentation local custom slide template with haml
+as template language. The created slides should automatically get `.haml` as
+file extension. First you need to create the template directory.
+
+```bash
+# Switch to the directory containing your presentation
+cd my_presentation
+
+# Create template directory
+mkdir -p templates
+```
+
+Next you need to create the template itself using your favourite template
+language. If you want to use information like the presentation title, don't forget the
+template itself is parsed by `Erubis` before it is stored as slide in the file
+system.
+
+*templates/custom.haml.tt*:
+
+```
+%h1 <%%= site_title %>
+%h2 <%%= title %>
+```
+
+After writing the file to the filesystem you can use it with the
+`slide`-command to create slide by running the following code.
+
+```bash
+# => creates source/slides/01.html.haml
+bundle exec middleman slide 01
+```
 
 ## Configuration
 
