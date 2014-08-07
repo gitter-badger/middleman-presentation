@@ -1,6 +1,7 @@
 # encoding
 module Middleman
   module Presentation
+    # Used for slides which already exist in file system
     class ExistingSlide
       include ComparableSlide
 
@@ -12,6 +13,7 @@ module Middleman
 
       public
 
+      # Create Existin slide object
       def initialize(path, base_path: nil)
         @path      = Pathname.new(path)
 
@@ -19,27 +21,27 @@ module Middleman
         @base_path = Pathname.new(base_path)
       end
 
+      # Relative path inside source directory
       def relative_path
         path.relative_path_from(base_path)
       end
 
+      # Group of slide
       def group
         @group ||= extract_group
       end
 
-      def content
-        @content ||= File.read(path).chomp
-      end
-
+      # Filename of slide, e.g 01.html.erb
       def file_name
         path.basename
       end
 
+      # Does slide really exist in filesystem
       def exist?
         path.exist?
       end
 
-      # Is group?
+      # Does this object group multiple slides
       def group_object?
         false
       end
@@ -53,6 +55,7 @@ module Middleman
         result.join("\n")
       end
 
+      # String representation of slide
       def to_s
         path.to_s
       end

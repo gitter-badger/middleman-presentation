@@ -90,17 +90,6 @@ RSpec.describe ExistingSlide do
     end
   end
 
-  context '#content' do
-    it 'evaluates given template with data' do
-      file = create_file '01.html.erb', <<-EOS.strip_heredoc
-      world
-      EOS
-      slide = ExistingSlide.new(file)
-
-      expect(slide.content).to eq 'world'
-    end
-  end
-
   context '#exist?' do
     it 'succeeds if slide file exists in filesystem' do
       file = create_file '02.html.md'

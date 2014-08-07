@@ -271,16 +271,16 @@ Feature: Add new slide
     When I successfully run `middleman slide 01`
     Then the output should contain:
     """
-    create	  slides/01.html.md
+    create    slides/01.html.md
     """
 
   Scenario: Output information that multiple slides were created
     When I successfully run `middleman slide 01 02 03`
     Then the output should contain:
     """
-    create	  slides/01.html.md
-    create	  slides/02.html.md
-    create	  slides/03.html.md
+    create    slides/01.html.md
+    create    slides/02.html.md
+    create    slides/03.html.md
     """
 
   Scenario: Output information that a slide already exists
@@ -288,7 +288,7 @@ Feature: Add new slide
     When I successfully run `middleman slide 01`
     Then the output should contain:
     """
-    exist	   slides/01.html.md
+    exist     slides/01.html.md
     """
 
   Scenario: Output information that multiple slides already exist
@@ -296,5 +296,5 @@ Feature: Add new slide
     When I successfully run `middleman slide 01 02 03`
     Then the output should contain:
     """
-    exist	   slides/01.html.md
+    exist     slides/01.html.md
     """

@@ -81,6 +81,7 @@ module Middleman
         Erubis::Eruby.new(template.content).result(data)
       end
 
+      # Relative path of slide
       def relative_path
         path.relative_path_from(base_path)
       end
@@ -89,13 +90,13 @@ module Middleman
 
       def template
         if type? :erb
-          ErbTemplate.new(working_directory: base_path)
+          ErbTemplate.new(working_directory: base_path.dirname)
         elsif type? :md
-          MarkdownTemplate.new(working_directory: base_path)
+          MarkdownTemplate.new(working_directory: base_path.dirname)
         elsif type? :liquid
-          LiquidTemplate.new(working_directory: base_path)
+          LiquidTemplate.new(working_directory: base_path.dirname)
         else
-          CustomTemplate.new(working_directory: base_path)
+          CustomTemplate.new(working_directory: base_path.dirname)
         end
       end
 
