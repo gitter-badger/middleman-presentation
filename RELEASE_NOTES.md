@@ -1,4 +1,4 @@
-* 0.13
+* 0.14
   * F: Support for version number for presentation added
   * F: Support for custom-slide-template added
   * F: Support for own theme added
