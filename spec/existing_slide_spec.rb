@@ -105,20 +105,6 @@ RSpec.describe ExistingSlide do
     end
   end
 
-  #context '#type?' do
-  #  it 'checks on a single file extension' do
-  #    slide = ExistingSlide.new('02')
-  #    slide.path = '02.html.md'
-  #    expect(slide).to be_type :md
-  #  end
-
-  #  it 'fails if has not type' do
-  #    slide = ExistingSlide.new('02')
-  #    slide.path = '02.html.erb'
-  #    expect(slide).not_to be_type :md
-  #  end
-  #end
-
   context '#to_s' do
     it 'returns string representation of self' do
       slide = ExistingSlide.new('02.html.md')
