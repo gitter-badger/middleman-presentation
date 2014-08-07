@@ -3,6 +3,7 @@
 require 'set'
 # require 'ptools'
 require 'pathname'
+require 'fileutils'
 require 'middleman-core'
 require 'middleman-core/cli'
 require 'uri'

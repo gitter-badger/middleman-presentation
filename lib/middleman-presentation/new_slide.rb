@@ -7,12 +7,13 @@ module Middleman
 
       private
 
-      attr_reader :name, :base_path, :slide_directory_path
+      attr_reader :input, :name, :base_path, :slide_directory_path
 
       public
 
-      def initialize(name, base_path:)
-        @name                 = name
+      def initialize(input, base_path:)
+        @input                = input
+        @name                 = extract_name
         @slide_directory_path = Pathname.new(base_path)
         @base_path            = @slide_directory_path.dirname
       end
@@ -47,7 +48,7 @@ module Middleman
         elsif type? :liquid
           Pathname.new "#{base_name}.html.liquid"
         else
-          Pathname.new("#{base_name}.html") + template.proposed_extname
+          Pathname.new("#{base_name}.html#{template.proposed_extname}")
         end
 
         Pathname.new(path)
@@ -60,6 +61,8 @@ module Middleman
 
       # Write slide content to file
       def write(**data)
+        FileUtils.mkdir_p path.dirname
+
         File.open(path, 'wb') do |f|
           f.write(content(**data))
         end
@@ -78,11 +81,11 @@ module Middleman
         Erubis::Eruby.new(template.content).result(data)
       end
 
-      private
-
       def relative_path
         path.relative_path_from(base_path)
       end
+
+      private
 
       def template
         if type? :erb
@@ -121,12 +124,12 @@ module Middleman
       end
 
       def extract_name
-        name.split(/:/).last
+        input.split(/:/).last
       end
       
       # Extract group from name
       def extract_group
-        group = name.split(/:/).first
+        group = input.split(/:/).first
 
         return nil if group == name
 

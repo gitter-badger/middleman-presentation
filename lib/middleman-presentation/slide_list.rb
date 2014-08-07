@@ -30,6 +30,10 @@ module Middleman
         all.keep_if { |s| s.respond_to?(:exist?) && !s.exist? }.each(&block)
       end
 
+      def each_old(&block)
+        all.keep_if { |s| s.respond_to?(:exist?) && s.exist? }.each(&block)
+      end
+
       def existing_slides
         all.keep_if { |s| s.respond_to?(:exist?) && s.exist? }
       end

@@ -266,3 +266,35 @@ Feature: Add new slide
     <h1>My Title</h1>
     </section>
     """
+
+  Scenario: Output information that a slide was created
+    When I successfully run `middleman slide 01`
+    Then the output should contain:
+    """
+    create	source/slides/01.html.md
+    """
+
+  Scenario: Output information that multiple slides were created
+    When I successfully run `middleman slide 01 02 03`
+    Then the output should contain:
+    """
+    create	source/slides/01.html.md
+    create	source/slides/02.html.md
+    create	source/slides/03.html.md
+    """
+
+  Scenario: Output information that a slide already exists
+    When I successfully run `middleman slide 01`
+    When I successfully run `middleman slide 01`
+    Then the output should contain:
+    """
+    exist	source/slides/01.html.md
+    """
+
+  Scenario: Output information that multiple slides already exist
+    When I successfully run `middleman slide 01 02 03`
+    When I successfully run `middleman slide 01 02 03`
+    Then the output should contain:
+    """
+    exist	source/slides/01.html.md
+    """

@@ -51,7 +51,12 @@ module Middleman
             l.transform_with Middleman::Presentation::Transformers::SortSlides.new
           end
 
+          slide_list.each_old do |slide|
+            $stderr.puts format("%s\t%s", 'exist'.colorize(color: :blue, mode: :bold), slide.relative_path)
+          end
+
           slide_list.each_new do |slide|
+            $stderr.puts format('%s %s', 'create'.colorize(color: :green, mode: :bold), slide.relative_path)
             slide.write(title: options[:title])
           end
 
