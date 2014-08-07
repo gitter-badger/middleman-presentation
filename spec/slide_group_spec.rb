@@ -7,10 +7,10 @@ RSpec.describe SlideGroup do
       template = double('Template')
       allow(template).to receive(:result).and_return "01\n02"
 
-      slide1 = instance_double('Middleman::Presentation::Slide')
+      slide1 = instance_double('Middleman::Presentation::NewSlide')
       allow(slide1).to receive(:content).and_return '01'
 
-      slide2 = instance_double('Middleman::Presentation::Slide')
+      slide2 = instance_double('Middleman::Presentation::NewSlide')
       allow(slide2).to receive(:content).and_return '02'
 
       expect do
@@ -24,10 +24,10 @@ RSpec.describe SlideGroup do
       template = double('Template')
       allow(template).to receive(:result).and_return "01\n02"
 
-      slide1 = instance_double('Middleman::Presentation::Slide')
+      slide1 = instance_double('Middleman::Presentation::NewSlide')
       allow(slide1).to receive(:content).and_return '01'
 
-      slide2 = instance_double('Middleman::Presentation::Slide')
+      slide2 = instance_double('Middleman::Presentation::NewSlide')
       allow(slide2).to receive(:content).and_return '02'
 
       group = SlideGroup.new(name: 'group', slides: [slide1, slide2], template: template)
@@ -40,10 +40,10 @@ RSpec.describe SlideGroup do
       template = double('Template')
       allow(template).to receive(:result).and_return "01\n02"
 
-      slide1 = instance_double('Middleman::Presentation::Slide')
+      slide1 = instance_double('Middleman::Presentation::NewSlide')
       allow(slide1).to receive(:content).and_return '01'
 
-      slide2 = instance_double('Middleman::Presentation::Slide')
+      slide2 = instance_double('Middleman::Presentation::NewSlide')
       allow(slide2).to receive(:content).and_return '02'
 
       group = SlideGroup.new(name: 'group', slides: [slide1, slide2], template: template)
@@ -56,10 +56,10 @@ RSpec.describe SlideGroup do
       template = double('Template')
       allow(template).to receive(:result).and_return "01\n02"
 
-      slide1 = instance_double('Middleman::Presentation::Slide')
+      slide1 = instance_double('Middleman::Presentation::NewSlide')
       allow(slide1).to receive(:content).and_return '01'
 
-      slide2 = instance_double('Middleman::Presentation::Slide')
+      slide2 = instance_double('Middleman::Presentation::NewSlide')
       allow(slide2).to receive(:content).and_return '02'
 
       group = SlideGroup.new(name: 'group', slides: [slide1, slide2], template: template)

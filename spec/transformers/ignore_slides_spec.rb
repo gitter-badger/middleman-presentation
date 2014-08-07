@@ -8,21 +8,18 @@ RSpec.describe Transformers::IgnoreSlides do
       02.html.md
       EOS
 
-      slide1 = Slide.new name: '01.html.erb'
-      slide1.path = '01.html.erb'
+      slide1 = instance_double('Middleman::Presentation::ExistingSlide')
+      allow(slide1).to receive(:match?).and_return(false)
 
-      slide2 = Slide.new name: '02.html.md'
-      slide2.path = '02.html.md'
-
-      slide3 = Slide.new name: '03.html.md'
-      slide3.path = '03.html.md'
+      slide2 = instance_double('Middleman::Presentation::ExistingSlide')
+      allow(slide2).to receive(:match?).and_return(false)
+      allow(slide2).to receive(:match?).with(/(?-mix:^!$)|(?-mix:02.html.md)/).and_return(true)
 
       transformer = Transformers::IgnoreSlides.new ignore_file: ignore_file
-      result = transformer.transform([slide1, slide2, slide3])
+      result = transformer.transform([slide1, slide2])
 
       expect(result).to include slide1
       expect(result).not_to include slide2
-      expect(result).to include slide3
     end
 
     it 'unignores slides based on file name' do
@@ -31,14 +28,17 @@ RSpec.describe Transformers::IgnoreSlides do
       !02.html.md
       EOS
 
-      slide1 = Slide.new name: '01.html.erb'
-      slide1.path = '01.html.erb'
+      slide1 = instance_double('Middleman::Presentation::ExistingSlide')
+      allow(slide1).to receive(:match?).with(/(?-mix:^!$)|(?-mix:.md$)/).and_return(false)
+      allow(slide1).to receive(:match?).with(/(?-mix:^!$)|(?-mix:02.html.md)/).and_return(true)
 
-      slide2 = Slide.new name: '02.html.md'
-      slide2.path = '02.html.md'
+      slide2 = instance_double('Middleman::Presentation::ExistingSlide')
+      allow(slide2).to receive(:match?).with(/(?-mix:^!$)|(?-mix:.md$)/).and_return(true)
+      allow(slide2).to receive(:match?).with(/(?-mix:^!$)|(?-mix:02.html.md)/).and_return(true)
 
-      slide3 = Slide.new name: '03.html.md'
-      slide3.path = '03.html.md'
+      slide3 = instance_double('Middleman::Presentation::ExistingSlide')
+      allow(slide3).to receive(:match?).with(/(?-mix:^!$)|(?-mix:.md$)/).and_return(true)
+      allow(slide3).to receive(:match?).with(/(?-mix:^!$)|(?-mix:02.html.md)/).and_return(false)
 
       transformer = Transformers::IgnoreSlides.new ignore_file: ignore_file
       result = transformer.transform([slide1, slide2, slide3])
@@ -49,14 +49,9 @@ RSpec.describe Transformers::IgnoreSlides do
     end
 
     it 'handles non existing ignore file' do
-      slide1 = Slide.new name: '01.html.erb'
-      slide1.path = '01.html.erb'
-
-      slide2 = Slide.new name: '02.html.md'
-      slide2.path = '02.html.md'
-
-      slide3 = Slide.new name: '03.html.md'
-      slide3.path = '03.html.md'
+      slide1 = instance_double('Middleman::Presentation::ExistingSlide')
+      slide2 = instance_double('Middleman::Presentation::ExistingSlide')
+      slide3 = instance_double('Middleman::Presentation::ExistingSlide')
 
       transformer = Transformers::IgnoreSlides.new ignore_file: SecureRandom.hex
       result = transformer.transform([slide1, slide2, slide3])

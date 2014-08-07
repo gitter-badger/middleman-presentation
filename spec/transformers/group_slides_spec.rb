@@ -15,22 +15,19 @@ RSpec.describe Transformers::GroupSlides do
 
   context '#transforms' do
     it 'groups slides with same group' do
-      slide1 = instance_double('Middleman::Presentation::Slide')
+      slide1 = instance_double('Middleman::Presentation::ExistingSlide')
       allow(slide1).to receive(:group).and_return 'group'
       allow(slide1).to receive(:group?).and_return true
-      allow(slide1).to receive(:partial_path).and_return 'slides/01.html.erb'
       allow(slide1).to receive(:render).and_return '01'
 
-      slide2 = instance_double('Middleman::Presentation::Slide')
+      slide2 = instance_double('Middleman::Presentation::ExistingSlide')
       allow(slide2).to receive(:group).and_return 'group'
       allow(slide2).to receive(:group?).and_return true
-      allow(slide2).to receive(:partial_path).and_return 'slides/02.html.erb'
       allow(slide2).to receive(:render).and_return '02'
 
-      slide3 = instance_double('Middleman::Presentation::Slide')
+      slide3 = instance_double('Middleman::Presentation::ExistingSlide')
       allow(slide3).to receive(:group).and_return nil
       allow(slide3).to receive(:group?).and_return false
-      allow(slide3).to receive(:partial_path).and_return 'slides/03.html.erb'
       allow(slide3).to receive(:render).and_return '03'
 
       transformer = Transformers::GroupSlides.new(template: Erubis::Eruby.new('<%= slides %>'))

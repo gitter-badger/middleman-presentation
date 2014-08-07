@@ -36,7 +36,7 @@ module Middleman
 
           existing_slides = Middleman::Presentation::SlideList.new(
             Dir.glob(File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, '**', '*')),
-            slide_builder: ExistingSlide,
+            slide_builder: Middleman::Presentation::ExistingSlide,
             base_path: shared_instance.source_dir
           ) do |l|
             l.transform_with Middleman::Presentation::Transformers::FileKeeper.new
@@ -44,7 +44,7 @@ module Middleman
 
           slide_list = Middleman::Presentation::SlideList.new(
             names,
-            slide_builder: NewSlide,
+            slide_builder: Middleman::Presentation::NewSlide,
             base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
           ) do |l|
             l.transform_with Middleman::Presentation::Transformers::RemoveDuplicateSlides.new(additional_slides: existing_slides, raise_error: options[:error_on_duplicates])
@@ -52,7 +52,7 @@ module Middleman
           end
 
           slide_list.each_new do |slide|
-            create_file slide.path, slide.content(title: options[:title])
+            slide.write(title: options[:title])
           end
 
           data = if shared_instance.data.respond_to? :metadata

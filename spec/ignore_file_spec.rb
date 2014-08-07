@@ -17,11 +17,12 @@ RSpec.describe IgnoreFile do
 
     context '#ignore?' do
       it 'checks if slide can be ignored' do
-        slide1 = Slide.new(name: 01)
-        slide1.path = '01.html.erb'
+        slide1 = instance_double('Middleman::Presentation::ExistingSlide')
+        allow(slide1).to receive(:match?).and_return(false)
+        allow(slide1).to receive(:match?).with(/(?-mix:^!$)|(?-mix:01)/).and_return(true)
 
-        slide2 = Slide.new(name: 02)
-        slide2.path = '02.html.erb'
+        slide2 = instance_double('Middleman::Presentation::ExistingSlide')
+        allow(slide2).to receive(:match?).and_return(false)
 
         path = create_file 'ignore_file', <<-EOS.strip_heredoc
         01
@@ -34,29 +35,23 @@ RSpec.describe IgnoreFile do
       end
 
       it 'strips off full line comments' do
-        slide1 = Slide.new(name: 01)
-        slide1.path = '# hello world'
-
-        slide2 = Slide.new(name: 02)
-        slide2.path = '02.html.erb'
+        slide1 = instance_double('Middleman::Presentation::ExistingSlide')
+        allow(slide1).to receive(:match?).with(/(?-mix:^!$)|(?-mix:02)/).and_return(false)
 
         path = create_file 'ignore_file', <<-EOS.strip_heredoc
-        # hello world
-        01
+        # 01
+        02
         EOS
 
         file = IgnoreFile.new(path)
 
         expect(file).not_to be_ignore slide1
-        expect(file).not_to be_ignore slide2
       end
 
       it 'strips off line comments' do
-        slide1 = Slide.new(name: 01)
-        slide1.path = '01.html.erb'
-
-        slide2 = Slide.new(name: 02)
-        slide2.path = '02.html.erb'
+        slide1 = instance_double('Middleman::Presentation::ExistingSlide')
+        allow(slide1).to receive(:match?).and_return(false)
+        allow(slide1).to receive(:match?).with(/(?-mix:^!$)|(?-mix:01)/).and_return(true)
 
         path = create_file 'ignore_file', <<-EOS.strip_heredoc
         01 # hello world
@@ -65,12 +60,10 @@ RSpec.describe IgnoreFile do
         file = IgnoreFile.new(path)
 
         expect(file).to be_ignore slide1
-        expect(file).not_to be_ignore slide2
       end
 
       it 'handles non existing ignore file' do
-        slide1 = Slide.new name: '01.html.erb'
-        slide1.path = '01.html.erb'
+        slide1 = instance_double('Middleman::Presentation::ExistingSlide')
 
         file = IgnoreFile.new SecureRandom.hex
 

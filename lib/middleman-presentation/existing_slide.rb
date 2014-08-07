@@ -84,7 +84,7 @@ module Middleman
 
         return nil if group == relative_path.dirname
 
-        group
+        group.to_s
       end
     end
   end

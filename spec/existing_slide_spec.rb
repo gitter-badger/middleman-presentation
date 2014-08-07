@@ -3,6 +3,38 @@ require 'spec_helper'
 
 RSpec.describe ExistingSlide do
 
+  context '#file_name' do
+    it 'extracts file name' do
+      slide1 = ExistingSlide.new(File.join(working_directory, 'source', 'slides', '01.html.md'))
+      expect(slide1.file_name).to eq Pathname.new('01.html.md')
+    end
+
+    it 'extracts file name with group' do
+      slide1 = ExistingSlide.new(File.join(working_directory, 'source', 'slides', 'group', '01.html.md'))
+      expect(slide1.file_name).to eq Pathname.new('01.html.md')
+    end
+  end
+
+  context '#group' do
+    it 'extracts group name' do
+      slide1 = ExistingSlide.new(File.join(working_directory, 'source', 'slides', 'group', '01.html.md'), base_path: File.join(working_directory, 'source'))
+      expect(slide1.group).to eq 'group'
+    end
+
+    it 'returns nil if no group name is available' do
+      slide1 = ExistingSlide.new(File.join(working_directory, 'source', 'slides', '01.html.md'), base_path: File.join(working_directory, 'source'))
+      expect(slide1.group).to be_nil
+    end
+  end
+
+  context '#path' do
+    it 'has path' do
+      path = File.join(working_directory, 'source', 'slides', 'group', '01.html.md')
+      slide1 = ExistingSlide.new(path)
+      expect(slide1.path).to eq Pathname.new(path)
+    end
+  end
+
   context '#<=>' do
     it 'compares slides with same file name' do
       slide1 = ExistingSlide.new('01.html.md')

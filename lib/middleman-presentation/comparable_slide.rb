@@ -43,7 +43,7 @@ module Middleman
 
       # Checks if slide is in group
       def group?(g)
-        group.to_s == g.to_s
+        group == g
       end
 
       # Check if string/regex matches path

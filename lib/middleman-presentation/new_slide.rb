@@ -65,6 +65,11 @@ module Middleman
         end
       end
 
+      # Does the slide exist
+      def exist?
+        path.exist?
+      end
+
       # Generate slide content
       #
       # It either uses previously set content or generates content by using a
@@ -114,6 +119,10 @@ module Middleman
       def extname?(*extensions)
         extensions.any? { |e| extname == e }
       end
+
+      def extract_name
+        name.split(/:/).last
+      end
       
       # Extract group from name
       def extract_group
@@ -121,7 +130,7 @@ module Middleman
 
         return nil if group == name
 
-        group
+        group.to_s
       end
     end
   end
