@@ -19,6 +19,10 @@ module Middleman
         @base_path = Pathname.new(base_path)
       end
 
+      def relative_path
+        path.relative_path_from(base_path)
+      end
+
       def group
         @group ||= extract_group
       end
@@ -47,10 +51,6 @@ module Middleman
         result << block.call(partial_path).to_s
 
         result.join("\n")
-      end
-
-      def relative_path
-        path.relative_path_from(base_path)
       end
 
       def to_s

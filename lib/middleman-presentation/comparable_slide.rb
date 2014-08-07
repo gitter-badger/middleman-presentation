@@ -21,15 +21,11 @@ module Middleman
 
       # @private
       def <=>(other)
-        return false unless path
-
         path <=> other.path
       end
 
       # @private
       def eql?(other)
-        return false unless path
-
         path.eql? other.path
       end
 
@@ -47,7 +43,7 @@ module Middleman
 
       # Checks if slide is in group
       def group?(g)
-        group == g
+        group.to_s == g.to_s
       end
 
       # Check if string/regex matches path
@@ -59,7 +55,7 @@ module Middleman
                 end
 
         # rubocop:disable Style/CaseEquality:
-        regex === path
+        regex === relative_path.to_s
         # rubocop:enable Style/CaseEquality:
       end
 

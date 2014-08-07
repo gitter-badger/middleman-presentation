@@ -36,7 +36,7 @@ RSpec.describe ExistingSlide do
   end
 
   context '#similar?' do
-    it 'succeeds if both files share the same basename' do
+    it 'succeeds if both files share the same base name' do
       slide1 = ExistingSlide.new('01.html.erb')
       slide2 = ExistingSlide.new('01.html.md')
 
@@ -109,7 +109,7 @@ RSpec.describe ExistingSlide do
   context '#basename' do
     it 'reduces slide file name to minimum' do
       slide = ExistingSlide.new(File.join(working_directory, '02.html.erb'))
-      expect(slide.basename).to eq '02'
+      expect(slide.base_name).to eq '02'
     end
   end
 

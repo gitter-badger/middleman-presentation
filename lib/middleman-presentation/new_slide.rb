@@ -19,7 +19,7 @@ module Middleman
 
       # Return string representation of self
       def to_s
-        path
+        path.to_s
       end
 
       def path
@@ -27,7 +27,7 @@ module Middleman
         p << Pathname.new(group) unless group.blank?
         p << file_name
         
-        p.each_with_object(slide_directory_path) { |e, a| a + e }
+        p.inject(slide_directory_path) { |a, e| a += e; a}
       end
 
       def group
@@ -41,7 +41,7 @@ module Middleman
 
       def file_name
         path = if type? :erb
-          Patname.new "#{base_name}.html.erb"
+          Pathname.new "#{base_name}.html.erb"
         elsif type? :md
           Pathname.new "#{base_name}.html.md"
         elsif type? :liquid
@@ -75,6 +75,10 @@ module Middleman
 
       private
 
+      def relative_path
+        path.relative_path_from(base_path)
+      end
+
       def template
         if type? :erb
           ErbTemplate.new(working_directory: base_path)
@@ -103,13 +107,11 @@ module Middleman
 
       # Return file extension
       def extname
-        File.extname(path)
+        File.extname(name)
       end
 
       # Check if slide has given extensions
       def extname?(*extensions)
-        return false if !path && !name
-
         extensions.any? { |e| extname == e }
       end
       
