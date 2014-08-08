@@ -36,6 +36,8 @@ activate :presentation
 
 ### External Dependencies
 
+**Bower**
+
 You need to install [`bower`](http://www.bower.io). I do not like installing
 external packages as root if they are not installed via the package manager of
 the distribution I use. Therefor I configured `nodejs` to use a different
@@ -68,6 +70,13 @@ want to follow my advise.
     ```bash
     export PATH=~/.local/share/npm/bin:$PATH
     ```
+
+**JavaScript Engine**
+
+Make sure you've got a javascript engine installed. Please follow the
+instructions found [here](https://github.com/sstephenson/execjs). I do not add
+this as a dependency to this gem. So it is your choice what engine you want to
+use.
 
 ## Release Notes
 
