@@ -1,6 +1,3 @@
 #!/bin/sh
 
-#bundle exec rake test:coveralls
-#bundle exec cucumber
-env
-which ruby
+bundle exec rake test:coveralls

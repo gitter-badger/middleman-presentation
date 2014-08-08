@@ -26,7 +26,7 @@ group :development, :test do
   gem 'activesupport', require: false
   gem 'awesome_print', require: 'ap'
 
-  unless ENV['CI']
+  if !ENV.key?('CI') && !ENV.key?('TRAVIS')
     gem 'byebug'
     gem 'pry'
     gem 'pry-byebug', require: false
@@ -43,4 +43,7 @@ group :development, :test do
   gem 'filegen', require: false
   gem 'travis-lint', require: false
   gem 'command_exec', require: false
+
+  gem 'therubyracer'
+  gem 'therubyrhino'
 end

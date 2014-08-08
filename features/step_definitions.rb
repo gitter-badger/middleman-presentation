@@ -13,7 +13,17 @@ Given(/I install bundle/) do
 end
 
 Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
-  dirs = gems.split(/,/).map(&:strip).each_with_object([]) { |e, a| a << Gem::Specification.find_by_name(e).bin_dir }
+  dirs = []
+
+  puts ENV['PATH']
+
+  dirs.concat gems.split(/,/).map(&:strip).each_with_object([]) { |e, a| a << Gem::Specification.find_by_name(e).bin_dir }
+
+  if ci?
+    dirs << "/home/travis/.rvm/rubies/ruby-#{RUBY_VERSION}/bin"
+    dirs << "/home/travis/.rvm/rubies/ruby-#{Gem.ruby_api_version}/bin" unless Gem.ruby_api_version == RUBY_VERSION
+  end
+
   dirs << '/usr/bin'
 
   set_env 'PATH', dirs.join(':')
