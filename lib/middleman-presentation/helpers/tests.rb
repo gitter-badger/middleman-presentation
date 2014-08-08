@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Helpers
+      # Helpers for tests
       module Tests
         def ci?
           ENV.key?('CI') || ENV.key?('TRAVIS')
