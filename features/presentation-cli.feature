@@ -11,7 +11,7 @@ Feature: Initialize presentation
 
   Scenario: Before init
     Given I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the file "config.rb" should contain:
     """
     activate :presentation
@@ -57,7 +57,7 @@ Feature: Initialize presentation
     speaker: TestUser
     """
     And I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "My Presentation"`
+    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
     Then the file "data/metadata.yml" should contain:
     """
     author: TestUser
@@ -81,7 +81,7 @@ Feature: Initialize presentation
 
   Scenario: German umlauts, French accents and special chars are not a problem for project id
     Given I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "üöà~?§$%&/()=#!"`
+    When I successfully run `middleman-presentation init presentation --title "üöà~?§$%&/()=#!"`
     And the file "data/metadata.yml" should contain:
     """
     project_id: uoa
@@ -92,7 +92,7 @@ Feature: Initialize presentation
       | variable | value      |
       | LANG     | de_DE.UTF-8|
     And I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     When I successfully run `env`
     And the file "source/slides/999980.html.erb" should contain:
     """
@@ -104,7 +104,7 @@ Feature: Initialize presentation
       | variable | value      |
       | LANG     | de_DE.UTF-8|
     And I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language en`
+    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language en`
     When I successfully run `env`
     And the file "source/slides/999980.html.erb" should contain:
     """
@@ -116,7 +116,7 @@ Feature: Initialize presentation
       | variable | value      |
       | LANG     | de_de.utf-8|
     And I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     When I successfully run `env`
     And the file "source/slides/999980.html.erb" should contain:
     """
@@ -128,7 +128,7 @@ Feature: Initialize presentation
       | variable | value |
       | LANG     | asdf  |
     And I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     And the file "source/slides/999980.html.erb" should contain:
     """
     Questions
@@ -136,7 +136,7 @@ Feature: Initialize presentation
 
   Scenario: Use englisch language in slides if given garbabe on command line
     Given I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
+    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
     And the file "source/slides/999980.html.erb" should contain:
     """
     Questions
@@ -153,7 +153,7 @@ Feature: Initialize presentation
         """
     And git is configured with username "User" and email-address "email@example.com"
     And I initialized middleman for a new presentation
-    When I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
+    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
     Then a directory named "vendor/assets/components/middleman-presentation-theme-fedux_org" should exist
     And the file "source/stylesheets/application.scss" should contain:
     """
@@ -167,7 +167,7 @@ Feature: Initialize presentation
   Scenario: Fails if bower is not installed
     Given I initialized middleman for a new presentation
     And only the executables of gems "middleman-core" can be found in PATH
-    When I run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the output should contain:
     """
     cannot be found in PATH
@@ -185,7 +185,7 @@ Feature: Initialize presentation
     And I set the environment variables to:
       | variable | value  | action |
       | PATH     | ~/bin: | .      |
-    When I run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the output should contain:
     """
     Failed

@@ -32,14 +32,14 @@ end
 Given(/^I created a new presentation with title "([^"]+)" for speaker "([^"]+)"$/) do |title, speaker|
   step 'I initialized middleman for a new presentation'
   step 'I successfully run `bundle install`'
-  step %Q(I successfully run `bundle exec middleman presentation --title "#{title}" --speaker "#{speaker}"`)
+  step %Q(I successfully run `bundle exec middleman-presentation init presentation --title "#{title}" --speaker "#{speaker}"`)
   step 'I successfully run `bundle install`'
 end
 
 Given(/^I created a new presentation with title "(.*?)" for speaker "(.*?)" but kept existing files\/directories$/) do |title, speaker|
   step 'I initialized middleman for a new presentation'
   step 'I successfully run `bundle install`'
-  step %Q(I successfully run `bundle exec middleman presentation --title "#{title}" --speaker "#{speaker}" --no-clear-source`)
+  step %Q(I successfully run `bundle exec middleman-presentation init presentation --title "#{title}" --speaker "#{speaker}" --no-clear-source`)
   step 'I successfully run `bundle install`'
 end
 

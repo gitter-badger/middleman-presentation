@@ -44,7 +44,7 @@ Feature: Run presentation
   Scenario: Run it
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
-    And I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    And I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     And the Server is running
     When I go to "/"
     Then I should see:
@@ -67,7 +67,7 @@ Feature: Run presentation
   Scenario: Slide number
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
-    And I successfully run `middleman presentation --title "Test"`
+    And I successfully run `middleman-presentation init presentation --title "Test"`
     And the Server is running
     When I go to "/"
     Then I should see:
@@ -117,7 +117,7 @@ Feature: Run presentation
   Scenario: Print link
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
-    And I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    And I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     And the Server is running
     When I go to "/"
     Then I should see:

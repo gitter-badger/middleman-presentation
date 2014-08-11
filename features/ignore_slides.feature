@@ -11,7 +11,7 @@ Feature: Ignore slides
   Scenario: Ignore a slide by basename
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
-    And I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    And I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     And I successfully run `middleman slide 01 --title "Slide 01"`
     And I successfully run `middleman slide 02 --title "Slide 02"`
     And the Server is running
@@ -47,7 +47,7 @@ Feature: Ignore slides
   Scenario: Unignore a slide
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
-    And I successfully run `middleman presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    And I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     And I successfully run `middleman slide 01 --title "Slide 01"`
     And I successfully run `middleman slide 02 --title "Slide 02"`
     And the Server is running
