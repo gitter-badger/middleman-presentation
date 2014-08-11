@@ -8,6 +8,39 @@ Feature: Run presentation
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
 
+  Scenario: Simple Slide
+    Given I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
+    And a directory named "images"
+    And a slide named "01.html.erb" with:
+    """
+    <section>
+    </section>
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    And the Server is running
+    And I go to "/"
+    Then I should see:
+    """
+    Hello World
+    """
+
+  Scenario: Malformed Slide
+    Given I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
+    And a directory named "images"
+    And a slide named "01.html.erb" with:
+    """
+    <section>
+    <%= asdfasdf() %>
+    </section>
+    """
+    And the Server is running
+    And I go to "/" and see the following error message:
+    """
+    NoMethodError: undefined method `asdfasdf
+    """
+
   Scenario: Run it
     Given a fixture app "presentation-before_init-app"
     And I initialized middleman for a new presentation
