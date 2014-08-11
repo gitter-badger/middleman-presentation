@@ -8,11 +8,12 @@ Feature: Initialize middleman-presentation
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
 
+    @wip
   Scenario: Before init
     Given I set the environment variables to:
     | variable | value  |
     | USER     | my_user|
-    When I successfully run `middleman_presentation_init`
+    When I successfully run `middleman-presentation init system`
     Then the file "~/.config/middleman/presentation/presentations.yaml" should contain:
     """
     # activate_center: true
@@ -57,7 +58,7 @@ Feature: Initialize middleman-presentation
     """
     # activate_center: true
     """
-    When I successfully run `middleman_presentation_init --force`
+    When I successfully run `middleman-presentation init system --force`
     Then the file "~/.config/middleman/presentation/presentations.yaml" should contain:
     """
     # activate_center: true
