@@ -136,14 +136,14 @@ Feature: Add new slide
     When I successfully run `middleman slide 02 03 --edit --editor-command "echo <%= project_id %>"`
     Then the output should contain:
     """
-    my-title-aasdfasfd
+    my-presentation
     """
 
   Scenario: Using eruby in editor command and shell escape
     When I successfully run `middleman slide 02 03 --edit --editor-command "echo <%= Shellwords.shellescape(project_id) %>"`
     Then the output should contain:
     """
-    my-title-aasdfasfd
+    my-presentation
     """
 
   Scenario: Use * expansion in shell to open slides
