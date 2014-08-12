@@ -49,12 +49,8 @@ module Middleman
           source_paths << File.expand_path('../../../../templates', __FILE__)
         end
 
-        def switch_to_root_directory
-          Dir.chdir root_directory
-        end
-
         def initialize_middleman
-          run('middleman init --skip-bundle --template empty .')
+          run("middleman init --skip-bundle --template empty #{directory}")
           fail Thor::Error, 'Error executing `middleman init`-command. Please fix your setup and run again.' if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
         end
 
@@ -141,7 +137,7 @@ module Middleman
         end
 
         def create_slides_ignore_file
-          create_file '.slidesignore', "# empty\n"
+          create_file File.join(root_directory, '.slidesignore'), "# empty\n"
         end
 
         def add_gems_to_gem_file
@@ -231,7 +227,7 @@ module Middleman
         end
 
         def create_image_directory
-          empty_directory 'source/images'
+          empty_directory File.join(middleman_source_directory, 'source/images')
         end
 
         def create_presentation_layout
@@ -265,29 +261,35 @@ module Middleman
         end
 
         def install_external_assets
-          message = format('`bower`-command cannot be found in PATH "%s". Please make sure it is installed and PATH includes the directory where is stored.', ENV['PATH'])
-          fail Thor::Error, message if options[:check_for_bower] && File.which('bower').blank?
+          inside directory do 
+            message = format('`bower`-command cannot be found in PATH "%s". Please make sure it is installed and PATH includes the directory where is stored.', ENV['PATH'])
+            fail Thor::Error, message if options[:check_for_bower] && File.which('bower').blank?
 
-          result = run('bower update', capture: true) if options[:install_assets] == true
-          fail Thor::Error, "Error executing `bower`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+            result = run('bower update', capture: true) if options[:install_assets] == true
+            fail Thor::Error, "Error executing `bower`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+          end
         end
 
         def install_gems
-          result = run('bundle install', capture: true) if options[:install_assets] == true
-          fail Thor::Error, "Error executing `bundle`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+          inside directory do
+            result = run('bundle install', capture: true) if options[:install_assets] == true
+            fail Thor::Error, "Error executing `bundle`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+          end
         end
 
         def initialize_git_directory
           return unless options[:initialize_git]
 
-          run 'git init'
-          run 'git add -A .'
-          run 'git commit -m Init'
+          inside directory do
+            run 'git init'
+            run 'git add -A .'
+            run 'git commit -m Init'
+          end
         end
 
         no_commands do
           def root_directory
-            File.expand_path directory
+            @root_directory ||= File.expand_path directory
           end
 
           def data_directory
