@@ -7,6 +7,9 @@ module Middleman
         desc 'init', 'Initialize system, presentation, ...'
         subcommand 'init', Init
 
+        desc 'show', 'Show information ...'
+        subcommand 'show', Show
+
         register(CreateTheme, 'theme', 'theme NAME', 'Create a new theme named NAMED')
 
         desc 'config', 'Show configuration'
