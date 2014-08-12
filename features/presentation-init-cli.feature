@@ -8,7 +8,6 @@ Feature: Initialize middleman-presentation
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
 
-    @wip
   Scenario: Before init
     Given I set the environment variables to:
     | variable | value  |

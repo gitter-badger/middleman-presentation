@@ -9,8 +9,9 @@ Feature: Initialize presentation
     And git is configured with username "User" and email-address "email@example.com"
     And a fixture app "presentation-before_init-app"
 
+    @wip
+    @announce
   Scenario: Before init
-    Given I initialized middleman for a new presentation
     When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the file "config.rb" should contain:
     """
