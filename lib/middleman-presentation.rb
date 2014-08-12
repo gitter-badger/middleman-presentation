@@ -31,6 +31,7 @@ require 'middleman-presentation/presentation_config'
 require 'middleman-presentation/main'
 
 require 'middleman-presentation/cli/reset_thor'
+require 'middleman-presentation/cli/init_presentation'
 require 'middleman-presentation/cli/init'
 require 'middleman-presentation/cli/runner'
 
