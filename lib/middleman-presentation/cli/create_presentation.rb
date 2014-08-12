@@ -270,8 +270,10 @@ module Middleman
 
         def install_gems
           inside directory do
-            result = run('bundle install', capture: true) if options[:install_assets] == true
-            fail Thor::Error, "Error executing `bundle`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+            Bundler.with_clean_env do
+              result = run('bundle install', capture: true) if options[:install_assets] == true
+              fail Thor::Error, "Error executing `bundle`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+            end
           end
         end
 
