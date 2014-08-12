@@ -261,7 +261,7 @@ module Middleman
         end
 
         def install_external_assets
-          inside directory do 
+          inside directory do
             message = format('`bower`-command cannot be found in PATH "%s". Please make sure it is installed and PATH includes the directory where is stored.', ENV['PATH'])
             fail Thor::Error, message if options[:check_for_bower] && File.which('bower').blank?
 
