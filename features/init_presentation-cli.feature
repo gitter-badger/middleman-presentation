@@ -195,7 +195,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Fails if bower is not installed
-    And only the executables of gems "middleman-core" can be found in PATH
+    And only the executables of gems "middleman-core, middleman-presentation" can be found in PATH
     When I run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the output should contain:
     """
@@ -209,7 +209,7 @@ Feature: Initialize presentation
     echo "Failed" >&2
     exit 1
     """
-    And only the executables of gems "middleman-core" can be found in PATH
+    And only the executables of gems "middleman-core, middleman-presentation" can be found in PATH
     And I set the environment variables to:
       | variable | value  | action |
       | PATH     | ~/bin: | .      |

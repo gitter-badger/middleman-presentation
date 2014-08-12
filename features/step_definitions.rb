@@ -14,9 +14,7 @@ end
 Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
   dirs = []
 
-  puts ENV['PATH']
-
-  dirs.concat gems.split(/,/).map(&:strip).each_with_object([]) { |e, a| a << Gem::Specification.find_by_name(e).bin_dir }
+  dirs.concat gems.split(/,\s?/).map(&:strip).each_with_object([]) { |e, a| a << Gem::Specification.find_by_name(e).bin_dir }
 
   if ci?
     dirs << "/home/travis/.rvm/rubies/ruby-#{RUBY_VERSION}/bin"
