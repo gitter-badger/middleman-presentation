@@ -6,7 +6,7 @@ module Middleman
       class Presentation < Thor
         include Thor::Actions
 
-        def self.check_unknown_options!
+        def self.check_unknown_options?(*)
           false
         end
 
@@ -15,8 +15,6 @@ module Middleman
         desc 'presentation ', 'Initialize a new presentation'
         def presentation(*args)
           warn('The use of this command is deprecated. Please use `middleman-presentation init presentation` instead.')
-          system("middleman-presentation init presentation #{args.join(' ')} #{options.to_options}")
-
           exit 1
         end
       end

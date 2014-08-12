@@ -57,7 +57,7 @@ module Middleman
         option :language, type: :array, desc: 'Language to use for translatable slide templates, e.g. "de", "en"'
         option :version, default: Middleman::Presentation.config.default_version_number, desc: 'Version number for your presentation'
 
-        desc 'presentation DIR', 'Initialize a new presentation in DIR'
+        desc 'presentation [DIR]', 'Initialize a new presentation in DIR (default: $PWD)'
         def presentation(directory = Dir.getwd)
           source_paths << File.expand_path('../../../../templates', __FILE__)
 

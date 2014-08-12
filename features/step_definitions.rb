@@ -1,11 +1,10 @@
 # encoding: utf-8
 Given(/^I initialized middleman for a new presentation$/) do
-#  step 'I successfully run `middleman init --skip-bundle --template empty`'
-#
-#  append_to_file('config.rb', "\nactivate :presentation\n")
-#  append_to_file('Gemfile', "\ngem 'middleman-presentation', path: '#{File.expand_path('../../', __FILE__)}'\n")
-#
-#  step 'I successfully run `bundle install`'
+  step 'I successfully run `middleman init --skip-bundle --template empty`'
+
+  append_to_file('config.rb', "\nactivate :presentation\n")
+  append_to_file('Gemfile', "\ngem 'middleman-presentation', path: '#{File.expand_path('../../', __FILE__)}'\n")
+  step 'I successfully run `bundle install`'
 end
 
 Given(/I install bundle/) do
