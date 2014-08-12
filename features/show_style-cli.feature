@@ -16,6 +16,6 @@ Feature: Show available default css classes
     """
     And the output should contain:
     """
-    mp-external-url: "contact_slide.tt"
+    mp-external-url: "999981.html.erb.tt"
     """
 
