@@ -48,7 +48,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Initialize with long command
-    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the file "config.rb" should contain:
     """
     activate :presentation
@@ -93,7 +93,7 @@ Feature: Initialize presentation
     language: en
     speaker: TestUser
     """
-    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation"`
     Then the file "data/metadata.yml" should contain:
     """
     author: TestUser
@@ -116,7 +116,7 @@ Feature: Initialize presentation
     """
 
   Scenario: German umlauts, French accents and special chars are not a problem for project id
-    When I successfully run `middleman-presentation init presentation --title "üöà~?§$%&/()=#!"`
+    When I successfully run `middleman-presentation create presentation --title "üöà~?§$%&/()=#!"`
     And the file "data/metadata.yml" should contain:
     """
     project_id: uoa
@@ -126,7 +126,7 @@ Feature: Initialize presentation
     Given I set the environment variables to:
       | variable | value      |
       | LANG     | de_DE.UTF-8|
-    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     When I successfully run `env`
     And the file "source/slides/999980.html.erb" should contain:
     """
@@ -137,7 +137,7 @@ Feature: Initialize presentation
     Given I set the environment variables to:
       | variable | value      |
       | LANG     | de_DE.UTF-8|
-    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language en`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language en`
     When I successfully run `env`
     And the file "source/slides/999980.html.erb" should contain:
     """
@@ -148,7 +148,7 @@ Feature: Initialize presentation
     Given I set the environment variables to:
       | variable | value      |
       | LANG     | de_de.utf-8|
-    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     When I successfully run `env`
     And the file "source/slides/999980.html.erb" should contain:
     """
@@ -159,14 +159,14 @@ Feature: Initialize presentation
     Given I set the environment variables to:
       | variable | value |
       | LANG     | asdf  |
-    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     And the file "source/slides/999980.html.erb" should contain:
     """
     Questions
     """
 
   Scenario: Use englisch language in slides if given garbabe on command line
-    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
     And the file "source/slides/999980.html.erb" should contain:
     """
     Questions
@@ -182,7 +182,7 @@ Feature: Initialize presentation
         - stylesheets/middleman-presentation-theme-fedux_org
         """
     And git is configured with username "User" and email-address "email@example.com"
-    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344 --language adsfasdfn`
     Then a directory named "vendor/assets/components/middleman-presentation-theme-fedux_org" should exist
     And the file "source/stylesheets/application.scss" should contain:
     """
@@ -195,7 +195,7 @@ Feature: Initialize presentation
 
   Scenario: Fails if bower is not installed
     And only the executables of gems "middleman-core, middleman-presentation" can be found in PATH
-    When I run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I run `middleman-presentation create presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the output should contain:
     """
     cannot be found in PATH
@@ -212,7 +212,7 @@ Feature: Initialize presentation
     And I set the environment variables to:
       | variable | value  | action |
       | PATH     | ~/bin: | .      |
-    When I run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I run `middleman-presentation create presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the output should contain:
     """
     Failed
@@ -232,7 +232,7 @@ Feature: Initialize presentation
     <h1>Start</h1>
     </section>
     """
-    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation"`
     Then a slide named "00.html.erb" exist with:
     """
     <section>
@@ -247,7 +247,7 @@ Feature: Initialize presentation
     <h1>Questions? Really</h1>
     </section>
     """
-    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation"`
     Then a slide named "999980.html.erb" exist with:
     """
     <section>
@@ -263,7 +263,7 @@ Feature: Initialize presentation
     Me and You
     </section>
     """
-    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation"`
     Then a slide named "999981.html.erb" exist with:
     """
     <section>
@@ -279,7 +279,7 @@ Feature: Initialize presentation
     <h1>See you!</h1>
     </section>
     """
-    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
+    When I successfully run `middleman-presentation create presentation --title "My Presentation"`
     Then a slide named "999982.html.erb" exist with:
     """
     <section>
