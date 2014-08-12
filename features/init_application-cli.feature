@@ -12,7 +12,7 @@ Feature: Initialize middleman-presentation
     Given I set the environment variables to:
     | variable | value  |
     | USER     | my_user|
-    When I successfully run `middleman-presentation init system`
+    When I successfully run `middleman-presentation init application`
     Then the file "~/.config/middleman/presentation/presentations.yaml" should contain:
     """
     # activate_center: true
@@ -57,7 +57,7 @@ Feature: Initialize middleman-presentation
     """
     # activate_center: true
     """
-    When I successfully run `middleman-presentation init system --force`
+    When I successfully run `middleman-presentation init application --force`
     Then the file "~/.config/middleman/presentation/presentations.yaml" should contain:
     """
     # activate_center: true
