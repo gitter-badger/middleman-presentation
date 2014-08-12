@@ -227,7 +227,7 @@ module Middleman
         end
 
         def create_image_directory
-          empty_directory File.join(middleman_source_directory, 'source/images')
+          empty_directory File.join(middleman_source_directory, 'images')
         end
 
         def create_presentation_layout
