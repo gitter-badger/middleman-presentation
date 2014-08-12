@@ -45,6 +45,10 @@ module Middleman
         argument :directory, default: Dir.getwd, desc: 'Directory to create presentation in'
         desc 'Initialize a new presentation in DIR (default: $PWD)'
 
+        def define_root_directory
+          @root_directory = File.expand_path directory
+        end
+
         def add_to_source_path
           source_paths << File.expand_path('../../../../templates', __FILE__)
         end
@@ -282,9 +286,7 @@ module Middleman
         end
 
         no_commands do
-          def root_directory
-            @root_directory ||= File.expand_path directory
-          end
+          attr_reader :root_directory
 
           def data_directory
             File.join root_directory, 'data'
