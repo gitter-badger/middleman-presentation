@@ -239,7 +239,7 @@ module Middleman
           return unless options[:create_predefined_slides]
 
           PredefinedSlideTemplateDirectory.new(working_directory: root_directory).template_files.each do |file|
-            template file, File.join(slides_directory, File.basename(file))
+            template file, File.join(slides_directory, File.basename(file, '.tt'))
           end
         end
 

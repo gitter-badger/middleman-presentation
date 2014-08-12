@@ -15,7 +15,7 @@ PATH
       addressable (~> 2.3.5)
       bundler
       erubis
-      fedux_org-stdlib (>= 0.6.39)
+      fedux_org-stdlib (>= 0.6.48)
       kramdown
       launchy (~> 2.4.2)
       liquid

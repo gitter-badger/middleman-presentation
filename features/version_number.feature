@@ -9,8 +9,7 @@ Feature: Show version number
     And git is configured with username "User" and email-address "email@example.com"
 
   Scenario: Default version number
-    Given a fixture app "presentation-before_init-app"
-    And I successfully run `middleman-presentation init presentation --title "Test"`
+    Given I successfully run `middleman-presentation init presentation --title "Test"`
     And the Server is running
     When I go to "/"
     Then I should see:
