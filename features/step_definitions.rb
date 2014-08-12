@@ -54,6 +54,10 @@ Given(/^git is configured with username "(.*?)" and email-address "(.*?)"$/) do 
   step %Q(I successfully run `git config --global user.name "#{name}"`)
 end
 
+Given(/^a user config file for middleman\-presentation with:$/) do |string|
+  step %Q(a file named "~/.config/middleman/presentation/presentations.yaml" with:), string
+end
+
 # Given(/^I configured bower correctly$/) do
 #  http_proxy = %w(http_proxy HTTP_PROXY).find { |v| !ENV[v].blank? }
 #  if http_proxy

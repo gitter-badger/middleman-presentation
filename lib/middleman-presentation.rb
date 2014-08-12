@@ -23,6 +23,7 @@ require 'rake/file_list'
 require 'active_support/core_ext/string/strip'
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/kernel/reporting'
 
 require 'middleman-presentation/version'
 require 'middleman-presentation/file_extensions'

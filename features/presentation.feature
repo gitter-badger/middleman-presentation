@@ -9,7 +9,7 @@ Feature: Run presentation
     And git is configured with username "User" and email-address "email@example.com"
 
   Scenario: Simple Slide
-    Given I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
+    Given I created a new presentation with title "Title" for speaker "Meee"
     And a directory named "images"
     And a slide named "01.html.erb" with:
     """
@@ -27,7 +27,7 @@ Feature: Run presentation
     """
 
   Scenario: Malformed Slide
-    Given I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
+    Given I created a new presentation with title "Title" for speaker "Meee"
     And a directory named "images"
     And a slide named "01.html.erb" with:
     """
