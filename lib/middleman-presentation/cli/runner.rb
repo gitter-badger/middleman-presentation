@@ -7,6 +7,8 @@ module Middleman
         desc 'init', 'Initialize system, presentation, ...'
         subcommand 'init', Init
 
+        register(CreateTheme, 'theme', 'theme NAME', 'Create a new theme named NAMED')
+
         desc 'config', 'Show configuration'
         option :show_defaults, type: :boolean, desc: 'Show default configuration'
         def config

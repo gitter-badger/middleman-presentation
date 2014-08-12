@@ -46,7 +46,7 @@ Given(/^a user template named "(.*?)" with:$/) do |name, string|
 end
 
 Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
-  step %Q(I remove the directory "#{name}")
+  step %Q(I remove the directory "middleman-presentation-theme-#{name}")
 end
 
 Given(/^git is configured with username "(.*?)" and email-address "(.*?)"$/) do |name, email|
@@ -94,6 +94,8 @@ end
 # end
 
 Then(/^a presentation theme named "(.*?)" should exist( with default files\/directories created)?$/) do |name, default_files|
+  name = "middleman-presentation-theme-#{name}" 
+
   step %Q(a directory named "#{name}" should exist)
 
   if default_files

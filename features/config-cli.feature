@@ -13,8 +13,6 @@ Feature: Configuration
     """
 
   Scenario: Show config
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman-presentation config`
     Then the output should contain:
     """
@@ -22,8 +20,6 @@ Feature: Configuration
     """
 
   Scenario: Show config with default values
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
     When I successfully run `middleman-presentation config --show-defaults`
     Then the output should contain:
     """
