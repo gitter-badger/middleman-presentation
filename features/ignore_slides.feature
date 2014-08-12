@@ -7,10 +7,10 @@ Feature: Ignore slides
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
+    And I successfully run `middleman-presentation init presentation --title "My Presentation"`
 
   Scenario: Ignore a slide by basename
-    Given I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
-    And I successfully run `middleman slide 01 --title "Slide 01"`
+    When I successfully run `middleman slide 01 --title "Slide 01"`
     And I successfully run `middleman slide 02 --title "Slide 02"`
     And the Server is running
     And a file named ".slidesignore" with:
@@ -43,8 +43,7 @@ Feature: Ignore slides
     #Then the status code should be "200"
 
   Scenario: Unignore a slide
-    Given I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
-    And I successfully run `middleman slide 01 --title "Slide 01"`
+    When I successfully run `middleman slide 01 --title "Slide 01"`
     And I successfully run `middleman slide 02 --title "Slide 02"`
     And the Server is running
     And a file named ".slidesignore" with:
@@ -78,9 +77,7 @@ Feature: Ignore slides
     #Then the status code should be "200"
 
   Scenario: Warning on invalid ignore file
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
-    And an empty file named ".slideignore"
+    Given an empty file named ".slideignore"
     When I run `middleman build`
     Then the output should contain:
     """

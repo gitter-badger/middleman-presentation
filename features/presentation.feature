@@ -7,10 +7,10 @@ Feature: Run presentation
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
+    And I successfully run `middleman-presentation init presentation --title "My Presentation"`
 
   Scenario: Simple Slide
-    Given I created a new presentation with title "Title" for speaker "Meee"
-    And a directory named "images"
+    Given a directory named "images"
     And a slide named "01.html.erb" with:
     """
     <section>
@@ -27,8 +27,7 @@ Feature: Run presentation
     """
 
   Scenario: Malformed Slide
-    Given I created a new presentation with title "Title" for speaker "Meee"
-    And a directory named "images"
+    Given a directory named "images"
     And a slide named "01.html.erb" with:
     """
     <section>
@@ -42,8 +41,7 @@ Feature: Run presentation
     """
 
   Scenario: Run it
-    When I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
-    And the Server is running
+    Given the Server is running
     When I go to "/"
     Then I should see:
     """
@@ -63,18 +61,15 @@ Feature: Run presentation
     #Then the status code should be "200"
 
   Scenario: Slide number
-    When I successfully run `middleman-presentation init presentation --title "Test"`
-    And the Server is running
-    And I go to "/"
+    Given the Server is running
+    When I go to "/"
     Then I should see:
     """
     slideNumber: true
     """
 
   Scenario: Project Group template
-    Given a fixture app "presentation-after_init-app"
-    And I install bundle
-    And a project template named "group.tt" with:
+    Given a project template named "group.tt" with:
     """
     <section>
     <h1>Group Title</h1>
@@ -111,8 +106,7 @@ Feature: Run presentation
     """
 
   Scenario: Print link
-    Given I successfully run `middleman-presentation init presentation --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
-    And the Server is running
+    Given the Server is running
     When I go to "/"
     Then I should see:
     """

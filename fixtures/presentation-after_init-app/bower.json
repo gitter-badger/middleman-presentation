@@ -1,9 +1,0 @@
-{
-  "name": "my title",
-    "dependencies": {
-    "jquery": "~1.11",
-    "reveal.js": "latest",
-    "lightbox2": "https://github.com/dg-vrnetze/revealjs-lightbox2.git",
-    "fedux_org": "https://github.com/maxmeyer/reveal.js-template-fedux_org.git"
-    }
-}

@@ -7,8 +7,7 @@ Feature: Grouping slides
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
-    And a fixture app "presentation-after_init-app"
-    And I install bundle
+    And I successfully run `middleman-presentation init presentation --title "My Presentation"`
 
   Scenario: Create slides in subfolder
     When I successfully run `middleman slide 01namespace:01`
