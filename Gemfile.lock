@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.15.0)
+    middleman-presentation (0.15.1)
       addressable (~> 2.3.5)
       bundler
       erubis
@@ -87,7 +87,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
-    fedux_org-stdlib (0.6.47)
+    fedux_org-stdlib (0.6.48)
       activesupport
     ffi (1.9.3)
     filegen (0.4.3)

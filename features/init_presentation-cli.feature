@@ -7,7 +7,6 @@ Feature: Initialize presentation
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
-    And a fixture app "presentation-before_init-app"
 
   Scenario: Initialize with short command
     When I successfully run `middleman-presentation init --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
@@ -226,8 +225,38 @@ Feature: Initialize presentation
     And a file named "source/slides/999981.html.erb" should not exist
     And a file named "source/slides/999982.html.erb" should not exist
 
+  Scenario: Custom start slide template
+    Given a user template named "predefined_slides.d/00.html.erb.tt" with:
+    """
+    <section>
+    <h1>Start</h1>
+    </section>
+    """
+    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
+    Then a slide named "00.html.erb" exist with:
+    """
+    <section>
+    <h1>Start</h1>
+    </section>
+    """
+
+  Scenario: Custom questions template
+    Given a user template named "predefined_slides.d/999980.html.erb.tt" with:
+    """
+    <section>
+    <h1>Questions? Really</h1>
+    </section>
+    """
+    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
+    Then a slide named "999980.html.erb" exist with:
+    """
+    <section>
+    <h1>Questions? Really</h1>
+    </section>
+    """
+
   Scenario: Custom contact template
-    Given a user template named "contact_slide.tt" with:
+    Given a user template named "predefined_slides.d/999981.html.erb.tt" with:
     """
     <section>
     <h1>Contact</h1>
@@ -243,38 +272,8 @@ Feature: Initialize presentation
     </section>
     """
 
-  Scenario: Custom questions template
-    Given a user template named "questions_slide.tt" with:
-    """
-    <section>
-    <h1>Questions? Really</h1>
-    </section>
-    """
-    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
-    Then a slide named "999980.html.erb" exist with:
-    """
-    <section>
-    <h1>Questions? Really</h1>
-    </section>
-    """
-
-  Scenario: Custom start slide template
-    Given a user template named "start_slide.tt" with:
-    """
-    <section>
-    <h1>Start</h1>
-    </section>
-    """
-    When I successfully run `middleman-presentation init presentation --title "My Presentation"`
-    Then a slide named "00.html.erb" exist with:
-    """
-    <section>
-    <h1>Start</h1>
-    </section>
-    """
-
   Scenario: Custom end slide template
-    Given a user template named "end_slide.tt" with:
+    Given a user template named "predefined_slides.d/999982.html.erb.tt" with:
     """
     <section>
     <h1>See you!</h1>

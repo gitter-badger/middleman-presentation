@@ -238,15 +238,9 @@ module Middleman
         def create_default_slides
           return unless options[:create_predefined_slides]
 
-          start_slide_template    = StartSlideTemplate.new(working_directory: root_directory, output_directory: slides_directory)
-          end_slide_template      = EndSlideTemplate.new(working_directory: root_directory, output_directory: slides_directory)
-          contact_slide_template  = ContactSlideTemplate.new(working_directory: root_directory, output_directory: slides_directory)
-          question_slide_template = QuestionsSlideTemplate.new(working_directory: root_directory, output_directory: slides_directory)
-
-          template start_slide_template.file, start_slide_template.proposed_file
-          template end_slide_template.file, end_slide_template.proposed_file
-          template contact_slide_template.file, contact_slide_template.proposed_file
-          template question_slide_template.file, question_slide_template.proposed_file
+          PredefinedSlideTemplateDirectory.new(working_directory: root_directory).template_files.each do |file|
+            template file, File.join(slides_directory, File.basename(file))
+          end
         end
 
         def create_default_license_file_to_presentation
