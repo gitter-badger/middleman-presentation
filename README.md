@@ -79,7 +79,7 @@ npm install -g bower
 
 Make sure you've got a javascript engine installed. Please follow the
 instructions found [here](https://github.com/sstephenson/execjs). I do not add
-this as a dependency to this gem. So it is your choice what engine you want to
+this as a runtime-dependency to this gem. So it is your choice what engine you want to
 use.
 
 ## Release Notes
