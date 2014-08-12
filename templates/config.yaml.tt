@@ -13,6 +13,7 @@
   clear_source
   company
   components
+  create_predefined_slides
   default_transition_speed
   default_transition_type
   description
@@ -22,9 +23,6 @@
   homepage
   initialize_git
   install_assets
-  install_contact_slide
-  install_end_slide
-  install_question_slide
   language
   license
   location
