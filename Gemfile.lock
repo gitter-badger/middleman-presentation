@@ -13,6 +13,7 @@ PATH
   specs:
     middleman-presentation (0.14.2)
       addressable (~> 2.3.5)
+      bundler
       erubis
       fedux_org-stdlib (>= 0.6.39)
       kramdown

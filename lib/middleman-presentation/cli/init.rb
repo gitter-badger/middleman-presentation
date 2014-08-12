@@ -239,8 +239,10 @@ module Middleman
           fail Thor::Error, message if options[:check_for_bower] && File.which('bower').blank?
 
           result = run('bower update', capture: true) if options[:install_assets] == true
-
           fail Thor::Error, "Error executing `bower`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+
+          result = run('bundle install', capture: true) if options[:install_assets] == true
+          fail Thor::Error, "Error executing `bundle`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
 
           if options[:initialize_git]
             run 'git init'
@@ -248,6 +250,8 @@ module Middleman
             run 'git commit -m Init'
           end
         end
+
+        default_command :presentation
       end
     end
   end

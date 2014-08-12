@@ -10,7 +10,7 @@ Feature: Image Gallery
     And a fixture app "image_gallery-app"
 
   Scenario: Images only
-    Given I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
+    Given I created a new presentation with title "Title" for speaker "Meee"
     And a directory named "images"
     And a slide named "01.html.erb" with:
     """
@@ -35,7 +35,7 @@ Feature: Image Gallery
     """
 
   Scenario: Images with titles
-    Given I created a new presentation with title "Title" for speaker "Meee" but kept existing files/directories
+    Given I created a new presentation with title "Title" for speaker "Meee"
     And a directory named "images"
     And a slide named "01.html.erb" with:
     """

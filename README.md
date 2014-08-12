@@ -85,7 +85,7 @@ You find the release notes [here](RELEASE_NOTES.md) or on
 
 ## Supported rubies
 
-* MRI 2.1.x
+* MRI >= 2.1.x
 
 ## Find help
 
@@ -102,7 +102,7 @@ To create a global configuration file for `middleman-presentation` you need to
 run the following command:
 
 ```bash
-middleman_presentation_init
+middleman-presentation init application
 ```
 
 This will create a configuration file at
@@ -113,32 +113,17 @@ will contain the defaults.
 
 Please run `cat $HOME/.config/middleman/presentation/presentations.yaml` to view them.
 
-### Initialize middleman
-
-```bash
-middleman init my_presentation
-cd my_presentation
-
-```
-
-### Add dependency to Gemfile and activate plugin
-
-```bash
-echo -e "\ngem 'middleman-presentation'" >> Gemfile
-echo -e "\nactivate :presentation"       >> config.rb
-
-bundle install
-```
-
 ### Initialize presentation
 
 This gem provides a helper to start a new presentatio from scratch. The given
 options below need to be given on command line.
 
 ```bash
-bundle exec middleman presentation --title "my title" --speaker "Me"
+# long
+bundle exec middleman-presentation init presentation --title "my title" --speaker "Me"
 
-bundle install
+#short
+bundle exec middleman-presentation init --title "my title" --speaker "Me"
 ```
 
 The presentation helper provides a lot of more options. Use the help command to
