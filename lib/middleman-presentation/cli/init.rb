@@ -25,7 +25,7 @@ module Middleman
           source_paths << File.expand_path('../../../../templates/predefined_slides.d', __FILE__)
 
           PredefinedSlideTemplateDirectory.new(working_directory: File.expand_path('../../../../templates', __FILE__)).template_files.each do |file|
-            template file, File.join(options[:directory], File.basename(file, '.tt'))
+            copy_file file, File.join(options[:directory], File.basename(file))
           end
         end
       end
