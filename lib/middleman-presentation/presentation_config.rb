@@ -28,9 +28,7 @@ module Middleman
       option :initialize_git, true
       option :check_for_bower, true
       option :clear_source, true
-      option :install_contact_slide, true
-      option :install_question_slide, true
-      option :install_end_slide, true
+      option :create_predefined_slides, true
       option :language, :de
       option :default_version_number, 'v0.0.1'
 

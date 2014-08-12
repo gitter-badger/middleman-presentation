@@ -35,6 +35,11 @@ require 'middleman-presentation/cli/init_presentation'
 require 'middleman-presentation/cli/init'
 require 'middleman-presentation/cli/runner'
 
+require 'middleman-presentation/templates/start_slide_template'
+require 'middleman-presentation/templates/end_slide_template'
+require 'middleman-presentation/templates/contact_slide_template'
+require 'middleman-presentation/templates/questions_slide_template'
+
 require 'middleman-presentation/frontend_component'
 require 'middleman-presentation/comparable_slide'
 require 'middleman-presentation/existing_slide'

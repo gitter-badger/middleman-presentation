@@ -445,6 +445,8 @@ bundle exec middleman style
 
 ### Normal slide templates
 
+<a name="normal_slide_templates"></a>
+
 To create slides using the `slide`-command templates are used. They are written in
 Eruby (erb). For a good documentation about Eruby see the [Erubis User
 Guide](http://www.kuwata-lab.com/erubis/users-guide.html). Since `0.11.4`. you
@@ -453,8 +455,8 @@ can have your own templates which overwrite the default templates.
 You can store those templates in different directories. They are read in the
 given order.
 
-1. presentation local (`<presentation root>/templates/<template>`)
-2. user local (`~/.config/middleman/presentation/templates/<template>`, `~/.middleman/presentation/templates/<template>`)
+1. presentation local templates (`<presentation root>/templates/<template>`)
+2. user local templates (`~/.config/middleman/presentation/templates/<template>`, `~/.middleman/presentation/templates/<template>`)
 3. system local templates (`/etc/middleman/presentation/templates/<template>`)
 
 
@@ -506,6 +508,28 @@ After writing the file to the filesystem you can use it with the
 # => creates source/slides/01.html.haml
 bundle exec middleman slide 01
 ```
+
+### Predefined slide templates
+
+There are four predefined slide templates available:
+
+* Start slide
+  * Template name: `start_slide.tt`
+  * Slide name: `00.html.erb`
+* Questions slide
+  * Template name: `questions_slide.tt`
+  * Slide name: `999980.html.erb`
+* Contact slide
+  * Template name: `contact_slide.tt`
+  * Slide name: `999981.html.erb`
+* End slide
+  * Template name: `end_slide.tt`
+  * Slide name: `999982.html.erb`
+
+If you place a template with the given name in one of template directories
+- see [Normal Slide Templates](#normal_slide_templates) for the concrete paths -
+`middleman-presentation` will use your template instead of the one comming
+with the gem to create a "predefined slide".
 
 ## Configuration
 

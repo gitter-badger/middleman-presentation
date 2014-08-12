@@ -37,9 +37,7 @@ module Middleman
         class_option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: 'Initialize git repository'
         class_option :check_for_bower, type: :boolean, default: Middleman::Presentation.config.check_for_bower, desc: 'Check if bower is installed on the system'
 
-        class_option :install_contact_slide, type: :boolean, default: Middleman::Presentation.config.install_contact_slide, desc: 'Install contact slide'
-        class_option :install_question_slide, type: :boolean, default: Middleman::Presentation.config.install_question_slide, desc: 'Install question slide'
-        class_option :install_end_slide, type: :boolean, default: Middleman::Presentation.config.install_end_slide, desc: 'Install end slide'
+        class_option :create_predefined_slides, type: :boolean, default: Middleman::Presentation.config.create_predefined_slides, desc: 'Install predefined slides'
 
         class_option :language, type: :array, desc: 'Language to use for translatable slide templates, e.g. "de", "en"'
         class_option :version, default: Middleman::Presentation.config.default_version_number, desc: 'Version number for your presentation'
@@ -242,10 +240,17 @@ module Middleman
         end
 
         def create_default_slides
-          template 'source/slides/00.html.erb.tt', File.join(slides_directory, '00.html.erb')
-          template 'source/slides/999980.html.erb', File.join(slides_directory, '999980.html.erb') if options[:install_question_slide]
-          template 'source/slides/999981.html.erb', File.join(slides_directory, '999981.html.erb') if options[:install_contact_slide]
-          template 'source/slides/999982.html.erb', File.join(slides_directory, '999982.html.erb') if options[:install_end_slide]
+          return unless options[:create_predefined_slides]
+
+          start_slide_template    = StartSlideTemplate.new(working_directory: root_directory, output_directory: slides_directory)
+          end_slide_template      = EndSlideTemplate.new(working_directory: root_directory, output_directory: slides_directory)
+          contact_slide_template  = ContactSlideTemplate.new(working_directory: root_directory, output_directory: slides_directory)
+          question_slide_template = QuestionsSlideTemplate.new(working_directory: root_directory, output_directory: slides_directory)
+
+          template start_slide_template.file, start_slide_template.proposed_file
+          template end_slide_template.file, end_slide_template.proposed_file
+          template contact_slide_template.file, contact_slide_template.proposed_file
+          template question_slide_template.file, question_slide_template.proposed_file
         end
 
         def create_default_license_file_to_presentation
@@ -295,6 +300,10 @@ module Middleman
 
           def slides_directory
             File.join middleman_source_directory, Middleman::Presentation.config.slides_directory
+          end
+
+          def template_base_path
+            base_path.dirname
           end
         end
       end

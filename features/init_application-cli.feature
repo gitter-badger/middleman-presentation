@@ -27,6 +27,7 @@ Feature: Initialize middleman-presentation
     # clear_source: true
     # company:
     # components: []
+    # create_predefined_slides: true
     # default_transition_speed: default
     # default_transition_type: linear
     # default_version_number: v0.0.1
@@ -38,9 +39,6 @@ Feature: Initialize middleman-presentation
     # homepage:
     # initialize_git: true
     # install_assets: true
-    # install_contact_slide: true
-    # install_end_slide: true
-    # install_question_slide: true
     # language: de
     # license: CC BY 4.0
     # location:
@@ -72,6 +70,7 @@ Feature: Initialize middleman-presentation
     # clear_source: true
     # company:
     # components: []
+    # create_predefined_slides: true
     # default_transition_speed: default
     # default_transition_type: linear
     # default_version_number: v0.0.1
@@ -83,9 +82,6 @@ Feature: Initialize middleman-presentation
     # homepage:
     # initialize_git: true
     # install_assets: true
-    # install_contact_slide: true
-    # install_end_slide: true
-    # install_question_slide: true
     # language: de
     # license: CC BY 4.0
     # location:

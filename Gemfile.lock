@@ -87,7 +87,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
-    fedux_org-stdlib (0.6.40)
+    fedux_org-stdlib (0.6.45)
       activesupport
     ffi (1.9.3)
     filegen (0.4.3)
