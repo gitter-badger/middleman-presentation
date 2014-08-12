@@ -13,7 +13,7 @@ module Middleman
         namespace :presentation
 
         desc 'presentation ', 'Initialize a new presentation'
-        def presentation(*args)
+        def presentation(*)
           warn('The use of this command is deprecated. Please use `middleman-presentation init presentation` instead.')
           exit 1
         end

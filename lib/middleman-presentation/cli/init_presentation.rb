@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Cli
+      # Initialize presentation
       class InitPresentation < Thor::Group
         include Thor::Actions
 
@@ -55,7 +56,7 @@ module Middleman
         end
 
         def initialize_middleman
-          run("middleman init --skip-bundle --template empty .")
+          run('middleman init --skip-bundle --template empty .')
           fail Thor::Error, 'Error executing `middleman init`-command. Please fix your setup and run again.' if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
         end
 
@@ -80,7 +81,6 @@ module Middleman
           )
 
           @external_assets.concat Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.components)
-
         end
 
         def add_theme
@@ -273,13 +273,12 @@ module Middleman
         end
 
         def initialize_git_directory
-          if options[:initialize_git]
-            run 'git init'
-            run 'git add -A .'
-            run 'git commit -m Init'
-          end
-        end
+          return unless options[:initialize_git]
 
+          run 'git init'
+          run 'git add -A .'
+          run 'git commit -m Init'
+        end
 
         no_commands do
           def root_directory
