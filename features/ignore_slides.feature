@@ -7,7 +7,7 @@ Feature: Ignore slides
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
-    And I successfully run `middleman-presentation init presentation --title "My Presentation"`
+    And I successfully run `middleman-presentation create presentation --title "My Presentation"`
 
   Scenario: Ignore a slide by basename
     When I successfully run `middleman slide 01 --title "Slide 01"`

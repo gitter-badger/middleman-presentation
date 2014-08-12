@@ -7,7 +7,7 @@ Feature: Run presentation
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
-    And I successfully run `middleman-presentation init presentation --title "My Presentation"`
+    And I successfully run `middleman-presentation create presentation --title "My Presentation"`
 
   Scenario: Simple Slide
     Given a directory named "images"

@@ -14,7 +14,7 @@ module Middleman
 
         desc 'presentation ', 'Initialize a new presentation'
         def presentation(*)
-          warn('The use of this command is deprecated. Please use `middleman-presentation init presentation` instead.')
+          warn('The use of this command is deprecated. Please use `middleman-presentation create presentation` instead.')
           exit 1
         end
       end

@@ -18,6 +18,16 @@ module Middleman
           opts = options.dup.deep_symbolize_keys
           template 'config.yaml.tt', opts.delete(:configuration_file), **opts
         end
+
+        desc 'predefined_slides ', 'Initialize predefined_slides'
+        option :directory, default: PredefinedSlideTemplateDirectory.new.preferred_template_directory, desc: 'Directory where the predefined templates should be stored'
+        def predefined_slides
+          source_paths << File.expand_path('../../../../templates/predefined_slides.d', __FILE__)
+
+          PredefinedSlideTemplateDirectory.new(working_directory: File.expand_path('../../../../templates', __FILE__)).template_files.each do |file|
+            template file, File.join(options[:directory], File.basename(file, '.tt'))
+          end
+        end
       end
     end
   end

@@ -1,6 +1,6 @@
 # encoding: utf-8
 Given(/^I initialized middleman for a new presentation$/) do
-  step 'I successfully run `middleman init --skip-bundle --template empty`'
+  step 'I successfully run `middleman create --skip-bundle --template empty`'
 
   append_to_file('config.rb', "\nactivate :presentation\n")
   append_to_file('Gemfile', "\ngem 'middleman-presentation', path: '#{File.expand_path('../../', __FILE__)}'\n")
@@ -27,7 +27,7 @@ Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
 end
 
 Given(/^I created a new presentation with title "([^"]+)" for speaker "([^"]+)"$/) do |title, speaker|
-  step %Q(I successfully run `bundle exec middleman-presentation init presentation --title "#{title}" --speaker "#{speaker}"`)
+  step %Q(I successfully run `bundle exec middleman-presentation create presentation --title "#{title}" --speaker "#{speaker}"`)
   step 'I successfully run `bundle install`'
 end
 
