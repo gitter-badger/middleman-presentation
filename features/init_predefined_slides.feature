@@ -10,4 +10,4 @@ Feature: Initialize predefined slides
 
   Scenario: Default directory
     When I successfully run `middleman-presentation init predefined_slides`
-    Then the file "~/.config/middleman/presentation/templates/predefined_slides.d/00.html.erb.tt" should contain:
+    Then a file named "~/.config/middleman/presentation/templates/predefined_slides.d/00.html.erb.tt" should exist

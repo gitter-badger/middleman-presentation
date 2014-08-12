@@ -9,7 +9,7 @@ Feature: Show available default css classes
     And git is configured with username "User" and email-address "email@example.com"
 
   Scenario: Available css classes
-    Given I successfully run `middleman-presentation style`
+    Given I successfully run `middleman-presentation show style`
     Then the output should contain:
     """
     Available css classes in templates used by middleman-presentation:

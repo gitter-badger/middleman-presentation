@@ -10,8 +10,7 @@ Feature: Image Gallery
     And a fixture app "image_gallery-app"
 
   Scenario: Images only
-    Given I created a new presentation with title "Title" for speaker "Meee"
-    And a directory named "images"
+    Given I successfully run `middleman-presentation create presentation --title "My Presentation"`
     And a slide named "01.html.erb" with:
     """
     <section>
@@ -35,8 +34,7 @@ Feature: Image Gallery
     """
 
   Scenario: Images with titles
-    Given I created a new presentation with title "Title" for speaker "Meee"
-    And a directory named "images"
+    Given I successfully run `middleman-presentation create presentation --title "My Presentation"`
     And a slide named "01.html.erb" with:
     """
     <section>
