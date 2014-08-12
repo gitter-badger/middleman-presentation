@@ -1,3 +1,8 @@
+* 0.15
+  * F: Support for predefined slide templates added
+  * I: Refactored presentation generator 
+  * I: Refactored user interface to make creating presentations easier
+
 * 0.14
   * F: Support for version number for presentation added
   * F: Support for custom-slide-template added
