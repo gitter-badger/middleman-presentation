@@ -36,9 +36,10 @@ require 'middleman-presentation/main'
 
 require 'middleman-presentation/cli/reset_thor'
 require 'middleman-presentation/cli/create_theme'
-require 'middleman-presentation/cli/init_presentation'
+require 'middleman-presentation/cli/create_presentation'
 require 'middleman-presentation/cli/show'
 require 'middleman-presentation/cli/init'
+require 'middleman-presentation/cli/create'
 require 'middleman-presentation/cli/runner'
 
 require 'middleman-presentation/predefined_slide_templates_directory'

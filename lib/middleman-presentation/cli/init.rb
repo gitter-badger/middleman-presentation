@@ -18,10 +18,6 @@ module Middleman
           opts = options.dup.deep_symbolize_keys
           template 'config.yaml.tt', opts.delete(:configuration_file), **opts
         end
-
-        register(InitPresentation, 'presentation', 'presentation [DIR]', 'Initialize a new presentation in DIR (default: $PWD)')
-
-        default_command :presentation
       end
     end
   end

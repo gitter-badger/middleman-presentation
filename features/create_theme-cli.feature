@@ -10,31 +10,31 @@ Feature: Create new presentation theme
 
   Scenario: Non existing template
     Given a presentation theme named "new_theme" does not exist
-    When I successfully run `middleman-presentation theme new_theme`
+    When I successfully run `middleman-presentation create theme new_theme`
     Then a presentation theme named "new_theme" should exist with default files/directories created
     And a directory named "middleman-presentation-theme-new_theme" is a git repository
 
   Scenario: No javascripts
     Given a presentation theme named "new_theme" does not exist
-    When I successfully run `middleman-presentation theme new_theme --no-javascripts-directory`
+    When I successfully run `middleman-presentation create theme new_theme --no-javascripts-directory`
     Then a presentation theme named "new_theme" should exist
     And a directory named "middleman-presentation-theme-new_theme/javascripts" should not exist
 
   Scenario: No stylesheets
     Given a presentation theme named "new_theme" does not exist
-    When I successfully run `middleman-presentation theme new_theme --no-stylesheets-directory`
+    When I successfully run `middleman-presentation create theme new_theme --no-stylesheets-directory`
     Then a presentation theme named "new_theme" should exist
     And a directory named "middleman-presentation-theme-new_theme/stylesheets" should not exist
 
   Scenario: No images
     Given a presentation theme named "new_theme" does not exist
-    When I successfully run `middleman-presentation theme new_theme --no-images-directory`
+    When I successfully run `middleman-presentation create theme new_theme --no-images-directory`
     Then a presentation theme named "new_theme" should exist
     And a directory named "middleman-presentation-theme-new_theme/images" should not exist
 
   Scenario: Cleaned css classes
     Given a presentation theme named "new_theme" does not exist
-    When I successfully run `middleman-presentation theme new_theme --clean-css`
+    When I successfully run `middleman-presentation create theme new_theme --clean-css`
     Then the file "middleman-presentation-theme-new_theme/stylesheets/_theme.scss" should contain:
     """
     // "contact_slide.tt"
@@ -44,12 +44,12 @@ Feature: Create new presentation theme
 
   Scenario: No prefix for theme directory
     Given a presentation theme named "new_theme" does not exist
-    When I successfully run `middleman-presentation theme new_theme --no-theme-prefix`
+    When I successfully run `middleman-presentation create theme new_theme --no-theme-prefix`
     Then a directory named "new_theme" should exist
 
   Scenario: Predefined css classes
     Given a presentation theme named "new_theme" does not exist
-    When I successfully run `middleman-presentation theme new_theme`
+    When I successfully run `middleman-presentation create theme new_theme`
     Then the file "middleman-presentation-theme-new_theme/stylesheets/_theme.scss" should contain:
     """
     a.mp-external-url:after {

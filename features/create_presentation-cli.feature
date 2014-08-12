@@ -9,7 +9,7 @@ Feature: Initialize presentation
     And git is configured with username "User" and email-address "email@example.com"
 
   Scenario: Initialize with short command
-    When I successfully run `middleman-presentation init --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
+    When I successfully run `middleman-presentation create --title "My Presentation" --speaker "Me" --email-address me@you.de --github-url http://github.com/me --phone-number 12344`
     Then the file "config.rb" should contain:
     """
     activate :presentation
@@ -219,7 +219,7 @@ Feature: Initialize presentation
     """
 
   Scenario: No predefined slides
-    When I successfully run `middleman-presentation init --title "My Presentation" --no-create-predefined-slides`
+    When I successfully run `middleman-presentation create --title "My Presentation" --no-create-predefined-slides`
     Then a file named "source/slides/00.html.erb" should not exist
     And a file named "source/slides/999980.html.erb" should not exist
     And a file named "source/slides/999981.html.erb" should not exist

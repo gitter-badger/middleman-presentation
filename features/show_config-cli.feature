@@ -13,14 +13,14 @@ Feature: Configuration
     """
 
   Scenario: Show config
-    When I successfully run `middleman-presentation config`
+    When I successfully run `middleman-presentation show config`
     Then the output should contain:
     """
     .ignore
     """
 
   Scenario: Show config with default values
-    When I successfully run `middleman-presentation config --show-defaults`
+    When I successfully run `middleman-presentation show config --defaults`
     Then the output should contain:
     """
     .slidesignore

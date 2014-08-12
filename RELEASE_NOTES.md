@@ -1,6 +1,7 @@
 * 0.15
   * F: Support for predefined slide templates added
   * F: Show default values of configuration controlled by option in config-command
+  * F: Show support information
   * I: Refactored presentation generator 
   * I: Refactored user interface to make creating presentations easier
   * I: Refactored user interface to make creating themes easier (create theme, show available styles)

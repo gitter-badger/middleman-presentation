@@ -3,7 +3,7 @@ module Middleman
   module Presentation
     module Cli
       # Initialize presentation
-      class InitPresentation < Thor::Group
+      class CreatePresentation < Thor::Group
         include Thor::Actions
 
         class_option :speaker, required: true, default: Middleman::Presentation.config.speaker, desc: 'Name of speaker'
