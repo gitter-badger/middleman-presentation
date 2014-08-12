@@ -20,19 +20,17 @@ easy with presentations.
 
 ### Gem
 
-Add this line to your middleman application's Gemfile:
+Install via rubygems
+
+    gem install middleman-presentation
+
+Or add this line to your middleman application's Gemfile:
 
     gem 'middleman-presentation'
 
 And then execute:
 
     $ bundle
-
-And add the `activate`-statement to the `config.rb` of middleman:
-
-```ruby
-activate :presentation
-```
 
 ### External Dependencies
 
