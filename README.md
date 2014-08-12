@@ -364,7 +364,7 @@ http://bower.io/. Reference the resources from within your
 By using `bower` for external resources you can better separate the slide
 content from your styles.
 
-If you created your presentation using the `middleman presentation`-command,
+If you created your presentation using the `middleman-presentation`-command,
 files named "bower.json" and ".bowerrc" should exist. Within "bower.json" you
 define the dependencies of your presentation. The last one can be used to tell
 bower where to store the downloaded components.
@@ -400,7 +400,7 @@ To create your own theme for `middleman-presentation`, you should use the
 
 ```
 cd my_presentation
-bundle exec middleman theme new_theme
+bundle exec middleman-presentation theme new_theme
 ```
 
 Or if you want to get a more or less empty stylesheet, run it with
@@ -408,7 +408,7 @@ Or if you want to get a more or less empty stylesheet, run it with
 
 ```
 cd my_presentation
-bundle exec middleman theme new_theme --clean-css
+bundle exec middleman-presentation theme new_theme --clean-css
 ```
 
 After that a directory `new_theme` exists with some sub-directories:
@@ -440,7 +440,7 @@ To give you an overview about all css-classes used within templates, issue the
 templates. Each of those classes is prefixed with `mp-`.
 
 ```bash
-bundle exec middleman style
+bundle exec middleman-presentation style
 # => mp-speaker
 # => [...]
 ```
@@ -544,10 +544,16 @@ with the gem to create a "predefined slide".
 1. User local: `~/.config/middleman/presentation/presentations.yaml`, `~/.middleman/presentation/presentations.yaml`
 2. System local: `/etc/middleman/presentation/presentations`
 
-To get a full list of available configuration options, run the following command
+To get a full list of available configuration options and their values, run the following command
 
 ```
-bundle exec middleman config
+bundle exec middleman-presentation config
+```
+
+To get a full list of available configuration options and their default values, run the following command
+
+```
+bundle exec middleman-presentation config --show-defaults
 ```
 
 ## Development
