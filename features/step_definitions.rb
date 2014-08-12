@@ -55,7 +55,7 @@ Given(/^git is configured with username "(.*?)" and email-address "(.*?)"$/) do 
 end
 
 Given(/^a user config file for middleman\-presentation with:$/) do |string|
-  step %Q(a file named "~/.config/middleman/presentation/presentations.yaml" with:), string
+  step 'a file named "~/.config/middleman/presentation/presentations.yaml" with:', string
 end
 
 # Given(/^I configured bower correctly$/) do
@@ -94,7 +94,7 @@ end
 # end
 
 Then(/^a presentation theme named "(.*?)" should exist( with default files\/directories created)?$/) do |name, default_files|
-  name = "middleman-presentation-theme-#{name}" 
+  name = "middleman-presentation-theme-#{name}"
 
   step %Q(a directory named "#{name}" should exist)
 

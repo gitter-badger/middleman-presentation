@@ -30,7 +30,7 @@ module Middleman
         def build_theme_name
           new_name = []
           new_name << options[:theme_prefix] unless options[:theme_prefix].blank?
-          new_name << self.name
+          new_name << name
 
           @theme_name = new_name.join('-')
         end
