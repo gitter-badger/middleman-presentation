@@ -518,22 +518,18 @@ bundle exec middleman slide 01
 There are four predefined slide templates available:
 
 * Start slide
-  * Template name: `start_slide.tt`
-  * Slide name: `00.html.erb`
+  * Slide name: `00.html.erb.tt`
 * Questions slide
-  * Template name: `questions_slide.tt`
-  * Slide name: `999980.html.erb`
+  * Slide name: `999980.html.erb.tt`
 * Contact slide
-  * Template name: `contact_slide.tt`
-  * Slide name: `999981.html.erb`
+  * Slide name: `999981.html.erb.tt`
 * End slide
-  * Template name: `end_slide.tt`
-  * Slide name: `999982.html.erb`
+  * Slide name: `999982.html.erb.tt`
 
-If you place a template with the given name in one of template directories
+If you place templates in one of the template directories
 - see [Normal Slide Templates](#normal_slide_templates) for the concrete paths -
-`middleman-presentation` will use your template instead of the one comming
-with the gem to create a "predefined slide".
+`middleman-presentation` will use those ones instead of the ones comming
+with the gem.
 
 ## Configuration
 
