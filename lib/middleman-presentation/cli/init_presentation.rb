@@ -299,10 +299,6 @@ module Middleman
           def slides_directory
             File.join middleman_source_directory, Middleman::Presentation.config.slides_directory
           end
-
-          def template_base_path
-            base_path.dirname
-          end
         end
       end
     end
