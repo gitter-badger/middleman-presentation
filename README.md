@@ -34,13 +34,15 @@ And then execute:
 
 ### External Dependencies
 
-**Bower**
+**Nodejs**
 
-You need to install [`bower`](http://www.bower.io). I do not like installing
-external packages as root if they are not installed via the package manager of
-the distribution I use. Therefor I configured `nodejs` to use a different
-root to install those packages as normal user. It is up to you to decide if
-want to follow my advise.
+Please install [`nodejs`](https://github.com/joyent/node). It is required by
+`bower` - see [bower](#bower_install)-section below. It is recommended to
+install it via [package
+manager](https://github.com/joyent/node/wiki/installing-node.js-via-package-manager).
+
+It is recommended to configure the path where global packages are installed.
+That ensures that you do not need to install global packages as `root`.
 
 1. Create `.npmrc`
 
@@ -53,21 +55,25 @@ want to follow my advise.
   # proxy = http://localhost:3128
   # https-proxy = http://localhost:3128
   ```
-  
-2. Install bower
 
-  ```bash
-  npm install -g bower
-  ```
-
-3. Make executables of nodejs-packages available
+2. Make executables of nodejs-packages available via PATH
 
    Add `npm`-bin dir to your PATH-variable via `.bashrc`, `.zshrc` or whatever
-   initialization-script your shell use.
+   initialization-script your shell uses.
 
     ```bash
     export PATH=~/.local/share/npm/bin:$PATH
     ```
+
+**Bower**
+<a name="bower_install"></a>
+
+You also need to install [`bower`](http://www.bower.io). It is used to install
+the assets (CSS-, JavaScript-files etc.).
+
+```bash
+npm install -g bower
+```
 
 **JavaScript Engine**
 
