@@ -17,7 +17,7 @@ module Middleman
         paths = []
 
         paths << '../../../templates/slides/*.tt'
-        paths << '../../../templates/predefined_slides/*.tt'
+        paths << '../../../templates/predefined_slides.d/*.tt'
 
         paths.concat ['../../../templates/source/'].product(%w(layout.erb index.html.erb)).map(&:join)
 

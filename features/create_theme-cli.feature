@@ -37,7 +37,7 @@ Feature: Create new presentation theme
     When I successfully run `middleman-presentation create theme new_theme --clean-css`
     Then the file "middleman-presentation-theme-new_theme/stylesheets/_theme.scss" should contain:
     """
-    // "contact_slide.tt"
+    // "999981.html.erb.tt"
     .mp-external-url {
     }
     """
