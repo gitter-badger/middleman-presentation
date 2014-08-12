@@ -124,10 +124,10 @@ options below need to be given on command line.
 
 ```bash
 # long
-bundle exec middleman-presentation create presentation --title "my title" --speaker "Me"
+middleman-presentation create presentation --title "my title" --speaker "Me"
 
 #short
-bundle exec middleman-presentation create --title "my title" --speaker "Me"
+middleman-presentation create --title "my title" --speaker "Me"
 ```
 
 The presentation helper provides a lot of more options. Use the help command to
@@ -400,7 +400,7 @@ To create your own theme for `middleman-presentation`, you should use the
 
 ```
 cd my_presentation
-bundle exec middleman-presentation create theme new_theme
+middleman-presentation create theme new_theme
 ```
 
 Or if you want to get a more or less empty stylesheet, run it with
@@ -408,7 +408,7 @@ Or if you want to get a more or less empty stylesheet, run it with
 
 ```
 cd my_presentation
-bundle exec middleman-presentation create theme new_theme --clean-css
+middleman-presentation create theme new_theme --clean-css
 ```
 
 After that a directory `new_theme` exists with some sub-directories:
@@ -440,7 +440,7 @@ To give you an overview about all css-classes used within templates, issue the
 templates. Each of those classes is prefixed with `mp-`.
 
 ```bash
-bundle exec middleman-presentation show style
+middleman-presentation show style
 # => mp-speaker
 # => [...]
 ```
@@ -531,6 +531,14 @@ If you place templates in one of the template directories
 `middleman-presentation` will use those ones instead of the ones comming
 with the gem.
 
+If you want to modify the existing predefined slides, run the following command first,
+it will copy the files to
+`~/.config/middleman/presentation/templates/predefined_slides.d`.
+
+```
+middleman-presentation init predefined_slides
+```
+
 ## Configuration
 
 <a name="configuration"></a>
@@ -543,13 +551,13 @@ with the gem.
 To get a full list of available configuration options and their values, run the following command
 
 ```
-bundle exec middleman-presentation show config
+middleman-presentation show config
 ```
 
 To get a full list of available configuration options and their default values, run the following command
 
 ```
-bundle exec middleman-presentation show config --defaults
+middleman-presentation show config --defaults
 ```
 
 ## Development
