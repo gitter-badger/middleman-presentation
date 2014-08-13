@@ -552,7 +552,7 @@ middleman-presentation init predefined_slides
 
 <a name="configuration"></a>
 
-`middleman-presentation` will try its configuration file at different places:
+`middleman-presentation` will try to find its configuration file at different places:
 
 1. User local: `~/.config/middleman/presentation/presentations.yaml`, `~/.middleman/presentation/presentations.yaml`
 2. System local: `/etc/middleman/presentation/presentations`
