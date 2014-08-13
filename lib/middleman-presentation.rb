@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 require 'set'
+require 'bundler'
 require 'English'
 # require 'ptools'
 require 'pathname'
