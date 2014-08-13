@@ -55,7 +55,7 @@ module Middleman
 
         def initialize_middleman
           run("middleman init --skip-bundle --template empty #{directory}")
-          fail Thor::Error, 'Error executing `middleman init`-command. Please fix your setup and run again.' if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+          fail Thor::Error, 'Error executing `middleman init`-command. Please fix your setup and run again.' unless $CHILD_STATUS.exitstatus == 0
         end
 
         def set_language
@@ -264,7 +264,7 @@ module Middleman
             fail Thor::Error, message if options[:check_for_bower] && File.which('bower').blank?
 
             result = run('bower update', capture: true) if options[:install_assets] == true
-            fail Thor::Error, "Error executing `bower`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+            fail Thor::Error, "Error executing `bower`-command. Please fix your setup and run again:\n#{result}" unless $CHILD_STATUS.exitstatus == 0
           end
         end
 
@@ -272,7 +272,7 @@ module Middleman
           inside directory do
             Bundler.with_clean_env do
               result = run('bundle install', capture: true) if options[:install_assets] == true
-              fail Thor::Error, "Error executing `bundle`-command. Please fix your setup and run again:\n#{result}" if $CHILD_STATUS && !$CHILD_STATUS.exitstatus == 0
+              fail Thor::Error, "Error executing `bundle`-command. Please fix your setup and run again:\n#{result}" unless $CHILD_STATUS.exitstatus == 0
             end
           end
         end
