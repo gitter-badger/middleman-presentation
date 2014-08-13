@@ -535,8 +535,8 @@ There are four predefined slide templates available:
 * End slide
   * Slide name: `999982.html.erb.tt`
 
-If you place templates in one of the template directories
-- see [Normal Slide Templates](#normal_slide_templates) for the concrete paths -
+If you place templates in one of the template directories - see [Normal Slide
+Templates](#normal_slide_templates) for the concrete paths -
 `middleman-presentation` will use those ones instead of the ones comming
 with the gem.
 
