@@ -7,7 +7,8 @@ Feature: Grouping slides
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
-    And I successfully run `middleman-presentation create presentation --title "My Presentation"`
+    And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
+    And I cd to "presentation1"
 
   Scenario: Create slides in subfolder
     When I successfully run `middleman slide 01namespace:01`

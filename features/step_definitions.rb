@@ -7,8 +7,13 @@ Given(/^I initialized middleman for a new presentation$/) do
   step 'I successfully run `bundle install`'
 end
 
-Given(/I install bundle/) do
+Given(/^I install bundle$/) do
   step 'I successfully run `bundle update`'
+end
+
+Given(/^an image "([^"]+)" at "([^"]+)"$/) do |source, destination|
+  source = source.gsub(/\.\./, '')
+  write_file File.join('source', destination), File.read(File.expand_path("../../fixtures/images/#{source}", __FILE__))
 end
 
 Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|

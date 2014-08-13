@@ -7,11 +7,11 @@ Feature: Run presentation
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
-    And I successfully run `middleman-presentation create presentation --title "My Presentation"`
+    And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
+    And I cd to "presentation1"
 
   Scenario: Simple Slide
-    Given a directory named "images"
-    And a slide named "01.html.erb" with:
+    Given a slide named "01.html.erb" with:
     """
     <section>
     </section>
@@ -27,8 +27,7 @@ Feature: Run presentation
     """
 
   Scenario: Malformed Slide
-    Given a directory named "images"
-    And a slide named "01.html.erb" with:
+    Given a slide named "01.html.erb" with:
     """
     <section>
     <%= asdfasdf() %>

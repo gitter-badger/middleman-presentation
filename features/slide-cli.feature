@@ -7,7 +7,8 @@ Feature: Add new slide
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
-    And I successfully run `middleman-presentation create presentation --title "My Presentation"`
+    And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
+    And I cd to "presentation1"
 
   Scenario: Custom Slide
     When I successfully run `middleman slide 01`

@@ -7,11 +7,12 @@ Feature: Image Gallery
   Background:
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
-    And a fixture app "image_gallery-app"
+    And I successfully run `middleman-presentation create presentation --title "My Presentation"`
+    And an image "image01.png" at "images/image01.png"
+    And an image "image02.png" at "images/image02.png"
 
   Scenario: Images only
-    Given I successfully run `middleman-presentation create presentation --title "My Presentation"`
-    And a slide named "01.html.erb" with:
+    Given a slide named "01.html.erb" with:
     """
     <section>
     <h1>Image Gallery</h1>
@@ -34,8 +35,7 @@ Feature: Image Gallery
     """
 
   Scenario: Images with titles
-    Given I successfully run `middleman-presentation create presentation --title "My Presentation"`
-    And a slide named "01.html.erb" with:
+    Given a slide named "01.html.erb" with:
     """
     <section>
     <h1>Image Gallery</h1>
