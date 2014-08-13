@@ -486,7 +486,10 @@ There are four different templates available:
 
 Addiontionlly users can define one `custom`-slide-template. It's file extension
 is used for the resulting slide. Given a template `custom.erb.tt` it becomes
-`01.html.erb` when running `middleman slide 01`.
+`01.html.erb` when running `middleman slide 01`. 
+
+You may need to add the
+template parser-gem to your `Gemfile` and require it in your `config.rb`.
 
 **Example**
 
@@ -510,8 +513,10 @@ system.
 *templates/custom.haml.tt*:
 
 ```
-%h1 <%%= site_title %>
+<section>
+%h1 Site Title
 %h2 <%%= title %>
+</section>
 ```
 
 After writing the file to the filesystem you can use it with the
@@ -521,6 +526,9 @@ After writing the file to the filesystem you can use it with the
 # => creates source/slides/01.html.haml
 bundle exec middleman slide 01
 ```
+
+If you have more than one "custom"-template the first is one used. The order is
+based on file name.
 
 ### Predefined slide templates
 
