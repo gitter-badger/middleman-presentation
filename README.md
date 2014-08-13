@@ -537,7 +537,7 @@ There are four predefined slide templates available:
 
 If you place templates in one of the template directories - see [Normal Slide
 Templates](#normal_slide_templates) for the concrete paths -
-`middleman-presentation` will use those ones instead of the ones comming
+`middleman-presentation` will use your templates instead of the ones comming
 with the gem.
 
 If you want to modify the existing predefined slides, run the following command first,
