@@ -513,10 +513,9 @@ system.
 *templates/custom.haml.tt*:
 
 ```
-<section>
-%h1 Site Title
-%h2 <%%= title %>
-</section>
+%section
+  %h1 Site Title
+  %h2 <%%= title %>
 ```
 
 After writing the file to the filesystem you can use it with the
