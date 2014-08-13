@@ -1,10 +1,10 @@
 # middleman-presentation
 
-As of July 30, 2014  7:11am. 51 total
+As of August 13, 2014 11:23am. 55 total
 
 ## Summary
-* 45 MIT
-* 2 Apache 2.0
+* 48 MIT
+* 3 Apache 2.0
 * 2 ruby
 * 1 ISC
 * 1 BSD
@@ -34,7 +34,7 @@ adds support for IRIs and URI templates.
 
 
 <a name="bundler"></a>
-### <a href="http://bundler.io">bundler</a> v1.6.2 (development, test)
+### <a href="http://bundler.io">bundler</a> v1.6.5 (development, test)
 #### The best way to manage your application's dependencies
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -164,8 +164,20 @@ using TCP/IP, especially if custom protocols are required.
 
 ExecJS lets you run JavaScript code from Ruby.
 
+<a name="facter"></a>
+### <a href="https://github.com/puppetlabs/facter">facter</a> v2.1.0
+#### Facter, a system inventory tool
+
+<a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a> manually approved
+
+>
+
+><cite>  2014-08-13</cite>
+
+You can prove anything with facts!
+
 <a name="fedux_org-stdlib"></a>
-### fedux_org-stdlib v0.6.28
+### fedux_org-stdlib v0.6.50
 #### Collection of useful libraries. It maybe depend on external libraries.
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -240,7 +252,7 @@ New wave Internationalization support for Ruby.
 
 
 <a name="kramdown"></a>
-### <a href="http://kramdown.gettalong.org">kramdown</a> v1.4.0
+### <a href="http://kramdown.gettalong.org">kramdown</a> v1.4.1
 #### kramdown is a fast, pure-Ruby Markdown-superset converter.
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -261,6 +273,13 @@ using a strict syntax definition and supporting several common extensions.
 
 Launchy is helper class for launching cross-platform applications in a fire and forget manner. There are application concepts (browser, email client, etc) that are common across all platforms, and they may be launched differently on each platform. Launchy is here to make a common approach to launching external application from within ruby programs.
 
+<a name="liquid"></a>
+### <a href="http://www.liquidmarkup.org">liquid</a> v2.6.1
+#### A secure, non-evaling end user template engine with aesthetic markup.
+
+<a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
+
+
 <a name="listen"></a>
 ### <a href="https://github.com/guard/listen">listen</a> v2.7.9
 #### Listen to file modifications
@@ -270,7 +289,7 @@ Launchy is helper class for launching cross-platform applications in a fire and 
 The Listen gem listens to file modifications and notifies you about the changes. Works everywhere!
 
 <a name="middleman"></a>
-### <a href="http://middlemanapp.com">middleman</a> v3.3.3 (middleman)
+### <a href="http://middlemanapp.com">middleman</a> v3.3.4 (middleman)
 #### Hand-crafted frontend development
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -278,7 +297,7 @@ The Listen gem listens to file modifications and notifies you about the changes.
 A static site generator. Provides dozens of templating languages (Haml, Sass, Compass, Slim, CoffeeScript, and more). Makes minification, compression, cache busting, Yaml data (and more) an easy part of your development cycle.
 
 <a name="middleman-core"></a>
-### <a href="http://middlemanapp.com">middleman-core</a> v3.3.3
+### <a href="http://middlemanapp.com">middleman-core</a> v3.3.4
 #### Hand-crafted frontend development
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -294,19 +313,27 @@ A static site generator. Provides dozens of templating languages (Haml, Sass, Co
 LiveReload support for Middleman
 
 <a name="middleman-presentation"></a>
-### <a href="https://github.com/maxmeyer/middleman-presentation">middleman-presentation</a> v0.11.5 (default)
+### <a href="https://github.com/maxmeyer/middleman-presentation">middleman-presentation</a> v0.15.2 (default)
 #### Presentation engine for Middleman
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
 
 
 <a name="middleman-sprockets"></a>
-### <a href="https://github.com/middleman/middleman-sprockets">middleman-sprockets</a> v3.3.4
+### <a href="https://github.com/middleman/middleman-sprockets">middleman-sprockets</a> v3.3.6
 #### Sprockets support for Middleman
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
 
 Sprockets support for Middleman
+
+<a name="mini_portile"></a>
+### <a href="http://github.com/luislavena/mini_portile">mini_portile</a> v0.6.0
+#### Simplistic port-like solution for developers
+
+<a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
+
+Simplistic port-like solution for developers. It provides a standard and simplified way to compile against dependency libraries without messing up your system.
 
 <a name="minitest"></a>
 ### <a href="https://github.com/seattlerb/minitest">minitest</a> v5.4.0
@@ -375,6 +402,18 @@ extract-method refactorings still apply.
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
 
 A common interface to multiple JSON libraries, including Oj, Yajl, the JSON gem (with C-extensions), the pure-Ruby JSON gem, NSJSONSerialization, gson.rb, JrJackson, and OkJson.
+
+<a name="nokogiri"></a>
+### <a href="http://nokogiri.org">nokogiri</a> v1.6.3.1
+#### Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser
+
+<a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
+
+Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
+many features is the ability to search documents via XPath or CSS3 selectors.
+
+XML is like violence - if it doesn’t solve your problems, you are not using
+enough of it.
 
 <a name="padrino-helpers"></a>
 ### <a href="http://www.padrinorb.com">padrino-helpers</a> v0.12.2
@@ -540,7 +579,7 @@ Generic interface to multiple Ruby template engines
 Pure Ruby one-shot and periodic timers
 
 <a name="tzinfo"></a>
-### <a href="http://tzinfo.github.io">tzinfo</a> v1.2.1
+### <a href="http://tzinfo.github.io">tzinfo</a> v1.2.2
 #### Daylight savings aware timezone library
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted
@@ -548,7 +587,7 @@ Pure Ruby one-shot and periodic timers
 TZInfo provides daylight savings aware transformations between times in different time zones.
 
 <a name="uber"></a>
-### <a href="https://github.com/apotonick/uber">uber</a> v0.0.7
+### <a href="https://github.com/apotonick/uber">uber</a> v0.0.8
 #### Gem-authoring tools like class method inheritance in modules, dynamic options and more.
 
 <a href="http://opensource.org/licenses/mit-license">MIT</a> whitelisted

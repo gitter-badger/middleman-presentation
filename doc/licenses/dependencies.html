@@ -29,13 +29,13 @@
       <div class="span5">
         <h2>Dependencies</h2>
 
-        <p>As of July 30, 2014  7:11am</p>
+        <p>As of August 13, 2014 11:23am</p>
 
-        <h4>51 total</h4>
+        <h4>55 total</h4>
 
         <ul>
-                      <li>45 MIT</li>
-                      <li>2 Apache 2.0</li>
+                      <li>48 MIT</li>
+                      <li>3 Apache 2.0</li>
                       <li>2 ruby</li>
                       <li>1 ISC</li>
                       <li>1 BSD</li>
@@ -103,13 +103,13 @@ adds support for IRIs and URI templates.
                   </blockquote>
         <h2>
           <a href="http://bundler.io">bundler</a>
-          <small>v1.6.2 (development, test)</small>
+          <small>v1.6.5 (development, test)</small>
         </h2>
         <h4>The best way to manage your application's dependencies</h4>
         <p>Bundler manages an application's dependencies through its entire life, across many machines, systematically and repeatably</p>
                   <dl>
             <dt>bundler is required by:</dt>
-            <dd>compass-import-once, rb-fsevent, listen, thor, middleman-core, multi_json, uglifier</dd>
+            <dd>compass-import-once, rb-fsevent, listen, thor, middleman-core, multi_json, uglifier, middleman-presentation</dd>
           </dl>
                       </div>
           <div id="celluloid" class="clearfix approved">
@@ -319,7 +319,7 @@ adds support for IRIs and URI templates.
 </p>
                   <dl>
             <dt>erubis is required by:</dt>
-            <dd>tilt, middleman-core</dd>
+            <dd>tilt, middleman-core, middleman-presentation</dd>
           </dl>
                       </div>
           <div id="eventmachine" class="clearfix approved">
@@ -373,6 +373,29 @@ using TCP/IP, especially if custom protocols are required.</p>
             <dd>rake</dd>
           </dl>
               </div>
+          <div id="facter" class="clearfix approved">
+        <blockquote class="pull-right">
+                      <p>
+              <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a>
+              manually approved
+              <span class="badge badge-success">&#x2713;</span>
+            </p>
+            <p></p>
+            <small>
+                            <time datetime="2014-08-13T09:22:48Z">2014-08-13</time>
+            </small>
+                  </blockquote>
+        <h2>
+          <a href="https://github.com/puppetlabs/facter">facter</a>
+          <small>v2.1.0</small>
+        </h2>
+        <h4>Facter, a system inventory tool</h4>
+        <p>You can prove anything with facts!</p>
+                  <dl>
+            <dt>facter is required by:</dt>
+            <dd>middleman-presentation</dd>
+          </dl>
+                      </div>
           <div id="fedux_org-stdlib" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
@@ -383,7 +406,7 @@ using TCP/IP, especially if custom protocols are required.</p>
                   </blockquote>
         <h2>
           fedux_org-stdlib
-          <small>v0.6.28</small>
+          <small>v0.6.50</small>
         </h2>
         <h4>Collection of useful libraries. It maybe depend on external libraries.</h4>
         <p></p>
@@ -467,7 +490,7 @@ but it can function as a stand-alone templating engine.
           </dl>
                           <dl>
             <dt>haml relies on:</dt>
-            <dd>tilt, minitest</dd>
+            <dd>tilt, minitest, nokogiri</dd>
           </dl>
               </div>
           <div id="hike" class="clearfix approved">
@@ -587,7 +610,7 @@ but it can function as a stand-alone templating engine.
                   </blockquote>
         <h2>
           <a href="http://kramdown.gettalong.org">kramdown</a>
-          <small>v1.4.0</small>
+          <small>v1.4.1</small>
         </h2>
         <h4>kramdown is a fast, pure-Ruby Markdown-superset converter.</h4>
         <p>kramdown is yet-another-markdown-parser but fast, pure Ruby,
@@ -595,7 +618,7 @@ using a strict syntax definition and supporting several common extensions.
 </p>
                   <dl>
             <dt>kramdown is required by:</dt>
-            <dd>tilt, middleman</dd>
+            <dd>tilt, middleman, middleman-presentation</dd>
           </dl>
                           <dl>
             <dt>kramdown relies on:</dt>
@@ -629,6 +652,25 @@ using a strict syntax definition and supporting several common extensions.
             <dd>addressable, minitest, rake</dd>
           </dl>
               </div>
+          <div id="liquid" class="clearfix approved">
+        <blockquote class="pull-right">
+                      <p>
+              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+              whitelisted
+              <span class="badge badge-success">&#x2713;</span>
+            </p>
+                  </blockquote>
+        <h2>
+          <a href="http://www.liquidmarkup.org">liquid</a>
+          <small>v2.6.1</small>
+        </h2>
+        <h4>A secure, non-evaling end user template engine with aesthetic markup.</h4>
+        <p></p>
+                  <dl>
+            <dt>liquid is required by:</dt>
+            <dd>tilt, middleman-presentation</dd>
+          </dl>
+                      </div>
           <div id="listen" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
@@ -662,7 +704,7 @@ using a strict syntax definition and supporting several common extensions.
                   </blockquote>
         <h2>
           <a href="http://middlemanapp.com">middleman</a>
-          <small>v3.3.3 (middleman)</small>
+          <small>v3.3.4 (middleman)</small>
         </h2>
         <h4>Hand-crafted frontend development</h4>
         <p>A static site generator. Provides dozens of templating languages (Haml, Sass, Compass, Slim, CoffeeScript, and more). Makes minification, compression, cache busting, Yaml data (and more) an easy part of your development cycle.</p>
@@ -685,7 +727,7 @@ using a strict syntax definition and supporting several common extensions.
                   </blockquote>
         <h2>
           <a href="http://middlemanapp.com">middleman-core</a>
-          <small>v3.3.3</small>
+          <small>v3.3.4</small>
         </h2>
         <h4>Hand-crafted frontend development</h4>
         <p>A static site generator. Provides dozens of templating languages (Haml, Sass, Compass, Slim, CoffeeScript, and more). Makes minification, compression, cache busting, Yaml data (and more) an easy part of your development cycle.</p>
@@ -727,13 +769,13 @@ using a strict syntax definition and supporting several common extensions.
                   </blockquote>
         <h2>
           <a href="https://github.com/maxmeyer/middleman-presentation">middleman-presentation</a>
-          <small>v0.11.5 (default)</small>
+          <small>v0.15.2 (default)</small>
         </h2>
         <h4>Presentation engine for Middleman</h4>
         <p></p>
                           <dl>
             <dt>middleman-presentation relies on:</dt>
-            <dd>middleman, tzinfo, addressable, launchy, fedux_org-stdlib, rake</dd>
+            <dd>middleman, tzinfo, addressable, launchy, fedux_org-stdlib, rake, middleman-sprockets, bundler, liquid, erubis, kramdown, nokogiri, facter</dd>
           </dl>
               </div>
           <div id="middleman-sprockets" class="clearfix approved">
@@ -746,19 +788,38 @@ using a strict syntax definition and supporting several common extensions.
                   </blockquote>
         <h2>
           <a href="https://github.com/middleman/middleman-sprockets">middleman-sprockets</a>
-          <small>v3.3.4</small>
+          <small>v3.3.6</small>
         </h2>
         <h4>Sprockets support for Middleman</h4>
         <p>Sprockets support for Middleman</p>
                   <dl>
             <dt>middleman-sprockets is required by:</dt>
-            <dd>middleman</dd>
+            <dd>middleman, middleman-presentation</dd>
           </dl>
                           <dl>
             <dt>middleman-sprockets relies on:</dt>
             <dd>middleman-core, sprockets, sprockets-sass, sprockets-helpers</dd>
           </dl>
               </div>
+          <div id="mini_portile" class="clearfix approved">
+        <blockquote class="pull-right">
+                      <p>
+              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+              whitelisted
+              <span class="badge badge-success">&#x2713;</span>
+            </p>
+                  </blockquote>
+        <h2>
+          <a href="http://github.com/luislavena/mini_portile">mini_portile</a>
+          <small>v0.6.0</small>
+        </h2>
+        <h4>Simplistic port-like solution for developers</h4>
+        <p>Simplistic port-like solution for developers. It provides a standard and simplified way to compile against dependency libraries without messing up your system.</p>
+                  <dl>
+            <dt>mini_portile is required by:</dt>
+            <dd>nokogiri</dd>
+          </dl>
+                      </div>
           <div id="minitest" class="clearfix approved">
         <blockquote class="pull-right">
                       <p>
@@ -827,7 +888,7 @@ learn ruby to use minitest and all of your regular OO practices like
 extract-method refactorings still apply.</p>
                   <dl>
             <dt>minitest is required by:</dt>
-            <dd>thread_safe, activesupport, haml, uber, hooks, kramdown, launchy, rake</dd>
+            <dd>thread_safe, activesupport, haml, uber, hooks, kramdown, launchy, rake, nokogiri</dd>
           </dl>
                       </div>
           <div id="multi_json" class="clearfix approved">
@@ -851,6 +912,33 @@ extract-method refactorings still apply.</p>
                           <dl>
             <dt>multi_json relies on:</dt>
             <dd>bundler</dd>
+          </dl>
+              </div>
+          <div id="nokogiri" class="clearfix approved">
+        <blockquote class="pull-right">
+                      <p>
+              <a href="http://opensource.org/licenses/mit-license">MIT</a>
+              whitelisted
+              <span class="badge badge-success">&#x2713;</span>
+            </p>
+                  </blockquote>
+        <h2>
+          <a href="http://nokogiri.org">nokogiri</a>
+          <small>v1.6.3.1</small>
+        </h2>
+        <h4>Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser</h4>
+        <p>Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
+many features is the ability to search documents via XPath or CSS3 selectors.
+
+XML is like violence - if it doesn’t solve your problems, you are not using
+enough of it.</p>
+                  <dl>
+            <dt>nokogiri is required by:</dt>
+            <dd>tilt, haml, rack-livereload, middleman-presentation</dd>
+          </dl>
+                          <dl>
+            <dt>nokogiri relies on:</dt>
+            <dd>mini_portile, minitest, rake</dd>
           </dl>
               </div>
           <div id="padrino-helpers" class="clearfix approved">
@@ -949,7 +1037,7 @@ Also see http://rack.github.com/.
           </dl>
                           <dl>
             <dt>rack-livereload relies on:</dt>
-            <dd>rack, rake</dd>
+            <dd>rack, rake, nokogiri</dd>
           </dl>
               </div>
           <div id="rack-test" class="clearfix approved">
@@ -1015,7 +1103,7 @@ Rake has the following features:
 * Supports parallel execution of tasks.</p>
                   <dl>
             <dt>rake is required by:</dt>
-            <dd>thread_safe, addressable, timers, celluloid, chunky_png, execjs, coffee-script, fssm, compass-import-once, ffi, hike, uber, hooks, launchy, listen, rack, sprockets, sprockets-helpers, sprockets-sass, uglifier, rack-livereload, middleman-presentation</dd>
+            <dd>thread_safe, addressable, timers, celluloid, chunky_png, execjs, coffee-script, fssm, compass-import-once, ffi, hike, uber, hooks, launchy, listen, rack, sprockets, sprockets-helpers, sprockets-sass, uglifier, rack-livereload, middleman-presentation, nokogiri</dd>
           </dl>
                           <dl>
             <dt>rake relies on:</dt>
@@ -1226,7 +1314,7 @@ Rake has the following features:
           </dl>
                           <dl>
             <dt>tilt relies on:</dt>
-            <dd>coffee-script, erubis, haml, kramdown, sass</dd>
+            <dd>coffee-script, erubis, haml, kramdown, sass, liquid, nokogiri</dd>
           </dl>
               </div>
           <div id="timers" class="clearfix approved">
@@ -1262,7 +1350,7 @@ Rake has the following features:
                   </blockquote>
         <h2>
           <a href="http://tzinfo.github.io">tzinfo</a>
-          <small>v1.2.1</small>
+          <small>v1.2.2</small>
         </h2>
         <h4>Daylight savings aware timezone library</h4>
         <p>TZInfo provides daylight savings aware transformations between times in different time zones.</p>
@@ -1285,7 +1373,7 @@ Rake has the following features:
                   </blockquote>
         <h2>
           <a href="https://github.com/apotonick/uber">uber</a>
-          <small>v0.0.7</small>
+          <small>v0.0.8</small>
         </h2>
         <h4>Gem-authoring tools like class method inheritance in modules, dynamic options and more.</h4>
         <p>A gem-authoring framework.</p>
