@@ -9,7 +9,7 @@ Feature: Initialize presentation
     And git is configured with username "User" and email-address "email@example.com"
 
   Scenario: Initialize with short command
-    Given I successfully run `middleman-presentation create --title "My Presentation"`
+    Given I successfully run `middleman-presentation create presentation1 --title "My Presentation"`
     When I cd to "presentation1"
     Then the file "config.rb" should contain:
     """
@@ -120,6 +120,7 @@ Feature: Initialize presentation
 
   Scenario: German umlauts, French accents and special chars are not a problem for project id
     When I successfully run `middleman-presentation create presentation presentation1 --title "üöà~?§$%&/()=#!"`
+    When I cd to "presentation1"
     And the file "data/metadata.yml" should contain:
     """
     project_id: uoa
