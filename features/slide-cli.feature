@@ -298,3 +298,15 @@ Feature: Add new slide
     """
     exist     slides/01.html.md
     """
+
+  Scenario: Create Group of slides in subfolder
+    When I successfully run `middleman slide 01namespace:01`
+    Then the following files should exist:
+      | source/slides/01namespace/01.html.md |
+
+    @wip
+  Scenario: Create Group with same name as slide
+    When I successfully run `middleman slide 01:01`
+    Then the following files should exist:
+      | source/slides/01/01.html.md |
+

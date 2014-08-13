@@ -10,11 +10,6 @@ Feature: Grouping slides
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     And I cd to "presentation1"
 
-  Scenario: Create slides in subfolder
-    When I successfully run `middleman slide 01namespace:01`
-    Then the following files should exist:
-      | source/slides/01namespace/01.html.md |
-
   Scenario: Read slides from filesystem
     Given a slide named "01namespace/01.html.erb" with:
     """

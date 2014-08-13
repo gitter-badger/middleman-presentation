@@ -12,7 +12,7 @@ module Middleman
       public
 
       def initialize(input, base_path:)
-        @input                = input
+        @input                = input.split(/:/)
         @name                 = extract_name
         @slide_directory_path = Pathname.new(base_path)
         @base_path            = @slide_directory_path.dirname
@@ -131,16 +131,14 @@ module Middleman
       end
 
       def extract_name
-        input.split(/:/).last
+        input.last
       end
 
       # Extract group from name
       def extract_group
-        group = input.split(/:/).first
+        return nil if input.size < 2 # no group given
 
-        return nil if group == name
-
-        group.to_s
+        input.first.to_s
       end
     end
   end

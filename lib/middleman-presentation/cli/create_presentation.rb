@@ -148,7 +148,7 @@ module Middleman
           if ENV['MM_ENV'] == 'development'
             append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc
 
-            gem 'middleman-presentation', path: '#{File.expand_path('../../../../', __FILE__)}
+            gem 'middleman-presentation', path: '#{File.expand_path('../../../../', __FILE__)}'
 
             EOS
           else

@@ -121,6 +121,12 @@ RSpec.describe NewSlide do
       expect(slide).to be_group 'group'
     end
 
+    it 'succeeds if slide has same name for group and slide' do
+      slide = NewSlide.new('02:02', base_path: File.join(working_directory, 'source', 'slides'))
+
+      expect(slide).to be_group '02'
+    end
+
     it 'fails if slide has not group' do
       slide = NewSlide.new('02.md', base_path: File.join(working_directory, 'source'))
 
