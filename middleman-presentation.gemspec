@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
   spec.require_paths         = ['lib']
   spec.required_ruby_version = '>= 2.1.0'
 
-  spec.add_dependency 'middleman', '~> 3.3'
-  spec.add_dependency 'middleman-sprockets', '~> 3.3.5'
+  spec.add_dependency 'middleman', '~> 3.3.4'
+  spec.add_dependency 'middleman-sprockets', '~> 3.3.6'
   spec.add_dependency 'bundler'
   spec.add_dependency 'tzinfo', '>= 0.3.0'
   spec.add_dependency 'addressable', '~> 2.3.5'
