@@ -232,7 +232,6 @@ footer#mp-site-footer {
   left: 0px;
   width: 100%;
   text-align: center;
-  z-index: 99;
 }
 
 #mp-copyright-notice {

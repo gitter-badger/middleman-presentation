@@ -252,7 +252,7 @@ module Middleman
         end
 
         def create_helper_scripts
-          %w(start bootstrap slide presentation build).each do |s|
+          %w(start bootstrap slide presentation build export).each do |s|
             copy_file File.join('script', s), File.join(root_directory, 'script', s)
             chmod File.join(root_directory, 'script', s), 0755
           end
