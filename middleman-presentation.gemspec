@@ -33,5 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'kramdown'
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'facter'
+  spec.add_dependency 'i18n'
   #  spec.add_dependency 'ptools', '>= 1.2.6'
 end

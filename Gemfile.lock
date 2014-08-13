@@ -11,12 +11,13 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.15.1)
+    middleman-presentation (0.15.2)
       addressable (~> 2.3.5)
       bundler
       erubis
       facter
       fedux_org-stdlib (>= 0.6.48)
+      i18n
       kramdown
       launchy (~> 2.4.2)
       liquid
@@ -29,7 +30,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.2.8)
     activesupport (4.1.4)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -90,7 +90,6 @@ GEM
     eventmachine (1.0.3)
     execjs (2.2.1)
     facter (2.1.0)
-      CFPropertyList (~> 2.2.6)
     fedux_org-stdlib (0.6.50)
       activesupport
     ffi (1.9.3)
