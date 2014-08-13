@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.15.2)
+    middleman-presentation (0.15.3)
       addressable (~> 2.3.5)
       bundler
       erubis
@@ -21,8 +21,8 @@ PATH
       kramdown
       launchy (~> 2.4.2)
       liquid
-      middleman (~> 3.3)
-      middleman-sprockets (~> 3.3.5)
+      middleman (~> 3.3.4)
+      middleman-sprockets (~> 3.3.6)
       nokogiri
       rake
       tzinfo (>= 0.3.0)
