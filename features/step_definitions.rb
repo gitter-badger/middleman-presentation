@@ -130,5 +130,6 @@ end
 
 Before do
   @aruba_timeout_seconds = 120
-  ENV['MM_ENV'] == 'development'
+  ENV['MM_ENV'] = 'development'
+  ENV.delete 'MM_ROOT'
 end
