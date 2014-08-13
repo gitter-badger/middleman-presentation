@@ -94,7 +94,7 @@ use.
 ## Release Notes
 
 You find the release notes [here](RELEASE_NOTES.md) or on
-[github](https://github.com/maxmeyer/middleman-presentation/blob/master/RELEASE_NOTES.md]).
+[github](https://github.com/maxmeyer/middleman-presentation/blob/master/RELEASE_NOTES.md).
 
 ## Supported rubies
 
