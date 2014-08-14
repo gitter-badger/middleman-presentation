@@ -11,15 +11,16 @@ Style/FileName:
 # Configuration parameters: CountComments.
 Style/MethodLength:
   Max: 118
-  Enabled: false
 
 # Offense count: 1
 # Configuration parameters: CountComments.
 Style/ClassLength:
   Max: 160
-  Enabled: false
+  Exclude:
+    - 'lib/middleman-presentation/cli/create_presentation.rb'
 
 # Offense count: 3
 Style/CyclomaticComplexity:
   Max: 9
-  Enabled: false
+  Exclude:
+    - 'lib/middleman-presentation/file_extensions.rb'
