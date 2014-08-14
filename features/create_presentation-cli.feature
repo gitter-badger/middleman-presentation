@@ -132,7 +132,7 @@ Feature: Initialize presentation
 
   Scenario: German umlauts, French accents and special chars are not a problem for project id
     When I successfully run `middleman-presentation create presentation presentation1 --title "üöà~?§$%&/()=#!"`
-    When I cd to "presentation1"
+    And I cd to "presentation1"
     And the file "data/metadata.yml" should contain:
     """
     project_id: uoa
@@ -143,9 +143,8 @@ Feature: Initialize presentation
       | variable | value      |
       | LANG     | de_DE.UTF-8|
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
-    When I cd to "presentation1"
-    When I successfully run `env`
-    And the file "source/slides/999980.html.erb" should contain:
+    And I cd to "presentation1"
+    Then the file "source/slides/999980.html.erb" should contain:
     """
     Fragen
     """
