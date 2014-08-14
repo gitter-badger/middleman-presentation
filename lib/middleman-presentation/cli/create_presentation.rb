@@ -39,7 +39,7 @@ module Middleman
 
         class_option :create_predefined_slides, type: :boolean, default: Middleman::Presentation.config.create_predefined_slides, desc: 'Install predefined slides'
 
-        class_option :language, type: :array, desc: 'Language to use for translatable slide templates, e.g. "de", "en"'
+        class_option :language, default: Middleman::Presentation.config.language, type: :array, desc: 'Language to use for translatable slide templates, e.g. "de", "en"'
         class_option :version, default: Middleman::Presentation.config.default_version_number, desc: 'Version number for your presentation'
 
         argument :directory, default: Dir.getwd, desc: 'Directory to create presentation in'

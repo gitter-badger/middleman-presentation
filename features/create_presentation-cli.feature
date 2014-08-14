@@ -118,6 +118,18 @@ Feature: Initialize presentation
     speaker: TestUser
     """
 
+  Scenario: Use language from configuration file
+    Given  a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    """
+    language: de
+    """
+    When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
+    And I cd to "presentation1"
+    Then the file "source/slides/999980.html.erb" should contain:
+    """
+    Fragen
+    """
+
   Scenario: German umlauts, French accents and special chars are not a problem for project id
     When I successfully run `middleman-presentation create presentation presentation1 --title "üöà~?§$%&/()=#!"`
     When I cd to "presentation1"
