@@ -3,11 +3,12 @@
 module Middleman
   # Presentation extension
   module Presentation
-    @config = PresentationConfig.new
-    @logger = Logger.new
+    @config         = PresentationConfig.new
+    @logger         = Logger.new
+    @plugin_manager = PluginManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
 
     class << self
-      attr_reader :config, :logger
+      attr_reader :config, :logger, :plugin_manager
 
       def root_path
         File.expand_path '../../../', __FILE__
@@ -26,6 +27,10 @@ module Middleman
         )
       end
 
+      def load_plugins
+        plugin_manager.load_plugins if config.plugins_enable == true
+      end
+
       def configure_i18n
         I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
         I18n.load_path = Dir[::File.join(Middleman::Presentation.root_path, 'locales', '*.yml')]
@@ -38,3 +43,4 @@ module Middleman
 end
 
 Middleman::Presentation.configure_i18n
+Middleman::Presentation.load_plugins
