@@ -1,38 +1,6 @@
 # middleman-presentation version <%= @version %>
 ---
-<% %W{ 
-  activate_center
-  activate_controls
-  activate_history
-  activate_progress
-  activate_slide_number
-  audience
-  author
-  bower_directory
-  check_for_bower
-  clear_source
-  company
-  components
-  create_predefined_slides
-  default_transition_speed
-  default_transition_type
-  description
-  edit
-  editor_command
-  email_address
-  homepage
-  initialize_git
-  install_assets
-  language
-  license
-  location
-  phone_number
-  error_on_duplicates
-  speaker
-  theme
-  default_version_number
-    }.sort.each do |field|
--%>
+<% @config.known_options.sort.each do |field| -%>
 <% if @config.public_send(field).nil? -%>
 # <%= field %>:
 <% else -%>
