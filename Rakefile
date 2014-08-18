@@ -111,14 +111,19 @@ namespace :test do
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new
 
-  desc 'run rspec'
+  desc 'Run rspec'
   task :rspec do
     sh 'bundle exec rspec'
   end
 
-  desc 'run cucumber'
+  desc 'Run cucumber'
   task :cucumber do
     sh 'bundle exec cucumber -p all'
+  end
+
+  desc 'Run mutant'
+  task :mutant do
+    sh 'mutant --include lib --require middleman-presentation --use rspec "Middleman::Presentation*"'
   end
 end
 
