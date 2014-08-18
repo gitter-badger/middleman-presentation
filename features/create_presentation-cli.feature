@@ -229,9 +229,7 @@ Feature: Initialize presentation
     exit 1
     """
     And only the executables of gems "middleman-core, middleman-presentation" can be found in PATH
-    And I set the environment variables to:
-      | variable | value  | action |
-      | PATH     | ~/bin: | .      |
+    And I prepend "~/bin:" to "PATH"
     And I run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     Then the output should contain:
     """
