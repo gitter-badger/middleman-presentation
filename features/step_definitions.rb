@@ -1,10 +1,17 @@
 # encoding: utf-8
+
+Before do
+  @aruba_timeout_seconds = 120
+  ENV['MM_ENV'] = 'development'
+  ENV.delete 'MM_ROOT'
+end
+
 Given(/^I initialized middleman for a new presentation$/) do
   step 'I successfully run `middleman create --skip-bundle --template empty`'
 
   append_to_file('config.rb', "\nactivate :presentation\n")
   append_to_file('Gemfile', "\ngem 'middleman-presentation', path: '#{File.expand_path('../../', __FILE__)}'\n")
-  step 'I successfully run `bundle install`'
+  step 'I install bundle'
 end
 
 Given(/^I install bundle$/) do
@@ -101,8 +108,15 @@ Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
   step %Q(the file "source/slides/#{name}" should contain:), string
 end
 
-Before do
-  @aruba_timeout_seconds = 120
-  ENV['MM_ENV'] = 'development'
-  ENV.delete 'MM_ROOT'
+Given(/^I installed plugin "(.*?)"$/) do |plugin_name|
+  plugin = Middleman::Presentation.fixtures_manager.find(plugin_name)
+
+  raise Middleman::Presentation::FixtureNotFoundError, "Cannot find plugin \"#{plugin_name}\"." if plugin.blank?
+
+  string = <<-EOS.strip_heredoc
+  gem '#{plugin.name}', path: '#{plugin.path}'
+  EOS
+
+  step 'I append to "Gemfile" with:', string
+  step 'I install bundle'
 end
