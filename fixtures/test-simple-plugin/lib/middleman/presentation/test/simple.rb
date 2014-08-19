@@ -1,10 +1,11 @@
-require "middleman/presentation/test/simple/version"
+require 'middleman/presentation/test/simple/version'
+require 'middleman/presentation/test/simple/helpers'
+require 'middleman/presentation/test/simple/plugin'
 
 module Middleman
   module Presentation
     module Test
       module Simple
-        # Your code goes here...
       end
     end
   end

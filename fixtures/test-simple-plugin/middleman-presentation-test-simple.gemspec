@@ -6,10 +6,9 @@ require 'middleman/presentation/test/simple/version'
 Gem::Specification.new do |spec|
   spec.name          = "middleman-presentation-test-simple"
   spec.version       = Middleman::Presentation::Test::Simple::VERSION
-  spec.authors       = ["Max Meyer"]
-  spec.email         = ["dev@fedux.org"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.authors       = ["blub"]
+  spec.email         = ["eamil@examlple.com"]
+  spec.summary       = %q{Simple plugin fixture}
   spec.homepage      = ""
   spec.license       = "MIT"
 
