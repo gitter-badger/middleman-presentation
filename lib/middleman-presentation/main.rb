@@ -3,13 +3,14 @@
 module Middleman
   # Presentation extension
   module Presentation
-    @config         = PresentationConfig.new
-    @logger         = Logger.new
-    @plugins_manager = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
-    @fixtures_manager = FixturesManager.new
+    @config                      = PresentationConfig.new
+    @logger                      = Logger.new
+    @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
+    @frontend_components_manager = FrontendComponentsManager.new
+    @helpers_manager             = HelpersManager.new
 
     class << self
-      attr_reader :config, :logger, :plugins_manager, :fixtures_manager
+      attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager
 
       def root_path
         File.expand_path '../../../', __FILE__
@@ -30,10 +31,6 @@ module Middleman
 
       def load_plugins
         plugins_manager.load_plugins if config.plugins_enable == true
-      end
-
-      def load_fixtures
-        fixtures_manager.load_fixtures(File.join(root_path, 'fixtures'))
       end
 
       def configure_i18n

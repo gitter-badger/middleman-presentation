@@ -23,6 +23,11 @@ module Middleman
           end
         end
 
+        desc 'plugins', 'Show available plugins'
+        def plugins
+          puts Middleman::Presentation.plugins_manager.to_s
+        end
+
         desc 'style', 'Show available styles'
         def style
           css_classes = Middleman::Presentation::CssClassExtracter.new.extract Middleman::Presentation.stylable_files, ignore: %w(slides reveal)

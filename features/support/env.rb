@@ -13,9 +13,6 @@ require 'middleman-core/step_definitions'
 require 'bundler'
 Bundler.require :default, :test, :development
 
-# Load fixtures
-Middleman::Presentation.load_fixtures
-
 ENV['TEST'] = 'true'
 ENV['AUTOLOAD_SPROCKETS'] = 'false'
 

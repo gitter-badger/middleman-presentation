@@ -18,6 +18,7 @@ module Middleman
         @null_klass = null_klass
       end
 
+      # Load fixtures found at path
       def load_fixtures(path)
         path = Pathname.new(path)
 
@@ -28,16 +29,20 @@ module Middleman
         end
       end
       
+      # Add fixture
       def add(path)
         fixtures << creator.new(path)
       end
 
+      # Find fixture
       def find(name)
         fixtures.find(null_klass.new(name)) { |f| f.name == name }
       end
 
+      # String representation
       def to_s
-        table frontend_components.inject([]) { |a, e| a << Hash.new(name: e.name, path: e.path) }
+        data = frontend_components.inject([]) { |a, e| a << {name: e.name, path: e.path} }
+        List.new(data).to_s
       end
     end
   end

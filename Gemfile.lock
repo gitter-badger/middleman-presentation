@@ -7,6 +7,7 @@ PATH
       erubis
       facter
       fedux_org-stdlib (>= 0.7.6)
+      hirb
       i18n
       kramdown
       launchy (~> 2.4.2)
@@ -101,7 +102,7 @@ GEM
     execjs (2.2.1)
     facter (2.1.0)
       CFPropertyList (~> 2.2.6)
-    fedux_org-stdlib (0.7.6)
+    fedux_org-stdlib (0.7.8)
       activesupport
     ffi (1.9.3)
     filegen (0.4.3)
@@ -119,6 +120,7 @@ GEM
     haml (4.0.5)
       tilt
     hike (1.2.3)
+    hirb (0.7.2)
     hooks (0.4.0)
       uber (~> 0.0.4)
     http_parser.rb (0.6.0)

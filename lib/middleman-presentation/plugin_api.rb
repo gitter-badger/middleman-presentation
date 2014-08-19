@@ -4,8 +4,8 @@ module Middleman
     # Plugin Api
     module PluginApi
       # Add frontend component
-      def add_component(**args)
-        Middleman::Presentation.component_manager.register(**args)
+      def add_component(*args)
+        Middleman::Presentation.frontend_components_manager.add(*args)
       end
 
       # Add helpers
@@ -22,10 +22,10 @@ module Middleman
       #   end
       # end
       def add_helpers(*m, &block)
-        Middleman::Presentation.helper_manager.register(*m, &block)
+        Middleman::Presentation.helpers_manager.add(*m, &block)
       end
 
-      module_function :add_component, :add_helper
+      module_function :add_component, :add_helpers
     end
   end
 end

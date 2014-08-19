@@ -23,7 +23,7 @@ module Middleman
           end
         end
 
-        PluginApi.add_helpers Middleman::Presentation::Test::Helpers
+        PluginApi.add_helpers Middleman::Presentation::Test::Simple::Helpers
       end
     end
   end

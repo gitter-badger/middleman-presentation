@@ -109,12 +109,12 @@ Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
 end
 
 Given(/^I installed plugin "(.*?)"$/) do |plugin_name|
-  plugin = Middleman::Presentation.fixtures_manager.find(plugin_name)
+  plugin = fixtures_manager.find(plugin_name)
 
   raise Middleman::Presentation::FixtureNotFoundError, "Cannot find plugin \"#{plugin_name}\"." if plugin.blank?
 
   string = <<-EOS.strip_heredoc
-  gem '#{plugin.name}', path: '#{plugin.path}'
+  gem 'middleman-presentation-#{plugin.name}', path: '#{plugin.path}'
   EOS
 
   step 'I append to "Gemfile" with:', string
