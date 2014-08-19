@@ -5,7 +5,7 @@ module Middleman
       module Simple
         module Helpers
           def test_simple_helper2
-            'test2_helper'
+            'test_simple_helper2'
           end
         end
       end

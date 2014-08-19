@@ -6,6 +6,14 @@ Before do
   ENV.delete 'MM_ROOT'
 end
 
+#Around('@with-clean-env') do |_, block|
+#  if defined?(Bundler)
+#    Bundler.with_clean_env(&block)
+#  else
+#    block.call
+#  end
+#end
+
 Given(/^I initialized middleman for a new presentation$/) do
   step 'I successfully run `middleman create --skip-bundle --template empty`'
 
@@ -15,7 +23,9 @@ Given(/^I initialized middleman for a new presentation$/) do
 end
 
 Given(/^I install bundle$/) do
-  step 'I successfully run `bundle update`'
+  Bundler.with_clean_env do
+    step 'I successfully run `bundle update`'
+  end
 end
 
 Given(/^an image "([^"]+)" at "([^"]+)"$/) do |source, destination|
@@ -40,7 +50,7 @@ end
 
 Given(/^I created a new presentation with title "([^"]+)" for speaker "([^"]+)"$/) do |title, speaker|
   step %Q(I successfully run `bundle exec middleman-presentation create presentation --title "#{title}" --speaker "#{speaker}"`)
-  step 'I successfully run `bundle install`'
+  step 'I install bundle'
 end
 
 Given(/^I prepend "([^"]+)" to environment variable "([^"]+)"$/) do |value, variable|
@@ -108,7 +118,7 @@ Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
   step %Q(the file "source/slides/#{name}" should contain:), string
 end
 
-Given(/^I installed plugin "(.*?)"$/) do |plugin_name|
+Given(/^I add plugin "(.*?)"$/) do |plugin_name|
   plugin = fixtures_manager.find(plugin_name)
 
   raise Middleman::Presentation::FixtureNotFoundError, "Cannot find plugin \"#{plugin_name}\"." if plugin.blank?
@@ -118,5 +128,10 @@ Given(/^I installed plugin "(.*?)"$/) do |plugin_name|
   EOS
 
   step 'I append to "Gemfile" with:', string
-  step 'I install bundle'
+end
+
+When(/^I successfully run `([^`]+)` in clean environment$/) do |command|
+  Bundler.with_clean_env do
+    step %Q{I successfully run `#{command}`}
+  end
 end

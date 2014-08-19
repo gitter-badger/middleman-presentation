@@ -10,6 +10,8 @@ Feature: Run presentation
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     And I cd to "presentation1"
 
+    @wip
+    @announce
   Scenario: Simple Slide
     Given a slide named "01.html.erb" with:
     """
@@ -110,4 +112,24 @@ Feature: Run presentation
     Then I should see:
     """
     <footer
+    """
+
+  Scenario: Use plugin
+    Given I add plugin "test-simple"
+    And I install bundle
+    And a slide named "01.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    <%= test_simple_helper2 %>
+    </section>
+    """
+    And the Server is running
+    When I go to "/"
+    Then I should see:
+    """
+    <section>
+    <h1>Hello World</h1>
+    test_simple_helper2
+    </section>
     """

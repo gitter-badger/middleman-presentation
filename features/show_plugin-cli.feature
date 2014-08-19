@@ -8,10 +8,10 @@ Feature: Show available plugins
   Scenario: List available plugins
     Given I successfully run `middleman-presentation create presentation1 --title "My Presentation"`
     And I cd to "presentation1"
-    And I installed plugin "test-simple"
-    When I successfully run `bundle exec middleman-presentation show plugins`
+    And I add plugin "test-simple"
+    And I install bundle
+    When I successfully run `bundle exec middleman-presentation show plugins` in clean environment
     Then the output should contain:
     """
-    test-simple
+    | test-simple | middleman-presentation-test-simple | true    |
     """
-

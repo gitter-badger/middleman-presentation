@@ -19,7 +19,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'coveralls', require: false
   gem 'cucumber', require: false
-  gem 'aruba', require: false #, git: 'https://github.com/dg-vrnetze/aruba.git', branch: 'integration/expand_path'
+  gem 'aruba', require: 'aruba/cucumber'
   gem 'bundler', require: false
   gem 'erubis'
   gem 'versionomy', require: false
@@ -46,6 +46,8 @@ group :development, :test do
   gem 'filegen', require: false
   gem 'travis-lint', require: false
   gem 'command_exec', require: false
+  gem 'rake', require: false
+  gem 'launchy', require: false
 
   gem 'therubyracer'
   gem 'therubyrhino'
