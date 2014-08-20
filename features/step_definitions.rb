@@ -8,6 +8,7 @@ Before do
   step 'git is configured with username "User" and email-address "email@example.com"'
 end
 
+# Clean environment
 Around do |_, block|
   old_env = ENV.to_h
 
@@ -114,6 +115,6 @@ end
 
 When(/^I successfully run `([^`]+)` in clean environment$/) do |command|
   Bundler.with_clean_env do
-    step %Q(I successfully run `#{command}`)
+    step %Q{I successfully run `#{command}`}
   end
 end
