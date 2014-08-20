@@ -118,6 +118,11 @@ Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
   step %Q(the file "source/slides/#{name}" should contain:), string
 end
 
+Given(/I deleted all bundler files$/) do
+  FileUtils.rm File.expand_path(File.join(current_dir, 'Gemfile'))
+  FileUtils.rm File.expand_path(File.join(current_dir, 'Gemfile.lock'))
+end
+
 Given(/^I add plugin "(.*?)"$/) do |plugin_name|
   plugin = fixtures_manager.find(plugin_name)
 
@@ -128,6 +133,30 @@ Given(/^I add plugin "(.*?)"$/) do |plugin_name|
   EOS
 
   step 'I append to "Gemfile" with:', string
+end
+
+Given(/^I add gem "(.*?)" from git repository "(.*?)"(?: with branch "(.*?)")?$/) do |name, repo, branch|
+  options = {}
+  options[:git] = repo
+  options[:branch] = branch if branch
+
+  string = <<-EOS.strip_heredoc
+  gem '#{name}', #{options.map { |k,v| "#{k}: '#{v}'"}.join(', ')}
+  EOS
+
+  step 'I append to "Gemfile" with:', string
+end
+
+Given(/^I setup a bundled environment$/) do
+  step 'I install bundle'
+  step 'I require gems in gemfile'
+end
+
+Given(/^I require gems in gemfile$/) do
+  set_env 'BUNDLE_GEMFILE', File.expand_path(File.join(current_dir, 'Gemfile'))
+  Bundler.remove_instance_variable :@setup
+  Bundler.remove_instance_variable :@root
+  Bundler.require
 end
 
 When(/^I successfully run `([^`]+)` in clean environment$/) do |command|

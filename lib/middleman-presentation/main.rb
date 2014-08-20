@@ -5,9 +5,9 @@ module Middleman
   module Presentation
     @config                      = PresentationConfig.new
     @logger                      = Logger.new
-    @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
     @frontend_components_manager = FrontendComponentsManager.new
     @helpers_manager             = HelpersManager.new
+    @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
 
     class << self
       attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager

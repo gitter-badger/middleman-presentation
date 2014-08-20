@@ -8,10 +8,9 @@ Feature: Run presentation
     Given a mocked home directory
     And git is configured with username "User" and email-address "email@example.com"
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
+    And I deleted all bundler files
     And I cd to "presentation1"
 
-    @wip
-    @announce
   Scenario: Simple Slide
     Given a slide named "01.html.erb" with:
     """
@@ -117,8 +116,9 @@ Feature: Run presentation
     @wip
     @with-clean-env
   Scenario: Use plugin
-    Given I add plugin "test-simple"
-    And I install bundle
+    #Given I add plugin "test-simple"
+    #And I add gem "middleman-sprockets" from git repository "https://github.com/middleman/middleman-sprockets" with branch "v3-stable"
+    #And I setup a bundled environment
     And a slide named "01.html.erb" with:
     """
     <section>

@@ -38,6 +38,11 @@ PATH
       rake
       tzinfo (>= 0.3.0)
 
+PATH
+  remote: fixtures/test-simple-plugin
+  specs:
+    middleman-presentation-test-simple (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -377,6 +382,7 @@ DEPENDENCIES
   middleman (~> 3.3.2)
   middleman-livereload
   middleman-presentation!
+  middleman-presentation-test-simple!
   middleman-sprockets!
   mutant
   mutant-rspec
