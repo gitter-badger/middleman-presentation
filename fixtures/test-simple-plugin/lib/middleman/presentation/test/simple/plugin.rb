@@ -1,11 +1,13 @@
 # encoding: utf-8
 module Middleman
   module Presentation
-    module Simple
-      module Test
+    # Test plugin
+    module Test
+      # Simple
+      module Simple
         PluginApi.add_component(
-          name: 'jquery', 
-          version: '~1.11', 
+          name: 'jquery',
+          version: '~1.11',
           javascripts: %w(dist/jquery)
         )
 

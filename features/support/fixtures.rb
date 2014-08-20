@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module FeatureHelper
+      # Helper for fixtures
       module Fixtures
         def fixtures_manager
           @fixtures_manager ||= FixturesManager.new
@@ -10,7 +11,6 @@ module Middleman
 
           @fixtures_manager
         end
-
       end
     end
   end

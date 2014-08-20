@@ -3,7 +3,6 @@ module Middleman
   module Presentation
     # Placeholder when no associated fixture found, displays warning
     class NoFixture
-
       private
 
       attr_reader :name
@@ -19,7 +18,7 @@ module Middleman
         true
       end
 
-      def method_missing(*args)
+      def method_missing(*_args)
         warn "Warning: The fixture '#{name}' was not found!"
       end
     end

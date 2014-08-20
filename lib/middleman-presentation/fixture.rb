@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Fixture
     class Fixture
       include ComparableByName
 
@@ -9,7 +10,7 @@ module Middleman
       attr_reader :type
 
       public
-      
+
       attr_reader :name, :path
 
       def initialize(path)

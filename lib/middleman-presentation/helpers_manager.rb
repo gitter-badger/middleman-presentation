@@ -1,8 +1,8 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Manager for helper modules
     class HelpersManager
-
       private
 
       attr_reader :helper_modules
@@ -32,13 +32,13 @@ module Middleman
 
       # Return available helpers
       def available_helpers
-        helper_modules.inject(Module.new) { |a, e| a.include e }
+        helper_modules.reduce(Module.new) { |a, e| a.include e }
       end
 
       # Show helper modules
       def to_s
-        data = helper_modules.inject([]) do |a, e| 
-          a << {name: e.respond_to?(:name) ? e.name : 'Anonymous'}
+        data = helper_modules.reduce([]) do |a, e|
+          a << { name: e.respond_to?(:name) ? e.name : 'Anonymous' }
         end
 
         List.new(data).to_s

@@ -42,7 +42,7 @@ module Middleman
       end
 
       private
-      
+
       def available_locales
         Dir.glob(File.join(Middleman::Presentation.root_path, 'locales', '*.yml')).map { |f| File.basename(f, '.yml').to_sym }
       end

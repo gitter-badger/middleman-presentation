@@ -5,6 +5,7 @@ require 'middleman/presentation/test/simple/plugin'
 module Middleman
   module Presentation
     module Test
+      # Simple
       module Simple
       end
     end

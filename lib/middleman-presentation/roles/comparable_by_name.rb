@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Included if class can be compared by name
     module ComparableByName
       include Comparable
 

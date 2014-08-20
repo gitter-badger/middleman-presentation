@@ -3,10 +3,7 @@ module Middleman
   module Presentation
     # Fixture manager
     class FixturesManager
-
       private
-
-      include Tablelize
 
       attr_reader :fixtures, :creator, :null_klass
 
@@ -22,13 +19,13 @@ module Middleman
       def load_fixtures(path)
         path = Pathname.new(path)
 
-        path.entries.each do |f| 
+        path.entries.each do |f|
           next if f.to_s[/^\.\.?/]
 
           add f.expand_path(path)
         end
       end
-      
+
       # Add fixture
       def add(path)
         fixtures << creator.new(path)
@@ -41,7 +38,7 @@ module Middleman
 
       # String representation
       def to_s
-        data = frontend_components.inject([]) { |a, e| a << {name: e.name, path: e.path} }
+        data = frontend_components.reduce([]) { |a, e| a << { name: e.name, path: e.path } }
         List.new(data).to_s
       end
     end

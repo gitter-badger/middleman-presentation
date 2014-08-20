@@ -3,10 +3,7 @@ module Middleman
   module Presentation
     # Frontend Component Manager
     class FrontendComponentsManager
-
       private
-
-      include Tablelize
 
       attr_reader :frontend_components
 
@@ -29,7 +26,8 @@ module Middleman
 
       # List installed plugins
       def to_s
-        table frontend_components.inject([]) { |a, e| a << Hash.new(name: e.name, homepage: e.hompage) }
+        data = frontend_components.reduce([]) { |a, e| a << Hash.new(name: e.name, homepage: e.hompage) }
+        List.new(data).to_s
       end
     end
   end
