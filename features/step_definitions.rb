@@ -50,10 +50,6 @@ Given(/^I prepend "([^"]+)" to environment variable "([^"]+)"$/) do |value, vari
   set_env variable, value + ENV[variable]
 end
 
-# Given(/^I append "([^"]+)" to environment variable "([^"]+)"$/) do |value, variable|
-#  set_env variable, ENV[variable] + value
-# end
-
 Given(/^a slide named "(.*?)" with:$/) do |name, string|
   step %Q(a file named "source/slides/#{name}" with:), string
 end
