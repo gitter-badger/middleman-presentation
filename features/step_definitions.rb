@@ -3,29 +3,17 @@
 Before do
   @aruba_timeout_seconds = 120
   ENV['MM_ENV'] = 'development'
-  ENV.delete 'MM_ROOT'
+
+  step 'a mocked home directory'
+  step 'git is configured with username "User" and email-address "email@example.com"'
 end
 
-Around('@with-clean-env') do |_, block|
-  if defined?(Bundler)
-    Bundler.with_clean_env(&block)
-  else
-    block.call
-  end
-end
+Around do |_, block|
+  old_env = ENV.to_h
 
-Given(/^I initialized middleman for a new presentation$/) do
-  step 'I successfully run `middleman create --skip-bundle --template empty`'
+  block.call
 
-  append_to_file('config.rb', "\nactivate :presentation\n")
-  append_to_file('Gemfile', "\ngem 'middleman-presentation', path: '#{File.expand_path('../../', __FILE__)}'\n")
-  step 'I install bundle'
-end
-
-Given(/^I install bundle$/) do
-  Bundler.with_clean_env do
-    step 'I successfully run `bundle update`'
-  end
+  ENV.replace old_env
 end
 
 Given(/^an image "([^"]+)" at "([^"]+)"$/) do |source, destination|
@@ -48,9 +36,14 @@ Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
   set_env 'PATH', dirs.join(':')
 end
 
-Given(/^I created a new presentation with title "([^"]+)" for speaker "([^"]+)"$/) do |title, speaker|
-  step %Q(I successfully run `bundle exec middleman-presentation create presentation --title "#{title}" --speaker "#{speaker}"`)
-  step 'I install bundle'
+Given(/^I create a new presentation with title "([^"]+)"(?: for speaker "([^"]+)")?$/) do |title, speaker|
+  options = {}
+  options[:title] = title
+  options[:speaker] = speaker if speaker
+
+  step %Q(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
+  step 'I cd to "presentation1"'
+  step 'I remove all bundler files'
 end
 
 Given(/^I prepend "([^"]+)" to environment variable "([^"]+)"$/) do |value, variable|
@@ -118,45 +111,9 @@ Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
   step %Q(the file "source/slides/#{name}" should contain:), string
 end
 
-Given(/I deleted all bundler files$/) do
+Given(/I remove all bundler files$/) do
   FileUtils.rm File.expand_path(File.join(current_dir, 'Gemfile'))
   FileUtils.rm File.expand_path(File.join(current_dir, 'Gemfile.lock'))
-end
-
-Given(/^I add plugin "(.*?)"$/) do |plugin_name|
-  plugin = fixtures_manager.find(plugin_name)
-
-  raise Middleman::Presentation::FixtureNotFoundError, "Cannot find plugin \"#{plugin_name}\"." if plugin.blank?
-
-  string = <<-EOS.strip_heredoc
-  gem 'middleman-presentation-#{plugin.name}', path: '#{plugin.path}'
-  EOS
-
-  step 'I append to "Gemfile" with:', string
-end
-
-Given(/^I add gem "(.*?)" from git repository "(.*?)"(?: with branch "(.*?)")?$/) do |name, repo, branch|
-  options = {}
-  options[:git] = repo
-  options[:branch] = branch if branch
-
-  string = <<-EOS.strip_heredoc
-  gem '#{name}', #{options.map { |k,v| "#{k}: '#{v}'"}.join(', ')}
-  EOS
-
-  step 'I append to "Gemfile" with:', string
-end
-
-Given(/^I setup a bundled environment$/) do
-  step 'I install bundle'
-  step 'I require gems in gemfile'
-end
-
-Given(/^I require gems in gemfile$/) do
-  set_env 'BUNDLE_GEMFILE', File.expand_path(File.join(current_dir, 'Gemfile'))
-  Bundler.remove_instance_variable :@setup
-  Bundler.remove_instance_variable :@root
-  Bundler.require
 end
 
 When(/^I successfully run `([^`]+)` in clean environment$/) do |command|

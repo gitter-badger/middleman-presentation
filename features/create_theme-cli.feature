@@ -4,10 +4,6 @@ Feature: Create new presentation theme
   I want to create my own presentation template
   In order to have a default theme for all presentations created with middleman-presentation
 
-  Background:
-    Given a mocked home directory
-    And git is configured with username "User" and email-address "email@example.com"
-
   Scenario: Non existing template
     Given a presentation theme named "new_theme" does not exist
     When I successfully run `middleman-presentation create theme new_theme`

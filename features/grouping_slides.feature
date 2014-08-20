@@ -5,10 +5,7 @@ Feature: Grouping slides
   In order to use vertical slides feature
 
   Background:
-    Given a mocked home directory
-    And git is configured with username "User" and email-address "email@example.com"
-    And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
-    And I cd to "presentation1"
+    Given I create a new presentation with title "My Presentation"
 
   Scenario: Read slides from filesystem
     Given a slide named "01namespace/01.html.erb" with:

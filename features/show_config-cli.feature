@@ -5,9 +5,7 @@ Feature: Configuration
   In order to use it
 
   Background:
-    Given a mocked home directory
-    And git is configured with username "User" and email-address "email@example.com"
-    And a user config file for middleman-presentation with:
+    Given a user config file for middleman-presentation with:
     """
     slides_ignore_file: '.ignore'
     """

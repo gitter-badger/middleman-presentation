@@ -4,10 +4,6 @@ Feature: Initialize presentation
   I want to create a new presentation
   In order to use it
 
-  Background:
-    Given a mocked home directory
-    And git is configured with username "User" and email-address "email@example.com"
-
   Scenario: Initialize with short command
     Given I successfully run `middleman-presentation create presentation1 --title "My Presentation"`
     When I cd to "presentation1"

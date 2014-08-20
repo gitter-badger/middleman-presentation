@@ -4,10 +4,6 @@ Feature: Initialize middleman-presentation
   I want to initialize middleman-presentation
   In order to have defaults for all presentations created with middleman-presentation
 
-  Background:
-    Given a mocked home directory
-    And git is configured with username "User" and email-address "email@example.com"
-
   Scenario: Before init
     Given I set the environment variables to:
     | variable | value  |

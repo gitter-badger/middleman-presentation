@@ -5,10 +5,7 @@ Feature: Ignore slides
   In order to make them invisible
 
   Background:
-    Given a mocked home directory
-    And git is configured with username "User" and email-address "email@example.com"
-    And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
-    And I cd to "presentation1"
+    Given I create a new presentation with title "My Presentation"
 
   Scenario: Ignore a slide by basename
     When I successfully run `middleman slide 01 --title "Slide 01"`

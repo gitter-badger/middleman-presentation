@@ -5,9 +5,7 @@ Feature: Image Gallery
   In order to spent as less time as possible on it
 
   Background:
-    Given a mocked home directory
-    And git is configured with username "User" and email-address "email@example.com"
-    And I successfully run `middleman-presentation create presentation --title "My Presentation"`
+    Given I create a new presentation with title "My Presentation"
     And an image "image01.png" at "images/image01.png"
     And an image "image02.png" at "images/image02.png"
 
