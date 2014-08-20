@@ -19,6 +19,7 @@ module Middleman
 
       # Add helpers
       def add(*modules, &block)
+        fail TypeError, I18n.t('errors.invalid_helper_module') unless modules.all? { |m| m.is_a? Module }
 
         if block_given?
           mod = Module.new
