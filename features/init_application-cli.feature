@@ -16,31 +16,47 @@ Feature: Initialize middleman-presentation
     # activate_history: true
     # activate_progress: true
     # activate_slide_number: true
-    # audience:
+    # audience: ''
     # author: my_user
     # bower_directory: vendor/assets/components
     # check_for_bower: true
     # clear_source: true
-    # company:
+    # company: ''
     # components: []
+    # create_images_directory: true
+    # create_javascripts_directory: true
     # create_predefined_slides: true
+    # create_stylesheets_directory: true
     # default_transition_speed: default
     # default_transition_type: linear
     # default_version_number: v0.0.1
-    # description:
+    # description: ''
     # edit: false
     # editor_command: vim
-    # email_address:
+    # email_address: ''
     # error_on_duplicates: true
-    # homepage:
+    # github_url: ''
+    # homepage: ''
     # initialize_git: true
     # install_assets: true
     # language: de
     # license: CC BY 4.0
-    # location:
-    # phone_number:
+    # location: ''
+    # phone_number: ''
+    # plugins_blacklist: []
+    # plugins_enable: true
+    # plugins_whitelist: []
+    # slides_directory: slides
+    # slides_ignore_file: .slidesignore
     # speaker: my_user
-    # theme: {}
+    # theme:
+    #   name: <name>
+    #   github: <github_account>/<repository>
+    #   javascripts:
+    #     - javascripts/<name>
+    #   stylesheets:
+    #     - stylesheets/<name>
+    # theme_prefix: middleman-presentation-theme
     """
 
   Scenario: Overwrite existing config file
@@ -49,39 +65,27 @@ Feature: Initialize middleman-presentation
     | USER     | my_user|
     And a file named "~/.config/middleman/presentation/presentations.yaml" with:
     """
-    # activate_center: true
+    # activate_center: false
+    # theme:
+    #   name: new_theme
+    #   github: account/new_theme
+    #   javascripts:
+    #     - javascripts/new_theme
+    #   stylesheets:
+    #     - stylesheets/new_theme
     """
     When I successfully run `middleman-presentation init application --force`
     Then the file "~/.config/middleman/presentation/presentations.yaml" should contain:
     """
     # activate_center: true
-    # activate_controls: true
-    # activate_history: true
-    # activate_progress: true
-    # activate_slide_number: true
-    # audience:
-    # author: my_user
-    # bower_directory: vendor/assets/components
-    # check_for_bower: true
-    # clear_source: true
-    # company:
-    # components: []
-    # create_predefined_slides: true
-    # default_transition_speed: default
-    # default_transition_type: linear
-    # default_version_number: v0.0.1
-    # description:
-    # edit: false
-    # editor_command: vim
-    # email_address:
-    # error_on_duplicates: true
-    # homepage:
-    # initialize_git: true
-    # install_assets: true
-    # language: de
-    # license: CC BY 4.0
-    # location:
-    # phone_number:
-    # speaker: my_user
-    # theme: {}
+    """
+    And the file "~/.config/middleman/presentation/presentations.yaml" should contain:
+    """
+    # theme:
+    #   name: <name>
+    #   github: <github_account>/<repository>
+    #   javascripts:
+    #     - javascripts/<name>
+    #   stylesheets:
+    #     - stylesheets/<name>
     """
