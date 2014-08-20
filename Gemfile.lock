@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/cucumber/aruba.git
-  revision: df00145e3019ee227c782b65699ada0b48023239
-  specs:
-    aruba (0.6.0)
-      childprocess (>= 0.3.6)
-      cucumber (>= 1.1.1)
-      rspec-expectations (>= 2.7.0)
-
-GIT
   remote: https://github.com/middleman/middleman-sprockets
   revision: ea8a3956e7a656a63e4fa2368aadf8c8c0b9c7ae
   branch: v3-stable
@@ -62,6 +53,10 @@ GEM
       abstract_type (~> 0.0.7)
       adamantium (~> 0.1)
       equalizer (~> 0.0.8)
+    aruba (0.6.1)
+      childprocess (>= 0.3.6)
+      cucumber (>= 1.1.1)
+      rspec-expectations (>= 2.7.0)
     ast (2.0.0)
     awesome_print (1.2.0)
     blockenspiel (0.4.5)
@@ -364,7 +359,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
-  aruba!
+  aruba
   awesome_print
   bundler
   byebug
