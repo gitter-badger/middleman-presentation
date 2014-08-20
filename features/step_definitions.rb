@@ -6,13 +6,13 @@ Before do
   ENV.delete 'MM_ROOT'
 end
 
-#Around('@with-clean-env') do |_, block|
-#  if defined?(Bundler)
-#    Bundler.with_clean_env(&block)
-#  else
-#    block.call
-#  end
-#end
+Around('@with-clean-env') do |_, block|
+  if defined?(Bundler)
+    Bundler.with_clean_env(&block)
+  else
+    block.call
+  end
+end
 
 Given(/^I initialized middleman for a new presentation$/) do
   step 'I successfully run `middleman create --skip-bundle --template empty`'

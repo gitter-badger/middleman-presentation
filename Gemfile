@@ -19,7 +19,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'coveralls', require: false
   gem 'cucumber', require: false
-  gem 'aruba', require: 'aruba/cucumber'
+  gem 'aruba', git: 'https://github.com/cucumber/aruba.git'
   gem 'bundler', require: false
   gem 'erubis'
   gem 'versionomy', require: false

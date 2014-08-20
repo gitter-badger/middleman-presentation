@@ -114,6 +114,8 @@ Feature: Run presentation
     <footer
     """
 
+    @wip
+    @with-clean-env
   Scenario: Use plugin
     Given I add plugin "test-simple"
     And I install bundle

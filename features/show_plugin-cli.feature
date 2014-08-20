@@ -4,7 +4,6 @@ Feature: Show available plugins
   I want to show all available plugins
   In order to have an overview
 
-  @wip
   Scenario: List available plugins
     Given I successfully run `middleman-presentation create presentation1 --title "My Presentation"`
     And I cd to "presentation1"

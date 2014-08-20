@@ -31,12 +31,16 @@ module Middleman
 
       # Return available helpers
       def available_helpers
-        helper_modules
+        helper_modules.inject(Module.new) { |a, e| a.include e }
       end
 
       # Show helper modules
       def to_s
-        table helper_modules.inject([]) { |a, e| a << Hash.new(name: e.name) }
+        data = helper_modules.inject([]) do |a, e| 
+          a << {name: e.respond_to?(:name) ? e.name : 'Anonymous'}
+        end
+
+        List.new(data).to_s
       end
     end
   end
