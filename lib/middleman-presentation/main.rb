@@ -37,8 +37,14 @@ module Middleman
         I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
         I18n.load_path = Dir[::File.join(Middleman::Presentation.root_path, 'locales', '*.yml')]
         I18n.backend.load_translations
-        I18n.available_locales = [:en, :de]
+        I18n.available_locales = available_locales
         I18n.enforce_available_locales = false
+      end
+
+      private
+      
+      def available_locales
+        Dir.glob(File.join(Middleman::Presentation.root_path, 'locales', '*.yml')).map { |f| File.basename(f, '.yml').to_sym }
       end
     end
   end
