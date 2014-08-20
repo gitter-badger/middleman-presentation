@@ -176,7 +176,6 @@ module Middleman
 
         def add_configuration_for_middleman_presentation
           append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc
-
           activate :presentation
 
           set :markdown_engine, :kramdown
@@ -187,31 +186,8 @@ module Middleman
           if respond_to?(:sprockets) && sprockets.respond_to?(:import_asset)
             sprockets.append_path File.join(root, bower_directory)
 
-            patterns = [
-              '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
-              '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
-              '.js',                                    # Javascript
-            ].map { |e| File.join(bower_directory, '**', "*\#{e}") }
-
-            require 'rake/file_list'
-
-            list = Rake::FileList.new(*patterns) do |l|
-              l.exclude(/src/)
-              l.exclude(/test/)
-              l.exclude(/demo/)
-              l.exclude { |f| !File.file? f }
-            end
-
-            list.each do |f|
-              sprockets.import_asset Pathname.new(f).relative_path_from(Pathname.new(bower_directory))
-            end
-
-            Rake::FileList.new(File.join('vendor/assets/components', '**', 'notes.html' )).each do |f|
-              sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new(bower_directory))) { |local_path| Pathname.new('javascripts') + local_path }
-            end
-
-            Rake::FileList.new(File.join('vendor/assets/components', '**', 'pdf.css' )).each do |f|
-              sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new(bower_directory))) { |local_path| Pathname.new('stylesheets') + local_path }
+            Middleman::Presentation.assets_manager.each_asset do |a|
+              sprockets.import_asset a.source_path, &a.destination_path_resolver
             end
           end
           EOS

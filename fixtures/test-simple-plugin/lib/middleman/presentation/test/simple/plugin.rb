@@ -5,6 +5,13 @@ module Middleman
     module Test
       # Simple
       module Simple
+
+        require 'pry'
+        binding.pry
+        PluginApi.add_assets(
+          File.expand_path('../../../../../../vendor/assets/components', __FILE__)
+        )
+
         PluginApi.add_component(
           name: 'jquery',
           version: '~1.11',

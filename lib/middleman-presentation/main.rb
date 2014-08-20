@@ -7,10 +7,11 @@ module Middleman
     @logger                      = Logger.new
     @frontend_components_manager = FrontendComponentsManager.new
     @helpers_manager             = HelpersManager.new
+    @assets_manager              = AssetsManager.new(bower_directory: @config.bower_directory)
     @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
 
     class << self
-      attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager
+      attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager, :assets_manager
 
       def root_path
         File.expand_path '../../../', __FILE__

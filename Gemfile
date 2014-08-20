@@ -53,5 +53,5 @@ group :development, :test do
   gem 'therubyracer'
   gem 'therubyrhino'
 
-  gem 'middleman-presentation-test-simple', path: File.expand_path('../fixtures/test-simple-plugin', __FILE__)
+  gem 'middleman-presentation-test-simple', path: File.expand_path('../fixtures/test-simple-plugin', __FILE__), require: false
 end

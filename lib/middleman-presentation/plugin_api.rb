@@ -25,7 +25,12 @@ module Middleman
         Middleman::Presentation.helpers_manager.add(*m, &block)
       end
 
-      module_function :add_component, :add_helpers
+      # Add assets which should be imported
+      def add_assets(path)
+        Middleman::Presentation.assets_manager.load_from(path)
+      end
+
+      module_function :add_component, :add_helpers, :add_assets
     end
   end
 end
