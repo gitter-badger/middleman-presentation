@@ -118,3 +118,9 @@ When(/^I successfully run `([^`]+)` in clean environment$/) do |command|
     step %Q{I successfully run `#{command}`}
   end
 end
+
+Given(/^I add a stylesheet asset named "(.*?)" to the presentation$/) do |asset|
+  import_string = "@import '#{asset}';"
+
+  step 'I append to "source/stylesheets/application.scss" with:', import_string
+end

@@ -109,7 +109,7 @@ Feature: Run presentation
     <footer
     """
 
-  Scenario: Use plugin
+  Scenario: Use method in plugin
     Given a slide named "01.html.erb" with:
     """
     <section>
@@ -119,6 +119,19 @@ Feature: Run presentation
     """
     And the Server is running
     When I go to "/"
+    Then I should see:
+    """
+    <section>
+    <h1>Hello World</h1>
+    test_simple_helper2
+    </section>
+    """
+
+    @wip
+  Scenario: Use asset in plugin
+    Given I add a stylesheet asset named "test_simple/stylesheets/test_simple" to the presentation
+    And the Server is running
+    When I go to "/stylesheets/application.css"
     Then I should see:
     """
     <section>
