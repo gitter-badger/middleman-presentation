@@ -5,10 +5,10 @@ module Middleman
   module Presentation
     @config                      = PresentationConfig.new
     @logger                      = Logger.new
-    @frontend_components_manager = FrontendComponentsManager.new
     @helpers_manager             = HelpersManager.new
     @assets_manager              = AssetsManager.new(bower_directory: @config.bower_directory)
     @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
+    @frontend_components_manager = FrontendComponentsManager.new
     @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
 
     class << self
