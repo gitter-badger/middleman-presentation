@@ -109,8 +109,16 @@ Feature: Run presentation
     <footer
     """
 
+  #@wip
   Scenario: Use method in plugin
     Given a slide named "01.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    <%= test_simple_helper1 %>
+    </section>
+    """
+    And a slide named "02.html.erb" with:
     """
     <section>
     <h1>Hello World</h1>
@@ -120,6 +128,13 @@ Feature: Run presentation
     And the Server is running
     When I go to "/"
     Then I should see:
+    """
+    <section>
+    <h1>Hello World</h1>
+    test_simple_helper1
+    </section>
+    """
+    And I should see:
     """
     <section>
     <h1>Hello World</h1>

@@ -305,8 +305,9 @@ Feature: Initialize presentation
     </section>
     """
 
-    @wip
+    #@wip
   Scenario: Install external asset
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
-    Then a directory named "vendor/assets/components/angular"" should exist
-    And a directory named "vendor/assets/components/impress.js"" should exist
+    And I cd to "presentation1"
+    Then a directory named "vendor/assets/components/angular" should exist
+    And a directory named "vendor/assets/components/impress.js" should exist

@@ -24,8 +24,8 @@ module Middleman
         )
 
         add_helpers do
-          def test1_helper
-            'test1_helper'
+          def test_simple_helper1
+            'test_simple_helper1'
           end
         end
 

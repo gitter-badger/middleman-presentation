@@ -7,9 +7,15 @@ module Middleman
     @logger                      = Logger.new
     @helpers_manager             = HelpersManager.new
     @assets_manager              = AssetsManager.new(bower_directory: @config.bower_directory)
-    @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
     @frontend_components_manager = FrontendComponentsManager.new
+    @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
     @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
+
+    ###                                                               ###
+    # Keep in mind that there are methods at the end of the file which: #
+    # * load bower assets                                               #
+    # * activate plugins                                                #
+    ###                                                               ###
 
     class << self
       attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager, :assets_manager, :locale_configurator
@@ -39,10 +45,12 @@ module Middleman
         plugins_manager.load_plugins if config.plugins_enable == true
       end
 
-      private
-
+      def load_default_assets_in_bower_directory
+        assets_manager.load_default_assets_in_bower_directory
+      end
     end
   end
 end
 
+Middleman::Presentation.load_default_assets_in_bower_directory
 Middleman::Presentation.load_plugins

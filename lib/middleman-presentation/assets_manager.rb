@@ -12,7 +12,10 @@ module Middleman
       def initialize(bower_directory:)
         @assets          = Set.new
         @bower_directory = File.expand_path(bower_directory)
+      end
 
+      # Load default assets
+      def load_default_assets_in_bower_directory
         default_assets.each { |k, v| add(k, v) }
       end
 
