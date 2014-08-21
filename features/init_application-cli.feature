@@ -21,6 +21,7 @@ Feature: Initialize middleman-presentation
     # bower_directory: vendor/assets/components
     # check_for_bower: true
     # clear_source: true
+    # cli_language: en
     # company: ''
     # components: []
     # create_images_directory: true
@@ -39,13 +40,13 @@ Feature: Initialize middleman-presentation
     # homepage: ''
     # initialize_git: true
     # install_assets: true
-    # language: de
     # license: CC BY 4.0
     # location: ''
     # phone_number: ''
     # plugins_blacklist: []
     # plugins_enable: true
     # plugins_whitelist: []
+    # presentation_language: en
     # slides_directory: slides
     # slides_ignore_file: .slidesignore
     # speaker: my_user
