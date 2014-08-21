@@ -26,7 +26,7 @@ module Middleman
       option :error_on_duplicates, type: :boolean, default: Middleman::Presentation.config.error_on_duplicates, desc: 'Raise an error if a slide of the same base name alread exists, e.g. Filename: 01.html.erb => Basename: 01'
       option :title, desc: 'Title of slide'
       def slide(*names)
-        fail ArgumentError, I18n.t('errors.missing_argument', argument: 'name') if names.blank?
+        fail ArgumentError, Middleman::Presentation.t('errors.missing_argument', argument: 'name') if names.blank?
 
         shared_instance = ::Middleman::Application.server.inst
 
@@ -71,7 +71,7 @@ module Middleman
             begin
               editor << Erubis::Eruby.new(options[:editor_command]).result(data)
             rescue NameError => e
-              $stderr.puts I18n.t('errors.missing_data_attribute', message: e.message)
+              $stderr.puts Middleman::Presentation.t('errors.missing_data_attribute', message: e.message)
             end
             editor.concat slide_list.existing_slides
 

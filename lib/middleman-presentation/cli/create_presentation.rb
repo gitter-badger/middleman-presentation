@@ -39,7 +39,7 @@ module Middleman
 
         class_option :create_predefined_slides, type: :boolean, default: Middleman::Presentation.config.create_predefined_slides, desc: 'Install predefined slides'
 
-        class_option :language, default: Middleman::Presentation.config.language, type: :array, desc: 'Language to use for translatable slide templates, e.g. "de", "en"'
+        class_option :language, default: Middleman::Presentation.config.presentation_language, desc: 'Language to use for translatable slide templates, e.g. "de", "en"'
         class_option :version, default: Middleman::Presentation.config.default_version_number, desc: 'Version number for your presentation'
 
         argument :directory, default: Dir.getwd, desc: 'Directory to create presentation in'
@@ -58,9 +58,9 @@ module Middleman
           fail Thor::Error, 'Error executing `middleman init`-command. Please fix your setup and run again.' unless $CHILD_STATUS.exitstatus == 0
         end
 
-        def set_language
-          Middleman::Presentation.locale_configurator.use_locale options[:language]
-        end
+        #def set_language
+        #  Middleman::Presentation.locale_configurator.use_locale options[:language]
+        #end
 
         def add_frontend_components
           Middleman::Presentation.frontend_components_manager.add(
@@ -87,11 +87,11 @@ module Middleman
             javascripts: %w(javascripts/middleman-presentation-theme-common)
           )
 
-          #unless Middleman::Presentation.config.components.blank?
+          unless Middleman::Presentation.config.components.blank?
             Middleman::Presentation.frontend_components_manager.add(
               Middleman::Presentation.config.components
             )
-          #end
+          end
         end
 
         def add_theme
@@ -121,6 +121,7 @@ module Middleman
           @license            = options[:license]
           @location           = options[:location]
           @audience           = options[:audience]
+          @language           = Middleman::Presentation.locale_configurator.validate_and_return_locale(options[:language])
 
           @email_address      = options[:email_address]
           @phone_number       = options[:phone_number]
@@ -130,8 +131,6 @@ module Middleman
           @project_id         = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
 
           @frontend_components = Middleman::Presentation.frontend_components_manager.available_frontend_components
-          require 'pry'
-          binding.pry
         end
 
         def set_configuration_for_revealjs
@@ -143,24 +142,6 @@ module Middleman
           @revealjs_config[:slide_number]             = options[:activate_slide_number]
           @revealjs_config[:default_transition_type]  = options[:default_transition_type]
           @revealjs_config[:default_transition_speed] = options[:default_transition_speed]
-        end
-
-        def create_middleman_data_files
-          template 'data/metadata.yml.tt', File.join(data_directory, 'metadata.yml')
-          template 'data/config.yml.tt', File.join(data_directory, 'config.yml')
-        end
-
-        def create_bower_configuration_files
-          template '.bowerrc.tt', File.join(root_directory, '.bowerrc')
-          template 'bower.json.tt', File.join(root_directory, 'bower.json')
-        end
-
-        def create_rake_file
-          template 'Rakefile', File.join(root_directory, 'Rakefile')
-        end
-
-        def create_slides_ignore_file
-          create_file File.join(root_directory, '.slidesignore'), "# empty\n"
         end
 
         def add_gems_to_gem_file
@@ -191,6 +172,24 @@ module Middleman
           gem 'liquid'
           gem 'rake'
           EOS
+        end
+
+        def create_middleman_data_files
+          template 'data/metadata.yml.tt', File.join(data_directory, 'metadata.yml')
+          template 'data/config.yml.tt', File.join(data_directory, 'config.yml')
+        end
+
+        def create_bower_configuration_files
+          template '.bowerrc.tt', File.join(root_directory, '.bowerrc')
+          template 'bower.json.tt', File.join(root_directory, 'bower.json')
+        end
+
+        def create_rake_file
+          template 'Rakefile', File.join(root_directory, 'Rakefile')
+        end
+
+        def create_slides_ignore_file
+          create_file File.join(root_directory, '.slidesignore'), "# empty\n"
         end
 
         def add_configuration_for_middleman_presentation

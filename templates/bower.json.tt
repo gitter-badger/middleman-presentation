@@ -2,7 +2,7 @@
   "name": "<%= @title %>",
     "dependencies": {
 <% @frontend_components.each do |component| -%>
-    "<%= component.name %>": "<%= component.resource_locator %>"<% unless component.equal? @external_components.last -%>,<% end %>
+    "<%= component.name %>": "<%= component.resource_locator %>"<% unless component.equal? @frontend_components.last -%>,<% end %>
 <% end -%>
     }
 }

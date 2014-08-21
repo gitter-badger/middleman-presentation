@@ -21,7 +21,7 @@ module Middleman
       # Add component
       def add(c)
         if c.blank?
-          Middleman::Presentation.logger.warn I18n.t('errors.add_empty_frontend_component')
+          Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.add_empty_frontend_component')
           return 
         end
 

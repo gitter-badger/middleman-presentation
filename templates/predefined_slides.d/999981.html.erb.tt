@@ -1,5 +1,5 @@
 <section class="mp-last-slide">
-  <h1><%= I18n.t('slides.contact.title') %></h1>
+  <h1><%= Middleman::Presentation.t('slides.contact.title', locale: @language) %></h1>
   <div class="mp-logo-contact mp-with-list"></div>
   <ul class="mp-with-image mp-iconless-list">
 <% if @email_address -%>

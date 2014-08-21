@@ -9,13 +9,17 @@ module Middleman
     @helpers_manager             = HelpersManager.new
     @assets_manager              = AssetsManager.new(bower_directory: @config.bower_directory)
     @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
-    @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__))
+    @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
 
     class << self
       attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager, :assets_manager, :locale_configurator
 
       def root_path
         File.expand_path '../../../', __FILE__
+      end
+
+      def t(*args, &block)
+        locale_configurator.t(*args, &block)
       end
 
       def stylable_files

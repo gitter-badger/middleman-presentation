@@ -1,4 +1,4 @@
 <section class="mp-last-slide">
-  <h1><%= I18n.t('slides.questions.title') %></h1>
+  <h1><%= Middleman::Presentation.t('slides.questions.title', locale: @language) %></h1>
   <div class="mp-logo-question"></div>
 </section>

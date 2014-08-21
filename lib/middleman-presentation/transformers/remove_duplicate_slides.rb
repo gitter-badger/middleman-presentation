@@ -22,7 +22,7 @@ module Middleman
             a << slides.select { |s| e.similar?(s) && !e.eql?(s) }
           end.flatten
 
-          fail ArgumentError, I18n.t('errors.duplicate_slide_names', slide_names: duplicate_slides.map(&:file_name).to_list) if !duplicate_slides.blank? && raise_error
+          fail ArgumentError, Middleman::Presentation.t('errors.duplicate_slide_names', slide_names: duplicate_slides.map(&:file_name).to_list) if !duplicate_slides.blank? && raise_error
 
           slides - duplicate_slides
         end
