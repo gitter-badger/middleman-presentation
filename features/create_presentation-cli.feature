@@ -114,6 +114,14 @@ Feature: Initialize presentation
     speaker: TestUser
     """
 
+  Scenario: German umlauts, French accents and special chars are not a problem for project id
+    When I successfully run `middleman-presentation create presentation presentation1 --title "üöà~?§$%&/()=#!"`
+    And I cd to "presentation1"
+    And the file "data/metadata.yml" should contain:
+    """
+    project_id: uoa
+    """
+
   Scenario: Use language from configuration file
     Given a user config file for middleman-presentation with:
     """
