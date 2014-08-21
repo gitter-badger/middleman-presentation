@@ -78,7 +78,7 @@ module Middleman
             system(editor.join(' '))
           end
         else
-          fail Thor::Error, 'You need to activate the presentation extension in config.rb before you can create a slide.'
+          fail Thor::Error, Middleman::Presentation.t('errors.extension_not_activated') 
         end
       end
     end

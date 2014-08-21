@@ -42,7 +42,7 @@ module Middleman
                               nil
                             end
 
-        fail ArgumentError, JSON.dump(message: Middleman::Presentation.t('errors.undefined_arguments', arguments: %w(resource_locator github version).to_list)) if @resource_locator.blank?
+        fail ArgumentError, Middleman::Presentation.t('errors.undefined_arguments', arguments: %w(resource_locator github version).to_list) if @resource_locator.blank?
 
         @name = if version
                   name
@@ -52,7 +52,7 @@ module Middleman
                   name
                 end
 
-        fail ArgumentError, JSON.dump(message: Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name)) if @name.blank?
+        fail ArgumentError, Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name) if @name.blank?
 
         @javascripts = Array(javascripts)
         @stylesheets = Array(stylesheets)

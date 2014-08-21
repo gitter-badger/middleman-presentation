@@ -55,7 +55,8 @@ module Middleman
 
         def initialize_middleman
           run("middleman init --skip-bundle --template empty #{directory}")
-          fail Thor::Error, 'Error executing `middleman init`-command. Please fix your setup and run again.' unless $CHILD_STATUS.exitstatus == 0
+
+          fail Thor::Error, Middleman::Presentation.t('errors.init_middleman_failed') unless $CHILD_STATUS.exitstatus == 0
         end
 
         def add_frontend_components
@@ -258,11 +259,10 @@ module Middleman
 
         def install_frontend_components
           inside directory do
-            message = format('`bower`-command cannot be found in PATH "%s". Please make sure it is installed and PATH includes the directory where is stored.', ENV['PATH'])
-            fail Thor::Error, message if options[:check_for_bower] && File.which('bower').blank?
+            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
 
             result = run('bower update', capture: true) if options[:install_assets] == true
-            fail Thor::Error, "Error executing `bower`-command. Please fix your setup and run again:\n#{result}" unless $CHILD_STATUS.exitstatus == 0
+            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', result: result)unless $CHILD_STATUS.exitstatus == 0
           end
         end
 
@@ -270,7 +270,7 @@ module Middleman
           inside directory do
             Bundler.with_clean_env do
               result = run('bundle install', capture: true) if options[:install_assets] == true
-              fail Thor::Error, "Error executing `bundle`-command. Please fix your setup and run again:\n#{result}" unless $CHILD_STATUS.exitstatus == 0
+              fail Thor::Error, Middleman::Presentation.t('errors.bundle_command_not_found', result: result)unless $CHILD_STATUS.exitstatus == 0
             end
           end
         end

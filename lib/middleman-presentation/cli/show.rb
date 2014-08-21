@@ -32,7 +32,7 @@ module Middleman
         def style
           css_classes = Middleman::Presentation::CssClassExtracter.new.extract Middleman::Presentation.stylable_files, ignore: %w(slides reveal)
 
-          puts "Available css classes in templates used by middleman-presentation:\n"
+          puts Middleman::Presentation.t('views.styles.show.title')
           css_classes.each { |klass| puts format '  %20s: %s', klass.name, klass.files.to_list }
           puts
         end

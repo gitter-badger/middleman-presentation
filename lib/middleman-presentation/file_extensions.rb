@@ -17,7 +17,7 @@ class File
 
   class << self
     def which(program, path = ENV['PATH'])
-      fail ArgumentError, 'path cannot be empty' if path.nil? || path.empty?
+      fail ArgumentError, Middleman::Presentation.t('errors.path_is_empty') if path.nil? || path.empty?
 
       # Bail out early if an absolute path is provided.
       if program =~ %r{^/|^[a-z]:[/]}i

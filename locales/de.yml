@@ -14,6 +14,16 @@ de:
     use_empty_locale: "Sie haben versucht einen leeren Sprachcode (\"locale\") zu verwenden. Verwenden Sie stattdessen einen der folgenden Sprachcodes %{codes}. Ich werde Ihre Eingabe ignorieren und stattdessen \"%{fallback_locale}\" als Sprachcode verwenden."
     use_invalid_locale: "Sie haben versucht einen unbekannten Sprachcode (\"locale\") zu verwenden. Verwenden Sie stattdessen einen der folgenden Sprachcodes %{codes}. Ich werde Ihre Eingabe ignorieren und stattdessen \"%{fallback_locale}\" als Sprachcode verwenden."
     programm_execution_interrupted: Sie haben die Ausführung von "middleman-presentation" abgebrochen...
+    init_middleman_failed: Es ist ein Fehler bei der Ausführung von "middleman init" aufgetreten. Bitte richten Sie das Programm korrekt ein und versuchen Sie es erneut.
+    bower_command_not_found: Das "bower"-Programm kann nicht im Pfad "%{path}" gefunden werden. Bitte sorgen Sie dafür, dass es installiert ist und die Umgebungsvariable "PATH" das Verzeichnis enthält, in dem es abgelegt wurde.
+    bower_command_failed: "Es ist ein Fehler bei der Ausführung von \"bower\" aufgetreten. Bitte richten Sie das Programm korrekt ein und versuchen Sie es erneut:\n%{result}."
+    bundle_command_failed: "Es ist ein Fehler bei der Ausführung von \"bundle\" aufgetreten. Bitte richten Sie das Programm korrekt ein und versuchen Sie es erneut:\n%{result}."
+    extension_not_activated: Bitte aktivieren Sie die "middleman"-Erweiterung "presentation" in der "config.rb" und versuchen Sie es erneut.
+    path_is_empty: Die Pfad-Variable darf nicht leer sein.
+  views:
+    styles:
+      show:
+        title: Verfügbare CSS-Klassen in "Vorlagen", welche von "middleman-presentation" verwendet werden:
   slides:
     contact:
       title: Kontakt
