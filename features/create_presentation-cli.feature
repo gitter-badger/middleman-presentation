@@ -305,7 +305,7 @@ Feature: Initialize presentation
     </section>
     """
 
-    #@wip
+    @wip
   Scenario: Install external asset
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     And I cd to "presentation1"

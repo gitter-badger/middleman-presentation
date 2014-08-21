@@ -43,9 +43,8 @@ module Middleman
         Dir.glob(search_path).each do |p|
           next unless File.file? p
 
-          add(
-            Pathname.new(p).relative_path_from(Pathname.new(base_path))
-          )
+          new_path = File.join(*Pathname.new(p).relative_path_from(Pathname.new(base_path)).each_filename.to_a.slice(1..-1))
+          add(new_path)
         end
       end
 

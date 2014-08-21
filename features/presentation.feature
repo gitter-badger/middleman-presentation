@@ -109,7 +109,7 @@ Feature: Run presentation
     <footer
     """
 
-  #@wip
+  @wip
   Scenario: Use method in plugin
     Given a slide named "01.html.erb" with:
     """
@@ -142,7 +142,6 @@ Feature: Run presentation
     </section>
     """
 
-    @wip
   Scenario: Use asset in plugin
     Given I add a stylesheet asset named "test_simple" to the presentation
     And the Server is running
