@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Configuration for language on cli
     class LocaleConfigurator
       private
 
@@ -46,7 +47,7 @@ module Middleman
       def available_locales
         locale_files.map { |f| File.basename(f, '.yml').to_sym }
       end
-      
+
       def t(*args, &block)
         I18n.t(*args, &block)
       end

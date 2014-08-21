@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # External asset
     class Asset
       include Comparable
 
@@ -11,7 +12,7 @@ module Middleman
       public
 
       attr_reader :source_path
-      
+
       def initialize(source_path:, destination_directory:)
         @source_path           = source_path.blank? ? nil : Pathname.new(source_path)
         @destination_directory = destination_directory.blank? ? nil : Pathname.new(destination_directory)
@@ -21,7 +22,7 @@ module Middleman
       def destination_path_resolver
         return proc { |local_path| destination_directory + local_path } if destination_directory
 
-        proc { |local_path| }
+        proc {}
       end
 
       # @private

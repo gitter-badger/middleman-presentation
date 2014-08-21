@@ -13,13 +13,13 @@ module Middleman
 
         add_component(
           name: 'impress.js',
-          version: 'latest',
+          version: 'latest'
         )
 
         add_component(
           FrontendComponent.new(
             name: 'angular',
-            version: 'latest',
+            version: 'latest'
           )
         )
 

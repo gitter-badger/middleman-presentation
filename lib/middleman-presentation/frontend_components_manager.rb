@@ -22,7 +22,7 @@ module Middleman
       def add(c)
         if c.blank?
           Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.add_empty_frontend_component')
-          return 
+          return
         end
 
         component = if c.is_a? FrontendComponent
@@ -38,7 +38,7 @@ module Middleman
 
       # List installed plugins
       def to_s
-        data = frontend_components.reduce([]) do |a, e| 
+        data = frontend_components.reduce([]) do |a, e|
           a << {
             name: e.name,
             resource_locator: e.resource_locator,

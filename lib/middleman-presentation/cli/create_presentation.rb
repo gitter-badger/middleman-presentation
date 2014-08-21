@@ -83,11 +83,13 @@ module Middleman
             javascripts: %w(javascripts/middleman-presentation-theme-common)
           )
 
+          # rubocop:disable Style/GuardClause
           unless Middleman::Presentation.config.components.blank?
             Middleman::Presentation.frontend_components_manager.add(
               Middleman::Presentation.config.components
             )
           end
+          # rubocop:enable Style/GuardClause
         end
 
         def add_theme

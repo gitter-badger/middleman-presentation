@@ -22,7 +22,7 @@ module Middleman
       # Add helpers
       def add(source_path, destination_directory = nil, creator: Asset)
         assets << creator.new(
-          source_path: source_path, 
+          source_path: source_path,
           destination_directory: destination_directory
         )
       end
@@ -75,17 +75,16 @@ module Middleman
           result[Pathname.new(f).relative_path_from(Pathname.new(bower_directory))] = nil
         end
 
-        Rake::FileList.new(File.join(bower_directory, '**', 'notes.html' )).each do |f|
+        Rake::FileList.new(File.join(bower_directory, '**', 'notes.html')).each do |f|
           result[Pathname.new(f).relative_path_from(Pathname.new(bower_directory))] = Pathname.new('javascripts')
         end
 
-        Rake::FileList.new(File.join(bower_directory, '**', 'pdf.css' )).each do |f|
+        Rake::FileList.new(File.join(bower_directory, '**', 'pdf.css')).each do |f|
           result[Pathname.new(f).relative_path_from(Pathname.new(bower_directory))] = Pathname.new('stylesheets')
         end
 
         result
       end
-
     end
   end
 end
