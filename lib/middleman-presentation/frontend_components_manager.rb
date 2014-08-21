@@ -17,6 +17,8 @@ module Middleman
       def add(c)
         component = if c.is_a? FrontendComponent
                       c
+                    elsif c.is_a? Array
+                      FrontendComponent.parse(c)
                     else
                       FrontendComponent.new(**c)
                     end
@@ -24,10 +26,22 @@ module Middleman
         frontend_components << component
       end
 
+      # Array of requested frontend components
+      def to_a
+        frontend_components.reduce([]) do |a, e| 
+          a << {
+            name: e.name,
+            resource_locator: e.resource_locator,
+            version: e.version,
+            javascripts: e.javascripts,
+            stylesheets: e.stylesheets
+          }
+        end
+      end
+
       # List installed plugins
       def to_s
-        data = frontend_components.reduce([]) { |a, e| a << Hash.new(name: e.name, homepage: e.hompage) }
-        List.new(data).to_s
+        List.new(to_a).to_s
       end
     end
   end

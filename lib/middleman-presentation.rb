@@ -34,6 +34,7 @@ require 'active_support/core_ext/kernel/reporting'
 require 'middleman-presentation/errors'
 
 require 'middleman-presentation/roles/comparable_by_name'
+require 'middleman-presentation/roles/plugable'
 
 require 'middleman-presentation/version'
 require 'middleman-presentation/plugin_api'

@@ -66,53 +66,71 @@ module Middleman
         end
 
         def add_frontend_components
-          @external_assets = []
+          Middleman::Presentation.frontend_components_manager.add(
+            name: 'jquery',
+            version: '~1.11',
+            javascripts: %w(dist/jquery)
+          )
+          Middleman::Presentation.frontend_components_manager.add(
+            name: 'reveal.js',
+            version: 'latest',
+            javascripts: %w(lib/js/head.min js/reveal.min)
+          )
 
-          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'jquery', version: '~1.11', javascripts: %w(dist/jquery))
-          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'reveal.js', version: 'latest', javascripts: %w(lib/js/head.min js/reveal.min))
-          @external_assets << Middleman::Presentation::FrontendComponent.new(name: 'lightbox2', github: 'dg-vrnetze/revealjs-lightbox2', javascripts: %w(js/lightbox))
-          @external_assets << Middleman::Presentation::FrontendComponent.new(
+          Middleman::Presentation.frontend_components_manager.add(
+            name: 'lightbox2',
+            github: 'dg-vrnetze/revealjs-lightbox2',
+            javascripts: %w(js/lightbox)
+          )
+
+          Middleman::Presentation.frontend_components_manager.add(
             name: 'middleman-presentation-theme-common',
             github: 'dg-vrnetze/middleman-presentation-theme-common',
             stylesheets: %w(stylesheets/middleman-presentation-theme-common),
             javascripts: %w(javascripts/middleman-presentation-theme-common)
           )
 
-          @external_assets.concat Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.components)
+          Middleman::Presentation.frontend_components_manager.add(
+            Middleman::Presentation.config.components
+          )
         end
 
         def add_theme
           if Middleman::Presentation.config.theme.blank?
-            @external_assets << Middleman::Presentation::FrontendComponent.new(
+            Middleman::Presentation.frontend_components_manager.add(
               name: 'middleman-presentation-theme-default',
               github: 'maxmeyer/middleman-presentation-theme-default',
               stylesheets: %w(stylesheets/middleman-presentation-theme-default)
             )
           else
-            @external_assets.concat Middleman::Presentation::FrontendComponent.parse(Middleman::Presentation.config.theme)
+            Middleman::Presentation.frontend_components_manager.add(
+              Middleman::Presentation.config.theme
+            )
           end
         end
 
         def set_variables_for_templates
-          @bower_directory = options[:bower_directory]
-          @author          = options[:author]
-          @speaker         = options[:speaker]
-          @title           = options[:title]
-          @description     = options[:description]
-          @subtitle        = options[:subtitle]
-          @date            = options[:date]
-          @homepage        = options[:homepage]
-          @company         = options[:company]
-          @license         = options[:license]
-          @location        = options[:location]
-          @audience        = options[:audience]
+          @bower_directory    = options[:bower_directory]
+          @author             = options[:author]
+          @speaker            = options[:speaker]
+          @title              = options[:title]
+          @description        = options[:description]
+          @subtitle           = options[:subtitle]
+          @date               = options[:date]
+          @homepage           = options[:homepage]
+          @company            = options[:company]
+          @license            = options[:license]
+          @location           = options[:location]
+          @audience           = options[:audience]
 
-          @email_address   = options[:email_address]
-          @phone_number    = options[:phone_number]
-          @github_url      = options[:github_url]
+          @email_address      = options[:email_address]
+          @phone_number       = options[:phone_number]
+          @github_url         = options[:github_url]
 
-          @version         = options[:version]
-          @project_id      = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
+          @version            = options[:version]
+          @project_id         = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
+
+          @frontend_componets = Middleman::Presentation.frontend_components_manager.to_a
         end
 
         def set_configuration_for_revealjs

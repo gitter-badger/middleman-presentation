@@ -3,7 +3,7 @@ module Middleman
   module Presentation
     # A frontend component
     class FrontendComponent
-      attr_reader :name
+      attr_reader :name, :resource_locator, :version, :javascripts, :stylesheets
 
       class << self
         # Parse line

@@ -5,31 +5,31 @@ module Middleman
     module Test
       # Simple
       module Simple
-        PluginApi.add_assets(
-          File.expand_path('../../../../../../vendor/assets/components', __FILE__)
+        extend PluginApi
+
+        add_assets(
+          File.expand_path('../../../../../../vendor/assets', __FILE__)
         )
 
-        PluginApi.add_component(
-          name: 'jquery',
-          version: '~1.11',
-          javascripts: %w(dist/jquery)
+        add_component(
+          name: 'impress.js',
+          version: 'latest',
         )
 
-        PluginApi.add_component(
+        add_component(
           FrontendComponent.new(
-            name: 'reveal.js',
+            name: 'angular',
             version: 'latest',
-            javascripts: %w(lib/js/head.min js/reveal.min)
           )
         )
 
-        PluginApi.add_helpers do
+        add_helpers do
           def test1_helper
             'test1_helper'
           end
         end
 
-        PluginApi.add_helpers Middleman::Presentation::Test::Simple::Helpers
+        add_helpers Middleman::Presentation::Test::Simple::Helpers
       end
     end
   end

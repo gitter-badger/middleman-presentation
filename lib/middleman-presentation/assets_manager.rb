@@ -46,6 +46,7 @@ module Middleman
         end
       end
 
+      # Iterate over assets
       def each_asset(&block)
         assets.dup.each(&block)
       end

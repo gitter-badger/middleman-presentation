@@ -129,13 +129,11 @@ Feature: Run presentation
 
     @wip
   Scenario: Use asset in plugin
-    Given I add a stylesheet asset named "test_simple/stylesheets/test_simple" to the presentation
+    Given I add a stylesheet asset named "test_simple" to the presentation
     And the Server is running
     When I go to "/stylesheets/application.css"
     Then I should see:
     """
-    <section>
-    <h1>Hello World</h1>
-    test_simple_helper2
-    </section>
+    .test_simple {
+      color: black; }
     """
