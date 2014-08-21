@@ -4,4 +4,8 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 
 require 'middleman-presentation'
 
-Middleman::Presentation::Cli::Runner.start
+begin
+  Middleman::Presentation::Cli::Runner.start
+rescue Interrupt
+  Middleman::Presentation.logger.warn Middleman::Presentation.t 'errors.programm_execution_interrupted'
+end

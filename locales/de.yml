@@ -13,6 +13,7 @@ de:
     add_empty_frontend_component: Sie haben versucht eine leere "Frontend"-Komponente hinzuzufügen. Dies wird nicht unterstützt. Bitte prüfen und korrigieren Sie Ihren Quellcode, damit diese Warnmeldung verschwindet.
     use_empty_locale: "Sie haben versucht einen leeren Sprachcode (\"locale\") zu verwenden. Verwenden Sie stattdessen einen der folgenden Sprachcodes %{codes}. Ich werde Ihre Eingabe ignorieren und stattdessen \"%{fallback_locale}\" als Sprachcode verwenden."
     use_invalid_locale: "Sie haben versucht einen unbekannten Sprachcode (\"locale\") zu verwenden. Verwenden Sie stattdessen einen der folgenden Sprachcodes %{codes}. Ich werde Ihre Eingabe ignorieren und stattdessen \"%{fallback_locale}\" als Sprachcode verwenden."
+    programm_execution_interrupted: Sie haben die Ausführung von "middleman-presentation" abgebrochen...
   slides:
     contact:
       title: Kontakt

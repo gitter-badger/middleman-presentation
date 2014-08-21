@@ -13,6 +13,7 @@ en:
     add_empty_frontend_component: You tried to add an empty frontend component. I will ignore that. Please check your code to make this message disappear.
     use_empty_locale: You tried to use an empty locale. It needs to one of %{codes}. I will ignore your input and will use "%{fallback_locale}" instead. 
     use_invalid_locale: You tried to use an invalid locale. It needs to one of %{codes}. I will ignore your input and will use "%{fallback_locale}" instead.
+    programm_execution_interrupted: You decided to interrupt the execution of "middleman-presentation" ...
   slides:
     contact:
       title: Contact
