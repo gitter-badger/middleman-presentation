@@ -1,8 +1,8 @@
 {
   "name": "<%= @title %>",
     "dependencies": {
-<% @external_assets.each do |asset| -%>
-    "<%= asset.name %>": "<%= asset.resource_locator %>"<% unless asset.equal? @external_assets.last -%>,<% end %>
+<% @frontend_components.each do |component| -%>
+    "<%= component.name %>": "<%= component.resource_locator %>"<% unless component.equal? @external_components.last -%>,<% end %>
 <% end -%>
     }
 }

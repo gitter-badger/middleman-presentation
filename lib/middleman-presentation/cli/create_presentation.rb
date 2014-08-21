@@ -59,10 +59,7 @@ module Middleman
         end
 
         def set_language
-          language_detector = FeduxOrgStdlib::ShellLanguageDetector.new
-          language = language_detector.detect allowed: I18n.available_locales, overwrite: options[:language]
-
-          I18n.default_locale = language.language_code
+          Middleman::Presentation.locale_configurator.use_locale options[:language]
         end
 
         def add_frontend_components
@@ -90,9 +87,11 @@ module Middleman
             javascripts: %w(javascripts/middleman-presentation-theme-common)
           )
 
-          Middleman::Presentation.frontend_components_manager.add(
-            Middleman::Presentation.config.components
-          )
+          #unless Middleman::Presentation.config.components.blank?
+            Middleman::Presentation.frontend_components_manager.add(
+              Middleman::Presentation.config.components
+            )
+          #end
         end
 
         def add_theme
@@ -130,7 +129,9 @@ module Middleman
           @version            = options[:version]
           @project_id         = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
 
-          @frontend_componets = Middleman::Presentation.frontend_components_manager.to_a
+          @frontend_components = Middleman::Presentation.frontend_components_manager.available_frontend_components
+          require 'pry'
+          binding.pry
         end
 
         def set_configuration_for_revealjs
@@ -252,7 +253,7 @@ module Middleman
           end
         end
 
-        def install_external_assets
+        def install_frontend_components
           inside directory do
             message = format('`bower`-command cannot be found in PATH "%s". Please make sure it is installed and PATH includes the directory where is stored.', ENV['PATH'])
             fail Thor::Error, message if options[:check_for_bower] && File.which('bower').blank?

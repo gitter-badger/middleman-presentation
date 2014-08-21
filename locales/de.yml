@@ -1,5 +1,18 @@
 ---
 de:
+  errors:
+    argument_error: Der Wert "%{value}" für "%{argument}" ist unzulässig.
+    undefined_arguments: Mindestens ein argument für %{arguments} muss angegeben werden.
+    doubled_arguments: Für %{arguments} darf nur ein Argument angegeben werden.
+    template_is_undefined: Sie müssen Informationen über Ihr "Standard-Theme" in der "presentations.yaml" hinterlegen.
+    asset_not_found: Ich bin nicht in der Lage die Datei '%{asset}' zu finden.  Prüfen Sie bitte den Pfad und versuchen Sie es erneut.
+    duplicate_slide_names: "Ihre Eingabe \"%{slide_names}\" führt zu einer Dopplung bei den Namen für die Folien Ihrer Präsentation. Vielleicht gibt es schon eine existierende Folien mit einem ähnlichen Name, z.B. 01.html.md (markdown) existiert bereit und Sie versuchen eine Folie mit dem Dateinamen 01.html.erb (eruby) anzulegen."
+    missing_argument: Sie müssen einen Wert für das Argument "%{argument}" angeben.
+    missing_data_attribute: "Sie müssen eine Option in einer Ihrer Konfigurations- oder Datendateien definieren: %{message}."
+    invalid_helper_module: Sie haben kein "Ruby-Module" oder einen "Ruby-Block" angeben. Alle anderen Ruby-Datentypen werden nicht unterstützt.
+    add_empty_frontend_component: Sie haben versucht eine leere "Frontend"-Komponente hinzuzufügen. Dies wird nicht unterstützt. Bitte prüfen und korrigieren Sie Ihren Quellcode, damit diese Warnmeldung verschwindet.
+    use_empty_locale: "Sie haben versucht einen leeren Sprachcode (\"locale\") zu verwenden. Verwenden Sie stattdessen einen der folgenden Sprachcodes %{codes}. Ich werde Ihre Eingabe ignorieren und stattdessen \"%{fallback_locale}\" als Sprachcode verwenden."
+    use_invalid_locale: "Sie haben versucht einen unbekannten Sprachcode (\"locale\") zu verwenden. Verwenden Sie stattdessen einen der folgenden Sprachcodes %{codes}. Ich werde Ihre Eingabe ignorieren und stattdessen \"%{fallback_locale}\" als Sprachcode verwenden."
   slides:
     contact:
       title: Kontakt

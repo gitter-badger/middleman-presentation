@@ -13,8 +13,18 @@ module Middleman
         @frontend_components = Set.new
       end
 
+      # Return available frontend components
+      def available_frontend_components
+        frontend_components.to_a
+      end
+
       # Add component
       def add(c)
+        if c.blank?
+          Middleman::Presentation.logger.warn I18n.t('errors.add_empty_frontend_component')
+          return 
+        end
+
         component = if c.is_a? FrontendComponent
                       c
                     elsif c.is_a? Array
@@ -26,9 +36,9 @@ module Middleman
         frontend_components << component
       end
 
-      # Array of requested frontend components
-      def to_a
-        frontend_components.reduce([]) do |a, e| 
+      # List installed plugins
+      def to_s
+        data = frontend_components.reduce([]) do |a, e| 
           a << {
             name: e.name,
             resource_locator: e.resource_locator,
@@ -37,11 +47,8 @@ module Middleman
             stylesheets: e.stylesheets
           }
         end
-      end
 
-      # List installed plugins
-      def to_s
-        List.new(to_a).to_s
+        List.new(data).to_s
       end
     end
   end
