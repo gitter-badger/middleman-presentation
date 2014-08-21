@@ -22,7 +22,7 @@ Feature: Initialize middleman-presentation
     # bower_directory: vendor/assets/components
     # check_for_bower: true
     # clear_source: true
-    # cli_language: en
+    # cli_language: ''
     # company: ''
     # components: []
     # create_images_directory: true
@@ -47,7 +47,7 @@ Feature: Initialize middleman-presentation
     # plugins_blacklist: []
     # plugins_enable: true
     # plugins_whitelist: []
-    # presentation_language: en
+    # presentation_language: ''
     # slides_directory: slides
     # slides_ignore_file: .slidesignore
     # speaker: my_user
