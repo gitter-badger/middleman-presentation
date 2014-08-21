@@ -21,10 +21,99 @@ en:
     extension_not_activated: You need to activate the presentation extension in config.rb before you can create a slide.
     path_is_empty: Path cannot be empty. 
   views:
+    runners:
+      init:
+        title: 'Initialize system, presentation, ...'
+      show:
+        title: 'Show information ...'
+      create:
+        title: 'Create something...'
+    presentations:
+      create:
+        title: 'Initialize a new presentation in DIR (default: $PWD)'
+        options:
+          activate_center: 'Activate center in reveal.js'
+          activate_controls: 'Activate controls in reveal.js'
+          activate_history: 'Activate history in reveal.js'
+          activate_progress: 'Activate progress in reveal.js'
+          activate_slide_number: 'Activate slide number in reveal.js'
+          audience: 'Audience of presentation'
+          author: 'Author of presentation'
+          bower_directory: 'Directory for bower components in "source"-directory'
+          check_for_bowe: 'Check if bower is installed on the system'
+          company: 'Company or employer or organization of speaker'
+          create_predefined_slides: 'Install predefined slides'
+          date: 'Date of presentation'
+          default_transition_speed: 'Default speed for slide transition. Can be overwridden per slide.'
+          default_transition_type: 'Default slide transition. Can be overwridden per slide.'
+          description: 'Description for presentation'
+          email_address: 'Email address to contact speaker'
+          github_url: 'Url to Github account of speaker'
+          homepage: 'Homepage of company and/or speaker'
+          initialize_git: 'Initialize git repository'
+          install_assets: 'Install assets'
+          language: 'Language to use for translatable slide templates, e.g. "de", "en"'
+          license: 'License of the presentation, e.g. CC BY'
+          location: 'Location where the presentation take place'
+          phone_number: 'Phone number to contact speaker'
+          speaker: 'Name of speaker'
+          subtitle: 'Subtitle of presentation'
+          title: 'Title of presentation'
+          version: 'Version number for your presentation'
+        arguments:
+          directory: 'Directory to create presentation in'
+    themes:
+      create:
+        title: 'Create a new presentation theme for middleman-presentation'
+        options:
+          theme_prefix: 'Prefix for new theme'
+          stylesheets_directory: 'Create stylesheets directory'
+          javascripts_directory: 'Create javascripts directory'
+          images_directory: 'Create images directory'
+          author: 'Author of theme'
+          email: 'E-mail address of author of theme'
+          url: 'Project url'
+          version: 'Project url'
+          year: 'Copyright year for theme'
+          license: 'License of theme'
+          initialize_git: 'Initialize git'
+          clean_css: 'Generate clean css without any classes defined'
+        arguments:
+          name: 'Name of theme'
+    applications:
+      init:
+        title: 'Initialize system for use of middleman-presentation'
+        options:
+          configuration_file: 'Path to configuration file'
+          force: 'Force creation of config file'
+    predefined_slides:
+      init:
+        title: 'Initialize predefined_slides'
+        options:
+          directory: 'Directory where the predefined templates should be stored'
+    slides:
+      create:
+        title: 'Create a new slide(s) or edit existing ones. If you want to create multiple slides enter them with a space between the names "01 02 03".'
+        options:
+          edit: 'Start ENV["EDITOR"] to edit slide.'
+          editor_command: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
+          error_on_duplicates: 'Raise an error if a slide of the same base name alread exists, e.g. Filename: 01.html.erb => Basename: 01'
+          title: 'Title of slide'
+    configs:
+      show:
+        title: 'Show configuration'
+        options:
+          defaults: 'Show default configuration'
+    plugins:
+      show:
+        title: 'Show available plugins'
+    support_informations:
+      show:
+        title: 'Collect information for support'
     styles:
       show:
-        title: Available css classes in templates used by middleman-presentation:
-
+        title: 'Show available styles'
+        headline: 'Available css classes in templates used by middleman-presentation:'
   slides:
     contact:
       title: Contact

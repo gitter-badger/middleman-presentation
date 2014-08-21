@@ -20,12 +20,14 @@ module Middleman
         true
       end
 
-      desc 'slide NAME(S)', 'Create a new slide(s) or edit existing ones. If you want to create multiple slides enter them with a space between the names "01 02 03".'
-      option :edit, default: Middleman::Presentation.config.edit, desc: 'Start ENV["EDITOR"] to edit slide.', aliases: %w(-e)
-      option :editor_command, default: Middleman::Presentation.config.editor_command, desc: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
-      option :error_on_duplicates, type: :boolean, default: Middleman::Presentation.config.error_on_duplicates, desc: 'Raise an error if a slide of the same base name alread exists, e.g. Filename: 01.html.erb => Basename: 01'
-      option :title, desc: 'Title of slide'
-      def slide(*names)
+      desc 'slide NAME(S)', Middleman::Presentation.t('views.slides.create.title')
+      option :edit, default: Middleman::Presentation.config.edit, desc: Middleman::Presentation.t('views.slides.create.options.edit')
+      option :editor_command, default: Middleman::Presentation.config.editor_command, desc: Middleman::Presentation.t('views.slides.create.options.editor_command')
+      option :error_on_duplicates, type: :boolean, default: Middleman::Presentation.config.error_on_duplicates, desc: Middleman::Presentation.t('views.slides.create.options.error_on_duplicates')
+      option :title, desc: Middleman::Presentation.t('views.slides.create.options.title')
+
+      argument :names, type: :array, desc: Middleman::Presentation.t('views.slides.create.arguments.names')
+      def slide
         fail ArgumentError, Middleman::Presentation.t('errors.missing_argument', argument: 'name') if names.blank?
 
         shared_instance = ::Middleman::Application.server.inst

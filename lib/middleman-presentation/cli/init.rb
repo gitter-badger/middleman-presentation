@@ -6,9 +6,9 @@ module Middleman
       class Init < Thor
         include Thor::Actions
 
-        desc 'application ', 'Initialize system for use of middleman-presentation'
-        option :configuration_file, default: Middleman::Presentation.config.preferred_configuration_file, desc: 'Path to configuration file'
-        option :force, type: :boolean, desc: 'Force creation of config file'
+        desc 'application ', Middleman::Presentation.t('views.applications.init.title')
+        option :configuration_file, default: Middleman::Presentation.config.preferred_configuration_file, desc: Middleman::Presentation.t('views.applications.create.options.configuration_file')
+        option :force, type: :boolean, desc: Middleman::Presentation.t('views.applications.create.options.force')
         def application
           source_paths << File.expand_path('../../../../templates', __FILE__)
 
@@ -19,8 +19,8 @@ module Middleman
           template 'config.yaml.tt', opts.delete(:configuration_file), **opts
         end
 
-        desc 'predefined_slides ', 'Initialize predefined_slides'
-        option :directory, default: PredefinedSlideTemplateDirectory.new.preferred_template_directory, desc: 'Directory where the predefined templates should be stored'
+        desc 'predefined_slides ', Middleman::Presentation.t('views.predefined_slides.init.title')
+        option :directory, default: PredefinedSlideTemplateDirectory.new.preferred_template_directory, desc: Middleman::Presentation.t('views.predefined_slides.create.options.directory')
         def predefined_slides
           source_paths << File.expand_path('../../../../templates/predefined_slides.d', __FILE__)
 

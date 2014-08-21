@@ -6,44 +6,45 @@ module Middleman
       class CreatePresentation < Thor::Group
         include Thor::Actions
 
-        class_option :speaker, required: true, default: Middleman::Presentation.config.speaker, desc: 'Name of speaker'
-        class_option :title, required: true, desc: 'Title of presentation'
-        class_option :date, required: true, default: Time.now.strftime('%d.%m.%Y'), desc: 'Date of presentation'
-        class_option :license, required: true, default: Middleman::Presentation.config.license, desc: 'License of the presentation, e.g. CC BY'
+        class_option :speaker, required: true, default: Middleman::Presentation.config.speaker, desc: Middleman::Presentation.t('views.presentations.create.options.speaker')
+        class_option :title, required: true, desc: Middleman::Presentation.t('views.presentations.create.options.title')
+        class_option :date, required: true, default: Time.now.strftime('%d.%m.%Y'), desc: Middleman::Presentation.t('views.presentations.create.options.date')
+        class_option :license, required: true, default: Middleman::Presentation.config.license, desc: Middleman::Presentation.t('views.presentations.create.options.license')
 
-        class_option :bower_directory, default: Middleman::Presentation.config.bower_directory, desc: 'Directory for bower components in "source"-directory'
-        class_option :author, default: Middleman::Presentation.config.author, desc: 'Author of presentation'
-        class_option :description, desc: 'Description for presentation'
-        class_option :subtitle, desc: 'Subtitle of presentation'
-        class_option :homepage, default: Middleman::Presentation.config.homepage, desc: 'Homepage of company and/or speaker'
-        class_option :company, default: Middleman::Presentation.config.company, desc: 'Company or employer or organization of speaker'
-        class_option :location, default: Middleman::Presentation.config.location, desc: 'Location where the presentation take place'
-        class_option :audience, default: Middleman::Presentation.config.audience, desc: 'Audience of presentation'
+        class_option :bower_directory, default: Middleman::Presentation.config.bower_directory, desc: Middleman::Presentation.t('views.presentations.create.options.bower_directory')
+        class_option :author, default: Middleman::Presentation.config.author, desc: Middleman::Presentation.t('views.presentations.create.options.author')
+        class_option :description, desc: Middleman::Presentation.t('views.presentations.create.options.description')
+        class_option :subtitle, desc: Middleman::Presentation.t('views.presentations.create.options.subtitle')
+        class_option :homepage, default: Middleman::Presentation.config.homepage, desc: Middleman::Presentation.t('views.presentations.create.options.homepage')
+        class_option :company, default: Middleman::Presentation.config.company, desc: Middleman::Presentation.t('views.presentations.create.options.company')
+        class_option :location, default: Middleman::Presentation.config.location, desc: Middleman::Presentation.t('views.presentations.create.options.location')
+        class_option :audience, default: Middleman::Presentation.config.audience, desc: Middleman::Presentation.t('views.presentations.create.options.audience')
 
-        class_option :phone_number, default: Middleman::Presentation.config.phone_number, desc: 'Phone number to contact speaker'
-        class_option :email_address, default: Middleman::Presentation.config.email_address, desc: 'Email address to contact speaker'
-        class_option :github_url, default: Middleman::Presentation.config.github_url, desc: 'Url to Github account of speaker'
+        class_option :phone_number, default: Middleman::Presentation.config.phone_number, desc: Middleman::Presentation.t('views.presentations.create.options.phone_number')
+        class_option :email_address, default: Middleman::Presentation.config.email_address, desc: Middleman::Presentation.t('views.presentations.create.options.email_address')
+        class_option :github_url, default: Middleman::Presentation.config.github_url, desc: Middleman::Presentation.t('views.presentations.create.options.github_url')
 
-        class_option :activate_controls, type: :boolean, default: Middleman::Presentation.config.activate_controls, desc: 'Activate controls in reveal.js'
-        class_option :activate_progress, type: :boolean, default: Middleman::Presentation.config.activate_progress, desc: 'Activate progress in reveal.js'
-        class_option :activate_history, type: :boolean, default: Middleman::Presentation.config.activate_history, desc: 'Activate history in reveal.js'
-        class_option :activate_center, type: :boolean, default: Middleman::Presentation.config.activate_center, desc: 'Activate center in reveal.js'
-        class_option :activate_slide_number, type: :boolean, default: Middleman::Presentation.config.activate_slide_number, desc: 'Activate slide number in reveal.js'
+        class_option :activate_controls, type: :boolean, default: Middleman::Presentation.config.activate_controls, desc: Middleman::Presentation.t('views.presentations.create.options.activate_controls')
+        class_option :activate_progress, type: :boolean, default: Middleman::Presentation.config.activate_progress, desc: Middleman::Presentation.t('views.presentations.create.options.activate_progress')
+        class_option :activate_history, type: :boolean, default: Middleman::Presentation.config.activate_history, desc: Middleman::Presentation.t('views.presentations.create.options.activate_history')
+        class_option :activate_center, type: :boolean, default: Middleman::Presentation.config.activate_center, desc: Middleman::Presentation.t('views.presentations.create.options.activate_center')
+        class_option :activate_slide_number, type: :boolean, default: Middleman::Presentation.config.activate_slide_number, desc: Middleman::Presentation.t('views.presentations.create.options.activate_slide_number')
 
-        class_option :default_transition_type, default: Middleman::Presentation.config.default_transition_type, desc: 'Default slide transition. Can be overwridden per slide.'
-        class_option :default_transition_speed, default: Middleman::Presentation.config.default_transition_speed, desc: 'Default speed for slide transition. Can be overwridden per slide.'
+        class_option :default_transition_type, default: Middleman::Presentation.config.default_transition_type, desc: Middleman::Presentation.t('views.presentations.create.options.default_transition_type')
+        class_option :default_transition_speed, default: Middleman::Presentation.config.default_transition_speed, desc: Middleman::Presentation.t('views.presentations.create.options.default_transition_speed')
 
-        class_option :install_assets, type: :boolean, default: Middleman::Presentation.config.install_assets, desc: 'Install assets'
-        class_option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: 'Initialize git repository'
-        class_option :check_for_bower, type: :boolean, default: Middleman::Presentation.config.check_for_bower, desc: 'Check if bower is installed on the system'
+        class_option :install_assets, type: :boolean, default: Middleman::Presentation.config.install_assets, desc: Middleman::Presentation.t('views.presentations.create.options.install_assets')
+        class_option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: Middleman::Presentation.t('views.presentations.create.options.initialize_git')
+        class_option :check_for_bower, type: :boolean, default: Middleman::Presentation.config.check_for_bower, desc: Middleman::Presentation.t('views.presentations.create.options.check_for_bower')
 
-        class_option :create_predefined_slides, type: :boolean, default: Middleman::Presentation.config.create_predefined_slides, desc: 'Install predefined slides'
+        class_option :create_predefined_slides, type: :boolean, default: Middleman::Presentation.config.create_predefined_slides, desc: Middleman::Presentation.t('views.presentations.create.options.create_predefined_slides')
 
-        class_option :language, default: Middleman::Presentation.config.presentation_language, desc: 'Language to use for translatable slide templates, e.g. "de", "en"'
-        class_option :version, default: Middleman::Presentation.config.default_version_number, desc: 'Version number for your presentation'
+        class_option :language, default: Middleman::Presentation.config.presentation_language, desc: Middleman::Presentation.t('views.presentations.create.options.language')
+        class_option :version, default: Middleman::Presentation.config.default_version_number, desc: Middleman::Presentation.t('views.presentations.create.options.version')
 
-        argument :directory, default: Dir.getwd, desc: 'Directory to create presentation in'
-        desc 'Initialize a new presentation in DIR (default: $PWD)'
+        argument :directory, default: Dir.getwd, desc: Middleman::Presentation.t('views.presentations.create.arguments.directory')
+
+        desc Middleman::Presentation.t('views.presentations.create.title')
 
         def define_root_directory
           @root_directory = File.expand_path directory

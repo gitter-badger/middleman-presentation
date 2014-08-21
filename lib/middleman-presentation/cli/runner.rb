@@ -4,13 +4,13 @@ module Middleman
     module Cli
       # Run command
       class Runner < Thor
-        desc 'init', 'Initialize system, presentation, ...'
+        desc 'init', Middleman::Presentation.t('views.runners.init.title')
         subcommand 'init', Init
 
-        desc 'show', 'Show information ...'
+        desc 'show', Middleman::Presentation.t('views.runners.show.title')
         subcommand 'show', Show
 
-        desc 'create', 'Create something...'
+        desc 'create', Middleman::Presentation.t('views.runners.create.title')
         subcommand 'create', Create
       end
     end

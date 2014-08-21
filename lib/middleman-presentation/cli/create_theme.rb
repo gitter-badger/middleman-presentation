@@ -6,22 +6,22 @@ module Middleman
       class CreateTheme < Thor::Group
         include Thor::Actions
 
-        desc 'Create a new presentation theme for middleman-presentation'
+        desc Middleman::Presentation.t('views.themes.create.title')
 
-        class_option :theme_prefix, default: Middleman::Presentation.config.theme_prefix, desc: 'Prefix for new theme'
-        class_option :stylesheets_directory, default: Middleman::Presentation.config.create_stylesheets_directory, desc: 'Create stylesheets directory'
-        class_option :javascripts_directory, default: Middleman::Presentation.config.create_javascripts_directory, desc: 'Create javascripts directory'
-        class_option :images_directory, default: Middleman::Presentation.config.create_images_directory, desc: 'Create images directory'
-        class_option :author, default: Middleman::Presentation.config.author, desc: 'Author of theme'
-        class_option :email, desc: 'E-mail address of author of theme'
-        class_option :url, desc: 'Project url'
-        class_option :version, default: '0.0.1', required: true, desc: 'Project url'
-        class_option :year, default: Time.now.strftime('%Y'), desc: 'Copyright year for theme'
-        class_option :license, default: 'MIT', required: true, desc: 'License of theme'
-        class_option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: 'Initialize git'
-        class_option :clean_css, type: :boolean, default: false, desc: 'Generate clean css without any classes defined'
+        class_option :theme_prefix, default: Middleman::Presentation.config.theme_prefix, desc: Middleman::Presentation.t('views.themes.create.options.theme_prefix')
+        class_option :stylesheets_directory, default: Middleman::Presentation.config.create_stylesheets_directory, desc: Middleman::Presentation.t('views.themes.create.options.stylesheets_directory')
+        class_option :javascripts_directory, default: Middleman::Presentation.config.create_javascripts_directory, desc: Middleman::Presentation.t('views.themes.create.options.javascripts_directory')
+        class_option :images_directory, default: Middleman::Presentation.config.create_images_directory, desc: Middleman::Presentation.t('views.themes.create.options.images_directory')
+        class_option :author, default: Middleman::Presentation.config.author, desc: Middleman::Presentation.t('views.themes.create.options.author')
+        class_option :email, desc: Middleman::Presentation.t('views.themes.create.options.email')
+        class_option :url, desc: Middleman::Presentation.t('views.themes.create.options.url')
+        class_option :version, default: '0.0.1', required: true, desc: Middleman::Presentation.t('views.themes.create.options.version')
+        class_option :year, default: Time.now.strftime('%Y'), desc: Middleman::Presentation.t('views.themes.create.options.year')
+        class_option :license, default: 'MIT', required: true, desc: Middleman::Presentation.t('views.themes.create.options.license')
+        class_option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: Middleman::Presentation.t('views.themes.create.options.initialize_git')
+        class_option :clean_css, type: :boolean, default: false, desc: Middleman::Presentation.t('views.themes.create.options.clean_css')
 
-        argument :name, desc: 'Name of theme'
+        argument :name, desc: Middleman::Presentation.t('views.themes.create.arguments.name')
 
         def add_path_to_source_paths
           source_paths << File.expand_path('../../../../templates', __FILE__)

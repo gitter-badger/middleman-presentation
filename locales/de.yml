@@ -23,7 +23,7 @@ de:
   views:
     styles:
       show:
-        title: Verfügbare CSS-Klassen in "Vorlagen", welche von "middleman-presentation" verwendet werden:
+        title: 'Verfügbare CSS-Klassen in "Vorlagen", welche von "middleman-presentation" verwendet werden:'
   slides:
     contact:
       title: Kontakt

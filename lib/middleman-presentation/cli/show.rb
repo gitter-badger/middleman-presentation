@@ -6,13 +6,13 @@ module Middleman
       class Show < Thor
         include Thor::Actions
 
-        desc 'support_information', 'Collect information for support'
+        desc 'support_information', Middleman::Presentation.t('views.support_informations.show.title')
         def support_information
           puts FeduxOrgStdlib::SupportInformation.new.to_s
         end
 
-        desc 'config', 'Show configuration'
-        option :defaults, type: :boolean, desc: 'Show default configuration'
+        desc 'config', Middleman::Presentation.t('views.configs.show.title')
+        option :defaults, type: :boolean, desc: Middleman::Presentation.t('views.configs.show.options.defaults')
         def config
           if options[:defaults]
             capture :stderr do
@@ -23,16 +23,16 @@ module Middleman
           end
         end
 
-        desc 'plugins', 'Show available plugins'
+        desc 'plugins', Middleman::Presentation.t('views.plugins.show.title')
         def plugins
           puts Middleman::Presentation.plugins_manager.to_s
         end
 
-        desc 'style', 'Show available styles'
+        desc 'style', Middleman::Presentation.t('views.styles.show.title')
         def style
           css_classes = Middleman::Presentation::CssClassExtracter.new.extract Middleman::Presentation.stylable_files, ignore: %w(slides reveal)
 
-          puts Middleman::Presentation.t('views.styles.show.title')
+          puts Middleman::Presentation.t('views.styles.show.headline')
           css_classes.each { |klass| puts format '  %20s: %s', klass.name, klass.files.to_list }
           puts
         end
