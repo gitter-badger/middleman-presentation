@@ -58,10 +58,6 @@ module Middleman
           fail Thor::Error, 'Error executing `middleman init`-command. Please fix your setup and run again.' unless $CHILD_STATUS.exitstatus == 0
         end
 
-        #def set_language
-        #  Middleman::Presentation.locale_configurator.use_locale options[:language]
-        #end
-
         def add_frontend_components
           Middleman::Presentation.frontend_components_manager.add(
             name: 'jquery',
