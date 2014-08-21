@@ -4,12 +4,13 @@ Feature: Initialize middleman-presentation
   I want to initialize middleman-presentation
   In order to have defaults for all presentations created with middleman-presentation
 
+  @wip
   Scenario: Before init
     Given I set the environment variables to:
     | variable | value  |
     | USER     | my_user|
     When I successfully run `middleman-presentation init application`
-    Then the file "~/.config/middleman/presentation/presentations.yaml" should contain:
+    Then the user config file for middleman-presentation should contain:
     """
     # activate_center: true
     # activate_controls: true
@@ -64,7 +65,7 @@ Feature: Initialize middleman-presentation
     Given I set the environment variables to:
     | variable | value  |
     | USER     | my_user|
-    And a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    And a user config file for middleman-presentation with:
     """
     # activate_center: false
     # theme:

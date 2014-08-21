@@ -82,7 +82,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Existing configuration file
-    Given  a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    Given a user config file for middleman-presentation with:
     """
     author: TestUser
     company: MyCompany
@@ -115,7 +115,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Use language from configuration file
-    Given  a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    Given a user config file for middleman-presentation with:
     """
     presentation_language: de
     """
@@ -188,7 +188,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Use different theme
-    Given a file named "~/.config/middleman/presentation/presentations.yaml" with:
+    Given a user config file for middleman-presentation with:
     """
     theme:
       name: middleman-presentation-theme-fedux_org
