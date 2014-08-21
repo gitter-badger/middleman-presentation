@@ -109,7 +109,6 @@ Feature: Run presentation
     <footer
     """
 
-  @wip
   Scenario: Use method in plugin
     Given a slide named "01.html.erb" with:
     """
