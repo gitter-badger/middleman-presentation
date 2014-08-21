@@ -134,12 +134,16 @@ Feature: Initialize presentation
     Fragen
     """
 
-  Scenario: German umlauts, French accents and special chars are not a problem for project id
-    When I successfully run `middleman-presentation create presentation presentation1 --title "üöà~?§$%&/()=#!"`
-    And I cd to "presentation1"
-    And the file "data/metadata.yml" should contain:
+  Scenario: Use default language if language in configuration file is an empty string
+    Given a user config file for middleman-presentation with:
     """
-    project_id: uoa
+    presentation_language: ''
+    """
+    When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
+    And I cd to "presentation1"
+    Then the file "source/slides/999980.html.erb" should contain:
+    """
+    Questions
     """
 
   Scenario: Use lang from environment as language in slides
