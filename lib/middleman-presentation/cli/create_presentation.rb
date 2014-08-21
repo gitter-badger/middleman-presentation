@@ -106,6 +106,13 @@ module Middleman
           end
         end
 
+        def set_language
+          @language = FeduxOrgStdlib::ShellLanguageDetector.new.detect(
+            allowed: Middleman::Presentation.locale_configurator.available_locales, 
+            overwrite: options[:language]
+          ).language_code
+        end
+
         def set_variables_for_templates
           @bower_directory    = options[:bower_directory]
           @author             = options[:author]
@@ -119,7 +126,6 @@ module Middleman
           @license            = options[:license]
           @location           = options[:location]
           @audience           = options[:audience]
-          @language           = Middleman::Presentation.locale_configurator.validate_and_return_locale(options[:language])
 
           @email_address      = options[:email_address]
           @phone_number       = options[:phone_number]

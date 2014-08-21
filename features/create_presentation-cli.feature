@@ -88,7 +88,7 @@ Feature: Initialize presentation
     company: MyCompany
     email_address: test_user@example.com
     homepage: http://example.com
-    language: en
+    presentation_language: en
     speaker: TestUser
     """
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
@@ -117,7 +117,7 @@ Feature: Initialize presentation
   Scenario: Use language from configuration file
     Given  a file named "~/.config/middleman/presentation/presentations.yaml" with:
     """
-    language: de
+    presentation_language: de
     """
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     And I cd to "presentation1"
@@ -151,7 +151,6 @@ Feature: Initialize presentation
       | LANG     | de_DE.UTF-8|
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation" --language en`
     When I cd to "presentation1"
-    When I successfully run `env`
     And the file "source/slides/999980.html.erb" should contain:
     """
     Questions
@@ -225,7 +224,7 @@ Feature: Initialize presentation
     exit 1
     """
     And only the executables of gems "middleman-core, middleman-presentation" can be found in PATH
-    And I prepend "~/bin:" to "PATH"
+    And I prepend "~/bin:" to environment variable "PATH"
     And I run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     Then the output should contain:
     """

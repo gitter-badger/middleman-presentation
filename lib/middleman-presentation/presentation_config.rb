@@ -29,8 +29,8 @@ module Middleman
       option :check_for_bower, true
       option :clear_source, true
       option :create_predefined_slides, true
-      option :presentation_language, :en
-      option :cli_language, :en
+      option :presentation_language, nil
+      option :cli_language, nil
       option :default_version_number, 'v0.0.1'
 
       option :plugins_enable, true
