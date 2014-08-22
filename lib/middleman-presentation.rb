@@ -73,6 +73,8 @@ require 'middleman-presentation/transformers/ignore_slides'
 require 'middleman-presentation/transformers/remove_duplicate_slides'
 require 'middleman-presentation/transformers/file_keeper'
 
+require 'middleman-presentation/cli/base'
+require 'middleman-presentation/cli/base_group'
 require 'middleman-presentation/cli/reset_thor'
 require 'middleman-presentation/cli/create_theme'
 require 'middleman-presentation/cli/create_presentation'

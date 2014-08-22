@@ -3,7 +3,7 @@ module Middleman
   module Presentation
     module Cli
       # This class provides an 'presentation init' command for the middleman CLI.
-      class Init < Thor
+      class Init < Base
         include Thor::Actions
 
         desc 'application ', Middleman::Presentation.t('views.applications.init.title')

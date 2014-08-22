@@ -3,7 +3,7 @@ module Middleman
   module Presentation
     module Cli
       # Run command
-      class Runner < Thor
+      class Runner < Base
         desc 'init', Middleman::Presentation.t('views.runners.init.title')
         subcommand 'init', Init
 

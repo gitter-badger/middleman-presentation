@@ -3,7 +3,7 @@ module Middleman
   module Presentation
     module Cli
       # Create theme
-      class CreateTheme < Thor::Group
+      class CreateTheme < BaseGroup
         include Thor::Actions
 
         desc Middleman::Presentation.t('views.themes.create.title')

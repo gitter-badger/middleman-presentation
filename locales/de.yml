@@ -21,9 +21,101 @@ de:
     extension_not_activated: Bitte aktivieren Sie die "middleman"-Erweiterung "presentation" in der "config.rb" und versuchen Sie es erneut.
     path_is_empty: Die Pfad-Variable darf nicht leer sein.
   views:
+    application:
+      help: Beschreibe verfügbare Befehle oder einen bestimmten Befehl 
+    runners:
+      init:
+        title: 'Initialisiere ...'
+      show:
+        title: 'Zeige Informationen über ...'
+      create:
+        title: 'Lege etwas an...'
+    presentations:
+      create:
+        title: 'Erzeuge eine neue Präsentation in Verzeichnis DIR (standard: aktuelles Arbeitsverzeichnis)'
+        options:
+          activate_center: 'Aktiviere "center" in reveal.js'
+          activate_controls: 'Aktiviere "controls" in reveal.js'
+          activate_history: 'Aktiviere "history" in reveal.js'
+          activate_progress: 'Aktiviere "progress" in reveal.js'
+          activate_slide_number: 'Aktiviere "slide number" in reveal.js'
+          audience: 'Zielgruppe der Präsentation'
+          author: 'Autor der Präsentation'
+          bower_directory: 'Verzeichnis für die "bower"-Komponenten im "source"-Verzeichnis'
+          check_for_bowe: 'Prüfung durchführen, ob "bower" auf dem System installiert ist'
+          company: 'Unternehmen oder Arbeitgeber des Präsentierenden'
+          create_predefined_slides: 'Installiere vordefinierte Folien'
+          date: 'Datum der Präsentation'
+          default_transition_speed: 'Standard-Geschwindigkeit beim Wechsel der Folien'
+          default_transition_type: 'Standard-Anmiation beim Wechsel der Folien'
+          description: 'Beschreibung für die Präsentation'
+          email_address: 'E-Mail-Adresse des Präsentierenden'
+          github_url: 'URL zum Github Benutzerkonto des Präsentierenden'
+          homepage: 'Webseite des Unternehmens oder des Präsentierenden'
+          initialize_git: 'Initialisiere git repository'
+          install_assets: 'Installiere Assets'
+          language: 'Sprache, welche für übersetzbare Inhalte der vordefinierten Folien genutzt werden kann, z.B. "de", "en"'
+          license: 'Lizenz unter der die Präsentation veröffentlicht wird, z.B. CC BY'
+          location: 'Örtlichkeit in dem die Präsentation vorgetragen wird'
+          phone_number: 'Telefonnumer des Präsentierenden'
+          speaker: 'Name des Präsentierenden'
+          subtitle: 'Sub-Titel für die die Präsentation'
+          title: 'Titel der Präsentation'
+          version: 'Versionsnummer für die Präsentation'
+        arguments:
+          directory: 'Verzeichnis in dem die Präsentation erstellt werden soll'
+    themes:
+      create:
+        title: 'Erstellen eines neuen Präsentations Themes für "middleman-presentation"'
+        options:
+          theme_prefix: 'Präfix für das Verzeichnis des Themes'
+          stylesheets_directory: 'Erstelle das Verzeichnis für die Stil-Dateien'
+          javascripts_directory: 'Erstelle das Verzeichnis für die JavaScript-Dateien'
+          images_directory: 'Erstelle das Verzeichnis für die Bilder'
+          author: 'Autor des Themes'
+          email: 'E-Mail Adresse des Theme-Autors'
+          url: 'URL zur Website des Projektes'
+          version: 'Version des Themes'
+          year: 'Copyright Jahr für das Theme'
+          license: 'Lizenz des Themes'
+          initialize_git: 'Initialisiere git'
+          clean_css: 'Generiere CSS-Klassen, ohne dass Stil vordefiniert sind'
+        arguments:
+          name: 'Name des Themes'
+    applications:
+      init:
+        title: 'Initialisiere das System für die Nutzung von "middleman-presentation"'
+        options:
+          configuration_file: 'Pfad zur Konfigurationsdatei'
+          force: 'Erzwinge die Erzeugung der Konfigurationsdatei'
+    predefined_slides:
+      init:
+        title: 'Erzeuge vordefinierte Folien'
+        options:
+          directory: 'Verzeichnis, in dem die vordefinierten Folien angelegt werden sollen'
+    slides:
+      create:
+        title: 'Erzeuge einer neue Folie oder bearbeite eine existierende Folie. Wenn Sie mehrere Folien erzeugen/bearbeiten möchten, geben Sie die Namen der Folien durch ein Leerzeichen getrennt ein, z.B. "01 02 03".'
+        options:
+          edit: 'Start des Editors aus ENV["EDITOR"] um eine Folie zu editieren.'
+          editor_command: 'Editor-Kommando, welches benutzt werden soll, z.B. "ENV["EDITOR"] --servername presentation --remote-tab".'
+          error_on_duplicates: 'Generierung eines Fehler, wenn mehrere Folien den gleichen Namen aufweisen.'
+          title: 'Titel der Folie.'
+    configs:
+      show:
+        title: 'Anzeige der Konfiguration.'
+        options:
+          defaults: 'Anzeige der Konfiguration mit Standard-Werten.'
+    plugins:
+      show:
+        title: 'Anzeige verfügbarer Plugins.'
+    support_informations:
+      show:
+        title: 'Sammeln von Informationen für den Support.'
     styles:
       show:
-        title: 'Verfügbare CSS-Klassen in "Vorlagen", welche von "middleman-presentation" verwendet werden:'
+        title: 'Anzeige verfügbarer CSS-Stile.'
+        headline: 'Verfügbare CSS-Klassen in "Vorlagen", welche von "middleman-presentation" verwendet werden:'
   slides:
     contact:
       title: Kontakt
