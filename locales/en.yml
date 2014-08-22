@@ -1,6 +1,7 @@
 ---
 en:
   errors:
+    standard_error: "An error occured. Please see the attached message\n%{message}"
     argument_error: The value "%{value}" for "%{argument}" is invalid.
     undefined_arguments: At least one argument of "%{arguments}" needs to be defined.
     doubled_arguments: Only one argument of "%{arguments}" is allowed to be defined.

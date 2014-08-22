@@ -1,6 +1,7 @@
 ---
 de:
   errors:
+    standard_error: "Es ist ein Fehler aufgetreten. Die Fehlermeldugn folgt:\n%{message}"
     argument_error: Der Wert "%{value}" für "%{argument}" ist unzulässig.
     undefined_arguments: Mindestens ein argument für %{arguments} muss angegeben werden.
     doubled_arguments: Für %{arguments} darf nur ein Argument angegeben werden.
