@@ -80,7 +80,7 @@ module Middleman
             system(editor.join(' '))
           end
         else
-          fail Thor::Error, Middleman::Presentation.t('errors.extension_not_activated') 
+          fail Thor::Error, Middleman::Presentation.t('errors.extension_not_activated')
         end
       end
     end

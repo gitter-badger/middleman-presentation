@@ -110,7 +110,7 @@ module Middleman
 
         def set_language
           @language = FeduxOrgStdlib::ShellLanguageDetector.new.detect(
-            allowed: Middleman::Presentation.locale_configurator.available_locales, 
+            allowed: Middleman::Presentation.locale_configurator.available_locales,
             overwrite: options[:language]
           ).language_code
         end
@@ -263,7 +263,7 @@ module Middleman
             fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
 
             result = run('bower update', capture: true) if options[:install_assets] == true
-            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', result: result)unless $CHILD_STATUS.exitstatus == 0
+            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', result: result) unless $CHILD_STATUS.exitstatus == 0
           end
         end
 
@@ -271,7 +271,7 @@ module Middleman
           inside directory do
             Bundler.with_clean_env do
               result = run('bundle install', capture: true) if options[:install_assets] == true
-              fail Thor::Error, Middleman::Presentation.t('errors.bundle_command_not_found', result: result)unless $CHILD_STATUS.exitstatus == 0
+              fail Thor::Error, Middleman::Presentation.t('errors.bundle_command_not_found', result: result) unless $CHILD_STATUS.exitstatus == 0
             end
           end
         end

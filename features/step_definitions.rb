@@ -119,7 +119,7 @@ end
 
 When(/^I successfully run `([^`]+)` in clean environment$/) do |command|
   Bundler.with_clean_env do
-    step %Q{I successfully run `#{command}`}
+    step %Q(I successfully run `#{command}`)
   end
 end
 
