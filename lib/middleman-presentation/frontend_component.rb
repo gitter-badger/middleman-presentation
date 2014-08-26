@@ -26,7 +26,11 @@ module Middleman
       # @param [String] github
       #   Name of github repository, e.g. <account>/<repository>
       def initialize(resource_locator: nil, version: nil, name: nil, github: nil, javascripts: [], stylesheets: [])
-        @resource_locator = if version
+        @resource_locator = if resource_locator =~ /\A#{URI.regexp}\z/
+                              Addressable::URI.heuristic_parse resource_locator
+                            elsif github
+                              Addressable::URI.heuristic_parse format('https://github.com/%s.git', github)
+                            elsif version
                               Class.new do
                                 attr_reader :to_s
 
@@ -34,13 +38,10 @@ module Middleman
                                   @to_s = value
                                 end
                               end.new(version)
-                            elsif github
-                              Addressable::URI.heuristic_parse format('https://github.com/%s.git', github)
-                            elsif resource_locator =~ /\A#{URI.regexp}\z/
-                              Addressable::URI.heuristic_parse resource_locator
                             else
                               nil
                             end
+        @version = version
 
         fail ArgumentError, Middleman::Presentation.t('errors.undefined_arguments', arguments: %w(resource_locator github version).to_list) if @resource_locator.blank?
 

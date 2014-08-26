@@ -5,12 +5,13 @@ module Middleman
     class FrontendComponentsManager
       private
 
-      attr_reader :frontend_components
+      attr_reader :frontend_components, :creator
 
       public
 
-      def initialize
+      def initialize(creator: FrontendComponent)
         @frontend_components = Set.new
+        @creator = creator
       end
 
       # Return available frontend components
@@ -25,15 +26,17 @@ module Middleman
           return
         end
 
-        component = if c.is_a? FrontendComponent
+        component = if c.is_a? creator
                       c
                     elsif c.is_a? Array
-                      FrontendComponent.parse(c)
+                      creator.parse(c)
+                    elsif c.respond_to? :to_h
+                      creator.new(**c.to_h)
                     else
-                      FrontendComponent.new(**c)
+                      fail ArgumentError, Middleman::Presentation.t('errors.invalid_frontend_component')
                     end
 
-        frontend_components << component
+        frontend_components <<  component
       end
 
       # List installed plugins
@@ -48,7 +51,7 @@ module Middleman
           }
         end
 
-        List.new(data).to_s
+        List.new(data).to_s(fields: [:name, :resource_locator, :version, :javascripts, :stylesheets])
       end
     end
   end

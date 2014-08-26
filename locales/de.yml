@@ -3,6 +3,7 @@ de:
   errors:
     standard_error: "Es ist ein Fehler aufgetreten. Die Fehlermeldugn folgt:\n%{message}"
     argument_error: Der Wert "%{value}" für "%{argument}" ist unzulässig.
+    invalid_frontend_component: Es werden nur FrontendComponents, Hashes oder Arrays mit Hashes unterstützt.
     undefined_arguments: Mindestens ein argument für %{arguments} muss angegeben werden.
     doubled_arguments: Für %{arguments} darf nur ein Argument angegeben werden.
     template_is_undefined: Sie müssen Informationen über Ihr "Standard-Theme" in der "presentations.yaml" hinterlegen.
