@@ -83,7 +83,7 @@ module Middleman
 
       # @private
       def <=>(other)
-        name <=> othername
+        name <=> other.name
       end
     end
   end

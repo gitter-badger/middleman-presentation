@@ -38,7 +38,7 @@ module Middleman
 
       # String representation
       def to_s
-        data = frontend_components.reduce([]) { |a, e| a << { name: e.name, path: e.path } }
+        data = frontend_components.sort.reduce([]) { |a, e| a << { name: e.name, path: e.path } }
         List.new(data).to_s
       end
     end

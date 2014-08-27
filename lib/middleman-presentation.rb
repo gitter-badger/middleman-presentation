@@ -53,6 +53,7 @@ require 'middleman-presentation/assets_manager'
 require 'middleman-presentation/fixtures_manager'
 require 'middleman-presentation/helpers_manager'
 require 'middleman-presentation/frontend_components_manager'
+require 'middleman-presentation/default_loader'
 require 'middleman-presentation/main'
 
 require 'middleman-presentation/predefined_slide_templates_directory'

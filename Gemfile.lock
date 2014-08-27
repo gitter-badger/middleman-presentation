@@ -6,14 +6,14 @@ PATH
       bundler
       erubis
       facter
-      fedux_org-stdlib (>= 0.7.6)
+      fedux_org-stdlib (>= 0.7.11)
       hirb
       i18n
       kramdown
       launchy (~> 2.4.2)
       liquid
       middleman (~> 3.3.4)
-      middleman-sprockets (~> 3.3.7)
+      middleman-sprockets (~> 3.3.8)
       nokogiri
       rake
       tzinfo (>= 0.3.0)
@@ -110,7 +110,7 @@ GEM
     execjs (2.2.1)
     facter (2.2.0)
       CFPropertyList (~> 2.2.6)
-    fedux_org-stdlib (0.7.10)
+    fedux_org-stdlib (0.7.11)
       activesupport
     ffi (1.9.3)
     filegen (0.4.3)

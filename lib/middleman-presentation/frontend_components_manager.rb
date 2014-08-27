@@ -16,7 +16,7 @@ module Middleman
 
       # Return available frontend components
       def available_frontend_components
-        frontend_components.to_a.sort
+        frontend_components.to_a
       end
 
       # Add component
@@ -37,7 +37,7 @@ module Middleman
 
       # List installed plugins
       def to_s
-        data = frontend_components.reduce([]) do |a, e|
+        data = frontend_components.sort.reduce([]) do |a, e|
           a << {
             name: e.name,
             resource_locator: e.resource_locator,

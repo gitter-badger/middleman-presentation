@@ -60,55 +60,6 @@ module Middleman
           fail Thor::Error, Middleman::Presentation.t('errors.init_middleman_failed') unless $CHILD_STATUS.exitstatus == 0
         end
 
-        def add_frontend_components
-          Middleman::Presentation.frontend_components_manager.add(
-            name: 'jquery',
-            version: '~1.11',
-            javascripts: %w(dist/jquery)
-          )
-
-          Middleman::Presentation.frontend_components_manager.add(
-            name: 'reveal.js',
-            version: 'latest',
-            javascripts: %w(lib/js/head.min js/reveal.min)
-          )
-
-          Middleman::Presentation.frontend_components_manager.add(
-            name: 'lightbox2',
-            github: 'dg-vrnetze/revealjs-lightbox2',
-            javascripts: %w(js/lightbox)
-          )
-
-          Middleman::Presentation.frontend_components_manager.add(
-            name: 'middleman-presentation-theme-common',
-            github: 'dg-vrnetze/middleman-presentation-theme-common',
-            stylesheets: %w(stylesheets/middleman-presentation-theme-common),
-            javascripts: %w(javascripts/middleman-presentation-theme-common)
-          )
-
-          # rubocop:disable Style/GuardClause
-          unless Middleman::Presentation.config.components.blank?
-            Middleman::Presentation.frontend_components_manager.add(
-              Middleman::Presentation.config.components
-            )
-          end
-          # rubocop:enable Style/GuardClause
-        end
-
-        def add_theme
-          if Middleman::Presentation.config.theme.blank?
-            Middleman::Presentation.frontend_components_manager.add(
-              name: 'middleman-presentation-theme-default',
-              github: 'maxmeyer/middleman-presentation-theme-default',
-              stylesheets: %w(stylesheets/middleman-presentation-theme-default)
-            )
-          else
-            Middleman::Presentation.frontend_components_manager.add(
-              Middleman::Presentation.config.theme
-            )
-          end
-        end
-
         def set_language
           @language = FeduxOrgStdlib::ShellLanguageDetector.new.detect(
             allowed: Middleman::Presentation.locale_configurator.available_locales,

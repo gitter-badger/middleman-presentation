@@ -24,7 +24,7 @@ module Middleman
 
       # Show assets which should be imported
       def to_s
-        data = assets.reduce([]) do |a, e|
+        data = assets.sort.reduce([]) do |a, e|
           a << { source_path: e.source_path, destination_directory: e.destination_directory }
         end
 
@@ -70,32 +70,22 @@ module Middleman
         assets.dup.each(&block)
       end
 
-      # Load default components
-      def load_default_components(bower_directory)
-        include_filter = %w(
-          .png  .gif .jpg .jpeg .svg .webp
-          .eot  .otf .svc .woff .ttf
-          .js .coffee
-          .css .scss
-        ).map { |e| Regexp.new("#{Regexp.escape(e)}$") }
-
-        include_filter << /notes\.html/
-
-        output_directories = {
-            /notes\.html$/ => Pathname.new('javascripts'),
-            /pdf\.css$/ => Pathname.new('stylesheets')
-        } 
-
-        load_from(
-          bower_directory,
-          exclude_filter: [ /src/, /test/, /demo/ ],
-          include_filter: include_filter,
-          output_directories: output_directories,
-        )
-      end
-
-      private
-
+      # Generic load from
+      #
+      # @param [String] base_path
+      #   The directory to load assets from.
+      # 
+      # @param [Hash] output_directories
+      #   A hash containing information about the output directories. The key
+      #   needs to be a regular expression matching the filename. The value is
+      #   the output directory.
+      #
+      # @param [Array] include_filter
+      #   A list of regular expressions. All matching assets are included, all
+      #   other ones not.
+      #
+      # @param [Array] exclude_filter
+      #   A list of regular expressions. All matching assets are not included.
       def load_from(base_path, output_directories:, include_filter:, exclude_filter:)
         base_path   = File.expand_path(base_path)
         search_path = File.join(base_path, '**', '*')

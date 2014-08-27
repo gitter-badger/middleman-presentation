@@ -40,65 +40,8 @@ module Middleman
           paths.map { |f| File.expand_path(f, __FILE__) }
         )
       end
-
-      def load_plugins
-        plugins_manager.load_plugins if config.plugins_enable == true
-      end
-
-      def load_default_assets_in_bower_directory
-        assets_manager.load_default_components(config.bower_directory)
-      end
-
-      def add_default_components
-        Middleman::Presentation.frontend_components_manager.add(
-          name: 'jquery',
-          version: '~1.11',
-          javascripts: %w(dist/jquery)
-        )
-
-        Middleman::Presentation.frontend_components_manager.add(
-          name: 'reveal.js',
-          version: 'latest',
-          javascripts: %w(lib/js/head.min js/reveal.min)
-        )
-
-        Middleman::Presentation.frontend_components_manager.add(
-          name: 'lightbox2',
-          github: 'dg-vrnetze/revealjs-lightbox2',
-          javascripts: %w(js/lightbox)
-        )
-
-        Middleman::Presentation.frontend_components_manager.add(
-          name: 'middleman-presentation-theme-common',
-          github: 'dg-vrnetze/middleman-presentation-theme-common',
-          stylesheets: %w(stylesheets/middleman-presentation-theme-common),
-          javascripts: %w(javascripts/middleman-presentation-theme-common)
-        )
-
-        # rubocop:disable Style/GuardClause
-        unless Middleman::Presentation.config.components.blank?
-          Middleman::Presentation.frontend_components_manager.add(
-            Middleman::Presentation.config.components
-          )
-        end
-        # rubocop:enable Style/GuardClause
-
-        if Middleman::Presentation.config.theme.blank?
-          Middleman::Presentation.frontend_components_manager.add(
-            name: 'middleman-presentation-theme-default',
-            github: 'maxmeyer/middleman-presentation-theme-default',
-            stylesheets: %w(stylesheets/middleman-presentation-theme-default)
-          )
-        else
-          Middleman::Presentation.frontend_components_manager.add(
-            Middleman::Presentation.config.theme
-          )
-        end
-      end
     end
   end
 end
 
-Middleman::Presentation.load_default_assets_in_bower_directory
-Middleman::Presentation.add_default_components
-Middleman::Presentation.load_plugins
+Middleman::Presentation::DefaultLoader.new.load

@@ -26,7 +26,7 @@ module Middleman
 
       # Show helper modules
       def to_s
-        data = presentation_helpers.reduce([]) do |a, e|
+        data = presentation_helpers.sort.reduce([]) do |a, e|
           a << { name: e.name, type: e.type, available_methods: e.available_methods.to_list }
         end
 
