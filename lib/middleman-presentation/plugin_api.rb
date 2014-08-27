@@ -26,8 +26,11 @@ module Middleman
       end
 
       # Add assets which should be imported
+      # 
+      # @param [String] path
+      #   Directory where assets are stored
       def add_assets(path)
-        Middleman::Presentation.assets_manager.load_from(path)
+        Middleman::Presentation.assets_manager.load_assets_from(path)
       end
 
       module_function :add_component, :add_helpers, :add_assets

@@ -65,13 +65,35 @@ RSpec.describe SlideList do
 
   context '#each_new' do
     it 'iterates over all non existing slides because they are assumed to be new' do
-      slide = double('Slide')
-      expect(slide).to receive(:exist?).and_return false
+      slide1 = double('Slide')
+      expect(slide1).to receive(:exist?).and_return false
+
+      slide2 = double('Slide')
+      expect(slide2).to receive(:exist?).and_return true
 
       slide_builder = double('Middleman::Presentation::NewSlide')
-      allow(slide_builder).to receive(:new).and_return slide
+      allow(slide_builder).to receive(:new).and_return(slide1, slide2)
 
-      SlideList.new(%w(01), slide_builder: slide_builder).each_new {}
+      result = SlideList.new(%w(01 02), slide_builder: slide_builder).each_new
+      expect(result).to include slide1
+      expect(result).not_to include slide2
+    end
+  end
+
+  context '#each_existing' do
+    it 'iterates over all existing slides' do
+      slide1 = double('Slide')
+      expect(slide1).to receive(:exist?).and_return false
+
+      slide2 = double('Slide')
+      expect(slide2).to receive(:exist?).and_return true
+
+      slide_builder = double('Middleman::Presentation::NewSlide')
+      allow(slide_builder).to receive(:new).and_return(slide1, slide2)
+
+      result = SlideList.new(%w(01 02), slide_builder: slide_builder).each_existing
+      expect(result).not_to include slide1
+      expect(result).to include slide2
     end
   end
 
@@ -85,6 +107,19 @@ RSpec.describe SlideList do
 
       existing_slides = SlideList.new(%w(01), slide_builder: slide_builder).existing_slides
       expect(existing_slides).to include slide
+    end
+  end
+
+  context '#to_a' do
+    it 'converts list to array' do
+      slide1 = double('Slide')
+      slide2 = double('Slide')
+
+      slide_builder = double('Middleman::Presentation::NewSlide')
+      allow(slide_builder).to receive(:new).and_return(slide1, slide2)
+
+      result = SlideList.new(%w(01 02), slide_builder: slide_builder).to_a
+      expect(result).to eq [slide1, slide2]
     end
   end
 end

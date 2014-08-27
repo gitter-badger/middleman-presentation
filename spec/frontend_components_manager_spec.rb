@@ -90,7 +90,7 @@ RSpec.describe FrontendComponentsManager do
         manager.add('garbage')
       end
 
-      expect(result).to include 'asdf'
+      expect(result).to include 'Sorry, but only FrontendComponent, Hash or an Array of Hashes are supported.'
     end
   end
 

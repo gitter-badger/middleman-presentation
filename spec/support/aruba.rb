@@ -32,6 +32,8 @@ module Middleman
 
         def touch_file(file_name)
           in_current_dir do
+            file_name = File.expand_path(file_name)
+            _mkdir(File.dirname(file_name))
             FileUtils.touch file_name
           end
 

@@ -60,11 +60,6 @@ module Middleman
         Pathname.new(path)
       end
 
-      # Is group?
-      def group_object?
-        false
-      end
-
       # Write slide content to file
       def write(**data)
         FileUtils.mkdir_p path.dirname

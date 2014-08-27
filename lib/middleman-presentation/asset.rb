@@ -5,20 +5,14 @@ module Middleman
     class Asset
       include Comparable
 
-      private
-
-      attr_reader :destination_directory
-
-      public
-
-      attr_reader :source_path
+      attr_reader :source_path, :destination_directory
 
       def initialize(source_path:, destination_directory:)
         @source_path           = source_path.blank? ? nil : Pathname.new(source_path)
         @destination_directory = destination_directory.blank? ? nil : Pathname.new(destination_directory)
       end
 
-      # Destination path
+      # Destination path resolver
       def destination_path_resolver
         return proc { |local_path| destination_directory + local_path } if destination_directory
 

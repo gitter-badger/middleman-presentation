@@ -79,6 +79,25 @@ RSpec.describe NewSlide do
     end
   end
 
+  context '#write' do
+    it 'writes content of slide to filesystem' do
+      slide = NewSlide.new('01.erb', base_path: absolute_path('source', 'slides'))
+      slide.write(title: 'world')
+
+      in_current_dir do
+        slide_content = File.read('source/slides/01.html.erb')
+
+        expect(slide_content).to eq <<-EOS.strip_heredoc.chomp
+        <section>
+          <h1>
+            world
+          </h1>
+        </section>
+        EOS
+      end
+    end
+  end
+
   context '#to_s' do
     it 'returns string representation of self' do
       slide = NewSlide.new('02.md', base_path: absolute_path('source', 'slides'))

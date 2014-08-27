@@ -5,22 +5,17 @@ module Middleman
     class AssetsManager
       private
 
-      attr_reader :assets, :bower_directory
+      attr_reader :assets, :creator
 
       public
 
-      def initialize(bower_directory:)
+      def initialize(creator: Asset)
         @assets          = Set.new
-        @bower_directory = File.expand_path(bower_directory)
+        @creator         = creator
       end
 
-      # Load default assets
-      def load_default_assets_in_bower_directory
-        default_assets.each { |k, v| add(k, v) }
-      end
-
-      # Add helpers
-      def add(source_path, destination_directory = nil, creator: Asset)
+      # Add asset
+      def add(source_path, destination_directory = nil)
         assets << creator.new(
           source_path: source_path,
           destination_directory: destination_directory
@@ -33,18 +28,40 @@ module Middleman
           a << { source_path: e.source_path, destination_directory: e.destination_directory }
         end
 
-        List.new(data).to_s
+        List.new(data).to_s(fields: [:source_path, :destination_directory])
       end
 
       # Load assets from path
-      def load_from(base_path)
-        search_path = File.join(base_path, '**', '*')
+      #
+      # Make sure the path has the same layout like asset gems. Supported paths:
+      #
+      # * assets
+      # * app
+      # * app/assets
+      # * vendor
+      # * vendor/assets
+      # * lib
+      # * lib/assets
+      #
+      # This method will remove everything till the "type"-directory, e.g. image, stylesheets, ...
+      #
+      # @example Asset
+      #   vendor/assets/images/image.png => images/image.png
+      #   assets/css/all.scss            => css/all.scss
+      #
+      # @see {#load_components_from} To load bower components
+      def load_assets_from(base_path, output_directories: [], include_filter: [], exclude_filter: [])
+        asset_dirs = %w(assets app app/assets vendor vendor/assets lib lib/assets)
 
-        Dir.glob(search_path).each do |p|
-          next unless File.file? p
+        [base_path].product(asset_dirs).each do |base, asset|
+          path = File.join(base, asset)
 
-          new_path = File.join(*Pathname.new(p).relative_path_from(Pathname.new(base_path)).each_filename.to_a.slice(1..-1))
-          add(new_path)
+          load_from(
+            path,
+            output_directories: output_directories,
+            include_filter: include_filter,
+            exclude_filter: exclude_filter
+          )
         end
       end
 
@@ -53,37 +70,54 @@ module Middleman
         assets.dup.each(&block)
       end
 
+      # Load default components
+      def load_default_components(bower_directory)
+        include_filter = %w(
+          .png  .gif .jpg .jpeg .svg .webp
+          .eot  .otf .svc .woff .ttf
+          .js .coffee
+          .css .scss
+        ).map { |e| Regexp.new("#{Regexp.escape(e)}$") }
+
+        include_filter << /notes\.html/
+
+        output_directories = {
+            /notes\.html$/ => Pathname.new('javascripts'),
+            /pdf\.css$/ => Pathname.new('stylesheets')
+        } 
+
+        load_from(
+          bower_directory,
+          exclude_filter: [ /src/, /test/, /demo/ ],
+          include_filter: include_filter,
+          output_directories: output_directories,
+        )
+      end
+
       private
 
-      def default_assets
-        result = {}
+      def load_from(base_path, output_directories:, include_filter:, exclude_filter:)
+        base_path   = File.expand_path(base_path)
+        search_path = File.join(base_path, '**', '*')
 
-        patterns = [
-          '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
-          '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
-          '.js',                                    # Javascript
-        ].map { |e| File.join(bower_directory, '**', "*#{e}") }
+        Dir.glob(search_path).sort.each do |p|
+          next unless File.file? p
+          next if !include_filter.blank? && Array(include_filter).none? { |f| Regexp.new(f) === p }
+          next if !exclude_filter.blank? && Array(exclude_filter).any? { |f| Regexp.new(f) === p }
 
-        list = Rake::FileList.new(*patterns) do |l|
-          l.exclude(/src/)
-          l.exclude(/test/)
-          l.exclude(/demo/)
-          l.exclude { |f| !File.file? f }
+          new_path   = File.join(*Pathname.new(p).relative_path_from(Pathname.new(base_path)).each_filename.to_a)
+
+          # assets will be find multiple times: vendor/ will find assets in vendor/assets as well
+          next if new_path.to_s.start_with?('assets')
+
+          output_dir = output_directories.find(proc { [] }) { |pattern, _| pattern === p }.last
+
+          args = []
+          args << new_path
+          args << output_dir if output_dir
+
+          add(*args)
         end
-
-        list.each do |f|
-          result[Pathname.new(f).relative_path_from(Pathname.new(bower_directory))] = nil
-        end
-
-        Rake::FileList.new(File.join(bower_directory, '**', 'notes.html')).each do |f|
-          result[Pathname.new(f).relative_path_from(Pathname.new(bower_directory))] = Pathname.new('javascripts')
-        end
-
-        Rake::FileList.new(File.join(bower_directory, '**', 'pdf.css')).each do |f|
-          result[Pathname.new(f).relative_path_from(Pathname.new(bower_directory))] = Pathname.new('stylesheets')
-        end
-
-        result
       end
     end
   end

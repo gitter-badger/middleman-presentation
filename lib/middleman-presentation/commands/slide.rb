@@ -53,7 +53,7 @@ module Middleman
             l.transform_with Middleman::Presentation::Transformers::SortSlides.new
           end
 
-          slide_list.each_old do |slide|
+          slide_list.each_existing do |slide|
             $stderr.puts format('%-20s %-s', 'exist'.colorize(color: :blue, mode: :bold), slide.relative_path)
           end
 

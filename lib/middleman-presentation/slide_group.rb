@@ -28,11 +28,6 @@ module Middleman
 
         template.result(slides: slides_content)
       end
-
-      # Is group
-      def group_object?
-        true
-      end
     end
   end
 end

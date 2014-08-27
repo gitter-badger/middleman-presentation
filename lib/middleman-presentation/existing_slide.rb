@@ -41,11 +41,6 @@ module Middleman
         path.exist?
       end
 
-      # Does this object group multiple slides
-      def group_object?
-        false
-      end
-
       # Render slide
       def render(&block)
         result = []
@@ -60,6 +55,7 @@ module Middleman
         path.to_s
       end
 
+      # Return partial path of existing slide
       def partial_path
         dirname, base = relative_path.split
 
@@ -68,6 +64,7 @@ module Middleman
         dirname + base
       end
 
+      # Return base name for slide
       def base_name
         base = relative_path.basename
 
@@ -88,46 +85,3 @@ module Middleman
     end
   end
 end
-#
-#      # Check type of slide
-#      def type?(t)
-#        type == t
-#      end
-#
-#      # Determine type of slide
-#      def type
-#        return :erb    if extname? '.erb'
-#        return :md     if extname? '.md', '.markdown', '.mkd'
-#        return :liquid if extname? '.l', '.liquid'
-#
-#        :custom
-#      end
-#      private :type
-#
-#      # Check if slide has given extensions
-#      def extname?(*extensions)
-#        return false if !path && !name
-#
-#        extensions.any? { |e| extname == e }
-#      end
-#      private :extname?
-#
-#      # Return string representation of self
-#      def to_s
-#        path
-#      end
-#
-#      # Return basename of slide
-#      def basename
-#        File.basename(name).scan(/^([^.]+)(?:\..+)?/).flatten.first
-#      end
-#
-#      # Check if basename is equal
-#      def basename?(b)
-#        basename == b
-#      end
-#      private :basename?
-#
-#    end
-#  end
-# end

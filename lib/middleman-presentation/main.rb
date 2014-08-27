@@ -6,7 +6,7 @@ module Middleman
     @config                      = PresentationConfig.new
     @logger                      = Logger.new
     @helpers_manager             = HelpersManager.new
-    @assets_manager              = AssetsManager.new(bower_directory: @config.bower_directory)
+    @assets_manager              = AssetsManager.new
     @frontend_components_manager = FrontendComponentsManager.new
     @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
     @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
@@ -46,7 +46,7 @@ module Middleman
       end
 
       def load_default_assets_in_bower_directory
-        assets_manager.load_default_assets_in_bower_directory
+        assets_manager.load_default_components(config.bower_directory)
       end
     end
   end
