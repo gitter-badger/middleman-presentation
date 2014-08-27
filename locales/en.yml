@@ -108,6 +108,15 @@ en:
         title: 'Show configuration'
         options:
           defaults: 'Show default configuration'
+    helpers:
+      show:
+        title: 'Show available presentation helpers'
+    assets:
+      show:
+        title: 'Show available asset files'
+    frontend_components:
+      show:
+        title: 'Show available frontend components'
     plugins:
       show:
         title: 'Show available plugins'

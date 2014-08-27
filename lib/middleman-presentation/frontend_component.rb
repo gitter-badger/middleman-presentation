@@ -3,6 +3,8 @@ module Middleman
   module Presentation
     # A frontend component
     class FrontendComponent
+      include Comparable
+
       attr_reader :name, :resource_locator, :version, :javascripts, :stylesheets
 
       class << self
@@ -77,6 +79,11 @@ module Middleman
       #   Return the paths to stylesheets prepended with "name/"
       def stylesheets
         @stylesheets.map { |s| format '%s/%s', name, s }
+      end
+
+      # @private
+      def <=>(other)
+        name <=> othername
       end
     end
   end

@@ -2,6 +2,8 @@
 module Middleman
   module Presentation
     class PresentationHelper
+      include Comparable
+
       private
 
       attr_reader :helper_container
@@ -55,6 +57,11 @@ module Middleman
       # Parse an array
       def self.parse(*modules)
         modules.flatten.map { |m| new(m) }
+      end
+
+      # @private
+      def <=>(other)
+        name <=> other.name
       end
     end
   end

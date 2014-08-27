@@ -108,6 +108,15 @@ de:
         title: 'Anzeige der Konfiguration.'
         options:
           defaults: 'Anzeige der Konfiguration mit Standard-Werten.'
+    helpers:
+      show:
+        title: 'Anzeige verfügbarer Hilfs-Methoden zur Verwendung in den Präsentationsfolien'
+    assets:
+      show:
+        title: 'Anzeige verfügbarer Assets zur Verwendung in den Präsentationsfolien'
+    frontend_components:
+      show:
+        title: 'Anzeige verfügbarer Frontend-Komponenten'
     plugins:
       show:
         title: 'Anzeige verfügbarer Plugins.'

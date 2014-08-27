@@ -16,7 +16,7 @@ module Middleman
 
       # Return available frontend components
       def available_frontend_components
-        frontend_components.to_a
+        frontend_components.to_a.sort
       end
 
       # Add component

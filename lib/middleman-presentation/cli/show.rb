@@ -28,6 +28,21 @@ module Middleman
           puts Middleman::Presentation.plugins_manager.to_s
         end
 
+        desc 'helpers', Middleman::Presentation.t('views.helpers.show.title')
+        def helpers
+          puts Middleman::Presentation.helpers_manager.to_s
+        end
+
+        desc 'assets', Middleman::Presentation.t('views.assets.show.title')
+        def assets
+          puts Middleman::Presentation.assets_manager.to_s
+        end
+
+        desc 'frontend_components', Middleman::Presentation.t('views.frontend_components.show.title')
+        def frontend_components
+          puts Middleman::Presentation.frontend_components_manager.to_s
+        end
+
         desc 'style', Middleman::Presentation.t('views.styles.show.title')
         def style
           css_classes = Middleman::Presentation::CssClassExtracter.new.extract Middleman::Presentation.stylable_files, ignore: %w(slides reveal)
