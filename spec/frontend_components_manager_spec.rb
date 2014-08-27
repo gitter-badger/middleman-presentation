@@ -83,11 +83,14 @@ RSpec.describe FrontendComponentsManager do
       manager.add(data)
     end
 
-    it 'fails on unknown type' do
+    it 'outputs warning on unknown type' do
       manager = FrontendComponentsManager.new(creator: creator)
-      expect {
-        manager.add('garbabe')
-      }.to raise_error ArgumentError
+
+      result = capture :stderr do
+        manager.add('garbage')
+      end
+
+      expect(result).to include 'asdf'
     end
   end
 

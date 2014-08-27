@@ -5,31 +5,31 @@ RSpec.describe ExistingSlide do
 
   context '#file_name' do
     it 'extracts file name' do
-      slide1 = ExistingSlide.new(File.join(working_directory, 'source', 'slides', '01.html.md'))
+      slide1 = ExistingSlide.new(absolute_path('source', 'slides', '01.html.md'))
       expect(slide1.file_name).to eq Pathname.new('01.html.md')
     end
 
     it 'extracts file name with group' do
-      slide1 = ExistingSlide.new(File.join(working_directory, 'source', 'slides', 'group', '01.html.md'))
+      slide1 = ExistingSlide.new(absolute_path('source', 'slides', 'group', '01.html.md'))
       expect(slide1.file_name).to eq Pathname.new('01.html.md')
     end
   end
 
   context '#group' do
     it 'extracts group name' do
-      slide1 = ExistingSlide.new(File.join(working_directory, 'source', 'slides', 'group', '01.html.md'), base_path: File.join(working_directory, 'source'))
+      slide1 = ExistingSlide.new(absolute_path('source', 'slides', 'group', '01.html.md'), base_path: absolute_path('source'))
       expect(slide1.group).to eq 'group'
     end
 
     it 'returns nil if no group name is available' do
-      slide1 = ExistingSlide.new(File.join(working_directory, 'source', 'slides', '01.html.md'), base_path: File.join(working_directory, 'source'))
+      slide1 = ExistingSlide.new(absolute_path('source', 'slides', '01.html.md'), base_path: absolute_path('source'))
       expect(slide1.group).to be_nil
     end
   end
 
   context '#path' do
     it 'has path' do
-      path = File.join(working_directory, 'source', 'slides', 'group', '01.html.md')
+      path = absolute_path('source', 'slides', 'group', '01.html.md')
       slide1 = ExistingSlide.new(path)
       expect(slide1.path).to eq Pathname.new(path)
     end
@@ -92,8 +92,8 @@ RSpec.describe ExistingSlide do
 
   context '#exist?' do
     it 'succeeds if slide file exists in filesystem' do
-      file = create_file '02.html.md'
-      slide = ExistingSlide.new(file)
+      file = touch_file '02.html.md'
+      slide = ExistingSlide.new(absolute_path(file))
 
       expect(slide).to be_exist
     end
@@ -115,20 +115,20 @@ RSpec.describe ExistingSlide do
 
   context '#basename' do
     it 'reduces slide file name to minimum' do
-      slide = ExistingSlide.new(File.join(working_directory, '02.html.erb'))
+      slide = ExistingSlide.new(absolute_path('02.html.erb'))
       expect(slide.base_name).to eq '02'
     end
   end
 
   context '#match?' do
     it 'matches full path' do
-      slide = ExistingSlide.new(File.join(working_directory, '02.html.md'))
+      slide = ExistingSlide.new(absolute_path('02.html.md'))
 
       expect(slide).to be_match(/02/)
     end
 
     it 'supports string' do
-      slide = ExistingSlide.new(File.join(working_directory, '02.html.md'))
+      slide = ExistingSlide.new(absolute_path('02.html.md'))
 
       expect(slide).to be_match('02')
     end
@@ -136,13 +136,13 @@ RSpec.describe ExistingSlide do
 
   context '#group?' do
     it 'succeeds if slide has group' do
-      slide = ExistingSlide.new(File.join(working_directory, 'source', 'slides', 'group', '02.html.md'), base_path: File.join(working_directory, 'source'))
+      slide = ExistingSlide.new(absolute_path('source', 'slides', 'group', '02.html.md'), base_path: absolute_path('source'))
 
       expect(slide).to be_group 'group'
     end
 
     it 'fails if slide has not group' do
-      slide = ExistingSlide.new(File.join(working_directory, 'source', 'slides', '02.html.md'), base_path: File.join(working_directory, 'source'))
+      slide = ExistingSlide.new(absolute_path('source', 'slides', '02.html.md'), base_path: absolute_path('source'))
 
       expect(slide).not_to be_group 'group'
     end
@@ -150,7 +150,7 @@ RSpec.describe ExistingSlide do
 
   context '#partial_path' do
     it 'returns path based on base without extensions' do
-      slide = ExistingSlide.new(File.join(working_directory, 'slides', '02.html.md'), base_path: working_directory)
+      slide = ExistingSlide.new(absolute_path('slides', '02.html.md'), base_path: absolute_path('.'))
 
       expect(slide.partial_path).to eq Pathname.new('slides/02')
     end

@@ -5,7 +5,8 @@ RSpec.describe IgnoreFile do
   context '#initialize' do
     it 'succeeds if path is given' do
       expect do
-        IgnoreFile.new create_file 'ignore_file'
+        file = touch_file('ignore_file')
+        IgnoreFile.new absolute_path(file) 
       end.not_to raise_error
     end
 
@@ -24,21 +25,21 @@ RSpec.describe IgnoreFile do
         slide2 = instance_double('Middleman::Presentation::ExistingSlide')
         allow(slide2).to receive(:match?).and_return(false)
 
-        path = create_file 'ignore_file', <<-EOS.strip_heredoc
+        file = write_file 'ignore_file', <<-EOS.strip_heredoc
         01
         EOS
 
-        file = IgnoreFile.new(path)
+        ignore_file = IgnoreFile.new(absolute_path(file))
 
-        expect(file).to be_ignore slide1
-        expect(file).not_to be_ignore slide2
+        expect(ignore_file).to be_ignore slide1
+        expect(ignore_file).not_to be_ignore slide2
       end
 
       it 'strips off full line comments' do
         slide1 = instance_double('Middleman::Presentation::ExistingSlide')
         allow(slide1).to receive(:match?).with(/(?-mix:^!$)|(?-mix:02)/).and_return(false)
 
-        path = create_file 'ignore_file', <<-EOS.strip_heredoc
+        path = write_file 'ignore_file', <<-EOS.strip_heredoc
         # 01
         02
         EOS
@@ -53,13 +54,13 @@ RSpec.describe IgnoreFile do
         allow(slide1).to receive(:match?).and_return(false)
         allow(slide1).to receive(:match?).with(/(?-mix:^!$)|(?-mix:01)/).and_return(true)
 
-        path = create_file 'ignore_file', <<-EOS.strip_heredoc
+        file = write_file 'ignore_file', <<-EOS.strip_heredoc
         01 # hello world
         EOS
 
-        file = IgnoreFile.new(path)
+        ignore_file = IgnoreFile.new(absolute_path(file))
 
-        expect(file).to be_ignore slide1
+        expect(ignore_file).to be_ignore slide1
       end
 
       it 'handles non existing ignore file' do

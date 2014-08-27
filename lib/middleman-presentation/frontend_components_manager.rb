@@ -21,22 +21,18 @@ module Middleman
 
       # Add component
       def add(c)
-        if c.blank?
-          Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.add_empty_frontend_component')
+        if c.is_a? creator
+          component = c
+        elsif c.is_a? Array
+          component = creator.parse(c)
+        elsif c.respond_to? :to_h
+          component = creator.new(**c.to_h)
+        else
+          Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.invalid_frontend_component')
           return
         end
 
-        component = if c.is_a? creator
-                      c
-                    elsif c.is_a? Array
-                      creator.parse(c)
-                    elsif c.respond_to? :to_h
-                      creator.new(**c.to_h)
-                    else
-                      fail ArgumentError, Middleman::Presentation.t('errors.invalid_frontend_component')
-                    end
-
-        frontend_components <<  component
+        frontend_components << component
       end
 
       # List installed plugins

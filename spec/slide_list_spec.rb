@@ -32,8 +32,8 @@ RSpec.describe SlideList do
 
   context '#all' do
     it 'holds all slides: existing and not existing' do
-      create_file '01'
-      create_file '02'
+      touch_file '01'
+      touch_file '02'
 
       slide_builder = double('Middleman::Presentation::NewSlide')
 

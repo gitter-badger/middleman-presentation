@@ -52,6 +52,37 @@ RSpec.describe FrontendComponent do
     end
   end
 
+  context '#resource_locator' do
+    it 'uses version as resource_locator' do
+      component = FrontendComponent.new(name: 'asdf', version: '0.0.1')
+      expect(component.resource_locator).to eq '0.0.1'
+    end
+
+    it 'uses url as resource_locator' do
+      component = FrontendComponent.new(resource_locator: 'http://example.org/test')
+      expect(component.resource_locator).to eq 'http://example.org/test'
+    end
+
+    it 'uses github repository as resource_locator' do
+      component = FrontendComponent.new(github: 'example.org/test')
+      expect(component.resource_locator).to eq 'https://github.com/example.org/test.git'
+    end
+  end
+
+  context '#javascripts' do
+    it 'prepends name to javascripts' do
+      component = FrontendComponent.new(name: 'name1', javascripts: %w(js/component.js), resource_locator: 'https://www.example.com/test1')
+      expect(component.javascripts).to include 'name1/js/component.js'
+    end
+  end
+
+  context '#stylesheets' do
+    it 'prepends name to stylesheets' do
+      component = FrontendComponent.new(name: 'name1', stylesheets: %w(css/component.scss), resource_locator: 'https://www.example.com/test1')
+      expect(component.stylesheets).to include 'name1/css/component.scss'
+    end
+  end
+
   context '.parse' do
     let(:hashes) do
       [

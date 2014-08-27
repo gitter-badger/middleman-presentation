@@ -66,6 +66,7 @@ module Middleman
             version: '~1.11',
             javascripts: %w(dist/jquery)
           )
+
           Middleman::Presentation.frontend_components_manager.add(
             name: 'reveal.js',
             version: 'latest',
