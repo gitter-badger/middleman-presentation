@@ -5,43 +5,32 @@ module Middleman
     class HelpersManager
       private
 
-      attr_reader :helper_modules
-
-      protected
-
-      attr_writer :helper_modules
+      attr_reader :presentation_helpers
 
       public
 
-      def initialize
-        @helper_modules = []
+      def initialize(creator: PresentationHelper) 
+        @presentation_helpers = []
       end
 
       # Add helpers
       def add(*modules, &block)
-        fail TypeError, Middleman::Presentation.t('errors.invalid_helper_module') unless modules.all? { |m| m.is_a? Module }
-
-        if block_given?
-          mod = Module.new
-          mod.module_eval(&block)
-          modules += [mod]
-        end
-
-        self.helper_modules = helper_modules + modules
+        presentation_helpers.concat PresentationHelper.parse(modules)
+        presentation_helpers << PresentationHelper.new(block) if block_given?
       end
 
       # Return available helpers
       def available_helpers
-        helper_modules.reduce(Module.new) { |a, e| a.include e }
+        presentation_helpers.reduce(Module.new) { |a, e| a.include e.to_module }
       end
 
       # Show helper modules
       def to_s
-        data = helper_modules.reduce([]) do |a, e|
-          a << { name: e.respond_to?(:name) ? e.name : 'Anonymous' }
+        data = presentation_helpers.reduce([]) do |a, e|
+          a << { name: e.name, type: e.type, available_methods: e.available_methods.to_list }
         end
 
-        List.new(data).to_s
+        List.new(data).to_s(fields: [:name, :type, :available_methods])
       end
     end
   end
