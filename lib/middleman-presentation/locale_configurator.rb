@@ -41,7 +41,7 @@ module Middleman
           return
         end
 
-        I18n.default_locale = l
+        I18n.locale = l
       end
 
       def available_locales
