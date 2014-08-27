@@ -10,5 +10,5 @@ Feature: Show known assets
     When I successfully run `middleman-presentation show assets`
     Then the output should contain:
     """
-    | Middleman::Presentation::Helpers::Slides       | MODULE | "yield_slides"                         |
+    | d3/d3.min.js                                                                               |                       |
     """
