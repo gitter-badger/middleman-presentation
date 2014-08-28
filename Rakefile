@@ -14,7 +14,7 @@ def module_name
 end
 
 def require_name
-  software
+  software.gsub(/-/, '/')
 end
 
 def gemspec
