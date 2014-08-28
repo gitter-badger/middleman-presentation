@@ -6,7 +6,7 @@ Feature: Show available helpers
 
   Scenario: List available helpers
     Given I create a new presentation with title "My Presentation"
-    When I successfully run `middleman-presentation show helpers`
+    When I successfully run `middleman-presentation list helpers`
     Then the output should contain:
     """
     | Middleman::Presentation::Helpers::Slides       | MODULE | "yield_slides"                         |

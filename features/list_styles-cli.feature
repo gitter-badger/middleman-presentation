@@ -5,7 +5,7 @@ Feature: Show available default css classes
   In order to know what needs to be defined
 
   Scenario: Available css classes
-    Given I successfully run `middleman-presentation show style`
+    Given I successfully run `middleman-presentation list style`
     Then the output should contain:
     """
     Available css classes in templates used by middleman-presentation:

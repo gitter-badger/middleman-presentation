@@ -6,7 +6,7 @@ Feature: Show available plugins
 
   Scenario: List available plugins
     Given I create a new presentation with title "My Presentation"
-    When I successfully run `middleman-presentation show plugins`
+    When I successfully run `middleman-presentation list plugins`
     Then the output should contain:
     """
     | test-simple | middleman-presentation-test-simple | true    |

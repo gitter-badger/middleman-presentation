@@ -31,7 +31,9 @@ en:
       show:
         title: 'Show information ...'
       create:
-        title: 'Create something...'
+        title: 'Create something ...'
+      list:
+        title: 'List information about ...'
     presentations:
       create:
         title: 'Initialize a new presentation in DIR (default: $PWD)'
@@ -109,22 +111,22 @@ en:
         options:
           defaults: 'Show default configuration'
     helpers:
-      show:
+      list:
         title: 'Show available presentation helpers'
     assets:
-      show:
+      list:
         title: 'Show available asset files'
     frontend_components:
-      show:
+      list:
         title: 'Show available frontend components'
     plugins:
-      show:
+      list:
         title: 'Show available plugins'
     support_informations:
       show:
         title: 'Collect information for support'
     styles:
-      show:
+      list:
         title: 'Show available styles'
         headline: 'Available css classes in templates used by middleman-presentation:'
   slides:

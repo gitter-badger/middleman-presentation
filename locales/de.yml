@@ -31,7 +31,9 @@ de:
       show:
         title: 'Zeige Informationen über ...'
       create:
-        title: 'Lege etwas an...'
+        title: 'Lege etwas an ...'
+      list:
+        title: 'Liste Informationen über ...'
     presentations:
       create:
         title: 'Erzeuge eine neue Präsentation in Verzeichnis DIR (standard: aktuelles Arbeitsverzeichnis)'
@@ -109,22 +111,22 @@ de:
         options:
           defaults: 'Anzeige der Konfiguration mit Standard-Werten.'
     helpers:
-      show:
+      list:
         title: 'Anzeige verfügbarer Hilfs-Methoden zur Verwendung in den Präsentationsfolien'
     assets:
-      show:
+      list:
         title: 'Anzeige verfügbarer Assets zur Verwendung in den Präsentationsfolien'
     frontend_components:
-      show:
+      list:
         title: 'Anzeige verfügbarer Frontend-Komponenten'
     plugins:
-      show:
+      list:
         title: 'Anzeige verfügbarer Plugins.'
     support_informations:
       show:
         title: 'Sammeln von Informationen für den Support.'
     styles:
-      show:
+      list:
         title: 'Anzeige verfügbarer CSS-Stile.'
         headline: 'Verfügbare CSS-Klassen in "Vorlagen", welche von "middleman-presentation" verwendet werden:'
   slides:

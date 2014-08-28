@@ -12,6 +12,9 @@ module Middleman
 
         desc 'create', Middleman::Presentation.t('views.runners.create.title')
         subcommand 'create', Create
+
+        desc 'list', Middleman::Presentation.t('views.runners.list.title')
+        subcommand 'list', List
       end
     end
   end
