@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem 'middleman-presentation'
+
 group :development, :test do
   gem 'rspec', require: false
   gem 'rspec-legacy_formatters', require: false

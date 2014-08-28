@@ -1,5 +1,5 @@
-require 'middleman/presentation/helpers/version'
-require 'middleman/presentation/helpers/images'
+require 'middleman-presentation/helpers/version'
+require 'middleman-presentation/helpers/images'
 
 module Middleman
   module Presentation
