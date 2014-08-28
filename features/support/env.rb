@@ -9,6 +9,9 @@ SimpleCov.start
 require 'middleman-core'
 require 'middleman-core/step_definitions'
 
+# middleman-presentation
+require 'middleman-presentation/step_definitions'
+
 # Pull in all of the gems including those in the `test` group
 require 'bundler'
 Bundler.require :default, :test, :development

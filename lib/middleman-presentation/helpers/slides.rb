@@ -32,5 +32,3 @@ module Middleman
     end
   end
 end
-
-Middleman::Presentation.helpers_manager.add Middleman::Presentation::Helpers::Slides
