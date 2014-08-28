@@ -24,7 +24,7 @@ end
 
 Given(/^an image "([^"]+)" at "([^"]+)"$/) do |source, destination|
   source = source.gsub(/\.\./, '')
-  write_file File.join('source', destination), File.read(File.expand_path("../../fixtures/images/#{source}", __FILE__))
+  write_file File.join('source', destination), File.read(File.expand_path("../../../fixtures/images/#{source}", __FILE__))
 end
 
 Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
