@@ -72,13 +72,12 @@ require 'middleman-presentation/erb_template'
 require 'middleman-presentation/markdown_template'
 require 'middleman-presentation/liquid_template'
 require 'middleman-presentation/custom_template'
+
 require 'middleman-presentation/transformers/group_slides'
 require 'middleman-presentation/transformers/sort_slides'
 require 'middleman-presentation/transformers/ignore_slides'
 require 'middleman-presentation/transformers/remove_duplicate_slides'
 require 'middleman-presentation/transformers/file_keeper'
-
-require 'middleman-presentation/test_helpers'
 
 require 'middleman-presentation/cli/base'
 require 'middleman-presentation/cli/base_group'
@@ -90,6 +89,12 @@ require 'middleman-presentation/cli/list'
 require 'middleman-presentation/cli/init'
 require 'middleman-presentation/cli/create'
 require 'middleman-presentation/cli/runner'
+
+require 'middleman-presentation/test_helpers'
+
+
+# This one is an external gem now
+require 'middleman-presentation/helpers'
 
 ::Middleman::Extensions.register(:presentation) do
   require 'middleman-presentation/extension'
