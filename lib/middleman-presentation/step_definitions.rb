@@ -22,11 +22,6 @@ Given(/^I set the language for the shell to "([^"]+)"$/) do |language|
   set_env 'LANG', language 
 end
 
-Given(/^an image "([^"]+)" at "([^"]+)"$/) do |source, destination|
-  source = source.gsub(/\.\./, '')
-  write_file File.join('source', destination), File.read(File.expand_path("../../../fixtures/images/#{source}", __FILE__))
-end
-
 Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
   dirs = []
 
