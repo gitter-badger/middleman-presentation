@@ -2,8 +2,8 @@
 require 'spec_helper'
 
 RSpec.describe HelpersManager do
-  let(:helpers_module) do 
-    Module.new do 
+  let(:helpers_module) do
+    Module.new do
       def helper1
         'helper1'
       end

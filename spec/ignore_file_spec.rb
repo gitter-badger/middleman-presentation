@@ -6,7 +6,7 @@ RSpec.describe IgnoreFile do
     it 'succeeds if path is given' do
       expect do
         file = touch_file('ignore_file')
-        IgnoreFile.new absolute_path(file) 
+        IgnoreFile.new absolute_path(file)
       end.not_to raise_error
     end
 

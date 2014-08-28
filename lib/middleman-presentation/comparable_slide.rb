@@ -55,9 +55,9 @@ module Middleman
                   string_or_regex
                 end
 
-        # rubocop:disable Style/CaseEquality:
+        # rubocop:disable Style/CaseEquality
         regex === relative_path.to_s
-        # rubocop:enable Style/CaseEquality:
+        # rubocop:enable Style/CaseEquality
       end
 
       # Check if basename is equal

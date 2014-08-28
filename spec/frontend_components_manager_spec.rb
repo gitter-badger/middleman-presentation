@@ -74,7 +74,7 @@ RSpec.describe FrontendComponentsManager do
           version: '0.0.1',
           javascripts: [],
           stylesheets: []
-        },
+        }
       ]
 
       expect(creator).to receive(:parse).with(data)

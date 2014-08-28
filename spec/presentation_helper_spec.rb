@@ -2,8 +2,8 @@
 require 'spec_helper'
 
 RSpec.describe PresentationHelper do
-  let(:helpers_module) do 
-    Module.new do 
+  let(:helpers_module) do
+    Module.new do
       def helper1
         'helper1'
       end
@@ -27,13 +27,13 @@ RSpec.describe PresentationHelper do
 
   context '.parse' do
     it 'creates helper from array of modules' do
-      helpers_module1 = Module.new do 
+      helpers_module1 = Module.new do
         def helper1
           'helper1'
         end
       end
 
-      helpers_module2 = Module.new do 
+      helpers_module2 = Module.new do
         def helper2
           'helper2'
         end
@@ -46,18 +46,20 @@ RSpec.describe PresentationHelper do
 
       expect(helpers.size).to eq 2
       expect(helpers.first.available_methods).to eq [:helper1]
-      expect(helpers.last.available_methods).to eq  [:helper2]
+      expect(helpers.last.available_methods).to eq [:helper2]
     end
 
     it 'creates helper from array of procs' do
       proc1 = proc { def helper1; end }
-      proc2 = proc { def helper2; end }
+      proc2 = proc do
+        def helper2; end
+      end
 
       helpers = PresentationHelper.parse [proc1, proc2]
 
       expect(helpers.size).to eq 2
       expect(helpers.first.available_methods).to eq [:helper1]
-      expect(helpers.last.available_methods).to eq  [:helper2]
+      expect(helpers.last.available_methods).to eq [:helper2]
     end
 
     it 'supports mixed arrays' do
@@ -68,7 +70,7 @@ RSpec.describe PresentationHelper do
 
       expect(helpers.size).to eq 2
       expect(helpers.first.available_methods).to eq [:helper1]
-      expect(helpers.last.available_methods).to eq  [:helper2]
+      expect(helpers.last.available_methods).to eq [:helper2]
     end
   end
 

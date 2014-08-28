@@ -20,7 +20,7 @@ RSpec.describe SlideGroup do
       expect(slide2).to receive(:partial_path).and_return 'path2'
 
       group = SlideGroup.new(name: 'group', slides: [slide1, slide2], template: template)
-      
+
       expect(group.partial_path).to eq '"path1", "path2"'
     end
   end
@@ -41,7 +41,7 @@ RSpec.describe SlideGroup do
 
   context '#renders' do
     it 'renders slides and uses template' do
-      block = proc { |partial_path| }
+      block = proc { |_partial_path| }
 
       expect(slide1).to receive(:render) { |&passed_block| expect(block).to be passed_block }.and_return('01')
       expect(slide2).to receive(:render) { |&passed_block| expect(block).to be passed_block }.and_return('02')

@@ -1,7 +1,7 @@
 # encoding: utf-8
-#require 'fedux_org_stdlib/environment'
+# require 'fedux_org_stdlib/environment'
 #
-#module Middleman
+# module Middleman
 #  module Presentation
 #    # Spec Helpers
 #    module SpecHelper
@@ -11,8 +11,8 @@
 #      end
 #    end
 #  end
-#end
+# end
 #
-#RSpec.configure do |c|
+# RSpec.configure do |c|
 #  c.include Middleman::Presentation::SpecHelper::Environment
-#end
+# end

@@ -11,7 +11,7 @@ module Middleman
         include ::Aruba::Api
 
         def dirs
-          @dirs ||= ['tmp', 'rspec']
+          @dirs ||= %w(tmp rspec)
         end
 
         def absolute_path(*args)

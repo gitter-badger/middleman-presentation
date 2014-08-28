@@ -93,7 +93,6 @@ require 'middleman-presentation/cli/runner'
 
 require 'middleman-presentation/test_helpers'
 
-
 # This one is an external gem now
 require 'middleman-presentation/helpers'
 

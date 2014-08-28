@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Loads all default helpers, plugins, components
     class DefaultLoader
       private
 
@@ -87,18 +88,18 @@ module Middleman
 
         include_filter << /notes\.html/
 
-        exclude_filter = [ /src/, /test/, /demo/ ]
+        exclude_filter = [/src/, /test/, /demo/]
 
         output_directories = {
           /notes\.html$/ => Pathname.new('javascripts'),
           /pdf\.css$/ => Pathname.new('stylesheets')
-        } 
+        }
 
         application.assets_manager.load_from(
           application.config.bower_directory,
           exclude_filter: exclude_filter,
           include_filter: include_filter,
-          output_directories: output_directories,
+          output_directories: output_directories
         )
       end
     end

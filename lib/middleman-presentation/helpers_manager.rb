@@ -9,7 +9,7 @@ module Middleman
 
       public
 
-      def initialize(creator: PresentationHelper) 
+      def initialize(_creator: PresentationHelper)
         @presentation_helpers = []
       end
 

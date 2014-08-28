@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Container for helper methods which can be used in presentation slides
     class PresentationHelper
       include Comparable
 

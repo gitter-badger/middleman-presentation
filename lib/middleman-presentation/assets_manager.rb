@@ -74,7 +74,7 @@ module Middleman
       #
       # @param [String] base_path
       #   The directory to load assets from.
-      # 
+      #
       # @param [Hash] output_directories
       #   A hash containing information about the output directories. The key
       #   needs to be a regular expression matching the filename. The value is
@@ -92,15 +92,20 @@ module Middleman
 
         Dir.glob(search_path).sort.each do |p|
           next unless File.file? p
+
+          # rubocop:disable Style/CaseEquality
           next if !include_filter.blank? && Array(include_filter).none? { |f| Regexp.new(f) === p }
           next if !exclude_filter.blank? && Array(exclude_filter).any? { |f| Regexp.new(f) === p }
+          # rubocop:enable Style/CaseEquality
 
           new_path   = File.join(*Pathname.new(p).relative_path_from(Pathname.new(base_path)).each_filename.to_a)
 
           # assets will be find multiple times: vendor/ will find assets in vendor/assets as well
           next if new_path.to_s.start_with?('assets')
 
+          # rubocop:disable Style/CaseEquality
           output_dir = output_directories.find(proc { [] }) { |pattern, _| pattern === p }.last
+          # rubocop:enable Style/CaseEquality
 
           args = []
           args << new_path

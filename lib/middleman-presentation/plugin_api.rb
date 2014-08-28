@@ -26,7 +26,7 @@ module Middleman
       end
 
       # Add assets which should be imported
-      # 
+      #
       # @param [String] path
       #   Directory where assets are stored
       def add_assets(path)
