@@ -42,4 +42,6 @@ group :development, :test do
 
   gem 'therubyracer'
   gem 'therubyrhino'
+
+  gem 'fedux_org-stdlib'
 end
