@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Middleman::Presentation::Test::Simple::VERSION
   spec.authors       = ['blub']
   spec.email         = ['eamil@examlple.com']
-  spec.summary       = %q(Simple plugin fixture)
+  spec.summary       = 'Simple plugin fixture'
   spec.homepage      = ''
   spec.license       = 'MIT'
 

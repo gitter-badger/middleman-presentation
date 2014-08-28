@@ -4,9 +4,9 @@ gemspec
 
 group :middleman do
   gem 'middleman', '~>3.3.2'
-  gem 'middleman-sprockets' #, git: 'https://github.com/middleman/middleman-sprockets', branch: 'v3-stable'
-  gem 'middleman-livereload' #, '~> 3.1.0'
-  gem 'wdm', '~> 0.1.0', :platforms => [:mswin, :mingw]
+  gem 'middleman-sprockets'
+  gem 'middleman-livereload'
+  gem 'wdm', '~> 0.1.0', platforms: [:mswin, :mingw]
   gem 'tzinfo-data', platforms: [:mswin, :mingw]
 end
 
@@ -17,7 +17,7 @@ group :development, :test do
   gem 'rspec-legacy_formatters', require: false
   gem 'fuubar', require: false
   gem 'simplecov', require: false
-  gem 'rubocop', require: false
+  gem 'rubocop', '>= 0.25.0', require: false
   gem 'coveralls', require: false
   gem 'cucumber', require: false
   gem 'aruba'

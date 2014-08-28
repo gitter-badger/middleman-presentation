@@ -27,6 +27,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.5)
       i18n (~> 0.6, >= 0.6.9)
@@ -109,6 +110,7 @@ GEM
     eventmachine (1.0.3)
     execjs (2.2.1)
     facter (2.2.0)
+      CFPropertyList (~> 2.2.6)
     fedux_org-stdlib (0.7.20)
       activesupport
     ffi (1.9.3)
@@ -189,7 +191,7 @@ GEM
       em-websocket (~> 0.5.1)
       middleman-core (~> 3.2)
       rack-livereload (~> 0.3.15)
-    middleman-presentation-helpers (0.0.3)
+    middleman-presentation-helpers (0.0.4)
     middleman-sprockets (3.3.9)
       middleman-core (~> 3.3)
       sprockets (~> 2.12.1)
@@ -239,7 +241,7 @@ GEM
     padrino-support (0.12.3)
       activesupport (>= 3.1)
     parallel (1.2.4)
-    parser (2.1.9)
+    parser (2.2.0.pre.4)
       ast (>= 1.1, < 3.0)
       slop (~> 3.4, >= 3.4.5)
     posix-spawn (0.3.9)
@@ -285,9 +287,8 @@ GEM
     rspec-mocks (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
-    rubocop (0.23.0)
-      json (>= 1.7.7, < 2)
-      parser (~> 2.1.9)
+    rubocop (0.25.0)
+      parser (>= 2.2.0.pre.4, < 3.0)
       powerpack (~> 0.0.6)
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
@@ -382,7 +383,7 @@ DEPENDENCIES
   redcarpet
   rspec
   rspec-legacy_formatters
-  rubocop
+  rubocop (>= 0.25.0)
   simplecov
   therubyracer
   therubyrhino

@@ -194,3 +194,5 @@ namespace :archlinux do
     end
   end
 end
+
+task 'gem:release' => :test

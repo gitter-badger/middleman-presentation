@@ -77,7 +77,7 @@ Style/LeadingCommentSpace:
 
 # Offense count: 151
 # Configuration parameters: AllowURI.
-Style/LineLength:
+Metrics/LineLength:
   Max: 225
 
 # Offense count: 3
@@ -86,7 +86,7 @@ Style/MultilineBlockChain:
 
 # Offense count: 1
 # Configuration parameters: CountKeywordArgs.
-Style/ParameterLists:
+Metrics/ParameterLists:
   Max: 6
 
 # Offense count: 4
@@ -138,5 +138,5 @@ Style/TrailingWhitespace:
 
 # Offense count: 1
 # Configuration parameters: CountComments.
-Style/ClassLength:
+Metrics/ClassLength:
   Max: 160

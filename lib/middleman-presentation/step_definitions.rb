@@ -42,7 +42,7 @@ Given(/^I create a new presentation with title "([^"]+)"(?: for speaker "([^"]+)
   options[:title] = title
   options[:speaker] = speaker if speaker
 
-  step %Q(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
+  step %(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
   step 'I cd to "presentation1"'
   step 'I remove all bundler files'
 end
@@ -52,24 +52,24 @@ Given(/^I prepend "([^"]+)" to environment variable "([^"]+)"$/) do |value, vari
 end
 
 Given(/^a slide named "(.*?)" with:$/) do |name, string|
-  step %Q(a file named "source/slides/#{name}" with:), string
+  step %(a file named "source/slides/#{name}" with:), string
 end
 
 Given(/^a project template named "(.*?)" with:$/) do |name, string|
-  step %Q(a file named "templates/#{name}" with:), string
+  step %(a file named "templates/#{name}" with:), string
 end
 
 Given(/^a user template named "(.*?)" with:$/) do |name, string|
-  step %Q(a file named "~/.config/middleman/presentation/templates/#{name}" with:), string
+  step %(a file named "~/.config/middleman/presentation/templates/#{name}" with:), string
 end
 
 Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
-  step %Q(I remove the directory "middleman-presentation-theme-#{name}")
+  step %(I remove the directory "middleman-presentation-theme-#{name}")
 end
 
 Given(/^git is configured with username "(.*?)" and email-address "(.*?)"$/) do |name, email|
-  step %Q(I successfully run `git config --global user.email "#{email}"`)
-  step %Q(I successfully run `git config --global user.name "#{name}"`)
+  step %(I successfully run `git config --global user.email "#{email}"`)
+  step %(I successfully run `git config --global user.name "#{name}"`)
 end
 
 Given(/^a user config file for middleman\-presentation with:$/) do |string|
@@ -83,11 +83,11 @@ end
 Then(/^a presentation theme named "(.*?)" should exist( with default files\/directories created)?$/) do |name, default_files|
   name = "middleman-presentation-theme-#{name}"
 
-  step %Q(a directory named "#{name}" should exist)
+  step %(a directory named "#{name}" should exist)
 
   if default_files
-    step %Q(a directory named "#{name}/stylesheets" should exist)
-    step %Q(a directory named "#{name}/javascripts" should exist)
+    step %(a directory named "#{name}/stylesheets" should exist)
+    step %(a directory named "#{name}/javascripts" should exist)
   end
 end
 
@@ -105,11 +105,11 @@ Then(/^I go to "([^"]*)" and see the following error message:$/) do |url, messag
 end
 
 Then(/^a directory named "(.*?)" is a git repository$/) do |name|
-  step %Q(a directory named "#{name}/.git" should exist)
+  step %(a directory named "#{name}/.git" should exist)
 end
 
 Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
-  step %Q(the file "source/slides/#{name}" should contain:), string
+  step %(the file "source/slides/#{name}" should contain:), string
 end
 
 Given(/I remove all bundler files$/) do
@@ -119,7 +119,7 @@ end
 
 When(/^I successfully run `([^`]+)` in clean environment$/) do |command|
   Bundler.with_clean_env do
-    step %Q(I successfully run `#{command}`)
+    step %(I successfully run `#{command}`)
   end
 end
 

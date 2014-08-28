@@ -9,18 +9,25 @@ Style/FileName:
 
 # Offense count: 8
 # Configuration parameters: CountComments.
-Style/MethodLength:
+Metrics/MethodLength:
   Max: 118
 
 # Offense count: 1
 # Configuration parameters: CountComments.
-Style/ClassLength:
+Metrics/ClassLength:
   Max: 160
   Exclude:
     - 'lib/middleman-presentation/cli/create_presentation.rb'
 
 # Offense count: 3
-Style/CyclomaticComplexity:
+Metrics/CyclomaticComplexity:
   Max: 9
   Exclude:
     - 'lib/middleman-presentation/file_extensions.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - lib/middleman-presentation/frontend_component.rb 
+    - lib/middleman-presentation/assets_manager.rb
+    - lib/middleman-presentation/file_extensions.rb
+    - lib/middleman-presentation/commands/slide.rb
