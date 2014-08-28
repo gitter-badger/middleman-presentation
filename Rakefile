@@ -14,7 +14,7 @@ def module_name
 end
 
 def require_name
-  software.gsub(/-/, '/')
+  'middleman-presentation/helpers'
 end
 
 def gemspec
