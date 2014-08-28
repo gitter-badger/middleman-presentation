@@ -19,7 +19,7 @@ Around do |_, block|
 end
 
 Given(/^I set the language for the shell to "([^"]+)"$/) do |language|
-  set_env 'LANG', language 
+  set_env 'LANG', language
 end
 
 Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
