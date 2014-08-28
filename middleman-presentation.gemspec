@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'tzinfo', '>= 0.3.0'
   spec.add_dependency 'addressable', '~> 2.3.5'
   spec.add_dependency 'launchy', '~> 2.4.2'
-  spec.add_dependency 'fedux_org-stdlib', '>= 0.7.17'
+  spec.add_dependency 'fedux_org-stdlib', '>= 0.7.20'
   spec.add_dependency 'rake'
   spec.add_dependency 'liquid'
   spec.add_dependency 'erubis'
