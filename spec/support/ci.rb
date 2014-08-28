@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 # Test helpers
-require 'middleman-presentation/helpers/tests'
+require 'middleman-presentation/test_helpers'
 
 module Middleman
   module Presentation
@@ -9,7 +9,7 @@ module Middleman
     module SpecHelper
       # Helpers for ci
       module Ci
-        include Middleman::Presentation::Helpers::Tests
+        include Middleman::Presentation::TestHelpers
       end
     end
   end

@@ -80,8 +80,8 @@ RSpec.describe HelpersManager do
         +---------------+--------+--------------------------------------+
         | Name          | Type   | Available methods                    |
         +---------------+--------+--------------------------------------+
-        | HelpersModule | MODULE | "helper1"                            |
         | <Anonymous>   | PROC   | "helper2", "helper3", "self.helper4" |
+        | HelpersModule | MODULE | "helper1"                            |
         +---------------+--------+--------------------------------------+
         2 rows in set
       EOS

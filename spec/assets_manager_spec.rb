@@ -83,18 +83,6 @@ RSpec.describe AssetsManager do
       touch_file 'component1/javascripts/all.js'
       touch_file 'component1/js/all.js'
     end
-
-    it 'loads all default components' do
-      expect(creator).to receive(:new).with(source_path: 'component1/css/all.scss', destination_directory: nil)
-      expect(creator).to receive(:new).with(source_path: 'component1/stylesheets/all.scss', destination_directory: nil)
-      expect(creator).to receive(:new).with(source_path: 'component1/images/image.png', destination_directory: nil)
-      expect(creator).to receive(:new).with(source_path: 'component1/img/image.png', destination_directory: nil)
-      expect(creator).to receive(:new).with(source_path: 'component1/javascripts/all.js', destination_directory: nil)
-      expect(creator).to receive(:new).with(source_path: 'component1/js/all.js', destination_directory: nil)
-
-      manager = AssetsManager.new(creator: creator)
-      manager.load_default_components File.expand_path(current_dir)
-    end
   end
 
   context '#to_s' do
