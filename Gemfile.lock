@@ -63,7 +63,7 @@ GEM
     dotenv-deployment (0.0.2)
     equalizer (0.0.9)
     erubis (2.7.0)
-    fedux_org-stdlib (0.7.11)
+    fedux_org-stdlib (0.7.14)
       activesupport
     ffi (1.9.3)
     filegen (0.4.3)
