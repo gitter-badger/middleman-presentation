@@ -6,6 +6,7 @@ Before do
 
   step 'a mocked home directory'
   step 'git is configured with username "User" and email-address "email@example.com"'
+  step 'I set the language for the shell to "en_GB.UTF-8"'
 end
 
 # Clean environment
@@ -15,6 +16,10 @@ Around do |_, block|
   block.call
 
   ENV.replace old_env
+end
+
+Given(/^I set the language for the shell to "([^"]+)"$/) do |language|
+  set_env 'LANG', language 
 end
 
 Given(/^an image "([^"]+)" at "([^"]+)"$/) do |source, destination|

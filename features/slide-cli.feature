@@ -116,18 +116,19 @@ Feature: Add new slide
     03.html.md
     """
 
+    @wip
   Scenario: Fails on duplicate slide names
     When I run `middleman slide 02.erb 02.md 03.erb 03.md 03.liquid`
     And the output should contain:
     """
-    Your input will result in duplicate slide file names: "02.html.md", "02.html.erb", "03.html.md", "03.html.liquid", "03.html.erb", "03.html.liquid", "03.html.erb", "03.html.md"
+    Your input will result in duplicate slide file names "02.html.md", "02.html.erb", "03.html.md", "03.html.liquid", "03.html.erb", "03.html.liquid", "03.html.erb", "03.html.md"
     """
 
   Scenario: Missing slide name
     When I run `middleman slide`
     Then the output should contain:
     """
-    You need to define argument "name"
+    No value provided for required arguments 'names'
     """
 
   Scenario: Using eruby in editor command

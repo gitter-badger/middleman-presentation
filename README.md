@@ -576,6 +576,54 @@ To get a full list of available configuration options and their default values, 
 middleman-presentation show config --defaults
 ```
 
+## Plugins
+
+`middleman-presentation` supports plugins. They need to be named
+`middleman-presentation-<plugin_name>` to be automatically loaded.
+
+You need to extend your module with `PluginApi` to get the needed methods. To
+add a frontend component use `add_component`, to add assets use `add_assets`
+and so on. See the following code block for an example.
+
+```ruby
+# encoding: utf-8
+module Middleman
+  module Presentation
+    # Test plugin
+    module Test
+      # Simple
+      module Simple
+        extend PluginApi
+
+        add_assets(
+          File.expand_path('../../../../../../vendor/assets', __FILE__)
+        )
+
+        add_component(
+          name: 'impress.js',
+          version: 'latest'
+        )
+
+        add_component(
+          FrontendComponent.new(
+            name: 'angular',
+            version: 'latest'
+          )
+        )
+
+        add_helpers do
+          def test_simple_helper1
+            'test_simple_helper1'
+          end
+        end
+
+        add_helpers Middleman::Presentation::Test::Simple::Helpers
+      end
+    end
+  end
+end
+```
+
 ## Development
 
 Make sure you've got a working internet connection before running the tests. To

@@ -1,3 +1,9 @@
+* 0.16
+  * F: Introduce Plugin-Support
+  * F: Add helpers to show available "assets", "frontend components", "plugins", ...
+  * I: Move helpers to helper-gem
+  * I: Localize cli
+  * I: A lot of code refactoring
 * 0.15
   * F: Support for predefined slide templates added
   * F: Show default values of configuration controlled by option in config-command
