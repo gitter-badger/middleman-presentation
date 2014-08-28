@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'middleman-presentation'
+gem 'middleman-presentation', '>= 0.15.8'
 
 group :development, :test do
   gem 'rspec', require: false
@@ -41,9 +41,10 @@ group :development, :test do
   gem 'command_exec', require: false
   gem 'rake', require: false
   gem 'launchy', require: false
+  gem 'hirb'
 
   gem 'therubyracer'
   gem 'therubyrhino'
 
-  gem 'fedux_org-stdlib'
+  gem 'fedux_org-stdlib', '>= 0.7.20'
 end

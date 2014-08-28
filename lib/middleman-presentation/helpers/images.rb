@@ -7,14 +7,11 @@ module Middleman
       module Images
         # Create image gallery
         def image_gallery(images, image_gallery_id:)
-          template = <<-EOS.strip_heredoc.chomp
-         <a href="<%= image_path %>" data-lightbox="<%= image_gallery_id %>">
-           <img src="<%= image_path %>"<% if title %> alt="<%= title %>"<% end %> class="mp-preview-image">
-         </a>
-          EOS
+          template = File.read(File.expand_path('../../../../templates/image_gallery.erb', __FILE__)).chomp
 
           images.each_with_object([]) do |(image, title), memo|
             engine = Erubis::Eruby.new(template)
+
             memo << engine.result(image_path: image, image_gallery_id: image_gallery_id, title: title)
           end.join("\n")
         end
@@ -22,18 +19,6 @@ module Middleman
         # Create entry for single image
         def image(image)
           image_gallery Array(image), image_gallery_id: SecureRandom.hex
-        end
-
-        # Find asset for substring
-        def find_asset(substring)
-          # sprockets.each_logical_path.find { |f| f.to_s.include? substring }
-          result = sprockets.each_file.find { |f| f.to_s.include? substring }
-
-          if result.blank?
-            Middleman::Presentation.t('errors.asset_not_found', asset: substring)
-          else
-            result.relative_path_from(Pathname.new(source_dir)).to_s
-          end
         end
       end
     end

@@ -1,11 +1,12 @@
 PATH
   remote: .
   specs:
-    middleman-presentation-helpers (0.0.2)
+    middleman-presentation-helpers (0.0.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.5)
       i18n (~> 0.6, >= 0.6.9)
@@ -84,7 +85,8 @@ GEM
     erubis (2.7.0)
     execjs (2.2.1)
     facter (2.2.0)
-    fedux_org-stdlib (0.7.14)
+      CFPropertyList (~> 2.2.6)
+    fedux_org-stdlib (0.7.20)
       activesupport
     ffi (1.9.3)
     filegen (0.4.3)
@@ -102,6 +104,7 @@ GEM
     haml (4.0.5)
       tilt
     hike (1.2.3)
+    hirb (0.7.2)
     hooks (0.4.0)
       uber (~> 0.0.4)
     httparty (0.13.1)
@@ -163,13 +166,15 @@ GEM
       bundler
       erubis
       facter
-      fedux_org-stdlib (>= 0.6.48)
+      fedux_org-stdlib (>= 0.7.17)
+      hirb
       i18n
       kramdown
       launchy (~> 2.4.2)
       liquid
       middleman (~> 3.3.4)
-      middleman-sprockets (~> 3.3.6)
+      middleman-presentation-helpers (>= 0.0.3)
+      middleman-sprockets (~> 3.3.8)
       nokogiri
       rake
       tzinfo (>= 0.3.0)
@@ -342,15 +347,16 @@ DEPENDENCIES
   coveralls
   cucumber
   erubis
-  fedux_org-stdlib
+  fedux_org-stdlib (>= 0.7.20)
   filegen
   foreman
   fuubar
   github-markup
+  hirb
   inch
   launchy
   license_finder
-  middleman-presentation
+  middleman-presentation (>= 0.15.8)
   middleman-presentation-helpers!
   mutant
   mutant-rspec

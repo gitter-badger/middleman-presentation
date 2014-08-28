@@ -5,9 +5,9 @@ module Middleman
       # Helper for fixtures
       module Fixtures
         def fixtures_manager
-          @fixtures_manager ||= FixturesManager.new
+          @fixtures_manager ||= FeduxOrg::FixturesManagement::FixturesManager.new
 
-          @fixtures_manager.load_fixtures(File.join(Middleman::Presentation.root_path, 'fixtures'))
+          @fixtures_manager.load_fixtures(File.expand_path('../../../fixtures', __FILE__))
 
           @fixtures_manager
         end
