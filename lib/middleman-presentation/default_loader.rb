@@ -13,6 +13,7 @@ module Middleman
       end
 
       def load
+        load_core_helpers
         load_plugins
         load_default_components
         load_default_assets_in_bower_directory
@@ -20,7 +21,7 @@ module Middleman
 
       private
 
-      def load_helpers
+      def load_core_helpers
         Middleman::Presentation.helpers_manager.add Middleman::Presentation::Helpers::Slides
       end
 

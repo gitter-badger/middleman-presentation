@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 require 'set'
 require 'bundler'
 require 'English'
@@ -45,7 +44,6 @@ require 'middleman-presentation/presentation_config'
 require 'middleman-presentation/asset'
 require 'middleman-presentation/fixture'
 require 'middleman-presentation/helpers/slides'
-require 'middleman-presentation/helpers/test'
 require 'middleman-presentation/presentation_helper'
 require 'middleman-presentation/no_fixture'
 require 'middleman-presentation/locale_configurator'
@@ -79,6 +77,8 @@ require 'middleman-presentation/transformers/sort_slides'
 require 'middleman-presentation/transformers/ignore_slides'
 require 'middleman-presentation/transformers/remove_duplicate_slides'
 require 'middleman-presentation/transformers/file_keeper'
+
+require 'middleman-presentation/test_helpers'
 
 require 'middleman-presentation/cli/base'
 require 'middleman-presentation/cli/base_group'
