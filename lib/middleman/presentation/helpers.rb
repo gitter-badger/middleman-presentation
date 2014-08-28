@@ -1,9 +1,11 @@
-require "middleman/presentation/helpers/version"
+require 'middleman/presentation/helpers/version'
 
 module Middleman
   module Presentation
     module Helpers
-      # Your code goes here...
     end
   end
 end
+
+Middleman::Presentation.helpers_manager.add Middleman::Presentation::Helpers::Images
+Middleman::Presentation.helpers_manager.add Middleman::Presentation::Helpers::Slides
