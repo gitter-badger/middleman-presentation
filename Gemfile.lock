@@ -6,7 +6,7 @@ PATH
       bundler
       erubis
       facter
-      fedux_org-stdlib (>= 0.7.11)
+      fedux_org-stdlib (>= 0.7.16)
       hirb
       i18n
       kramdown
@@ -111,7 +111,7 @@ GEM
     execjs (2.2.1)
     facter (2.2.0)
       CFPropertyList (~> 2.2.6)
-    fedux_org-stdlib (0.7.15)
+    fedux_org-stdlib (0.7.18)
       activesupport
     ffi (1.9.3)
     filegen (0.4.3)

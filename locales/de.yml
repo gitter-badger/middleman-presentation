@@ -1,7 +1,7 @@
 ---
 de:
   errors:
-    standard_error: "Es ist ein Fehler aufgetreten. Die Fehlermeldugn folgt:\n%{message}"
+    standard_error: "Es ist ein Fehler aufgetreten. Die Fehlermeldung lautet wie folgt:\n%{message}"
     argument_error: Der Wert "%{value}" für "%{argument}" ist unzulässig.
     invalid_frontend_component: Es werden nur FrontendComponents, Hashes oder Arrays mit Hashes unterstützt.
     undefined_arguments: Mindestens ein argument für %{arguments} muss angegeben werden.
@@ -112,19 +112,27 @@ de:
           defaults: 'Anzeige der Konfiguration mit Standard-Werten.'
     helpers:
       list:
-        title: 'Anzeige verfügbarer Hilfs-Methoden zur Verwendung in den Präsentationsfolien'
+        title: 'Anzeige verfügbarer Hilfsmethoden zur Verwendung in den Präsentationsfolien'
+        headline: 'In der Präsentation verfügbare Hilfsmethoden' 
     assets:
       list:
         title: 'Anzeige verfügbarer Assets zur Verwendung in den Präsentationsfolien'
+        headline: 'In der Präsentation verfügbare Assets' 
     frontend_components:
       list:
         title: 'Anzeige verfügbarer Frontend-Komponenten'
+        headline: 'In der Präsentation verfügbare Frontend-Komponenten' 
     plugins:
       list:
         title: 'Anzeige verfügbarer Plugins.'
+        headline: 'Auf diesem System verfügbare Plugins'
     support_informations:
       show:
         title: 'Sammeln von Informationen für den Support.'
+        headline:
+          system_information: System Informationen
+          rubygems_information: Information über Rubygems
+          installed_rubygems: Installierte Rubygems
     styles:
       list:
         title: 'Anzeige verfügbarer CSS-Stile.'

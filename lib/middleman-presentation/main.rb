@@ -28,6 +28,10 @@ module Middleman
         locale_configurator.t(*args, &block)
       end
 
+      def underline_character
+        '#'
+      end
+
       def stylable_files
         paths = []
 

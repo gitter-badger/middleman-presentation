@@ -113,18 +113,26 @@ en:
     helpers:
       list:
         title: 'Show available presentation helpers'
+        headline: 'Available helpers in this presentation' 
     assets:
       list:
         title: 'Show available asset files'
+        headline: 'Available assets in this presentation' 
     frontend_components:
       list:
         title: 'Show available frontend components'
+        headline: 'Available frontend components in this presentation' 
     plugins:
       list:
         title: 'Show available plugins'
+        headline: 'Available plugins on this system/in this presentation' 
     support_informations:
       show:
         title: 'Collect information for support'
+        headline:
+          system_information: System Information
+          rubygems_information: Rubygems Information
+          installed_rubygems: Installed Rubygems
     styles:
       list:
         title: 'Show available styles'
