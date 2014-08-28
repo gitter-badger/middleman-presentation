@@ -16,6 +16,4 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(/^bin\//) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ['lib']
-
-  spec.add_dependency 'middleman-presentation'
 end
