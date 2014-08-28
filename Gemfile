@@ -27,8 +27,8 @@ group :development, :test do
   gem 'activesupport', require: false
   gem 'awesome_print', require: 'ap'
 
-  gem 'mutant'
-  gem 'mutant-rspec'
+  #gem 'mutant'
+  #gem 'mutant-rspec'
 
   if !ENV.key?('CI') && !ENV.key?('TRAVIS')
     gem 'byebug'
