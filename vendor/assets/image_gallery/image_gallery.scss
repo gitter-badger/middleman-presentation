@@ -1,0 +1,15 @@
+.reveal img.mp-preview-image {
+  max-width: 300px;
+  max-height: 300px;
+  display: inline-block;
+  margin: 5px auto;
+  box-shadow: rgba(0,0,0,0.2) 0px 2px 3px, inset rgba(0,0,0,0.2) 0px -1px 2px;
+  border-radius: 10px;
+}
+
+.reveal img.mp-full-image {
+  max-width: 50%;
+  max-height: 50%;
+  display: block;
+  margin: auto auto;
+}
