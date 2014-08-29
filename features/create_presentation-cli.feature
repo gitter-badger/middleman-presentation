@@ -321,3 +321,15 @@ Feature: Initialize presentation
     And I cd to "presentation1"
     Then a directory named "vendor/assets/components/angular" should exist
     And a directory named "vendor/assets/components/impress.js" should exist
+
+  Scenario: Change presentation size
+    Given I successfully run `middleman-presentation create presentation1 --title "My Presentation" --presentation-size 1024 768`
+    When I cd to "presentation1"
+    Then the file "data/config.yml" should contain:
+    """
+    width: 1024
+    """
+    Then the file "data/config.yml" should contain:
+    """
+    height: 768
+    """

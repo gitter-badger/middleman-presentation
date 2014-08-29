@@ -61,6 +61,8 @@
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
+        width: <%= data.config.revealjs.width %>,
+        height: <%= data.config.revealjs.height %>,
         controls: <%= data.config.revealjs.controls %>,
         progress: <%= data.config.revealjs.progress %>,
         history: <%= data.config.revealjs.history %>,

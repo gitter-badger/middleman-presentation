@@ -4,7 +4,6 @@ Feature: Initialize middleman-presentation
   I want to initialize middleman-presentation
   In order to have defaults for all presentations created with middleman-presentation
 
-  @wip
   Scenario: Before init
     Given I set the environment variables to:
     | variable | value  |
@@ -48,6 +47,7 @@ Feature: Initialize middleman-presentation
     # plugins_enable: true
     # plugins_whitelist: []
     # presentation_language: ''
+    # presentation_size: ["90%", "90%"]
     # slides_directory: slides
     # slides_ignore_file: .slidesignore
     # speaker: my_user

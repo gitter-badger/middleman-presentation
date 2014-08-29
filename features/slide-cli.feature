@@ -116,7 +116,6 @@ Feature: Add new slide
     03.html.md
     """
 
-    @wip
   Scenario: Fails on duplicate slide names
     When I run `middleman slide 02.erb 02.md 03.erb 03.md 03.liquid`
     And the output should contain:

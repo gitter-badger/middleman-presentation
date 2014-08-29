@@ -1,5 +1,7 @@
 bower_directory: <%= @bower_directory %>
 revealjs:
+  width: <%= @revealjs_config[:presentation_size][0] %>
+  height: <%= @revealjs_config[:presentation_size][1] %>
   controls: <%= @revealjs_config[:controls] %>
   progress: <%= @revealjs_config[:progress] %>
   history: <%= @revealjs_config[:history] %>

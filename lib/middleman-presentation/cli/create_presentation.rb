@@ -32,6 +32,7 @@ module Middleman
 
         class_option :default_transition_type, default: Middleman::Presentation.config.default_transition_type, desc: Middleman::Presentation.t('views.presentations.create.options.default_transition_type')
         class_option :default_transition_speed, default: Middleman::Presentation.config.default_transition_speed, desc: Middleman::Presentation.t('views.presentations.create.options.default_transition_speed')
+        class_option :presentation_size, type: :array, default: Middleman::Presentation.config.presentation_size, desc: Middleman::Presentation.t('views.presentations.create.options.presentation_size')
 
         class_option :install_assets, type: :boolean, default: Middleman::Presentation.config.install_assets, desc: Middleman::Presentation.t('views.presentations.create.options.install_assets')
         class_option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: Middleman::Presentation.t('views.presentations.create.options.initialize_git')
@@ -100,6 +101,7 @@ module Middleman
           @revealjs_config[:slide_number]             = options[:activate_slide_number]
           @revealjs_config[:default_transition_type]  = options[:default_transition_type]
           @revealjs_config[:default_transition_speed] = options[:default_transition_speed]
+          @revealjs_config[:presentation_size]        = options[:presentation_size]
         end
 
         def add_gems_to_gem_file
