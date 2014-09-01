@@ -31,31 +31,6 @@ module Middleman
       end
 
       def load_default_components
-        application.frontend_components_manager.add(
-          name: 'jquery',
-          version: '~1.11',
-          javascripts: %w(dist/jquery)
-        )
-
-        application.frontend_components_manager.add(
-          name: 'reveal.js',
-          version: 'latest',
-          javascripts: %w(lib/js/head.min js/reveal.min)
-        )
-
-        application.frontend_components_manager.add(
-          name: 'lightbox2',
-          github: 'dg-vrnetze/revealjs-lightbox2',
-          javascripts: %w(js/lightbox)
-        )
-
-        application.frontend_components_manager.add(
-          name: 'middleman-presentation-theme-common',
-          github: 'dg-vrnetze/middleman-presentation-theme-common',
-          stylesheets: %w(stylesheets/middleman-presentation-theme-common),
-          javascripts: %w(javascripts/middleman-presentation-theme-common)
-        )
-
         # rubocop:disable Style/GuardClause
         unless application.config.components.blank?
           application.frontend_components_manager.add(
