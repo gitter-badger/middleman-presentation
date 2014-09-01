@@ -14,17 +14,12 @@ module Middleman
       end
 
       def load
-        load_core_helpers
         load_plugins
         load_default_components
         load_default_assets_in_bower_directory
       end
 
       private
-
-      def load_core_helpers
-        Middleman::Presentation.helpers_manager.add Middleman::Presentation::Helpers::Slides
-      end
 
       def load_plugins
         application.plugins_manager.load_plugins if application.config.plugins_enable == true
