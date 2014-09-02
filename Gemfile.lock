@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    middleman-presentation-helpers (0.0.4)
+    middleman-presentation-helpers (0.0.6)
 
 GEM
   remote: https://rubygems.org/
