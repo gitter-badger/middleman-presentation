@@ -26,7 +26,7 @@ module Middleman
 
             path = ''
             path << prefix if prefix
-            path << filename
+            path << Pathname.new(filename).relative_path_from(Pathname.new(source_directory)).to_s
 
             file.add(path, filename)
           end

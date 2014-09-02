@@ -145,7 +145,7 @@ de:
         headline: Exportiere die Präsentation "%{title}"  nach "%{file}"
         options:
           output_file: Erzeuge ein Archiv mit dem gegebenen Dateinamen
-          prefix: Präfix für Dateien in der Zip-Datei
+          prefix: 'Präfix für Dateien in der Zip-Datei. Bitte denken Sie an "/" am Ende des Präfixes, wenn es sich hierbei um ein Verzeichnis handelt. Bsp: "20140901-titel/"'
   slides:
     contact:
       title: Kontakt

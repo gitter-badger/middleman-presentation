@@ -145,7 +145,7 @@ en:
         headline: Export presentation "%{title}" to file "%{file}"
         options:
           output_file: 'Write archive to given file name'
-          prefix: 'Prefix for files in zip file'
+          prefix: 'Prefix for files in zip file. Please make sure that the last character is a "/" if the prefix should be a directory'
   slides:
     contact:
       title: Contact
