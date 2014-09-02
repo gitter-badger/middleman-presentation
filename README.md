@@ -269,11 +269,35 @@ slide and everything will be fine again.
 ### Export presentation
 
 If you need to export the presentation, you can use the `export`-script. It
-creates tar-file in `<root>/pkg/<presentation_directory_name>.tar.gz`.
+creates zip-file in the current directory `<date of presentation>-<title of presentation>.zip`.
 
 ```bash
 script/export
-# => Creates tar-file in <root>/pkg/<presentation_directory_name>.tar.gz
+# => Creates zip-file in <root>
+```
+
+If you need to modify the export, you can use `middleman-presentation export`.
+It is the same command which is used by `script/export` behind the scenes.
+
+*Use defaults*
+
+```bash
+middleman-presentation export presentation
+```
+
+*Different output file*
+
+```bash
+middleman-presentation export presentation --output-file archive.zip
+```
+
+*Different prefix for files in zip-file*
+
+Please mind the "/" at the end if you want the files to be prefixed by a
+directory.
+
+```bash
+middleman-presentation export presentation --prefix 'my_presentation/'
 ```
 
 ## Reuse existing presentation
