@@ -1,5 +1,5 @@
 // LIFO: The component which was added last will placed
 // first
-<% @frontend_components.map(&:stylesheets).flatten.reverse.each do |s| -%>
+<% @frontend_components.reverse.map(&:stylesheets).flatten.each do |s| -%>
 @import '<%= s %>';
 <% end -%>
