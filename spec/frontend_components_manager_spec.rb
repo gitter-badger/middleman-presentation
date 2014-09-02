@@ -110,7 +110,7 @@ RSpec.describe FrontendComponentsManager do
       expect(manager.available_frontend_components.first.name).to eq 'test1'
     end
 
-    it 'returns the frontend components in the order they were added', :focus do
+    it 'returns the frontend components in the order they were added' do
       components = []
 
       5.times do |i|

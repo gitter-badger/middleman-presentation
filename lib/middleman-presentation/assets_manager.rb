@@ -55,6 +55,8 @@ module Middleman
       #
       # @see {#load_components_from} To load bower components
       def load_from_path(base_path, output_directories: [], include_filter: [], exclude_filter: [])
+        fail Errno::ENOENT, base_path unless FileTest.directory? base_path
+
         asset_dirs = %w(assets app app/assets vendor vendor/assets lib lib/assets)
 
         [base_path].product(asset_dirs).each do |base, asset|

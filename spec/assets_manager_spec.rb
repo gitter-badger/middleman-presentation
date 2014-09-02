@@ -72,6 +72,12 @@ RSpec.describe AssetsManager do
 
       expect(output).to include 'image1.png'
     end
+
+    it 'fails if path does not exist' do
+      expect do
+        AssetsManager.new.load_from_path SecureRandom.hex
+      end.to raise_error Errno::ENOENT
+    end
   end
 
   context '#load_default_components' do
