@@ -80,34 +80,34 @@ Feature: Initialize presentation
   Scenario: Existing configuration file
     Given a user config file for middleman-presentation with:
     """
-    author: TestUser
-    company: MyCompany
-    email_address: test_user@example.com
-    homepage: http://example.com
-    presentation_language: en
-    speaker: TestUser
+    author: 'TestUser'
+    company: 'MyCompany'
+    email_address: 'test_user@example.com'
+    homepage: 'http://example.com'
+    presentation_language: 'en'
+    speaker: 'TestUser'
     """
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
     Then the file "data/metadata.yml" should contain:
     """
-    author: TestUser
+    author: 'TestUser'
     """
     Then the file "data/metadata.yml" should contain:
     """
-    company: MyCompany
+    company: 'MyCompany'
     """
     Then the file "data/metadata.yml" should contain:
     """
-    email_address: test_user@example.com
+    email_address: 'test_user@example.com'
     """
     Then the file "data/metadata.yml" should contain:
     """
-    homepage: http://example.com
+    homepage: 'http://example.com'
     """
     Then the file "data/metadata.yml" should contain:
     """
-    speaker: TestUser
+    speaker: 'TestUser'
     """
 
   Scenario: German umlauts, French accents and special chars are not a problem for project id
@@ -115,13 +115,13 @@ Feature: Initialize presentation
     And I cd to "presentation1"
     And the file "data/metadata.yml" should contain:
     """
-    project_id: uoa
+    project_id: 'uoa
     """
 
   Scenario: Use language from configuration file
     Given a user config file for middleman-presentation with:
     """
-    presentation_language: de
+    presentation_language: 'de'
     """
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     And I cd to "presentation1"
