@@ -19,5 +19,6 @@
 <%%- end -%>
   </div>
 
+  <img class="mp-logo" alt="Logo">
   <div class="mp-logo"></div>
 </section>
