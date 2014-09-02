@@ -1,5 +1,8 @@
 require 'middleman-presentation/helpers/version'
-require 'middleman-presentation/helpers/images'
+
+require 'middleman-presentation/helpers/plugins/image_gallery_plugin'
+require 'middleman-presentation/helpers/plugins/slides_plugin'
+require 'middleman-presentation/helpers/plugins/footer_plugin'
 
 module Middleman
   module Presentation
@@ -7,5 +10,3 @@ module Middleman
     end
   end
 end
-
-Middleman::Presentation.helpers_manager.add Middleman::Presentation::Helpers::Images

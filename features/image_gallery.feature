@@ -9,6 +9,7 @@ Feature: Image Gallery
     And an image "image01.png" at "images/image01.png"
     And an image "image02.png" at "images/image02.png"
 
+    @wip
   Scenario: Images only
     Given a slide named "01.html.erb" with:
     """
@@ -30,6 +31,13 @@ Feature: Image Gallery
       <img src="images/image02.png" class="mp-preview-image">
     </a>
     </section>
+    """
+    When I go to "/stylesheets/application.css"
+    Then I should see:
+    """
+    .lightboxOverlay {
+      overflow: scroll;
+    }
     """
 
   Scenario: Images with titles

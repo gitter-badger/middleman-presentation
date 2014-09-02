@@ -4,7 +4,7 @@ module Middleman
     # Helper module
     module Helpers
       # Images helpers
-      module Images
+      module ImageGallery
         # Create image gallery
         def image_gallery(images, image_gallery_id:)
           template = File.read(File.expand_path('../../../../templates/image_gallery.erb', __FILE__)).chomp
