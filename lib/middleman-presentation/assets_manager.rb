@@ -50,7 +50,7 @@ module Middleman
       #   assets/css/all.scss            => css/all.scss
       #
       # @see {#load_components_from} To load bower components
-      def load_assets_from(base_path, output_directories: [], include_filter: [], exclude_filter: [])
+      def load_from_path(base_path, output_directories: [], include_filter: [], exclude_filter: [])
         asset_dirs = %w(assets app app/assets vendor vendor/assets lib lib/assets)
 
         [base_path].product(asset_dirs).each do |base, asset|
