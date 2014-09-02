@@ -37,12 +37,13 @@ Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
   set_env 'PATH', dirs.join(':')
 end
 
-Given(/^I create a new presentation with title "([^"]+)"(?: for speaker "([^"]+)")?$/) do |title, speaker|
+Given(/^I create a new presentation with title "([^"]+)"(?: for speaker "([^"]+)")?(?: on "([^"]+)")?$/) do |title, speaker, date|
   options = {}
   options[:title] = title
   options[:speaker] = speaker if speaker
+  options[:date] = date if date
 
-  step %(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
+  step %Q(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
   step 'I cd to "presentation1"'
   step 'I remove all bundler files'
 end
