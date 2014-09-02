@@ -37,6 +37,8 @@ require 'middleman-presentation/errors'
 
 require 'middleman-presentation/roles/comparable_by_name'
 
+require 'middleman-presentation/overwrite_sass'
+
 require 'middleman-presentation/version'
 require 'middleman-presentation/list'
 require 'middleman-presentation/plugin_api'
