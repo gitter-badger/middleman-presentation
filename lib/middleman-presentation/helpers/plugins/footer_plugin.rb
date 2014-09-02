@@ -13,7 +13,7 @@ module Middleman
         add_component(
           name: 'jquery',
           version: '~1.11',
-          javascripts: %w(dist/jquery)
+          javascripts: %w(dist/jquery.js)
         )
       end
     end
