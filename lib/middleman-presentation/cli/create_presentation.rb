@@ -159,6 +159,10 @@ module Middleman
           set :markdown_engine, :kramdown
           set :markdown, parse_block_html: true
 
+          # ignore slides so that a user doesn't need to prepend slide names
+          # with an underscore
+          ignore 'slides/*'
+
           bower_directory = '#{@bower_directory}'
 
           if respond_to?(:sprockets) && sprockets.respond_to?(:import_asset)

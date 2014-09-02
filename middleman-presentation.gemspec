@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'launchy', '~> 2.4.2'
   spec.add_dependency 'fedux_org-stdlib', '>= 0.7.20'
   spec.add_dependency 'rake'
+  spec.add_dependency 'rubyzip', '~> 1.1.6'
   spec.add_dependency 'liquid'
   spec.add_dependency 'erubis'
   spec.add_dependency 'kramdown'

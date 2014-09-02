@@ -49,16 +49,20 @@ module Middleman
 
       # Load default components
       def load_default_assets_in_bower_directory
+        # Do not build scss/js-files during build
+        # they are included in 'application.css/application.js' by default
+        #
+        #   .css .scss
+        #
         include_filter = %w(
           .png  .gif .jpg .jpeg .svg .webp
           .eot  .otf .svc .woff .ttf
           .js .coffee
-          .css .scss
         ).map { |e| Regexp.new("#{Regexp.escape(e)}$") }
 
         include_filter << /notes\.html/
 
-        exclude_filter = [/src/, /test/, /demo/]
+        exclude_filter = [/src/, /test/, /demo/, /source/]
 
         output_directories = {
           /notes\.html$/ => Pathname.new('javascripts'),

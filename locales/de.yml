@@ -3,6 +3,8 @@ de:
   errors:
     standard_error: "Es ist ein Fehler aufgetreten. Die Fehlermeldung lautet wie folgt:\n%{message}"
     argument_error: Der Wert "%{value}" für "%{argument}" ist unzulässig.
+    middleman_build_error: 'Es ist ein Fehler beim Generieren der statischen Variante der Präsentation aufgetreten:'
+    zip_filename_error: Der gegebene Dateiname für die ZIP-Datei "%{name}" ist nicht korrekt. Er muss auf ".zip" enden
     invalid_frontend_component: Es werden nur FrontendComponents, Hashes oder Arrays mit Hashes unterstützt.
     undefined_arguments: Mindestens ein argument für %{arguments} muss angegeben werden.
     doubled_arguments: Für %{arguments} darf nur ein Argument angegeben werden.
@@ -137,6 +139,13 @@ de:
       list:
         title: 'Anzeige verfügbarer CSS-Stile.'
         headline: 'Verfügbare CSS-Klassen in "Vorlagen", welche von "middleman-presentation" verwendet werden:'
+    presentation:
+      export:
+        title: Präsentation exportieren
+        headline: Exportiere die Präsentation "%{title}"  nach "%{file}"
+        options:
+          output_file: Erzeuge ein Archiv mit dem gegebenen Dateinamen
+          prefix: Präfix für Dateien in der Zip-Datei
   slides:
     contact:
       title: Kontakt

@@ -26,6 +26,7 @@ require 'securerandom'
 require 'shellwords'
 require 'nokogiri'
 require 'rake/file_list'
+require 'zip'
 
 require 'active_support/core_ext/string/strip'
 require 'active_support/core_ext/string/inflections'
@@ -81,11 +82,14 @@ require 'middleman-presentation/cli/base_group'
 require 'middleman-presentation/cli/reset_thor'
 require 'middleman-presentation/cli/create_theme'
 require 'middleman-presentation/cli/create_presentation'
+require 'middleman-presentation/cli/export'
 require 'middleman-presentation/cli/show'
 require 'middleman-presentation/cli/list'
 require 'middleman-presentation/cli/init'
 require 'middleman-presentation/cli/create'
 require 'middleman-presentation/cli/runner'
+
+require 'middleman-presentation/utils'
 
 require 'middleman-presentation/test_helpers'
 

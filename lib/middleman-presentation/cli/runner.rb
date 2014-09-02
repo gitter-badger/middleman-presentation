@@ -15,6 +15,9 @@ module Middleman
 
         desc 'list', Middleman::Presentation.t('views.runners.list.title')
         subcommand 'list', List
+
+        desc 'export', Middleman::Presentation.t('views.runners.export.title')
+        subcommand 'export', Export
       end
     end
   end
