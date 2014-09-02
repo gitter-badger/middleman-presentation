@@ -31,7 +31,8 @@ module Middleman
             title: @title
           )
 
-          result = run('middleman build', capture: true)
+          remove_dir 'build'
+          result = run('middleman build --verbose', capture: true)
           fail Thor::Error, Middleman::Presentation.t('errors.middleman_build_error', result: result) unless $CHILD_STATUS.exitstatus == 0
         end
 

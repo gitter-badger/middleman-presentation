@@ -4,6 +4,10 @@ module Middleman
     module Cli
       # Base cli class
       class Base < Thor
+        def self.exit_on_failure?
+          true
+        end
+
         def self.subcommand_help(_cmd)
           desc 'help [COMMAND]', Middleman::Presentation.t('views.application.help')
 

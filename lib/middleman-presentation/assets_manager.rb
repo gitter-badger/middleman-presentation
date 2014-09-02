@@ -2,6 +2,10 @@
 module Middleman
   module Presentation
     # Manager for assets
+    #
+    # It knows about all assets. This information is used when adding assets to
+    # `sprockets`. It gets its information normally from through `plugins` or
+    # through reading the bower components directory in filesystem.
     class AssetsManager
       private
 

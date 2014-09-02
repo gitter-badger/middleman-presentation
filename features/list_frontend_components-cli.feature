@@ -9,5 +9,5 @@ Feature: Show available frontend components
     When I successfully run `middleman-presentation list frontend_components`
     Then the output should contain:
     """
-    | reveal.js                | latest                   | latest  | reveal.js/lib/js/head... |                           |
+    | reveal.js
     """

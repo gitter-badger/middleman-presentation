@@ -2,11 +2,24 @@
 module Middleman
   module Presentation
     # External asset
+    #
+    # It represents a single asset - an image, a stylesheets, a font etc. An
+    # assets will be placed in a default directory by `middleman-sprockes`. To
+    # change the default directory one needs to tell the `Asset`-class that on
+    # initialization.
     class Asset
       include Comparable
 
       attr_reader :source_path, :destination_directory
 
+      # Create instance
+      #
+      # @param [String] source_path
+      #   The source path for the asset
+      #
+      # @param [String] destination_directory
+      #   The directory where the asset should be placed when building the
+      #   static version of the web application
       def initialize(source_path:, destination_directory:)
         @source_path           = source_path.blank? ? nil : Pathname.new(source_path)
         @destination_directory = destination_directory.blank? ? nil : Pathname.new(destination_directory)

@@ -18,6 +18,13 @@ Around do |_, block|
   ENV.replace old_env
 end
 
+When(/^I start debugging/) do
+  require 'pry'
+  binding.pry
+
+  ''
+end
+
 Given(/^I set the language for the shell to "([^"]+)"$/) do |language|
   set_env 'LANG', language
 end

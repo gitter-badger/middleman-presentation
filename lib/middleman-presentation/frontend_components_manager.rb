@@ -2,6 +2,14 @@
 module Middleman
   module Presentation
     # Frontend Component Manager
+    #
+    # It know about all frontend components. Information about all frontend
+    # components is used when building `application.js` and `application.scss`
+    # during website build and when creating the `bower.json`-file on
+    # presentation-creation.
+    #
+    # It normally gets the information about available components from
+    # `plugins`.
     class FrontendComponentsManager
       private
 

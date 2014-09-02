@@ -2,6 +2,12 @@
 module Middleman
   module Presentation
     # A frontend component
+    #
+    # It represents a bower component. A bower component can contain
+    # JavaScript-files, stylesheets, images, fonts, ... . A frontend component
+    # know where to get a bower component from, which version of the component
+    # is required and which JavaScript-files and stylesheets should be includes
+    # in "javascripts/application.js" and "stylesheets"application.scss".
     class FrontendComponent
       include Comparable
 
