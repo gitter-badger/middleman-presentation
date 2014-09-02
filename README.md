@@ -300,6 +300,11 @@ directory.
 middleman-presentation export presentation --prefix 'my_presentation/'
 ```
 
+The export command also places a `config.ru` within the zip-file. So if you
+want to reuse that exported presentation, unzip the file, install `rack`, 
+run `rackup` within the created directory and open a browser pointing to the
+url which was printed on stdout.
+
 ## Reuse existing presentation
 
 *Bootstrap*
