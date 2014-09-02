@@ -105,19 +105,10 @@ module Middleman
         end
 
         def add_gems_to_gem_file
-          if ENV['MM_ENV'] == 'development'
-            append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc
-
-            gem 'middleman-presentation', path: '#{File.expand_path('../../../../', __FILE__)}'
-
-            EOS
-          else
-            append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc
+          append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc
 
             gem 'middleman-presentation'
-
-            EOS
-          end
+          EOS
 
           append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc
 
