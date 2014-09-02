@@ -30,7 +30,7 @@ module Middleman
       # @param [String] path
       #   Directory where assets are stored
       def add_assets(path)
-        Middleman::Presentation.assets_manager.load_from_path(path)
+        Middleman::Presentation.assets_manager.load_from(path)
       end
 
       module_function :add_component, :add_helpers, :add_assets
