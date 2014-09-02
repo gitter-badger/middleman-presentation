@@ -24,7 +24,7 @@ module Middleman
       option :activate_slide_number, true
       option :default_transition_type, 'linear'
       option :default_transition_speed, 'default'
-      option :presentation_size, %w(75% 75%)
+      option :presentation_size, %w(60% 60%)
       option :install_assets, true
       option :initialize_git, true
       option :check_for_bower, true
