@@ -1,5 +1,5 @@
 <section class="mp-last-slide">
   <h1><%= Middleman::Presentation.t('slides.questions.title', locale: @language) %></h1>
   <div class="mp-logo-question"></div>
-  <img class="mp-logo-question" alt="Question Image" src="images/logo-question.png">
+  <img class="mp-logo-question" alt="Question Image" src="<%= asset_path(:images, 'logo-question.png') %>">
 </section>
