@@ -72,6 +72,7 @@ de:
           subtitle: 'Sub-Titel für die die Präsentation'
           title: 'Titel der Präsentation'
           version: 'Versionsnummer für die Präsentation'
+          view_port: 'Größe der Präsentation und der Abstand vom Rand zum Inhalt als Verhältnis zur Größe der Präsentation: Breite Höhe Abstand'
         arguments:
           directory: 'Verzeichnis in dem die Präsentation erstellt werden soll'
     themes:

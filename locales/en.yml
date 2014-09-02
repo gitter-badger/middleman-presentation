@@ -72,6 +72,7 @@ en:
           subtitle: 'Subtitle of presentation'
           title: 'Title of presentation'
           version: 'Version number for your presentation'
+          view_port: 'Size of presentation and margin: Width Height Margin'
         arguments:
           directory: 'Directory to create presentation in'
     themes:
