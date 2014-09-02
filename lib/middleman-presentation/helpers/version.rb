@@ -5,7 +5,7 @@ module Middleman
   module Presentation
     # Helpers
     module Helpers
-      VERSION = '0.0.4'
+      VERSION = '0.0.5'
     end
   end
 end
