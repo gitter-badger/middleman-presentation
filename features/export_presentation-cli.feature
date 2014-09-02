@@ -10,12 +10,15 @@ Feature: Run presentation
 
   Scenario: Default file name
     When I successfully run `middleman-presentation export`
-    Then a file named "20140901-my_presentation.tar.gz" should exist
+    Then a file named "20140901-my_presentation.zip" should exist
 
   Scenario: Different file name
     When I successfully run `middleman-presentation export --output-file presentation.zip`
-    Then the file "presentation.tar.gz" should exist
+    Then the file "presentation.zip" should exist
 
   Scenario: Wrong file name
-    When I successfully run `middleman-presentation export --output-file presentation.tar.gz`
-    Then the file "presentation.tar.gz" should exist
+    When I run `middleman-presentation export --output-file presentation.tar.gz`
+    Then the output should contain:
+    """
+    The provided zip filename "presentation.tar.gz" is invalid. It needs to end with ".zip".
+    """
