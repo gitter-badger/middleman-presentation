@@ -19,6 +19,6 @@
 <%%- end -%>
   </div>
 
-  <img class="mp-logo" alt="Logo" src="<%= asset_path(:images, 'logo.png') %>">
+  <img class="mp-logo" alt="Logo" src="<%%= asset_path(:images, 'logo.png') %>">
   <div class="mp-logo"></div>
 </section>
