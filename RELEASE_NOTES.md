@@ -1,6 +1,8 @@
 * 0.16
   * F: Introduce Plugin-Support
   * F: Add helpers to show available "assets", "frontend components", "plugins", ...
+  * F: Build command added
+  * I: Export command now creates a generated presentation as zip file
   * I: Move helpers to helper-gem
   * I: Localize cli
   * I: A lot of code refactoring
