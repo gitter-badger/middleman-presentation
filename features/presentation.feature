@@ -141,12 +141,22 @@ Feature: Run presentation
     </section>
     """
 
+  #@wip
   Scenario: Use asset in plugin
-    Given I add a stylesheet asset named "test_simple" to the presentation
+    Given I add a stylesheet asset named "test_simple/scss/application.scss" to the presentation
     And the Server is running
     When I go to "/stylesheets/application.css"
     Then I should see:
     """
     .test_simple {
       color: black; }
+    """
+
+  @wip
+  Scenario: Use frontend from plugin
+    Given the Server is running
+    When I go to "/javascripts/application.js"
+    Then I should see:
+    """
+    angular
     """

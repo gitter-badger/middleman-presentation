@@ -5,7 +5,7 @@ RSpec.describe AssetsManager do
   let(:creator_stub) { Class.new }
   let(:creator) { stub_const('Middleman::Presentation::Asset', creator_stub) }
 
-  context '#load_assets_from' do
+  context '#load_from_path' do
     it 'loads multiple assets from directory which has a asset gem layout' do
       touch_file 'app/assets/images/image1.png'
       touch_file 'app/images/image2.png'
@@ -26,7 +26,7 @@ RSpec.describe AssetsManager do
       expect(creator).to receive(:new).with(source_path: 'images/image7.png', destination_directory: nil)
 
       manager = AssetsManager.new(creator: creator)
-      manager.load_assets_from File.expand_path(current_dir)
+      manager.load_from_path File.expand_path(current_dir)
     end
 
     it 'changes the output_directory' do
@@ -34,7 +34,7 @@ RSpec.describe AssetsManager do
       expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: 'asdf.d')
 
       manager = AssetsManager.new(creator: creator)
-      manager.load_assets_from File.expand_path(current_dir), output_directories: { /image/ => 'asdf.d' }
+      manager.load_from_path File.expand_path(current_dir), output_directories: { /image/ => 'asdf.d' }
     end
 
     it 'excludes files' do
@@ -44,7 +44,7 @@ RSpec.describe AssetsManager do
       expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil)
 
       manager = AssetsManager.new(creator: creator)
-      manager.load_assets_from File.expand_path(current_dir), exclude_filter: [/image2/]
+      manager.load_from_path File.expand_path(current_dir), exclude_filter: [/image2/]
     end
 
     it 'includes files' do
@@ -54,7 +54,7 @@ RSpec.describe AssetsManager do
       expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil)
 
       manager = AssetsManager.new(creator: creator)
-      manager.load_assets_from File.expand_path(current_dir), include_filter: [/image1/]
+      manager.load_from_path File.expand_path(current_dir), include_filter: [/image1/]
     end
   end
 
@@ -64,7 +64,7 @@ RSpec.describe AssetsManager do
       touch_file 'app/assets/images/image2.png'
 
       manager = AssetsManager.new
-      manager.load_assets_from File.expand_path(current_dir)
+      manager.load_from_path File.expand_path(current_dir)
 
       output = capture :stdout do
         manager.each_asset { |a| puts a.source_path }
@@ -88,7 +88,7 @@ RSpec.describe AssetsManager do
   context '#to_s' do
     it 'returns a string representation of self' do
       manager = AssetsManager.new
-      manager.load_assets_from current_dir
+      manager.load_from_path current_dir
       manager.add('images/image.png', 'output.d')
 
       expect(manager.to_s).to eq <<-EOS.strip_heredoc.chomp
