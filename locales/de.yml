@@ -36,6 +36,10 @@ de:
         title: 'Lege etwas an ...'
       list:
         title: 'Liste Informationen über ...'
+      export:
+        title: 'Exportiere etwas ...'
+      build:
+        title: 'Exportiere etwas ...'
     presentations:
       create:
         title: 'Erzeuge eine neue Präsentation in Verzeichnis DIR (standard: aktuelles Arbeitsverzeichnis)'
@@ -140,9 +144,12 @@ de:
         title: 'Anzeige verfügbarer CSS-Stile.'
         headline: 'Verfügbare CSS-Klassen in "Vorlagen", welche von "middleman-presentation" verwendet werden:'
     presentation:
+      build:
+        title: Präsentation generieren
+        headline: Generiere die Präsentation "%{title}"
       export:
         title: Präsentation exportieren
-        headline: Exportiere die Präsentation "%{title}"  nach "%{file}"
+        headline: Exportiere die Präsentation "%{title}" nach "%{file}"
         options:
           output_file: Erzeuge ein Archiv mit dem gegebenen Dateinamen
           prefix: 'Präfix für Dateien in der Zip-Datei. Bitte denken Sie an "/" am Ende des Präfixes, wenn es sich hierbei um ein Verzeichnis handelt. Bsp: "20140901-titel/"'

@@ -1,8 +1,8 @@
-Feature: Run presentation
+Feature: Export presentation
 
   As a presentator
-  I want to run an already created presentation
-  In order to use it
+  I want to export an already created presentation
+  In order to give to the audience
 
   Background:
     Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation" --date "20140901"`

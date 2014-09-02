@@ -11,10 +11,6 @@ module Middleman
 
         desc Middleman::Presentation.t('views.presentation.export.title')
 
-        def add_to_source_path
-          source_paths << File.expand_path('../../../../templates', __FILE__)
-        end
-
         def extract_data
           shared_instance = ::Middleman::Application.server.inst
 
@@ -37,26 +33,19 @@ module Middleman
           @stylesheets_directory = shared_instance.config.css_dir
           @javascripts_directory = shared_instance.config.js_dir
           @fonts_directory       = shared_instance.config.fonts_dir
-
-          @rackup_config_file    = File.join shared_instance.build_dir, 'config.ru'
         end
 
         def build_presentation
+          invoke 'middleman:presentation:cli:build:presentation'
+        end
+
+        def create_archive
           Middleman::Presentation.logger.info Middleman::Presentation.t(
             'views.presentation.export.headline',
             title: @title,
             file: @output_file
           )
 
-          result = run('middleman build', capture: true)
-          fail Thor::Error, Middleman::Presentation.t('errors.middleman_build_error', result: result) unless $CHILD_STATUS.exitstatus == 0
-        end
-
-        def add_rackup_file
-          template 'rackup.config.erb', @rackup_config_file
-        end
-
-        def create_archive
           Middleman::Presentation::Utils.zip(@source_directory, @output_file, prefix: @prefix)
         end
       end

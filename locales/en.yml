@@ -36,6 +36,10 @@ en:
         title: 'Create something ...'
       list:
         title: 'List information about ...'
+      export:
+        title: 'Export something ...'
+      build:
+        title: 'Build something ...'
     presentations:
       create:
         title: 'Initialize a new presentation in DIR (default: $PWD)'
@@ -140,6 +144,9 @@ en:
         title: 'Show available styles'
         headline: 'Available css classes in templates used by middleman-presentation:'
     presentation:
+      build:
+        title: Build presentation
+        headline: Build presentation "%{title}"
       export:
         title: Export presentation
         headline: Export presentation "%{title}" to file "%{file}"

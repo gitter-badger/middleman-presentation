@@ -18,6 +18,9 @@ module Middleman
 
         desc 'export', Middleman::Presentation.t('views.runners.export.title')
         subcommand 'export', Export
+
+        desc 'build', Middleman::Presentation.t('views.runners.build.title')
+        subcommand 'build', Build
       end
     end
   end
