@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 use Rack::Static,
-:urls => ['<%= @images_directory %>', '<%= @stylesheets_directory %>', '<%= @javascripts_directory %>', '<%= @fonts_directory %>'],
+:urls => ['/<%= @images_directory %>', '/<%= @stylesheets_directory %>', '/<%= @javascripts_directory %>', '/<%= @fonts_directory %>'],
 :root => File.expand_path('.')
 
 run lambda { |env|
