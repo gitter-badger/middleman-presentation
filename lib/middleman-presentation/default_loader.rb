@@ -62,9 +62,11 @@ module Middleman
         include_filter << /notes\.html/
         include_filter << %r{reveal\.js/.*/.*\.js$}
 
+        # A frontend component can include an asset
+        # and therefor it needs to be available. Stylesheets are included by
+        # default. Only missing JavaScript-Files may cause problems.
         application.frontend_components_manager.available_frontend_components.each do |c|
           c.javascripts { |e| include_filter << Regexp.new(e)}
-          c.stylesheets { |e| include_filter << Regexp.new(e)}
         end
 
         exclude_filter = [/src/, /test/, /demo/, /source/]
