@@ -72,13 +72,13 @@ module Middleman
       # @!attribute [r] javascripts
       #   Return the paths to javascripts prepended with "name/"
       def javascripts
-        @javascripts.map { |j| format '%s/%s', name, j }
+        @javascripts.map { |j| format '%s/%s', name, j.sub(/\.(?:js|coffee)$/, '') }
       end
 
       # @!attribute [r] stylesheets
       #   Return the paths to stylesheets prepended with "name/"
       def stylesheets
-        @stylesheets.map { |s| format '%s/%s', name, s }
+        @stylesheets.map { |s| format '%s/%s', name, s.sub(/\.(?:css|scss)$/, '') }
       end
 
       # @private

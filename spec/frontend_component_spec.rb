@@ -72,14 +72,14 @@ RSpec.describe FrontendComponent do
   context '#javascripts' do
     it 'prepends name to javascripts' do
       component = FrontendComponent.new(name: 'name1', javascripts: %w(js/component.js), resource_locator: 'https://www.example.com/test1')
-      expect(component.javascripts).to include 'name1/js/component.js'
+      expect(component.javascripts).to include 'name1/js/component'
     end
   end
 
   context '#stylesheets' do
     it 'prepends name to stylesheets' do
       component = FrontendComponent.new(name: 'name1', stylesheets: %w(css/component.scss), resource_locator: 'https://www.example.com/test1')
-      expect(component.stylesheets).to include 'name1/css/component.scss'
+      expect(component.stylesheets).to include 'name1/css/component'
     end
   end
 
@@ -103,16 +103,16 @@ RSpec.describe FrontendComponent do
       components = FrontendComponent.parse(hashes)
       expect(components.first.name).to eq 'name'
       expect(components.first.resource_locator).to eq 'https://example.org/test'
-      expect(components.first.javascripts.first).to eq 'name/path/to/file.js'
-      expect(components.first.stylesheets.first).to eq 'name/path/to/file.scss'
+      expect(components.first.javascripts.first).to eq 'name/path/to/file'
+      expect(components.first.stylesheets.first).to eq 'name/path/to/file'
     end
 
     it 'reads data from hash' do
       components = FrontendComponent.parse(hashes.first)
       expect(components.first.name).to eq 'name'
       expect(components.first.resource_locator).to eq 'https://example.org/test'
-      expect(components.first.javascripts.first).to eq 'name/path/to/file.js'
-      expect(components.first.stylesheets.first).to eq 'name/path/to/file.scss'
+      expect(components.first.javascripts.first).to eq 'name/path/to/file'
+      expect(components.first.stylesheets.first).to eq 'name/path/to/file'
     end
   end
 end
