@@ -47,7 +47,7 @@ Feature: Initialize middleman-presentation
     # plugins_enable: true
     # plugins_whitelist: []
     # presentation_language: ''
-    # presentation_size: ["90%", "90%"]
+    # presentation_size: ["75%", "75%"]
     # slides_directory: slides
     # slides_ignore_file: .slidesignore
     # speaker: my_user
