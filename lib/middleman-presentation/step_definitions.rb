@@ -19,8 +19,10 @@ Around do |_, block|
 end
 
 When(/^I start debugging/) do
+  # rubocop:disable Lint/Debugger
   require 'pry'
   binding.pry
+  # rubocop:enable Lint/Debugger
 
   ''
 end

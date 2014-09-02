@@ -1,7 +1,10 @@
 # Fixes bug in middleman
 module Middleman
+  # Renderers
   module Renderers
+    # Sass
     module Sass
+      # Template
       class SassPlusCSSFilenameTemplate < ::Tilt::SassTemplate
         def evaluate(context, _)
           @context ||= context
