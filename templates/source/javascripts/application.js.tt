@@ -1,3 +1,5 @@
-<% @frontend_components.map(&:javascripts).flatten.each do |j| -%>
+// LIFO: The component which was added last will placed
+// first
+<% @frontend_components.map(&:javascripts).flatten.reverse.each do |j| -%>
 //= require <%= j %>
 <% end -%>
