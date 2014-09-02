@@ -13,7 +13,7 @@ PATH
       launchy (~> 2.4.2)
       liquid
       middleman (~> 3.3.4)
-      middleman-presentation-helpers (>= 0.0.3)
+      middleman-presentation-helpers (>= 0.0.5)
       middleman-sprockets (~> 3.3.8)
       nokogiri
       rake
