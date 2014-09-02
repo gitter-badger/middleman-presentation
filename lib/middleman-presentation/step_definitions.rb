@@ -43,7 +43,7 @@ Given(/^I create a new presentation with title "([^"]+)"(?: for speaker "([^"]+)
   options[:speaker] = speaker if speaker
   options[:date] = date if date
 
-  step %Q(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
+  step %(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
   step 'I cd to "presentation1"'
   step 'I remove all bundler files'
 end

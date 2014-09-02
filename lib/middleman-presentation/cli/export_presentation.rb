@@ -43,8 +43,8 @@ module Middleman
 
         def build_presentation
           Middleman::Presentation.logger.info Middleman::Presentation.t(
-            'views.presentation.export.headline', 
-            title: @title, 
+            'views.presentation.export.headline',
+            title: @title,
             file: @output_file
           )
 

@@ -65,8 +65,8 @@ module Middleman
         # Frontend components include javascripts and stylesheets
         # So there's no need to place them in filesystem as well
         application.frontend_components_manager.available_frontend_components.each do |c|
-          c.javascripts { |e| exclude_filter << Regexp.new(e)}
-          c.stylesheets { |e| exclude_filter << Regexp.new(e)}
+          c.javascripts { |e| exclude_filter << Regexp.new(e) }
+          c.stylesheets { |e| exclude_filter << Regexp.new(e) }
         end
 
         exclude_filter = [/src/, /test/, /demo/, /source/]

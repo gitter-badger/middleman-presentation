@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Utils module
     module Utils
       # Create zip archive from directory
       #

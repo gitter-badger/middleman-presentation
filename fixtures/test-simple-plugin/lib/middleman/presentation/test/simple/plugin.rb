@@ -21,7 +21,7 @@ module Middleman
           FrontendComponent.new(
             name: 'angular',
             version: 'latest',
-          javascripts: ['angular.js']
+            javascripts: ['angular.js']
           )
         )
 
