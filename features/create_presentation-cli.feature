@@ -37,10 +37,6 @@ Feature: Initialize presentation
     Then a directory named "vendor/assets/components/middleman-presentation-theme-default" should exist
     And the file "source/stylesheets/application.scss" should contain:
     """
-    @import 'middleman-presentation-theme-common/stylesheets/middleman-presentation-theme-common';
-    """
-    And the file "source/stylesheets/application.scss" should contain:
-    """
     @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
     """
 
