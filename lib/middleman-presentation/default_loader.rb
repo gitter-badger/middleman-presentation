@@ -16,7 +16,7 @@ module Middleman
       def load
         load_plugins
         load_default_components
-        load_default_assets_in_bower_directory
+        load_assets_in_bower_directory
       end
 
       private
@@ -48,7 +48,7 @@ module Middleman
       end
 
       # Load default components
-      def load_default_assets_in_bower_directory
+      def load_assets_in_bower_directory
         # Do not build scss/js-files during build
         # they are included in 'application.css/application.js' by default
         #
@@ -57,10 +57,15 @@ module Middleman
         include_filter = %w(
           .png  .gif .jpg .jpeg .svg .webp
           .eot  .otf .svc .woff .ttf
-          .js .coffee
         ).map { |e| Regexp.new("#{Regexp.escape(e)}$") }
 
         include_filter << /notes\.html/
+        include_filter << %r{reveal\.js/.*/.*\.js$}
+
+        application.frontend_components_manager.available_frontend_components.each do |c|
+          c.javascripts { |e| include_filter << Regexp.new(e)}
+          c.stylesheets { |e| include_filter << Regexp.new(e)}
+        end
 
         exclude_filter = [/src/, /test/, /demo/, /source/]
 
