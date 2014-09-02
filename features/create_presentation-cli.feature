@@ -70,10 +70,6 @@ Feature: Initialize presentation
     Then a directory named "vendor/assets/components/middleman-presentation-theme-default" should exist
     And the file "source/stylesheets/application.scss" should contain:
     """
-    @import 'middleman-presentation-theme-common/stylesheets/middleman-presentation-theme-common';
-    """
-    And the file "source/stylesheets/application.scss" should contain:
-    """
     @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
     """
 
@@ -207,10 +203,6 @@ Feature: Initialize presentation
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
     Then a directory named "vendor/assets/components/middleman-presentation-theme-fedux_org" should exist
-    And the file "source/stylesheets/application.scss" should contain:
-    """
-    @import 'middleman-presentation-theme-common/stylesheets/middleman-presentation-theme-common';
-    """
     And the file "source/stylesheets/application.scss" should contain:
     """
     @import 'middleman-presentation-theme-fedux_org/stylesheets/middleman-presentation-theme-fedux_org';
