@@ -28,6 +28,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.5)
       i18n (~> 0.6, >= 0.6.9)
@@ -51,9 +52,10 @@ GEM
     awesome_print (1.2.0)
     blockenspiel (0.4.5)
     builder (3.2.2)
-    byebug (2.7.0)
-      columnize (~> 0.3)
+    byebug (3.4.0)
+      columnize (~> 0.8)
       debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     childprocess (0.5.3)
@@ -110,6 +112,7 @@ GEM
     eventmachine (1.0.3)
     execjs (2.2.1)
     facter (2.2.0)
+      CFPropertyList (~> 2.2.6)
     fedux_org-stdlib (0.7.20)
       activesupport
     ffi (1.9.3)
@@ -190,7 +193,7 @@ GEM
       em-websocket (~> 0.5.1)
       middleman-core (~> 3.2)
       rack-livereload (~> 0.3.15)
-    middleman-presentation-helpers (0.0.4)
+    middleman-presentation-helpers (0.0.5)
     middleman-sprockets (3.3.9)
       middleman-core (~> 3.3)
       sprockets (~> 2.12.1)
@@ -250,8 +253,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (1.3.3)
-      byebug (~> 2.7)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
       pry (~> 0.10)
     pry-doc (0.6.0)
       pry (~> 0.9)
@@ -294,7 +297,7 @@ GEM
     ruby-progressbar (1.5.1)
     rubyzip (1.1.6)
     sass (3.4.2)
-    sequel (4.13.0)
+    sequel (4.14.0)
     simplecov (0.9.0)
       docile (~> 1.1.0)
       multi_json
