@@ -19,11 +19,8 @@ module Middleman
       end
 
       # Add asset
-      def add(source_path, destination_directory = nil)
-        assets << creator.new(
-          source_path: source_path,
-          destination_directory: destination_directory
-        )
+      def add(a)
+        assets << creator.new(**a)
       end
 
       # Show assets which should be imported

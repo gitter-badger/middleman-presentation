@@ -29,18 +29,7 @@ module Middleman
 
       # Add component
       def add(c)
-        if c.is_a? creator
-          component = c
-        elsif c.is_a? Array
-          component = creator.parse(c)
-        elsif c.respond_to? :to_h
-          component = creator.new(**c.to_h)
-        else
-          Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.invalid_frontend_component')
-          return
-        end
-
-        frontend_components << component
+        frontend_components << creator.new(**c.to_h)
       end
 
       # List installed plugins

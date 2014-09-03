@@ -22,7 +22,7 @@ module Middleman
       #   The directory where the asset should be placed when building the
       #   static version of the web application
       def initialize(source_path:, destination_directory:)
-        @source_path           = source_path.blank? ? nil : Pathname.new(source_path)
+        @source_path           = Pathname.new(source_path)
         @destination_directory = destination_directory.blank? ? nil : Pathname.new(destination_directory)
       end
 
