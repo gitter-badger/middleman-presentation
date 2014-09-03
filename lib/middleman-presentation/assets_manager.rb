@@ -71,9 +71,19 @@ module Middleman
         end
       end
 
-      # Iterate over assets
-      def each_asset(&block)
+      # Iterate over each importable asset
+      def each_importable_asset(&block)
         assets.dup.each(&block)
+      end
+
+      # Iterate over each importable asset
+      def each_includable_stylesheet(&block)
+        assets.find_all { |a| a.valid? && a.stylesheet? }.each(&block)
+      end
+
+      # Iterate over each importable asset
+      def each_includable_javascript(&block)
+        assets.find_all { |a| a.valid? && a.script? }.each(&block)
       end
 
       # Generic load from

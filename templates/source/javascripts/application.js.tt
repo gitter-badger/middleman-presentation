@@ -1,5 +1,3 @@
-// LIFO: The component which was added last will placed
-// first
-<% @frontend_components.reverse.map(&:javascripts).flatten.each do |j| -%>
-//= require <%= j %>
+<% Middleman::Presentation.assets_manager.each_includable_javascript do |path| -%>
+//= require <%= path %>
 <% end -%>

@@ -159,7 +159,7 @@ module Middleman
           if respond_to?(:sprockets) && sprockets.respond_to?(:import_asset)
             sprockets.append_path File.join(root, bower_directory)
 
-            Middleman::Presentation.assets_manager.each_asset do |a|
+            Middleman::Presentation.assets_manager.each_importable_asset do |a|
               sprockets.import_asset a.source_path, &a.destination_path_resolver
             end
           end

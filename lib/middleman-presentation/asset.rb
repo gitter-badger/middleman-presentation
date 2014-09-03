@@ -9,6 +9,7 @@ module Middleman
     # initialization.
     class Asset
       include Comparable
+      include FeduxOrgStdlib::Roles::Typable
 
       attr_reader :source_path, :destination_directory
 
