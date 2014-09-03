@@ -71,9 +71,24 @@ module Middleman
         end
       end
 
+      def load_from_manager(manager)
+        objects = creator.parse(manager.known_objects)
+        objects.find_all(&:importable?)
+      end
+
       # Iterate over assets
-      def each_asset(&block)
-        assets.dup.each(&block)
+      def each_loadable_asset(&block)
+        assets.find_all { |a| a.valid? && a.loadable? }.each(&block)
+      end
+
+      # Iterate over all importable stylesheets
+      def each_importable_stylesheet(&block)
+        assets.find_all { |a| a.valid? && a.importable? && a.stylesheet? }.each(&block)
+      end
+
+      # Iterate over all importable scripts
+      def each_importable_script(&block)
+        assets.find_all { |a| a.valid? && a.importable? && a.script? }.each(&block)
       end
 
       # Generic load from

@@ -10,7 +10,13 @@ module Middleman
     class Asset
       include Comparable
 
-      attr_reader :source_path, :destination_directory
+      attr_reader :source_path, :destination_directory, :import_path
+
+      private
+
+      include FeduxOrgStdlib::Roles::Typable
+
+      public
 
       # Create instance
       #
@@ -20,9 +26,10 @@ module Middleman
       # @param [String] destination_directory
       #   The directory where the asset should be placed when building the
       #   static version of the web application
-      def initialize(source_path:, destination_directory:)
-        @source_path           = source_path.blank? ? nil : Pathname.new(source_path)
-        @destination_directory = destination_directory.blank? ? nil : Pathname.new(destination_directory)
+      def initialize(source_path:, destination_directory:, loadable: false, import_path: nil)
+        @source_path           = Pathname.new(source_path)
+        @destination_directory = Pathname.new(destination_directory)
+        @loadable              = loadable
       end
 
       # Destination path resolver
@@ -30,6 +37,16 @@ module Middleman
         return proc { |local_path| destination_directory + local_path } if destination_directory
 
         proc {}
+      end
+
+      # Is the ImportableAsset really importable
+      def importable?
+        valid? && (script? || stylesheet?)
+      end
+
+      # Is the ImportableAsset really importable
+      def loadable?
+        valid? && (@loadable == true || image? || font?)
       end
 
       # @private

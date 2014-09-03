@@ -17,15 +17,17 @@ module Middleman
 
       public
 
-      def initialize(creator: FrontendComponent)
-        @frontend_components = Set.new
-        @creator = creator
+      def initialize(components_directory:, creator: FrontendComponent)
+        @frontend_components  = Set.new
+        @creator              = creator
+        @components_directory = components_directory
       end
 
       # Return available frontend components
       def available_frontend_components
-        frontend_components.to_a
+        frontend_components
       end
+      alias_method :known_objects, :available_frontend_components
 
       # Add component
       def add(c)
@@ -39,6 +41,8 @@ module Middleman
           Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.invalid_frontend_component')
           return
         end
+
+        component.components_directory = components_directory
 
         frontend_components << component
       end

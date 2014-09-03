@@ -141,6 +141,7 @@ Feature: Run presentation
     </section>
     """
 
+    @wip
   Scenario: Use asset in plugin
     Given I add a stylesheet asset named "test_simple" to the presentation
     And the Server is running

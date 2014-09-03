@@ -17,12 +17,17 @@ module Middleman
         load_plugins
         load_default_components
         load_assets_in_bower_directory
+        load_load_importable_assets
       end
 
       private
 
       def load_plugins
         application.plugins_manager.load_plugins if application.config.plugins_enable == true
+      end
+
+      def load_importable_assets
+        application.assets_manager.load_from_manager application.frontend_components_manager
       end
 
       def load_default_components
@@ -62,12 +67,12 @@ module Middleman
         include_filter << /notes\.html/
         include_filter << %r{reveal\.js/.*/.*\.js$}
 
-        # Frontend components include javascripts and stylesheets
-        # So there's no need to place them in filesystem as well
-        application.frontend_components_manager.available_frontend_components.each do |c|
-          c.javascripts { |e| exclude_filter << Regexp.new(e) }
-          c.stylesheets { |e| exclude_filter << Regexp.new(e) }
-        end
+        ## Frontend components include javascripts and stylesheets
+        ## So there's no need to place them in filesystem as well
+        #application.frontend_components_manager.available_frontend_components.each do |c|
+        #  c.javascripts { |e| exclude_filter << Regexp.new(e) }
+        #  c.stylesheets { |e| exclude_filter << Regexp.new(e) }
+        #end
 
         exclude_filter = [/src/, /test/, /demo/, /source/]
 

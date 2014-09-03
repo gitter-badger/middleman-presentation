@@ -88,8 +88,6 @@ module Middleman
 
           @version            = options[:version]
           @project_id         = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
-
-          @frontend_components = Middleman::Presentation.frontend_components_manager.available_frontend_components
         end
 
         def set_configuration_for_revealjs
@@ -159,7 +157,7 @@ module Middleman
           if respond_to?(:sprockets) && sprockets.respond_to?(:import_asset)
             sprockets.append_path File.join(root, bower_directory)
 
-            Middleman::Presentation.assets_manager.each_asset do |a|
+            Middleman::Presentation.assets_manager.each_loadable_asset do |a|
               sprockets.import_asset a.source_path, &a.destination_path_resolver
             end
           end

@@ -11,13 +11,14 @@ module Middleman
     class FrontendComponent
       include Comparable
 
-      attr_reader :name, :resource_locator, :version, :javascripts, :stylesheets
+      attr_reader :name, :resource_locator, :version, :importable_javascripts, :importable_stylesheets
+      attr_writer :component_directory
 
       class << self
         # Parse line
         #
         # @param [Array, String] hashes
-        #   Options read from config file
+        #   Create multiple components
         def parse(*hashes)
           hashes.flatten.map { |h| new(**h) }
         end
@@ -63,8 +64,8 @@ module Middleman
 
         fail ArgumentError, Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name) if @name.blank?
 
-        @javascripts = Array(javascripts)
-        @stylesheets = Array(stylesheets)
+        @importable_javascripts = Array(javascripts)
+        @importable_stylesheets = Array(stylesheets)
       end
 
       # Return resource locator
@@ -75,21 +76,21 @@ module Middleman
         @resource_locator.to_s
       end
 
-      # @!attribute [r] javascripts
-      #   Return the paths to javascripts prepended with "name/"
-      def javascripts
-        @javascripts.map { |j| format '%s/%s', name, j.sub(/\.(?:js|coffee)$/, '') }
-      end
-
-      # @!attribute [r] stylesheets
-      #   Return the paths to stylesheets prepended with "name/"
-      def stylesheets
-        @stylesheets.map { |s| format '%s/%s', name, s.sub(/\.(?:css|scss)$/, '') }
-      end
-
       # @private
       def <=>(other)
         name <=> other.name
+      end
+
+      private
+
+      # Return the paths to javascripts prepended with "name/"
+      def javascripts
+        @javascripts.map { |e| format '%s/%s', name, e }
+      end
+
+      # Return the paths to stylesheets prepended with "name/"
+      def stylesheets
+        @stylesheets.map { |e| format '%s/%s', name, e }
       end
     end
   end

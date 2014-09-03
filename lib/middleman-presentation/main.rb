@@ -6,19 +6,17 @@ module Middleman
     @config                      = PresentationConfig.new
     @logger                      = Logger.new
     @helpers_manager             = HelpersManager.new
-    @assets_manager              = AssetsManager.new
     @frontend_components_manager = FrontendComponentsManager.new
+    @assets_manager              = AssetsManager.new
     @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
     @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
 
-    ###                                                               ###
-    # Keep in mind that there are methods at the end of the file which: #
-    # * load bower assets                                               #
-    # * activate plugins                                                #
-    ###                                                               ###
-
     class << self
       attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager, :assets_manager, :locale_configurator
+
+      def not_matching_regular_expression
+        @not_matching_regular_expression ||= Regexp.new(SecureRandom.hex)
+      end
 
       def root_path
         File.expand_path '../../../', __FILE__
