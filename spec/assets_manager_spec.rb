@@ -58,7 +58,7 @@ RSpec.describe AssetsManager do
     end
   end
 
-  context '#each_assets' do
+  context '#each_importable_asset' do
     it 'iterates over all assets' do
       touch_file 'app/assets/images/image1.png'
       touch_file 'app/assets/images/image2.png'

@@ -39,12 +39,13 @@ module Middleman
             name: e.name,
             resource_locator: e.resource_locator,
             version: e.version,
-            javascripts: e.javascripts,
-            stylesheets: e.stylesheets
+            loadable_files: e.loadable_files,
+            importable_files: e.importable_files,
+            ignorable_files: e.ignorable_files
           }
         end
 
-        List.new(data).to_s(fields: [:name, :resource_locator, :version, :javascripts, :stylesheets])
+        List.new(data).to_s(fields: [:name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files])
       end
     end
   end

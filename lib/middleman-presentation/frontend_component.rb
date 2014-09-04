@@ -11,7 +11,7 @@ module Middleman
     class FrontendComponent
       include Comparable
 
-      attr_reader :name, :resource_locator, :version, :javascripts, :stylesheets
+      attr_reader :name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files
 
       class << self
         # Parse line
@@ -33,7 +33,7 @@ module Middleman
       #
       # @param [String] github
       #   Name of github repository, e.g. <account>/<repository>
-      def initialize(resource_locator: nil, version: nil, name: nil, github: nil, javascripts: [], stylesheets: [])
+      def initialize(resource_locator: nil, version: nil, name: nil, github: nil, importable_files: [], loadable_files: [], ignorable_files: [])
         @resource_locator = if resource_locator =~ /\A#{URI.regexp}\z/
                               Addressable::URI.heuristic_parse resource_locator
                             elsif github
@@ -63,8 +63,9 @@ module Middleman
 
         fail ArgumentError, Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name) if @name.blank?
 
-        @javascripts = Array(javascripts)
-        @stylesheets = Array(stylesheets)
+        @loadable_files   = Array(loadable_files)
+        @importable_files = Array(importable_files)
+        @ignorable_files  = Array(ignorable_files)
       end
 
       # Return resource locator
@@ -73,18 +74,6 @@ module Middleman
       #   The resource locator
       def resource_locator
         @resource_locator.to_s
-      end
-
-      # @!attribute [r] javascripts
-      #   Return the paths to javascripts prepended with "name/"
-      def javascripts
-        @javascripts.map { |j| format '%s/%s', name, j.sub(/\.(?:js|coffee)$/, '') }
-      end
-
-      # @!attribute [r] stylesheets
-      #   Return the paths to stylesheets prepended with "name/"
-      def stylesheets
-        @stylesheets.map { |s| format '%s/%s', name, s.sub(/\.(?:css|scss)$/, '') }
       end
 
       # @private

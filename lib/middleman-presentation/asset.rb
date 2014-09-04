@@ -11,7 +11,7 @@ module Middleman
       include Comparable
       include FeduxOrgStdlib::Roles::Typable
 
-      attr_reader :source_path, :destination_directory
+      attr_reader :source_path, :destination_directory, :loadable_files, :importable_files, :ignorable_files
 
       # Create instance
       #
@@ -21,9 +21,13 @@ module Middleman
       # @param [String] destination_directory
       #   The directory where the asset should be placed when building the
       #   static version of the web application
-      def initialize(source_path:, destination_directory:)
+      def initialize(source_path:, destination_directory:, loadable_files:, importable_files:, ignorable_files:)
         @source_path           = Pathname.new(source_path)
         @destination_directory = destination_directory.blank? ? nil : Pathname.new(destination_directory)
+
+        @loadable_files   = Array(loadable_files)
+        @importable_files = Array(importable_files)
+        @ignorable_files  = Array(ignorable_files)
       end
 
       # Destination path resolver

@@ -174,11 +174,6 @@ module Middleman
           EOS
         end
 
-        def create_application_asset_files
-          template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss')
-          template 'source/javascripts/application.js.tt', File.join(middleman_source_directory, 'javascripts', 'application.js')
-        end
-
         def create_image_directory
           empty_directory File.join(middleman_source_directory, 'images')
         end
@@ -223,6 +218,11 @@ module Middleman
               fail Thor::Error, Middleman::Presentation.t('errors.bundle_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
             end
           end
+        end
+
+        def create_application_asset_files
+          template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss')
+          template 'source/javascripts/application.js.tt', File.join(middleman_source_directory, 'javascripts', 'application.js')
         end
 
         def initialize_git_directory

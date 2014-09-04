@@ -9,27 +9,32 @@ module Middleman
     class AssetsManager
       private
 
-      attr_reader :assets, :creator
+      attr_reader :assets, :creator, :loadable_files_db, :importable_files_db
 
       public
 
       def initialize(creator: Asset)
-        @assets          = Set.new
-        @creator         = creator
+        @creator             = creator
+        @assets              = Set.new
       end
 
       # Add asset
       def add(a)
-        assets << creator.new(**a)
+        assets << a
       end
 
       # Show assets which should be imported
       def to_s
         data = assets.sort.reduce([]) do |a, e|
-          a << { source_path: e.source_path, destination_directory: e.destination_directory }
+          a << { 
+            source_path: e.source_path,
+            destination_directory: e.destination_directory,
+            loadable: loadable,
+            importable: importable,
+          }
         end
 
-        List.new(data).to_s(fields: [:source_path, :destination_directory])
+        List.new(data).to_s(fields: [:source_path, :destination_directory, :loadable, :importable])
       end
 
       # Load assets from path
@@ -51,7 +56,7 @@ module Middleman
       #   assets/css/all.scss            => css/all.scss
       #
       # @see {#load_components_from} To load bower components
-      def load_from_path(base_path, output_directories: [], include_filter: [], exclude_filter: [])
+      def load_from_path(base_path, output_directories: [], importable_files: [], loadable_files: [], ignorable_files: [])
         fail Errno::ENOENT, base_path unless FileTest.directory? base_path
 
         asset_dirs = %w(assets app app/assets vendor vendor/assets lib lib/assets)
@@ -62,8 +67,9 @@ module Middleman
           load_from(
             path,
             output_directories: output_directories,
-            include_filter: include_filter,
-            exclude_filter: exclude_filter
+            importable_files: importable_files,
+            loadable_files: loadable_files,
+            ignorable_files: ignorable_files
           )
         end
       end
@@ -74,13 +80,13 @@ module Middleman
       end
 
       # Iterate over each importable asset
-      def each_includable_stylesheet(&block)
-        assets.find_all { |a| a.valid? && a.stylesheet? }.each(&block)
+      def each_importable_stylesheet(&block)
+        assets.find_all { |a| a.valid? && a.importable? && a.stylesheet? }.each(&block)
       end
 
       # Iterate over each importable asset
-      def each_includable_javascript(&block)
-        assets.find_all { |a| a.valid? && a.script? }.each(&block)
+      def each_importable_javascript(&block)
+        assets.find_all { |a| a.valid? && a.importable? && a.script? }.each(&block)
       end
 
       # Generic load from
@@ -99,7 +105,7 @@ module Middleman
       #
       # @param [Array] exclude_filter
       #   A list of regular expressions. All matching assets are not included.
-      def load_from(base_path, output_directories:, include_filter:, exclude_filter:)
+      def load_from(base_path, output_directories:, loadable_files:, importable_files:, ignorable_files:)
         base_path   = File.expand_path(base_path)
         search_path = File.join(base_path, '**', '*')
 
@@ -107,24 +113,27 @@ module Middleman
           next unless File.file? p
 
           # rubocop:disable Style/CaseEquality
-          next if !include_filter.blank? && Array(include_filter).none? { |f| Regexp.new(f) === p }
-          next if !exclude_filter.blank? && Array(exclude_filter).any? { |f| Regexp.new(f) === p }
+          next if !ignorable_files.blank? && Array(ignorable_files).any? { |f| Regexp.new(f) === p }
           # rubocop:enable Style/CaseEquality
 
-          new_path   = File.join(*Pathname.new(p).relative_path_from(Pathname.new(base_path)).each_filename.to_a)
-
           # assets will be find multiple times: vendor/ will find assets in vendor/assets as well
+          new_path   = File.join(*Pathname.new(p).relative_path_from(Pathname.new(base_path)).each_filename.to_a)
           next if new_path.to_s.start_with?('assets')
 
           # rubocop:disable Style/CaseEquality
           output_dir = output_directories.find(proc { [] }) { |pattern, _| pattern === p }.last
           # rubocop:enable Style/CaseEquality
 
-          args = []
-          args << new_path
-          args << output_dir if output_dir
+          args = {}
+          args[:source_path] = new_path
+          args[:output_dir] = output_dir if output_dir
 
-          add(*args)
+          asset = creator.new(**args)
+
+          asset.loadable   = true if loadable_files.any? { |regexp| regexp === p }
+          asset.importable = true if importable_files_db.any? { |regexp| regexp === p }
+
+          add(asset)
         end
       end
     end
