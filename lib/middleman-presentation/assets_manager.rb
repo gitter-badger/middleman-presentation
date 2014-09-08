@@ -9,11 +9,7 @@ module Middleman
     class AssetsManager
       private
 
-      attr_reader :assets, :creator, :loadable, :importable
-
-      public
-
-      attr_writer :importable, :loadable
+      attr_reader :assets, :creator
 
       def initialize(creator: Asset)
         @creator             = creator
@@ -31,12 +27,14 @@ module Middleman
           a << { 
             source_path: e.source_path,
             destination_directory: e.destination_directory,
-            loadable: loadable,
-            importable: importable,
+            loadable_files: e.loadable_files,
+            importable_files: e.importable_files,
+            ignorable_files: e.ignorable_files,
+            output_directories: e.output_directories
           }
         end
 
-        List.new(data).to_s(fields: [:source_path, :destination_directory, :loadable, :importable])
+        List.new(data).to_s(fields: [:source_path, :destination_directory, :importable_files, :loadable_files, :ignorable_files, :output_directories])
       end
 
       # Iterate over each importable asset
