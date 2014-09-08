@@ -16,7 +16,7 @@ module Middleman
       def load
         load_plugins
         load_default_components
-        load_assets_in_bower_directory
+#        load_assets_in_bower_directory
       end
 
       private
@@ -33,12 +33,14 @@ module Middleman
           )
         end
         # rubocop:enable Style/GuardClause
-
         if application.config.theme.blank?
           application.frontend_components_manager.add(
             name: 'middleman-presentation-theme-default',
             github: 'maxmeyer/middleman-presentation-theme-default',
-            stylesheets: %w(stylesheets/middleman-presentation-theme-default)
+            importable_files: [
+              /stylesheets\/middleman-presentation-theme-default.scss$/,
+              /.*\.png$/
+            ]
           )
         else
           application.frontend_components_manager.add(
@@ -48,41 +50,41 @@ module Middleman
       end
 
       # Load default components
-      def load_assets_in_bower_directory
-        # Do not build scss/js-files during build
-        # they are included in 'application.css/application.js' by default
-        #
-        #   .css .scss
-        #
-        include_filter = %w(
-          .png  .gif .jpg .jpeg .svg .webp
-          .eot  .otf .svc .woff .ttf
-        ).map { |e| Regexp.new("#{Regexp.escape(e)}$") }
+      #def load_assets_in_bower_directory
+      #  # Do not build scss/js-files during build
+      #  # they are included in 'application.css/application.js' by default
+      #  #
+      #  #   .css .scss
+      #  #
+      #  include_filter = %w(
+      #    .png  .gif .jpg .jpeg .svg .webp
+      #    .eot  .otf .svc .woff .ttf
+      #  ).map { |e| Regexp.new("#{Regexp.escape(e)}$") }
 
-        include_filter << /notes\.html/
-        include_filter << %r{reveal\.js/.*/.*\.js$}
+      #  include_filter << /notes\.html/
+      #  include_filter << %r{reveal\.js/.*/.*\.js$}
 
-        # Frontend components include javascripts and stylesheets
-        # So there's no need to place them in filesystem as well
-        application.frontend_components_manager.available_frontend_components.each do |c|
-          c.javascripts { |e| exclude_filter << Regexp.new(e) }
-          c.stylesheets { |e| exclude_filter << Regexp.new(e) }
-        end
+      #  # Frontend components include javascripts and stylesheets
+      #  # So there's no need to place them in filesystem as well
+      #  application.frontend_components_manager.available_frontend_components.each do |c|
+      #    c.javascripts { |e| exclude_filter << Regexp.new(e) }
+      #    c.stylesheets { |e| exclude_filter << Regexp.new(e) }
+      #  end
 
-        exclude_filter = [/src/, /test/, /demo/, /source/]
+      #  exclude_filter = [/src/, /test/, /demo/, /source/]
 
-        output_directories = {
-          /notes\.html$/ => Pathname.new('javascripts'),
-          /pdf\.css$/ => Pathname.new('stylesheets')
-        }
+      #  output_directories = {
+      #    /notes\.html$/ => Pathname.new('javascripts'),
+      #    /pdf\.css$/ => Pathname.new('stylesheets')
+      #  }
 
-        application.assets_manager.load_from(
-          application.config.bower_directory,
-          exclude_filter: exclude_filter,
-          include_filter: include_filter,
-          output_directories: output_directories
-        )
-      end
+      #  application.assets_manager.load_from(
+      #    application.config.bower_directory,
+      #    exclude_filter: exclude_filter,
+      #    include_filter: include_filter,
+      #    output_directories: output_directories
+      #  )
+      #end
     end
   end
 end

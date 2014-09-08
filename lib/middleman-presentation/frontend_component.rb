@@ -11,7 +11,14 @@ module Middleman
     class FrontendComponent
       include Comparable
 
+      private
+
+      attr_reader :components_directory
+
+      public
+
       attr_reader :name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files
+      attr_writer :components_directory
 
       class << self
         # Parse line

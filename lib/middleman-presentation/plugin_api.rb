@@ -29,8 +29,8 @@ module Middleman
       #
       # @param [String] path
       #   Directory where assets are stored
-      def add_assets(path, output_directories: {}, exclude_filter: [], include_filter: [])
-        Middleman::Presentation.assets_manager.load_from(path, output_directories: output_directories, exclude_filter: exclude_filter, include_filter: include_filter)
+      def add_assets(path, output_directories: {}, importable_files: [], loadable_files: [], ignorable_files: [])
+        #Middleman::Presentation.assets_manager.load_from(path, output_directories: output_directories, importable_files: importable_files, loadable_files: loadable_files, ignorable_files: ignorable_files)
       end
 
       module_function :add_component, :add_helpers, :add_assets

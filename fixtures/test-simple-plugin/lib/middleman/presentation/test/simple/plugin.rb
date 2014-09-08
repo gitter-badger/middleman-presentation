@@ -14,14 +14,14 @@ module Middleman
         add_component(
           name: 'impress.js',
           version: 'latest',
-          javascripts: ['js/impress.js']
+          importable_files: ['js/impress.js']
         )
 
         add_component(
           FrontendComponent.new(
             name: 'angular',
             version: 'latest',
-            javascripts: ['angular.js']
+            importable_files: ['angular.js']
           )
         )
 

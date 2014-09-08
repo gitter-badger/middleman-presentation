@@ -18,6 +18,8 @@ require 'fedux_org_stdlib/list'
 require 'fedux_org_stdlib/core_ext/array/list'
 require 'fedux_org_stdlib/core_ext/hash/list'
 require 'fedux_org_stdlib/core_ext/hash/options'
+require 'fedux_org_stdlib/roles/comparable_by_name'
+require 'fedux_org_stdlib/roles/typable'
 require 'fedux_org_stdlib/core_ext/string/underline'
 require 'fedux_org_stdlib/shell_language_detector'
 require 'fedux_org_stdlib/support_information'
@@ -35,7 +37,6 @@ require 'active_support/core_ext/kernel/reporting'
 
 require 'middleman-presentation/errors'
 
-require 'middleman-presentation/roles/comparable_by_name'
 
 require 'middleman-presentation/overwrite_sass'
 

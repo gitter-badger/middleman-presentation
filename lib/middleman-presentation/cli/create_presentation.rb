@@ -88,8 +88,6 @@ module Middleman
 
           @version            = options[:version]
           @project_id         = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
-
-          @frontend_components = Middleman::Presentation.frontend_components_manager.available_frontend_components
         end
 
         def set_configuration_for_revealjs
@@ -202,25 +200,32 @@ module Middleman
           end
         end
 
-        def install_frontend_components
-          inside directory do
-            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
+        #def install_frontend_components
+        #  inside directory do
+        #    fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
 
-            result = run('bower update', capture: true) if options[:install_assets] == true
-            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
-          end
-        end
+        #    result = run('bower update', capture: true) if options[:install_assets] == true
+        #    fail Thor::Error, Middleman::Presentation.t('errors.bower_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
+        #  end
+        #end
 
-        def install_gems
-          inside directory do
-            Bundler.with_clean_env do
-              result = run('bundle install', capture: true) if options[:install_assets] == true
-              fail Thor::Error, Middleman::Presentation.t('errors.bundle_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
-            end
-          end
-        end
+        #def install_gems
+        #  inside directory do
+        #    Bundler.with_clean_env do
+        #      result = run('bundle install', capture: true) if options[:install_assets] == true
+        #      fail Thor::Error, Middleman::Presentation.t('errors.bundle_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
+        #    end
+        #  end
+        #end
 
         def create_application_asset_files
+          list = FrontEndComponentAssetList.new(
+            components: Middleman::Presentation.frontend_components_manager.available_frontend_components, 
+            components_directory: @bower_directory
+          )
+
+          Middleman::Presentation.assets_manager.load_from_list list
+
           template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss')
           template 'source/javascripts/application.js.tt', File.join(middleman_source_directory, 'javascripts', 'application.js')
         end
