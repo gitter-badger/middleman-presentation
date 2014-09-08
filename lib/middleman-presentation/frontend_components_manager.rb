@@ -27,6 +27,11 @@ module Middleman
         frontend_components.to_a
       end
 
+      # Iterate over all components
+      def each_component(&block)
+        frontend_components.each(&block)
+      end
+
       # Add component
       def add(c)
         frontend_components << creator.new(**c.to_h)
