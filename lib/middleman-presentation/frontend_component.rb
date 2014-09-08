@@ -17,7 +17,7 @@ module Middleman
 
       public
 
-      attr_reader :name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files
+      attr_reader :name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories
       attr_writer :components_directory
 
       class << self
@@ -40,7 +40,7 @@ module Middleman
       #
       # @param [String] github
       #   Name of github repository, e.g. <account>/<repository>
-      def initialize(resource_locator: nil, version: nil, name: nil, github: nil, importable_files: [], loadable_files: [], ignorable_files: [])
+      def initialize(resource_locator: nil, version: nil, name: nil, github: nil, importable_files: [], loadable_files: [], ignorable_files: [], output_directories: [])
         @resource_locator = if resource_locator =~ /\A#{URI.regexp}\z/
                               Addressable::URI.heuristic_parse resource_locator
                             elsif github
@@ -70,9 +70,10 @@ module Middleman
 
         fail ArgumentError, Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name) if @name.blank?
 
-        @loadable_files   = Array(loadable_files)
-        @importable_files = Array(importable_files)
-        @ignorable_files  = Array(ignorable_files)
+        @loadable_files     = Array(loadable_files)
+        @importable_files   = Array(importable_files)
+        @ignorable_files    = Array(ignorable_files)
+        @output_directories = Array(output_directories)
       end
 
       # Return resource locator
