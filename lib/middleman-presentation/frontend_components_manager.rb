@@ -29,7 +29,9 @@ module Middleman
 
       # Iterate over all components
       def each_component(&block)
-        frontend_components.each(&block)
+        frontend_components.each do |c|
+          block.call(c, c.equal?(frontend_components.last))
+        end
       end
 
       # Add component
