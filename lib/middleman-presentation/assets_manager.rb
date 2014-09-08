@@ -11,6 +11,8 @@ module Middleman
 
       attr_reader :assets, :creator
 
+      public
+
       def initialize(creator: Asset)
         @creator             = creator
         @assets              = Set.new
