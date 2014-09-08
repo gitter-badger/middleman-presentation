@@ -197,7 +197,7 @@ Feature: Initialize presentation
     theme:
       name: middleman-presentation-theme-fedux_org
       github: maxmeyer/middleman-presentation-theme-fedux_org
-      stylesheets:
+      importable_files:
         - stylesheets/middleman-presentation-theme-fedux_org
         """
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
