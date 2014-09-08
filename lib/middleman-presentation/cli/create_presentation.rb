@@ -219,7 +219,7 @@ module Middleman
         #end
 
         def create_application_asset_files
-          list = FrontEndComponentAssetList.new(
+          list = Middleman::Presentation::FrontEndComponentAssetList.new(
             components: Middleman::Presentation.frontend_components_manager.available_frontend_components, 
             components_directory: @bower_directory
           )

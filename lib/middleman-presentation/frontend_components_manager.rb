@@ -29,8 +29,10 @@ module Middleman
 
       # Iterate over all components
       def each_component(&block)
-        frontend_components.each do |c|
-          block.call(c, c.equal?(frontend_components.last))
+        components = frontend_components.to_a
+
+        components.each do |c|
+          block.call(c, c.equal?(components.last))
         end
       end
 
