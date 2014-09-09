@@ -4,7 +4,7 @@ module Middleman
     module Cli
       # Run command
       class Runner < Base
-        class_option :debug_mode, default: Middleman::Presentation.config.debug_mode, type: :boolean, desc: t('views.runners.options.debug_mode')
+        class_option :debug_mode, default: Middleman::Presentation.config.debug_mode, type: :boolean, desc: t('views.application.options.debug_mode')
 
         desc 'init', Middleman::Presentation.t('views.runners.init.title')
         subcommand 'init', Init

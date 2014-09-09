@@ -27,9 +27,9 @@ en:
   views:
     application:
       help: Describe available commands or one specific command 
-    runners:
       options:
         debug_mode: 'Enable debug mode.'
+    runners:
       init:
         title: 'Initialize system, presentation, ...'
       show:

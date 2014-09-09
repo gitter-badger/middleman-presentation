@@ -21,6 +21,7 @@ module Middleman
       end
 
       desc 'slide NAME(S)', Middleman::Presentation.t('views.slides.create.title')
+      option :debug_mode, default: Middleman::Presentation.config.debug_mode, type: :boolean, desc: t('views.application.options.debug_mode')
       option :edit, default: Middleman::Presentation.config.edit, desc: Middleman::Presentation.t('views.slides.create.options.edit')
       option :editor_command, default: Middleman::Presentation.config.editor_command, desc: Middleman::Presentation.t('views.slides.create.options.editor_command')
       option :error_on_duplicates, type: :boolean, default: Middleman::Presentation.config.error_on_duplicates, desc: Middleman::Presentation.t('views.slides.create.options.error_on_duplicates')
@@ -28,6 +29,8 @@ module Middleman
 
       argument :names, type: :array, desc: Middleman::Presentation.t('views.slides.create.arguments.names')
       def slide
+        Middleman::Presentation.enable_debug_mode if options[:debug_mode]
+
         fail ArgumentError, Middleman::Presentation.t('errors.missing_argument', argument: 'name') if names.blank?
 
         shared_instance = ::Middleman::Application.server.inst

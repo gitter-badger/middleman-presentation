@@ -60,6 +60,8 @@ require 'middleman-presentation/default_loader'
 # This loads a lot
 require 'middleman-presentation/main'
 
+Middleman::Presentation.enable_debug_mode if ENV.key? 'DEBUG'
+
 require 'middleman-presentation/predefined_slide_templates_directory'
 require 'middleman-presentation/comparable_slide'
 require 'middleman-presentation/existing_slide'
