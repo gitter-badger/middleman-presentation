@@ -42,6 +42,7 @@ module Middleman
 
         class_option :language, default: Middleman::Presentation.config.presentation_language, desc: Middleman::Presentation.t('views.presentations.create.options.language')
         class_option :version, default: Middleman::Presentation.config.default_version_number, desc: Middleman::Presentation.t('views.presentations.create.options.version')
+        class_option :force, type: :boolean, default: Middleman::Presentation.config.force_create_presentation, desc: Middleman::Presentation.t('views.presentations.create.options.force')
 
         argument :directory, default: Dir.getwd, desc: Middleman::Presentation.t('views.presentations.create.arguments.directory')
 
@@ -56,7 +57,19 @@ module Middleman
         end
 
         def initialize_middleman
-          run("middleman init --skip-bundle --template empty #{directory}")
+          if options[:force]
+            remove_file 'Gemfile', force: true
+            remove_file 'Gemfile.lock', force: true
+            remove_file 'config.rb', force: true
+            remove_file '.gitignore', force: true
+          end
+
+          cmd = []
+          cmd << 'middleman init'
+          cmd << '--skip-bundle'
+          cmd << "--template empty #{directory}"
+
+          Bundler.with_clean_env { run(cmd.join(' ')) }
 
           fail Thor::Error, Middleman::Presentation.t('errors.init_middleman_failed') unless $CHILD_STATUS.exitstatus == 0
         end
@@ -103,12 +116,12 @@ module Middleman
         end
 
         def add_gems_to_gem_file
-          append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc
+          append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
 
             gem 'middleman-presentation'
           EOS
 
-          append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc
+          append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
 
           group :development, :test do
             gem 'pry'
@@ -124,25 +137,25 @@ module Middleman
         end
 
         def create_middleman_data_files
-          template 'data/metadata.yml.tt', File.join(data_directory, 'metadata.yml')
-          template 'data/config.yml.tt', File.join(data_directory, 'config.yml')
+          template 'data/metadata.yml.tt', File.join(data_directory, 'metadata.yml'), force: options[:force]
+          template 'data/config.yml.tt', File.join(data_directory, 'config.yml'), force: options[:force]
         end
 
         def create_bower_configuration_files
-          template '.bowerrc.tt', File.join(root_directory, '.bowerrc')
-          template 'bower.json.tt', File.join(root_directory, 'bower.json')
+          template '.bowerrc.tt', File.join(root_directory, '.bowerrc'), force: options[:force]
+          template 'bower.json.tt', File.join(root_directory, 'bower.json'), force: options[:force]
         end
 
         def create_rake_file
-          template 'Rakefile', File.join(root_directory, 'Rakefile')
+          template 'Rakefile', File.join(root_directory, 'Rakefile'), force: options[:force]
         end
 
         def create_slides_ignore_file
-          create_file File.join(root_directory, '.slidesignore'), "# empty\n"
+          create_file File.join(root_directory, '.slidesignore'), "# empty\n", force: options[:force]
         end
 
         def add_configuration_for_middleman_presentation
-          append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc
+          append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
           activate :presentation
 
           set :markdown_engine, :kramdown
@@ -165,7 +178,7 @@ module Middleman
         end
 
         def add_patterns_to_gitignore
-          append_to_file File.join(root_directory, '.gitignore'), <<-EOS.strip_heredoc
+          append_to_file File.join(root_directory, '.gitignore'), <<-EOS.strip_heredoc, force: options[:force]
           *.zip
           *.tar.gz
           tmp/
@@ -173,30 +186,30 @@ module Middleman
         end
 
         def create_image_directory
-          empty_directory File.join(middleman_source_directory, 'images')
+          empty_directory File.join(middleman_source_directory, 'images'), force: options[:force]
         end
 
         def create_presentation_layout
-          copy_file 'source/layout.erb', File.join(middleman_source_directory, 'layout.erb')
-          copy_file 'source/index.html.erb', File.join(middleman_source_directory, 'index.html.erb')
+          copy_file 'source/layout.erb', File.join(middleman_source_directory, 'layout.erb'), force: options[:force]
+          copy_file 'source/index.html.erb', File.join(middleman_source_directory, 'index.html.erb'), force: options[:force]
         end
 
         def create_default_slides
           return unless options[:create_predefined_slides]
 
           PredefinedSlideTemplateDirectory.new(working_directory: root_directory).template_files.each do |file|
-            template file, File.join(slides_directory, File.basename(file, '.tt'))
+            template file, File.join(slides_directory, File.basename(file, '.tt')), force: options[:force]
           end
         end
 
         def create_default_license_file_to_presentation
-          copy_file 'LICENSE.presentation', File.join(root_directory, 'LICENSE.presentation')
+          copy_file 'LICENSE.presentation', File.join(root_directory, 'LICENSE.presentation'), force: options[:force]
         end
 
         def create_helper_scripts
           %w(start bootstrap slide presentation build export).each do |s|
-            copy_file File.join('script', s), File.join(root_directory, 'script', s)
-            chmod File.join(root_directory, 'script', s), 0755
+            copy_file File.join('script', s), File.join(root_directory, 'script', s), force: options[:force]
+            chmod File.join(root_directory, 'script', s), 0755, force: options[:force]
           end
         end
 
@@ -226,8 +239,8 @@ module Middleman
 
           Middleman::Presentation.assets_manager.load_from_list list
 
-          template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss')
-          template 'source/javascripts/application.js.tt', File.join(middleman_source_directory, 'javascripts', 'application.js')
+          template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss'), force: options[:force]
+          template 'source/javascripts/application.js.tt', File.join(middleman_source_directory, 'javascripts', 'application.js'), force: options[:force]
         end
 
         def initialize_git_directory

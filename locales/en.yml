@@ -73,6 +73,7 @@ en:
           title: 'Title of presentation'
           version: 'Version number for your presentation'
           view_port: 'Size of presentation and margin: Width Height Margin'
+          force: 'Overwrite existing files'
         arguments:
           directory: 'Directory to create presentation in'
     themes:
