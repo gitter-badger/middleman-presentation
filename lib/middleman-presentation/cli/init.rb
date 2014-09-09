@@ -10,6 +10,8 @@ module Middleman
         option :configuration_file, default: Middleman::Presentation.config.preferred_configuration_file, desc: Middleman::Presentation.t('views.applications.create.options.configuration_file')
         option :force, type: :boolean, desc: Middleman::Presentation.t('views.applications.create.options.force')
         def application
+          enable_debug_mode
+
           source_paths << File.expand_path('../../../../templates', __FILE__)
 
           @version = Middleman::Presentation::VERSION
@@ -22,6 +24,8 @@ module Middleman
         desc 'predefined_slides ', Middleman::Presentation.t('views.predefined_slides.init.title')
         option :directory, default: PredefinedSlideTemplateDirectory.new.preferred_template_directory, desc: Middleman::Presentation.t('views.predefined_slides.create.options.directory')
         def predefined_slides
+          enable_debug_mode
+
           source_paths << File.expand_path('../../../../templates/predefined_slides.d', __FILE__)
 
           PredefinedSlideTemplateDirectory.new(working_directory: File.expand_path('../../../../templates', __FILE__)).template_files.each do |file|

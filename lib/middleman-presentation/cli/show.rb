@@ -8,6 +8,8 @@ module Middleman
 
         desc 'support_information', Middleman::Presentation.t('views.support_informations.show.title')
         def support_information
+          enable_debug_mode
+
           puts FeduxOrgStdlib::SupportInformation.new(
             headlines: {
               rubygems_information: Middleman::Presentation.t('views.support_informations.show.headline.rubygems_information'),

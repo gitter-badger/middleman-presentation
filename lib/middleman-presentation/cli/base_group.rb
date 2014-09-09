@@ -7,6 +7,10 @@ module Middleman
         def self.exit_on_failure?
           true
         end
+
+        def enable_debug_mode
+          Middleman::Presentation.enable_debug_mode if option[:debug_mode] == true
+        end
       end
     end
   end

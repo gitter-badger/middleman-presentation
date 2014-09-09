@@ -10,15 +10,16 @@ module Middleman
     @frontend_components_manager = FrontendComponentsManager.new
     @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist)
     @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
-
-    ###                                                               ###
-    # Keep in mind that there are methods at the end of the file which: #
-    # * load bower assets                                               #
-    # * activate plugins                                                #
-    ###                                                               ###
+    @debug_mode                  = false
 
     class << self
       attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager, :assets_manager, :locale_configurator
+
+      private
+
+      attr_accessor :debug_mode
+
+      public
 
       def root_path
         File.expand_path '../../../', __FILE__
@@ -30,6 +31,14 @@ module Middleman
 
       def underline_character
         '#'
+      end
+
+      def debug_mode_enabled?
+        debug_mode == true
+      end
+
+      def enable_debug_mode
+        self.debug_mode = true
       end
 
       def stylable_files

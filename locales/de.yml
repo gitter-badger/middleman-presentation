@@ -28,6 +28,8 @@ de:
     application:
       help: Beschreibe verfügbare Befehle oder einen bestimmten Befehl 
     runners:
+      options:
+        debug_mode: 'Aktiviere DEBUG-Modus.'
       init:
         title: 'Initialisiere ...'
       show:

@@ -51,6 +51,7 @@ module Middleman
       option :error_on_duplicates, true
 
       option :force_create_presentation, false
+      option :debug_mode, false
     end
   end
 end

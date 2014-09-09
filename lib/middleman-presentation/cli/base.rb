@@ -20,6 +20,10 @@ module Middleman
         def help(*args)
           super
         end
+
+        def enable_debug_mode
+          Middleman::Presentation.enable_debug_mode if option[:debug_mode] == true
+        end
       end
     end
   end
