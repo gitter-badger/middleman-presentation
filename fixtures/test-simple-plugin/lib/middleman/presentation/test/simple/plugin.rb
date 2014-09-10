@@ -17,14 +17,6 @@ module Middleman
           importable_files: ['js/impress.js']
         )
 
-        add_component(
-          FrontendComponent.new(
-            name: 'angular',
-            version: 'latest',
-            importable_files: ['angular.js']
-          )
-        )
-
         add_helpers do
           def test_simple_helper1
             'test_simple_helper1'

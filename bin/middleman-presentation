@@ -10,4 +10,6 @@ rescue Interrupt
   Middleman::Presentation.logger.warn Middleman::Presentation.t 'errors.programm_execution_interrupted'
 rescue StandardError => e
   Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.standard_error', message: e.message)
+
+  $stderr.puts e.backtrace if Middleman::Presentation.debug_mode_enabled?
 end
