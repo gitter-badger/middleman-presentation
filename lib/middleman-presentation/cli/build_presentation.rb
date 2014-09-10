@@ -8,6 +8,10 @@ module Middleman
 
         desc Middleman::Presentation.t('views.presentation.build.title')
 
+        def initialize_generator
+          enable_debug_mode
+        end
+
         def add_to_source_path
           source_paths << File.expand_path('../../../../templates', __FILE__)
         end

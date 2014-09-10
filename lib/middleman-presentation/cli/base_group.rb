@@ -8,8 +8,10 @@ module Middleman
           true
         end
 
-        def enable_debug_mode
-          Middleman::Presentation.enable_debug_mode if option[:debug_mode] == true
+        no_commands do
+          def enable_debug_mode
+            Middleman::Presentation.enable_debug_mode if options[:debug_mode] == true
+          end
         end
       end
     end

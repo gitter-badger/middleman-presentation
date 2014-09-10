@@ -40,6 +40,8 @@ module Middleman
         desc 'config', Middleman::Presentation.t('views.configs.show.title')
         option :defaults, type: :boolean, desc: Middleman::Presentation.t('views.configs.show.options.defaults')
         def config
+          enable_debug_mode
+
           if options[:defaults]
             capture :stderr do
               puts Middleman::Presentation::PresentationConfig.new(file: nil).to_s

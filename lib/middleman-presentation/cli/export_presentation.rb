@@ -11,6 +11,10 @@ module Middleman
 
         desc Middleman::Presentation.t('views.presentation.export.title')
 
+        def initialize_generator
+          enable_debug_mode
+        end
+
         def extract_data
           shared_instance = ::Middleman::Application.server.inst
 

@@ -23,6 +23,10 @@ module Middleman
 
         argument :name, desc: Middleman::Presentation.t('views.themes.create.arguments.name')
 
+        def initialize_generator
+          enable_debug_mode
+        end
+
         def add_path_to_source_paths
           source_paths << File.expand_path('../../../../templates', __FILE__)
         end

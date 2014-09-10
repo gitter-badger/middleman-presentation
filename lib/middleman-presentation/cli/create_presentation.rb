@@ -48,6 +48,10 @@ module Middleman
 
         desc Middleman::Presentation.t('views.presentations.create.title')
 
+        def initialize_generator
+          enable_debug_mode
+        end
+
         def define_root_directory
           @root_directory = File.expand_path directory
         end
