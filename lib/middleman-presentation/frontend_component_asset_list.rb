@@ -15,7 +15,7 @@ module Middleman
       end
 
       def to_a
-        components.reduce([]) do |c|  
+        components.reduce([]) do |a, c|  
           load_from(
             File.join(components_directory, c.name), 
             output_directories: c.output_directories, 
@@ -49,8 +49,8 @@ module Middleman
           # rubocop:enable Style/CaseEquality
 
           args = {}
-          args[:source_path] = new_path
-          args[:output_dir] = output_dir if output_dir
+          args[:source_path]           = new_path
+          args[:destination_directory] = output_dir
 
           asset = creator.new(**args)
 
