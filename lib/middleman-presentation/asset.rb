@@ -11,7 +11,14 @@ module Middleman
       include Comparable
       include FeduxOrgStdlib::Roles::Typable
 
+      private
+
+      attr_reader :importable, :loadable
+
+      public
+
       attr_reader :source_path, :destination_directory
+      attr_writer :importable, :loadable
 
       # Create instance
       #
@@ -48,10 +55,23 @@ module Middleman
         source_path <=> other.source_path
       end
 
+      # Is this asset importable?
+      #
+      # If it is importable, one can use it in `application.js` or
+      # `application.scss`.
+      #
+      # @return [true, false]
+      #   The result of check
       def importable?
         importable == true
       end
 
+      # Is this asset loadable?
+      #
+      # If it is importable, it will be placed in build directory by sprockets.
+      #
+      # @return [true, false]
+      #   The result of check
       def loadable?
         loadable == true
       end
