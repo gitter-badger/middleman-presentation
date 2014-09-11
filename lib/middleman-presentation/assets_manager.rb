@@ -56,7 +56,7 @@ module Middleman
 
       # Load assets from list
       def load_from_list(list)
-        assets.concat list.to_a
+        assets.merge list
       end
     end
   end

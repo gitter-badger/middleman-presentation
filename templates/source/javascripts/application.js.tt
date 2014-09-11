@@ -1,3 +1,3 @@
-<% Middleman::Presentation.assets_manager.each_includable_javascript do |path| -%>
+<% Middleman::Presentation.assets_manager.each_importable_javascript do |path| -%>
 //= require <%= path %>
 <% end -%>

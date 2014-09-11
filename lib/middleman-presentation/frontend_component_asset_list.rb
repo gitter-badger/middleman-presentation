@@ -2,6 +2,8 @@
 module Middleman
   module Presentation
     class FrontendComponentAssetList
+      include Enumerable
+
       private
 
       attr_reader :components, :components_directory, :creator
@@ -9,9 +11,13 @@ module Middleman
       public
 
       def initialize(components:, components_directory:, creator: Asset)
-        @components           = components
+        @components           = Array(components)
         @components_directory = components_directory
         @creator              = creator
+      end
+
+      def each(&block)
+        components.each(&block)
       end
 
       def to_a
@@ -54,8 +60,8 @@ module Middleman
 
           asset = creator.new(**args)
 
-          asset.loadable   = true if loadable_files.any? { |regexp| regexp === p }
-          asset.importable = true if importable_files_db.any? { |regexp| regexp === p }
+          asset.loadable   = true if loadable_files.any? { |regexp| regexp === asset.source_path }
+          asset.importable = true if importable_files.any? { |regexp| regexp === asset.source_path }
 
           result << asset
         end
