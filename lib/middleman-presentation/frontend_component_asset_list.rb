@@ -17,12 +17,14 @@ module Middleman
       end
 
       def each(&block)
-        components.each(&block)
+        to_a.each(&block)
       end
+
+      private
 
       def to_a
         components.reduce([]) do |a, c|  
-          load_from(
+          to_assets(
             File.join(components_directory, c.name), 
             output_directories: c.output_directories, 
             loadable_files: c.loadable_files,
@@ -32,9 +34,7 @@ module Middleman
         end
       end
 
-      private
-
-      def load_from(base_path, output_directories:, loadable_files:, importable_files:, ignorable_files:)
+      def to_assets(base_path, output_directories:, loadable_files:, importable_files:, ignorable_files:)
         result      = Set.new
         base_path   = File.expand_path(base_path)
         search_path = File.join(base_path, '**', '*')
