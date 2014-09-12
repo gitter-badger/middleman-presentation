@@ -14,9 +14,7 @@ module Middleman
 
       def add(asset)
         if existing_asset = @store.find { |a| a.source_path == asset.source_path }
-          existing_asset.importable = true if asset.importable
-          existing_asset.loadable   = true if asset.loadable
-          existing_asset.destination_directory  = asset.destination_directory if existing_asset.destination_directory.blank?
+          existing_asset.merge! asset
         else
           store << asset
         end

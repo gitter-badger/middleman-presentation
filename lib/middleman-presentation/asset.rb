@@ -28,9 +28,16 @@ module Middleman
       # @param [String] destination_directory
       #   The directory where the asset should be placed when building the
       #   static version of the web application
-      def initialize(source_path:, destination_directory:)
+      def initialize(source_path:, destination_directory:, importable: false, loadable: false)
         @source_path           = Pathname.new(source_path)
-        @destination_directory = destination_directory.blank? ? nil : Pathname.new(destination_directory)
+        @importable            = importable
+        @loadable              = loadable
+
+        self.destination_directory = destination_directory
+      end
+
+      def destination_directory=(value)
+        @destination_directory = value.blank? ? nil : Pathname.new(value)
       end
 
       # Destination path resolver
@@ -74,6 +81,13 @@ module Middleman
       #   The result of check
       def loadable?
         loadable == true
+      end
+
+      # Merge data from other asset
+      def merge!(other)
+        self.importable            = true if other.importable?
+        self.loadable              = true if other.loadable?
+        self.destination_directory = other.destination_directory if destination_directory.blank?
       end
     end
   end
