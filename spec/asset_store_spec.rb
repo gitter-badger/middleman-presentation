@@ -46,6 +46,32 @@ RSpec.describe AssetStore do
 
       expect(asset.loadable).to eq true
     end
+
+    it 'keeps information about destination directory' do
+      asset1 = OpenStruct.new(source_path: 'asset/path', destination_directory: 'dir')
+      asset2 = OpenStruct.new(source_path: 'asset/path', destination_directory: 'dir2')
+
+      store = AssetStore.new
+      store.add asset1
+      store.add asset2
+
+      asset = store.find asset1.source_path
+
+      expect(asset.destination_directory).to eq 'dir'
+    end
+
+    it 'adds information about destination directory if does not exist' do
+      asset1 = OpenStruct.new(source_path: 'asset/path', destination_directory: nil)
+      asset2 = OpenStruct.new(source_path: 'asset/path', destination_directory: 'dir2')
+
+      store = AssetStore.new
+      store.add asset1
+      store.add asset2
+
+      asset = store.find asset1.source_path
+
+      expect(asset.destination_directory).to eq 'dir2'
+    end
   end
 
   context '#find' do
