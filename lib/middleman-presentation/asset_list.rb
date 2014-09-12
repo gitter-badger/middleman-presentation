@@ -45,14 +45,10 @@ module Middleman
           output_dir = output_directories.find(proc { [] }) { |pattern, _| pattern === p }.last
           # rubocop:enable Style/CaseEquality
 
-          args = {}
-          args[:source_path]           = new_path
-          args[:destination_directory] = output_dir
+          asset = creator.new(source_path: new_path, destination_directory: output_dir)
 
-          asset = creator.new(**args)
-
-          asset.loadable   = true if loadable_files.any? { |regexp| regexp === asset.source_path }
-          asset.importable = true if importable_files.any? { |regexp| regexp === asset.source_path }
+          asset.loadable   = true if loadable_files.any? { |regexp| regexp === p }
+          asset.importable = true if importable_files.any? { |regexp| regexp === p }
 
           result << asset
         end

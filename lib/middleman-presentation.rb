@@ -42,6 +42,7 @@ require 'middleman-presentation/overwrite_sass'
 
 require 'middleman-presentation/version'
 require 'middleman-presentation/list'
+require 'middleman-presentation/asset_store'
 require 'middleman-presentation/plugin_api'
 require 'middleman-presentation/file_extensions'
 require 'middleman-presentation/logger'

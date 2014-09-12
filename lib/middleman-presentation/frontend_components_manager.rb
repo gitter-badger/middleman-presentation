@@ -19,7 +19,7 @@ module Middleman
 
       def initialize(creator: FrontendComponent)
         @frontend_components = Set.new
-        @creator = creator
+        @creator             = creator
       end
 
       # Return available frontend components

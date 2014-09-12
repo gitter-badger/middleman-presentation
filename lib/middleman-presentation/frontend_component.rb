@@ -70,9 +70,9 @@ module Middleman
 
         fail ArgumentError, Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name) if @name.blank?
 
-        @loadable_files     = Array(loadable_files)
-        @importable_files   = Array(importable_files)
-        @ignorable_files    = Array(ignorable_files)
+        @loadable_files     = Array(loadable_files).map { |o| Regexp.new o }
+        @importable_files   = Array(importable_files).map { |o| Regexp.new o }
+        @ignorable_files    = Array(ignorable_files).map { |o| Regexp.new o }
         @output_directories = Array(output_directories)
       end
 

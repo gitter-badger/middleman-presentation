@@ -38,8 +38,8 @@ module Middleman
             name: 'middleman-presentation-theme-default',
             github: 'maxmeyer/middleman-presentation-theme-default',
             importable_files: [
-              /stylesheets\/middleman-presentation-theme-default.scss$/,
-              /.*\.png$/
+              %r{stylesheets/middleman-presentation-theme-default.scss$},
+              %r{.*\.png$}
             ]
           )
         else

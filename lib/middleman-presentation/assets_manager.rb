@@ -9,18 +9,25 @@ module Middleman
     class AssetsManager
       private
 
-      attr_reader :assets, :creator
+      attr_reader :creator, :store
 
       public
 
-      def initialize(creator: Asset)
-        @creator             = creator
-        @assets              = Set.new
+      def initialize(
+        creator: Asset, 
+        store: AssetStore.new
+      )
+        @creator = creator
+        @store  = store
       end
 
       # Add asset
       def add(a)
-        assets << a
+        store.add a 
+      end
+
+      def assets
+        store.assets
       end
 
       # Show assets which should be imported

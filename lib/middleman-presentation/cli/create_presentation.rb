@@ -238,7 +238,7 @@ module Middleman
         def create_application_asset_files
           list = Middleman::Presentation::FrontendComponentAssetList.new(
             components: Middleman::Presentation.frontend_components_manager.available_frontend_components, 
-            components_directory: @bower_directory
+            directory: @bower_directory
           )
 
           Middleman::Presentation.assets_manager.load_from_list list
