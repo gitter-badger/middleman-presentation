@@ -40,6 +40,22 @@ namespace :test do
   end
 end
 
+desc "Run tests in ci mode for #{directories.to_list}"
+task 'test:coveralls' => tasks('test:coveralls')
+
+namespace :test do
+  namespace :coveralls do
+    each_directory do |r, d|
+      desc "Run tests in ci mode in directory \"#{d}\"."
+      task r do
+        Dir.chdir d do
+          sh 'rake test:coveralls'
+        end
+      end
+    end
+  end
+end
+
 desc "Release gems #{directories.to_list}"
 task 'gem:release' => tasks('gem:release')
 
