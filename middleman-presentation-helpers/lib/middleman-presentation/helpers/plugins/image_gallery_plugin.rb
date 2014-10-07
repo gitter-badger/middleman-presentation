@@ -15,13 +15,13 @@ module Middleman
         add_component(
           name: 'jquery',
           version: '~1.11',
-          javascripts: %w(dist/jquery.js)
+          importable_files: %w(dist/jquery.js)
         )
 
         add_component(
           name: 'lightbox2',
           github: 'dg-vrnetze/revealjs-lightbox2',
-          javascripts: %w(js/lightbox.js)
+          importable_files: %w(js/lightbox.js)
         )
 
         add_helpers Middleman::Presentation::Helpers::ImageGallery

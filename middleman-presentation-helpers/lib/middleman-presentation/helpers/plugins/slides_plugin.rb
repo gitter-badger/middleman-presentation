@@ -12,8 +12,7 @@ module Middleman
         add_component(
           name: 'reveal.js',
           version: 'latest',
-          javascripts: %w(lib/js/head.min js/reveal.min.js),
-          stylesheets: %w(css/reveal.min.css lib/css/zenburn css/theme/template/mixins.scss css/theme/template/settings.scss)
+          importable_files: %w(lib/js/head.min js/reveal.min.js css/reveal.min.css lib/css/zenburn css/theme/template/mixins.scss css/theme/template/settings.scss)
         )
 
         add_helpers Middleman::Presentation::Helpers::Slides
