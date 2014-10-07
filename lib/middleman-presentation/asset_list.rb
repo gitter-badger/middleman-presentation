@@ -6,13 +6,16 @@ module Middleman
 
       private
 
-      attr_reader :directory, :creator
+      attr_reader :directory, :creator, :store_creator
 
       public
 
-      def initialize(directory:, creator: Asset)
+      def initialize(directory:, creator: Asset, store: AssetStore.new)
         @directory = directory
+        @store     = store
         @creator   = creator
+
+        read_in_assets
       end
 
       def each(&block)
@@ -22,11 +25,14 @@ module Middleman
       private
 
       def to_a
-        fail NoMethodError, :to_a
+        store.assets
       end
 
-      def to_assets(base_path, output_directories:, loadable_files:, importable_files:, ignorable_files:)
-        result      = Set.new
+      def read_in_assets
+        fail NoMethodError, :read_in_assets
+      end
+
+      def add_assets(base_path, output_directories:, loadable_files:, importable_files:, ignorable_files:)
         base_path   = File.expand_path(base_path)
         search_path = File.join(base_path, '**', '*')
 
@@ -50,10 +56,10 @@ module Middleman
           asset.loadable   = true if loadable_files.any? { |regexp| regexp === p }
           asset.importable = true if importable_files.any? { |regexp| regexp === p }
 
-          result << asset
+          store.add asset
         end
 
-        result
+        store
       end
     end
   end

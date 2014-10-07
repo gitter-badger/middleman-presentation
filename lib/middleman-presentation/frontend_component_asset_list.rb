@@ -8,18 +8,20 @@ module Middleman
 
       public
 
-      def initialize(components:, directory:, creator: Asset)
+      def initialize(components:, directory:, **args)
         @components = Array(components)
         @directory  = directory
         @creator    = creator
+
+        super(directory: directory, **args)
       end
 
       private
 
-      def to_a
-        components.reduce([]) do |a, c|  
-          to_assets(
-            File.join(directory, c.name), 
+      def read_in_assets
+        components.each do |c|
+          add_assets(
+            directory, 
             output_directories: c.output_directories, 
             loadable_files: c.loadable_files,
             importable_files: c.importable_files,

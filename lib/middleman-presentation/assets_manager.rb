@@ -18,7 +18,7 @@ module Middleman
         store: AssetStore.new
       )
         @creator = creator
-        @store  = store
+        @store   = store
       end
 
       # Add asset
@@ -26,9 +26,9 @@ module Middleman
         store.add a 
       end
 
-      def assets
-        store.assets
-      end
+      #def assets
+      #  store.assets
+      #end
 
       # Show assets which should be imported
       def to_s
@@ -48,22 +48,22 @@ module Middleman
 
       # Iterate over each importable asset
       def each_importable_asset(&block)
-        assets.dup.each(&block)
+        store.find_all { |a| a.valid? && a.importable? }
       end
 
       # Iterate over each importable asset
       def each_importable_stylesheet(&block)
-        assets.find_all { |a| a.valid? && a.importable? && a.stylesheet? }.each(&block)
+        each_importable_asset.find_all { |a| a.stylesheet? }.each(&block)
       end
 
       # Iterate over each importable asset
       def each_importable_javascript(&block)
-        assets.find_all { |a| a.valid? && a.importable? && a.script? }.each(&block)
+        each_importable_asset.find_all { |a| a.script? }.each(&block)
       end
 
       # Load assets from list
       def load_from_list(list)
-        assets.merge list
+        store.merge list
       end
     end
   end

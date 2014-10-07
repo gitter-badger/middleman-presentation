@@ -17,7 +17,7 @@ RSpec.describe FilesystemAssetList do
       FilesystemAssetList.new(
         directory: absolute_path('.'),
         creator: creator
-      ).each {}
+      )
     end
 
     it 'sets output directory' do
@@ -31,7 +31,7 @@ RSpec.describe FilesystemAssetList do
         output_directories: {
           %r{images/} => 'test'
         }
-      ).each {}
+      )
     end
 
     it 'marks assets as importable' do
@@ -46,7 +46,7 @@ RSpec.describe FilesystemAssetList do
         importable_files: [ 
           %r{images/}
         ]
-      ).each {}
+      )
     end
 
     it 'marks assets as loadable' do
@@ -61,7 +61,7 @@ RSpec.describe FilesystemAssetList do
         loadable_files: [ 
           %r{images/}
         ]
-      ).each {}
+      )
     end
 
     it 'ignores files' do
@@ -76,7 +76,7 @@ RSpec.describe FilesystemAssetList do
         ignorable_files: [ 
           %r{images.old/}
         ]
-      ).each {}
+      )
     end
   end
 

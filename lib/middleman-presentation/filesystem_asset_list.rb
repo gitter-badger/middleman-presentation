@@ -6,23 +6,19 @@ module Middleman
 
       attr_reader :output_directories, :loadable_files, :importable_files, :ignorable_files
 
-      def initialize(directory:, output_directories: [], loadable_files: [], importable_files: [], ignorable_files: [], creator: nil)
+      def initialize(directory:, output_directories: [], loadable_files: [], importable_files: [], ignorable_files: [], **args)
         @output_directories = output_directories
         @loadable_files     = loadable_files
         @importable_files   = importable_files
         @ignorable_files    = ignorable_files
 
-        args = {}
-        args[:directory] = directory
-        args[:creator]   = creator unless creator.blank?
-
-        super(**args)
+        super(directory: directory, **args)
       end
 
       private
 
-      def to_a
-        to_assets(
+      def read_in_assets
+        add_assets(
           directory,
           output_directories: output_directories, 
           loadable_files: loadable_files,
