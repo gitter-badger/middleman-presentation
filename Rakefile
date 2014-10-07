@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'fedux_org_stdlib/core_ext/array/list'
+require 'fedux_org_stdlib/rake_tasks/gems'
 
 @repositories = %w(
   core
@@ -49,6 +50,22 @@ namespace :gem do
       task r do
         Dir.chdir d do
           sh 'rake gem:release'
+        end
+      end
+    end
+  end
+end
+
+desc "Install gems #{directories.to_list}"
+task 'gem:install' => tasks('gem:install')
+
+namespace :gem do
+  namespace :install do
+    each_directory do |r, d|
+      desc "Install gem \"#{d}\"."
+      task r do
+        Dir.chdir d do
+          sh 'rake gem:install'
         end
       end
     end

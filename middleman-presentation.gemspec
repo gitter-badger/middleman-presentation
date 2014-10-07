@@ -3,7 +3,7 @@ $LOAD_PATH.push File.expand_path('../middleman-presentation-core/lib', __FILE__)
 require 'middleman-presentation/version'
 
 Gem::Specification.new do |spec|
-  spec.name                  = 'middleman-presentation-core'
+  spec.name                  = 'middleman-presentation'
   spec.version               = Middleman::Presentation::VERSION
   spec.platform              = Gem::Platform::RUBY
   spec.authors               = ['Max Meyer', 'Dennis Guennewig']
