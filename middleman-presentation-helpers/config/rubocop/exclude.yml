@@ -1,0 +1,25 @@
+AllCops:
+  Exclude:
+    - 'tmp/**/*'
+
+# Offense count: 1
+# Configuration parameters: Exclude.
+Style/FileName:
+  Enabled: false
+
+# Offense count: 8
+# Configuration parameters: CountComments.
+Style/MethodLength:
+  Max: 118
+  Enabled: false
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Style/ClassLength:
+  Max: 160
+  Enabled: false
+
+# Offense count: 3
+Style/CyclomaticComplexity:
+  Max: 9
+  Enabled: false
