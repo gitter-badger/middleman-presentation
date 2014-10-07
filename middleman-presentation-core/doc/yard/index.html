@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1>middleman-presentation</h1>
+
+<p><a href="https://travis-ci.org/maxmeyer/middleman-presentation"><img src="https://travis-ci.org/maxmeyer/middleman-presentation.png?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/maxmeyer/middleman-presentation?branch=master"><img src="https://coveralls.io/repos/maxmeyer/middleman-presentation/badge.png?branch=master" alt="Coverage Status"></a>
+<a href="http://badge.fury.io/rb/middleman-presentation"><img src="https://badge.fury.io/rb/middleman-presentation.svg" alt="Gem Version"></a></p>
+
+<p>This project helps you to build wonderful presentations based on
+<a href="http://www.w3.org/html/">HTML</a> and JavaScript. The JavaScript-part is powered
+by <a href="https://github.com/hakimel/reveal.js"><code>reveal.js</code></a>, a great framework to
+build HTML-/JavaScript-presentations. The infrastructure behind
+<code>middleman-presentation</code> is powered by <code>middleman</code>, a flexible static site
+generator which also offers a live preview of your presentation.</p>
+
+<p>To get started with <code>middleman-presentation</code> you should know a little bit about
+HTML, JavaScript, reveal.js and <a href="https://www.ruby-lang.org/en">Ruby</a>.
+<code>middleman-presentation</code> will then help you wherever it can to make your life
+easy with presentations.</p>
+
+<h2>Installation</h2>
+
+<h3>Gem</h3>
+
+<p>Add this line to your middleman application&#39;s Gemfile:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>middleman-presentation</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle
+</code></pre>
+
+<p>And add the <code>activate</code>-statement to the <code>config.rb</code> of middleman:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_activate'>activate</span> <span class='symbol'>:presentation</span>
+</code></pre>
+
+<h3>External Dependencies</h3>
+
+<p>You need to install <a href="http://www.bower.io"><code>bower</code></a>. I do not like installing
+external packages as root if they are not installed via the package manager of
+the distribution I use. Therefor I configured <code>nodejs</code> to use a different
+root to install those packages as normal user. It is up to you to decide if
+want to follow my advise.</p>
+
+<ol>
+<li>Create <code>.npmrc</code></li>
+</ol>
+
+<pre class="code bash"><code class="bash">  # Change &lt;user&gt; to your user
+  prefix = /home/&lt;user&gt;/.local/share/npm
+
+  # If you need to use a coporate proxy, add those lines as well.
+  # Be careful `https-proxy` needs use a `http`-url, not a `https`-one
+  # proxy = http://localhost:3128
+  # https-proxy = http://localhost:3128
+</code></pre>
+
+<ol>
+<li>Install bower</li>
+</ol>
+
+<pre class="code bash"><code class="bash">  npm install -g bower
+</code></pre>
+
+<ol>
+<li>Make executables of nodejs-packages available</li>
+</ol>
+
+<p>Add <code>npm</code>-bin dir to your PATH-variable via <code>.bashrc</code>, <code>.zshrc</code> or whatever
+   initialization-script your shell use.</p>
+
+<pre class="code ruby"><code class="ruby">```bash
+export PATH=~/.local/share/npm/bin:$PATH
+```
+</code></pre>
+
+<h2>Release Notes</h2>
+
+<p>You find the release notes <a href="RELEASE_NOTES.md">here</a> or on
+<a href="https://github.com/maxmeyer/middleman-presentation/blob/master/RELEASE_NOTES.md%5D">github</a>.</p>
+
+<h2>Supported rubies</h2>
+
+<ul>
+<li>MRI 2.1.x</li>
+</ul>
+
+<h2>Find help</h2>
+
+<ul>
+<li>This <a href="README.m">README.md</a></li>
+<li>A good <a href="http://htmlcheats.com/reveal-js/reveal-js-tutorial-reveal-js-for-beginners/">tutorial</a> tutorial about <code>reveal.js</code></li>
+<li>The <a href="https://github.com/hakimel/reveal.js/">documentation</a> of <code>reveal.js</code></li>
+<li>The <a href="http://middlemanapp.com/">documentation</a> of <code>middleman</code></li>
+</ul>
+
+<h2>Getting Started</h2>
+
+<h3>Initialize middleman presentation globally</h3>
+
+<p>To create a global configuration file for <code>middleman-presentation</code> you need to
+run the following command:</p>
+
+<pre class="code bash"><code class="bash">middleman_presentation_init
+</code></pre>
+
+<p>This will create a configuration file at
+<code>$HOME/.config/middleman/presentation/presentations.yaml</code>. The configuration options
+given there will be used for all presentations created with
+<code>middleman-presentation</code>. After running the command on a pristine system it
+will contain the defaults.</p>
+
+<p>Please run <code>cat $HOME/.config/middleman/presentation/presentations.yaml</code> to view them.</p>
+
+<h3>Initialize middleman</h3>
+
+<pre class="code bash"><code class="bash">middleman init my_presentation
+cd my_presentation
+
+</code></pre>
+
+<h3>Add dependency to Gemfile and activate plugin</h3>
+
+<pre class="code bash"><code class="bash">echo -e &quot;\ngem &#39;middleman-presentation&#39;&quot; &gt;&gt; Gemfile
+echo -e &quot;\nactivate :presentation&quot;       &gt;&gt; config.rb
+
+bundle install
+</code></pre>
+
+<h3>Initialize presentation</h3>
+
+<p>This gem provides a helper to start a new presentatio from scratch. The given
+options below need to be given on command line.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman presentation --title &quot;my title&quot; --speaker &quot;Me&quot;
+
+bundle install
+</code></pre>
+
+<p>The presentation helper provides a lot of more options. Use the help command to
+get an overview. If you want to switch the language for generated slides use
+the <code>--language</code>-switch.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman help presentation
+</code></pre>
+
+<h3>Start your presentation</h3>
+
+<p>To start your presentation use the <code>start</code>-script. It opens the presentation in
+your browser and starts <code>middleman</code>. After <code>middleman</code> has started you just
+need to reload the presentation in the browser.</p>
+
+<pre class="code bash"><code class="bash"># Short
+script/start
+
+# Long
+bundle exec middleman server
+</code></pre>
+
+<h3>Add new slide</h3>
+
+<p><strong>MAKE SURE YOU NEVER EVER GIVE TWO SLIDES THE SAME BASENAME</strong>, eg. 01.html.erb
+and 01.html.md. This will not work with <code>middleman</code>.</p>
+
+<p>To add a new slide you can use the <code>slide</code>-helper.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman slide &lt;name&gt;
+</code></pre>
+
+<p>It is recommended to use a number as name greater than <code>00</code>, e.g. <code>01</code>. If you
+leave out the file extension the <code>slide</code>-helper will create a Markdown-slide by
+default. If you want to overwrite this, please create a custom-slide-template -
+see <a href="#custom_templates">Custom Templates</a> for more information.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman slide 01
+</code></pre>
+
+<p>If you enter duplicate slide names, e.g. &quot;02.md&quot; and &quot;02.erb&quot;, the
+<code>slide</code>-command will fail. It is not possible to serve files with the same base
+name - e.g. &quot;02&quot; - via <code>middleman</code>.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman slide 02.md 02.erb
+# =&gt; will fail
+</code></pre>
+
+<p>If you prefer another template language you can provide that information as
+part of the slide name. Today only <code>embedded ruby</code>, <code>markdown</code> and <code>liquid</code>-templates are supported.</p>
+
+<pre class="code bash"><code class="bash"># embedded ruby
+bundle exec middleman slide 01.erb
+
+# markdown
+bundle exec middleman slide 01.md
+bundle exec middleman slide 01.markdown
+
+# liquid
+bundle exec middleman slide 01.l
+bundle exec middleman slide 01.liquid
+</code></pre>
+
+<p>To set a title for the slide use the <code>--title</code>-switch.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman slide 01 --title &#39;my Title&#39;
+</code></pre>
+
+<p>If you want to create multiple slides at once, this is possible to. Just ask
+<code>middleman-presentation</code> to do this.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman slide 01 02 03
+</code></pre>
+
+<p>There are some more options available. Please use the <code>help</code>-command to get an
+overview.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman help slide
+</code></pre>
+
+<p>Both provide the possibility to change the port where middleman should listen
+on. Use <code>-h</code> check on available options.</p>
+
+<h3>Edit slide</h3>
+
+<p>To edit the slide after creating it use the <code>--edit</code>-switch. It uses the
+<code>$EDITOR</code>-environment variable and falls back to <code>vim</code>.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman slide 01 --edit
+</code></pre>
+
+<p>If you want to edit an alread created slide, you can use the
+<code>slide</code>-command as well. It creates slides if they do not exist and opens them
+in your favorit editor (ENV[&#39;EDITOR&#39;]) if they already exist.</p>
+
+<p>In some cases you might want to use a different editor-command. To change the
+editor used or the arguments used, you can run <code>middleman-presentation</code> with
+the <code>--editor-command</code>-switch.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman slide --edit --editor-command &quot;nano&quot; 01 02 03
+</code></pre>
+
+<p>The <code>editor-command</code>-string is also parsed by Erubis which makes the data
+available in <code>metadata.yml</code> accessible to you. You can use this to start a vim server
+with the presentation&#39;s project id as server name. This can be handy if you work more
+or less simultaneously on diffent presentations. To make the use of the project
+id as server name more stable you should use <a href="http://www.ruby-doc.org/stdlib-2.1.2/libdoc/shellwords/rdoc/Shellwords.html#method-c-shellescape"><code>Shellwords.shellescape</code></a>.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman slide --edit --editor-command &quot;vim --servername &lt;%= Shellwords.shellescape(project_id) %&gt; --remote-tab 2&gt;/dev/null&quot; 01 02 03
+</code></pre>
+
+<h3>Remove a slide</h3>
+
+<p>If you remove a slide while <code>middleman</code> is showing the presentation, you might
+experience some weird errors. Please restart <code>middleman</code> after you removed a
+slide and everything will be fine again.</p>
+
+<h3>Export presentation</h3>
+
+<p>If you need to export the presentation, you can use the <code>export</code>-script. It
+creates tar-file in <code>&lt;root&gt;/pkg/&lt;presentation_directory_name&gt;.tar.gz</code>.</p>
+
+<pre class="code bash"><code class="bash">script/export
+# =&gt; Creates tar-file in &lt;root&gt;/pkg/&lt;presentation_directory_name&gt;.tar.gz
+</code></pre>
+
+<h2>Reuse existing presentation</h2>
+
+<p><em>Bootstrap</em></p>
+
+<p>Bootstrap the presentation environment.</p>
+
+<pre class="code bash"><code class="bash">script/bootstrap
+# =&gt; Installs all needed software components
+</code></pre>
+
+<p><em>Start presentation</em></p>
+
+<p>To start your presentation use the <code>start</code>-script.</p>
+
+<pre class="code bash"><code class="bash">script/start
+</code></pre>
+
+<h3>Ignore slides</h3>
+
+<p><em>Introduction</em></p>
+
+<p>Sometimes you may want to slides to be available in the filesystem, but not
+part of your presentation. To make this possible you can use the
+<code>.slidesignore</code>-file. If you prefer a different name, change the
+configuration-option <code>:slides_ignore_file</code>.</p>
+
+<p><em>Patterns</em></p>
+
+<p>Every line is a regular expression checked against the file names of existing
+slides. To &quot;unignore&quot; particular slides, you can prefix your pattern with &quot;!&quot;.</p>
+
+<pre class="code config"><code class="config"># ignore all slides ending with *.md
+.*\.md
+# unignore 01.html.md
+!01.html.md
+</code></pre>
+
+<h2>Creating slides</h2>
+
+<h3>Introduction</h3>
+
+<p>You need to decide if you want to create slides in pure HTML or if you want to
+use <a href="http://daringfireball.net/projects/markdown/syntax"><code>Markdown</code></a>. It&#39;s up
+to you to make your choice. In most cases you should get along with <code>Markdown</code>
+&#9786;. From version <code>0.6.0</code> onwards
+<a href="http://kramdown.gettalong.org/syntax.html"><code>kramdown</code></a> is used to parsed
+Markdown. because it supports &quot;Attribute List Definitions&quot; which can be used,
+to provide HTML-attributes to Markdown-elements. Something similar to what
+<a href="https://github.com/hakimel/reveal.js/#element-attributes">reveal.js</a> does.</p>
+
+<h3>Grouping Slides</h3>
+
+<p><a name="grouping_slides"></a></p>
+
+<p><code>reveal.js</code> has a feature called &quot;vertical slides&quot;. You can use this to add
+&quot;additional&quot; slides to your presentation to add some auxiliary information.
+To use this feature you need to place slides grouped together in a directory.</p>
+
+<pre class="code ruby"><code class="ruby"># Single slide without namespace
+01.html.erb
+
+# Group &quot;02_hello&quot; of three slides namespace by 02_hello
+02_hello/01.html.erb
+02_hello/02.html.erb
+02_hello/03.html.erb
+
+# Group &quot;03_world&quot; of two slides namespace by 03_world
+03_world/01.html.erb
+03_world/02.html.erb
+</code></pre>
+
+<p>If you prefer to use the <code>slide</code>-command to create your slides, you can create a
+namespaced slide by using the following synatx:</p>
+
+<pre class="code ruby"><code class="ruby">bundle exec middleman slide 02_hello:01
+</code></pre>
+
+<p>Those commands will create a directory named <code>02_hello</code> and a file named <code>01.html.erb</code>.</p>
+
+<h2>Use external resources</h2>
+
+<p>I encourage you to use <code>bower</code> to make external resources within your presentation
+available. This works fine together with the asset pipeline <code>middleman</code> uses:
+<a href="https://github.com/sstephenson/sprockets">sprockets</a>. Just add resources to
+your (existing) <code>bower.json</code> and make yourself comfortable with bower:
+<a href="http://bower.io/">http://bower.io/</a>. Reference the resources from within your
+<code>javascripts/application.js</code> and/or
+<code>stylesheets/application.scss</code></p>
+
+<p>By using <code>bower</code> for external resources you can better separate the slide
+content from your styles.</p>
+
+<p>If you created your presentation using the <code>middleman presentation</code>-command,
+files named &quot;bower.json&quot; and &quot;.bowerrc&quot; should exist. Within &quot;bower.json&quot; you
+define the dependencies of your presentation. The last one can be used to tell
+bower where to store the downloaded components.</p>
+
+<p>To reference your assets you should use helpers. There are helpers avaiable for
+Ruby-code and for Sass-code.</p>
+
+<ul>
+<li><code>asset_path(type, name)</code>, <code>asset_url(type, name)</code>:</li>
+</ul>
+
+<p>To reference an arbitrary type you can use the both <em>ruby</em> helpers mentioned above. To
+reference a JavaScript-file use <code>asset_path(:js,
+&#39;&lt;component&gt;/&lt;path&gt;/&lt;file&gt;.js&#39;)</code>.</p>
+
+<ul>
+<li><code>font-path(name)</code>, <code>font-url(name)</code>, <code>image-path(name)</code>, <code>image-url(name)</code>:</li>
+</ul>
+
+<p>The helpers above can be used to reference assets in Sass-files. You need to
+provide name to reference the asset, e.g.
+<code>font-path(&#39;&lt;component&gt;/&lt;path&gt;/&lt;file&gt;.ttf&#39;)</code>.</p>
+
+<p>To import Css- and Sass-files you should use the <code>@import</code>-command. To import
+JavaScript-files from JavaScript-files you should use the <code>//=
+require</code>-command.</p>
+
+<p>Please see <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html">sass</a>
+and <a href="https://github.com/sstephenson/sprockets">sprockets</a> for more information
+about that topic.</p>
+
+<h2>Creating themes</h2>
+
+<p>To create your own theme for <code>middleman-presentation</code>, you should use the
+<code>theme</code>-command. It will create a new directory in the current directory
+(<code>$PWD</code>) based on the name for the template, e.g. <code>new_theme</code>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_cd'>cd</span> <span class='id identifier rubyid_my_presentation'>my_presentation</span>
+<span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_exec'>exec</span> <span class='id identifier rubyid_middleman'>middleman</span> <span class='id identifier rubyid_theme'>theme</span> <span class='id identifier rubyid_new_theme'>new_theme</span>
+</code></pre>
+
+<p>After that a directory <code>new_theme</code> exists with some sub-directories:</p>
+
+<ul>
+<li><code>javascripts</code>: Javascript-file go here</li>
+<li><code>stylesheets</code>: Stylesheets (CSS, SCSS, ..) go here</li>
+<li><code>images</code>: Image go here</li>
+</ul>
+
+<p>To use your newly created files you need to modify the
+<code>middleman-presentation</code>-configuration file and add the following yaml-snippet
+to the file - see <a href="#configuration">Configuration</a> for more about the
+<code>middleman-presentation</code>-configuration file.</p>
+
+<pre class="code yaml"><code class="yaml">theme:
+  name: new_theme
+  github: &lt;github_account&gt;/&lt;repository&gt;
+  javascripts:
+    - javascripts/&lt;name&gt;
+  stylesheets:
+    - stylesheets/&lt;name&gt;
+</code></pre>
+
+<p>If you prefer to learn by example, look at the default-theme at
+<a href="https://github.com/maxmeyer/middleman-presentation-theme-default">github</a>.</p>
+
+<p>To give you an overview about all css-classes used within templates, issue the
+<code>style</code>-command. This will print every available css-class to style existing
+templates. Each of those classes is prefixed with <code>mp-</code>.</p>
+
+<pre class="code bash"><code class="bash">bundle exec middleman style
+# =&gt; mp-speaker
+# =&gt; [...]
+</code></pre>
+
+<h2>Creating slide templates</h2>
+
+<h3>Normal slide templates</h3>
+
+<p>To create slides using the <code>slide</code>-command templates are used. They are written in
+Eruby (erb). For a good documentation about Eruby see the <a href="http://www.kuwata-lab.com/erubis/users-guide.html">Erubis User
+Guide</a>. Since <code>0.11.4</code>. you
+can have your own templates which overwrite the default templates.</p>
+
+<p>You can store those templates in different directories. They are read in the
+given order.</p>
+
+<ol>
+<li>presentation local (<code>&lt;presentation root&gt;/templates/&lt;template&gt;</code>)</li>
+<li>user local (<code>~/.config/middleman/presentation/templates/&lt;template&gt;</code>, <code>~/.middleman/presentation/templates/&lt;template&gt;</code>)</li>
+<li>system local templates (<code>/etc/middleman/presentation/templates/&lt;template&gt;</code>)</li>
+</ol>
+
+<p>There are four different templates available:</p>
+
+<ul>
+<li>Erb (<code>erb.tt</code>): Templates for generating <code>Erb</code>-slides</li>
+<li>Markdown (<code>markdown.tt</code>): Templates for generating <code>markdown</code>-slides</li>
+<li>Liquid (<code>liquid.tt</code>): Templates for generating <code>liquid</code>-slides</li>
+<li>Group (<code>group.tt</code>): Templates for groups of slides - see <a href="#grouping_slides">Grouping Slides</a>.</li>
+</ul>
+
+<h3>Custom slide templates</h3>
+
+<p><a name="custom_templates"></a></p>
+
+<p>Addiontionlly users can define one <code>custom</code>-slide-template. It&#39;s file extension
+is used for the resulting slide. Given a template <code>custom.erb.tt</code> it becomes
+<code>01.html.erb</code> when running <code>middleman slide 01</code>.</p>
+
+<p><strong>Example</strong></p>
+
+<p>Given you want to create a presentation local custom slide template with haml
+as template language. The created slides should automatically get <code>.haml</code> as
+file extension. First you need to create the template directory.</p>
+
+<pre class="code bash"><code class="bash"># Switch to the directory containing your presentation
+cd my_presentation
+
+# Create template directory
+mkdir -p templates
+</code></pre>
+
+<p>Next you need to create the template itself using your favourite template
+language. If you want to use information like the presentation title, don&#39;t forget the
+template itself is parsed by <code>Erubis</code> before it is stored as slide in the file
+system.</p>
+
+<p><em>templates/custom.haml.tt</em>:</p>
+
+<pre class="code ruby"><code class="ruby">%h1 &lt;%% site_title %&gt;
+%h2 &lt;%%= title %&gt;
+</code></pre>
+
+<p>After writing the file to the filesystem you can use it with the
+<code>slide</code>-command to create slide by running the following code.</p>
+
+<pre class="code bash"><code class="bash"># =&gt; creates source/slides/01.html.haml
+bundle exec middleman slide 01
+</code></pre>
+
+<h2>Configuration</h2>
+
+<p><a name="configuration"></a></p>
+
+<p><code>middleman-presentation</code> will try its configuration file at different places:</p>
+
+<ol>
+<li>User local: <code>~/.config/middleman/presentation/presentations.yaml</code>, <code>~/.middleman/presentation/presentations.yaml</code></li>
+<li>System local: <code>/etc/middleman/presentation/presentations</code></li>
+</ol>
+
+<p>To get a full list of available configuration options, run the following command</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_exec'>exec</span> <span class='id identifier rubyid_middleman'>middleman</span> <span class='id identifier rubyid_config'>config</span>
+</code></pre>
+
+<h2>Development</h2>
+
+<p>Make sure you&#39;ve got a working internet connection before running the tests. To
+keep the source code repository lean there tests that download assets via bower.</p>
+
+<p>If you care about licensing, please have a look at <a href="LICENSE.txt">LICENSE.txt</a>.
+As this software would not be possible without the wonderful gems out there,
+there&#39;s also an overview about all the licenses used by the required gems at
+<a href="doc/licenses/dependencies.html">doc/licenses/dependencies.html</a>. </p>
+
+<p>If you get some weird errors during testing, make sure have got enough space at
+<code>/tmp</code>. This directory is used by <code>bower</code> to temporary store downloaded assets.</p>
+
+<p>To check which file consumes the whole space at <code>/tmp</code> you can use the following command:</p>
+
+<pre class="code bash"><code class="bash"># output sizes in mebibytes and sort numerically
+du -ms /tmp/* | sort -n
+</code></pre>
+
+<p>To find the process which uses this file, run this command:</p>
+
+<pre class="code bash"><code class="bash">lsof &lt;file&gt;
+</code></pre>
+
+<h2>Contributing</h2>
+
+<p>Please see the <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> file.</p>
+</div></div>
+
+    <div id="footer">
+  Generated on Thu Aug  7 15:43:13 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-2.1.2).
+</div>
+
+  </body>
+</html>

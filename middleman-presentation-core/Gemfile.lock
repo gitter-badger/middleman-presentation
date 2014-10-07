@@ -1,7 +1,14 @@
+GIT
+  remote: https://github.com/maxmeyer/middleman-presentation-helpers.git
+  revision: dcad53d80265ccd9a54628281d0e933719afbc3e
+  branch: master
+  specs:
+    middleman-presentation-helpers (0.0.6)
+
 PATH
   remote: .
   specs:
-    middleman-presentation-core (0.15.8)
+    middleman-presentation (0.15.8)
       addressable (~> 2.3.5)
       bundler
       erubis
@@ -20,9 +27,15 @@ PATH
       rubyzip (~> 1.1.6)
       tzinfo (>= 0.3.0)
 
+PATH
+  remote: fixtures/test-simple-plugin
+  specs:
+    middleman-presentation-test-simple (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.5)
       i18n (~> 0.6, >= 0.6.9)
@@ -108,6 +121,7 @@ GEM
     eventmachine (1.0.3)
     execjs (2.2.1)
     facter (2.2.0)
+      CFPropertyList (~> 2.2.6)
     fedux_org-stdlib (0.7.27)
       activesupport
     ffi (1.9.3)
@@ -189,7 +203,6 @@ GEM
       em-websocket (~> 0.5.1)
       middleman-core (~> 3.2)
       rack-livereload (~> 0.3.15)
-    middleman-presentation-helpers (0.0.6)
     middleman-sprockets (3.3.10)
       middleman-core (~> 3.3)
       sprockets (~> 2.12.1)
@@ -372,7 +385,9 @@ DEPENDENCIES
   license_finder
   middleman (~> 3.3.2)
   middleman-livereload
-  middleman-presentation-core!
+  middleman-presentation!
+  middleman-presentation-helpers!
+  middleman-presentation-test-simple!
   middleman-sprockets
   mutant
   mutant-rspec
@@ -387,6 +402,7 @@ DEPENDENCIES
   simplecov
   therubyracer
   therubyrhino
+  thor
   tmrb
   travis-lint
   tzinfo-data

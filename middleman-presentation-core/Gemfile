@@ -8,7 +8,10 @@ group :middleman do
   gem 'middleman-livereload'
   gem 'wdm', '~> 0.1.0', platforms: [:mswin, :mingw]
   gem 'tzinfo-data', platforms: [:mswin, :mingw]
+  gem 'middleman-presentation-helpers', git: 'https://github.com/maxmeyer/middleman-presentation-helpers.git', branch: :master
 end
+
+gem 'thor'
 
 group :development, :test do
   gem 'rspec', require: false
@@ -50,4 +53,6 @@ group :development, :test do
 
   gem 'therubyracer'
   gem 'therubyrhino'
+
+  gem 'middleman-presentation-test-simple', path: File.expand_path('../fixtures/test-simple-plugin', __FILE__), require: false
 end
