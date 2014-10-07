@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: middleman-presentation-core
   specs:
     middleman-presentation-core (0.15.8)
       addressable (~> 2.3.5)
@@ -13,12 +13,16 @@ PATH
       launchy (~> 2.4.2)
       liquid
       middleman (~> 3.3.5)
-      middleman-presentation-helpers (>= 0.0.5)
       middleman-sprockets (~> 3.3.8)
       nokogiri
       rake
       rubyzip (~> 1.1.6)
       tzinfo (>= 0.3.0)
+
+PATH
+  remote: middleman-presentation-helpers
+  specs:
+    middleman-presentation-helpers (0.0.6)
 
 GEM
   remote: https://rubygems.org/
@@ -189,7 +193,6 @@ GEM
       em-websocket (~> 0.5.1)
       middleman-core (~> 3.2)
       rack-livereload (~> 0.3.15)
-    middleman-presentation-helpers (0.0.6)
     middleman-sprockets (3.3.10)
       middleman-core (~> 3.3)
       sprockets (~> 2.12.1)
@@ -373,6 +376,7 @@ DEPENDENCIES
   middleman (~> 3.3.2)
   middleman-livereload
   middleman-presentation-core!
+  middleman-presentation-helpers!
   middleman-sprockets
   mutant
   mutant-rspec

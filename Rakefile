@@ -71,3 +71,19 @@ namespace :gem do
     end
   end
 end
+
+desc "Build gems #{directories.to_list}"
+task 'gem:build' => tasks('gem:build')
+
+namespace :gem do
+  namespace :build do
+    each_directory do |r, d|
+      desc "Build gem \"#{d}\"."
+      task r do
+        Dir.chdir d do
+          sh 'rake gem:build'
+        end
+      end
+    end
+  end
+end

@@ -1,13 +1,16 @@
 source 'https://rubygems.org'
 
-gemspec
-
 group :middleman do
   gem 'middleman', '~>3.3.2'
   gem 'middleman-sprockets'
   gem 'middleman-livereload'
   gem 'wdm', '~> 0.1.0', platforms: [:mswin, :mingw]
   gem 'tzinfo-data', platforms: [:mswin, :mingw]
+end
+
+group :middleman_presentation do
+  gem 'middleman-presentation-core', path: 'middleman-presentation-core'
+  gem 'middleman-presentation-helpers', path: 'middleman-presentation-helpers'
 end
 
 group :development, :test do
