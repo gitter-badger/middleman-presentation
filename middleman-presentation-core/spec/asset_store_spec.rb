@@ -31,7 +31,18 @@ RSpec.describe AssetStore do
       store = AssetStore.new
       store.add asset
 
-      asset = store.find asset.source_path
+      asset = store.find source_path: asset.source_path
+
+      expect(asset).to be asset
+    end
+
+    it 'uses a block as well' do
+      asset = OpenStruct.new(source_path: 'asset/path', loadable: false)
+
+      store = AssetStore.new
+      store.add asset
+
+      asset = store.find { |a| a.source_path == asset.source_path }
 
       expect(asset).to be asset
     end
