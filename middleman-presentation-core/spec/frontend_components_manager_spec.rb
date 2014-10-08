@@ -99,9 +99,7 @@ RSpec.describe FrontendComponentsManager do
       component = {
         name: 'test1',
         resource_locator: 'http://www.example.com',
-        version: '0.0.1',
-        javascripts: [],
-        stylesheets: []
+        version: '0.0.1'
       }
 
       manager = FrontendComponentsManager.new
@@ -143,9 +141,7 @@ RSpec.describe FrontendComponentsManager do
       component = {
         name: 'test1',
         resource_locator: 'http://www.example.com',
-        version: '0.0.1',
-        javascripts: [],
-        stylesheets: []
+        version: '0.0.1'
       }
 
       manager = FrontendComponentsManager.new

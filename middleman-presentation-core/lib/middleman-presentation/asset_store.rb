@@ -14,6 +14,7 @@ module Middleman
 
       # Add asset
       def add(asset)
+        binding.pry
         if existing_asset = @store.find { |a| a.source_path == asset.source_path }
           existing_asset.merge! asset
         else
@@ -47,7 +48,7 @@ module Middleman
       # @yield
       #   Search criteria
       def find_all(source_path: nil, &block)
-        if block_given
+        if block_given?
           store.find_all(&block)
         else
           store.find_all { |a| a.source_path == source_path }

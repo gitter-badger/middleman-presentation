@@ -6,7 +6,7 @@ module Middleman
 
       private
 
-      attr_reader :directory, :creator, :store_creator
+      attr_reader :directory, :creator, :store
 
       public
 

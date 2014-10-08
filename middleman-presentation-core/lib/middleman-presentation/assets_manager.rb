@@ -9,15 +9,13 @@ module Middleman
     class AssetsManager
       private
 
-      attr_reader :creator, :store
+      attr_reader :store
 
       public
 
       def initialize(
-        creator: Asset, 
         store: AssetStore.new
       )
-        @creator = creator
         @store   = store
       end
 
@@ -26,9 +24,10 @@ module Middleman
         store.add a 
       end
 
-      #def assets
-      #  store.assets
-      #end
+      # Return assets
+      def assets
+        store.assets
+      end
 
       # Show assets which should be imported
       def to_s
@@ -46,9 +45,9 @@ module Middleman
         List.new(data).to_s(fields: [:source_path, :destination_directory, :importable_files, :loadable_files, :ignorable_files, :output_directories])
       end
 
-      # Iterate over each importable asset
-      def each_importable_asset(&block)
-        store.find_all { |a| a.valid? && a.importable? }
+      # Iterate over each loadable asset
+      def each_loadable_asset(&block)
+        store.find_all { |a| a.valid? && a.loadable? }
       end
 
       # Iterate over each importable asset
@@ -65,6 +64,13 @@ module Middleman
       def load_from_list(list)
         store.merge list
       end
+
+      private
+
+      def each_importable_asset(&block)
+        store.find_all { |a| a.valid? && a.importable? }
+      end
+
     end
   end
 end
