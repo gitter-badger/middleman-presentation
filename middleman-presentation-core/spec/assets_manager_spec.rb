@@ -7,21 +7,17 @@ RSpec.describe AssetsManager do
   context '#load_from_list' do
     it 'loads assets from list' do
       asset = instance_double('Middleman::Presentation::Asset')
-      allow(asset).to receive(:loadable).and_return(true)
-      allow(asset).to receive(:source_path).and_return('image1.png')
 
       manager.load_from_list [asset]
-      expect(manager.assets).to include asset
+      expect(manager).to be_know asset
     end
   end
 
   context '#each_loadable_asset' do
     it 'iterates over all assets' do
       asset = instance_double('Middleman::Presentation::Asset')
-      allow(asset).to receive(:loadable).and_return(true)
+      allow(asset).to receive(:valid?).and_return(true)
       allow(asset).to receive(:source_path).and_return('image1.png')
-
-      allow(list).to receive(:each).and_return([asset].each)
 
       manager.load_from_list [asset]
 
@@ -35,31 +31,51 @@ RSpec.describe AssetsManager do
 
   context '#each_importable_stylesheet' do
     it 'iterates over all assets' do
-      touch_file 'app/assets/images/image1.png'
-      touch_file 'app/assets/images/image2.png'
+      asset1 = instance_double('Middleman::Presentation::Asset')
+      allow(asset1).to receive(:valid?).and_return(true)
+      allow(asset1).to receive(:importable?).and_return(true)
+      allow(asset1).to receive(:stylesheet?).and_return(false)
+      allow(asset1).to receive(:source_path).and_return('image1.png')
 
-      manager.load_from_list list
+      asset2 = instance_double('Middleman::Presentation::Asset')
+      allow(asset2).to receive(:valid?).and_return(true)
+      allow(asset2).to receive(:importable?).and_return(true)
+      allow(asset2).to receive(:stylesheet?).and_return(true)
+      allow(asset2).to receive(:source_path).and_return('stylesheet.css')
+
+      manager.load_from_list [asset1, asset2]
 
       output = capture :stdout do
-        manager.each_asset { |a| puts a.source_path }
+        manager.each_importable_stylesheet { |a| puts a.source_path }
       end
 
-      expect(output).to include 'image1.png'
+      expect(output).to include 'stylesheet.css'
+      expect(output).not_to include 'image1.png'
     end
   end
 
-  context '#each_importable_script' do
+  context '#each_importable_javascript' do
     it 'iterates over all assets' do
-      touch_file 'app/assets/images/image1.png'
-      touch_file 'app/assets/images/image2.png'
+      asset1 = instance_double('Middleman::Presentation::Asset')
+      allow(asset1).to receive(:valid?).and_return(true)
+      allow(asset1).to receive(:importable?).and_return(true)
+      allow(asset1).to receive(:script?).and_return(false)
+      allow(asset1).to receive(:source_path).and_return('image1.png')
 
-      manager.load_from_list list
+      asset2 = instance_double('Middleman::Presentation::Asset')
+      allow(asset2).to receive(:valid?).and_return(true)
+      allow(asset2).to receive(:importable?).and_return(true)
+      allow(asset2).to receive(:script?).and_return(true)
+      allow(asset2).to receive(:source_path).and_return('script.js')
+
+      manager.load_from_list [asset1, asset2]
 
       output = capture :stdout do
-        manager.each_asset { |a| puts a.source_path }
+        manager.each_importable_javascript { |a| puts a.source_path }
       end
 
-      expect(output).to include 'image1.png'
+      expect(output).to include 'script.js'
+      expect(output).not_to include 'image1.png'
     end
   end
 

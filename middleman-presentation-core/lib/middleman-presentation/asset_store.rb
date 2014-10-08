@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     class AssetStore
+      include Enumerable
       private
 
       attr_reader :store
@@ -14,7 +15,6 @@ module Middleman
 
       # Add asset
       def add(asset)
-        binding.pry
         if existing_asset = @store.find { |a| a.source_path == asset.source_path }
           existing_asset.merge! asset
         else

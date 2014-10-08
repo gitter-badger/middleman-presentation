@@ -20,13 +20,13 @@ module Middleman
       end
 
       # Add asset
-      def add(a)
-        store.add a 
+      def add(asset)
+        store.add asset
       end
 
       # Return assets
-      def assets
-        store.assets
+      def know?(asset)
+        store.include? asset
       end
 
       # Show assets which should be imported
@@ -47,7 +47,7 @@ module Middleman
 
       # Iterate over each loadable asset
       def each_loadable_asset(&block)
-        store.find_all { |a| a.valid? && a.loadable? }
+        store.find_all { |a| a.valid? && a.loadable? }.each(&block)
       end
 
       # Iterate over each importable asset
