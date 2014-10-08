@@ -38,6 +38,11 @@ module Middleman
 
       # Add component
       def add(c)
+        unless c.respond_to? :to_h
+          Middleman::Presentation.logger.error Middleman::Presentation.t('errors.invalid_frontend_component', argument: c)
+          return
+        end
+
         frontend_components << creator.new(**c.to_h)
       end
 

@@ -2,7 +2,7 @@
 en:
   errors:
     standard_error: "An error occured. Please see the attached message\n%{message}."
-    invalid_frontend_component: Sorry, but only FrontendComponent, Hash or an Array of Hashes are supported.
+    invalid_frontend_component: Sorry, but argument "%{argument}" needs to respond to "#to_h".
     argument_error: The value "%{value}" for "%{argument}" is invalid.
     zip_filename_error: The provided zip filename "%{name}" is invalid. It needs to end with ".zip".
     middleman_build_error: 'An error occured while building the static version of the presentation:'

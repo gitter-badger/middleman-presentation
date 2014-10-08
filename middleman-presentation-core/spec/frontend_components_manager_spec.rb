@@ -46,43 +46,6 @@ RSpec.describe FrontendComponentsManager do
       )
     end
 
-    it 'adds a frontend component to list' do
-      component = FrontendComponent.new(
-        name: 'test1',
-        resource_locator: 'http://www.example.com',
-        version: '0.0.1',
-        javascripts: [],
-        stylesheets: []
-      )
-
-      manager = FrontendComponentsManager.new(creator: FrontendComponent)
-      manager.add(component)
-    end
-
-    it 'supports array of hashes' do
-      data = [
-        {
-          name: 'test1',
-          resource_locator: 'http://www.example.com',
-          version: '0.0.1',
-          javascripts: [],
-          stylesheets: []
-        },
-        {
-          name: 'test2',
-          resource_locator: 'http://www.example.com',
-          version: '0.0.1',
-          javascripts: [],
-          stylesheets: []
-        }
-      ]
-
-      expect(creator).to receive(:parse).with(data)
-
-      manager = FrontendComponentsManager.new(creator: creator)
-      manager.add(data)
-    end
-
     it 'outputs warning on unknown type' do
       manager = FrontendComponentsManager.new(creator: creator)
 
@@ -90,7 +53,7 @@ RSpec.describe FrontendComponentsManager do
         manager.add('garbage')
       end
 
-      expect(result).to include 'Sorry, but only FrontendComponent, Hash or an Array of Hashes are supported.'
+      expect(result).to include 'Sorry, but argument "garbage" needs to respond to "#to_h"'
     end
   end
 
@@ -112,10 +75,10 @@ RSpec.describe FrontendComponentsManager do
       components = []
 
       5.times do |i|
-        components << FrontendComponent.new(
+        components << {
           name: "test#{i - 1}",
-          resource_locator: 'http://www.example.com',
-        )
+          resource_locator: 'http://www.example.com'
+        }
       end
 
       manager = FrontendComponentsManager.new
@@ -128,11 +91,11 @@ RSpec.describe FrontendComponentsManager do
       manager.add(components[4])
       manager.add(components[4])
 
-      expect(manager.available_frontend_components[0]).to be components[0]
-      expect(manager.available_frontend_components[1]).to be components[2]
-      expect(manager.available_frontend_components[2]).to be components[4]
-      expect(manager.available_frontend_components[3]).to be components[1]
-      expect(manager.available_frontend_components[4]).to be components[3]
+      expect(manager.available_frontend_components[0].name).to be components[0][:name]
+      expect(manager.available_frontend_components[1].name).to be components[2][:name]
+      expect(manager.available_frontend_components[2].name).to be components[4][:name]
+      expect(manager.available_frontend_components[3].name).to be components[1][:name]
+      expect(manager.available_frontend_components[4].name).to be components[3][:name]
     end
   end
 
@@ -148,11 +111,11 @@ RSpec.describe FrontendComponentsManager do
       manager.add(component)
 
       expect(manager.to_s).to eq <<-EOS.strip_heredoc.chomp
-        +-------+------------------------+---------+-------------+-------------+
-        | Name  | Resource locator       | Version | Javascripts | Stylesheets |
-        +-------+------------------------+---------+-------------+-------------+
-        | test1 | http://www.example.com | 0.0.1   |             |             |
-        +-------+------------------------+---------+-------------+-------------+
+        +-------+------------------------+---------+------------------+----------------+-----------------+--------------------+
+        | Name  | Resource locator       | Version | Importable files | Loadable files | Ignorable files | Output directories |
+        +-------+------------------------+---------+------------------+----------------+-----------------+--------------------+
+        | test1 | http://www.example.com | 0.0.1   |                  |                |                 |                    |
+        +-------+------------------------+---------+------------------+----------------+-----------------+--------------------+
         1 row in set
       EOS
     end
