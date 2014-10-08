@@ -17,6 +17,7 @@ RSpec.describe AssetsManager do
     it 'iterates over all assets' do
       asset = instance_double('Middleman::Presentation::Asset')
       allow(asset).to receive(:valid?).and_return(true)
+      allow(asset).to receive(:loadable?).and_return(true)
       allow(asset).to receive(:source_path).and_return('image1.png')
 
       manager.load_from_list [asset]
@@ -81,15 +82,20 @@ RSpec.describe AssetsManager do
 
   context '#to_s' do
     it 'returns a string representation of self' do
-      #manager.load_from_list list
-      manager.add('images/image.png', 'output.d')
+      asset1 = instance_double('Middleman::Presentation::Asset')
+      allow(asset1).to receive(:source_path).and_return('image1.png')
+      allow(asset1).to receive(:destination_directory).and_return('output.d')
+      allow(asset1).to receive(:loadable?).and_return(true)
+      allow(asset1).to receive(:importable?).and_return(true)
+
+      manager.load_from_list [asset1]
 
       expect(manager.to_s).to eq <<-EOS.strip_heredoc.chomp
-        +------------------+-----------------------+
-        | Source path      | Destination directory |
-        +------------------+-----------------------+
-        | images/image.png | output.d              |
-        +------------------+-----------------------+
+        +-------------+-----------------------+----------+------------+
+        | Source path | Destination directory | Loadable | Importable |
+        +-------------+-----------------------+----------+------------+
+        | image1.png  | output.d              | true     | true       |
+        +-------------+-----------------------+----------+------------+
         1 row in set
       EOS
     end

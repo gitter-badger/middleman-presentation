@@ -31,18 +31,16 @@ module Middleman
 
       # Show assets which should be imported
       def to_s
-        data = assets.sort.reduce([]) do |a, e|
+        data = store.assets.sort.reduce([]) do |a, e|
           a << { 
             source_path: e.source_path,
             destination_directory: e.destination_directory,
-            loadable_files: e.loadable_files,
-            importable_files: e.importable_files,
-            ignorable_files: e.ignorable_files,
-            output_directories: e.output_directories
+            loadable: e.loadable?,
+            importable: e.importable?,
           }
         end
 
-        List.new(data).to_s(fields: [:source_path, :destination_directory, :importable_files, :loadable_files, :ignorable_files, :output_directories])
+        List.new(data).to_s(fields: [:source_path, :destination_directory, :loadable, :importable])
       end
 
       # Iterate over each loadable asset
