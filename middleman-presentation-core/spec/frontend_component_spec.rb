@@ -69,32 +69,14 @@ RSpec.describe FrontendComponent do
     end
   end
 
-  context '#javascripts' do
-    it 'prepends name to javascripts' do
-      component = FrontendComponent.new(name: 'name1', javascripts: %w(js/component.js), resource_locator: 'https://www.example.com/test1')
-      expect(component.javascripts).to include 'name1/js/component'
-    end
-  end
-
-  context '#stylesheets' do
-    it 'prepends name to stylesheets' do
-      component = FrontendComponent.new(name: 'name1', stylesheets: %w(css/component.scss), resource_locator: 'https://www.example.com/test1')
-      expect(component.stylesheets).to include 'name1/css/component'
-    end
-  end
-
   context '.parse' do
     let(:hashes) do
       [
         {
           name: 'name',
           resource_locator: 'https://example.org/test',
-          javascripts: [
-            'path/to/file.js'
-          ],
-          stylesheets: [
-            'path/to/file.scss'
-          ]
+          loadable_files: [],
+          importable_files: []
         }
       ]
     end
@@ -103,16 +85,16 @@ RSpec.describe FrontendComponent do
       components = FrontendComponent.parse(hashes)
       expect(components.first.name).to eq 'name'
       expect(components.first.resource_locator).to eq 'https://example.org/test'
-      expect(components.first.javascripts.first).to eq 'name/path/to/file'
-      expect(components.first.stylesheets.first).to eq 'name/path/to/file'
+      expect(components.first.loadable_files.first).to eq nil
+      expect(components.first.importable_files.first).to eq nil
     end
 
     it 'reads data from hash' do
       components = FrontendComponent.parse(hashes.first)
       expect(components.first.name).to eq 'name'
       expect(components.first.resource_locator).to eq 'https://example.org/test'
-      expect(components.first.javascripts.first).to eq 'name/path/to/file'
-      expect(components.first.stylesheets.first).to eq 'name/path/to/file'
+      expect(components.first.loadable_files.first).to eq nil
+      expect(components.first.importable_files.first).to eq nil
     end
   end
 end
