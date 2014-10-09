@@ -6,7 +6,7 @@ require 'active_support/all'
 require 'open3'
 
 def software
-  gemspec.name
+  gemspec.name.sub(/mp-/, 'middleman-presentation-')
 end
 
 def module_name
@@ -14,7 +14,7 @@ def module_name
 end
 
 def require_name
-  'middleman-presentation/helpers'
+  software
 end
 
 def gemspec
