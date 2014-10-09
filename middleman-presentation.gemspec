@@ -14,6 +14,6 @@ Gem::Specification.new do |spec|
   spec.license               = 'MIT'
   spec.required_ruby_version = '>= 2.1.0'
 
-  spec.add_dependency 'middleman-presentation-core', spec.version
-  spec.add_dependency 'middleman-presentation-helpers', spec.version
+  spec.add_dependency 'mp-core', spec.version
+  spec.add_dependency 'mp-helpers', '>= 0.0.6'
 end

@@ -25,7 +25,11 @@ module Middleman
                    OpenStruct.new(date: Time.now.strftime('%Y%m%d_%H%M%S'), title: 'presentation')
                  end
 
-          @title = data.title
+          @title                 = data.title
+          @images_directory      = shared_instance.images_dir
+          @stylesheets_directory = shared_instance.css_dir
+          @javascripts_directory = shared_instance.js_dir
+          @fonts_directory       = shared_instance.fonts_dir
           @rackup_config_file    = File.join shared_instance.build_dir, 'config.ru'
         end
 
