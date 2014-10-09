@@ -8,9 +8,9 @@ module Middleman
 
       def initialize(directory:, output_directories: [], loadable_files: [], importable_files: [], ignorable_files: [], **args)
         @output_directories = output_directories
-        @loadable_files     = loadable_files
-        @importable_files   = importable_files
-        @ignorable_files    = ignorable_files
+        @loadable_files     = loadable_files.map { |o| Regexp.new(o) }
+        @importable_files   = importable_files.map { |o| Regexp.new(o) }
+        @ignorable_files    = ignorable_files.map { |o| Regexp.new(o) }
 
         super(directory: directory, **args)
       end
