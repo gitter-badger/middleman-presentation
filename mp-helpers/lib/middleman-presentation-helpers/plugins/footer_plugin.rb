@@ -8,7 +8,7 @@ module Middleman
 
         add_assets(
           File.expand_path('../../../../vendor/assets/footer', __FILE__),
-          importable_files: %w(footer/footer.js footer/footer.scss)
+          importable_files: %w(footer.js footer.scss)
         )
 
         add_component(

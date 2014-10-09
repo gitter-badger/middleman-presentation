@@ -7,7 +7,7 @@ module Middleman
 
         add_assets(
           File.expand_path('../../../../vendor/assets/images', __FILE__),
-          importable_files: %w(images/images.scss)
+          importable_files: %w(images.scss)
         )
       end
     end
