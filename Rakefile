@@ -1,25 +1,34 @@
 #!/usr/bin/env ruby
 
 require 'fedux_org_stdlib/core_ext/array/list'
-require 'fedux_org_stdlib/rake_tasks/gems'
 
-@repositories = %w(
-  core
-  helpers
-)
+@repositories = [
+  'core',
+  'helpers',
+  ''
+]
 
 @prefix = 'middleman-presentation'
 
+def prefixed(value)
+  value = if value.empty? 
+            ''
+          else 
+            '-' + value
+          end
+  @prefix +  value
+end
+
 def directories
-  @repositories.map { |r| @prefix + '-' + r }
+  @repositories.map { |r| prefixed(r) }
 end
 
 def each_directory(&block)
-  @repositories.each { |r| block.call(r, @prefix + '-' + r) }
+  @repositories.each { |r| block.call(r, prefixed(r)) }
 end
 
 def map_directory(&block)
-  @repositories.map { |r| block.call(r, @prefix + '-' + r) }
+  @repositories.map { |r| block.call(r, prefixed(r)) }
 end
 
 def tasks(prefix)
