@@ -1,6 +1,6 @@
 # encoding: utf-8
 $LOAD_PATH.push File.expand_path('../middleman-presentation-core/lib', __FILE__)
-require 'middleman-presentation/version'
+require 'middleman-presentation-core/version'
 
 Gem::Specification.new do |spec|
   spec.name                  = 'middleman-presentation'

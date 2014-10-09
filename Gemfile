@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gemspec
-
 group :middleman do
   gem 'middleman', '~>3.3.2'
   gem 'middleman-sprockets'
@@ -11,6 +9,7 @@ group :middleman do
 end
 
 group :middleman_presentation do
+  gem 'middleman-presentation', path: './'
   gem 'mp-core', path: 'mp-core'
   gem 'mp-helpers', path: 'mp-helpers'
 end
