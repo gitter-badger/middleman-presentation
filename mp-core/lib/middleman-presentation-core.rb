@@ -37,6 +37,7 @@ require 'active_support/core_ext/kernel/reporting'
 
 require 'middleman-presentation-core/errors'
 require 'middleman-presentation-core/overwrite_sass'
+require 'middleman-presentation-core/plugin'
 require 'middleman-presentation-core/version'
 require 'middleman-presentation-core/list'
 require 'middleman-presentation-core/asset_store'

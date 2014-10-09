@@ -123,8 +123,8 @@ Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
 end
 
 Given(/I remove all bundler files$/) do
-  FileUtils.rm File.expand_path(File.join(current_dir, 'Gemfile'))
-  FileUtils.rm File.expand_path(File.join(current_dir, 'Gemfile.lock'))
+  FileUtils.rm_f File.expand_path(File.join(current_dir, 'Gemfile'))
+  FileUtils.rm_f File.expand_path(File.join(current_dir, 'Gemfile.lock'))
 end
 
 When(/^I successfully run `([^`]+)` in clean environment$/) do |command|

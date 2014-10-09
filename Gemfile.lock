@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ./
   specs:
     middleman-presentation (0.15.8)
       mp-core (= 0.15.8)
@@ -121,7 +121,7 @@ GEM
     execjs (2.2.1)
     facter (2.2.0)
       CFPropertyList (~> 2.2.6)
-    fedux_org-stdlib (0.7.27)
+    fedux_org-stdlib (0.7.31)
       activesupport
     ffi (1.9.5)
     filegen (0.4.3)

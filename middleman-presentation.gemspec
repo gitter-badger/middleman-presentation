@@ -1,5 +1,5 @@
 # encoding: utf-8
-$LOAD_PATH.push File.expand_path('../middleman-presentation-core/lib', __FILE__)
+$LOAD_PATH.push File.expand_path('../mp-core/lib', __FILE__)
 require 'middleman-presentation-core/version'
 
 Gem::Specification.new do |spec|
