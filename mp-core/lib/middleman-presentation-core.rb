@@ -103,8 +103,8 @@ require 'middleman-presentation-core/utils'
 
 require 'middleman-presentation-core/test_helpers'
 
-# This one is an external gem now
-require 'middleman-presentation/helpers'
+require 'pry'
+binding.pry
 
 ::Middleman::Extensions.register(:presentation) do
   require 'middleman-presentation-core/extension'

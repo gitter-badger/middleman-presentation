@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'middleman-presentation/helpers/slides'
+require 'middleman-presentation-helpers/slides'
 
 module Middleman
   module Presentation
