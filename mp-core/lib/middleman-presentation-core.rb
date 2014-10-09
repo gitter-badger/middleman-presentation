@@ -100,11 +100,7 @@ require 'middleman-presentation-core/cli/create'
 require 'middleman-presentation-core/cli/runner'
 
 require 'middleman-presentation-core/utils'
-
 require 'middleman-presentation-core/test_helpers'
-
-require 'pry'
-binding.pry
 
 ::Middleman::Extensions.register(:presentation) do
   require 'middleman-presentation-core/extension'
