@@ -10,7 +10,7 @@ require 'middleman-core'
 require 'middleman-core/step_definitions'
 
 # middleman-presentation
-require 'middleman-presentation/step_definitions'
+require 'middleman-presentation-core/step_definitions'
 
 # Pull in all of the gems including those in the `test` group
 require 'bundler'

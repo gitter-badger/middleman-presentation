@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 # Test helpers
-require 'middleman-presentation/test_helpers'
+require 'middleman-presentation-core/test_helpers'
 
 module Middleman
   module Presentation

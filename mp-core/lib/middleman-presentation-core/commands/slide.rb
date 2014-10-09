@@ -1,5 +1,5 @@
 ﻿# encoding: utf-8
-require 'middleman-presentation'
+require 'middleman-presentation-core'
 
 module Middleman
   module Cli
