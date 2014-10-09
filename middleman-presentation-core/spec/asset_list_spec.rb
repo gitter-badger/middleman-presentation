@@ -24,7 +24,7 @@ RSpec.describe FilesystemAssetList do
     it 'iterates of assets' do
       touch_file 'images/image1.png'
 
-      expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
+      expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
 
       list = asset_list_klass.new(
         directory: absolute_path('.'),

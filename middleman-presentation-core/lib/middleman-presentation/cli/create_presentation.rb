@@ -61,17 +61,11 @@ module Middleman
         end
 
         def initialize_middleman
-          if options[:force]
-            remove_file 'Gemfile', force: true
-            remove_file 'Gemfile.lock', force: true
-            remove_file 'config.rb', force: true
-            remove_file '.gitignore', force: true
-          end
-
           cmd = []
           cmd << 'middleman init'
           cmd << '--skip-bundle'
           cmd << "--template empty #{directory}"
+          cmd << '--force' if options[:force]
 
           Bundler.with_clean_env { run(cmd.join(' ')) }
 
@@ -175,7 +169,7 @@ module Middleman
             sprockets.append_path File.join(root, bower_directory)
 
             Middleman::Presentation.assets_manager.each_loadable_asset do |a|
-              sprockets.import_asset a.source_path, &a.destination_path_resolver
+              sprockets.import_asset a.load_path, &a.destination_path_resolver
             end
           end
           EOS
@@ -238,7 +232,7 @@ module Middleman
         def create_application_asset_files
           list = Middleman::Presentation::FrontendComponentAssetList.new(
             components: Middleman::Presentation.frontend_components_manager.available_frontend_components, 
-            directory: @bower_directory
+            directory: File.join(root_directory, @bower_directory)
           )
 
           Middleman::Presentation.assets_manager.load_from_list list

@@ -21,7 +21,7 @@ module Middleman
       def read_in_assets
         components.each do |c|
           add_assets(
-            directory, 
+            directory,
             output_directories: c.output_directories, 
             loadable_files: c.loadable_files,
             importable_files: c.importable_files,

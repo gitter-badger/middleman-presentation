@@ -11,10 +11,10 @@ RSpec.describe FilesystemAssetList do
       touch_file 'images/image1.png'
       touch_file 'images/image2.png'
 
-      allow(asset).to receive(:source_path).and_return('images/image1.png', 'images/image2.png')
+      allow(asset).to receive(:source_path).and_return(absolute_path('images/image1.png'), absolute_path('images/image2.png'))
 
-      expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
-      expect(creator).to receive(:new).with(source_path: 'images/image2.png', destination_directory: nil).and_return(asset)
+      expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
+      expect(creator).to receive(:new).with(source_path: absolute_path('images/image2.png'), relative_source_path: 'images/image2.png', destination_directory: nil).and_return(asset)
 
       FilesystemAssetList.new(
         directory: absolute_path('.'),
@@ -25,7 +25,7 @@ RSpec.describe FilesystemAssetList do
     it 'sets output directory' do
       touch_file 'images/image1.png'
 
-      expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: 'test').and_return(asset)
+      expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: 'test').and_return(asset)
 
       FilesystemAssetList.new(
         directory: absolute_path('.'),
@@ -39,7 +39,7 @@ RSpec.describe FilesystemAssetList do
     it 'marks assets as importable' do
       touch_file 'images/image1.png'
 
-      expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
+      expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
       expect(asset).to receive(:importable=).with(true)
 
       FilesystemAssetList.new(
@@ -54,7 +54,7 @@ RSpec.describe FilesystemAssetList do
     it 'marks assets as loadable' do
       touch_file 'images/image1.png'
 
-      expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
+      expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
       expect(asset).to receive(:loadable=).with(true)
 
       FilesystemAssetList.new(
@@ -70,7 +70,7 @@ RSpec.describe FilesystemAssetList do
       touch_file 'images/image1.png'
       touch_file 'images.old/image1.png'
 
-      expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil)
+      expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil)
 
       FilesystemAssetList.new(
         directory: absolute_path('.'),
@@ -86,7 +86,7 @@ RSpec.describe FilesystemAssetList do
     it 'iterates of assets' do
       touch_file 'images/image1.png'
 
-      expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
+      expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
 
       list = FilesystemAssetList.new(
         directory: absolute_path('.'),

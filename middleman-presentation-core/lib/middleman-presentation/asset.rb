@@ -17,7 +17,7 @@ module Middleman
 
       public
 
-      attr_reader :source_path, :destination_directory
+      attr_reader :source_path, :destination_directory, :relative_source_path
       attr_writer :importable, :loadable
 
       # Create instance
@@ -28,12 +28,21 @@ module Middleman
       # @param [String] destination_directory
       #   The directory where the asset should be placed when building the
       #   static version of the web application
-      def initialize(source_path:, destination_directory:, importable: false, loadable: false)
-        @source_path           = Pathname.new(source_path)
-        @importable            = importable
-        @loadable              = loadable
+      def initialize(source_path:, relative_source_path:, destination_directory:, importable: false, loadable: false)
+        @source_path          = Pathname.new(source_path)
+        @relative_source_path = Pathname.new(relative_source_path)
+        @importable           = importable
+        @loadable             = loadable
 
         self.destination_directory = destination_directory
+      end
+
+      def import_path
+        relative_source_path.dirname + relative_source_path.basename('.*')
+      end
+
+      def load_path
+        relative_source_path
       end
 
       def destination_directory=(value)

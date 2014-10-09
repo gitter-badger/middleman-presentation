@@ -16,7 +16,7 @@ module Middleman
       def load
         load_plugins
         load_default_components
-#        load_assets_in_bower_directory
+        load_assets_in_bower_directory
       end
 
       private
@@ -50,41 +50,36 @@ module Middleman
       end
 
       # Load default components
-      #def load_assets_in_bower_directory
-      #  # Do not build scss/js-files during build
-      #  # they are included in 'application.css/application.js' by default
-      #  #
-      #  #   .css .scss
-      #  #
-      #  include_filter = %w(
-      #    .png  .gif .jpg .jpeg .svg .webp
-      #    .eot  .otf .svc .woff .ttf
-      #  ).map { |e| Regexp.new("#{Regexp.escape(e)}$") }
+      def load_assets_in_bower_directory
+        loadable_files = [
+          /\.png$/,
+          /\.gif$/,
+          /\.jpg$/,
+          /\.jpeg$/,
+          /\.svg$/,
+          /\.webp$/,
+          /\.eot$/,
+          /\.otf$/,
+          /\.svc$/,
+          /\.woff$/,
+          /\.ttf$/,
+          /notes\.html/,
+          %r{reveal\.js/.*/.*\.js$},
+        ]
 
-      #  include_filter << /notes\.html/
-      #  include_filter << %r{reveal\.js/.*/.*\.js$}
+        output_directories = {
+          /notes\.html$/ => Pathname.new('javascripts'),
+          /pdf\.css$/ => Pathname.new('stylesheets')
+        }
 
-      #  # Frontend components include javascripts and stylesheets
-      #  # So there's no need to place them in filesystem as well
-      #  application.frontend_components_manager.available_frontend_components.each do |c|
-      #    c.javascripts { |e| exclude_filter << Regexp.new(e) }
-      #    c.stylesheets { |e| exclude_filter << Regexp.new(e) }
-      #  end
+        list = FilesystemAssetList.new(
+          directory: application.config.bower_directory,
+          loadable_files: loadable_files,
+          output_directories: output_directories
+        )
 
-      #  exclude_filter = [/src/, /test/, /demo/, /source/]
-
-      #  output_directories = {
-      #    /notes\.html$/ => Pathname.new('javascripts'),
-      #    /pdf\.css$/ => Pathname.new('stylesheets')
-      #  }
-
-      #  application.assets_manager.load_from(
-      #    application.config.bower_directory,
-      #    exclude_filter: exclude_filter,
-      #    include_filter: include_filter,
-      #    output_directories: output_directories
-      #  )
-      #end
+        application.assets_manager.load_from_list list
+      end
     end
   end
 end

@@ -11,13 +11,12 @@ RSpec.describe FrontendComponentAssetList do
     it 'information reads from component' do
       touch_file 'component1/images/image1.png'
 
-      #expect(component).to receive(:name).and_return('component1')
       expect(component).to receive(:output_directories).and_return([])
       expect(component).to receive(:loadable_files).and_return([])
       expect(component).to receive(:importable_files).and_return([])
       expect(component).to receive(:ignorable_files).and_return([])
 
-      expect(creator).to receive(:new).with(source_path: 'component1/images/image1.png', destination_directory: nil)
+      expect(creator).to receive(:new).with(source_path: absolute_path('component1/images/image1.png'), relative_source_path: 'component1/images/image1.png', destination_directory: nil)
 
       FrontendComponentAssetList.new(
         components: component,
@@ -31,7 +30,7 @@ end
   #  it 'sets output directory' do
   #    touch_file 'images/image1.png'
 
-  #    expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: 'test')
+  #    expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: 'test')
 
   #    FilesystemAssetList.new(
   #      directory: absolute_path('.'),
@@ -45,7 +44,7 @@ end
   #  it 'marks assets as importable' do
   #    touch_file 'images/image1.png'
 
-  #    expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
+  #    expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
   #    expect(asset).to receive(:importable=).with(true)
 
   #    FilesystemAssetList.new(
@@ -60,7 +59,7 @@ end
   #  it 'marks assets as loadable' do
   #    touch_file 'images/image1.png'
 
-  #    expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
+  #    expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
   #    expect(asset).to receive(:loadable=).with(true)
 
   #    FilesystemAssetList.new(
@@ -76,7 +75,7 @@ end
   #    touch_file 'images/image1.png'
   #    touch_file 'images.old/image1.png'
 
-  #    expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil)
+  #    expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil)
 
   #    FilesystemAssetList.new(
   #      directory: absolute_path('.'),
@@ -92,7 +91,7 @@ end
   #  it 'iterates of assets' do
   #    touch_file 'images/image1.png'
 
-  #    expect(creator).to receive(:new).with(source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
+  #    expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
 
   #    list = FilesystemAssetList.new(
   #      directory: absolute_path('.'),
