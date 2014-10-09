@@ -8,7 +8,7 @@ require 'fedux_org_stdlib/core_ext/array/list'
   ''
 ]
 
-@prefix = 'middleman-presentation'
+@prefix = 'mp'
 
 def prefixed(value)
   value = if value.empty? 
