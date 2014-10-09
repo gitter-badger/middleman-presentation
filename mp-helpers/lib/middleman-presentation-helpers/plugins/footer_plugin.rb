@@ -7,7 +7,8 @@ module Middleman
         extend PluginApi
 
         add_assets(
-          File.expand_path('../../../../vendor/assets/footer', __FILE__)
+          File.expand_path('../../../../vendor/assets/footer', __FILE__),
+          importable_files: %w(footer/footer.js footer/footer.scss)
         )
 
         add_component(

@@ -30,7 +30,15 @@ module Middleman
       # @param [String] path
       #   Directory where assets are stored
       def add_assets(path, output_directories: {}, importable_files: [], loadable_files: [], ignorable_files: [])
-        #Middleman::Presentation.assets_manager.load_from(path, output_directories: output_directories, importable_files: importable_files, loadable_files: loadable_files, ignorable_files: ignorable_files)
+        list = FilesystemAssetList.new(
+          directory: path,
+          loadable_files: loadable_files,
+          importable_files: importable_files,
+          ignorable_files: ignorable_files,
+          output_directories: output_directories
+        )
+
+        Middleman::Presentation.assets_manager.load_from_list list
       end
 
       module_function :add_component, :add_helpers, :add_assets

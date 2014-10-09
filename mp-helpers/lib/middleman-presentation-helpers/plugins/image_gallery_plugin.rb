@@ -9,7 +9,8 @@ module Middleman
         extend PluginApi
 
         add_assets(
-          File.expand_path('../../../../vendor/assets/image_gallery', __FILE__)
+          File.expand_path('../../../../vendor/assets/image_gallery', __FILE__),
+          importable_files: %w(image_gallery/image_gallery.scss)
         )
 
         add_component(

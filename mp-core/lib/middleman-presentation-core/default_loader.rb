@@ -63,22 +63,20 @@ module Middleman
           /\.svc$/,
           /\.woff$/,
           /\.ttf$/,
-          /notes\.html/,
-          %r{reveal\.js/.*/.*\.js$},
         ]
 
-        output_directories = {
-          /notes\.html$/ => Pathname.new('javascripts'),
-          /pdf\.css$/ => Pathname.new('stylesheets')
-        }
-
-        list = FilesystemAssetList.new(
+        filesystem_list = FilesystemAssetList.new(
           directory: application.config.bower_directory,
           loadable_files: loadable_files,
-          output_directories: output_directories
         )
 
-        application.assets_manager.load_from_list list
+        components_list = Middleman::Presentation::FrontendComponentAssetList.new(
+          components: application.frontend_components_manager.available_frontend_components, 
+          directory: File.join(Dir.getwd, application.config.bower_directory)
+        )
+
+        application.assets_manager.load_from_list components_list
+        application.assets_manager.load_from_list filesystem_list
       end
     end
   end
