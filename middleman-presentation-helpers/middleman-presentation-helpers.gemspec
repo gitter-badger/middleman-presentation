@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'middleman-presentation-helpers/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'mp-helpers'
+  spec.name          = 'middleman-presentation-helpers'
   spec.version       = Middleman::Presentation::Helpers::VERSION
   spec.authors       = ['Max Meyer']
   spec.email         = ['dev@fedux.org']

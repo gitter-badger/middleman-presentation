@@ -10,8 +10,8 @@ end
 
 group :middleman_presentation do
   gem 'middleman-presentation', path: File.expand_path('../', __FILE__)
-  gem 'mp-core', path: File.expand_path('../mp-core', __FILE__), require: 'middleman-presentation-core'
-  gem 'mp-helpers', path: File.expand_path('../mp-helpers', __FILE__), require: 'middleman-presentation-helpers'
+  gem 'middleman-presentation-core', path: File.expand_path('../middleman-presentation-core', __FILE__)
+  gem 'middleman-presentation-helpers', path: File.expand_path('../middleman-presentation-helpers', __FILE__)
 end
 
 group :development, :test do

@@ -2,13 +2,13 @@ PATH
   remote: ./
   specs:
     middleman-presentation (0.15.8)
-      mp-core (= 0.15.8)
-      mp-helpers (>= 0.0.6)
+      middleman-presentation-core (= 0.15.8)
+      middleman-presentation-helpers (>= 0.0.6)
 
 PATH
-  remote: mp-core
+  remote: middleman-presentation-core
   specs:
-    mp-core (0.15.8)
+    middleman-presentation-core (0.15.8)
       addressable (~> 2.3.5)
       bundler
       erubis
@@ -27,14 +27,13 @@ PATH
       tzinfo (>= 0.3.0)
 
 PATH
-  remote: mp-helpers
+  remote: middleman-presentation-helpers
   specs:
-    mp-helpers (0.0.6)
+    middleman-presentation-helpers (0.0.6)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.6)
       i18n (~> 0.6, >= 0.6.9)
@@ -120,7 +119,6 @@ GEM
     eventmachine (1.0.3)
     execjs (2.2.1)
     facter (2.2.0)
-      CFPropertyList (~> 2.2.6)
     fedux_org-stdlib (0.7.31)
       activesupport
     ffi (1.9.5)
@@ -382,9 +380,9 @@ DEPENDENCIES
   middleman (~> 3.3.2)
   middleman-livereload
   middleman-presentation!
+  middleman-presentation-core!
+  middleman-presentation-helpers!
   middleman-sprockets
-  mp-core!
-  mp-helpers!
   mutant
   mutant-rspec
   pry
