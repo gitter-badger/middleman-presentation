@@ -14,27 +14,25 @@ module Middleman
       end
 
       def load
-        load_plugins
-        load_components_required_in_config_file
-        load_assets_in_bower_directory
+        # the first thing added here, will be the last thing
+        # in application.scss and therefor takes precendence over
+        # the latter
         load_theme
+        load_components_required_in_config_file
+        load_plugins
+        load_assets_in_bower_directory
       end
 
-      private
-
       def load_plugins
-        application.plugins_manager.activate_plugin('middleman-presentation-helpers')
         application.plugins_manager.activate_plugin(*application.config.plugins)
       end
 
       def load_components_required_in_config_file
-        # rubocop:disable Style/GuardClause
-        unless application.config.components.blank?
-          application.frontend_components_manager.add(
-            application.config.components
-          )
-        end
-        # rubocop:enable Style/GuardClause
+        return if application.config.components.blank?
+        
+        application.frontend_components_manager.add(
+          application.config.components
+        )
       end
 
       def load_theme
@@ -43,7 +41,9 @@ module Middleman
             name: 'middleman-presentation-theme-default',
             github: 'maxmeyer/middleman-presentation-theme-default',
             importable_files: [
-              %r{stylesheets/middleman-presentation-theme-default.scss$},
+              %r{stylesheets/middleman-presentation-theme-default.scss$}
+            ],
+            loadable_files: [
               %r{.*\.png$}
             ]
           )
