@@ -8,7 +8,7 @@ module Middleman
     @helpers_manager             = HelpersManager.new
     @assets_manager              = AssetsManager.new
     @frontend_components_manager = FrontendComponentsManager.new
-    @plugins_manager             = PluginsManager.new(whitelist: @config.plugins_whitelist, blacklist: @config.plugins_blacklist, creator: Plugin)
+    @plugins_manager             = PluginsManager.new(creator: Plugin)
     @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
     @debug_mode                  = false
 

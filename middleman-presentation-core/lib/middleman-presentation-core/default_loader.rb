@@ -15,17 +15,19 @@ module Middleman
 
       def load
         load_plugins
-        load_default_components
+        load_components_required_in_config_file
         load_assets_in_bower_directory
+        load_theme
       end
 
       private
 
       def load_plugins
-        application.plugins_manager.load_plugins if application.config.plugins_enable == true
+        application.plugins_manager.activate_plugin('middleman-presentation-helpers')
+        application.plugins_manager.activate_plugin(*application.config.plugins)
       end
 
-      def load_default_components
+      def load_components_required_in_config_file
         # rubocop:disable Style/GuardClause
         unless application.config.components.blank?
           application.frontend_components_manager.add(
@@ -33,6 +35,9 @@ module Middleman
           )
         end
         # rubocop:enable Style/GuardClause
+      end
+
+      def load_theme
         if application.config.theme.blank?
           application.frontend_components_manager.add(
             name: 'middleman-presentation-theme-default',

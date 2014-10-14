@@ -34,9 +34,7 @@ module Middleman
       option :cli_language, nil
       option :default_version_number, 'v0.0.1'
 
-      option :plugins_enable, true
-      option :plugins_whitelist, []
-      option :plugins_blacklist, []
+      option :plugins, []
 
       option :slides_directory, 'slides'
       option :slides_ignore_file, '.slidesignore'

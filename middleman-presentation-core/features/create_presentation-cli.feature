@@ -37,9 +37,17 @@ Feature: Initialize presentation
     Then a directory named "vendor/assets/components/middleman-presentation-theme-default" should exist
     And the file "source/stylesheets/application.scss" should contain:
     """
+    @import 'images';
+    @import 'image_gallery';
+    @import 'footer';
+    @import 'reveal.js/css/reveal.min';
+    @import 'reveal.js/css/theme/template/mixins';
+    @import 'reveal.js/css/theme/template/settings';
+    @import 'reveal.js/lib/css/zenburn';
     @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
     """
 
+    @wip
   Scenario: Initialize with long command
     Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
@@ -70,6 +78,13 @@ Feature: Initialize presentation
     Then a directory named "vendor/assets/components/middleman-presentation-theme-default" should exist
     And the file "source/stylesheets/application.scss" should contain:
     """
+    @import 'images';
+    @import 'image_gallery';
+    @import 'footer';
+    @import 'reveal.js/css/reveal.min';
+    @import 'reveal.js/css/theme/template/mixins';
+    @import 'reveal.js/css/theme/template/settings';
+    @import 'reveal.js/lib/css/zenburn';
     @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
     """
 

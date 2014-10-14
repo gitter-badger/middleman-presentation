@@ -80,25 +80,25 @@ module Middleman
         end
 
         def set_variables_for_templates
-          @bower_directory    = options[:bower_directory]
-          @author             = options[:author]
-          @speaker            = options[:speaker]
-          @title              = options[:title]
-          @description        = options[:description]
-          @subtitle           = options[:subtitle]
-          @date               = options[:date]
-          @homepage           = options[:homepage]
-          @company            = options[:company]
-          @license            = options[:license]
-          @location           = options[:location]
-          @audience           = options[:audience]
+          @bower_directory = options[:bower_directory]
+          @author          = options[:author]
+          @speaker         = options[:speaker]
+          @title           = options[:title]
+          @description     = options[:description]
+          @subtitle        = options[:subtitle]
+          @date            = options[:date]
+          @homepage        = options[:homepage]
+          @company         = options[:company]
+          @license         = options[:license]
+          @location        = options[:location]
+          @audience        = options[:audience]
 
-          @email_address      = options[:email_address]
-          @phone_number       = options[:phone_number]
-          @github_url         = options[:github_url]
+          @email_address   = options[:email_address]
+          @phone_number    = options[:phone_number]
+          @github_url      = options[:github_url]
 
-          @version            = options[:version]
-          @project_id         = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
+          @version         = options[:version]
+          @project_id      = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
         end
 
         def set_configuration_for_revealjs
