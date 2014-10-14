@@ -1,4 +1,3 @@
-# encoding: utf-8
 module Middleman
   module Presentation
     # Helper module
@@ -6,20 +5,23 @@ module Middleman
       # Images helpers
       module ImageGallery
         # Create image gallery
-        def image_gallery(images, image_gallery_id:)
+        #
+        # @param [Array] images
+        #   An array of image paths, e.g. `img/image.png`
+        #
+        # @param [String] id
+        #   A unique id for your image gallery - unique within your presentation
+        def image_gallery(images, id:)
           template = File.read(File.expand_path('../../../../templates/image_gallery.erb', __FILE__)).chomp
 
           images.each_with_object([]) do |(image, title), memo|
             engine = Erubis::Eruby.new(template)
 
-            memo << engine.result(image_path: image, image_gallery_id: image_gallery_id, title: title)
+            memo << engine.result(image_path: image, image_gallery_id: id, title: title)
           end.join("\n")
         end
 
-        # Create entry for single image
-        def image(image)
-          image_gallery Array(image), image_gallery_id: SecureRandom.hex
-        end
+        module_function :image_gallery
       end
     end
   end

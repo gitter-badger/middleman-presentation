@@ -5,6 +5,7 @@ module Middleman
   module Presentation
     # Helpers plugin
     module Helpers
+      # Image Gallery plugin
       module ImageGalleryPlugin
         extend PluginApi
 

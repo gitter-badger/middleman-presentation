@@ -91,14 +91,14 @@ instructions found [here](https://github.com/sstephenson/execjs). I do not add
 this as a runtime-dependency to this gem. So it is your choice what engine you want to
 use.
 
+## Supported rubies
+
+* MRI >= 2.1.x
+
 ## Release Notes
 
 You find the release notes [here](RELEASE_NOTES.md) or on
 [github](https://github.com/maxmeyer/middleman-presentation/blob/master/RELEASE_NOTES.md).
-
-## Supported rubies
-
-* MRI >= 2.1.x
 
 ## Find help
 
@@ -106,6 +106,12 @@ You find the release notes [here](RELEASE_NOTES.md) or on
 * A good [tutorial](http://htmlcheats.com/reveal-js/reveal-js-tutorial-reveal-js-for-beginners/) tutorial about `reveal.js`
 * The [documentation](https://github.com/hakimel/reveal.js/) of `reveal.js`
 * The [documentation](http://middlemanapp.com/) of `middleman`
+* The [documentation](middleman-presentation-helpers/README.md) about `middleman-presentation-helpers`
+
+## Contributing
+
+Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+
 
 ## Getting Started
 
@@ -678,8 +684,3 @@ To find the process which uses this file, run this command:
 ```bash
 lsof <file>
 ```
-
-## Contributing
-
-Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
-

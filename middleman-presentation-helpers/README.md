@@ -1,6 +1,11 @@
 # Middleman::Presentation::Helpers
 
-TODO: Write a gem description
+This gem contains helpers for
+[`middleman-presentation`](https://github.com/maxmeyer/middleman-presentation):
+
+* Image gallery
+* Images
+* Some methods which could be core or helpers
 
 ## Installation
 
@@ -20,7 +25,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Image gallery
+
+If you want to create an image gallery in your slides you can use the
+`image_gallery`-helper. It just needs an id for the gallery and a list of images.
+
+```eruby
+<%= image_gallery ['img/image1.png', 'img/image2.png'], id: 'my-gallery' %>
+```
+
+### Images
+
+If you want to create an image in your slides and want it to have a fancy style, you can use the
+`image`-helper. Just needs the name of the image.
+
+```eruby
+<%= image 'img/image1.png' %>
+```
 
 ## Contributing
 
