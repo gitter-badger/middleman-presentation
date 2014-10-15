@@ -2,7 +2,7 @@
 module Middleman
   module Presentation
     # Loads all default helpers, plugins, components
-    class DefaultLoader
+    class AssetsLoader
       private
 
       attr_reader :application
@@ -13,49 +13,57 @@ module Middleman
         @application = Middleman::Presentation
       end
 
-      def load
-        # the first thing added here, will be the last thing
-        # in application.scss and therefor takes precendence over
-        # the latter
-        load_theme
-        load_components_required_in_config_file
-        load_plugins
-        load_assets_in_bower_directory
+      def load_for_presentation_init
+        require 'pry'
+        binding.pry
+        add_theme_component
+        add_components_required_in_config_file
+
+        activate_user_plugins
+        activate_core_plugins
+
+        add_assets_from_components
       end
 
-      def load_plugins
+      def load_at_presentation_runtime
+        add_assets_from_bower_directory
+
+        add_theme_component
+        add_components_required_in_config_file
+        activate_user_plugins
+        activate_core_plugins
+
+        add_assets_from_components
+      end
+
+      private
+
+      def activate_core_plugins
+        application.plugins_manager.activate_plugin('middleman-presentation-helpers')
+      end
+
+
+      def activate_user_plugins
         application.plugins_manager.activate_plugin(*application.config.plugins)
       end
 
-      def load_components_required_in_config_file
+      def add_components_required_in_config_file
         return if application.config.components.blank?
-        
+
         application.frontend_components_manager.add(
           application.config.components
         )
       end
 
-      def load_theme
-        if application.config.theme.blank?
-          application.frontend_components_manager.add(
-            name: 'middleman-presentation-theme-default',
-            github: 'maxmeyer/middleman-presentation-theme-default',
-            importable_files: [
-              %r{stylesheets/middleman-presentation-theme-default.scss$}
-            ],
-            loadable_files: [
-              %r{.*\.png$}
-            ]
-          )
-        else
-          application.frontend_components_manager.add(
-            application.config.theme
-          )
-        end
+      def add_theme_component
+        return if application.config.theme.blank?
+
+        application.frontend_components_manager.add(
+          application.config.theme
+        )
       end
 
-      # Load default components
-      def load_assets_in_bower_directory
+      def add_assets_from_bower_directory
         loadable_files = [
           /\.png$/,
           /\.gif$/,
@@ -75,13 +83,17 @@ module Middleman
           loadable_files: loadable_files,
         )
 
+        application.assets_manager.load_from_list filesystem_list
+      end
+
+      # Load default components
+      def add_assets_from_components
         components_list = Middleman::Presentation::FrontendComponentAssetList.new(
           components: application.frontend_components_manager.available_frontend_components, 
           directory: File.join(Dir.getwd, application.config.bower_directory)
         )
 
         application.assets_manager.load_from_list components_list
-        application.assets_manager.load_from_list filesystem_list
       end
     end
   end
