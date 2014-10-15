@@ -76,6 +76,11 @@ module Middleman
         @output_directories = Array(output_directories)
       end
 
+      # Should middleman-presentation fetch the component
+      def fetchable?
+        !@resource_locator.blank?
+      end
+
       # Return resource locator
       #
       # @return [String]
