@@ -15,7 +15,18 @@ module Middleman
       option :phone_number,  nil
       option :email_address,  nil
       option :github_url,  nil
-      option :theme, {}
+
+      option :theme, {
+        name: 'middleman-presentation-theme-default',
+        github: 'maxmeyer/middleman-presentation-theme-default',
+        importable_files: [
+          %r{stylesheets/middleman-presentation-theme-default.scss$}
+        ],
+        loadable_files: [
+          %r{.*\.png$}
+        ]
+      }
+
       option :components, []
       option :activate_controls, true
       option :activate_progress, true
