@@ -156,6 +156,8 @@ module Middleman
           append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
           activate :presentation
 
+          Middleman::Presentation::AssetsLoader.new(root_directory: root).load_at_presentation_runtime
+
           set :markdown_engine, :kramdown
           set :markdown, parse_block_html: true
 
@@ -230,36 +232,7 @@ module Middleman
         end
 
         def create_application_asset_files
-          components_list = Middleman::Presentation::FrontendComponentAssetList.new(
-            components: Middleman::Presentation.frontend_components_manager.available_frontend_components, 
-            directory: File.join(root_directory, @bower_directory)
-          )
-
-          loadable_files = [
-            /\.png$/,
-            /\.gif$/,
-            /\.jpg$/,
-            /\.jpeg$/,
-            /\.svg$/,
-            /\.webp$/,
-            /\.eot$/,
-            /\.otf$/,
-            /\.svc$/,
-            /\.woff$/,
-            /\.ttf$/,
-          ]
-
-          filesystem_list = FilesystemAssetList.new(
-            directory: application.config.bower_directory,
-            loadable_files: loadable_files,
-          )
-
-          Middleman::Presentation.assets_manager.load_from_list filesystem_list
-          Middleman::Presentation.assets_manager.load_from_list components_list
-
-        require 'pry'
-        binding.pry
-        ''
+          Middleman::Presentation::AssetsLoader.new(root_directory: root_directory).load_for_presentation_init
 
           template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss'), force: options[:force]
           template 'source/javascripts/application.js.tt', File.join(middleman_source_directory, 'javascripts', 'application.js'), force: options[:force]

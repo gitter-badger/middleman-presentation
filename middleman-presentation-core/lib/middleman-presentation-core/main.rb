@@ -11,9 +11,10 @@ module Middleman
     @plugins_manager             = PluginsManager.new(creator: Plugin)
     @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
     @debug_mode                  = false
+    @assets_cache                = []
 
     class << self
-      attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager, :assets_manager, :locale_configurator
+      attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager, :assets_manager, :locale_configurator, :assets_loader, :assets_cache
 
       private
 
@@ -56,5 +57,3 @@ module Middleman
     end
   end
 end
-
-Middleman::Presentation::DefaultLoader.new.load

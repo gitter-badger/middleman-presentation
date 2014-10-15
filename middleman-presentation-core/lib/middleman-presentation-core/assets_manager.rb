@@ -59,14 +59,14 @@ module Middleman
       end
 
       # Load assets from list
-      def load_from_list(list)
-        store.merge list
+      def load_from_list(*lists)
+        lists.flatten.each { |l| store.merge l }
       end
 
       private
 
       def each_importable_asset(&block)
-        store.find_all { |a| a.valid? && a.importable? }
+        store.find_all { |a| a.valid? && a.importable? }.reverse
       end
 
     end

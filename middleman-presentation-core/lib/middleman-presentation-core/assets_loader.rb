@@ -5,17 +5,16 @@ module Middleman
     class AssetsLoader
       private
 
-      attr_reader :application
+      attr_reader :application, :root_directory
 
       public
 
-      def initialize
-        @application = Middleman::Presentation
+      def initialize(root_directory: Dir.getwd)
+        @application    = Middleman::Presentation
+        @root_directory = root_directory
       end
 
       def load_for_presentation_init
-        require 'pry'
-        binding.pry
         add_theme_component
         add_components_required_in_config_file
 
@@ -23,6 +22,7 @@ module Middleman
         activate_core_plugins
 
         add_assets_from_components
+        add_assets_from_temporary_cache
       end
 
       def load_at_presentation_runtime
@@ -34,6 +34,7 @@ module Middleman
         activate_core_plugins
 
         add_assets_from_components
+        add_assets_from_temporary_cache
       end
 
       private
@@ -86,11 +87,15 @@ module Middleman
         application.assets_manager.load_from_list filesystem_list
       end
 
+      def add_assets_from_temporary_cache
+        application.assets_manager.load_from_list application.assets_cache
+      end
+
       # Load default components
       def add_assets_from_components
         components_list = Middleman::Presentation::FrontendComponentAssetList.new(
           components: application.frontend_components_manager.available_frontend_components, 
-          directory: File.join(Dir.getwd, application.config.bower_directory)
+          directory: File.join(root_directory, application.config.bower_directory)
         )
 
         application.assets_manager.load_from_list components_list
