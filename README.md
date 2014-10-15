@@ -613,12 +613,17 @@ middleman-presentation show config --defaults
 
 ## Plugins
 
-`middleman-presentation` supports plugins. They need to be named
-`middleman-presentation-<plugin_name>` to be automatically loaded.
+`middleman-presentation` supports plugins. They should be named
+`middleman-presentation-<plugin_name>`. If you want them to be automatically
+loaded, place an empty file named `middleman-presentation-plugin.rb` under
+`lib/`. Your plugin is then loaded via `require
+'middleman-presentation-<plugin_name>'`. So please make sure, that your
+"main"-library-file is named `middleman-presentation-<plugin_name>.rb` and is
+within `$LOAD_PATH`.
 
-You need to extend your module with `PluginApi` to get the needed methods. To
+You need to extend your module with `PluginApi` to get the api-methods. To
 add a frontend component use `add_component`, to add assets use `add_assets`
-and so on. See the following code block for an example.
+and so on. See the following code block as an example.
 
 ```ruby
 # encoding: utf-8
@@ -636,14 +641,19 @@ module Middleman
 
         add_component(
           name: 'impress.js',
-          version: 'latest'
-        )
-
-        add_component(
-          FrontendComponent.new(
-            name: 'angular',
-            version: 'latest'
-          )
+          version: 'latest',
+          # Make files available in `js/application.js` and `css/application.scss`
+          importable_files: [
+          /pattern1/
+          ],
+          # Make files available in build directory
+          loadable_files: [
+          /pattern2/
+          ],
+          # Ignore files
+          ignorable_files: [
+          /.*\.tmp/
+          ]
         )
 
         add_helpers do
