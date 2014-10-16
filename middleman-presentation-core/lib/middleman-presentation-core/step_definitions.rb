@@ -127,6 +127,13 @@ Given(/I remove all bundler files$/) do
   FileUtils.rm_f File.expand_path(File.join(current_dir, 'Gemfile.lock'))
 end
 
+#Given(/I replace all bundler files$/) do
+#  src = File.expand_path(File.join('..', '..', '..', '..', 'Gemfile'), __FILE__)
+#  dst = File.expand_path(File.join(current_dir, 'Gemfile'))
+#
+#  FileUtils.cp src, dst
+#end
+
 When(/^I successfully run `([^`]+)` in clean environment$/) do |command|
   Bundler.with_clean_env do
     step %(I successfully run `#{command}`)
