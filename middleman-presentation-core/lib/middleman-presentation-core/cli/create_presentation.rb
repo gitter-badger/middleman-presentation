@@ -157,6 +157,7 @@ module Middleman
           activate :presentation
 
           Middleman::Presentation::AssetsLoader.new(root_directory: root).load_at_presentation_runtime
+          helpers Middleman::Presentation.helpers_manager.available_helpers
 
           set :markdown_engine, :kramdown
           set :markdown, parse_block_html: true
