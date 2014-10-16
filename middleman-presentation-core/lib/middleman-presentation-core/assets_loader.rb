@@ -14,7 +14,15 @@ module Middleman
         @root_directory = root_directory
       end
 
-      def load_for_presentation_init
+      def load_for_bower_update
+        add_theme_component
+        add_components_required_in_config_file
+
+        activate_user_plugins
+        activate_core_plugins
+      end
+
+      def load_for_asset_aggregators
         add_theme_component
         add_components_required_in_config_file
 

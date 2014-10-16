@@ -56,6 +56,10 @@ module Middleman
           @root_directory = File.expand_path directory
         end
 
+        def init_asset_loader
+          @asset_loader = Middleman::Presentation::AssetsLoader.new(root_directory: root_directory)
+        end
+
         def add_to_source_path
           source_paths << File.expand_path('../../../../templates', __FILE__)
         end
@@ -140,6 +144,8 @@ module Middleman
         end
 
         def create_bower_configuration_files
+          asset_loader.load_for_bower_update
+
           template '.bowerrc.tt', File.join(root_directory, '.bowerrc'), force: options[:force]
           template 'bower.json.tt', File.join(root_directory, 'bower.json'), force: options[:force]
         end
@@ -214,14 +220,14 @@ module Middleman
           end
         end
 
-        def install_frontend_components
-          inside directory do
-            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
+        #def install_frontend_components
+        #  inside directory do
+        #    fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
 
-            result = run('bower update', capture: true) if options[:install_assets] == true
-            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
-          end
-        end
+        #    result = run('bower update', capture: true) if options[:install_assets] == true
+        #    fail Thor::Error, Middleman::Presentation.t('errors.bower_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
+        #  end
+        #end
 
         def install_gems
           inside directory do
@@ -233,7 +239,7 @@ module Middleman
         end
 
         def create_application_asset_files
-          Middleman::Presentation::AssetsLoader.new(root_directory: root_directory).load_for_presentation_init
+          asset_loader.load_for_asset_aggregators
 
           template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss'), force: options[:force]
           template 'source/javascripts/application.js.tt', File.join(middleman_source_directory, 'javascripts', 'application.js'), force: options[:force]
@@ -250,7 +256,7 @@ module Middleman
         end
 
         no_commands do
-          attr_reader :root_directory
+          attr_reader :root_directory, :asset_loader
 
           def data_directory
             File.join root_directory, 'data'
