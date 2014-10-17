@@ -50,7 +50,7 @@ module Middleman
 
       # Iterate over each importable asset
       def each_importable_stylesheet(&block)
-        each_importable_asset.find_all { |a| a.stylesheet? }.each(&block)
+        each_importable_asset.reverse.find_all { |a| a.stylesheet? }.each(&block)
       end
 
       # Iterate over each importable asset
@@ -66,7 +66,7 @@ module Middleman
       private
 
       def each_importable_asset(&block)
-        store.find_all { |a| a.valid? && a.importable? }.reverse
+        store.find_all { |a| a.valid? && a.importable? }
       end
 
     end
