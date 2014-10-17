@@ -175,6 +175,7 @@ module Middleman
           bower_directory = '#{@bower_directory}'
 
           if respond_to?(:sprockets) && sprockets.respond_to?(:import_asset)
+            Middleman::Presentation.asset_load_paths_manager.each_path { |p| sprockets.append_path p }
             sprockets.append_path File.join(root, bower_directory)
 
             Middleman::Presentation.assets_manager.each_loadable_asset do |a|

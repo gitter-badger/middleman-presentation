@@ -38,6 +38,8 @@ module Middleman
           output_directories: output_directories
         )
 
+        Middleman::Presentation.assets_load_paths_manager.add path
+
         # Use a temporary cache, so that we can re-arrange the order of
         # importable assets in AssetsLoader
         Middleman::Presentation.assets_cache << list

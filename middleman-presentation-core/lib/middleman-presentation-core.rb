@@ -56,6 +56,7 @@ require 'middleman-presentation-core/plugins_manager'
 require 'middleman-presentation-core/assets_manager'
 require 'middleman-presentation-core/helpers_manager'
 require 'middleman-presentation-core/frontend_components_manager'
+require 'middleman-presentation-core/asset_load_paths_manager'
 require 'middleman-presentation-core/assets_loader'
 
 # This loads a lot
