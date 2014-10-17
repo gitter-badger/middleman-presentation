@@ -8,11 +8,9 @@ group :middleman do
   gem 'tzinfo-data', platforms: [:mswin, :mingw]
 end
 
-group :middleman_presentation do
-  gem 'middleman-presentation', path: File.expand_path('../', __FILE__)
-  gem 'middleman-presentation-core', path: File.expand_path('../middleman-presentation-core', __FILE__)
-  gem 'middleman-presentation-helpers', path: File.expand_path('../middleman-presentation-helpers', __FILE__)
-end
+gem 'middleman-presentation', path: File.expand_path('../', __FILE__)
+gem 'middleman-presentation-core', path: File.expand_path('../middleman-presentation-core', __FILE__)
+gem 'middleman-presentation-helpers', path: File.expand_path('../middleman-presentation-helpers', __FILE__)
 
 group :development, :test do
   gem 'rspec', require: false
