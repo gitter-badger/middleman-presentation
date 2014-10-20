@@ -3,9 +3,34 @@ module Middleman
   module Presentation
     # Plugin Api
     module PluginApi
+      # Require some other plugin
+      #
+      # @param [String, Array] names
+      #   The name of the plugin which should be loaded. It also supports
+      #   multiple arguments or an array of plugin names.
+      #
+      # @example String
+      #
+      #   require_plugin 'name1'
+      #
+      # @example Multiple Arguments
+      #
+      #   require_plugin 'name1', 'name2'
+      #
+      # @example Arrays
+      #
+      #   require_plugin ['name1', 'name2']
+      #
+      def require_plugin(*names)
+        application.plugins_manager.activate_plugin(names)
+      end
+
       # Add frontend component
-      def add_component(*args)
-        Middleman::Presentation.frontend_components_manager.add(*args)
+      #
+      # @param [Hash] component
+      #   The component which should be added
+      def add_component(component)
+        Middleman::Presentation.frontend_components_manager.add(component)
       end
 
       # Add helpers
@@ -29,20 +54,22 @@ module Middleman
       #
       # @param [String] path
       #   Directory where assets are stored
-      def add_assets(path, output_directories: {}, importable_files: [], loadable_files: [], ignorable_files: [])
-        list = FilesystemAssetList.new(
-          directory: path,
-          loadable_files: loadable_files,
-          importable_files: importable_files,
-          ignorable_files: ignorable_files,
-          output_directories: output_directories
-        )
+      #def add_assets(path, output_directories: {}, importable_files: [], loadable_files: [], ignorable_files: [])
+      def add_assets(*args)
+        Middleman::Presentation.asset_components_manager.add(*args)
+        #list = FilesystemAssetList.new(
+        #  directory: path,
+        #  loadable_files: loadable_files,
+        #  importable_files: importable_files,
+        #  ignorable_files: ignorable_files,
+        #  output_directories: output_directories
+        #)
 
-        Middleman::Presentation.asset_load_paths_manager.add path
+        #Middleman::Presentation.asset_load_paths_manager.add path
 
         # Use a temporary cache, so that we can re-arrange the order of
         # importable assets in AssetsLoader
-        Middleman::Presentation.assets_cache << list
+        #Middleman::Presentation.assets_cache << list
       end
 
       module_function :add_component, :add_helpers, :add_assets

@@ -616,10 +616,17 @@ middleman-presentation show config --defaults
 `middleman-presentation` supports plugins. They should be named
 `middleman-presentation-<plugin_name>`. If you want them to be automatically
 loaded, place an empty file named `middleman-presentation-plugin.rb` under
-`lib/`. Your plugin is then loaded via `require
-'middleman-presentation-<plugin_name>'`. So please make sure, that your
-"main"-library-file is named `middleman-presentation-<plugin_name>.rb` and is
-within `$LOAD_PATH`.
+`lib/` and add an entry in your config-file under `plugins:`. Your plugin is
+then loaded via `require 'middleman-presentation-<plugin_name>'`. So please
+make sure, that your "main"-library-file is named
+`middleman-presentation-<plugin_name>.rb` and is within `$LOAD_PATH`.
+
+*Example for configuration*
+
+```ruby
+plugins:
+  - middleman-presentation-<plugin_name>
+```
 
 You need to extend your module with `PluginApi` to get the api-methods. To
 add a frontend component use `add_component`, to add assets use `add_assets`
@@ -634,6 +641,11 @@ module Middleman
       # Simple
       module Simple
         extend PluginApi
+
+        # Load other plugins
+        require_plugin 'plugin1'
+        require_plugin ['plugin1']
+        require_plugin 'plugin1', 'plugin2'
 
         add_assets(
           File.expand_path('../../../../../../vendor/assets', __FILE__)
@@ -668,6 +680,10 @@ module Middleman
   end
 end
 ```
+
+If your application needs some other plugins loaded first, use the
+`require_plugin'-method. For more detailed examples, please see the example
+above. 
 
 ## Development
 

@@ -1,29 +1,22 @@
 # encoding: utf-8
-require 'middleman-presentation-helpers/image_gallery'
-
 module Middleman
   module Presentation
     # Helpers plugin
     module Helpers
       # Image Gallery plugin
-      module ImageGalleryPlugin
+      class ImageGalleryPlugin < Plugin
         extend PluginApi
 
         add_assets(
           File.expand_path('../../../../vendor/assets', __FILE__),
-          importable_files: %w(image_gallery.scss)
+          importable_files: %w(image_gallery.scss),
         )
 
         add_component(
-          name: 'jquery',
-          version: '~1.11',
-          importable_files: %w(dist/jquery.js)
-        )
-
-        add_component(
-          name: 'lightbox2',
+          name: :lightbox2,
           github: 'dg-vrnetze/revealjs-lightbox2',
-          importable_files: %w(js/lightbox.js)
+          importable_files: %w(js/lightbox.js),
+          requirements: [:jquery]
         )
 
         add_helpers Middleman::Presentation::Helpers::ImageGallery

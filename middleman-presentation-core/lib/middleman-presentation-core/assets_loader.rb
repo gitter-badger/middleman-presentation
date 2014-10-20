@@ -68,7 +68,7 @@ module Middleman
         return if application.config.theme.blank?
 
         application.frontend_components_manager.add(
-          application.config.theme
+          **application.config.theme
         )
       end
 
@@ -102,7 +102,7 @@ module Middleman
       # Load default components
       def add_assets_from_components
         components_list = Middleman::Presentation::FrontendComponentAssetList.new(
-          components: application.frontend_components_manager.available_frontend_components, 
+          components: application.frontend_components_manager.available_components, 
           directory: File.join(root_directory, application.config.bower_directory)
         )
 

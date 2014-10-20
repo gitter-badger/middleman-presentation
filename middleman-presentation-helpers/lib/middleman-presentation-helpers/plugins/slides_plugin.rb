@@ -1,6 +1,4 @@
 # encoding: utf-8
-require 'middleman-presentation-helpers/slides'
-
 module Middleman
   module Presentation
     # Helpers plugin
@@ -20,7 +18,7 @@ module Middleman
         ]
 
         add_component(
-          name: 'reveal.js',
+          name: :reveal_js,
           version: 'latest',
           importable_files: %w(js/reveal.min.js lib/js/head.min css/reveal.min.css lib/css/zenburn css/theme/template/mixins.scss css/theme/template/settings.scss),
           ignorable_files: %w(test),

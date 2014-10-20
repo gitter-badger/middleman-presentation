@@ -1,25 +1,24 @@
 # encoding: utf-8
 module Middleman
   module Presentation
-    # Frontend Component Manager
+    # Asset Component Manager
     #
-    # It know about all frontend components. Information about all frontend
+    # It know about all asset components. Information about all asset
     # components is used when building `application.js` and `application.scss`
-    # during website build and when creating the `bower.json`-file on
-    # presentation-creation.
+    # during website build.
     #
     # It normally gets the information about available components from
     # `plugins`.
-    class FrontendComponentsManager
+    class AssetComponentsManager
       private
 
       attr_reader :components, :creator
 
       public
 
-      def initialize(creator: FrontendComponent)
+      def initialize(creator: AssetComponent)
         @components = Set.new
-        @creator             = creator
+        @creator    = creator
       end
 
       # Return available frontend components
@@ -52,6 +51,7 @@ module Middleman
           a << {
             name: e.name,
             resource_locator: e.resource_locator,
+            path: e.path,
             version: e.version,
             loadable_files: e.loadable_files,
             importable_files: e.importable_files,
@@ -60,7 +60,7 @@ module Middleman
           }
         end
 
-        List.new(data).to_s(fields: [:name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories])
+        List.new(data).to_s(fields: [:name, :resource_locator, :path, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories])
       end
     end
   end
