@@ -57,7 +57,8 @@ module Middleman
             loadable_files: e.loadable_files,
             importable_files: e.importable_files,
             ignorable_files: e.ignorable_files,
-            output_directories: e.output_directories
+            output_directories: e.output_directories,
+            root_directory: e.root_directory
           }
         end
 

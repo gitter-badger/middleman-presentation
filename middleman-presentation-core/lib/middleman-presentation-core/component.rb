@@ -2,7 +2,6 @@
 module Middleman
   module Presentation
     # A component
-    #
     class Component
       include Comparable
 
@@ -39,35 +38,10 @@ module Middleman
         output_directories: []
       )
 
-        @resource_locator = if resource_locator =~ /\A#{URI.regexp}\z/
-                              Addressable::URI.heuristic_parse resource_locator
-                            elsif github
-                              Addressable::URI.heuristic_parse format('https://github.com/%s.git', github)
-                            elsif version
-                              Class.new do
-                                attr_reader :to_s
-
-                                def initialize(value)
-                                  @to_s = value
-                                end
-                              end.new(version)
-                            else
-                              nil
-                            end
-        @version = version
-
-        fail ArgumentError, Middleman::Presentation.t('errors.undefined_arguments', arguments: %w(resource_locator github version).to_list) if @resource_locator.blank?
-
-        @name = if version
-                  name
-                elsif name.blank?
-                  File.basename(@resource_locator.path)
-                else
-                  name
-                end
-
-        fail ArgumentError, Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name) if @name.blank?
-
+        @name               = name
+        @resource_locator   = resource_locator
+        @version            = version
+        @github             = github
         @loadable_files     = Array(loadable_files).map { |o| Regexp.new o }
         @importable_files   = Array(importable_files).map { |o| Regexp.new o }
         @ignorable_files    = Array(ignorable_files).map { |o| Regexp.new o }

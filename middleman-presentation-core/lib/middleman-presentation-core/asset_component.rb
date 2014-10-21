@@ -9,7 +9,7 @@ module Middleman
     # component is required and which JavaScript-files and stylesheets should
     # be includes in "javascripts/application.js" and
     # "stylesheets"application.scss".
-    class AssetComponent
+    class AssetComponent < Component
       attr_reader :path
 
       # An asset component
@@ -22,6 +22,7 @@ module Middleman
         super(**args)
 
         @path = path
+        @name = path
       end
     end
   end

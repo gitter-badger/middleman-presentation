@@ -50,9 +50,8 @@ module Middleman
       def to_s
         data = components.sort.reduce([]) do |a, e|
           a << {
-            name: e.name,
-            resource_locator: e.resource_locator,
             path: e.path,
+            resource_locator: e.resource_locator,
             version: e.version,
             loadable_files: e.loadable_files,
             importable_files: e.importable_files,
@@ -61,7 +60,7 @@ module Middleman
           }
         end
 
-        List.new(data).to_s(fields: [:name, :resource_locator, :path, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories])
+        List.new(data).to_s(fields: [:path, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories])
       end
     end
   end

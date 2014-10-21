@@ -9,11 +9,7 @@ module Middleman
     # is required and which JavaScript-files and stylesheets should be includes
     # in "javascripts/application.js" and "stylesheets"application.scss".
     class FrontendComponent < Component
-      private
-
       attr_reader :root_directory
-
-      public
 
       # Create new frontend component
       #
@@ -23,6 +19,33 @@ module Middleman
       #   The directory where all frontend components can be found
       def initialize(root_directory: nil, **args)
         super(**args)
+
+        @resource_locator = if @resource_locator =~ /\A#{URI.regexp}\z/
+                              Addressable::URI.heuristic_parse @resource_locator
+                            elsif @github
+                              Addressable::URI.heuristic_parse format('https://github.com/%s.git', @github)
+                            elsif version
+                              Class.new do
+                                attr_reader :to_s
+
+                                def initialize(value)
+                                  @to_s = value
+                                end
+                              end.new(version)
+                            else
+                              nil
+                            end
+        fail ArgumentError, Middleman::Presentation.t('errors.undefined_arguments', arguments: %w(resource_locator github version).to_list) if @resource_locator.blank?
+
+        @name = if version
+                  name
+                elsif name.blank?
+                  File.basename(@resource_locator.path)
+                else
+                  name
+                end
+
+        fail ArgumentError, Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name) if @name.blank?
 
         @root_directory = root_directory
       end
