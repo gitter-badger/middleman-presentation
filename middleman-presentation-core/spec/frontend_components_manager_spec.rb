@@ -11,8 +11,9 @@ RSpec.describe FrontendComponentsManager do
         name: 'test1',
         resource_locator: 'http://www.example.com',
         version: '0.0.1',
-        javascripts: [],
-        stylesheets: []
+        loadable_files: [],
+        importable_files: [],
+        root_directory:  nil
       )
 
       manager = FrontendComponentsManager.new(creator: creator)
@@ -20,8 +21,28 @@ RSpec.describe FrontendComponentsManager do
         name: 'test1',
         resource_locator: 'http://www.example.com',
         version: '0.0.1',
-        javascripts: [],
-        stylesheets: []
+        importable_files: [],
+        loadable_files: []
+      )
+    end
+
+    it 'passes the bower directory to component' do
+      expect(creator).to receive(:new).with(
+        name: 'test1',
+        resource_locator: 'http://www.example.com',
+        version: '0.0.1',
+        loadable_files: [],
+        importable_files: [],
+        root_directory: 'dir'
+      )
+
+      manager = FrontendComponentsManager.new(creator: creator, bower_directory: 'dir')
+      manager.add(
+        name: 'test1',
+        resource_locator: 'http://www.example.com',
+        version: '0.0.1',
+        importable_files: [],
+        loadable_files: []
       )
     end
 
@@ -30,8 +51,9 @@ RSpec.describe FrontendComponentsManager do
         name: 'test1',
         resource_locator: 'http://www.example.com',
         version: '0.0.1',
-        javascripts: [],
-        stylesheets: []
+        importable_files: [],
+        loadable_files: [],
+        root_directory: nil
       )
 
       manager = FrontendComponentsManager.new(creator: creator)
@@ -40,8 +62,8 @@ RSpec.describe FrontendComponentsManager do
           name: 'test1',
           resource_locator: 'http://www.example.com',
           version: '0.0.1',
-          javascripts: [],
-          stylesheets: []
+          importable_files: [],
+          loadable_files: []
         )
       )
     end
@@ -57,7 +79,7 @@ RSpec.describe FrontendComponentsManager do
     end
   end
 
-  context '#available_frontend_components' do
+  context '#available_components' do
     it 'returns available fronted components' do
       component = {
         name: 'test1',
@@ -68,7 +90,7 @@ RSpec.describe FrontendComponentsManager do
       manager = FrontendComponentsManager.new
       manager.add(component)
 
-      expect(manager.available_frontend_components.first.name).to eq 'test1'
+      expect(manager.available_components.first.name).to eq 'test1'
     end
 
     it 'returns the frontend components in the order they were added' do
@@ -91,11 +113,11 @@ RSpec.describe FrontendComponentsManager do
       manager.add(components[4])
       manager.add(components[4])
 
-      expect(manager.available_frontend_components[0].name).to be components[0][:name]
-      expect(manager.available_frontend_components[1].name).to be components[2][:name]
-      expect(manager.available_frontend_components[2].name).to be components[4][:name]
-      expect(manager.available_frontend_components[3].name).to be components[1][:name]
-      expect(manager.available_frontend_components[4].name).to be components[3][:name]
+      expect(manager.available_components[0].name).to be components[0][:name]
+      expect(manager.available_components[1].name).to be components[2][:name]
+      expect(manager.available_components[2].name).to be components[4][:name]
+      expect(manager.available_components[3].name).to be components[1][:name]
+      expect(manager.available_components[4].name).to be components[3][:name]
     end
   end
 

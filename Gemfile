@@ -9,8 +9,8 @@ group :middleman do
 end
 
 gem 'middleman-presentation', path: File.expand_path('../', __FILE__)
-gem 'middleman-presentation-core', path: File.expand_path('../middleman-presentation-core', __FILE__)
-gem 'middleman-presentation-helpers', path: File.expand_path('../middleman-presentation-helpers', __FILE__)
+gem 'middleman-presentation-core', path: File.expand_path('../middleman-presentation-core', __FILE__), require: false
+gem 'middleman-presentation-helpers', path: File.expand_path('../middleman-presentation-helpers', __FILE__), require: false
 
 group :development, :test do
   gem 'rspec', require: false

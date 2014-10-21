@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'middleman-presentation-helpers/image_gallery.rb'
+require 'middleman-presentation-helpers/helpers/image_gallery.rb'
 
 module Middleman
   module Presentation

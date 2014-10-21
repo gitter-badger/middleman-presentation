@@ -13,13 +13,14 @@ module Middleman
     class FrontendComponentsManager
       private
 
-      attr_reader :components, :creator
+      attr_reader :components, :creator, :bower_directory
 
       public
 
-      def initialize(creator: FrontendComponent)
-        @components = Set.new
-        @creator             = creator
+      def initialize(creator: FrontendComponent, bower_directory: nil)
+        @components     = Set.new
+        @creator        = creator
+        @bower_directory = bower_directory
       end
 
       # Return available frontend components
@@ -43,7 +44,7 @@ module Middleman
           return
         end
 
-        components << creator.new(**c.to_h)
+        components << creator.new(**c.to_h.merge(root_directory: bower_directory))
       end
 
       # List installed plugins

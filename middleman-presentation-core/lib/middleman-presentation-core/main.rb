@@ -7,7 +7,7 @@ module Middleman
     @logger                      = Logger.new
     @helpers_manager             = HelpersManager.new
     @assets_manager              = AssetsManager.new
-    @frontend_components_manager = FrontendComponentsManager.new(bower_directory: Middleman.application.root)
+    @frontend_components_manager = FrontendComponentsManager.new(bower_directory: Middleman::Application.server.inst.root)
     @asset_components_manager    = AssetComponentsManager.new
     @plugins_manager             = PluginsManager.new(creator: Plugin)
     @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
