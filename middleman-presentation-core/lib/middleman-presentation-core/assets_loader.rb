@@ -87,23 +87,17 @@ module Middleman
           /\.ttf$/,
         ]
 
-        filesystem_list = FilesystemAssetList.new(
-          directory: application.config.bower_directory,
+        application.assets_components_manager.add(
+          path: application.config.bower_directory,
           loadable_files: loadable_files,
         )
-
-        application.assets_manager.load_from_list filesystem_list
-      end
-
-      def add_assets_from_temporary_cache
-        application.assets_manager.load_from_list application.assets_cache
       end
 
       # Load default components
       def add_assets_from_components
-        components_list = Middleman::Presentation::FrontendComponentAssetList.new(
-          components: application.frontend_components_manager.available_components, 
-          directory: File.join(root_directory, application.config.bower_directory)
+        components_list = Middleman::Presentation::ComponentAssetList.new(
+          application.frontend_components_manager.available_components + 
+          application.asset_components_manager.available_components, 
         )
 
         application.assets_manager.load_from_list components_list

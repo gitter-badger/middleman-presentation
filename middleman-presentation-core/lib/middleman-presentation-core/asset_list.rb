@@ -6,12 +6,12 @@ module Middleman
 
       private
 
-      attr_reader :directory, :creator, :store
+      attr_reader :directory, :creator, :store, :components
 
       public
 
-      def initialize(directory:, creator: Asset, store: AssetStore.new)
-        @directory = directory
+      def initialize(components, creator: Asset, store: AssetStore.new)
+        @components = components
         @store     = store
         @creator   = creator
 
@@ -29,7 +29,15 @@ module Middleman
       end
 
       def read_in_assets
-        fail NoMethodError, :read_in_assets
+        components.each do |c|
+          add_assets(
+            c.path,
+            output_directories: c.output_directories, 
+            loadable_files: c.loadable_files,
+            importable_files: c.importable_files,
+            ignorable_files: c.ignorable_files
+          )
+        end
       end
 
       def add_assets(base_path, output_directories:, loadable_files:, importable_files:, ignorable_files:)
