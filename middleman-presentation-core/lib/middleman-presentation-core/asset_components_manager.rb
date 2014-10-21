@@ -39,6 +39,7 @@ module Middleman
       def add(c)
         unless c.respond_to? :to_h
           Middleman::Presentation.logger.error Middleman::Presentation.t('errors.invalid_component', argument: c)
+
           return
         end
 

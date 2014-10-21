@@ -21,6 +21,17 @@ module Middleman
       def each_path(&block)
         load_paths.each(&block)
       end
+
+      # List installed plugins
+      def to_s
+        data = components.sort.reduce([]) do |a, e|
+          a << {
+            path: e,
+          }
+        end
+
+        List.new(data).to_s(fields: [:path])
+      end
     end
   end
 end

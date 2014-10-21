@@ -7,16 +7,16 @@ module Middleman
     @logger                      = Logger.new
     @helpers_manager             = HelpersManager.new
     @assets_manager              = AssetsManager.new
-    @frontend_components_manager = FrontendComponentsManager.new
+    @frontend_components_manager = FrontendComponentsManager.new(bower_directory: Middleman.application.root)
+    @asset_components_manager    = AssetComponentsManager.new
     @plugins_manager             = PluginsManager.new(creator: Plugin)
     @locale_configurator         = LocaleConfigurator.new(path: File.expand_path('../../../locales', __FILE__), default_locale: @config.cli_language)
     @debug_mode                  = false
     @assets_cache                = []
-    @asset_load_paths_manager    = AssetLoadPathsManager.new
     
 
     class << self
-      attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager, :assets_manager, :locale_configurator, :assets_loader, :assets_cache, :asset_load_paths_manager
+      attr_reader :config, :logger, :plugins_manager, :frontend_components_manager, :helpers_manager, :assets_manager, :locale_configurator, :assets_loader, :assets_cache, :asset_components_manager
 
       private
 
