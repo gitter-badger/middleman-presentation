@@ -1,4 +1,41 @@
-inherit_from: 
-  - config/rubocop/include.yml
-  - config/rubocop/exclude.yml
-  - config/rubocop/exclude.yml
+AllCops:
+  Exclude:
+    - 'tmp/**/*'
+
+# Configuration parameters: AllowURI.
+Metrics/LineLength:
+  Max: 225
+
+# Configuration parameters: CountKeywordArgs.
+Metrics/ParameterLists:
+  Max: 6
+
+# Configuration parameters: Exclude.
+Style/FileName:
+  Enabled: false
+
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 118
+
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 160
+  Exclude:
+    - lib/middleman-presentation-core/cli/create_presentation.rb
+
+Metrics/CyclomaticComplexity:
+  Max: 9
+  Exclude:
+    - lib/middleman-presentation-core/file_extensions.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - lib/middleman-presentation-core/frontend_component.rb 
+    - lib/middleman-presentation-core/assets_manager.rb
+    - lib/middleman-presentation-core/file_extensions.rb
+    - lib/middleman-presentation-core/commands/slide.rb
+
+# Configuration parameters: MaxSlashes.
+Style/RegexpLiteral:
+  MaxSlashes: 0
