@@ -86,15 +86,13 @@ module Middleman
         ]
 
         application.asset_components_manager.add(
-          path: application.config.bower_directory,
+          path: root_directory,
           loadable_files: loadable_files,
         )
       end
 
       # Load default components
       def add_assets_from_components
-        require 'pry'
-        binding.pry
         components_list = Middleman::Presentation::AssetList.new(
           application.frontend_components_manager.available_components + 
           application.asset_components_manager.available_components, 
