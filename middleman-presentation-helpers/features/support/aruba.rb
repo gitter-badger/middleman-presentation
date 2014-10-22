@@ -8,7 +8,7 @@ module Middleman
       # Helpers for aruba
       module Aruba
         def dirs
-          @dirs ||= ['tmp', 'cucumber']
+          @dirs ||= %w(tmp cucumber)
         end
       end
     end

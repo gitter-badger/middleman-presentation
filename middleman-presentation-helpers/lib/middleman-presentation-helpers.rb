@@ -12,6 +12,7 @@ require 'middleman-presentation-helpers/plugins/footer_plugin'
 
 module Middleman
   module Presentation
+    # Helpers plugin
     module Helpers
     end
   end

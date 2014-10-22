@@ -3,6 +3,7 @@ module Middleman
   module Presentation
     # Helpers plugin
     module Helpers
+      # JqUERY plugin
       module JqueryPlugin
         extend PluginApi
 

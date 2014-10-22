@@ -14,7 +14,7 @@ module Middleman
 
         loadable_files = [
           /notes\.html/,
-          %r{reveal\.js/.*/.*\.js$},
+          %r{reveal\.js/.*/.*\.js$}
         ]
 
         add_component(

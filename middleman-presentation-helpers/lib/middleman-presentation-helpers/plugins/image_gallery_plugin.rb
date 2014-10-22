@@ -9,13 +9,13 @@ module Middleman
 
         add_assets(
           path: File.expand_path('../../../../vendor/assets', __FILE__),
-          importable_files: %w(image_gallery.scss),
+          importable_files: %w(image_gallery.scss)
         )
 
         add_component(
           name: :lightbox2,
           github: 'dg-vrnetze/revealjs-lightbox2',
-          importable_files: %w(js/lightbox.js),
+          importable_files: %w(js/lightbox.js)
         )
 
         add_helpers Middleman::Presentation::Helpers::ImageGallery

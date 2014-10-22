@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Middleman::Presentation::Helpers::VERSION
   spec.authors       = ['Max Meyer']
   spec.email         = ['dev@fedux.org']
-  spec.summary       = %q{Helpers for middleman-presentation}
+  spec.summary       = 'Helpers for middleman-presentation'
   spec.homepage      = 'https://github.com/maxmeyer/middleman-presentation'
   spec.license       = 'MIT'
 

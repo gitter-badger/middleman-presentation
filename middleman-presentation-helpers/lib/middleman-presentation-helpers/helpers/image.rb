@@ -18,4 +18,3 @@ module Middleman
     end
   end
 end
-
