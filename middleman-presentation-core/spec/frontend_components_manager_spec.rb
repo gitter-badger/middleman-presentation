@@ -129,7 +129,7 @@ RSpec.describe FrontendComponentsManager do
       component = {
         name: 'test.d/test1',
         resource_locator: 'http://www.example.com',
-        version: '0.0.1',
+        version: '0.0.1'
       }
 
       manager = FrontendComponentsManager.new

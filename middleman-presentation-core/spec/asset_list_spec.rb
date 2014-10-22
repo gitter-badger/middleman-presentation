@@ -30,7 +30,7 @@ RSpec.describe AssetList do
     end
   end
 
-  #context '#each' do
+  # context '#each' do
   #  it 'iterates of assets' do
   #    expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
 
@@ -46,5 +46,5 @@ RSpec.describe AssetList do
 
   #    expect(result).to include asset
   #  end
-  #end
+  # end
 end

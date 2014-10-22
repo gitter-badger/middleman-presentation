@@ -13,7 +13,7 @@ RSpec.describe AssetComponentsManager do
         resource_locator: 'http://www.example.com',
         version: '0.0.1',
         loadable_files: [],
-        importable_files: [],
+        importable_files: []
       )
 
       manager = AssetComponentsManager.new(creator: creator)

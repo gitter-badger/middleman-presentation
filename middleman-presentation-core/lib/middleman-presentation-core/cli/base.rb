@@ -30,7 +30,7 @@ module Middleman
             @asset_loader ||= Middleman::Presentation::AssetsLoader.new(root_directory: Middleman::Presentation.bower_directory)
           end
 
-          def load_assets 
+          def load_assets
             asset_loader.load_at_presentation_runtime
           end
         end

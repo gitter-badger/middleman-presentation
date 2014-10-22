@@ -32,11 +32,11 @@ module Middleman
       # Show assets which should be imported
       def to_s
         data = store.assets.sort.reduce([]) do |a, e|
-          a << { 
+          a << {
             source_path: e.source_path,
             destination_directory: e.destination_directory,
             loadable: e.loadable?,
-            importable: e.importable?,
+            importable: e.importable?
           }
         end
 
@@ -45,17 +45,17 @@ module Middleman
 
       # Iterate over each loadable asset
       def each_loadable_asset(&block)
-        store.find_all { |a| a.valid? && a.loadable? }.each(&block)
+        store.select { |a| a.valid? && a.loadable? }.each(&block)
       end
 
       # Iterate over each importable asset
       def each_importable_stylesheet(&block)
-        each_importable_asset.reverse.find_all { |a| a.stylesheet? }.each(&block)
+        each_importable_asset.reverse.select(&:stylesheet?).each(&block)
       end
 
       # Iterate over each importable asset
       def each_importable_javascript(&block)
-        each_importable_asset.find_all { |a| a.script? }.each(&block)
+        each_importable_asset.select(&:script?).each(&block)
       end
 
       # Load assets from list
@@ -65,10 +65,9 @@ module Middleman
 
       private
 
-      def each_importable_asset(&block)
-        store.find_all { |a| a.valid? && a.importable? }
+      def each_importable_asset(&_block)
+        store.select { |a| a.valid? && a.importable? }
       end
-
     end
   end
 end

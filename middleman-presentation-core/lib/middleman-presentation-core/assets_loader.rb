@@ -50,7 +50,6 @@ module Middleman
         application.plugins_manager.activate_plugin('middleman-presentation-helpers')
       end
 
-
       def activate_user_plugins
         application.plugins_manager.activate_plugin(*application.config.plugins)
       end
@@ -83,20 +82,20 @@ module Middleman
           /\.otf$/,
           /\.svc$/,
           /\.woff$/,
-          /\.ttf$/,
+          /\.ttf$/
         ]
 
         application.asset_components_manager.add(
           path: root_directory,
-          loadable_files: loadable_files,
+          loadable_files: loadable_files
         )
       end
 
       # Load default components
       def add_assets_from_components
         components_list = Middleman::Presentation::AssetList.new(
-          application.frontend_components_manager.available_components + 
-          application.asset_components_manager.available_components, 
+          application.frontend_components_manager.available_components +
+          application.asset_components_manager.available_components
         )
 
         application.assets_manager.load_from_list components_list

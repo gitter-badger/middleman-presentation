@@ -42,7 +42,6 @@ module Middleman
           puts Middleman::Presentation::VERSION
         end
 
-
         desc 'config', Middleman::Presentation.t('views.configs.show.title')
         option :defaults, type: :boolean, desc: Middleman::Presentation.t('views.configs.show.options.defaults')
         def config

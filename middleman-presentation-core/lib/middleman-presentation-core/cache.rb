@@ -22,7 +22,7 @@ module Middleman
 
         self
       end
-      
+
       def mark_dirty
         self.clean = false
 

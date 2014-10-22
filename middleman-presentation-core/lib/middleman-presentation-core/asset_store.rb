@@ -3,6 +3,7 @@ module Middleman
   module Presentation
     class AssetStore
       include Enumerable
+
       private
 
       attr_reader :store
@@ -35,7 +36,7 @@ module Middleman
         store.uniq
       end
 
-      # Iterate over assets 
+      # Iterate over assets
       def each(&block)
         assets.each(&block)
       end
@@ -49,9 +50,9 @@ module Middleman
       #   Search criteria
       def find_all(source_path: nil, &block)
         if block_given?
-          store.find_all(&block)
+          store.select(&block)
         else
-          store.find_all { |a| a.source_path == source_path }
+          store.select { |a| a.source_path == source_path }
         end
       end
 

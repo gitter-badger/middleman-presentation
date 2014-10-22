@@ -26,7 +26,7 @@ module Middleman
             slide
           end
 
-          new_slides - groups.map { |g| g.slides }.flatten
+          new_slides - groups.map(&:slides).flatten
         end
       end
     end

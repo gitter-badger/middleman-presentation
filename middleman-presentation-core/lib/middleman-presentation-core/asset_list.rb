@@ -33,7 +33,7 @@ module Middleman
           add_assets(
             c.path,
             base_path: c.base_path,
-            output_directories: c.output_directories, 
+            output_directories: c.output_directories,
             loadable_files: c.loadable_files,
             importable_files: c.importable_files,
             ignorable_files: c.ignorable_files

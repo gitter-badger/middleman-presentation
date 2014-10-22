@@ -10,7 +10,7 @@ RSpec.describe AssetsManager do
     it 'loads assets from list' do
       allow(list).to receive(:each) { |&block| [asset].each(&block) }
 
-      manager.load_from_list list 
+      manager.load_from_list list
       expect(manager).to be_know asset
     end
   end
