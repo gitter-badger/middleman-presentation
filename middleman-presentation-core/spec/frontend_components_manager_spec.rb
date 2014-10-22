@@ -24,6 +24,7 @@ RSpec.describe FrontendComponentsManager do
         importable_files: [],
         loadable_files: []
       )
+      manager.available_components
     end
 
     it 'passes the bower directory to component' do
@@ -44,6 +45,7 @@ RSpec.describe FrontendComponentsManager do
         importable_files: [],
         loadable_files: []
       )
+      manager.available_components
     end
 
     it 'adds a struct to component list' do
@@ -66,6 +68,7 @@ RSpec.describe FrontendComponentsManager do
           loadable_files: []
         )
       )
+      manager.available_components
     end
 
     it 'outputs warning on unknown type' do

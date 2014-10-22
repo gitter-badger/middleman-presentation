@@ -240,6 +240,8 @@ module Middleman
         end
 
         def create_application_asset_files
+          Middleman::Presentation.frontend_components_manager.bower_directory = File.join(Middleman::Application.server.inst.root, root_directory)
+
           asset_loader.load_for_asset_aggregators
 
           template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss'), force: options[:force]

@@ -13,19 +13,31 @@ module Middleman
     class FrontendComponentsManager
       private
 
-      attr_reader :components, :creator, :bower_directory
+      attr_reader :creator, :bower_directory, :cache
 
       public
 
       def initialize(creator: FrontendComponent, bower_directory: nil)
-        @components     = Set.new
-        @creator        = creator
+        @creator         = creator
         @bower_directory = bower_directory
+        @cache           = Cache.new(store: Set.new)
       end
 
       # Return available frontend components
       def available_components
         components.to_a
+      end
+
+      def bower_directory=(value)
+        @bower_directory = value
+        cache.mark_dirty
+      end
+
+      # Return components
+      #
+      # Will used cached results until a new component is added
+      def components
+        cache.map { |c| creator.new(**c.to_h.merge(root_directory: bower_directory)) }
       end
 
       # Iterate over all components
@@ -44,7 +56,7 @@ module Middleman
           return
         end
 
-        components << creator.new(**c.to_h.merge(root_directory: bower_directory))
+        cache.add c
       end
 
       # List installed plugins
