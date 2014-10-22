@@ -1,6 +1,10 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # List of assets
+    #
+    # The class takes a list of components and generates a list of assets from
+    # this. It also includes `Enumerable`
     class AssetList
       include Enumerable
 
@@ -18,6 +22,10 @@ module Middleman
         read_in_assets
       end
 
+      # Iternate over each component and execute block
+      #
+      # @yield
+      #   Block which is executed for each component
       def each(&block)
         to_a.each(&block)
       end
@@ -61,8 +69,10 @@ module Middleman
 
           asset = creator.new(source_path: p, relative_source_path: new_path, destination_directory: output_dir)
 
+          # rubocop:disable Style/CaseEquality
           asset.loadable   = true if loadable_files.any? { |regexp| regexp === p }
           asset.importable = true if importable_files.any? { |regexp| regexp === p }
+          # rubocop:enable Style/CaseEquality
 
           store.add asset
         end

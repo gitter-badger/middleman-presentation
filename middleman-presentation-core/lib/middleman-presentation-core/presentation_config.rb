@@ -22,7 +22,7 @@ module Middleman
                        %r{stylesheets/middleman-presentation-theme-default.scss$}
                      ],
                      loadable_files: [
-                       %r{.*\.png$}
+                       /.*\.png$/
                      ]
 
       option :components, []

@@ -1,6 +1,10 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Cache for objects
+    #
+    # It can be used to run 'block' on `#map` only if new objects have been
+    # added.
     class Cache
       include Enumerable
 

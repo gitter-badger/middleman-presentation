@@ -90,7 +90,7 @@ Then(/^the user config file for middleman\-presentation should contain:$/) do |s
   step 'the file "~/.config/middleman/presentation/presentations.yaml" should contain:', string
 end
 
-Then(/^a presentation theme named "(.*?)" should exist( with default files\/directories created)?$/) do |name, default_files|
+Then(%r{^a presentation theme named "(.*?)" should exist( with default files/directories created)?$}) do |name, default_files|
   name = "middleman-presentation-theme-#{name}"
 
   step %(a directory named "#{name}" should exist)

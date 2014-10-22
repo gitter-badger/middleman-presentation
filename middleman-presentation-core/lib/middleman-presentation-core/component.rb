@@ -27,6 +27,7 @@ module Middleman
       #
       # @param [String] github
       #   Name of github repository, e.g. <account>/<repository>
+      # rubocop:disable Metrics/ParameterLists
       def initialize(
         resource_locator: nil,
         version: nil,
@@ -47,6 +48,7 @@ module Middleman
         @ignorable_files    = Array(ignorable_files).map { |o| Regexp.new o }
         @output_directories = Array(output_directories)
       end
+      # rubocop:enable Metrics/ParameterLists
 
       # Return path to component
       #

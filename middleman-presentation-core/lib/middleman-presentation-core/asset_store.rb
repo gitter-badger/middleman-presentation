@@ -1,6 +1,12 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Store which stores assets
+    #
+    # @example Add asset
+    #
+    #   store = AssetStore.new
+    #   store.add <asset>
     class AssetStore
       include Enumerable
 
@@ -16,7 +22,7 @@ module Middleman
 
       # Add asset
       def add(asset)
-        if existing_asset = @store.find { |a| a.source_path == asset.source_path }
+        if (existing_asset = @store.find { |a| a.source_path == asset.source_path })
           existing_asset.merge! asset
         else
           store << asset
