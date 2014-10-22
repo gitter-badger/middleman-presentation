@@ -42,8 +42,6 @@ module Middleman
 
       # Iterate over all components
       def each_component(&block)
-        components = components.to_a
-
         components.each do |c|
           block.call(c, c.equal?(components.last))
         end

@@ -55,6 +55,13 @@ module Middleman
         fail NoMethodError, :path
       end
 
+      # Base path for component
+      #
+      # The path where the component can be found.
+      def base_path
+        fail NoMethodError, :base_path
+      end
+
       # Should middleman-presentation fetch the component
       def fetchable?
         false

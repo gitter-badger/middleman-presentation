@@ -9,7 +9,11 @@ module Middleman
     # is required and which JavaScript-files and stylesheets should be includes
     # in "javascripts/application.js" and "stylesheets"application.scss".
     class FrontendComponent < Component
+      private
+
       attr_reader :root_directory
+
+      public
 
       # Create new frontend component
       #
@@ -17,7 +21,7 @@ module Middleman
       #
       # @param [String] root_directory
       #   The directory where all frontend components can be found
-      def initialize(root_directory: nil, **args)
+      def initialize(root_directory:, **args)
         super(**args)
 
         @resource_locator = if @resource_locator =~ /\A#{URI.regexp}\z/
@@ -59,6 +63,11 @@ module Middleman
         args << name.to_s
 
         File.join(*args)
+      end
+
+      # Base path for component
+      def base_path
+        File.dirname(path)
       end
 
       # Should middleman-presentation fetch the component

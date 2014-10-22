@@ -104,7 +104,4 @@ require 'middleman-presentation-core/cli/runner'
 require 'middleman-presentation-core/utils'
 require 'middleman-presentation-core/test_helpers'
 
-::Middleman::Extensions.register(:presentation) do
-  require 'middleman-presentation-core/extension'
-  ::Middleman::Presentation::PresentationExtension
-end
+require 'middleman-presentation-core/extension'

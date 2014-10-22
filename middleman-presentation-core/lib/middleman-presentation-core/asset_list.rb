@@ -32,6 +32,7 @@ module Middleman
         components.each do |c|
           add_assets(
             c.path,
+            base_path: c.base_path,
             output_directories: c.output_directories, 
             loadable_files: c.loadable_files,
             importable_files: c.importable_files,
@@ -40,9 +41,8 @@ module Middleman
         end
       end
 
-      def add_assets(base_path, output_directories:, loadable_files:, importable_files:, ignorable_files:)
-        base_path   = File.expand_path(base_path)
-        search_path = File.join(base_path, '**', '*')
+      def add_assets(search_path, base_path:, output_directories:, loadable_files:, importable_files:, ignorable_files:)
+        search_path = File.join(File.expand_path(search_path), '**', '*')
 
         Dir.glob(search_path).sort.each do |p|
           next unless File.file? p

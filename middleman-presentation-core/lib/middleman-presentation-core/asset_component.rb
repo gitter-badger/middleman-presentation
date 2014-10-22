@@ -10,7 +10,7 @@ module Middleman
     # be includes in "javascripts/application.js" and
     # "stylesheets"application.scss".
     class AssetComponent < Component
-      attr_reader :path
+      attr_reader :path, :base_path
 
       # An asset component
       #
@@ -21,8 +21,7 @@ module Middleman
       def initialize(path:, **args)
         super(**args)
 
-        @path = path
-        @name = path
+        @path = @name = @base_path = path
       end
     end
   end
