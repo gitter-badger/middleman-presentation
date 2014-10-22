@@ -62,17 +62,18 @@ module Middleman
         data = components.sort.reduce([]) do |a, e|
           a << {
             name: e.name,
+            path: e.path,
+            base_path: e.base_path,
             resource_locator: e.resource_locator,
             version: e.version,
             loadable_files: e.loadable_files,
             importable_files: e.importable_files,
             ignorable_files: e.ignorable_files,
-            output_directories: e.output_directories,
-            root_directory: e.root_directory
+            output_directories: e.output_directories
           }
         end
 
-        List.new(data).to_s(fields: [:name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories])
+        List.new(data).to_s(fields: [:name, :path, :base_path, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories])
       end
     end
   end

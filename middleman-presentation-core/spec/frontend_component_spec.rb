@@ -76,7 +76,8 @@ RSpec.describe FrontendComponent do
           name: 'name',
           resource_locator: 'https://example.org/test',
           loadable_files: [],
-          importable_files: []
+          importable_files: [],
+          root_directory: 'name'
         }
       ]
     end

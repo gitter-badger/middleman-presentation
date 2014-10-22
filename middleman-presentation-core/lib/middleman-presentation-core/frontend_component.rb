@@ -21,7 +21,7 @@ module Middleman
       #
       # @param [String] root_directory
       #   The directory where all frontend components can be found
-      def initialize(root_directory:, **args)
+      def initialize(root_directory: nil, **args)
         super(**args)
 
         @resource_locator = if @resource_locator =~ /\A#{URI.regexp}\z/

@@ -127,20 +127,20 @@ RSpec.describe FrontendComponentsManager do
   context '#to_s' do
     it 'returns a string representation of self' do
       component = {
-        name: 'test1',
+        name: 'test.d/test1',
         resource_locator: 'http://www.example.com',
-        version: '0.0.1'
+        version: '0.0.1',
       }
 
       manager = FrontendComponentsManager.new
       manager.add(component)
 
       expect(manager.to_s).to eq <<-EOS.strip_heredoc.chomp
-        +-------+------------------------+---------+------------------+----------------+-----------------+--------------------+
-        | Name  | Resource locator       | Version | Importable files | Loadable files | Ignorable files | Output directories |
-        +-------+------------------------+---------+------------------+----------------+-----------------+--------------------+
-        | test1 | http://www.example.com | 0.0.1   |                  |                |                 |                    |
-        +-------+------------------------+---------+------------------+----------------+-----------------+--------------------+
+        +-------------+-------------+-----------+-------------+---------+-------------+-------------+------------+-------------+
+        | Name        | Path        | Base path | Resource... | Version | Importab... | Loadable... | Ignorab... | Output d... |
+        +-------------+-------------+-----------+-------------+---------+-------------+-------------+------------+-------------+
+        | test.d/t... | test.d/t... | test.d    | http://w... | 0.0.1   |             |             |            |             |
+        +-------------+-------------+-----------+-------------+---------+-------------+-------------+------------+-------------+
         1 row in set
       EOS
     end

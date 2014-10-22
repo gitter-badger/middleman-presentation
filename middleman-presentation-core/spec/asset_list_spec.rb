@@ -14,6 +14,7 @@ RSpec.describe AssetList do
 
       component1 = instance_double('Middleman::Presentation::Component')
       allow(component1).to receive(:path).and_return(absolute_path('.'))
+      allow(component1).to receive(:base_path).and_return(absolute_path('.'))
       allow(component1).to receive(:output_directories).and_return([])
       allow(component1).to receive(:loadable_files).and_return([])
       allow(component1).to receive(:ignorable_files).and_return([])
