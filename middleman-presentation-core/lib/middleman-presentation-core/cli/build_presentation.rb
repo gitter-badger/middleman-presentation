@@ -39,8 +39,12 @@ module Middleman
             title: @title
           )
 
+          cmd = []
+          cmd << 'middleman build'
+          cmd << '--verbose' if options[:debug_mode]
+
           remove_dir 'build'
-          result = run('middleman build --verbose', capture: true)
+          result = run(cmd.join(' '), capture: true)
           fail Thor::Error, Middleman::Presentation.t('errors.middleman_build_error', result: result) unless $CHILD_STATUS.exitstatus == 0
         end
 

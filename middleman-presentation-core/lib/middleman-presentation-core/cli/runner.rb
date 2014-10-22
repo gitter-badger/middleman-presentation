@@ -23,6 +23,9 @@ module Middleman
 
         desc 'build', Middleman::Presentation.t('views.runners.build.title')
         subcommand 'build', Build
+
+        desc 'serve', Middleman::Presentation.t('views.runners.build.title')
+        subcommand 'serve', Serve
       end
     end
   end

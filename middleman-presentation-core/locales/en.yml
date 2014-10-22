@@ -42,6 +42,8 @@ en:
         title: 'Export something ...'
       build:
         title: 'Build something ...'
+      serve:
+        title: 'Serve something ...'
     presentations:
       create:
         title: 'Initialize a new presentation in DIR (default: $PWD)'
@@ -148,6 +150,9 @@ en:
         title: 'Show available styles'
         headline: 'Available css classes in templates used by middleman-presentation:'
     presentation:
+      serve:
+        title: Serve presentation
+        headline: Serve presentation "%{title}"
       build:
         title: Build presentation
         headline: Build presentation "%{title}"

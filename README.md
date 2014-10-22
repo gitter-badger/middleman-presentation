@@ -164,7 +164,7 @@ need to reload the presentation in the browser.
 script/start
 
 # Long
-bundle exec middleman server
+bundle exec middleman-presentation serve presentation
 ```
 
 ### Add new slide
