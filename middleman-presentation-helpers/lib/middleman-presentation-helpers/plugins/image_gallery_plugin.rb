@@ -8,7 +8,7 @@ module Middleman
         extend PluginApi
 
         add_assets(
-          File.expand_path('../../../../vendor/assets', __FILE__),
+          path: File.expand_path('../../../../vendor/assets', __FILE__),
           importable_files: %w(image_gallery.scss),
         )
 
@@ -16,7 +16,6 @@ module Middleman
           name: :lightbox2,
           github: 'dg-vrnetze/revealjs-lightbox2',
           importable_files: %w(js/lightbox.js),
-          requirements: [:jquery]
         )
 
         add_helpers Middleman::Presentation::Helpers::ImageGallery

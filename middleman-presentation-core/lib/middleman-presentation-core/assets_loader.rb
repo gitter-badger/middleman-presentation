@@ -30,7 +30,6 @@ module Middleman
         activate_core_plugins
 
         add_assets_from_components
-        add_assets_from_temporary_cache
       end
 
       def load_at_presentation_runtime
@@ -42,7 +41,6 @@ module Middleman
         activate_core_plugins
 
         add_assets_from_components
-        add_assets_from_temporary_cache
       end
 
       private
@@ -95,7 +93,7 @@ module Middleman
 
       # Load default components
       def add_assets_from_components
-        components_list = Middleman::Presentation::ComponentAssetList.new(
+        components_list = Middleman::Presentation::AssetList.new(
           application.frontend_components_manager.available_components + 
           application.asset_components_manager.available_components, 
         )

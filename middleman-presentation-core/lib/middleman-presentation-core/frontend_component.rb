@@ -56,7 +56,7 @@ module Middleman
       def path
         args = []
         args << root_directory if root_directory
-        args << name
+        args << name.to_s
 
         File.join(*args)
       end
