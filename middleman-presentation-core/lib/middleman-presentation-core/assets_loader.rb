@@ -37,6 +37,7 @@ module Middleman
 
         add_theme_component
         add_components_required_in_config_file
+
         activate_user_plugins
         activate_core_plugins
 

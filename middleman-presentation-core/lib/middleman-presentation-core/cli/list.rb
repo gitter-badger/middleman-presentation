@@ -9,6 +9,7 @@ module Middleman
         desc 'plugins', Middleman::Presentation.t('views.plugins.list.title')
         def plugins
           enable_debug_mode
+          load_assets
 
           puts Middleman::Presentation.t('views.plugins.list.headline').underline(character: Middleman::Presentation.underline_character)
           puts Middleman::Presentation.plugins_manager.to_s
@@ -17,6 +18,7 @@ module Middleman
         desc 'helpers', Middleman::Presentation.t('views.helpers.list.title')
         def helpers
           enable_debug_mode
+          load_assets
 
           puts Middleman::Presentation.t('views.helpers.list.headline').underline(character: Middleman::Presentation.underline_character)
           puts Middleman::Presentation.helpers_manager.to_s
@@ -25,6 +27,7 @@ module Middleman
         desc 'assets', Middleman::Presentation.t('views.assets.list.title')
         def assets
           enable_debug_mode
+          load_assets
 
           puts Middleman::Presentation.t('views.assets.list.headline').underline(character: Middleman::Presentation.underline_character)
           puts Middleman::Presentation.assets_manager.to_s
@@ -33,6 +36,7 @@ module Middleman
         desc 'frontend_components', Middleman::Presentation.t('views.frontend_components.list.title')
         def frontend_components
           enable_debug_mode
+          load_assets
 
           puts Middleman::Presentation.t('views.frontend_components.list.headline').underline(character: Middleman::Presentation.underline_character)
           puts Middleman::Presentation.frontend_components_manager.to_s
@@ -41,6 +45,7 @@ module Middleman
         desc 'styles', Middleman::Presentation.t('views.styles.list.title')
         def styles
           enable_debug_mode
+          load_assets
 
           css_classes = Middleman::Presentation::CssClassExtracter.new.extract Middleman::Presentation.stylable_files, ignore: %w(slides reveal)
 

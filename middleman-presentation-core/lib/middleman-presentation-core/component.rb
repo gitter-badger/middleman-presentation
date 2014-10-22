@@ -77,7 +77,7 @@ module Middleman
 
       # @private
       def <=>(other)
-        name <=> other.name
+        name.to_s <=> other.name.to_s
       end
     end
   end

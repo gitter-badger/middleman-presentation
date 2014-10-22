@@ -25,6 +25,14 @@ module Middleman
           def enable_debug_mode
             Middleman::Presentation.enable_debug_mode if options[:debug_mode] == true
           end
+
+          def asset_loader
+            @asset_loader ||= Middleman::Presentation::AssetsLoader.new(root_directory: Middleman::Presentation.bower_directory)
+          end
+
+          def load_assets 
+            asset_loader.load_at_presentation_runtime
+          end
         end
       end
     end
