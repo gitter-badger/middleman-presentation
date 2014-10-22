@@ -42,6 +42,8 @@ de:
         title: 'Exportiere etwas ...'
       build:
         title: 'Exportiere etwas ...'
+      serve:
+        title: 'Zeige etwas ...'
     presentations:
       create:
         title: 'Erzeuge eine neue Präsentation in Verzeichnis DIR (standard: aktuelles Arbeitsverzeichnis)'
@@ -148,6 +150,9 @@ de:
         title: 'Anzeige verfügbarer CSS-Stile.'
         headline: 'Verfügbare CSS-Klassen in "Vorlagen", welche von "middleman-presentation" verwendet werden:'
     presentation:
+      serve:
+        title: Zeige Präsentation
+        headline: Zeige Präsentation "%{title}"
       build:
         title: Präsentation generieren
         headline: Generiere die Präsentation "%{title}"

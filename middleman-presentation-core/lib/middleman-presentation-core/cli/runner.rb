@@ -6,6 +6,9 @@ module Middleman
       class Runner < Base
         class_option :debug_mode, default: Middleman::Presentation.config.debug_mode, type: :boolean, desc: Middleman::Presentation.t('views.application.options.debug_mode')
 
+        map '-v' => :version
+        map '--version' => :version
+
         desc 'init', Middleman::Presentation.t('views.runners.init.title')
         subcommand 'init', Init
 
@@ -26,6 +29,11 @@ module Middleman
 
         desc 'serve', Middleman::Presentation.t('views.runners.build.title')
         subcommand 'serve', Serve
+
+        desc 'version', 'version', hide: true
+        def version
+          invoke 'middleman:presentation:cli:show:version'
+        end
       end
     end
   end

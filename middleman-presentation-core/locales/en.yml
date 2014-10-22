@@ -91,7 +91,7 @@ en:
           author: 'Author of theme'
           email: 'E-mail address of author of theme'
           url: 'Project url'
-          version: 'Project url'
+          version: Version of theme
           year: 'Copyright year for theme'
           license: 'License of theme'
           initialize_git: 'Initialize git'
@@ -162,6 +162,9 @@ en:
         options:
           output_file: 'Write archive to given file name'
           prefix: 'Prefix for files in zip file. Please make sure that the last character is a "/" if the prefix should be a directory'
+    version:
+      show:
+        title: Show version
   slides:
     contact:
       title: Contact

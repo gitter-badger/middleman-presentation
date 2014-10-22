@@ -47,6 +47,8 @@ module Middleman
       #   end
       # end
       def add_helpers(*m, &block)
+        require 'pry'
+        binding.pry
         Middleman::Presentation.helpers_manager.add(*m, &block)
       end
 
