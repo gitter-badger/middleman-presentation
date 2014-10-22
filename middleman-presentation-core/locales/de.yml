@@ -80,17 +80,29 @@ de:
           force: 'Überschreibe existierende Dateien'
         arguments:
           directory: 'Verzeichnis in dem die Präsentation erstellt werden soll'
+    plugins:
+      create:
+        title: 'Erstellen eines neuen Plugins für "middleman-presentation"'
+        options:
+          prefix: 'Präfix für das Verzeichnis des Plugins'
+          author: 'Autor des Plugins'
+          email: 'E-Mail Adresse des Plugin-Autors'
+          homepage: 'URL zur Website des Projektes'
+          year: 'Copyright Jahr für das Plugin'
+          initialize_git: 'Initialisiere git'
+        arguments:
+          name: 'Name des Plugins'
     themes:
       create:
-        title: 'Erstellen eines neuen Präsentations Themes für "middleman-presentation"'
+        title: 'Erstellen eines neuen Präsentations-Themes für "middleman-presentation"'
         options:
-          theme_prefix: 'Präfix für das Verzeichnis des Themes'
+          prefix: 'Präfix für das Verzeichnis des Themes'
           stylesheets_directory: 'Erstelle das Verzeichnis für die Stil-Dateien'
           javascripts_directory: 'Erstelle das Verzeichnis für die JavaScript-Dateien'
           images_directory: 'Erstelle das Verzeichnis für die Bilder'
           author: 'Autor des Themes'
           email: 'E-Mail Adresse des Theme-Autors'
-          url: 'URL zur Website des Projektes'
+          homepage: 'URL zur Website des Projektes'
           version: 'Version des Themes'
           year: 'Copyright Jahr für das Theme'
           license: 'Lizenz des Themes'

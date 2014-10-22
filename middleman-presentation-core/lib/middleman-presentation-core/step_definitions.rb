@@ -77,6 +77,36 @@ Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
   step %(I remove the directory "middleman-presentation-theme-#{name}")
 end
 
+Given(/^a plugin named "(.*?)" does not exist$/) do |name|
+  step %(I remove the directory "name")
+end
+
+Then(%r{^a plugin named "(.*?)" should exist( with default files/directories created)?$}) do |name, default_files|
+  step %(a directory named "#{name}" should exist)
+
+  if default_files
+    %W(
+    #{name}/#{name}.gemspec
+    #{name}/lib/#{name}.rb
+    #{name}/lib/#{name}/version.rb
+    #{name}/Gemfile
+    #{name}/LICENSE.txt
+    #{name}/README.md
+    #{name}/Rakefile
+    #{name}/.gitignore
+    ).each do |file|
+      step %(a file named "#{file}" should exist)
+    end
+
+    %W(
+    #{name}/lib
+    #{name}/lib/#{name}
+    ).each do |file|
+      step %(a directory named "#{file}" should exist)
+    end
+  end
+end
+
 Given(/^git is configured with username "(.*?)" and email-address "(.*?)"$/) do |name, email|
   step %(I successfully run `git config --global user.email "#{email}"`)
   step %(I successfully run `git config --global user.name "#{name}"`)

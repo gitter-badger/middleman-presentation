@@ -80,17 +80,29 @@ en:
           force: 'Overwrite existing files'
         arguments:
           directory: 'Directory to create presentation in'
+    plugins:
+      create:
+        title: 'Create a new plugin for middleman-presentation'
+        options:
+          prefix: 'Prefix for new plugin'
+          author: 'Author of plugin'
+          email: 'E-mail address of author of plugin'
+          homepage: 'Project url'
+          year: 'Copyright year for plugin'
+          initialize_git: 'Initialize git'
+        arguments:
+          name: 'Name of plugin'
     themes:
       create:
         title: 'Create a new presentation theme for middleman-presentation'
         options:
-          theme_prefix: 'Prefix for new theme'
+          prefix: 'Prefix for new theme'
           stylesheets_directory: 'Create stylesheets directory'
           javascripts_directory: 'Create javascripts directory'
           images_directory: 'Create images directory'
           author: 'Author of theme'
           email: 'E-mail address of author of theme'
-          url: 'Project url'
+          homepage: 'Project homepage'
           version: Version of theme
           year: 'Copyright year for theme'
           license: 'License of theme'

@@ -1,0 +1,10 @@
+require '<%= @plugin_name %>/version'
+
+<%- @plugin_class_name.split(/::/).each_with_index do |c,i| -%>
+<%= '  '*i %>module <%= c %>
+<%- end -%>
+<%= '  '*@plugin_class_name.split(/::/).size %># Your code goes here...
+<%- (@plugin_class_name.split(/::/).size-1).downto(0) do |i| -%>
+<%= '  '*i %>end
+<%- end -%>
+

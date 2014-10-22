@@ -8,13 +8,13 @@ module Middleman
 
         desc Middleman::Presentation.t('views.themes.create.title')
 
-        class_option :theme_prefix, default: Middleman::Presentation.config.theme_prefix, desc: Middleman::Presentation.t('views.themes.create.options.theme_prefix')
+        class_option :prefix, default: Middleman::Presentation.config.theme_prefix, desc: Middleman::Presentation.t('views.themes.create.options.prefix')
         class_option :stylesheets_directory, default: Middleman::Presentation.config.create_stylesheets_directory, desc: Middleman::Presentation.t('views.themes.create.options.stylesheets_directory')
         class_option :javascripts_directory, default: Middleman::Presentation.config.create_javascripts_directory, desc: Middleman::Presentation.t('views.themes.create.options.javascripts_directory')
         class_option :images_directory, default: Middleman::Presentation.config.create_images_directory, desc: Middleman::Presentation.t('views.themes.create.options.images_directory')
         class_option :author, default: Middleman::Presentation.config.author, desc: Middleman::Presentation.t('views.themes.create.options.author')
         class_option :email, desc: Middleman::Presentation.t('views.themes.create.options.email')
-        class_option :url, desc: Middleman::Presentation.t('views.themes.create.options.url')
+        class_option :homepage, desc: Middleman::Presentation.t('views.themes.create.options.homepage')
         class_option :version, default: '0.0.1', required: true, desc: Middleman::Presentation.t('views.themes.create.options.version')
         class_option :year, default: Time.now.strftime('%Y'), desc: Middleman::Presentation.t('views.themes.create.options.year')
         class_option :license, default: 'MIT', required: true, desc: Middleman::Presentation.t('views.themes.create.options.license')
@@ -33,7 +33,7 @@ module Middleman
 
         def build_theme_name
           new_name = []
-          new_name << options[:theme_prefix] unless options[:theme_prefix].blank?
+          new_name << options[:prefix] unless options[:prefix].blank?
           new_name << name
 
           @theme_name = new_name.join('-')

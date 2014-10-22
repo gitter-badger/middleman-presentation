@@ -6,7 +6,8 @@ module Middleman
       option :speaker, process_environment.fetch('USER')
       option :license, 'CC BY 4.0'
       option :bower_directory, 'vendor/assets/components'
-      option :author,  process_environment.fetch('USER')
+      option :author, %x[git config user.name].strip.blank? ? process_environment.fetch('USER') : %x[git config user.name].strip
+      option :email, %x[git config user.email].strip.blank? ? 'noemail@example.org' : %x[git config user.email].strip
       option :description,  nil
       option :homepage,  nil
       option :company,  nil
@@ -24,6 +25,8 @@ module Middleman
                      loadable_files: [
                        /.*\.png$/
                      ]
+
+      option :plugin_prefix, 'middleman-presentation'
 
       option :components, []
       option :activate_controls, true

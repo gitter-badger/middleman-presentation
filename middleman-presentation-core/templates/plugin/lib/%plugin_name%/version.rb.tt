@@ -1,0 +1,8 @@
+<%- @plugin_class_name.split(/::/).each_with_index do |c,i| -%>
+<%= '  '*i %>module <%= c %>
+<%- end -%>
+<%= '  '*@plugin_class_name.split(/::/).size %>VERSION = '0.0.1'
+<%- (@plugin_class_name.split(/::/).size-1).downto(0) do |i| -%>
+<%= '  '*i %>end
+<%- end -%>
+

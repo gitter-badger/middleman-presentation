@@ -4,10 +4,12 @@ module Middleman
     module Cli
       # This class provides an 'presentation init' command for the middleman CLI.
       class Create < Base
-        register(CreateTheme, 'theme', 'theme NAME', 'Create a new theme named NAMED')
-        register(CreatePresentation, 'presentation', 'presentation [DIR]', 'Initialize a new presentation in DIR (default: $PWD)')
+        register(CreateTheme, 'theme', 'theme NAME', Middleman::Presentation.t('views.themes.create.title'))
+        register(CreatePresentation, 'presentation', 'presentation [DIR]', Middleman::Presentation.t('views.presentations.create.title'))
+        register(CreateSlide, 'slide', 'slide [DIR]', Middleman::Presentation.t('views.slides.create.title'))
+        register(CreatePlugin, 'plugin', 'plugin NAME', Middleman::Presentation.t('views.plugin.create.title'))
 
-        default_command :presentation
+        default_command :slide
       end
     end
   end
