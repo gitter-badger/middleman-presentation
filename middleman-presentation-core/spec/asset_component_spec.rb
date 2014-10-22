@@ -10,5 +10,4 @@ RSpec.describe AssetComponent do
       expect(component.path).to eq 'test1'
     end
   end
-
 end
