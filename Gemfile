@@ -13,6 +13,7 @@ gem 'middleman-presentation-core', path: File.expand_path('../middleman-presenta
 gem 'middleman-presentation-helpers', path: File.expand_path('../middleman-presentation-helpers', __FILE__), require: false
 
 group :development, :test do
+  gem 'stackprof'
   gem 'rspec', require: false
   gem 'fuubar', require: false
   gem 'simplecov', require: false

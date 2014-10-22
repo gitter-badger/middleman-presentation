@@ -323,6 +323,7 @@ GEM
       sprockets (~> 2.0)
       tilt (~> 1.1)
     sqlite3 (1.3.9)
+    stackprof (0.2.7)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
     therubyracer (0.12.1)
@@ -395,6 +396,7 @@ DEPENDENCIES
   rspec
   rubocop (>= 0.25.0)
   simplecov
+  stackprof
   therubyracer
   therubyrhino
   tmrb
