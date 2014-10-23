@@ -6,8 +6,8 @@ module Middleman
       option :speaker, process_environment.fetch('USER')
       option :license, 'CC BY 4.0'
       option :bower_directory, 'vendor/assets/components'
-      option :author, %x[git config user.name].strip.blank? ? process_environment.fetch('USER') : %x[git config user.name].strip
-      option :email, %x[git config user.email].strip.blank? ? 'noemail@example.org' : %x[git config user.email].strip
+      option :author, `git config user.name`.strip.blank? ? process_environment.fetch('USER') : `git config user.name`.strip
+      option :email, `git config user.email`.strip.blank? ? 'noemail@example.org' : `git config user.email`.strip
       option :description,  nil
       option :homepage,  nil
       option :company,  nil

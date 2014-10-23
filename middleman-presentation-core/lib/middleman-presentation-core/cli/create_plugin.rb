@@ -33,7 +33,7 @@ module Middleman
 
         def create_variables_for_templates
           @plugin_path       = File.expand_path(@plugin_name)
-          @plugin_class_name = @plugin_name.split(/-/).map { |p| p.camelcase }.join('::')
+          @plugin_class_name = @plugin_name.split(/-/).map(&:camelcase).join('::')
           @author            = options[:author]
           @year              = options[:year]
           @email             = options[:email]

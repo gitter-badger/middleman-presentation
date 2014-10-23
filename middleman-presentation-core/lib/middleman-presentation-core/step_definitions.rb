@@ -77,7 +77,7 @@ Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
   step %(I remove the directory "middleman-presentation-theme-#{name}")
 end
 
-Given(/^a plugin named "(.*?)" does not exist$/) do |name|
+Given(/^a plugin named "(.*?)" does not exist$/) do |_name|
   step %(I remove the directory "name")
 end
 
@@ -86,21 +86,21 @@ Then(%r{^a plugin named "(.*?)" should exist( with default files/directories cre
 
   if default_files
     %W(
-    #{name}/#{name}.gemspec
-    #{name}/lib/#{name}.rb
-    #{name}/lib/#{name}/version.rb
-    #{name}/Gemfile
-    #{name}/LICENSE.txt
-    #{name}/README.md
-    #{name}/Rakefile
-    #{name}/.gitignore
+      #{name}/#{name}.gemspec
+      #{name}/lib/#{name}.rb
+      #{name}/lib/#{name}/version.rb
+      #{name}/Gemfile
+      #{name}/LICENSE.txt
+      #{name}/README.md
+      #{name}/Rakefile
+      #{name}/.gitignore
     ).each do |file|
       step %(a file named "#{file}" should exist)
     end
 
     %W(
-    #{name}/lib
-    #{name}/lib/#{name}
+      #{name}/lib
+      #{name}/lib/#{name}
     ).each do |file|
       step %(a directory named "#{file}" should exist)
     end
