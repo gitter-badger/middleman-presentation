@@ -19,6 +19,7 @@ module Middleman
         @pattern         = File.join(path, '*.yml')
         @detector        = detector
         @detected_locale = detect_locale(overwrite: default_locale)
+        @logger          = logger
 
         I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
         I18n.load_path = locale_files

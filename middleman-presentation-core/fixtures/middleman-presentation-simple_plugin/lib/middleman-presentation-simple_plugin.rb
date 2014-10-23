@@ -4,6 +4,7 @@ require 'middleman-presentation-simple_plugin/plugin'
 
 module Middleman
   module Presentation
+    # Fixture for testing
     module SimplePlugin
     end
   end
