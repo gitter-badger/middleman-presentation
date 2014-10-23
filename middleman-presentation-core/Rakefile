@@ -121,6 +121,10 @@ namespace :test do
     sh 'bundle exec cucumber -p all'
   end
 
+  task :parallel_cucumber do
+    sh 'bundle exec parallel_cucumber features -o "-p all" --serialize-stdout'
+  end
+
   desc 'Run mutant'
   task :mutant do
     sh 'mutant --include lib --require middleman-presentation --use rspec "Middleman::Presentation*"'
