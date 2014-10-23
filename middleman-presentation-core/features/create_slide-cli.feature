@@ -12,6 +12,11 @@ Feature: Add new slide
     Then the following files should exist:
       | source/slides/01.html.md |
 
+  Scenario: Slide is default command
+    When I successfully run `middleman-presentation create 01`
+    Then the following files should exist:
+      | source/slides/01.html.md |
+
   Scenario: Embedded Ruby Slide
     When I successfully run `middleman-presentation create slide 01.erb`
     Then the following files should exist:

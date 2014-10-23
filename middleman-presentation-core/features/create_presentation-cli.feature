@@ -4,57 +4,6 @@ Feature: Initialize presentation
   I want to create a new presentation
   In order to use it
 
-  Scenario: Initialize with short command
-    Given I successfully run `middleman-presentation create presentation1 --title "My Presentation"`
-    When I cd to "presentation1"
-    Then the file "config.rb" should contain:
-    """
-    activate :presentation
-    """
-    And the file "Gemfile" should contain:
-    """
-    middleman-presentation
-    """
-    And a file named "bower.json" should exist
-    And a file named ".bowerrc" should exist
-    And a file named ".gitignore" should exist
-    And a file named "source/layout.erb" should exist
-    And a file named "source/slides/00.html.erb" should exist
-    And a file named "source/slides/999980.html.erb" should exist
-    And a file named "source/slides/999981.html.erb" should exist
-    And a file named "source/slides/999982.html.erb" should exist
-    And a file named "source/index.html.erb" should exist
-    And a file named "source/stylesheets/application.scss" should exist
-    And a file named "source/javascripts/application.js" should exist
-    And a file named "script/start" should exist
-    And a file named "Rakefile" should exist
-    And a directory named "source/images" should exist
-    And a directory named "vendor/assets/components" should exist
-    And the file "data/metadata.yml" should contain:
-    """
-    project_id:
-    """
-    Then a directory named "vendor/assets/components/middleman-presentation-theme-default" should exist
-    And the file "source/stylesheets/application.scss" should contain:
-    """
-    @import 'middleman-presentation-helpers/images/images';
-    @import 'middleman-presentation-helpers/image_gallery/image_gallery';
-    @import 'middleman-presentation-helpers/footer/footer';
-    @import 'reveal.js/lib/css/zenburn';
-    @import 'reveal.js/css/theme/template/settings';
-    @import 'reveal.js/css/theme/template/mixins';
-    @import 'reveal.js/css/reveal.min';
-    @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
-    """
-    And the file "source/javascripts/application.js" should contain:
-    """
-    //= require jquery/dist/jquery
-    //= require reveal.js/js/reveal.min
-    //= require reveal.js/lib/js/head.min
-    //= require lightbox2/js/lightbox
-    //= require middleman-presentation-helpers/footer/footer
-    """
-
   Scenario: Initialize with long command
     Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
@@ -341,7 +290,7 @@ Feature: Initialize presentation
     And a directory named "vendor/assets/components/impress.js" should exist
 
   Scenario: Change presentation size
-    Given I successfully run `middleman-presentation create presentation1 --title "My Presentation" --presentation-size 1024 768`
+    Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation" --presentation-size 1024 768`
     When I cd to "presentation1"
     Then the file "data/config.yml" should contain:
     """

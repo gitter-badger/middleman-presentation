@@ -1,3 +1,3 @@
 # Test helpers
-require 'middleman-presentation/test_helpers'
+require 'middleman-presentation-core/test_helpers'
 World(Middleman::Presentation::TestHelpers)
