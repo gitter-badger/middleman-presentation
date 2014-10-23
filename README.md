@@ -107,6 +107,11 @@ You find the release notes [here](RELEASE_NOTES.md) or on
 * The [documentation](https://github.com/hakimel/reveal.js/) of `reveal.js`
 * The [documentation](http://middlemanapp.com/) of `middleman`
 * The [documentation](middleman-presentation-helpers/README.md) about `middleman-presentation-helpers`
+* Run help command of `middleman-presentation`
+
+  ```bash
+  bundle exec middleman-presentation help
+  ```
 
 ## Contributing
 
@@ -114,6 +119,14 @@ Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 
 ## Getting Started
+
+### Running `middleman-presentation`
+
+There are two relevant commands. You can use which you prefer. `mp` is just a
+link to `middleman-presentation`.
+
+* Long: `middleman-presentation`
+* Short: `mp`
 
 ### Initialize middleman presentation globally
 
@@ -140,17 +153,6 @@ options below need to be given on command line.
 ```bash
 # long
 middleman-presentation create presentation --title "my title" --speaker "Me"
-
-#short
-middleman-presentation create --title "my title" --speaker "Me"
-```
-
-The presentation helper provides a lot of more options. Use the help command to
-get an overview. If you want to switch the language for generated slides use
-the `--language`-switch.
-
-```bash
-bundle exec middleman help presentation
 ```
 
 ### Start your presentation
@@ -175,7 +177,7 @@ and 01.html.md. This will not work with `middleman`.
 To add a new slide you can use the `slide`-helper.
 
 ```bash
-bundle exec middleman slide <name>
+bundle exec middleman-presentation create slide <name>
 ```
 
 It is recommended to use a number as name greater than `00`, e.g. `01`. If you
@@ -184,7 +186,7 @@ default. If you want to overwrite this, please create a custom-slide-template -
 see [Custom Templates](#custom_templates) for more information.
 
 ```bash
-bundle exec middleman slide 01
+bundle exec middleman-presentation create slide 01
 ```
 
 If you enter duplicate slide names, e.g. "02.md" and "02.erb", the
@@ -192,7 +194,7 @@ If you enter duplicate slide names, e.g. "02.md" and "02.erb", the
 name - e.g. "02" - via `middleman`.
 
 ```bash
-bundle exec middleman slide 02.md 02.erb
+bundle exec middleman-presentation create slide 02.md 02.erb
 # => will fail
 ```
 
@@ -201,28 +203,32 @@ part of the slide name. Today only `embedded ruby`, `markdown` and `liquid`-temp
 
 ```bash
 # embedded ruby
-bundle exec middleman slide 01.erb
+bundle exec middleman-presentation create slide 01.erb
 
 # markdown
-bundle exec middleman slide 01.md
-bundle exec middleman slide 01.markdown
+bundle exec middleman-presentation create slide 01.md
+bundle exec middleman-presentation create slide 01.markdown
 
 # liquid
-bundle exec middleman slide 01.l
-bundle exec middleman slide 01.liquid
+bundle exec middleman-presentation create slide 01.l
+bundle exec middleman-presentation create slide 01.liquid
+
+# nested template engines
+# first run eruby and then the markdown parser
+bundle exec middleman-presentation create slide 01.md.erb
 ```
 
 To set a title for the slide use the `--title`-switch.
 
 ```bash
-bundle exec middleman slide 01 --title 'my Title'
+bundle exec middleman-presentation create slide 01 --title 'my Title'
 ```
 
 If you want to create multiple slides at once, this is possible to. Just ask
 `middleman-presentation` to do this.
 
 ```bash
-bundle exec middleman slide 01 02 03
+bundle exec middleman-presentation create slide 01 02 03
 ```
 
 There are some more options available. Please use the `help`-command to get an
@@ -241,7 +247,7 @@ To edit the slide after creating it use the `--edit`-switch. It uses the
 `$EDITOR`-environment variable and falls back to `vim`.
 
 ```bash
-bundle exec middleman slide 01 --edit
+bundle exec middleman-presentation create slide 01 --edit
 ```
 
 If you want to edit an alread created slide, you can use the
@@ -253,7 +259,7 @@ editor used or the arguments used, you can run `middleman-presentation` with
 the `--editor-command`-switch.
 
 ```bash
-bundle exec middleman slide --edit --editor-command "nano" 01 02 03
+bundle exec middleman-presentation create slide --edit --editor-command "nano" 01 02 03
 ```
 
 The `editor-command`-string is also parsed by Erubis which makes the data
@@ -263,7 +269,7 @@ or less simultaneously on diffent presentations. To make the use of the project
 id as server name more stable you should use [`Shellwords.shellescape`](http://www.ruby-doc.org/stdlib-2.1.2/libdoc/shellwords/rdoc/Shellwords.html#method-c-shellescape).
 
 ```bash
-bundle exec middleman slide --edit --editor-command "vim --servername <%= Shellwords.shellescape(project_id) %> --remote-tab 2>/dev/null" 01 02 03
+bundle exec middleman-presentation create slide --edit --editor-command "vim --servername <%= Shellwords.shellescape(project_id) %> --remote-tab 2>/dev/null" 01 02 03
 ```
 
 ### Remove a slide
@@ -390,7 +396,7 @@ If you prefer to use the `slide`-command to create your slides, you can create a
 namespaced slide by using the following synatx:
 
 ```
-bundle exec middleman slide 02_hello:01
+bundle exec middleman-presentation create slide 02_hello:01
 ```
 
 Those commands will create a directory named `02_hello` and a file named `01.html.erb`.
@@ -521,7 +527,7 @@ There are four different templates available:
 
 Addiontionlly users can define one `custom`-slide-template. It's file extension
 is used for the resulting slide. Given a template `custom.erb.tt` it becomes
-`01.html.erb` when running `middleman slide 01`. 
+`01.html.erb` when running `middleman-presentation create slide 01`. 
 
 You may need to add the
 template parser-gem to your `Gemfile` and require it in your `config.rb`.
@@ -558,7 +564,7 @@ After writing the file to the filesystem you can use it with the
 
 ```bash
 # => creates source/slides/01.html.haml
-bundle exec middleman slide 01
+bundle exec middleman-presentation create slide 01
 ```
 
 If you have more than one "custom"-template the first is one used. The order is
