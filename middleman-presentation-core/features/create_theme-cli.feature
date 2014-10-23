@@ -40,7 +40,7 @@ Feature: Create new presentation theme
 
   Scenario: No prefix for theme directory
     Given a presentation theme named "new_theme" does not exist
-    When I successfully run `middleman-presentation create theme new_theme --no-theme-prefix`
+    When I successfully run `middleman-presentation create theme new_theme --no-prefix`
     Then a directory named "new_theme" should exist
 
   Scenario: Predefined css classes

@@ -6,6 +6,11 @@ PATH
       middleman-presentation-helpers (>= 0.0.6)
 
 PATH
+  remote: middleman-presentation-core/fixtures/middleman-presentation-simple_plugin
+  specs:
+    middleman-presentation-simple_plugin (0.0.1)
+
+PATH
   remote: middleman-presentation-core
   specs:
     middleman-presentation-core (0.15.8)
@@ -385,6 +390,7 @@ DEPENDENCIES
   middleman-presentation!
   middleman-presentation-core!
   middleman-presentation-helpers!
+  middleman-presentation-simple_plugin!
   middleman-sprockets
   mutant
   mutant-rspec

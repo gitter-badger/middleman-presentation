@@ -5,7 +5,7 @@ module Middleman
     class LocaleConfigurator
       private
 
-      attr_reader :pattern, :detector, :detected_locale
+      attr_reader :pattern, :detector, :detected_locale, :logger
 
       public
 
@@ -13,7 +13,8 @@ module Middleman
         path:,
         default_locale: nil,
         enforce_available_locales: true,
-        detector: FeduxOrgStdlib::ShellLanguageDetector.new
+        detector: FeduxOrgStdlib::ShellLanguageDetector.new,
+        logger: FeduxOrgStdlib::Logging::Logger.new
       )
         @pattern         = File.join(path, '*.yml')
         @detector        = detector
@@ -32,12 +33,12 @@ module Middleman
         l = l.to_sym
 
         if l.blank?
-          Middleman::Presentation.logger.warn I18n.t('errors.use_empty_locale', codes: available_locales.to_list, fallback_locale: detected_locale)
+          logger.warn I18n.t('errors.use_empty_locale', codes: available_locales.to_list, fallback_locale: detected_locale)
           return
         end
 
         unless valid_locale?(l)
-          Middleman::Presentation.logger.warn I18n.t('errors.use_invalid_locale', codes: available_locales.to_list, fallback_locale: detected_locale)
+          logger.warn I18n.t('errors.use_invalid_locale', codes: available_locales.to_list, fallback_locale: detected_locale)
           return
         end
 
@@ -55,7 +56,7 @@ module Middleman
       def validate_and_return_locale(l)
         return l.to_sym if valid_locale? l
 
-        Middleman::Presentation.logger.warn I18n.t('errors.use_invalid_locale', codes: available_locales.to_list, fallback_locale: detected_locale)
+        logger.warn I18n.t('errors.use_invalid_locale', codes: available_locales.to_list, fallback_locale: detected_locale)
 
         detected_locale
       end
