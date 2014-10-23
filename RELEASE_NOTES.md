@@ -3,7 +3,8 @@
   * F: Add helpers to show available "assets", "frontend components", "plugins", ...
   * F: Add helper to create plugins
   * F: New wrapper commands added: Build presentation, serve presentation
-  * I: Moved slide helper to middleman-presentation-executable
+  * F: Support for nested template engines per slide, e.g. '1. eRuby, 2. Markdown'
+  * I: Moved slide helper to "middleman-presentation"-executable
   * I: --force-flag for "create presentation"-command
   * I: Add debug-mode via --debug-mode-flag
   * I: Export command now creates a generated presentation as zip file

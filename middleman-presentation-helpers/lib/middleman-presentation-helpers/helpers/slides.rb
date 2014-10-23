@@ -17,7 +17,7 @@ module Middleman
 
           list.all.map do |element|
             begin
-              element.render { |path| partial(path).chomp }
+              element.render { |path| render_template(path, {}, layout: nil).chomp }
             rescue StandardError => e
               message = []
               message << "Rendering slide \"#{element.partial_path}\" failed with"

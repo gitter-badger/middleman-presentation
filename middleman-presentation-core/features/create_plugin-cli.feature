@@ -4,7 +4,6 @@ Feature: Create a new plugin for middleman presentation
   I want to create my own plugin
   In order to bundle default configurations
 
-  @wip
   Scenario: Non existing template
     Given a plugin named "middleman-presentation-new_plugin" does not exist
     When I successfully run `middleman-presentation create plugin middleman-presentation-new_plugin`

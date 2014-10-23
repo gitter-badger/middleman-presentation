@@ -45,7 +45,7 @@ module Middleman
       def render(&block)
         result = []
         result << "<!-- #{relative_path} -->"
-        result << block.call(partial_path).to_s
+        result << block.call(path).to_s
 
         result.join("\n")
       end
