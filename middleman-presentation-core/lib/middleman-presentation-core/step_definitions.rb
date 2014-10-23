@@ -3,6 +3,7 @@
 Before do
   @aruba_timeout_seconds = 120
   ENV['MM_ENV'] = 'development'
+  ENV['MP_ENV'] = 'test'
 
   step 'a mocked home directory'
   step 'git is configured with username "User" and email-address "email@example.com"'
@@ -174,4 +175,10 @@ Given(/^I add a stylesheet asset named "(.*?)" to the presentation$/) do |asset|
   import_string = "@import '#{asset}';"
 
   step 'I append to "source/stylesheets/application.scss" with:', import_string
+end
+
+When(/^I run `([^`]+)` in debug mode$/) do |cmd|
+  in_current_dir do
+    system(cmd)
+  end
 end

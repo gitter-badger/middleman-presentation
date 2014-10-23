@@ -283,8 +283,6 @@ Feature: Initialize presentation
     </section>
     """
 
-    @announce
-    @wip
   Scenario: Install external asset
     Given a user config file for middleman-presentation with:
     """

@@ -71,7 +71,8 @@ module Middleman
           cmd << "--template empty #{directory}"
           cmd << '--force' if options[:force]
 
-          Bundler.with_clean_env { run(cmd.join(' ')) }
+          #Bundler.with_clean_env { run(cmd.join(' ')) }
+          run(cmd.join(' '))
 
           fail Thor::Error, Middleman::Presentation.t('errors.init_middleman_failed') unless $CHILD_STATUS.exitstatus == 0
         end

@@ -11,9 +11,9 @@ module Middleman
       )
 
       add_component(
-        name: 'angular.js',
+        name: 'angular',
         version: 'latest',
-        importable_files: ['js/angular\.js']
+        importable_files: ['.*\.js']
       )
 
       add_component(
