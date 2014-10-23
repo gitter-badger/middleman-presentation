@@ -9,5 +9,7 @@ Feature: Show available helpers
     When I successfully run `middleman-presentation list helpers`
     Then the output should contain:
     """
-    | Middleman::Presentation::Helpers::Slides       | MODULE | "yield_slides"
+    +-----
+    | Name
+    +-----
     """

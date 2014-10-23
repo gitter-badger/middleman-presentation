@@ -9,5 +9,7 @@ Feature: Show available plugins
     When I successfully run `middleman-presentation list plugins`
     Then the output should contain:
     """
-    | test-simple | middleman-presentation-test-simple | true    |
+    +-----
+    | Name
+    +-----
     """
