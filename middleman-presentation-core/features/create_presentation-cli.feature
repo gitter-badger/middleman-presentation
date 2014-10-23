@@ -295,7 +295,7 @@ Feature: Initialize presentation
     And a directory named "vendor/assets/components/impress.js" should exist
 
   Scenario: Change presentation size
-    Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation" --presentation-size 1024 768`
+    Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation" --view-port 1024 768`
     When I cd to "presentation1"
     Then the file "data/config.yml" should contain:
     """

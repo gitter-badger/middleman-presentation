@@ -17,7 +17,7 @@ Feature: Initialize middleman-presentation
     # activate_progress: true
     # activate_slide_number: true
     # audience: ''
-    # author: my_user
+    # author: User
     # bower_directory: vendor/assets/components
     # check_for_bower: true
     # clear_source: true
@@ -28,14 +28,17 @@ Feature: Initialize middleman-presentation
     # create_javascripts_directory: true
     # create_predefined_slides: true
     # create_stylesheets_directory: true
+    # debug_mode: false
     # default_transition_speed: default
     # default_transition_type: linear
     # default_version_number: v0.0.1
     # description: ''
     # edit: false
     # editor_command: vim
+    # email: email@example.com
     # email_address: ''
     # error_on_duplicates: true
+    # force_create_presentation: false
     # github_url: ''
     # homepage: ''
     # initialize_git: true
@@ -43,22 +46,15 @@ Feature: Initialize middleman-presentation
     # license: CC BY 4.0
     # location: ''
     # phone_number: ''
-    # plugins_blacklist: []
-    # plugins_enable: true
-    # plugins_whitelist: []
+    # plugin_prefix: middleman-presentation
+    # plugins: []
     # presentation_language: ''
-    # view_port: ["960", "700", "0.1"]
     # slides_directory: slides
     # slides_ignore_file: .slidesignore
     # speaker: my_user
-    # theme:
-    #   name: <name>
-    #   github: <github_account>/<repository>
-    #   javascripts:
-    #     - javascripts/<name>
-    #   stylesheets:
-    #     - stylesheets/<name>
+    # theme: {:name=>"middleman-presentation-theme-default", :github=>"maxmeyer/middleman-presentation-theme-default", :importable_files=>[/stylesheets\/middleman-presentation-theme-default.scss$/], :loadable_files=>[/.*\.png$/]}
     # theme_prefix: middleman-presentation-theme
+    # view_port: ["960", "700", "0.1"]
     """
 
   Scenario: Overwrite existing config file
@@ -83,11 +79,5 @@ Feature: Initialize middleman-presentation
     """
     And the file "~/.config/middleman/presentation/presentations.yaml" should contain:
     """
-    # theme:
-    #   name: <name>
-    #   github: <github_account>/<repository>
-    #   javascripts:
-    #     - javascripts/<name>
-    #   stylesheets:
-    #     - stylesheets/<name>
+    # theme: {:name=>"middleman-presentation-theme-default", :github=>"maxmeyer/middleman-presentation-theme-default", :importable_files=>[/stylesheets\/middleman-presentation-theme-default.scss$/], :loadable_files=>[/.*\.png$/]}
     """
