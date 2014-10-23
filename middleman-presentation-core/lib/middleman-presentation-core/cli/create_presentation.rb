@@ -119,10 +119,19 @@ module Middleman
         end
 
         def add_gems_to_gem_file
-          append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
+          if ENV['MP_ENV'] == 'test'
+            append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
 
-            gem 'middleman-presentation'
-          EOS
+              gem 'middleman-presentation', path: File.expand_path('../../../../../', __FILE__)
+              gem 'middleman-presentation-core', path: File.expand_path('../../../../../middleman-presentation-core', __FILE__), require: false
+              gem 'middleman-presentation-helpers', path: File.expand_path('../../../../../middleman-presentation-helpers', __FILE__), require: false
+            EOS
+          else
+            append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
+
+              gem 'middleman-presentation'
+            EOS
+          end
 
           append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
 

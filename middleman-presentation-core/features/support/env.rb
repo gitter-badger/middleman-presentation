@@ -14,7 +14,7 @@ require 'middleman-presentation-core/step_definitions'
 
 # Pull in all of the gems including those in the `test` group
 require 'bundler'
-Bundler.require :test, :development
+Bundler.require :default, :test, :development
 
 ENV['TEST'] = 'true'
 ENV['AUTOLOAD_SPROCKETS'] = 'false'
