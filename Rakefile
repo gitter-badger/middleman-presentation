@@ -11,9 +11,9 @@ require 'fedux_org_stdlib/core_ext/array/list'
 @prefix = 'middleman-presentation'
 
 def prefixed(value)
-  value = if value.empty? 
+  value = if value.empty?
             ''
-          else 
+          else
             '-' + value
           end
   @prefix +  value
@@ -32,11 +32,11 @@ def map_directory(&block)
 end
 
 def tasks(prefix)
-  map_directory { |r,_| "#{prefix}:#{r}" }
+  map_directory { |r, _| "#{prefix}:#{r}" }
 end
 
 desc "Run tests for #{directories.to_list}"
-task :test => tasks('test')
+task test: tasks('test')
 
 namespace :test do
   each_directory do |r, d|
