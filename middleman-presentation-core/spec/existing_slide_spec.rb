@@ -157,13 +157,13 @@ RSpec.describe ExistingSlide do
   end
 
   context '#render' do
-    it 'passes the partial path to a render block' do
+    it 'passes the path to a render block' do
       slide = ExistingSlide.new(absolute_path('slides', '02.html.md'), base_path: absolute_path('.'))
       result = slide.render { |partial_path| partial_path }
 
       expect(result).to eq <<-EOS.strip_heredoc.chomp
         <!-- #{slide.relative_path} -->
-        #{slide.partial_path}
+        #{slide.path}
       EOS
     end
   end
