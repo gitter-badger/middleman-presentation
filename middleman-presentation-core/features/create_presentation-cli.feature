@@ -283,7 +283,14 @@ Feature: Initialize presentation
     </section>
     """
 
+    @announce
+    @wip
   Scenario: Install external asset
+    Given a user config file for middleman-presentation with:
+    """
+    plugins:
+      - middleman-presentation-simple_plugin
+    """
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     And I cd to "presentation1"
     Then a directory named "vendor/assets/components/angular" should exist

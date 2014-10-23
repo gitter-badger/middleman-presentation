@@ -6,11 +6,6 @@ PATH
       middleman-presentation-helpers (>= 0.0.6)
 
 PATH
-  remote: middleman-presentation-core/fixtures/middleman-presentation-simple_plugin
-  specs:
-    middleman-presentation-simple_plugin (0.0.1)
-
-PATH
   remote: middleman-presentation-core
   specs:
     middleman-presentation-core (0.15.8)
@@ -30,6 +25,11 @@ PATH
       rake
       rubyzip (~> 1.1.6)
       tzinfo (>= 0.3.0)
+
+PATH
+  remote: middleman-presentation-core/fixtures/middleman-presentation-simple_plugin
+  specs:
+    middleman-presentation-simple_plugin (0.0.1)
 
 PATH
   remote: middleman-presentation-helpers

@@ -6,19 +6,20 @@ module Middleman
       extend PluginApi
 
       add_assets(
-        File.expand_path('../../../../../../vendor/assets', __FILE__)
+        path: File.expand_path('../../../../../../vendor/assets', __FILE__),
+        importable_files: ['.*\.scss']
       )
 
       add_component(
         name: 'angular.js',
         version: 'latest',
-        importable_files: ['js/angular.js']
+        importable_files: ['js/angular\.js']
       )
 
       add_component(
         name: 'impress.js',
         version: 'latest',
-        importable_files: ['js/impress.js']
+        importable_files: ['js/impress\.js']
       )
 
       add_helpers do
@@ -27,7 +28,7 @@ module Middleman
         end
       end
 
-      add_helpers Middleman::Presentation::Test::Simple::Helpers
+      add_helpers Middleman::Presentation::SimplePlugin::Helpers
     end
   end
 end
