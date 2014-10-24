@@ -33,13 +33,13 @@ module Middleman
           puts Middleman::Presentation.assets_manager.to_s
         end
 
-        desc 'frontend_components', Middleman::Presentation.t('views.frontend_components.list.title')
-        def frontend_components
+        desc 'components', Middleman::Presentation.t('views.components.list.title')
+        def components
           enable_debug_mode
           load_assets
 
-          puts Middleman::Presentation.t('views.frontend_components.list.headline').underline(character: Middleman::Presentation.underline_character)
-          puts Middleman::Presentation.frontend_components_manager.to_s
+          puts Middleman::Presentation.t('views.components.list.headline').underline(character: Middleman::Presentation.underline_character)
+          puts Middleman::Presentation.components_manager.to_s
         end
 
         desc 'styles', Middleman::Presentation.t('views.styles.list.title')

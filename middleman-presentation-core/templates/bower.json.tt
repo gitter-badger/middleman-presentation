@@ -1,7 +1,7 @@
 {
   "name": "<%= @title %>",
     "dependencies": {
-<% Middleman::Presentation.frontend_components_manager.each_component do |component, is_last| -%>
+<% Middleman::Presentation.components_manager.each_component do |component, is_last| -%>
     "<%= component.name %>": "<%= component.resource_locator %>"<% unless is_last -%>,<% end %>
 <% end -%>
     }

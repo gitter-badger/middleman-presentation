@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
-    # Frontend Component Manager
+    # Component Manager
     #
     # It know about all frontend components. Information about all frontend
     # components is used when building `application.js` and `application.scss`
@@ -10,7 +10,7 @@ module Middleman
     #
     # It normally gets the information about available components from
     # `plugins`.
-    class FrontendComponentsManager
+    class ComponentsManager
       private
 
       attr_reader :bower_directory, :cache
@@ -41,6 +41,8 @@ module Middleman
 
       # Iterate over all components
       def each_component(&block)
+        return components.each unless block_given?
+
         components.each do |c|
           block.call(c, c.equal?(components.last))
         end
@@ -48,7 +50,7 @@ module Middleman
 
       # Add component
       def add(c)
-        unless c.is_a? FrontendComponent
+        unless c.is_a?(FrontendComponent) || c.is_a?(AssetComponent)
           Middleman::Presentation.logger.error Middleman::Presentation.t('errors.invalid_component', argument: c)
           return
         end

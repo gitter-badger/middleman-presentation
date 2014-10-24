@@ -18,7 +18,7 @@ module Middleman
       #
       # @param [String] root_directory
       #   The directory where all frontend components can be found
-      def initialize(root_directory: nil, **args)
+      def initialize(**args)
         super(**args)
 
         @resource_locator = if @resource_locator =~ /\A#{URI.regexp}\z/
@@ -47,8 +47,6 @@ module Middleman
                 end
 
         fail ArgumentError, Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name) if @name.blank?
-
-        @root_directory = root_directory
       end
 
       # Return path to component

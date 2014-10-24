@@ -23,6 +23,8 @@ module Middleman
 
         @path = @name = @base_path = path
       end
+
+      def root_directory=(val); end
     end
   end
 end

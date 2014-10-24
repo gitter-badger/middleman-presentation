@@ -57,7 +57,7 @@ module Middleman
       def add_components_required_in_config_file
         return if application.config.components.blank?
 
-        application.frontend_components_manager.add(
+        application.components_manager.add(
           application.config.components
         )
       end
@@ -65,7 +65,7 @@ module Middleman
       def add_theme_component
         return if application.config.theme.blank?
 
-        application.frontend_components_manager.add FrontendComponent.new(**application.config.theme)
+        application.components_manager.add FrontendComponent.new(**application.config.theme)
       end
 
       def add_assets_from_bower_directory
@@ -83,17 +83,13 @@ module Middleman
           /\.ttf$/
         ]
 
-        application.asset_components_manager.add(
-          path: root_directory,
-          loadable_files: loadable_files
-        )
+        application.components_manager.add AssetComponent.new(path: root_directory, loadable_files: loadable_files)
       end
 
       # Load default components
       def add_assets_from_components
         components_list = Middleman::Presentation::AssetList.new(
-          application.frontend_components_manager.available_components +
-          application.asset_components_manager.available_components
+          application.components_manager.available_components
         )
 
         application.assets_manager.load_from_list components_list

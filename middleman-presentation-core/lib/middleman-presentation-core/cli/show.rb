@@ -33,8 +33,8 @@ module Middleman
           puts Middleman::Presentation.assets_manager.to_s
           puts
 
-          puts Middleman::Presentation.t('views.frontend_components.list.headline').underline(character: Middleman::Presentation.underline_character)
-          puts Middleman::Presentation.frontend_components_manager.to_s
+          puts Middleman::Presentation.t('views.components.list.headline').underline(character: Middleman::Presentation.underline_character)
+          puts Middleman::Presentation.components_manager.to_s
           puts
         end
 

@@ -155,7 +155,7 @@ module Middleman
         end
 
         def set_root_directory_for_components_manager
-          Middleman::Presentation.frontend_components_manager.bower_directory = File.join(root_directory, bower_directory)
+          Middleman::Presentation.components_manager.bower_directory = File.join(root_directory, bower_directory)
         end
 
         def create_bower_configuration_files
@@ -248,7 +248,7 @@ module Middleman
           end
         end
 
-        #def install_frontend_components
+        #def install_components
         #  inside directory do
         #    fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
 

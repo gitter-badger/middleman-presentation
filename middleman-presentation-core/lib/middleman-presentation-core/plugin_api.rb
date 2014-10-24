@@ -30,7 +30,7 @@ module Middleman
       # @param [Hash] component
       #   The component which should be added
       def add_component(component)
-        Middleman::Presentation.frontend_components_manager.add FrontendComponent.new(**component)
+        Middleman::Presentation.components_manager.add FrontendComponent.new(**component)
       end
 
       # Add helpers
@@ -55,8 +55,8 @@ module Middleman
       # @param [String] path
       #   Directory where assets are stored
       # def add_assets(path, output_directories: {}, importable_files: [], loadable_files: [], ignorable_files: [])
-      def add_assets(*args)
-        Middleman::Presentation.asset_components_manager.add(*args)
+      def add_assets(component)
+        Middleman::Presentation.components_manager.add AssetComponent.new(**component)
       end
 
       module_function :add_component, :add_helpers, :add_assets

@@ -1,9 +1,9 @@
 # encoding: utf-8
 require 'spec_helper'
 
-RSpec.describe FrontendComponentsManager do
+RSpec.describe ComponentsManager do
   let(:creator_stub) { Class.new }
-  let(:creator) { stub_const('Middleman::Presentation::FrontendComponent', creator_stub) }
+  let(:creator) { stub_const('Middleman::Presentation::Component', creator_stub) }
 
   context '#add' do
     it 'adds a hash to component list' do
@@ -16,7 +16,7 @@ RSpec.describe FrontendComponentsManager do
         root_directory:  nil
       )
 
-      manager = FrontendComponentsManager.new(creator: creator)
+      manager = ComponentsManager.new(creator: creator)
       manager.add(
         name: 'test1',
         resource_locator: 'http://www.example.com',
@@ -37,7 +37,7 @@ RSpec.describe FrontendComponentsManager do
         root_directory: 'dir'
       )
 
-      manager = FrontendComponentsManager.new(creator: creator, bower_directory: 'dir')
+      manager = ComponentsManager.new(creator: creator, bower_directory: 'dir')
       manager.add(
         name: 'test1',
         resource_locator: 'http://www.example.com',
@@ -58,7 +58,7 @@ RSpec.describe FrontendComponentsManager do
         root_directory: nil
       )
 
-      manager = FrontendComponentsManager.new(creator: creator)
+      manager = ComponentsManager.new(creator: creator)
       manager.add(
         OpenStruct.new(
           name: 'test1',
@@ -72,7 +72,7 @@ RSpec.describe FrontendComponentsManager do
     end
 
     it 'outputs warning on unknown type' do
-      manager = FrontendComponentsManager.new(creator: creator)
+      manager = ComponentsManager.new(creator: creator)
 
       result = capture :stderr do
         manager.add('garbage')
@@ -90,7 +90,7 @@ RSpec.describe FrontendComponentsManager do
         version: '0.0.1'
       }
 
-      manager = FrontendComponentsManager.new
+      manager = ComponentsManager.new
       manager.add(component)
 
       expect(manager.available_components.first.name).to eq 'test1'
@@ -106,7 +106,7 @@ RSpec.describe FrontendComponentsManager do
         }
       end
 
-      manager = FrontendComponentsManager.new
+      manager = ComponentsManager.new
       manager.add(components[0])
       manager.add(components[2])
       manager.add(components[4])
@@ -132,7 +132,7 @@ RSpec.describe FrontendComponentsManager do
         version: '0.0.1'
       }
 
-      manager = FrontendComponentsManager.new
+      manager = ComponentsManager.new
       manager.add(component)
 
       expect(manager.to_s).to eq <<-EOS.strip_heredoc.chomp
