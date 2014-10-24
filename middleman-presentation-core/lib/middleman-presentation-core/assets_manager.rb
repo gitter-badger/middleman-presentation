@@ -50,7 +50,7 @@ module Middleman
 
       # Iterate over each importable asset
       def each_importable_stylesheet(&block)
-        each_importable_asset.reverse.select(&:stylesheet?).each(&block)
+        each_importable_asset.select(&:stylesheet?).each(&block)
       end
 
       # Iterate over each importable asset

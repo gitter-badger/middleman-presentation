@@ -15,19 +15,19 @@ module Middleman
       end
 
       def load_for_bower_update
-        add_theme_component
-        add_components_required_in_config_file
-
-        activate_user_plugins
         activate_core_plugins
+        activate_user_plugins
+
+        add_components_required_in_config_file
+        add_theme_component
       end
 
       def load_for_asset_aggregators
-        add_theme_component
-        add_components_required_in_config_file
-
-        activate_user_plugins
         activate_core_plugins
+        activate_user_plugins
+
+        add_components_required_in_config_file
+        add_theme_component
 
         add_assets_from_components
       end
@@ -35,11 +35,11 @@ module Middleman
       def load_at_presentation_runtime
         add_assets_from_bower_directory
 
-        add_theme_component
-        add_components_required_in_config_file
-
-        activate_user_plugins
         activate_core_plugins
+        activate_user_plugins
+
+        add_components_required_in_config_file
+        add_theme_component
 
         add_assets_from_components
       end
@@ -65,9 +65,7 @@ module Middleman
       def add_theme_component
         return if application.config.theme.blank?
 
-        application.frontend_components_manager.add(
-          **application.config.theme
-        )
+        application.frontend_components_manager.add FrontendComponent.new(**application.config.theme)
       end
 
       def add_assets_from_bower_directory

@@ -13,12 +13,11 @@ module Middleman
     class FrontendComponentsManager
       private
 
-      attr_reader :creator, :bower_directory, :cache
+      attr_reader :bower_directory, :cache
 
       public
 
-      def initialize(creator: FrontendComponent, bower_directory: nil)
-        @creator         = creator
+      def initialize(bower_directory: nil)
         @bower_directory = bower_directory
         @cache           = Cache.new(store: Set.new)
       end
@@ -37,7 +36,7 @@ module Middleman
       #
       # Will used cached results until a new component is added
       def components
-        cache.map { |c| creator.new(**c.to_h.merge(root_directory: bower_directory)) }
+        cache.map { |c| c.root_directory = bower_directory; c }
       end
 
       # Iterate over all components
@@ -49,7 +48,7 @@ module Middleman
 
       # Add component
       def add(c)
-        unless c.respond_to? :to_h
+        unless c.is_a? FrontendComponent
           Middleman::Presentation.logger.error Middleman::Presentation.t('errors.invalid_component', argument: c)
           return
         end

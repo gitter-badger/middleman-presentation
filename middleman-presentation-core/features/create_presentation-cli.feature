@@ -52,6 +52,7 @@ Feature: Initialize presentation
     //= require middleman-presentation-helpers/footer/footer
     """
 
+    @wip
   Scenario: Initialize in test directory
     Given I successfully run `middleman-presentation create presentation test/presentation1 --title "My Presentation"`
     When I cd to "presentation1"
@@ -74,7 +75,6 @@ Feature: Initialize presentation
     //= require lightbox2/js/lightbox
     //= require middleman-presentation-helpers/footer/footer
     """
-
 
   Scenario: Existing configuration file
     Given a user config file for middleman-presentation with:

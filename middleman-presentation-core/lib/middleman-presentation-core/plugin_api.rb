@@ -30,7 +30,7 @@ module Middleman
       # @param [Hash] component
       #   The component which should be added
       def add_component(component)
-        Middleman::Presentation.frontend_components_manager.add(component)
+        Middleman::Presentation.frontend_components_manager.add FrontendComponent.new(**component)
       end
 
       # Add helpers

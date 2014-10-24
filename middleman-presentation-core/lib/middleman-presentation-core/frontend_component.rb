@@ -9,11 +9,8 @@ module Middleman
     # is required and which JavaScript-files and stylesheets should be includes
     # in "javascripts/application.js" and "stylesheets"application.scss".
     class FrontendComponent < Component
-      private
 
-      attr_reader :root_directory
-
-      public
+      attr_accessor :root_directory
 
       # Create new frontend component
       #
