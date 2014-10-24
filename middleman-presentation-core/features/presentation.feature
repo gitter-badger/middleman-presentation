@@ -5,7 +5,12 @@ Feature: Run presentation
   In order to use it
 
   Background:
-    Given I create a new presentation with title "My Presentation"
+    Given a user config file for middleman-presentation with:
+    """
+    plugins:
+      - middleman-presentation-simple_plugin
+    """
+    And I create a new presentation with title "My Presentation"
 
   Scenario: Simple Slide
     Given a slide named "01.html.erb" with:

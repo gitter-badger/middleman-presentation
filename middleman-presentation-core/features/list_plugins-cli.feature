@@ -9,7 +9,5 @@ Feature: Show available plugins
     When I successfully run `middleman-presentation list plugins`
     Then the output should contain:
     """
-    +-----
     | Name
-    +-----
     """

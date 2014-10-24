@@ -9,7 +9,5 @@ Feature: Show available helpers
     When I successfully run `middleman-presentation list helpers`
     Then the output should contain:
     """
-    +-----
     | Name
-    +-----
     """
