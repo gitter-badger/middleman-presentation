@@ -49,9 +49,7 @@ module Middleman
           enable_debug_mode
 
           if options[:defaults]
-            capture :stderr do
-              puts Middleman::Presentation::PresentationConfig.new(file: nil).to_s
-            end
+            puts Middleman::Presentation.config.defaults.to_s
           else
             puts Middleman::Presentation.config.to_s
           end
