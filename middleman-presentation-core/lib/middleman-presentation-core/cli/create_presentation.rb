@@ -176,6 +176,18 @@ module Middleman
         def add_configuration_for_middleman_presentation
           append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
           activate :presentation
+          EOS
+
+          if ENV['MP_ENV'] == 'test'
+            append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
+            # For testing only otherwise config = Middleman::Pre...::Config.new
+            # is run before the new home is set and the config file is created
+            # and there is not used.
+            Middleman::Presentation.config.redetect
+            EOS
+          end
+
+          append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
 
           Middleman::Presentation::AssetsLoader.new(root_directory: root).load_at_presentation_runtime
           helpers Middleman::Presentation.helpers_manager.available_helpers
