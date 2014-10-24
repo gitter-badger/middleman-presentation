@@ -126,7 +126,7 @@ GEM
     execjs (2.2.2)
     facter (2.2.0)
       CFPropertyList (~> 2.2.6)
-    fedux_org-stdlib (0.8.8)
+    fedux_org-stdlib (0.8.10)
       activesupport
     ffi (1.9.6)
     filegen (0.4.3)
