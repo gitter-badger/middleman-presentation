@@ -33,12 +33,16 @@ module Middleman
         self
       end
 
-      def map(&block)
-        return @cache if clean
+      def each(&block)
+        return if clean
 
         self.clean = true
 
-        @cache = store.map(&block)
+        store.each(&block)
+      end
+
+      def to_a
+        store.to_a
       end
     end
   end

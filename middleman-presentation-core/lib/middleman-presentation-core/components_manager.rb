@@ -36,7 +36,9 @@ module Middleman
       #
       # Will used cached results until a new component is added
       def components
-        cache.map { |c| c.root_directory = bower_directory; c }
+        cache.each { |c| c.root_directory = bower_directory }
+
+        cache.to_a
       end
 
       # Iterate over all components
