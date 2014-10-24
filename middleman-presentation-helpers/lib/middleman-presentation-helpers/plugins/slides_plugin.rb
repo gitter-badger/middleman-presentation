@@ -21,7 +21,7 @@ module Middleman
           name: :'reveal.js',
           version: 'latest',
           importable_files: %w(js/reveal.min.js lib/js/head.min css/reveal.min.css lib/css/zenburn css/theme/template/mixins.scss css/theme/template/settings.scss),
-          ignorable_files: %w(test),
+          ignorable_files: %w(reveal.js/test/),
           output_directories: output_directories,
           loadable_files: loadable_files
         )
