@@ -248,14 +248,14 @@ module Middleman
           end
         end
 
-        #def install_components
-        #  inside directory do
-        #    fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
+        def install_components
+          inside directory do
+            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
 
-        #    result = run('bower update', capture: true) if options[:install_assets] == true
-        #    fail Thor::Error, Middleman::Presentation.t('errors.bower_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
-        #  end
-        #end
+            result = run('bower update', capture: true) if options[:install_assets] == true
+            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
+          end
+        end
 
         def install_gems
           inside directory do
