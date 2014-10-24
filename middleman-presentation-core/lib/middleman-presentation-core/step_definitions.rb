@@ -55,7 +55,7 @@ Given(/^I create a new presentation with title "([^"]+)"(?: for speaker "([^"]+)
 
   step %(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
   step 'I cd to "presentation1"'
-  #step 'I remove all bundler files'
+  # step 'I remove all bundler files'
 end
 
 Given(/^I prepend "([^"]+)" to environment variable "([^"]+)"$/) do |value, variable|
