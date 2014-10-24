@@ -4,8 +4,8 @@ require 'fedux_org_stdlib/core_ext/array/list'
 
 @repositories = [
   'core',
-  'helpers',
-  ''
+  'helpers'
+#  ''
 ]
 
 @prefix = 'middleman-presentation'
@@ -52,6 +52,9 @@ end
 desc "Run tests in ci mode for #{directories.to_list}"
 task 'test:coveralls' => tasks('test:coveralls')
 
+desc "Run rubocop for #{directories.to_list}"
+task 'test:rubocop' => tasks('rubocop')
+
 namespace :test do
   namespace :coveralls do
     each_directory do |r, d|
@@ -59,6 +62,17 @@ namespace :test do
       task r do
         Dir.chdir d do
           sh 'rake test:coveralls'
+        end
+      end
+    end
+  end
+
+  namespace :rubocop do
+    each_directory do |r, d|
+      desc "Run rubocop."
+      task r do
+        Dir.chdir d do
+          sh 'rake test:rubocop'
         end
       end
     end
