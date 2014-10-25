@@ -122,10 +122,12 @@ module Middleman
           if ENV['MP_ENV'] == 'test'
             append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
 
-              gem 'middleman-presentation', path: File.expand_path('../../../../../', __FILE__)
-              gem 'middleman-presentation-core', path: File.expand_path('../../../../../middleman-presentation-core', __FILE__), require: false
-              gem 'middleman-presentation-helpers', path: File.expand_path('../../../../../middleman-presentation-helpers', __FILE__), require: false
-              gem 'middleman-presentation-simple_plugin', path: File.expand_path('../../../../../middleman-presentation-core/fixtures/middleman-presentation-simple_plugin', __FILE__), require: false
+              # Make sure the paths are correct, otherwise you get
+              # Bundler-errors a la `Path does not exist`
+              gem 'middleman-presentation', path: '#{File.expand_path('../../../../../', __FILE__)}'
+              gem 'middleman-presentation-core', path: '#{File.expand_path('../../../../../middleman-presentation-core', __FILE__)}', require: false
+              gem 'middleman-presentation-helpers', path: '#{File.expand_path('../../../../../middleman-presentation-helpers', __FILE__)}', require: false
+              gem 'middleman-presentation-simple_plugin', path: '#{File.expand_path('../../../../../middleman-presentation-core/fixtures/middleman-presentation-simple_plugin', __FILE__)}', require: false
             EOS
           else
             append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
@@ -256,7 +258,7 @@ module Middleman
         end
 
         def install_components
-          Dir.chdir root_directory do
+          inside directory do
             fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
 
             result = run('bower update', capture: true) if options[:install_assets] == true
@@ -265,7 +267,7 @@ module Middleman
         end
 
         def install_gems
-          Dir.chdir root_directory do
+          inside directory do
             Bundler.with_clean_env do
               result = run('bundle install', capture: true) if options[:install_assets] == true
               fail Thor::Error, Middleman::Presentation.t('errors.bundle_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
