@@ -2,93 +2,35 @@
 require 'spec_helper'
 
 RSpec.describe ComponentsManager do
-  let(:creator_stub) { Class.new }
-  let(:creator) { stub_const('Middleman::Presentation::Component', creator_stub) }
+  let(:component) { instance_double('Middleman::Presentation::Component') }
+
+  before(:each) do
+    allow(component).to receive(:root_directory=)
+  end
 
   context '#add' do
-    it 'adds a hash to component list' do
-      expect(creator).to receive(:new).with(
-        name: 'test1',
-        resource_locator: 'http://www.example.com',
-        version: '0.0.1',
-        loadable_files: [],
-        importable_files: [],
-        root_directory:  nil
-      )
-
-      manager = ComponentsManager.new(creator: creator)
-      manager.add(
-        name: 'test1',
-        resource_locator: 'http://www.example.com',
-        version: '0.0.1',
-        importable_files: [],
-        loadable_files: []
-      )
-      manager.available_components
-    end
-
     it 'passes the bower directory to component' do
-      expect(creator).to receive(:new).with(
-        name: 'test1',
-        resource_locator: 'http://www.example.com',
-        version: '0.0.1',
-        loadable_files: [],
-        importable_files: [],
-        root_directory: 'dir'
-      )
+      expect(component).to receive(:root_directory=).with('dir')
 
-      manager = ComponentsManager.new(creator: creator, bower_directory: 'dir')
-      manager.add(
-        name: 'test1',
-        resource_locator: 'http://www.example.com',
-        version: '0.0.1',
-        importable_files: [],
-        loadable_files: []
-      )
-      manager.available_components
-    end
-
-    it 'adds a struct to component list' do
-      expect(creator).to receive(:new).with(
-        name: 'test1',
-        resource_locator: 'http://www.example.com',
-        version: '0.0.1',
-        importable_files: [],
-        loadable_files: [],
-        root_directory: nil
-      )
-
-      manager = ComponentsManager.new(creator: creator)
-      manager.add(
-        OpenStruct.new(
-          name: 'test1',
-          resource_locator: 'http://www.example.com',
-          version: '0.0.1',
-          importable_files: [],
-          loadable_files: []
-        )
-      )
+      manager = ComponentsManager.new(bower_directory: 'dir')
+      manager.add(component)
       manager.available_components
     end
 
     it 'outputs warning on unknown type' do
-      manager = ComponentsManager.new(creator: creator)
+      manager = ComponentsManager.new
 
       result = capture :stderr do
         manager.add('garbage')
       end
 
-      expect(result).to include 'Sorry, but argument "garbage" needs to respond to "#to_h"'
+      expect(result).to include 'Sorry, but argument "garbage" needs to respond to "#root_directory="'
     end
   end
 
   context '#available_components' do
     it 'returns available fronted components' do
-      component = {
-        name: 'test1',
-        resource_locator: 'http://www.example.com',
-        version: '0.0.1'
-      }
+      allow(component).to receive(:name).and_return('test1')
 
       manager = ComponentsManager.new
       manager.add(component)
@@ -100,10 +42,11 @@ RSpec.describe ComponentsManager do
       components = []
 
       5.times do |i|
-        components << {
-          name: "test#{i - 1}",
-          resource_locator: 'http://www.example.com'
-        }
+        component = instance_double('Middleman::Presentation::Component')
+        allow(component).to receive(:name).and_return("test#{i - 1}")
+        allow(component).to receive(:root_directory=)
+
+        components << component
       end
 
       manager = ComponentsManager.new
@@ -116,21 +59,25 @@ RSpec.describe ComponentsManager do
       manager.add(components[4])
       manager.add(components[4])
 
-      expect(manager.available_components[0].name).to be components[0][:name]
-      expect(manager.available_components[1].name).to be components[2][:name]
-      expect(manager.available_components[2].name).to be components[4][:name]
-      expect(manager.available_components[3].name).to be components[1][:name]
-      expect(manager.available_components[4].name).to be components[3][:name]
+      expect(manager.available_components[0].name).to be components[0].name
+      expect(manager.available_components[1].name).to be components[2].name
+      expect(manager.available_components[2].name).to be components[4].name
+      expect(manager.available_components[3].name).to be components[1].name
+      expect(manager.available_components[4].name).to be components[3].name
     end
   end
 
   context '#to_s' do
     it 'returns a string representation of self' do
-      component = {
-        name: 'test.d/test1',
-        resource_locator: 'http://www.example.com',
-        version: '0.0.1'
-      }
+      allow(component).to receive(:name).and_return('test.d/test1')
+      allow(component).to receive(:resource_locator).and_return('http://www.example.com')
+      allow(component).to receive(:version).and_return('0.0.1')
+      allow(component).to receive(:base_path).and_return('test.d')
+      allow(component).to receive(:path).and_return('test.d/test1')
+      allow(component).to receive(:importable_files).and_return([])
+      allow(component).to receive(:loadable_files).and_return([])
+      allow(component).to receive(:ignorable_files).and_return([])
+      allow(component).to receive(:output_directories).and_return([])
 
       manager = ComponentsManager.new
       manager.add(component)

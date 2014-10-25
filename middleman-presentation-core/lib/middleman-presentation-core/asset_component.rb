@@ -24,6 +24,7 @@ module Middleman
         @path = @name = @base_path = path
       end
 
+      def root_directory; end
       def root_directory=(*); end
     end
   end

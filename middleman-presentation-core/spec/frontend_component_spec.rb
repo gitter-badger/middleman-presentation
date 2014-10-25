@@ -68,34 +68,4 @@ RSpec.describe FrontendComponent do
       expect(component.resource_locator).to eq 'https://github.com/example.org/test.git'
     end
   end
-
-  context '.parse' do
-    let(:hashes) do
-      [
-        {
-          name: 'name',
-          resource_locator: 'https://example.org/test',
-          loadable_files: [],
-          importable_files: [],
-          root_directory: 'name'
-        }
-      ]
-    end
-
-    it 'reads data from array of hashes' do
-      components = FrontendComponent.parse(hashes)
-      expect(components.first.name).to eq 'name'
-      expect(components.first.resource_locator).to eq 'https://example.org/test'
-      expect(components.first.loadable_files.first).to eq nil
-      expect(components.first.importable_files.first).to eq nil
-    end
-
-    it 'reads data from hash' do
-      components = FrontendComponent.parse(hashes.first)
-      expect(components.first.name).to eq 'name'
-      expect(components.first.resource_locator).to eq 'https://example.org/test'
-      expect(components.first.loadable_files.first).to eq nil
-      expect(components.first.importable_files.first).to eq nil
-    end
-  end
 end

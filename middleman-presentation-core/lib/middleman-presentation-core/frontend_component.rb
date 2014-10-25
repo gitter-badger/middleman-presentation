@@ -9,6 +9,7 @@ module Middleman
     # is required and which JavaScript-files and stylesheets should be includes
     # in "javascripts/application.js" and "stylesheets"application.scss".
     class FrontendComponent < Component
+
       attr_accessor :root_directory
 
       # Create new frontend component
@@ -46,6 +47,8 @@ module Middleman
                 end
 
         fail ArgumentError, Middleman::Presentation.t('errors.argument_error', argument: :name, value: @name) if @name.blank?
+
+        @root_directory = root_directory
       end
 
       # Return path to component

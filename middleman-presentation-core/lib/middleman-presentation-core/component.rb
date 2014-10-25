@@ -7,16 +7,6 @@ module Middleman
 
       attr_reader :name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories
 
-      class << self
-        # Parse line
-        #
-        # @param [Array, String] hashes
-        #   Options read from config file
-        def parse(*hashes)
-          hashes.flatten.map { |h| new(**h) }
-        end
-      end
-
       # Create new component
       #
       # @param [String] resource_locator
@@ -62,6 +52,16 @@ module Middleman
       # The path where the component can be found.
       def base_path
         fail NoMethodError, :base_path
+      end
+
+      # Configure accessor for root directory
+      def root_directory
+        fail NoMethodError, :root_directory
+      end
+
+      # Configure accessor for root directory
+      def root_directory=(*)
+        fail NoMethodError, :root_directory=
       end
 
       # Should middleman-presentation fetch the component
