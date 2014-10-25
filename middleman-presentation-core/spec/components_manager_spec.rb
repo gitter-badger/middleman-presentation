@@ -67,6 +67,44 @@ RSpec.describe ComponentsManager do
     end
   end
 
+  context '#each_fetchable_component' do
+    it 'iterates over each fetchable component' do
+      expect(component).to receive(:fetchable?).and_return(true)
+
+      manager = ComponentsManager.new
+      manager.add(component)
+      
+      result = []
+      manager.each_fetchable_component { |c| result << c }
+
+      expect(result.count).to eq 1
+    end
+  end
+
+  context '#each_nonfetchable_component' do
+    it 'iterates over each non fetchable component' do
+      expect(component).to receive(:fetchable?).and_return(false)
+
+      manager = ComponentsManager.new
+      manager.add(component)
+
+      result = []
+      manager.each_nonfetchable_component { |c| result << c }
+
+      expect(result.count).to eq 1
+    end
+  end
+
+  context '#root_directory=' do
+    it 'marks the cache as dirty' do
+      cache = instance_double('Middleman::Presentation::Cache')
+      expect(cache).to receive(:mark_dirty)
+
+      manager = ComponentsManager.new(cache: cache)
+      manager.bower_directory = 'asdf'
+    end
+  end
+
   context '#to_s' do
     it 'returns a string representation of self' do
       allow(component).to receive(:name).and_return('test.d/test1')

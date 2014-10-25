@@ -68,4 +68,27 @@ RSpec.describe FrontendComponent do
       expect(component.resource_locator).to eq 'https://github.com/example.org/test.git'
     end
   end
+
+  context '#path' do
+    it 'is root directory + name' do
+      root_directory = absolute_path('test.d')
+      name = 'test'
+
+      component = FrontendComponent.new(name: name, version: 'latest')
+      component.root_directory = root_directory
+
+      expect(component.path).to eq File.join(root_directory, name)
+    end
+  end
+
+  context '#base_path' do
+    it 'returns the path of frontend component without name' do
+      root_directory = absolute_path('test.d')
+
+      component = FrontendComponent.new(name: 'test', version: 'latest')
+      component.root_directory = root_directory
+
+      expect(component.base_path).to eq root_directory
+    end
+  end
 end

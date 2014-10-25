@@ -69,7 +69,7 @@ module Middleman
 
       # Should middleman-presentation fetch the component
       def fetchable?
-        !@resource_locator.blank?
+        true
       end
     end
   end

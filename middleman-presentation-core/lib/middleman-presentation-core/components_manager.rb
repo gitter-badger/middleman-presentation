@@ -17,9 +17,9 @@ module Middleman
 
       public
 
-      def initialize(bower_directory: nil)
+      def initialize(bower_directory: nil, cache: Cache.new(store: Set.new))
         @bower_directory = bower_directory
-        @cache           = Cache.new(store: Set.new)
+        @cache           = cache 
       end
 
       # Return available frontend components
