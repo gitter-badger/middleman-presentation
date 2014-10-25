@@ -25,6 +25,7 @@ module Middleman
       end
 
       def root_directory; end
+
       def root_directory=(*); end
     end
   end

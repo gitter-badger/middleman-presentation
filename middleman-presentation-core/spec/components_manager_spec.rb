@@ -73,7 +73,7 @@ RSpec.describe ComponentsManager do
 
       manager = ComponentsManager.new
       manager.add(component)
-      
+
       result = []
       manager.each_fetchable_component { |c| result << c }
 
