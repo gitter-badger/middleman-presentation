@@ -691,6 +691,24 @@ If your application needs some other plugins loaded first, use the
 `require_plugin'-method. For more detailed examples, please see the example
 above. 
 
+## Order of assets in `application.scss` and `application.js`
+
+The order of assets which are generated from frontend or asset components
+depends on load order. There is NO complicated algorithm building up dependency
+tree.
+
+If you need to take care about the order of your assets,
+e.g. Stylesheets/JavaScript-files, make sure the files in your plugins are
+loaded (via ruby-`require`) in the correct order. Additionally the order of the plugin-api-methods
+`#add_component`, `#require_plugin` and `#add_assets` are important as well.
+
+There's a configuration option named `components`. The order of that array is
+the order of that assets in your `application.scss` and `application.js`. The
+assets given here are loaded AFTER assets of any plugin you activated.
+
+Look [here](https://github.com/maxmeyer/middleman-presentation/blob/middleman-presentation-core/lib/middleman-presentation-core/assets_loader.rb)
+if you're interested in which order assets are imported.
+
 ## Development
 
 Make sure you've got a working internet connection before running the tests. To
