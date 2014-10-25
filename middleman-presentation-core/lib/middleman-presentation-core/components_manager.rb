@@ -41,8 +41,21 @@ module Middleman
         cache.to_a
       end
 
-      # Iterate over all components
-      def each_component(&block)
+      # Iterate over all fetchable components
+      def each_fetchable_component(&block)
+        components = self.components.select(&:fetchable?)
+
+        return components.each unless block_given?
+
+        components.each do |c|
+          block.call(c, c.equal?(components.last))
+        end
+      end
+
+      # Iterate over all fetchable components
+      def each_nonfetchable_component(&block)
+        components = self.components.select { |c| !c.fetchable? }
+
         return components.each unless block_given?
 
         components.each do |c|
