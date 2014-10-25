@@ -42,7 +42,7 @@ Feature: Initialize presentation
     @import 'middleman-presentation-helpers/footer/footer';
     @import 'middleman-presentation-helpers/image_gallery/image_gallery';
     @import 'middleman-presentation-helpers/images/images';
-    @import 'middleman-presentation-theme-fedux_org/stylesheets/middleman-presentation-theme-fedux_org';
+    @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
     """
     And the file "source/javascripts/application.js" should contain:
     """
@@ -53,7 +53,6 @@ Feature: Initialize presentation
     //= require lightbox2/js/lightbox
     """
 
-    @wip
   Scenario: Initialize in test directory
     Given I successfully run `middleman-presentation create presentation test/presentation1 --title "My Presentation"`
     When I cd to "presentation1"
@@ -67,7 +66,7 @@ Feature: Initialize presentation
     @import 'middleman-presentation-helpers/footer/footer';
     @import 'middleman-presentation-helpers/image_gallery/image_gallery';
     @import 'middleman-presentation-helpers/images/images';
-    @import 'middleman-presentation-theme-fedux_org/stylesheets/middleman-presentation-theme-fedux_org';
+    @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
     """
     And the file "source/javascripts/application.js" should contain:
     """
