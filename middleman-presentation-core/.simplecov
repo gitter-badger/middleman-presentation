@@ -18,7 +18,8 @@ SimpleCov.start do
   add_filter "/spec/"
   add_filter "/tmp"
   add_filter "/vendor"
+  add_filter "/cli"
   
   add_group "lib", ExcludeRegexFilter.new(%r{/cli/|/commands/})
-  add_group "cli", IncludeRegexFilter.new(%r{/cli/|/commands/})
+  #add_group "cli", IncludeRegexFilter.new(%r{/cli/|/commands/})
 end
