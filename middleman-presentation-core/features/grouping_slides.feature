@@ -113,8 +113,7 @@ Feature: Grouping slides
     """
 
   Scenario: Project Group template
-    Given I create a new presentation with title "My Presentation"
-    And a project template named "group.tt" with:
+    Given a project template named "group.tt" with:
     """
     <section>
     <h1>Group Title</h1>
