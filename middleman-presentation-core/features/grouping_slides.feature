@@ -111,3 +111,41 @@ Feature: Grouping slides
     </section>
     </section>
     """
+
+  Scenario: Project Group template
+    Given I create a new presentation with title "My Presentation"
+    And a project template named "group.tt" with:
+    """
+    <section>
+    <h1>Group Title</h1>
+    <%= slides %>
+    </section>
+    """
+    And a slide named "01namespace/01.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    And a slide named "01namespace/02.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    And the Server is running
+    When I go to "/"
+    Then I should see:
+    """
+    <section>
+    <h1>Group Title</h1>
+    <!-- slides/01namespace/01.html.erb -->
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    <!-- slides/01namespace/02.html.erb -->
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    </section>
+    """
