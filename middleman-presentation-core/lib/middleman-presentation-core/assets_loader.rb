@@ -57,9 +57,9 @@ module Middleman
       def add_components_required_in_config_file
         return if application.config.components.blank?
 
-        application.components_manager.add(
-          application.config.components
-        )
+        application.config.components.each do |c|
+          application.components_manager.add FrontendComponent.new(**c)
+        end
       end
 
       def add_theme_component
