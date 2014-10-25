@@ -34,22 +34,23 @@ Feature: Initialize presentation
     Then a directory named "vendor/assets/components/middleman-presentation-theme-default" should exist
     And the file "source/stylesheets/application.scss" should contain:
     """
-    @import 'middleman-presentation-helpers/images/images';
-    @import 'middleman-presentation-helpers/image_gallery/image_gallery';
-    @import 'middleman-presentation-helpers/footer/footer';
-    @import 'reveal.js/lib/css/zenburn';
-    @import 'reveal.js/css/theme/template/settings';
-    @import 'reveal.js/css/theme/template/mixins';
+    @import 'normalize.css/normalize';
     @import 'reveal.js/css/reveal.min';
-    @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
+    @import 'reveal.js/css/theme/template/mixins';
+    @import 'reveal.js/css/theme/template/settings';
+    @import 'reveal.js/lib/css/zenburn';
+    @import 'middleman-presentation-helpers/footer/footer';
+    @import 'middleman-presentation-helpers/image_gallery/image_gallery';
+    @import 'middleman-presentation-helpers/images/images';
+    @import 'middleman-presentation-theme-fedux_org/stylesheets/middleman-presentation-theme-fedux_org';
     """
     And the file "source/javascripts/application.js" should contain:
     """
     //= require jquery/dist/jquery
     //= require reveal.js/js/reveal.min
     //= require reveal.js/lib/js/head.min
-    //= require lightbox2/js/lightbox
     //= require middleman-presentation-helpers/footer/footer
+    //= require lightbox2/js/lightbox
     """
 
     @wip
@@ -58,22 +59,23 @@ Feature: Initialize presentation
     When I cd to "presentation1"
     Then the file "source/stylesheets/application.scss" should contain:
     """
-    @import 'middleman-presentation-helpers/images/images';
-    @import 'middleman-presentation-helpers/image_gallery/image_gallery';
-    @import 'middleman-presentation-helpers/footer/footer';
-    @import 'reveal.js/lib/css/zenburn';
-    @import 'reveal.js/css/theme/template/settings';
-    @import 'reveal.js/css/theme/template/mixins';
+    @import 'normalize.css/normalize';
     @import 'reveal.js/css/reveal.min';
-    @import 'middleman-presentation-theme-default/stylesheets/middleman-presentation-theme-default';
+    @import 'reveal.js/css/theme/template/mixins';
+    @import 'reveal.js/css/theme/template/settings';
+    @import 'reveal.js/lib/css/zenburn';
+    @import 'middleman-presentation-helpers/footer/footer';
+    @import 'middleman-presentation-helpers/image_gallery/image_gallery';
+    @import 'middleman-presentation-helpers/images/images';
+    @import 'middleman-presentation-theme-fedux_org/stylesheets/middleman-presentation-theme-fedux_org';
     """
     And the file "source/javascripts/application.js" should contain:
     """
     //= require jquery/dist/jquery
     //= require reveal.js/js/reveal.min
     //= require reveal.js/lib/js/head.min
-    //= require lightbox2/js/lightbox
     //= require middleman-presentation-helpers/footer/footer
+    //= require lightbox2/js/lightbox
     """
 
   Scenario: Existing configuration file
