@@ -1,0 +1,31 @@
+AllCops:
+  Exclude:
+    - '**/tmp/**/*'
+    - '**/Rakefile'
+
+# Configuration parameters: AllowURI.
+Metrics/LineLength:
+  Max: 225
+
+# Configuration parameters: CountKeywordArgs.
+Metrics/ParameterLists:
+  Max: 6
+
+# Configuration parameters: Exclude.
+Style/FileName:
+  Enabled: false
+
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 118
+
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 160
+
+Metrics/CyclomaticComplexity:
+  Max: 9
+
+# Configuration parameters: MaxSlashes.
+Style/RegexpLiteral:
+  MaxSlashes: 0

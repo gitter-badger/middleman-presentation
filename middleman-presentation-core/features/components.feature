@@ -4,7 +4,6 @@ Feature: Support components for middleman-presentation
   I want to use bower components in all my presentation
   In order to use them in all my presentations
 
-  @wip
   Scenario: Add components
     Given a user config file for middleman-presentation with:
     """

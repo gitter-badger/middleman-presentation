@@ -10,7 +10,7 @@ module Middleman
         add_component(
           name: :'normalize.css',
           version: 'latest',
-          importable_files: %w(normalize.css),
+          importable_files: %w(normalize.css)
         )
       end
     end
