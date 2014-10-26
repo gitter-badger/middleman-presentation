@@ -30,6 +30,9 @@ module Middleman
         desc 'serve', Middleman::Presentation.t('views.runners.build.title')
         subcommand 'serve', Serve
 
+        desc 'change', Middleman::Presentation.t('views.runners.change.title')
+        subcommand 'change', Change
+
         desc 'version', 'version', hide: true
         def version
           invoke 'middleman:presentation:cli:show:version'

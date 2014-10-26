@@ -4,9 +4,10 @@ de:
     standard_error: "Es ist ein Fehler aufgetreten. Die Fehlermeldung lautet wie folgt:\n%{message}"
     argument_error: Der Wert "%{value}" für "%{argument}" ist unzulässig.
     middleman_build_error: 'Es ist ein Fehler beim Generieren der statischen Variante der Präsentation aufgetreten:'
-    zip_filename_error: Der gegebene Dateiname für die ZIP-Datei "%{name}" ist nicht korrekt. Er muss auf ".zip" enden
+    zip_filename_error: Der gegebene Dateiname für die ZIP-Datei "%{name}" ist nicht korrekt. Er muss auf ".zip" enden.
     invalid_component: Es werden nur FrontendComponents, Hashes oder Arrays mit Hashes unterstützt.
     undefined_arguments: Mindestens ein argument für %{arguments} muss angegeben werden.
+    too_many_arguments: Sie haben zu viele Argument übergeben. Es ist/sind nur "%{count}" Argument(e) erlaubt.
     doubled_arguments: Für %{arguments} darf nur ein Argument angegeben werden.
     template_is_undefined: Sie müssen Informationen über Ihr "Standard-Theme" in der "presentations.yaml" hinterlegen.
     asset_not_found: Ich bin nicht in der Lage die Datei '%{asset}' zu finden.  Prüfen Sie bitte den Pfad und versuchen Sie es erneut.
@@ -29,6 +30,8 @@ de:
       help: Beschreibe verfügbare Befehle oder einen bestimmten Befehl 
       options:
         debug_mode: 'Aktiviere DEBUG-Modus.'
+        edit: 'Start des Editors aus ENV["EDITOR"] um eine Folie zu editieren.'
+        editor_command: 'Editor-Kommando, welches benutzt werden soll, z.B. "ENV["EDITOR"] --servername presentation --remote-tab".'
     runners:
       init:
         title: 'Initialisiere ...'
@@ -36,6 +39,8 @@ de:
         title: 'Zeige Informationen über ...'
       create:
         title: 'Lege etwas an ...'
+      change:
+        title: 'Ändere etwas ...'
       list:
         title: 'Liste Informationen über ...'
       export:
@@ -125,10 +130,18 @@ de:
       create:
         title: 'Erzeuge einer neue Folie oder bearbeite eine existierende Folie. Wenn Sie mehrere Folien erzeugen/bearbeiten möchten, geben Sie die Namen der Folien durch ein Leerzeichen getrennt ein, z.B. "01 02 03".'
         options:
-          edit: 'Start des Editors aus ENV["EDITOR"] um eine Folie zu editieren.'
-          editor_command: 'Editor-Kommando, welches benutzt werden soll, z.B. "ENV["EDITOR"] --servername presentation --remote-tab".'
           error_on_duplicates: 'Generierung eines Fehler, wenn mehrere Folien den gleichen Namen aufweisen.'
           title: 'Titel der Folie.'
+        arguments:
+          names: Name der neuen Folie(n)
+      change:
+        title: 'Ändere (eine) existierende Folie(n). Wenn Sie mehrere Folien ändern möchten, geben Sie die Namen der Folien durch ein Leerzeichen getrennt ein, z.B. "01 02 03". Die Änderung des gesamten Foliennamens funktioniert jedoch nur, wenn Sie eine einzelne Folie angeben.'
+        options:
+          error_on_duplicates: 'Generierung eines Fehler, wenn mehrere Folien nach der Änderung den gleichen Namen aufweisen.'
+          base_name: 'Teil des Names vor dem "Punkt" der Folie'
+          type: 'Typ der Folie: Erb, Markdown, ...'
+        arguments:
+          names: Name der neuen Folie(n)
     configs:
       show:
         title: 'Anzeige der Konfiguration.'

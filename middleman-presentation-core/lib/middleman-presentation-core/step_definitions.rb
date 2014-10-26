@@ -78,8 +78,8 @@ Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
   step %(I remove the directory "middleman-presentation-theme-#{name}")
 end
 
-Given(/^a plugin named "(.*?)" does not exist$/) do |_name|
-  step %(I remove the directory "name")
+Given(/^a plugin named "(.*?)" does not exist$/) do |name|
+  step %(I remove the directory "#{name}")
 end
 
 Then(%r{^a plugin named "(.*?)" should exist( with default files/directories created)?$}) do |name, default_files|
@@ -149,7 +149,15 @@ Then(/^a directory named "(.*?)" is a git repository$/) do |name|
   step %(a directory named "#{name}/.git" should exist)
 end
 
-Then(/^a slide named "(.*?)" exist with:$/) do |name, string|
+Given(/^a slide named "(.*?)" does not exist$/) do |name|
+  step %(I remove the file "#{name}")
+end
+
+Then(/^a slide named "(.*?)" should exist$/) do |name|
+  step %(a file named "#{name}" should exist)
+end
+
+Then(/^a slide named "(.*?)" should exist with:$/) do |name, string|
   step %(the file "source/slides/#{name}" should contain:), string
 end
 

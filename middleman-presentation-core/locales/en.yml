@@ -7,6 +7,7 @@ en:
     zip_filename_error: The provided zip filename "%{name}" is invalid. It needs to end with ".zip".
     middleman_build_error: 'An error occured while building the static version of the presentation:'
     undefined_arguments: At least one argument of "%{arguments}" needs to be defined.
+    too_many_arguments: You pass to many arguments. Only "%{count}" argument(s) are allowed.
     doubled_arguments: Only one argument of "%{arguments}" is allowed to be defined.
     template_is_undefined: You need to provide information about your default template within presentations.yaml.
     asset_not_found: I cannot find asset '%{asset}'. Please check the path and try again.
@@ -29,6 +30,8 @@ en:
       help: Describe available commands or one specific command 
       options:
         debug_mode: 'Enable debug mode.'
+        edit: 'Start ENV["EDITOR"] to edit slide.'
+        editor_command: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
     runners:
       init:
         title: 'Initialize system, presentation, ...'
@@ -36,6 +39,8 @@ en:
         title: 'Show information ...'
       create:
         title: 'Create something ...'
+      change:
+        title: 'Change something ...'
       list:
         title: 'List information about ...'
       export:
@@ -125,10 +130,18 @@ en:
       create:
         title: 'Create a new slide(s) or edit existing ones. If you want to create multiple slides enter them with a space between the names "01 02 03".'
         options:
-          edit: 'Start ENV["EDITOR"] to edit slide.'
-          editor_command: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
           error_on_duplicates: 'Raise an error if a slide of the same base name alread exists, e.g. Filename: 01.html.erb => Basename: 01'
           title: 'Title of slide'
+        arguments:
+          names: Names of new slides
+      change:
+        title: 'Change an existing new slide(s). If you want to change multiple slides enter them with a space between the names "01 02 03". Changing the whole file name works only for a single slide.'
+        options:
+          error_on_duplicates: 'Raise an error if a slide of the same base name alread exists, e.g. Filename: 01.html.erb => Basename: 01'
+          type: 'Template type of slide: Erb, Markdown, ...'
+          base_name: 'Base name of slide'
+        arguments:
+          names: Names of slides which should be changed
     configs:
       show:
         title: 'Show configuration'
