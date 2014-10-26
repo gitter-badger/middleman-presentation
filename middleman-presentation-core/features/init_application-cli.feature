@@ -33,8 +33,8 @@ Feature: Initialize middleman-presentation
     # default_transition_type: linear
     # default_version_number: v0.0.1
     # description: ''
-    # edit_created_slide: false
     # edit_changed_slide: false
+    # edit_created_slide: false
     # editor_command: vim
     # email: email@example.com
     # email_address: ''
