@@ -15,8 +15,6 @@ Given(/I set the bower cache directory/) do
   ENV['bower_storage__cache'] = File.join(ENV['HOME'], '.bower_cache')
 end
 
-bower_storage__cache
-
 # Clean environment
 Around do |_, block|
   old_env = ENV.to_h
