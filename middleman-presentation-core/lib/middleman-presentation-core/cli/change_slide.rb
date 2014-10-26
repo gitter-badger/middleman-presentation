@@ -11,69 +11,86 @@ module Middleman
         class_option :type, desc: Middleman::Presentation.t('views.slides.change.options.type')
 
         argument :names, type: :array, desc: Middleman::Presentation.t('views.slides.change.arguments.names')
-        def create_slide
+        def change_slide
           enable_debug_mode
 
-          if names.count > 1 && options.key?('suffix')
-            Middleman::Presentation.logger.error Middleman::Presentation.t('errors.too_many_arguments', count: 1) 
+          fail ArgumentError, Middleman::Presentation.t('errors.too_many_arguments', count: 1) if names.count > 1 && options.key?('base_name')
+          fail ArgumentError, Middleman::Presentation.t('errors.missing_argument', argument: 'name') if names.blank?
 
-            fail ArgumentError, Middleman::Presentation.t('errors.too_many_arguments', count: 1) 
+          shared_instance = proc { ::Middleman::Application.server.inst }.call
+          fail Thor::Error, Middleman::Presentation.t('errors.extension_not_activated') unless shared_instance.extensions.key? :presentation
+
+          presentation_inst = shared_instance.extensions[:presentation]
+
+          existing_slides = SlideList.new(
+            Dir.glob(File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, '**', '*')),
+            slide_builder: ExistingSlide,
+            base_path: shared_instance.source_dir
+          ) do |l|
+            l.transform_with Transformers::FileKeeper.new
           end
 
-        #  fail ArgumentError, Middleman::Presentation.t('errors.missing_argument', argument: 'name') if names.blank?
+          slides = []
 
-        #  shared_instance = proc { ::Middleman::Application.server.inst }.call
+          names.each do |n|
+            old_slide = existing_slides.find { |s| s.base_name == n }
 
-        #  # This only exists when the config.rb sets it!
-        #  if shared_instance.extensions.key? :presentation
-        #    presentation_inst = shared_instance.extensions[:presentation]
+            unless old_slide
+              Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.slide_not_found', base_name: n)
+              next
+            end
 
-        #    existing_slides = Middleman::Presentation::SlideList.new(
-        #      Dir.glob(File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, '**', '*')),
-        #      slide_builder: Middleman::Presentation::ExistingSlide,
-        #      base_path: shared_instance.source_dir
-        #    ) do |l|
-        #      l.transform_with Middleman::Presentation::Transformers::FileKeeper.new
-        #    end
+            path = []
+            path << File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
+            path << '/'
 
-        #    slide_list = Middleman::Presentation::SlideList.new(
-        #      names,
-        #      slide_builder: Middleman::Presentation::NewSlide,
-        #      base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
-        #    ) do |l|
-        #      l.transform_with Middleman::Presentation::Transformers::RemoveDuplicateSlides.new(additional_slides: existing_slides, raise_error: options[:error_on_duplicates])
-        #      l.transform_with Middleman::Presentation::Transformers::SortSlides.new
-        #    end
+            if options['base_name']
+              path << options[:base_name]
+            else
+              path << old_slide.base_name
+            end
 
-        #    slide_list.each_existing do |slide|
-        #      $stderr.puts format('%-20s %-s', 'exist'.colorize(color: :blue, mode: :bold), slide.relative_path)
-        #    end
+            if options['type']
+              path << options[:type].gsub(/^\./, '').prepend('.')
+            else
+              # only the last part
+              path << File.extname(old_slide.ext_name)
+            end
 
-        #    slide_list.each_new do |slide|
-        #      $stderr.puts format('%-20s %-s', 'create'.colorize(color: :green, mode: :bold), slide.relative_path)
-        #      slide.write(title: options[:title])
-        #    end
+            new_slide = NewSlide.new(
+              path.join,
+              base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
+            )
 
-        #    data = if shared_instance.data.respond_to? :metadata
-        #             shared_instance.data.metadata.dup
-        #           else
-        #             OpenStruct.new
-        #           end
+            slides << OpenStruct.new(old_slide: old_slide, new_slide: new_slide)
+          end
 
-        #    if options[:edit]
-        #      editor = []
-        #      begin
-        #        editor << Erubis::Eruby.new(options[:editor_command]).result(data)
-        #      rescue NameError => e
-        #        $stderr.puts Middleman::Presentation.t('errors.missing_data_attribute', message: e.message)
-        #      end
-        #      editor.concat slide_list.existing_slides
+          slides.each do |s|
+            old_slide = s.old_slide
+            new_slide = s.new_slide
 
-        #      system(editor.join(' '))
-        #    end
-        #  else
-        #    fail Thor::Error, Middleman::Presentation.t('errors.extension_not_activated')
-        #  end
+            $stderr.puts format('%-20s %-s -> %-s', 'move '.colorize(color: :blue, mode: :bold), old_slide.relative_path, new_slide.relative_path)
+            FileUtils.mv old_slide.path, new_slide.path
+          end
+
+          return unless options[:edit]
+
+          data = if shared_instance.data.respond_to? :metadata
+                   shared_instance.data.metadata.dup
+                 else
+                   OpenStruct.new
+                 end
+
+          editor = []
+          begin
+            editor << Erubis::Eruby.new(options[:editor_command]).result(data)
+          rescue NameError => e
+            $stderr.puts Middleman::Presentation.t('errors.missing_data_attribute', message: e.message)
+          end
+          editor.concat slides.map { |s| s.new_slide.path }
+
+          Middleman::Presentation.logger.warn Middleman::Presentation.t('infos.open_slide_in_editor', editor: editor.first)
+          system(editor.join(' '))
         end
       end
     end

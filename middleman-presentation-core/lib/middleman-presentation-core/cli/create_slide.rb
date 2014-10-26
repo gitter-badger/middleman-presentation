@@ -4,7 +4,6 @@ module Middleman
     module Cli
       # Create slide
       class CreateSlide < BaseGroup
-#        class_option :debug_mode, default: Middleman::Presentation.config.debug_mode, type: :boolean, desc: Middleman::Presentation.t('views.application.options.debug_mode')
         class_option :edit, default: Middleman::Presentation.config.edit, desc: Middleman::Presentation.t('views.application.options.edit')
         class_option :editor_command, default: Middleman::Presentation.config.editor_command, desc: Middleman::Presentation.t('views.application.options.editor_command')
         class_option :error_on_duplicates, type: :boolean, default: Middleman::Presentation.config.error_on_duplicates, desc: Middleman::Presentation.t('views.slides.create.options.error_on_duplicates')

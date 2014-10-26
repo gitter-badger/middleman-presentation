@@ -272,6 +272,34 @@ id as server name more stable you should use [`Shellwords.shellescape`](http://w
 bundle exec middleman-presentation create slide --edit --editor-command "vim --servername <%= Shellwords.shellescape(project_id) %> --remote-tab 2>/dev/null" 01 02 03
 ```
 
+### Rename a slide
+
+If you need to rename a slide, you can do it on your own or let
+`middleman-presentation` does it for you.
+
+*Rename base name*
+
+This works for singles slides only.
+
+```bash
+# Rename slide 02.html.erb to 01.html.erb
+bundle exec middleman-presentation change slide 02 --name 01 
+```
+
+*Change type of slide*
+
+```bash
+# Rename slide 02.html.erb, 03.html.erb to <name>.html.md
+bundle exec middleman-presentation change slide 02 03 --type md 
+```
+
+*Editor slide after renaming it*
+
+```bash
+# Rename slide 02.html.erb, 03.html.erb to <name>.html.md
+bundle exec middleman-presentation change slide 02 03 --type md --edit
+```
+
 ### Remove a slide
 
 If you remove a slide while `middleman` is showing the presentation, you might

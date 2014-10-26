@@ -26,6 +26,10 @@ module Middleman
         @slides.dup
       end
 
+      def find(&block)
+        @slides.find(&block)
+      end
+
       def each_new(&block)
         all.keep_if { |s| s.respond_to?(:exist?) && !s.exist? }.each(&block)
       end

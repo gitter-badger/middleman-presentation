@@ -73,6 +73,11 @@ module Middleman
         base.to_s
       end
 
+      # Return ext name for slide
+      def ext_name
+        file_name.to_s.gsub(/^([^.]+)\./, '.')
+      end
+
       private
 
       def extract_group

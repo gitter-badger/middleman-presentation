@@ -11,6 +11,7 @@ de:
     doubled_arguments: Für %{arguments} darf nur ein Argument angegeben werden.
     template_is_undefined: Sie müssen Informationen über Ihr "Standard-Theme" in der "presentations.yaml" hinterlegen.
     asset_not_found: Ich bin nicht in der Lage die Datei '%{asset}' zu finden.  Prüfen Sie bitte den Pfad und versuchen Sie es erneut.
+    slide_not_found: Ich konnte keine Folie finden, welche zu dem Base name "%{base_name}" passt.
     duplicate_slide_names: "Ihre Eingabe \"%{slide_names}\" führt zu einer Dopplung bei den Namen für die Folien Ihrer Präsentation. Vielleicht gibt es schon eine existierende Folien mit einem ähnlichen Name, z.B. 01.html.md (markdown) existiert bereit und Sie versuchen eine Folie mit dem Dateinamen 01.html.erb (eruby) anzulegen."
     missing_argument: Sie müssen einen Wert für das Argument "%{argument}" angeben.
     missing_data_attribute: "Sie müssen eine Option in einer Ihrer Konfigurations- oder Datendateien definieren: %{message}."
@@ -25,6 +26,8 @@ de:
     bundle_command_failed: "Es ist ein Fehler bei der Ausführung von \"bundle\" aufgetreten. Bitte richten Sie das Programm korrekt ein und versuchen Sie es erneut:\n%{result}."
     extension_not_activated: Bitte aktivieren Sie die "middleman"-Erweiterung "presentation" in der "config.rb" und versuchen Sie es erneut.
     path_is_empty: Die Pfad-Variable darf nicht leer sein.
+  infos:
+    open_slide_in_editor: You've chosen to open the new file in your favorite editor "%{editor}".
   views:
     application:
       help: Beschreibe verfügbare Befehle oder einen bestimmten Befehl 

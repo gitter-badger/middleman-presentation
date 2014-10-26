@@ -150,11 +150,13 @@ Then(/^a directory named "(.*?)" is a git repository$/) do |name|
 end
 
 Given(/^a slide named "(.*?)" does not exist$/) do |name|
-  step %(I remove the file "#{name}")
+  in_current_dir do
+    FileUtils.rm_rf File.expand_path(File.join('source', 'slides', name))
+  end
 end
 
 Then(/^a slide named "(.*?)" should exist$/) do |name|
-  step %(a file named "#{name}" should exist)
+  step %(a file named "source/slides/#{name}" should exist)
 end
 
 Then(/^a slide named "(.*?)" should exist with:$/) do |name, string|

@@ -113,10 +113,17 @@ RSpec.describe ExistingSlide do
     end
   end
 
-  context '#basename' do
+  context '#base_name' do
     it 'reduces slide file name to minimum' do
       slide = ExistingSlide.new(absolute_path('02.html.erb'))
       expect(slide.base_name).to eq '02'
+    end
+  end
+
+  context '#ext_name' do
+    it 'reduces slide file name to minimum' do
+      slide = ExistingSlide.new(absolute_path('02.html.erb'))
+      expect(slide.ext_name).to eq '.html.erb'
     end
   end
 
