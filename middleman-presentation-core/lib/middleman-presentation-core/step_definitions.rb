@@ -5,10 +5,17 @@ Before do
   ENV['MM_ENV'] = 'development'
   ENV['MP_ENV'] = 'test'
 
+  step 'I set the bower cache directory'
   step 'a mocked home directory'
   step 'git is configured with username "User" and email-address "email@example.com"'
   step 'I set the language for the shell to "en_GB.UTF-8"'
 end
+
+Given(/I set the bower cache directory/) do
+  ENV['bower_storage__cache'] = File.join(ENV['HOME'], '.bower_cache')
+end
+
+bower_storage__cache
 
 # Clean environment
 Around do |_, block|
