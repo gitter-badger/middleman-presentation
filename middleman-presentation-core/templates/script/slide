@@ -1,3 +1,3 @@
 #!/bin/sh
 
-bundle exec middleman slide $*
+bundle exec middleman-presentation create slide $*
