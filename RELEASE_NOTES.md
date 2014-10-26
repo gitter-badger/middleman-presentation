@@ -1,14 +1,15 @@
 * 0.16
-  * F: Introduce Plugin-Support (Technical Preview)
+  * F: Introduce plugin-support (technical preview)
   * F: Add helpers to show available "assets", "frontend components", "plugins", ...
   * F: Add helper to create plugins
+  * F: Add helper to change slide names
   * F: New wrapper commands added: Build presentation, serve presentation
-  * F: Support for nested template engines per slide, e.g. '1. eRuby, 2. Markdown'
+  * F: Support for nested template engines per slide, e.g. 01.html.md.erb => '1. eRuby, 2. Markdown'
   * I: Moved slide helper to "middleman-presentation"-executable
   * I: --force-flag for "create presentation"-command
   * I: Add debug-mode via --debug-mode-flag
   * I: Export command now creates a generated presentation as zip file
-  * I: Move helpers to helper-gem
+  * I: Move helpers to helper-gem (based on plugin-support)
   * I: Localize cli
   * I: A lot of code refactoring
 * 0.15
