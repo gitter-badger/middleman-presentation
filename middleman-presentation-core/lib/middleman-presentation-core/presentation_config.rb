@@ -56,7 +56,8 @@ module Middleman
       option :create_images_directory, true
       option :theme_prefix, 'middleman-presentation-theme'
 
-      option :edit, false
+      option :edit_created_slide, false
+      option :edit_changed_slide, false
       option :editor_command, process_environment.fetch('EDITOR', 'vim')
       option :error_on_duplicates, true
 
