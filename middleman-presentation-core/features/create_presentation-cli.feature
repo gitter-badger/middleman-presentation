@@ -251,7 +251,7 @@ Feature: Initialize presentation
     """
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
-    Then a slide named "00.html.erb" exist with:
+    Then a slide named "00.html.erb" should exist with:
     """
     <section>
     <h1>Start</h1>
@@ -267,7 +267,7 @@ Feature: Initialize presentation
     """
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
-    Then a slide named "999980.html.erb" exist with:
+    Then a slide named "999980.html.erb" should exist with:
     """
     <section>
     <h1>Questions? Really</h1>
@@ -284,7 +284,7 @@ Feature: Initialize presentation
     """
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
-    Then a slide named "999981.html.erb" exist with:
+    Then a slide named "999981.html.erb" should exist with:
     """
     <section>
     <h1>Contact</h1>
@@ -301,7 +301,7 @@ Feature: Initialize presentation
     """
     And I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
-    Then a slide named "999982.html.erb" exist with:
+    Then a slide named "999982.html.erb" should exist with:
     """
     <section>
     <h1>See you!</h1>

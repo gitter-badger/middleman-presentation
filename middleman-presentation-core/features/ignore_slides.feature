@@ -8,8 +8,18 @@ Feature: Ignore slides
     Given I create a new presentation with title "My Presentation"
 
   Scenario: Ignore a slide by basename
-    When I successfully run `middleman slide 01 --title "Slide 01"`
-    And I successfully run `middleman slide 02 --title "Slide 02"`
+    Given a slide named "01.html.md" with:
+    """
+    <section>
+    # Slide 01
+    </section>
+    """
+    And a slide named "02.html.md" with:
+    """
+    <section>
+    # Slide 02
+    </section>
+    """
     And the Server is running
     And a file named ".slidesignore" with:
     """
@@ -41,8 +51,18 @@ Feature: Ignore slides
     #Then the status code should be "200"
 
   Scenario: Unignore a slide
-    When I successfully run `middleman slide 01 --title "Slide 01"`
-    And I successfully run `middleman slide 02 --title "Slide 02"`
+    Given a slide named "01.html.md" with:
+    """
+    <section>
+    # Slide 01
+    </section>
+    """
+    And a slide named "02.html.md" with:
+    """
+    <section>
+    # Slide 02
+    </section>
+    """
     And the Server is running
     And a file named ".slidesignore" with:
     """

@@ -166,7 +166,7 @@ Feature: Add new slide
     </section>
     """
     When I successfully run `middleman-presentation create slide 01.erb --title "My Title"`
-    Then a slide named "01.html.erb" exist with:
+    Then a slide named "01.html.erb" should exist with:
     """
     <section>
     <h1>New Template</h1>
@@ -183,7 +183,7 @@ Feature: Add new slide
     </section>
     """
     When I successfully run `middleman-presentation create slide 01.md --title "My Title"`
-    Then a slide named "01.html.md" exist with:
+    Then a slide named "01.html.md" should exist with:
     """
     <section>
     # New Template
@@ -200,7 +200,7 @@ Feature: Add new slide
     </section>
     """
     When I successfully run `middleman-presentation create slide 01.liquid --title "My Title"`
-    Then a slide named "01.html.liquid" exist with:
+    Then a slide named "01.html.liquid" should exist with:
     """
     <section>
     <h1>{{ page_title }}</h1>
@@ -217,7 +217,7 @@ Feature: Add new slide
     </section>
     """
     When I successfully run `middleman-presentation create slide 01.liquid --title "My Title"`
-    Then a slide named "01.html.liquid" exist with:
+    Then a slide named "01.html.liquid" should exist with:
     """
     <section>
     <h1>{{ page_title }}</h1>
@@ -227,7 +227,7 @@ Feature: Add new slide
 
   Scenario: Custom default template
     When I successfully run `middleman-presentation create slide 01 --title "My Title"`
-    Then a slide named "01.html.md" exist with:
+    Then a slide named "01.html.md" should exist with:
     """
     <section>
     # My Title
@@ -242,7 +242,7 @@ Feature: Add new slide
     </section>
     """
     When I successfully run `middleman-presentation create slide 01 --title "My Title"`
-    Then a slide named "01.html.md" exist with:
+    Then a slide named "01.html.md" should exist with:
     """
     <section>
     # My Title
@@ -257,7 +257,7 @@ Feature: Add new slide
     </section>
     """
     When I successfully run `middleman-presentation create slide 01 --title "My Title"`
-    Then a slide named "01.html.erb" exist with:
+    Then a slide named "01.html.erb" should exist with:
     """
     <section>
     <h1>My Title</h1>
