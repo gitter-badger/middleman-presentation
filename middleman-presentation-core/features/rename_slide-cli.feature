@@ -84,6 +84,23 @@ Feature: Rename slide
     Then a slide named "01.html.md" should exist
     Then a slide named "02.html.md" should exist
 
+  Scenario: Matching substring
+    Given a slide named "01.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    And a slide named "02.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    When I successfully run `middleman-presentation change slide 0 --type md`
+    Then a slide named "01.html.md" should exist
+    Then a slide named "02.html.md" should exist
+
   Scenario: Change erb => md automatically
     Given a slide named "01.html.erb" with:
     """

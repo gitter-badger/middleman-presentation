@@ -28,16 +28,16 @@ module Middleman
             if names.blank?
               true
             else
-              names.include?(s.base_name)
+              names.any? { |n| s.base_name =~ /#{n}/ }
             end
           end
 
-          if found_slides.blank? || found_slides.size != names.size
-            missing_slides = names - found_slides.map(&:base_name)
-            Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.slide_not_found', base_name: missing_slides.to_list)
+          if found_slides.blank?
+            Middleman::Presentation.logger.warn Middleman::Presentation.t('errors.slide_not_found', patterns: names.to_list)
+            return
           end
 
-          move_jobs = found_slides.map do |old_slide|
+          move_jobs = found_slides.sort.map do |old_slide|
             new_slide_file_name = SlideName.new(
               old_slide,
               base_name: options[:base_name],
@@ -58,11 +58,16 @@ module Middleman
           end
 
           move_jobs.each do |j|
-            $stderr.puts format('%-20s %-s -> %-s', 'rename '.colorize(color: :blue, mode: :bold), j.source_short, j.destination_short)
-            FileUtils.mv j.source, j.destination
+            if j.source == j.destination
+              $stderr.puts format('%-20s %-s -> %-s', 'ignore'.colorize(color: :yellow, mode: :bold), j.source_short, j.destination_short)
+              next
+            end
+
+            $stderr.puts format('%-20s %-s -> %-s', 'rename '.colorize(color: :green, mode: :bold), j.source_short, j.destination_short)
+            FileUtils.mv j.source, j.destination, force: true
           end
 
-          open_in_editor move_jobs.map(&:destination).sort if options[:edit]
+          invoke 'middleman:presentation:cli:edit_slide', names, options.extract!(:editor_command) if options.key?('edit')
         end
       end
     end

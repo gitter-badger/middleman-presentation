@@ -14,15 +14,15 @@ module Middleman
           end
 
           def shared_instance
-            middleman_instance ||= proc { ::Middleman::Application.server.inst }.call
+            @middleman_instance ||= proc { ::Middleman::Application.server.inst }.call
 
-            fail Thor::Error, Middleman::Presentation.t('errors.extension_not_activated') unless middleman_instance.extensions.key? :presentation
+            fail Thor::Error, Middleman::Presentation.t('errors.extension_not_activated') unless @middleman_instance.extensions.key? :presentation
 
-            middleman_instance
+            @middleman_instance
           end
 
           def presentation_inst
-            shared_instance.extensions[:presentation]
+            @middleman_presentation_instance ||= shared_instance.extensions[:presentation]
           end
 
           def open_in_editor(paths)

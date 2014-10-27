@@ -39,7 +39,7 @@ module Middleman
             slide.write(title: options[:title])
           end
 
-          open_in_editor slide_list.existing_slides if options[:edit]
+          invoke 'middleman:presentation:cli:edit_slide', names, options.extract!(:editor_command) if options.key?(:edit)
         end
       end
     end
