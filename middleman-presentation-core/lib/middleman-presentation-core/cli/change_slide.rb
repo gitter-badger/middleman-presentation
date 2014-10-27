@@ -67,7 +67,7 @@ module Middleman
             FileUtils.mv j.source, j.destination, force: true
           end
 
-          invoke 'middleman:presentation:cli:edit_slide', names, options.extract!('editor_command') if options.key?('edit')
+          invoke 'middleman:presentation:cli:edit_slide', names, options.extract!('editor_command') if options['edit']
         end
       end
     end
