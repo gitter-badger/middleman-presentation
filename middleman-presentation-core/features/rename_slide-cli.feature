@@ -1,3 +1,4 @@
+@announce
 Feature: Rename slide
 
   As a presentator

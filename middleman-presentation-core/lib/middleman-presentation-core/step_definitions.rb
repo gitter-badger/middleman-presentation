@@ -6,6 +6,7 @@ Before do
   ENV['MP_ENV'] = 'test'
 
   step 'I set the bower cache directory'
+  step 'I set the bundler cache directory'
   step 'a mocked home directory'
   step 'git is configured with username "User" and email-address "email@example.com"'
   step 'I set the language for the shell to "en_GB.UTF-8"'
