@@ -283,6 +283,7 @@ This works for singles slides only.
 
 ```bash
 # Rename slide 02.html.erb to 01.html.erb
+touch source/slides/02.html.erb
 bundle exec middleman-presentation change slide 02 --name 01 
 ```
 
@@ -290,14 +291,42 @@ bundle exec middleman-presentation change slide 02 --name 01
 
 ```bash
 # Rename slide 02.html.erb, 03.html.erb to <name>.html.md
+touch source/slides/02.html.erb
+touch source/slides/03.html.erb
 bundle exec middleman-presentation change slide 02 03 --type md 
 ```
 
-*Editor slide after renaming it*
+*Edit slide after renaming it*
 
 ```bash
 # Rename slide 02.html.erb, 03.html.erb to <name>.html.md
+touch source/slides/02.html.erb
+touch source/slides/03.html.erb
 bundle exec middleman-presentation change slide 02 03 --type md --edit
+```
+
+*Automatically switch template type*
+
+Eruby-Templates will be renamed automatically to Markdown-Templates and vice
+versa, if you leave out the `--type` and `--base-name`-option.
+
+```bash
+
+# Rename slide 01.html.erb to 01.html.md
+touch source/slides/01.html.erb
+bundle exec middleman-presentation change slide 01
+
+# Rename slide 01.html.md to 01.html.erb
+touch source/slides/01.html.md
+bundle exec middleman-presentation change slide 01
+```
+
+All other types, will be renamed automatically to Markdown-Templates.
+
+```bash
+# Rename slide 01.html.liquid to 01.html.md
+touch source/slides/01.html.liquid
+bundle exec middleman-presentation change slide 01
 ```
 
 ### Remove a slide
