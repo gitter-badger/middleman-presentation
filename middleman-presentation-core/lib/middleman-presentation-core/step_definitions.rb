@@ -12,7 +12,11 @@ Before do
 end
 
 Given(/I set the bower cache directory/) do
-  ENV['bower_storage__packages'] = File.expand_path('../../../tmp/bower_cache', __FILE__)
+  ENV['bower_storage__packages'] = File.expand_path('../../../../tmp/bower_cache', __FILE__)
+end
+
+Given(/I set the bundler cache directory/) do
+  ENV['BUNDLE_PATH'] = File.expand_path('../../../../tmp/bundler_cache', __FILE__)
 end
 
 # Clean environment
