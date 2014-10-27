@@ -12,7 +12,6 @@ de:
     template_is_undefined: Sie müssen Informationen über Ihr "Standard-Theme" in der "application.yaml" hinterlegen.
     asset_not_found: Ich bin nicht in der Lage die Datei '%{asset}' zu finden.  Prüfen Sie bitte den Pfad und versuchen Sie es erneut.
     slide_not_found: Ich konnte keine Folien finden, welche zu %{patterns} passen.
-    removed_special_characters: Ich habe Zeichen mit einer speziellen Bedeutung gefunden. Um Fehler im weiteren Ablauf zu vermeiden, wurden diese von mir entfernt.
     duplicate_slide_names: "Ihre Eingabe \"%{slide_names}\" führt zu einer Dopplung bei den Namen für die Folien Ihrer Präsentation. Vielleicht gibt es schon eine existierende Folien mit einem ähnlichen Name, z.B. 01.html.md (markdown) existiert bereit und Sie versuchen eine Folie mit dem Dateinamen 01.html.erb (eruby) anzulegen."
     missing_argument: Sie müssen einen Wert für das Argument "%{argument}" angeben.
     missing_data_attribute: "Sie müssen eine Option in einer Ihrer Konfigurations- oder Datendateien definieren: %{message}."

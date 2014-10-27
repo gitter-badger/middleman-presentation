@@ -20,22 +20,6 @@ Feature: Edit slide
     01.html.erb
     """
 
-  Scenario: Create non-existing slide before editing it
-    Given a slide named "01.html.erb" does not exist
-    When I successfully run `middleman-presentation edit slide 01 --editor-command echo --create`
-    Then the output should contain:
-    """
-    01.html.erb
-    """
-
-  Scenario: Remove special characters before creating non-existing slide in editing command
-    Given a slide named "01.html.erb" does not exist
-    When I successfully run `middleman-presentation edit slide '^01$' --editor-command echo --create`
-    Then the output should contain:
-    """
-    01.html.erb
-    """
-
   Scenario: Multiple slides
     Given a slide named "01.html.erb" with:
     """
