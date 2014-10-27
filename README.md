@@ -113,11 +113,6 @@ You find the release notes [here](RELEASE_NOTES.md) or on
   bundle exec middleman-presentation help
   ```
 
-## Contributing
-
-Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
-
-
 ## Getting Started
 
 ### Running `middleman-presentation`
@@ -127,6 +122,27 @@ link to `middleman-presentation`.
 
 * Long: `middleman-presentation`
 * Short: `mp`
+
+For commandline parsing `middleman-presentation` uses
+[`thor`](https://github.com/erikhuda/thor). `thor` supports shortcuts for
+subcommands. You only need to type that much characters so that `thor` can
+figure out itself, what subcommand you mean.
+
+Long one:
+
+```
+middleman-presentation change slide 01
+```
+
+Short one:
+
+```
+middleman-presentation ch s 01
+```
+
+Just typing `c` would not be enough and will result in an error message,
+because there's also a `create`-subcommand and `c` would match bot the
+`create`- and the `change`-subcommand.
 
 ### Initialize middleman presentation globally
 
@@ -791,3 +807,9 @@ To find the process which uses this file, run this command:
 ```bash
 lsof <file>
 ```
+
+## Contributing
+
+Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+
+
