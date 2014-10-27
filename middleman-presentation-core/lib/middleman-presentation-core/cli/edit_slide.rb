@@ -10,11 +10,6 @@ module Middleman
         def edit_slide
           enable_debug_mode
 
-          shared_instance = proc { ::Middleman::Application.server.inst }.call
-          fail Thor::Error, Middleman::Presentation.t('errors.extension_not_activated') unless shared_instance.extensions.key? :presentation
-
-          presentation_inst = shared_instance.extensions[:presentation]
-
           slides = SlideList.new(
             Dir.glob(File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, '**', '*')),
             slide_builder: ExistingSlide,
