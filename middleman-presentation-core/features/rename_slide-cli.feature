@@ -67,6 +67,39 @@ Feature: Rename slide
     Then a slide named "01.html.md" should exist
     And a slide named "02.html.md" should exist
 
+    @wip
+  Scenario: Change erb => md automatically
+    Given a slide named "01.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    When I successfully run `middleman-presentation change slide 01`
+    Then a slide named "01.html.md" should exist
+
+    @wip
+  Scenario: Change md => erb automatically
+    Given a slide named "01.html.md" with:
+    """
+    <section>
+    # Hello World
+    </section>
+    """
+    When I successfully run `middleman-presentation change slide 01`
+    Then a slide named "01.html.erb" should exist
+
+    @wip
+  Scenario: Change other => md automatically
+    Given a slide named "01.html.liquid" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    When I successfully run `middleman-presentation change slide 01`
+    Then a slide named "01.html.md" should exist
+
   Scenario: Missing slide name
     When I run `middleman-presentation change slide --type md`
     Then the output should contain:

@@ -40,25 +40,14 @@ module Middleman
               next
             end
 
-            path = []
-            path << File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
-            path << '/'
-
-            if options['base_name']
-              path << options[:base_name]
-            else
-              path << old_slide.base_name
-            end
-
-            if options['type']
-              path << options[:type].gsub(/^\./, '').prepend('.')
-            else
-              # only the last part
-              path << File.extname(old_slide.ext_name)
-            end
+            new_slide_file_name = SlideName.new(
+              old_slide, 
+              base_name: options[:base_name], 
+              type: options[:type]
+            )
 
             new_slide = NewSlide.new(
-              path.join,
+              File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, new_slide_file_name),
               base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
             )
 
