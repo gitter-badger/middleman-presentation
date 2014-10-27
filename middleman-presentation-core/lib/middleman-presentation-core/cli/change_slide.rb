@@ -47,7 +47,7 @@ module Middleman
             )
 
             new_slide = NewSlide.new(
-              File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, new_slide_file_name),
+              File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, new_slide_file_name.to_s),
               base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
             )
 
@@ -58,7 +58,7 @@ module Middleman
             old_slide = s.old_slide
             new_slide = s.new_slide
 
-            $stderr.puts format('%-20s %-s -> %-s', 'move '.colorize(color: :blue, mode: :bold), old_slide.relative_path, new_slide.relative_path)
+            $stderr.puts format('%-20s %-s -> %-s', 'rename '.colorize(color: :blue, mode: :bold), old_slide.relative_path, new_slide.relative_path)
             FileUtils.mv old_slide.path, new_slide.path
           end
 

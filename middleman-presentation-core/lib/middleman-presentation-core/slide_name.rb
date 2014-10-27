@@ -15,7 +15,7 @@ module Middleman
       end
 
       def to_s
-        return get_base_name + guess_type if !(base_name && type)
+        return get_base_name + guess_type if base_name.blank? && type.blank?
 
         get_base_name + get_type
       end
