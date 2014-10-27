@@ -129,7 +129,7 @@ Feature: Rename slide
     I cannot find a slide which has base name "01"
     """
 
-  Scenario: Non existing slide in a list of slides
+  Scenario: It checks all slides for non existing slide
     Given a slide named "01.html.erb" with:
     """
     <section>
@@ -142,20 +142,6 @@ Feature: Rename slide
     Then the output should contain:
     """
     I cannot find a slide which has base name "02", "03"
-    """
-
-  Scenario: It checks all slides for non existing slide
-    Given a slide named "01.html.erb" with:
-    """
-    <section>
-    <h1>Hello World</h1>
-    </section>
-    """
-    And a slide named "02.html.erb" does not exist
-    When I run `middleman-presentation change slide 01 02 --type md`
-    Then the output should contain:
-    """
-    I cannot find a slide which has base name "02"
     """
 
   Scenario: Edit after change
