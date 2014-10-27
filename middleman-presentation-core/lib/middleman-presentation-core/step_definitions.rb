@@ -12,7 +12,7 @@ Before do
 end
 
 Given(/I set the bower cache directory/) do
-  ENV['bower_storage__cache'] = File.expand_path('../../../tmp/bower_cache', __FILE__)
+  ENV['bower_storage__packages'] = File.expand_path('../../../tmp/bower_cache', __FILE__)
 end
 
 # Clean environment
