@@ -261,16 +261,34 @@ on. Use `-h` check on available options.
 
 ### Edit slide
 
-To edit the slide after creating it use the `--edit`-switch. It uses the
-`$EDITOR`-environment variable and falls back to `vim`.
+There are two ways to edit a slide:
+
+1. Edit existing slides
+2. Edit non-existing slides
+
+The first way is the more obvious one. Run `middleman-presentation` and tell it
+to open a slide. If the requested slide does not exist, it will output an error
+message. 
+
+```bash
+bundle exec middleman-presentation edit slide 01
+```
+
+If you want to open all existing slides you just need to leave out the
+`names`-argument.
+
+```bash
+bundle exec middleman-presentation edit slide
+```
+
+If you want to create non-existing slides along editing existing ones, you need
+to run the `create slide`-command with the `--edit`-option.
+`middleman-presentation` uses the `$EDITOR`-environment variable and falls back
+to `vim`.
 
 ```bash
 bundle exec middleman-presentation create slide 01 --edit
 ```
-
-If you want to edit an alread created slide, you can use the
-`slide`-command as well. It creates slides if they do not exist and opens them
-in your favorit editor (ENV['EDITOR']) if they already exist.
 
 In some cases you might want to use a different editor-command. To change the
 editor used or the arguments used, you can run `middleman-presentation` with
