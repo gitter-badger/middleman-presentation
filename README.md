@@ -19,7 +19,7 @@ easy with presentations.
 Why you would like to use `middleman-presentation` instead of pure `reveal.js`?
 
 * It provides helper-commands for recurring tasks, e.g. create new
-  presentations, create new slides, editing slides
+  presentations, create new slides, editing slides or renaming existing slides
 * It separates data (slides) from style (theme) by using bower + sprockets
 * It supports a lot of template languages, e.g. Markdown, Erb, Liquid
 * It provides templates, but give you the freedom to define your own ones
