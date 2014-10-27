@@ -3,9 +3,11 @@ module Middleman
   module Presentation
     # List of slides
     class SlideList
+      include Enumerable
+
       private
 
-      attr_accessor :transformers
+      attr_accessor :transformers, :slides
 
       public
 
@@ -23,11 +25,11 @@ module Middleman
       end
 
       def all
-        @slides.dup
+        slides.dup
       end
 
-      def find(&block)
-        @slides.find(&block)
+      def each(&block)
+        slides.each(&block)
       end
 
       def each_new(&block)
