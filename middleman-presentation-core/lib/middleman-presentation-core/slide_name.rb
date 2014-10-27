@@ -29,7 +29,7 @@ module Middleman
       def to_s
         return determine_base_name + guess_type if base_name.blank? && type.blank?
 
-        determine_base_name + get_type
+        determine_base_name + determine_type
       end
 
       private
