@@ -41,8 +41,8 @@ module Middleman
             end
 
             new_slide_file_name = SlideName.new(
-              old_slide, 
-              base_name: options[:base_name], 
+              old_slide,
+              base_name: options[:base_name],
               type: options[:type]
             )
 
