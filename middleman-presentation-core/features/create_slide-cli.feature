@@ -144,19 +144,6 @@ Feature: Add new slide
     my-presentation
     """
 
-  Scenario: Use * expansion in shell to open slides
-    And a slide named "02.html.md" with:
-    """
-    <section>
-    <h1>Headline</h1>
-    </section>
-    """
-    When I successfully run `middleman-presentation create slide source/slides/* --edit --editor-command echo`
-    And the output should contain:
-    """
-    02.html.md
-    """
-
   Scenario: Project Erb Slide template
     And a project template named "erb.tt" with:
     """

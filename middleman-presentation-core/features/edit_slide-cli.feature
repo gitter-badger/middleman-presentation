@@ -20,6 +20,42 @@ Feature: Edit slide
     01.html.erb
     """
 
+  Scenario: Matching regular expression
+    Given a slide named "01.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    And a slide named "002.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    When I successfully run `middleman-presentation edit slide 0. --editor-command echo`
+    Then the output should not contain:
+    """
+    01.html.erb
+    """
+
+  Scenario: Matching substring
+    Given a slide named "01.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    And a slide named "02.html.erb" with:
+    """
+    <section>
+    <h1>Hello World</h1>
+    </section>
+    """
+    When I successfully run `middleman-presentation change slide 0 --type md`
+    Then a slide named "01.html.md" should exist
+    Then a slide named "02.html.md" should exist
+
   Scenario: Multiple slides
     Given a slide named "01.html.erb" with:
     """
