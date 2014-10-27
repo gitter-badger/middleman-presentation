@@ -52,6 +52,8 @@ en:
         title: 'Build something ...'
       serve:
         title: 'Serve something ...'
+      edit:
+        title: 'Edit something ...'
     presentations:
       create:
         title: 'Initialize a new presentation in DIR (default: $PWD)'

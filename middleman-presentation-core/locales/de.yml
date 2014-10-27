@@ -52,6 +52,8 @@ de:
         title: 'Exportiere etwas ...'
       serve:
         title: 'Zeige etwas ...'
+      edit:
+        title: 'Editiere etwas ...'
     presentations:
       create:
         title: 'Erzeuge eine neue Präsentation in Verzeichnis DIR (standard: aktuelles Arbeitsverzeichnis)'
