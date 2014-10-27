@@ -6,7 +6,7 @@ module Middleman
       class EditSlide < BaseGroup
         class_option :editor_command, default: Middleman::Presentation.config.editor_command, desc: Middleman::Presentation.t('views.application.options.editor_command')
 
-        argument :names, required: false, type: :array, desc: Middleman::Presentation.t('views.slides.edit.arguments.names')
+        argument :names, default: [], required: false, type: :array, desc: Middleman::Presentation.t('views.slides.edit.arguments.names')
         def edit_slide
           enable_debug_mode
 

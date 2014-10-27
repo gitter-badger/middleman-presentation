@@ -10,7 +10,7 @@ module Middleman
         class_option :base_name, desc: Middleman::Presentation.t('views.slides.change.options.base_name')
         class_option :type, desc: Middleman::Presentation.t('views.slides.change.options.type')
 
-        argument :names, required: false, type: :array, desc: Middleman::Presentation.t('views.slides.change.arguments.names')
+        argument :names, required: false, default: [], type: :array, desc: Middleman::Presentation.t('views.slides.change.arguments.names')
         def change_slide
           enable_debug_mode
 
