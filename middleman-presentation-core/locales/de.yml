@@ -9,7 +9,7 @@ de:
     undefined_arguments: Mindestens ein argument für %{arguments} muss angegeben werden.
     too_many_arguments: Sie haben zu viele Argument übergeben. Es ist/sind nur "%{count}" Argument(e) erlaubt.
     doubled_arguments: Für %{arguments} darf nur ein Argument angegeben werden.
-    template_is_undefined: Sie müssen Informationen über Ihr "Standard-Theme" in der "presentations.yaml" hinterlegen.
+    template_is_undefined: Sie müssen Informationen über Ihr "Standard-Theme" in der "application.yaml" hinterlegen.
     asset_not_found: Ich bin nicht in der Lage die Datei '%{asset}' zu finden.  Prüfen Sie bitte den Pfad und versuchen Sie es erneut.
     slide_not_found: Ich konnte keine Folie finden, welche zu dem Base name "%{base_name}" passt.
     duplicate_slide_names: "Ihre Eingabe \"%{slide_names}\" führt zu einer Dopplung bei den Namen für die Folien Ihrer Präsentation. Vielleicht gibt es schon eine existierende Folien mit einem ähnlichen Name, z.B. 01.html.md (markdown) existiert bereit und Sie versuchen eine Folie mit dem Dateinamen 01.html.erb (eruby) anzulegen."

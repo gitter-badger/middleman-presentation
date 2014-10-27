@@ -144,7 +144,7 @@ Just typing `c` would not be enough and will result in an error message,
 because there's also a `create`-subcommand and `c` would match bot the
 `create`- and the `change`-subcommand.
 
-### Initialize middleman presentation globally
+### Initialize `middleman-presentation` globally
 
 To create a global configuration file for `middleman-presentation` you need to
 run the following command:
@@ -154,12 +154,14 @@ middleman-presentation init application
 ```
 
 This will create a configuration file at
-`$HOME/.config/middleman/presentation/presentations.yaml`. The configuration options
+`$HOME/.config/middleman-presentation/application.yaml`. The configuration options
 given there will be used for all presentations created with
 `middleman-presentation`. After running the command on a pristine system it
-will contain the defaults.
+will contain the defaults. Please run `cat
+$HOME/.config/middleman-presentation/application.yaml` to view them. 
 
-Please run `cat $HOME/.config/middleman/presentation/presentations.yaml` to view them.
+Please see [Configuration](#configuration) for more information about
+how to configure `middleman-presentation` (correctly).
 
 ### Initialize presentation
 
@@ -675,8 +677,8 @@ middleman-presentation init predefined_slides
 
 `middleman-presentation` will try to find its configuration file at different places:
 
-1. User local: `~/.config/middleman/presentation/presentations.yaml`, `~/.middleman/presentation/presentations.yaml`
-2. System local: `/etc/middleman/presentation/presentations`
+1. User local: `~/.config/middleman-presentation/application.yaml`, `~/.middleman-presentation/application.yaml`
+2. System local: `/etc/middleman-presentation/application.yaml`
 
 To get a full list of available configuration options and their values, run the following command
 

@@ -3,7 +3,7 @@
 module Middleman
   # Presentation extension
   module Presentation
-    @config                      = PresentationConfig.new
+    @config                      = ApplicationConfig.new
     @logger                      = Logger.new
     @bower_directory             = File.join(Dir.getwd, @config.bower_directory)
     @helpers_manager             = HelpersManager.new

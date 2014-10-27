@@ -48,6 +48,8 @@ module Middleman
         def config
           enable_debug_mode
 
+          puts format("Used config file: %s\n", Middleman::Presentation.config.file)
+
           if options[:defaults]
             puts Middleman::Presentation.config.defaults.to_s
           else

@@ -74,11 +74,11 @@ Feature: Initialize middleman-presentation
     #     - stylesheets/new_theme
     """
     When I successfully run `middleman-presentation init application --force`
-    Then the file "~/.config/middleman/presentation/presentations.yaml" should contain:
+    Then the user config file for middleman-presentation should contain:
     """
     # activate_center: true
     """
-    And the file "~/.config/middleman/presentation/presentations.yaml" should contain:
+    And the user config file for middleman-presentation should contain:
     """
     # theme: {:name=>"middleman-presentation-theme-default", :github=>"maxmeyer/middleman-presentation-theme-default", :importable_files=>[/stylesheets\/middleman-presentation-theme-default.scss$/], :loadable_files=>[/.*\.png$/]}
     """

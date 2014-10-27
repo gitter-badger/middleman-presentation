@@ -2,7 +2,7 @@
 module Middleman
   module Presentation
     # Configuration for presentation extension
-    class PresentationConfig < FeduxOrgStdlib::AppConfig
+    class ApplicationConfig < FeduxOrgStdlib::AppConfig
       option :speaker, process_environment.fetch('USER')
       option :license, 'CC BY 4.0'
       option :bower_directory, 'vendor/assets/components'
@@ -63,6 +63,27 @@ module Middleman
 
       option :force_create_presentation, false
       option :debug_mode, false
+
+      private
+
+      def _application_name
+        'middleman-presentation'
+      end
+
+      def _config_name
+        'application'
+      end
+
+      def _allowed_config_file_paths
+        [
+          ::File.expand_path(::File.join('~', '.config', _application_name, _config_file)),
+          ::File.expand_path(::File.join('~', format('.%s', _application_name), _config_file)),
+          ::File.expand_path(::File.join('~', format('.%s%s', _application_name, _config_file_suffix))),
+          ::File.expand_path(::File.join('~', format('.%src', _application_name))),
+          ::File.expand_path(::File.join('/etc', _application_name, _config_file)),
+          ::File.expand_path(::File.join(working_directory, format('%s%s', _application_name, _config_file_suffix)))
+        ]
+      end
     end
   end
 end

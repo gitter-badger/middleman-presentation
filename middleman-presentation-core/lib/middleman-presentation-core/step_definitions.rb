@@ -124,11 +124,11 @@ Given(/^git is configured with username "(.*?)" and email-address "(.*?)"$/) do 
 end
 
 Given(/^a user config file for middleman\-presentation with:$/) do |string|
-  step 'a file named "~/.config/middleman/presentation/presentations.yaml" with:', string
+  step 'a file named "~/.config/middleman-presentation/application.yaml" with:', string
 end
 
 Then(/^the user config file for middleman\-presentation should contain:$/) do |string|
-  step 'the file "~/.config/middleman/presentation/presentations.yaml" should contain:', string
+  step 'the file "~/.config/middleman-presentation/application.yaml" should contain:', string
 end
 
 Then(%r{^a presentation theme named "(.*?)" should exist( with default files/directories created)?$}) do |name, default_files|
