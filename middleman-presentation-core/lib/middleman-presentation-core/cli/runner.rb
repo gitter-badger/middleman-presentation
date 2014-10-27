@@ -33,6 +33,9 @@ module Middleman
         desc 'change', Middleman::Presentation.t('views.runners.change.title')
         subcommand 'change', Change
 
+        desc 'edit', Middleman::Presentation.t('views.runners.edit.title')
+        subcommand 'edit', Edit
+
         desc 'version', 'version', hide: true
         def version
           invoke 'middleman:presentation:cli:show:version'
