@@ -67,7 +67,6 @@ Feature: Rename slide
     Then a slide named "01.html.md" should exist
     And a slide named "02.html.md" should exist
 
-    @wip
   Scenario: Change erb => md automatically
     Given a slide named "01.html.erb" with:
     """
@@ -78,7 +77,6 @@ Feature: Rename slide
     When I successfully run `middleman-presentation change slide 01`
     Then a slide named "01.html.md" should exist
 
-    @wip
   Scenario: Change md => erb automatically
     Given a slide named "01.html.md" with:
     """
@@ -89,7 +87,6 @@ Feature: Rename slide
     When I successfully run `middleman-presentation change slide 01`
     Then a slide named "01.html.erb" should exist
 
-    @wip
   Scenario: Change other => md automatically
     Given a slide named "01.html.liquid" with:
     """
