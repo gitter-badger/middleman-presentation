@@ -18,7 +18,7 @@ module Middleman
             l.transform_with Transformers::FileKeeper.new
           end
 
-          found_slides = slides.find_all do |s| 
+          found_slides = slides.select do |s|
             if names.blank?
               true
             else

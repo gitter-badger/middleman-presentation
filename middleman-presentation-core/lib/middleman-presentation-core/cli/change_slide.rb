@@ -24,7 +24,7 @@ module Middleman
             l.transform_with Transformers::FileKeeper.new
           end
 
-          found_slides = existing_slides.find_all do |s| 
+          found_slides = existing_slides.select do |s|
             if names.blank?
               true
             else
@@ -50,7 +50,7 @@ module Middleman
             )
 
             OpenStruct.new(
-              source: old_slide.path, 
+              source: old_slide.path,
               source_short: old_slide.relative_path,
               destination: new_slide.path,
               destination_short: new_slide.relative_path
