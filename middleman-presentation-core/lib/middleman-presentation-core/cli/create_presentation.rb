@@ -234,7 +234,7 @@ module Middleman
         end
 
         def create_presentation_layout
-          copy_file 'source/layout.erb', File.join(middleman_source_directory, 'layout.erb'), force: options[:force]
+          template 'source/layout.erb', File.join(middleman_source_directory, 'layout.erb'), force: options[:force]
           copy_file 'source/index.html.erb', File.join(middleman_source_directory, 'index.html.erb'), force: options[:force]
         end
 
