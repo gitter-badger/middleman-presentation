@@ -21,21 +21,24 @@ module Middleman
         def set_variables_for_templates
           @version            = Middleman::Presentation::VERSION
           @config             = Middleman::Presentation.config
-          @configuration_file = options[:configuration_file]
-        end
-
-        def backup_old_configuration
         end
 
         def write_new_configuration
+          file = if options[:local]
+                   File.join(root_directory, '.middleman-presentation.yaml')
+                 else
+                   options[:configuration_file]
+                 end
+
+          FileUtils.cp file , "#{file}.bkp" if File.exist?(file) && options[:force]
+
           if options[:local]
             create_file(
-              File.join(root_directory, '.middleman-presentation.yaml'),
+              file,
               Middleman::Presentation.config.to_yaml(keys: Middleman::Presentation.config.exportable_options, remove_blank: true),
               force: options[:force]
             )
           else
-            FileUtils.cp @configuration_file, "#{@configuration_file}.bkp" if File.exist?(@configuration_file) && options[:force]
             template 'config.yaml.tt', @configuration_file , force: options[:force]
           end
         end
