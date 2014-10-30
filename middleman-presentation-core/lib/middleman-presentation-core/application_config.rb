@@ -64,6 +64,20 @@ module Middleman
       option :force_create_presentation, false
       option :debug_mode, false
 
+      option :loadable_assets_for_installed_components, [
+        /\.png$/,
+        /\.gif$/,
+        /\.jpg$/,
+        /\.jpeg$/,
+        /\.svg$/,
+        /\.webp$/,
+        /\.eot$/,
+        /\.otf$/,
+        /\.svc$/,
+        /\.woff$/,
+        /\.ttf$/
+      ]
+
       private
 
       def _application_name

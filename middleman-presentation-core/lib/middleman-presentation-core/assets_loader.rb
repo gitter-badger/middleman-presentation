@@ -69,21 +69,7 @@ module Middleman
       end
 
       def add_assets_from_bower_directory
-        loadable_files = [
-          /\.png$/,
-          /\.gif$/,
-          /\.jpg$/,
-          /\.jpeg$/,
-          /\.svg$/,
-          /\.webp$/,
-          /\.eot$/,
-          /\.otf$/,
-          /\.svc$/,
-          /\.woff$/,
-          /\.ttf$/
-        ]
-
-        application.components_manager.add AssetComponent.new(path: root_directory, loadable_files: loadable_files)
+        application.components_manager.add AssetComponent.new(path: root_directory, loadable_files: Middleman::Presentation.config.loadable_assets_for_installed_components)
       end
 
       # Load default components
