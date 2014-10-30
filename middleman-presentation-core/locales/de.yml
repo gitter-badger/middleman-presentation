@@ -186,6 +186,8 @@ de:
       build:
         title: Präsentation generieren
         headline: Generiere die Präsentation "%{title}"
+        options:
+          title: 'Titel der Präsentation'
       export:
         title: Präsentation exportieren
         headline: Exportiere die Präsentation "%{title}" nach "%{file}"

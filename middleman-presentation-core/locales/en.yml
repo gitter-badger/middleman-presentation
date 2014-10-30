@@ -186,6 +186,8 @@ en:
       build:
         title: Build presentation
         headline: Build presentation "%{title}"
+        options:
+          title: 'Title of presentation'
       export:
         title: Export presentation
         headline: Export presentation "%{title}" to file "%{file}"

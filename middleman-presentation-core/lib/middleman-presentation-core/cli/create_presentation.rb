@@ -141,7 +141,7 @@ module Middleman
         def create_middleman_data_files
           create_file(
             File.join(root_directory, '.middleman-presentation.yaml'),
-            Middleman::Presentation.config.to_yaml(keys: Middleman::Presentation.config.exportable_options),
+            Middleman::Presentation.config.to_yaml(keys: Middleman::Presentation.config.exportable_options, remove_blank: true),
             force: options[:force]
           )
         end
@@ -181,8 +181,8 @@ module Middleman
 
           append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
 
-          bower_directory = BowerDirectory.new(root_directory: root, directory: Middleman::Presentation.config.bower_directory)
-          Middleman::Presentation::AssetsLoader.new(bower_directory: bower_directory.absolute_path).load_at_presentation_runtime
+          bower_directory = Middleman::Presentation::BowerDirectory.new(root_directory: root, directory: Middleman::Presentation.config.bower_directory)
+          Middleman::Presentation::AssetsLoader.new(bower_directory: bower_directory).load_at_presentation_runtime
 
           helpers Middleman::Presentation.helpers_manager.available_helpers
 
@@ -291,7 +291,7 @@ module Middleman
 
           def bower_directory
             @bower_directory ||= BowerDirectory.new(
-              root: FeduxOrgStdlib::RecursiveFileFinder.new(file_name: 'config.rb', raise_error: false).directory,
+              root_directory: FeduxOrgStdlib::RecursiveFileFinder.new(file_name: 'config.rb', raise_error: false).directory || Dir.getwd,
               directory: options[:bower_directory],
             )
           end

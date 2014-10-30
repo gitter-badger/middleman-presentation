@@ -15,7 +15,7 @@ module Middleman
         # Create bower directory
         def bower_directory
           @bower_directory ||= BowerDirectory.new(
-            root: FeduxOrgStdlib::RecursiveFileFinder.new(file_name: 'config.rb').directory,
+            root_directory: FeduxOrgStdlib::RecursiveFileFinder.new(file_name: 'config.rb').directory,
             directory: options[:bower_directory],
           )
         end
