@@ -199,6 +199,10 @@ end
 
 When(/^I run `([^`]+)` in debug mode$/) do |cmd|
   in_current_dir do
+    # rubocop:disable Lint/Debugger
+    require 'pry'
+    binding.pry
+    # rubocop:enable Lint/Debugger
     system(cmd)
   end
 end
