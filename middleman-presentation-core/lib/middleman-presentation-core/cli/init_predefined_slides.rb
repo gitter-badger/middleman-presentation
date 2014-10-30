@@ -1,0 +1,27 @@
+# encoding: utf-8
+module Middleman
+  module Presentation
+    module Cli
+      # This class provides an 'create presentation' command for the middleman CLI.
+      class InitApplication < BaseGroup
+        include Thor::Actions
+
+        option :directory, default: PredefinedSlideTemplateDirectory.new.preferred_template_directory, desc: Middleman::Presentation.t('views.predefined_slides.create.options.directory')
+
+        def initialize_generator
+          enable_debug_mode
+        end
+
+        def add_to_source_path
+          source_paths << File.expand_path('../../../../templates', __FILE__)
+        end
+
+        def copy_templates
+          PredefinedSlideTemplateDirectory.new(working_directory: File.expand_path('../../../../templates', __FILE__)).template_files.each do |file|
+            copy_file file, File.join(options[:directory], File.basename(file))
+          end
+        end
+      end
+    end
+  end
+end

@@ -108,6 +108,8 @@ require 'middleman-presentation-core/cli/export'
 require 'middleman-presentation-core/cli/show'
 require 'middleman-presentation-core/cli/serve'
 require 'middleman-presentation-core/cli/list'
+require 'middleman-presentation-core/cli/init_application'
+require 'middleman-presentation-core/cli/init_predefined_slides'
 require 'middleman-presentation-core/cli/init'
 require 'middleman-presentation-core/cli/runner'
 
