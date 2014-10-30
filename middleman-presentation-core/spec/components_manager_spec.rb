@@ -115,17 +115,22 @@ RSpec.describe ComponentsManager do
       allow(component).to receive(:importable_files).and_return([])
       allow(component).to receive(:loadable_files).and_return([])
       allow(component).to receive(:ignorable_files).and_return([])
-      allow(component).to receive(:output_directories).and_return([])
+      allow(component).to receive(:output_paths).and_return([])
 
       manager = ComponentsManager.new
       manager.add(component)
 
       expect(manager.to_s).to eq <<-EOS.strip_heredoc.chomp
-        +-------------+-------------+-----------+-------------+---------+-------------+-------------+------------+-------------+
-        | Name        | Path        | Base path | Resource... | Version | Importab... | Loadable... | Ignorab... | Output d... |
-        +-------------+-------------+-----------+-------------+---------+-------------+-------------+------------+-------------+
-        | test.d/t... | test.d/t... | test.d    | http://w... | 0.0.1   |             |             |            |             |
-        +-------------+-------------+-----------+-------------+---------+-------------+-------------+------------+-------------+
+        ************************ 1. row ************************
+                    Name: test.d/test1
+                    Path: test.d/test1
+               Base path: test.d
+        Resource locator: http://www.example.com
+                 Version: 0.0.1
+        Importable files: 
+          Loadable files: 
+         Ignorable files: 
+            Output paths: 
         1 row in set
       EOS
     end

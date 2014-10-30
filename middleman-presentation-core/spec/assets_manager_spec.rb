@@ -89,8 +89,8 @@ RSpec.describe AssetsManager do
 
   context '#to_s' do
     it 'returns a string representation of self' do
-      allow(asset).to receive(:source_path).and_return('image1.png')
-      allow(asset).to receive(:destination_directory).and_return('output.d')
+      allow(asset).to receive(:relative_source_path).and_return('image1.png')
+      allow(asset).to receive(:destination_path).and_return('output.d')
       allow(asset).to receive(:loadable?).and_return(true)
       allow(asset).to receive(:importable?).and_return(true)
 
@@ -99,11 +99,11 @@ RSpec.describe AssetsManager do
       manager.load_from_list list
 
       expect(manager.to_s).to eq <<-EOS.strip_heredoc.chomp
-        +-------------+-----------------------+----------+------------+
-        | Source path | Destination directory | Loadable | Importable |
-        +-------------+-----------------------+----------+------------+
-        | image1.png  | output.d              | true     | true       |
-        +-------------+-----------------------+----------+------------+
+        +-------------+------------------+----------+------------+
+        | Source path | Destination path | Loadable | Importable |
+        +-------------+------------------+----------+------------+
+        | image1.png  | output.d         | true     | true       |
+        +-------------+------------------+----------+------------+
         1 row in set
       EOS
     end

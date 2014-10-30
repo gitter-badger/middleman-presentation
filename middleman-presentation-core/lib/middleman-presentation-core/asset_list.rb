@@ -41,7 +41,7 @@ module Middleman
           add_assets(
             c.path,
             base_path: c.base_path,
-            output_directories: c.output_directories,
+            output_paths: c.output_paths,
             loadable_files: c.loadable_files,
             importable_files: c.importable_files,
             ignorable_files: c.ignorable_files
@@ -49,7 +49,7 @@ module Middleman
         end
       end
 
-      def add_assets(search_path, base_path:, output_directories:, loadable_files:, importable_files:, ignorable_files:)
+      def add_assets(search_path, base_path:, output_paths:, loadable_files:, importable_files:, ignorable_files:)
         search_path = File.join(File.expand_path(search_path), '**', '*')
 
         Dir.glob(search_path).sort.each do |p|
@@ -64,10 +64,10 @@ module Middleman
           next if new_path.to_s.start_with?('assets')
 
           # rubocop:disable Style/CaseEquality
-          output_dir = output_directories.find(proc { [] }) { |pattern, _| pattern === p }.last
+          output_path = output_paths.find(proc { [] }) { |pattern, _| pattern === p }.last
           # rubocop:enable Style/CaseEquality
 
-          asset = creator.new(source_path: p, relative_source_path: new_path, destination_directory: output_dir)
+          asset = creator.new(source_path: p, relative_source_path: new_path, destination_path: output_path)
 
           # rubocop:disable Style/CaseEquality
           asset.loadable   = true if loadable_files.any? { |regexp| regexp === p }

@@ -5,7 +5,7 @@ module Middleman
     class Component
       include Comparable
 
-      attr_reader :name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories
+      attr_reader :name, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_paths
 
       # Create new component
       #
@@ -26,7 +26,7 @@ module Middleman
         importable_files: [],
         loadable_files: [],
         ignorable_files: [],
-        output_directories: []
+        output_paths: []
       )
 
         @name               = name
@@ -36,7 +36,7 @@ module Middleman
         @loadable_files     = Array(loadable_files).map { |o| Regexp.new o }
         @importable_files   = Array(importable_files).map { |o| Regexp.new o }
         @ignorable_files    = Array(ignorable_files).map { |o| Regexp.new o }
-        @output_directories = Array(output_directories)
+        @output_paths       = Array(output_paths)
       end
       # rubocop:enable Metrics/ParameterLists
 

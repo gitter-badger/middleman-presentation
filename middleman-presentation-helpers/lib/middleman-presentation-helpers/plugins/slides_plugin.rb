@@ -7,13 +7,13 @@ module Middleman
       module SlidesPlugin
         extend PluginApi
 
-        output_directories = {
-          /notes\.html$/ => Pathname.new('javascripts'),
-          /pdf\.css$/ => Pathname.new('stylesheets')
+        output_paths = {
+          %r{plugin/notes/notes\.html$} => Pathname.new('javascripts/reveal.js/plugin/notes/notes.html'),
+          /pdf\.css$/ => Pathname.new('stylesheets/reveal.js/css/print/pdf.css')
         }
 
         loadable_files = [
-          /notes\.html$/,
+          %r{plugin/notes/notes\.html$},
           /pdf\.css$/,
           %r{reveal\.js/.*/.*\.js$}
         ]
@@ -23,7 +23,7 @@ module Middleman
           version: 'latest',
           importable_files: %w(js/reveal.min.js lib/js/head.min css/reveal.min.css lib/css/zenburn css/theme/template/mixins.scss css/theme/template/settings.scss),
           ignorable_files: %w(reveal.js/test/),
-          output_directories: output_directories,
+          output_paths: output_paths,
           loadable_files: loadable_files
         )
 

@@ -10,12 +10,12 @@ RSpec.describe AssetList do
     it 'creates asset instances' do
       touch_file 'stylesheets/blub.scss'
 
-      expect(creator).to receive(:new).with(source_path: absolute_path('stylesheets/blub.scss'), relative_source_path: 'stylesheets/blub.scss', destination_directory: nil).and_return(asset)
+      expect(creator).to receive(:new).with(source_path: absolute_path('stylesheets/blub.scss'), relative_source_path: 'stylesheets/blub.scss', destination_path: nil).and_return(asset)
 
       component1 = instance_double('Middleman::Presentation::Component')
       allow(component1).to receive(:path).and_return(absolute_path('.'))
       allow(component1).to receive(:base_path).and_return(absolute_path('.'))
-      allow(component1).to receive(:output_directories).and_return([])
+      allow(component1).to receive(:output_paths).and_return([])
       allow(component1).to receive(:loadable_files).and_return([])
       allow(component1).to receive(:ignorable_files).and_return([])
       allow(component1).to receive(:importable_files).and_return([])
@@ -32,11 +32,11 @@ RSpec.describe AssetList do
 
   # context '#each' do
   #  it 'iterates of assets' do
-  #    expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_directory: nil).and_return(asset)
+  #    expect(creator).to receive(:new).with(source_path: absolute_path('images/image1.png'), relative_source_path: 'images/image1.png', destination_path: nil).and_return(asset)
 
   #    component1 = instance_double('Middleman::Presentation::Component')
   #    allow(component1).to receive(:path).and_return(absolute_path('images/image1.png'))
-  #    allow(component1).to receive(:output_directories).and_return(absolute_path('images/image1.png'))
+  #    allow(component1).to receive(:output_paths).and_return(absolute_path('images/image1.png'))
 
   #    components = []
   #    components << component1

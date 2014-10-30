@@ -54,7 +54,7 @@ module Middleman
       #
       # @param [String] path
       #   Directory where assets are stored
-      # def add_assets(path, output_directories: {}, importable_files: [], loadable_files: [], ignorable_files: [])
+      # def add_assets(path, output_paths: {}, importable_files: [], loadable_files: [], ignorable_files: [])
       def add_assets(component)
         Middleman::Presentation.components_manager.add AssetComponent.new(**component)
       end

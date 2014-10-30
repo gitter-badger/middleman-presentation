@@ -33,14 +33,14 @@ module Middleman
       def to_s
         data = store.assets.sort.reduce([]) do |a, e|
           a << {
-            source_path: e.source_path,
-            destination_directory: e.destination_directory,
+            source_path: e.relative_source_path,
+            destination_path: e.destination_path,
             loadable: e.loadable?,
             importable: e.importable?
           }
         end
 
-        List.new(data).to_s(fields: [:source_path, :destination_directory, :loadable, :importable])
+        List.new(data).to_s(fields: [:source_path, :destination_path, :loadable, :importable])
       end
 
       # Iterate over each loadable asset

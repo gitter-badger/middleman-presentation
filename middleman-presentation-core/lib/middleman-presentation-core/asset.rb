@@ -17,7 +17,7 @@ module Middleman
 
       public
 
-      attr_reader :source_path, :destination_directory, :relative_source_path
+      attr_reader :source_path, :destination_path, :relative_source_path
       attr_writer :importable, :loadable
 
       # Create instance
@@ -25,16 +25,16 @@ module Middleman
       # @param [String] source_path
       #   The source path for the asset
       #
-      # @param [String] destination_directory
+      # @param [String] destination_path
       #   The directory where the asset should be placed when building the
       #   static version of the web application
-      def initialize(source_path:, relative_source_path:, destination_directory:, importable: false, loadable: false)
+      def initialize(source_path:, relative_source_path:, destination_path:, importable: false, loadable: false)
         @source_path          = Pathname.new(source_path)
         @relative_source_path = Pathname.new(relative_source_path)
         @importable           = importable
         @loadable             = loadable
 
-        self.destination_directory = destination_directory
+        self.destination_path = destination_path
       end
 
       def import_path
@@ -45,13 +45,13 @@ module Middleman
         relative_source_path
       end
 
-      def destination_directory=(value)
-        @destination_directory = value.blank? ? nil : Pathname.new(value)
+      def destination_path=(value)
+        @destination_path = value.blank? ? nil : Pathname.new(value)
       end
 
       # Destination path resolver
       def destination_path_resolver
-        return proc { |local_path| destination_directory + local_path } if destination_directory
+        return proc { |_| destination_path } if destination_path
 
         proc {}
       end
@@ -96,7 +96,7 @@ module Middleman
       def merge!(other)
         self.importable            = true if other.importable?
         self.loadable              = true if other.loadable?
-        self.destination_directory = other.destination_directory if destination_directory.blank?
+        self.destination_path = other.destination_path if destination_path.blank?
       end
     end
   end

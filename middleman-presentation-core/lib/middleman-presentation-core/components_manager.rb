@@ -85,11 +85,11 @@ module Middleman
             loadable_files: e.loadable_files,
             importable_files: e.importable_files,
             ignorable_files: e.ignorable_files,
-            output_directories: e.output_directories
+            output_paths: e.output_paths
           }
         end
 
-        List.new(data).to_s(fields: [:name, :path, :base_path, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_directories])
+        List.new(data).to_s(fields: [:name, :path, :base_path, :resource_locator, :version, :importable_files, :loadable_files, :ignorable_files, :output_paths], vertical: true)
       end
     end
   end
