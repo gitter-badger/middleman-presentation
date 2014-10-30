@@ -4,7 +4,7 @@ module Middleman
   # Presentation extension
   module Presentation
     @logger                      = Logger.new
-    @config                      = ApplicationConfig.new
+    @config                      = ApplicationConfig.new(merge_files: true)
     @helpers_manager             = HelpersManager.new
     @assets_manager              = AssetsManager.new
     @components_manager          = ComponentsManager.new
@@ -13,17 +13,13 @@ module Middleman
     @debug_mode                  = false
 
     class << self
-      attr_reader :config, :logger, :plugins_manager, :components_manager, :helpers_manager, :assets_manager, :locale_configurator, :assets_loader, :bower_directory
+      attr_reader :config, :logger, :plugins_manager, :components_manager, :helpers_manager, :assets_manager, :locale_configurator
 
       private
 
       attr_accessor :debug_mode
 
       public
-
-      def root_path
-        File.expand_path '../../../', __FILE__
-      end
 
       def t(*args, &block)
         locale_configurator.t(*args, &block)
