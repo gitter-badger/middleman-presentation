@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
 
-    <title><%%= data.metadata.title %><%% if data.metadata.subtitle %>&nbsp;&ndash;&nbsp;<%%= data.metadata.subtitle %><%% end %></title>
+    <title><%%= Middleman::Presentation.config.title %><%% if Middleman::Presentation.config.subtitle %>&nbsp;&ndash;&nbsp;<%%= Middleman::Presentation.config.subtitle %><%% end %></title>
 
-<%% if data.metadata.description -%>
-    <meta name="description" content="<%%= data.metadata.description %>">
+<%% if Middleman::Presentation.config.description -%>
+    <meta name="description" content="<%%= Middleman::Presentation.config.description %>">
 <%% end -%>
-    <meta name="author" content="<%%= data.metadata.author %>">
+    <meta name="author" content="<%%= Middleman::Presentation.config.author %>">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -44,10 +44,10 @@
       </div>
       <footer class="mp-site-footer">
         <div class="mp-copyright-notice">
-          &copy; <%%= Time.now.strftime('%Y') %>&nbsp;&nbsp;<%%= data.metadata.author -%>,&nbsp;
+          &copy; <%%= Time.now.strftime('%Y') %>&nbsp;&nbsp;<%%= Middleman::Presentation.config.author -%>,&nbsp;
         <span class="mp-license">
-          <%%- if data.metadata.license -%>
-            <%%= data.metadata.license %>
+          <%%- if Middleman::Presentation.config.license -%>
+            <%%= Middleman::Presentation.config.license %>
         <%%- end -%>
         </span>
         <a href="?print-pdf" class="mp-print-link"><i class="mp-print"></i></a>

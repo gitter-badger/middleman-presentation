@@ -3,6 +3,12 @@ module Middleman
   module Presentation
     # Configuration for presentation extension
     class ApplicationConfig < FeduxOrgStdlib::AppConfig
+      option :title, nil
+      option :subtitle, nil
+      option :project_id, nil
+      option :version, nil
+
+      option :date , Time.now.strftime('%Y-%m-%d %H:%M:%S')
       option :speaker, process_environment.fetch('USER')
       option :license, 'CC BY 4.0'
       option :bower_directory, 'vendor/assets/components'
@@ -63,6 +69,32 @@ module Middleman
 
       option :force_create_presentation, false
       option :debug_mode, false
+      option :exportable_options, %w(
+        bower_directory
+        view_port
+        activate_progress
+        activeate_history
+        activate_slide_number
+        activate_center
+        default_transition_type
+        default_transition_speed
+        speaker
+        title
+        date
+        author
+        description
+        subtitle
+        homepage
+        company
+        license
+        location
+        audience
+        email_address
+        phone_number
+        github_url
+        project_id
+        version
+      )
 
       option :loadable_assets_for_installed_components, [
         /\.png$/,

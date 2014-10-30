@@ -1,21 +1,21 @@
 <section class="mp-start-slide" data-state="mp-start-slide">
   <div class="mp-headline">
-    <h1><%%= data.metadata.title %></h1>
-    <h2><%%= data.metadata.subtitle %></h2>
+    <h1><%%= Middleman::Presentation.config.title %></h1>
+    <h2><%%= Middleman::Presentation.config.subtitle %></h2>
 
     <p class="mp-speaker">
-    <small><%%= data.metadata.date %>&nbsp;&ndash;&nbsp;
-    <%%= data.metadata.speaker -%>
-<%%- if data.metadata.company -%>
-    (<%%= data.metadata.company %>)
+    <small><%%= Middleman::Presentation.config.date %>&nbsp;&ndash;&nbsp;
+    <%%= Middleman::Presentation.config.speaker -%>
+<%%- if Middleman::Presentation.config.company -%>
+    (<%%= Middleman::Presentation.config.company %>)
 <%%- end -%>
     </small>
     </p>
-<%%- if data.metadata.version -%>
-    <p class="mp-version"><%%= data.metadata.version %></p>
+<%%- if Middleman::Presentation.config.version -%>
+    <p class="mp-version"><%%= Middleman::Presentation.config.version %></p>
 <%%- end -%>
-<%%- if data.metadata.license -%>
-    <p class="mp-license"><%%= data.metadata.license %></p>
+<%%- if Middleman::Presentation.config.license -%>
+    <p class="mp-license"><%%= Middleman::Presentation.config.license %></p>
 <%%- end -%>
   </div>
 

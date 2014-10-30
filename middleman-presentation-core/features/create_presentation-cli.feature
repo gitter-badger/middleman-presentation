@@ -27,7 +27,7 @@ Feature: Initialize presentation
     And a file named "Rakefile" should exist
     And a directory named "source/images" should exist
     And a directory named "vendor/assets/components" should exist
-    And the file "data/metadata.yml" should contain:
+    And the file ".middleman-presentation.yaml" should contain:
     """
     project_id:
     """
@@ -89,31 +89,31 @@ Feature: Initialize presentation
     """
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
-    Then the file "data/metadata.yml" should contain:
+    Then the file ".middleman-presentation.yaml" should contain:
     """
-    author: 'TestUser'
+    author: TestUser
     """
-    Then the file "data/metadata.yml" should contain:
+    Then the file ".middleman-presentation.yaml" should contain:
     """
-    company: 'MyCompany'
+    company: MyCompany
     """
-    Then the file "data/metadata.yml" should contain:
+    Then the file ".middleman-presentation.yaml" should contain:
     """
-    email_address: 'test_user@example.com'
+    email_address: test_user@example.com
     """
-    Then the file "data/metadata.yml" should contain:
+    Then the file ".middleman-presentation.yaml" should contain:
     """
     homepage: 'http://example.com'
     """
-    Then the file "data/metadata.yml" should contain:
+    Then the file ".middleman-presentation.yaml" should contain:
     """
-    speaker: 'TestUser'
+    speaker: TestUser
     """
 
   Scenario: German umlauts, French accents and special chars are not a problem for project id
     When I successfully run `middleman-presentation create presentation presentation1 --title "üöà~?§$%&/()=#!"`
     And I cd to "presentation1"
-    And the file "data/metadata.yml" should contain:
+    And the file ".middleman-presentation.yaml" should contain:
     """
     project_id: 'uoa
     """

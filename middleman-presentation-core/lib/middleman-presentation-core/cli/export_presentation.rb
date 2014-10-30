@@ -18,21 +18,16 @@ module Middleman
         def extract_data
           shared_instance = ::Middleman::Application.server.inst
 
-          data = if shared_instance.data.respond_to? :metadata
-                   shared_instance.data.metadata.dup
-                 else
-                   OpenStruct.new(date: Time.now.strftime('%Y%m%d_%H%M%S'), title: 'presentation')
-                 end
-
-          @title = data.title
+          @title = Middleman::Presentation.config.title
+          @date  = Middleman::Presentation.config.date.to_s
           @source_directory = File.join(shared_instance.root, shared_instance.build_dir)
           @output_file = File.expand_path(
-            options.fetch('output_file', ActiveSupport::Inflector.transliterate(data.date.to_s + '-' + data.title.to_s).parameterize + '.zip')
+            options.fetch('output_file', ActiveSupport::Inflector.transliterate( @date.to_s + '-' + @title).parameterize + '.zip')
           )
 
           fail Middleman::Presentation.t('errors.zip_filename_error', name: File.basename(@output_file)) unless @output_file.end_with? '.zip'
 
-          @prefix                = options.fetch('prefix', ActiveSupport::Inflector.transliterate(data.date.to_s + '-' + data.title.to_s).parameterize + '/')
+          @prefix                = options.fetch('prefix', ActiveSupport::Inflector.transliterate(@date.to_s + '-' + @title.to_s).parameterize + '/')
           @images_directory      = shared_instance.config.images_dir
           @stylesheets_directory = shared_instance.config.css_dir
           @javascripts_directory = shared_instance.config.js_dir

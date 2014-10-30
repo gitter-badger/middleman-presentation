@@ -51,11 +51,6 @@ module Middleman
           enable_debug_mode
         end
 
-        def define_directories
-          @root_directory = File.expand_path directory
-          @bower_directory = BowerDirectory.new(root_directory: root_directory, directory: options[:bower_directory])
-        end
-
         def add_to_source_path
           source_paths << File.expand_path('../../../../templates', __FILE__)
         end
@@ -81,36 +76,33 @@ module Middleman
         end
 
         def set_variables_for_templates
-          @author          = options[:author]
-          @speaker         = options[:speaker]
-          @title           = options[:title]
-          @description     = options[:description]
-          @subtitle        = options[:subtitle]
-          @date            = options[:date]
-          @homepage        = options[:homepage]
-          @company         = options[:company]
-          @license         = options[:license]
-          @location        = options[:location]
-          @audience        = options[:audience]
+          Middleman::Presentation.config.author          = options[:author]
+          Middleman::Presentation.config.speaker         = options[:speaker]
+          Middleman::Presentation.config.title           = options[:title]
+          Middleman::Presentation.config.description     = options[:description]
+          Middleman::Presentation.config.subtitle        = options[:subtitle]
+          Middleman::Presentation.config.date            = options[:date]
+          Middleman::Presentation.config.homepage        = options[:homepage]
+          Middleman::Presentation.config.company         = options[:company]
+          Middleman::Presentation.config.license         = options[:license]
+          Middleman::Presentation.config.location        = options[:location]
+          Middleman::Presentation.config.audience        = options[:audience]
 
-          @email_address   = options[:email_address]
-          @phone_number    = options[:phone_number]
-          @github_url      = options[:github_url]
+          Middleman::Presentation.config.email_address   = options[:email_address]
+          Middleman::Presentation.config.phone_number    = options[:phone_number]
+          Middleman::Presentation.config.github_url      = options[:github_url]
 
-          @version         = options[:version]
-          @project_id      = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
-        end
+          Middleman::Presentation.config.version         = options[:version]
+          Middleman::Presentation.config.project_id      = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
 
-        def set_configuration_for_revealjs
-          @revealjs_config = {}
-          @revealjs_config[:controls]                 = options[:activate_controls]
-          @revealjs_config[:progress]                 = options[:activate_progress]
-          @revealjs_config[:history]                  = options[:activate_history]
-          @revealjs_config[:center]                   = options[:activate_center]
-          @revealjs_config[:slide_number]             = options[:activate_slide_number]
-          @revealjs_config[:default_transition_type]  = options[:default_transition_type]
-          @revealjs_config[:default_transition_speed] = options[:default_transition_speed]
-          @revealjs_config[:view_port]                = options[:view_port]
+          Middleman::Presentation.config.activate_controls        = options[:activate_controls]
+          Middleman::Presentation.config.activate_progress        = options[:activate_progress]
+          Middleman::Presentation.config.activate_history         = options[:activate_history]
+          Middleman::Presentation.config.activate_center          = options[:activate_center]
+          Middleman::Presentation.config.activate_slide_number    = options[:activate_slide_number]
+          Middleman::Presentation.config.default_transition_type  = options[:default_transition_type]
+          Middleman::Presentation.config.default_transition_speed = options[:default_transition_speed]
+          Middleman::Presentation.config.view_port                = options[:view_port]
         end
 
         def add_gems_to_gem_file
@@ -147,8 +139,11 @@ module Middleman
         end
 
         def create_middleman_data_files
-          template 'data/metadata.yml.tt', File.join(data_directory, 'metadata.yml'), force: options[:force]
-          template 'data/config.yml.tt', File.join(data_directory, 'config.yml'), force: options[:force]
+          create_file(
+            File.join(root_directory, '.middleman-presentation.yaml'),
+            Middleman::Presentation.config.to_yaml(keys: Middleman::Presentation.config.exportable_options),
+            force: options[:force]
+          )
         end
 
         def set_root_directory_for_components_manager
@@ -156,7 +151,7 @@ module Middleman
         end
 
         def create_bower_configuration_files
-          asset_loader.load_for_bower_update
+          assets_loader.load_for_bower_update
 
           template '.bowerrc.tt', File.join(root_directory, '.bowerrc'), force: options[:force]
           template 'bower.json.tt', File.join(root_directory, 'bower.json'), force: options[:force]
@@ -186,7 +181,9 @@ module Middleman
 
           append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
 
-          Middleman::Presentation::AssetsLoader.new(root_directory: root).load_at_presentation_runtime
+          bower_directory = BowerDirectory.new(root_directory: root, directory: Middleman::Presentation.config.bower_directory)
+          Middleman::Presentation::AssetsLoader.new(bower_directory: bower_directory.absolute_path).load_at_presentation_runtime
+
           helpers Middleman::Presentation.helpers_manager.available_helpers
 
           set :markdown_engine, :kramdown
@@ -196,14 +193,12 @@ module Middleman
           # with an underscore
           ignore 'slides/*'
 
-          bower_directory = '#{bower_directory.relative_path}'
-
           if respond_to?(:sprockets) && sprockets.respond_to?(:import_asset)
 
             # all fetchable components reside in the bower directory. Their
             # assets are required with "component_name/path/to/asset.scss".
             # Therefore it's suffice enough to add the bower directory only.
-            sprockets.append_path File.join(root, bower_directory)
+            sprockets.append_path File.join(root, bower_directory.relative_path)
 
             # all non fetchable components can be hidden in rubygems and
             # therefor the full path to that components needs to be added
@@ -271,7 +266,7 @@ module Middleman
         end
 
         def create_application_asset_files
-          asset_loader.load_for_asset_aggregators
+          assets_loader.load_for_asset_aggregators
 
           template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss'), force: options[:force]
           template 'source/javascripts/application.js.tt', File.join(middleman_source_directory, 'javascripts', 'application.js'), force: options[:force]
@@ -288,7 +283,11 @@ module Middleman
         end
 
         no_commands do
-          attr_reader :root_directory, :asset_loader, :bower_directory
+          attr_reader :root_directory
+
+          def root_directory
+            @root_directory ||= File.expand_path directory
+          end
 
           def bower_directory
             @bower_directory ||= BowerDirectory.new(

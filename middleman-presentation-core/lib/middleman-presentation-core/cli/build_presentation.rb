@@ -20,21 +20,9 @@ module Middleman
           # before server.inst to prevent having duplicate files
           remove_dir 'build'
         end
-        
-        def set_root_directory_for_components_manager
-          Middleman::Presentation.components_manager.bower_directory = File.join(root_directory, bower_directory)
-        end
 
         def extract_data
-          shared_instance = ::Middleman::Application.server.inst
-
-          data = if shared_instance.data.respond_to? :metadata
-                   shared_instance.data.metadata.dup
-                 else
-                   OpenStruct.new(date: Time.now.strftime('%Y%m%d_%H%M%S'), title: 'presentation')
-                 end
-
-          @title                 = data.title
+          @title                 = Middleman::Presentation.config.title
           @images_directory      = shared_instance.images_dir
           @stylesheets_directory = shared_instance.css_dir
           @javascripts_directory = shared_instance.js_dir
