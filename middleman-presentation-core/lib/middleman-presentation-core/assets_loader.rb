@@ -5,13 +5,13 @@ module Middleman
     class AssetsLoader
       private
 
-      attr_reader :application, :root_directory
+      attr_reader :application, :bower_directory
 
       public
 
-      def initialize(root_directory: Dir.getwd)
+      def initialize(bower_directory:)
         @application    = Middleman::Presentation
-        @root_directory = root_directory
+        @bower_directory = bower_directory
       end
 
       def load_for_bower_update
@@ -69,7 +69,7 @@ module Middleman
       end
 
       def add_assets_from_bower_directory
-        application.components_manager.add AssetComponent.new(path: root_directory, loadable_files: Middleman::Presentation.config.loadable_assets_for_installed_components)
+        application.components_manager.add AssetComponent.new(path: bower_directory.absolute_path, loadable_files: Middleman::Presentation.config.loadable_assets_for_installed_components)
       end
 
       # Load default components

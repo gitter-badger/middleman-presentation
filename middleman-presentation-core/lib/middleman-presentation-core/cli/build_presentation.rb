@@ -16,6 +16,15 @@ module Middleman
           source_paths << File.expand_path('../../../../templates', __FILE__)
         end
 
+        def cleanup
+          # before server.inst to prevent having duplicate files
+          remove_dir 'build'
+        end
+        
+        def set_root_directory_for_components_manager
+          Middleman::Presentation.components_manager.bower_directory = File.join(root_directory, bower_directory)
+        end
+
         def extract_data
           shared_instance = ::Middleman::Application.server.inst
 
@@ -43,8 +52,7 @@ module Middleman
           cmd << 'middleman build'
           cmd << '--verbose' if options[:debug_mode]
 
-          remove_dir 'build'
-          result = run(cmd.join(' '), capture: true)
+          run(cmd.join(' '), capture: false)
           fail Thor::Error, Middleman::Presentation.t('errors.middleman_build_error', result: result) unless $CHILD_STATUS.exitstatus == 0
         end
 

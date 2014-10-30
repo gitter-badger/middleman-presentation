@@ -4,15 +4,9 @@ module Middleman
     module Cli
       # Base group cli class
       class BaseGroup < Thor::Group
-        def self.exit_on_failure?
-          true
-        end
+        include Shared
 
         no_commands do
-          def enable_debug_mode
-            Middleman::Presentation.enable_debug_mode if options[:debug_mode] == true
-          end
-
           def shared_instance
             @middleman_instance ||= proc { ::Middleman::Application.server.inst }.call
 

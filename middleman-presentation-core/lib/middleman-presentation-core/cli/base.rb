@@ -4,9 +4,7 @@ module Middleman
     module Cli
       # Base cli class
       class Base < Thor
-        def self.exit_on_failure?
-          true
-        end
+        include Shared
 
         def self.subcommand_help(_cmd)
           desc 'help [COMMAND]', Middleman::Presentation.t('views.application.help')
@@ -22,16 +20,8 @@ module Middleman
         end
 
         no_commands do
-          def enable_debug_mode
-            Middleman::Presentation.enable_debug_mode if options[:debug_mode] == true
-          end
-
-          def asset_loader
-            @asset_loader ||= Middleman::Presentation::AssetsLoader.new(root_directory: Middleman::Presentation.bower_directory)
-          end
-
-          def load_assets
-            asset_loader.load_at_presentation_runtime
+          def load_runtime_assets
+            assets_loader.load_at_presentation_runtime
           end
         end
       end

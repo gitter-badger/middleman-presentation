@@ -12,7 +12,8 @@ RSpec.describe ComponentsManager do
     it 'passes the bower directory to component' do
       expect(component).to receive(:root_directory=).with('dir')
 
-      manager = ComponentsManager.new(bower_directory: 'dir')
+      manager = ComponentsManager.new
+      manager.bower_directory = 'dir'
       manager.add(component)
       manager.available_components
     end

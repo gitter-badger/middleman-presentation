@@ -5,6 +5,7 @@ module Middleman
       # Run command
       class Runner < Base
         class_option :debug_mode, default: Middleman::Presentation.config.debug_mode, type: :boolean, desc: Middleman::Presentation.t('views.application.options.debug_mode')
+        class_option :bower_directory, default: Middleman::Presentation.config.bower_directory, desc: Middleman::Presentation.t('views.application.options.bower_directory')
 
         map '-v' => :version
         map '--version' => :version

@@ -11,7 +11,6 @@ module Middleman
         class_option :date, required: true, default: Time.now.strftime('%d.%m.%Y'), desc: Middleman::Presentation.t('views.presentations.create.options.date')
         class_option :license, required: true, default: Middleman::Presentation.config.license, desc: Middleman::Presentation.t('views.presentations.create.options.license')
 
-        class_option :bower_directory, default: Middleman::Presentation.config.bower_directory, desc: Middleman::Presentation.t('views.presentations.create.options.bower_directory')
         class_option :author, default: Middleman::Presentation.config.author, desc: Middleman::Presentation.t('views.presentations.create.options.author')
         class_option :description, desc: Middleman::Presentation.t('views.presentations.create.options.description')
         class_option :subtitle, desc: Middleman::Presentation.t('views.presentations.create.options.subtitle')
@@ -52,12 +51,9 @@ module Middleman
           enable_debug_mode
         end
 
-        def define_root_directory
+        def define_directories
           @root_directory = File.expand_path directory
-        end
-
-        def init_asset_loader
-          @asset_loader = Middleman::Presentation::AssetsLoader.new(root_directory: root_directory)
+          @bower_directory = BowerDirectory.new(root_directory: root_directory, directory: options[:bower_directory])
         end
 
         def add_to_source_path
@@ -85,7 +81,6 @@ module Middleman
         end
 
         def set_variables_for_templates
-          @bower_directory = options[:bower_directory]
           @author          = options[:author]
           @speaker         = options[:speaker]
           @title           = options[:title]
@@ -157,7 +152,7 @@ module Middleman
         end
 
         def set_root_directory_for_components_manager
-          Middleman::Presentation.components_manager.bower_directory = File.join(root_directory, bower_directory)
+          Middleman::Presentation.components_manager.bower_directory = bower_directory.absolute_path
         end
 
         def create_bower_configuration_files
@@ -201,7 +196,7 @@ module Middleman
           # with an underscore
           ignore 'slides/*'
 
-          bower_directory = '#{bower_directory}'
+          bower_directory = '#{bower_directory.relative_path}'
 
           if respond_to?(:sprockets) && sprockets.respond_to?(:import_asset)
 
@@ -294,6 +289,13 @@ module Middleman
 
         no_commands do
           attr_reader :root_directory, :asset_loader, :bower_directory
+
+          def bower_directory
+            @bower_directory ||= BowerDirectory.new(
+              root: FeduxOrgStdlib::RecursiveFileFinder.new(file_name: 'config.rb', raise_error: false).directory,
+              directory: options[:bower_directory],
+            )
+          end
 
           def data_directory
             File.join root_directory, 'data'

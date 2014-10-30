@@ -18,10 +18,12 @@ module Middleman
       #
       # @param [String] path
       #   The directory where all assets files can be found which belong to this component
-      def initialize(path:, **args)
+      def initialize(path:, base_path: path, name: path, **args)
         super(**args)
 
-        @path = @name = @base_path = path
+        @path = path
+        @name = name
+        @base_path = base_path
       end
 
       def root_directory; end

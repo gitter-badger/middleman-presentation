@@ -13,7 +13,7 @@ module Middleman
         }
 
         loadable_files = [
-          %r{plugin/notes/notes\.html$},
+          %r{notes\.html$},
           /pdf\.css$/,
           %r{reveal\.js/.*/.*\.js$}
         ]
