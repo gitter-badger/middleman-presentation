@@ -122,12 +122,13 @@ module Middleman
 
       def _allowed_config_file_paths
         [
+          ::File.expand_path(::File.join(FeduxOrgStdlib::RecursiveFileFinder.new(file_name: 'config.rb', raise_error: nil).directory.to_s, format('.%s%s', _application_name, _config_file_suffix))),
+          ::File.expand_path(::File.join(FeduxOrgStdlib::RecursiveFileFinder.new(file_name: 'config.rb', raise_error: nil).directory.to_s, format('%s%s', _application_name, _config_file_suffix))),
           ::File.expand_path(::File.join('~', '.config', _application_name, _config_file)),
           ::File.expand_path(::File.join('~', format('.%s', _application_name), _config_file)),
           ::File.expand_path(::File.join('~', format('.%s%s', _application_name, _config_file_suffix))),
           ::File.expand_path(::File.join('~', format('.%src', _application_name))),
-          ::File.expand_path(::File.join('/etc', _application_name, _config_file)),
-          ::File.expand_path(::File.join(working_directory, format('%s%s', _application_name, _config_file_suffix)))
+          ::File.expand_path(::File.join('/etc', _application_name, _config_file))
         ]
       end
     end
