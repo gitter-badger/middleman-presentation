@@ -15,7 +15,7 @@ module Middleman
         # Create bower directory
         def bower_directory
           @bower_directory ||= BowerDirectory.new(
-            root_directory: FeduxOrgStdlib::RecursiveFileFinder.new(file_name: 'config.rb').directory,
+            root_directory: ConfigurationFile.new.directory,
             directory: options[:bower_directory],
           )
         end
@@ -25,18 +25,6 @@ module Middleman
           return @assets_loader if @assets_loader
 
           @assets_loader = Middleman::Presentation::AssetsLoader.new(bower_directory: bower_directory)
-        end
-
-        def shared_instance
-          @middleman_instance ||= proc { ::Middleman::Application.server.inst }.call
-
-          fail Thor::Error, Middleman::Presentation.t('errors.extension_not_activated') unless @middleman_instance.extensions.key? :presentation
-
-          @middleman_instance
-        end
-
-        def presentation_inst
-          @middleman_presentation_instance ||= shared_instance.extensions[:presentation]
         end
 
         def open_in_editor(paths)

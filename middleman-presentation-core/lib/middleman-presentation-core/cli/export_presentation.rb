@@ -15,12 +15,15 @@ module Middleman
           enable_debug_mode
         end
 
-        def extract_data
-          shared_instance = ::Middleman::Application.server.inst
+        def make_middleman_environment_available
+          @environment        = MiddlemanEnvironment.new
+          @configuration_file = ConfigurationFile.new
+        end
 
+        def extract_data
           @title = Middleman::Presentation.config.title
           @date  = Middleman::Presentation.config.date.to_s
-          @source_directory = File.join(shared_instance.root, shared_instance.build_dir)
+          @source_directory = File.join(@configuration_file.directory, @environment.build_directory)
           @output_file = File.expand_path(
             options.fetch('output_file', ActiveSupport::Inflector.transliterate( @date.to_s + '-' + @title).parameterize + '.zip')
           )
@@ -28,10 +31,10 @@ module Middleman
           fail Middleman::Presentation.t('errors.zip_filename_error', name: File.basename(@output_file)) unless @output_file.end_with? '.zip'
 
           @prefix                = options.fetch('prefix', ActiveSupport::Inflector.transliterate(@date.to_s + '-' + @title.to_s).parameterize + '/')
-          @images_directory      = shared_instance.config.images_dir
-          @stylesheets_directory = shared_instance.config.css_dir
-          @javascripts_directory = shared_instance.config.js_dir
-          @fonts_directory       = shared_instance.config.fonts_dir
+          @images_directory      = @environment.images_directory
+          @stylesheets_directory = @environment.stylesheets_directory
+          @javascripts_directory = @environment.scripts_directory
+          @fonts_directory       = @environment.fonts_directory
         end
 
         def build_presentation

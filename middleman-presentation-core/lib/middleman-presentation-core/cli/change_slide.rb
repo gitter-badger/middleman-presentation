@@ -11,15 +11,19 @@ module Middleman
         class_option :type, desc: Middleman::Presentation.t('views.slides.change.options.type')
 
         argument :names, required: false, default: [], type: :array, desc: Middleman::Presentation.t('views.slides.change.arguments.names')
+        def make_middleman_environment_available
+          @environment = MiddlemanEnvironment.new
+        end
+
         def change_slide
           enable_debug_mode
 
           fail ArgumentError, Middleman::Presentation.t('errors.too_many_arguments', count: 1) if names.count > 1 && options.key?('base_name')
 
           existing_slides = SlideList.new(
-            Dir.glob(File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, '**', '*')),
+            Dir.glob(File.join(@environment.slides_directory, '**', '*')),
             slide_builder: ExistingSlide,
-            base_path: shared_instance.source_dir
+            base_path: @environment.sources_directory
           ) do |l|
             l.transform_with Transformers::FileKeeper.new
           end
@@ -45,8 +49,8 @@ module Middleman
             )
 
             new_slide = NewSlide.new(
-              File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, new_slide_file_name.to_s),
-              base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
+              File.join(@environment.slides_directory, new_slide_file_name.to_s),
+              base_path: @environment.slides_directory
             )
 
             OpenStruct.new(

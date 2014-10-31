@@ -10,13 +10,18 @@ module Middleman
         class_option :title, desc: Middleman::Presentation.t('views.slides.create.options.title')
 
         argument :names, type: :array, desc: Middleman::Presentation.t('views.slides.create.arguments.names')
+
+        def make_middleman_environment_available
+          @environment = MiddlemanEnvironment.new
+        end
+
         def create_slide
           enable_debug_mode
 
           existing_slides = Middleman::Presentation::SlideList.new(
-            Dir.glob(File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, '**', '*')),
+            Dir.glob(File.join(@environment.slides_directory, '**', '*')),
             slide_builder: Middleman::Presentation::ExistingSlide,
-            base_path: shared_instance.source_dir
+            base_path: @environment.sources_directory
           ) do |l|
             l.transform_with Middleman::Presentation::Transformers::FileKeeper.new
           end
@@ -24,7 +29,7 @@ module Middleman
           slide_list = Middleman::Presentation::SlideList.new(
             names,
             slide_builder: Middleman::Presentation::NewSlide,
-            base_path: File.join(shared_instance.source_dir, presentation_inst.options.slides_directory)
+            base_path: @environment.slides_directory
           ) do |l|
             l.transform_with Middleman::Presentation::Transformers::RemoveDuplicateSlides.new(additional_slides: existing_slides, raise_error: options[:error_on_duplicates])
             l.transform_with Middleman::Presentation::Transformers::SortSlides.new

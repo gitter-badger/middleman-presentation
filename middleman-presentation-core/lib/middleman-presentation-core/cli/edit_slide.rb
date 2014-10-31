@@ -7,13 +7,18 @@ module Middleman
         class_option :editor_command, default: Middleman::Presentation.config.editor_command, desc: Middleman::Presentation.t('views.application.options.editor_command')
 
         argument :names, default: [], required: false, type: :array, desc: Middleman::Presentation.t('views.slides.edit.arguments.names')
+
+        def make_middleman_environment_available
+          @environment = MiddlemanEnvironment.new
+        end
+
         def edit_slide
           enable_debug_mode
 
           slides = SlideList.new(
-            Dir.glob(File.join(shared_instance.source_dir, presentation_inst.options.slides_directory, '**', '*')),
+            Dir.glob(File.join(@environment.slides_directory, '**', '*')),
             slide_builder: ExistingSlide,
-            base_path: shared_instance.source_dir
+            base_path: @environment.sources_directory
           ) do |l|
             l.transform_with Transformers::FileKeeper.new
           end

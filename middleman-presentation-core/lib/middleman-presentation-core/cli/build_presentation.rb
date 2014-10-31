@@ -23,13 +23,17 @@ module Middleman
           remove_dir 'build'
         end
 
+        def make_middleman_environment_available
+          @environment = MiddlemanEnvironment.new
+        end
+
         def extract_data
           @title                 = options[:title]
-          @images_directory      = shared_instance.images_dir
-          @stylesheets_directory = shared_instance.css_dir
-          @javascripts_directory = shared_instance.js_dir
-          @fonts_directory       = shared_instance.fonts_dir
-          @rackup_config_file    = File.join shared_instance.build_dir, 'config.ru'
+          @images_directory      = @environment.images_directory
+          @stylesheets_directory = @environment.stylesheets_directory
+          @javascripts_directory = @environment.scripts_directory
+          @fonts_directory       = @environment.fonts_directory
+          @rackup_config_file    = File.join @environment.build_directory, 'config.ru'
         end
 
         def build_presentation

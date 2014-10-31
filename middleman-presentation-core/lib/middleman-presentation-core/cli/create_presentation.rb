@@ -291,7 +291,7 @@ module Middleman
 
           def bower_directory
             @bower_directory ||= BowerDirectory.new(
-              root_directory: FeduxOrgStdlib::RecursiveFileFinder.new(file_name: 'config.rb', raise_error: false).directory || Dir.getwd,
+              root_directory: ConfigurationFile.new(raise_error: false).directory || Dir.getwd,
               directory: options[:bower_directory],
             )
           end
