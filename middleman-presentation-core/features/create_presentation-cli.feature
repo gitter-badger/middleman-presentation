@@ -54,7 +54,7 @@ Feature: Initialize presentation
     """
 
   Scenario: Initialize in test directory
-    Given I run `middleman-presentation create presentation test/presentation1 --title "My Presentation"` in debug mode
+    Given I successfully run `middleman-presentation create presentation test/presentation1 --title "My Presentation"`
     When I cd to "test/presentation1"
     Then the file "source/stylesheets/application.scss" should contain:
     """
