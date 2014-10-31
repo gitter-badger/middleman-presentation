@@ -13,7 +13,7 @@ module Middleman
         }
 
         loadable_files = [
-          %r{notes\.html$},
+          %r{plugin/notes/notes\.html$},
           /pdf\.css$/,
           %r{reveal\.js/.*/.*\.js$}
         ]
@@ -22,7 +22,7 @@ module Middleman
           name: :'reveal.js',
           version: 'latest',
           importable_files: %w(js/reveal.min.js lib/js/head.min css/reveal.min.css lib/css/zenburn css/theme/template/mixins.scss css/theme/template/settings.scss),
-          ignorable_files: %w(reveal.js/test/),
+          ignorable_files: %w(reveal\.js/test/),
           output_paths: output_paths,
           loadable_files: loadable_files
         )

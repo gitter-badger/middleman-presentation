@@ -61,15 +61,15 @@
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
-        width: '<%%= data.config.revealjs.width %>',
-        height: '<%%= data.config.revealjs.height %>',
-        controls: <%%= data.config.revealjs.controls %>,
-        progress: <%%= data.config.revealjs.progress %>,
-        history: <%%= data.config.revealjs.history %>,
-        slideNumber: <%%= data.config.revealjs.slide_number %>,
-        center: <%%= data.config.revealjs.center %>,
-        transitionSpeed: '<%%= data.config.revealjs.default_transition_speed %>',
-        transition: Reveal.getQueryHash().transition || '<%%= data.config.revealjs.default_transition_type %>', // default/cube/page/concave/zoom/linear/fade/none
+        width: '<%%= Middleman::Presentation.config.view_port[0] %>',
+        height: '<%%= Middleman::Presentation.config.view_port[1] %>',
+        controls: <%%= Middleman::Presentation.config.activate_controls %>,
+        progress: <%%= Middleman::Presentation.config.activate_progress %>,
+        history: <%%= Middleman::Presentation.config.activate_history %>,
+        slideNumber: <%%= Middleman::Presentation.config.activate_slide_number %>,
+        center: <%%= Middleman::Presentation.config.activate_center %>,
+        transitionSpeed: '<%%= Middleman::Presentation.config.default_transition_speed %>',
+        transition: Reveal.getQueryHash().transition || '<%%= Middleman::Presentation.config.default_transition_type %>', // default/cube/page/concave/zoom/linear/fade/none
         //theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         // Parallax scrolling
         // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',

@@ -146,10 +146,6 @@ module Middleman
           )
         end
 
-        def set_root_directory_for_components_manager
-          Middleman::Presentation.components_manager.bower_directory = bower_directory.absolute_path
-        end
-
         def create_bower_configuration_files
           assets_loader.load_for_bower_update
 
@@ -290,8 +286,12 @@ module Middleman
           end
 
           def bower_directory
-            @bower_directory ||= BowerDirectory.new(
-              root_directory: ConfigurationFile.new(raise_error: false).directory || Dir.getwd,
+            return @bower_directory if @bower_directory
+
+            working_directory = ConfigurationFile.new(raise_error: false).directory || Dir.getwd
+
+            @bower_directory = BowerDirectory.new(
+              root_directory: File.join(working_directory, directory),
               directory: options[:bower_directory],
             )
           end

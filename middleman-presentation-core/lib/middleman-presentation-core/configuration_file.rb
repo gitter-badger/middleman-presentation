@@ -2,7 +2,7 @@
 module Middleman
   module Presentation
     class ConfigurationFile
-      include Forwardable
+      extend Forwardable
 
       def_delegators :@file_finder, :directory, :file
 

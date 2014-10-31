@@ -15,6 +15,8 @@ module Middleman
       end
 
       def load_for_bower_update
+        set_bower_directory
+
         activate_core_plugins
         activate_user_plugins
 
@@ -23,6 +25,8 @@ module Middleman
       end
 
       def load_for_asset_aggregators
+        set_bower_directory
+
         activate_core_plugins
         activate_user_plugins
 
@@ -33,6 +37,8 @@ module Middleman
       end
 
       def load_at_presentation_runtime
+        set_bower_directory
+
         add_assets_from_bower_directory
 
         activate_core_plugins
@@ -45,6 +51,10 @@ module Middleman
       end
 
       private
+
+      def set_bower_directory
+        application.components_manager.bower_directory = bower_directory.absolute_path if bower_directory
+      end
 
       def activate_core_plugins
         application.plugins_manager.activate_plugin('middleman-presentation-helpers')

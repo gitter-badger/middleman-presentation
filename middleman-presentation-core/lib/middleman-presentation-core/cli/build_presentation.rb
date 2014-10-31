@@ -47,7 +47,7 @@ module Middleman
           cmd << '--verbose' if options[:debug_mode]
 
           run(cmd.join(' '), capture: false)
-          fail Thor::Error, Middleman::Presentation.t('errors.middleman_build_error', result: result) unless $CHILD_STATUS.exitstatus == 0
+          fail Thor::Error, Middleman::Presentation.t('errors.middleman_build_error', result: '') unless $CHILD_STATUS.exitstatus == 0
         end
 
         def add_rackup_file
