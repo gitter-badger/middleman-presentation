@@ -7,12 +7,21 @@ Feature: Build presentation
   Background:
     Given I create a new presentation with title "My Presentation"
 
+    @wip
   Scenario: Default file name
     When I successfully run `middleman-presentation build presentation`
-    Then a file named "build/config.ru" should exist
-    Then a file named "build/stylesheets/application.css" should exist
-    Then a file named "build/javascripts/application.js" should exist
-    Then a directory named "build/javascripts/reveal.js" should exist
+    And I cd to "build"
+    Then a file named "config.ru" should exist
+    Then a file named "stylesheets/application.css" should exist
+    Then a file named "javascripts/application.js" should exist
+    Then a file named "index.html" should exist
+    Then a file named "stylesheets/application.css" should exist
+    Then a file named "javascripts/application.js" should exist
+    Then a file named "stylesheets/reveal.js/css/print/pdf.css" should exist
+    Then a file named "javascripts/reveal.js/plugin/highlight/highlight.js" should exist
+    Then a file named "javascripts/reveal.js/plugin/zoom-js/zoom.js" should exist
+    Then a file named "javascripts/reveal.js/plugin/notes/notes.js" should exist
+    Then a file named "stylesheets/reveal.js/css/print/pdf.css" should exist
 
     @wip @announce
   Scenario: Change loadable default assets
@@ -22,7 +31,7 @@ Feature: Build presentation
       - !ruby/regex /\.png$/,
       - !ruby/regex /\.woff$/,
     """
-    #When I successfully run `middleman-presentation build presentation`
     When I run `middleman-presentation build presentation` in debug mode
     Then a file named "build/images/middleman-presentation-theme-default/images/logo-questions.png" should exist
     And a file named "build/images/middleman-presentation-theme-default/images/logo-questions.svg" should not exist
+
