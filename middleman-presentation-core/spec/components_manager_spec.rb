@@ -121,6 +121,7 @@ RSpec.describe ComponentsManager do
       manager = ComponentsManager.new
       manager.add(component)
 
+      # rubocop:disable Style/TrailingWhitespace
       expect(manager.to_s).to eq <<-EOS.strip_heredoc.chomp
         ************************ 1. row ************************
                     Name: test.d/test1
@@ -128,12 +129,13 @@ RSpec.describe ComponentsManager do
                Base path: test.d
         Resource locator: http://www.example.com
                  Version: 0.0.1
-        Importable files:
-          Loadable files:
-         Ignorable files:
-            Output paths:
+        Importable files: 
+          Loadable files: 
+         Ignorable files: 
+            Output paths: 
         1 row in set
       EOS
+      # rubocop:enable Style/TrailingWhitespace
     end
   end
 
