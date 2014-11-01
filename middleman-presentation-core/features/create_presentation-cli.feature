@@ -115,7 +115,7 @@ Feature: Initialize presentation
     And I cd to "presentation1"
     And the file ".middleman-presentation.yaml" should contain:
     """
-    project_id: 'uoa
+    project_id: uoa
     """
 
   Scenario: Use language from configuration file

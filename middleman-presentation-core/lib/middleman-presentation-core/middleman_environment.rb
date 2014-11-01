@@ -28,7 +28,7 @@ module Middleman
       end
 
       def slides_directory
-        presentation_instance.options.slides_directory
+        File.join(sources_directory, Middleman::Presentation.config.slides_directory)
       end
 
       private

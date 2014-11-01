@@ -158,7 +158,7 @@ module Middleman
         end
 
         def create_slides_ignore_file
-          create_file File.join(root_directory, '.slidesignore'), "# empty\n", force: options[:force]
+          create_file File.join(root_directory, Middleman::Presentation.config.slides_ignore_file), "# empty\n", force: options[:force]
         end
 
         def add_configuration_for_middleman_presentation
