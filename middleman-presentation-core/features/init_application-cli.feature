@@ -83,7 +83,6 @@ Feature: Initialize middleman-presentation
     # theme: {:name=>"middleman-presentation-theme-default", :github=>"maxmeyer/middleman-presentation-theme-default", :importable_files=>[/stylesheets\/middleman-presentation-theme-default.scss$/], :loadable_files=>[/.*\.png$/]}
     """
 
-  #@wip
   Scenario: Local for presentation
     Given I set the environment variables to:
     | variable | value  |

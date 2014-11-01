@@ -80,12 +80,12 @@ Feature: Initialize presentation
   Scenario: Existing configuration file
     Given a user config file for middleman-presentation with:
     """
-    author: 'TestUser'
-    company: 'MyCompany'
-    email_address: 'test_user@example.com'
-    homepage: 'http://example.com'
-    presentation_language: 'en'
-    speaker: 'TestUser'
+    author: TestUser
+    company: MyCompany
+    email_address: test_user@example.com
+    homepage: http://example.com
+    presentation_language: en
+    speaker: TestUser
     """
     When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
     When I cd to "presentation1"
@@ -103,7 +103,7 @@ Feature: Initialize presentation
     """
     Then the file ".middleman-presentation.yaml" should contain:
     """
-    homepage: 'http://example.com'
+    homepage: http://example.com
     """
     Then the file ".middleman-presentation.yaml" should contain:
     """
