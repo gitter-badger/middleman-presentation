@@ -3,34 +3,88 @@ module Middleman
   module Presentation
     # Abstraction for middleman environment
     class MiddlemanEnvironment
+      private
+
+      attr_reader :strict
+
+      public
+
+      def initialize(strict: true)
+        @strict = strict
+      end
+
+      def root_path
+        @root_path ||= ConfigurationFile.new.directory
+      rescue Errno::ENOENT
+        raise Errno::ENOENT, Middleman::Presentation.t('errors.extension_not_activated') if strict
+
+        @root_path = Dir.getwd
+      end
+
       def build_directory
-        server_instance.build_dir
+        File.basename build_path
+      end
+
+      def build_path
+        File.join(root_path, application_config.build_directory)
       end
 
       def stylesheets_directory
-        server_instance.css_dir
+        File.basename stylesheets_path
+      end
+
+      def stylesheets_path
+        File.join(root_path, application_config.stylesheets_directory)
       end
 
       def scripts_directory
-        server_instance.js_dir
+        File.basename scripts_path
+      end
+
+      def scripts_path
+        File.join(root_path, application_config.scripts_directory)
       end
 
       def images_directory
-        server_instance.images_dir
+        File.basename images_path
+      end
+
+      def images_path
+        File.join(root_path, application_config.images_directory)
       end
 
       def fonts_directory
-        server_instance.fonts_dir
+        File.basename fonts_path
+      end
+
+      def fonts_path
+        File.join(root_path, application_config.fonts_directory)
       end
 
       def sources_directory
-        server_instance.source_dir
-        #File.join(configuration_file.directory, 'source')
+        File.basename sources_path
+      end
+
+      def sources_path
+        File.join(root_path, application_config.sources_directory)
       end
 
       def slides_directory
-        File.join(sources_directory, application_config.slides_directory)
+        File.join(application_config.source_directory, application_config.slides_directory)
       end
+
+      def slides_path
+        File.join(root_path, application_config.source_directory, application_config.slides_directory)
+      end
+
+      #def bower_directory
+      #  File.basename bower_path
+
+      #end
+
+      #def bower_path
+      #  File.join(root_path, application_config.bower_directory)
+      #end
 
       private
 

@@ -110,6 +110,12 @@ module Middleman
         /\.ttf$/
       ]
 
+      option :images_directory, 'images'
+      option :scripts_directory, 'javascripts'
+      option :stylesheets_directory, 'stylesheets'
+      option :fonts_directory, 'fonts'
+      option :build_directory, 'build'
+
       private
 
       def _application_name

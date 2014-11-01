@@ -16,7 +16,7 @@ module Middleman
         # Create bower directory
         def bower_directory
           @bower_directory ||= BowerDirectory.new(
-            root_directory: ConfigurationFile.new.directory,
+            root_directory: MiddlemanEnvironment.new.root_path,
             directory: options[:bower_directory]
           )
         end

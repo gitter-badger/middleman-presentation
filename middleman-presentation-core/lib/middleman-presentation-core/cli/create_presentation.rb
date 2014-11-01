@@ -177,6 +177,10 @@ module Middleman
           end
 
           append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
+          set :js_dir, Middleman::Presentation.config.scripts_directory
+          set :images_dir, Middleman::Presentation.config.images_directory
+          set :build_dir, Middleman::Presentation.config.scripts_directory
+          set :css_dir, Middleman::Presentation.config.stylesheets_directory
 
           bower_directory = Middleman::Presentation::BowerDirectory.new(root_directory: root, directory: Middleman::Presentation.config.bower_directory)
           Middleman::Presentation::AssetsLoader.new(bower_directory: bower_directory).load_at_presentation_runtime
@@ -286,7 +290,7 @@ module Middleman
           def bower_directory
             return @bower_directory if @bower_directory
 
-            working_directory = ConfigurationFile.new(raise_error: false).directory || Dir.getwd
+            working_directory = MiddlemanEnvironment.new(strict: false).root_path
 
             @bower_directory = BowerDirectory.new(
               root_directory: File.join(working_directory, directory),

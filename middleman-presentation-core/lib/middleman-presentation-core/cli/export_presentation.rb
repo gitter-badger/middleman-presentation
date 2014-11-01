@@ -17,13 +17,12 @@ module Middleman
 
         def make_middleman_environment_available
           @environment        = MiddlemanEnvironment.new
-          @configuration_file = ConfigurationFile.new
         end
 
         def extract_data
           @title = Middleman::Presentation.config.title
           @date  = Middleman::Presentation.config.date.to_s
-          @source_directory = File.join(@configuration_file.directory, @environment.build_directory)
+          @source_directory = @environment.build_path
           @output_file = File.expand_path(
             options.fetch('output_file', ActiveSupport::Inflector.transliterate(@date.to_s + '-' + @title).parameterize + '.zip')
           )
