@@ -7,8 +7,7 @@ Feature: Build presentation
   Background:
     Given I create a new presentation with title "My Presentation"
 
-    @wip
-  Scenario: Default file name
+  Scenario: Build it
     When I successfully run `middleman-presentation build presentation`
     And I cd to "build"
     Then a file named "config.ru" should exist
@@ -23,15 +22,19 @@ Feature: Build presentation
     Then a file named "javascripts/reveal.js/plugin/notes/notes.js" should exist
     Then a file named "stylesheets/reveal.js/css/print/pdf.css" should exist
 
-    @wip @announce
+    @wip
   Scenario: Change loadable default assets
     Given a user config file for middleman-presentation with:
     """
     loadable_assets_for_installed_components: 
-      - !ruby/regex /\.png$/,
-      - !ruby/regex /\.woff$/,
+      - !ruby/regex \.png$
+      - !ruby/regex \.woff$
     """
-    When I run `middleman-presentation build presentation` in debug mode
-    Then a file named "build/images/middleman-presentation-theme-default/images/logo-questions.png" should exist
-    And a file named "build/images/middleman-presentation-theme-default/images/logo-questions.svg" should not exist
+    When I successfully run `middleman-presentation build presentation`
+    And I cd to "build"
+    Then a file named "images/middleman-presentation-theme-default/images/logo-questions.png" should exist
+    And a file named "images/middleman-presentation-theme-default/images/logo-questions.svg" should not exist
+    Then a file named "fonts/fontawesome/fonts/fontawesome-webfont.woff" should exist
+    Then a file named "fonts/fontawesome/fonts/fontawesome-webfont.eot" should not exist
+    Then a file named "fonts/fontawesome/fonts/fontawesome-webfont.ttf" should not exist
 

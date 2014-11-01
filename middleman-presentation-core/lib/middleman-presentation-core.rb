@@ -1,12 +1,14 @@
 # encoding: utf-8
+require 'middleman-core'
+require 'middleman-core/cli'
+require 'middleman-sprockets'
+
 require 'set'
 require 'bundler'
 require 'English'
 # require 'ptools'
 require 'pathname'
 require 'fileutils'
-require 'middleman-core'
-require 'middleman-core/cli'
 require 'uri'
 require 'addressable/uri'
 require 'securerandom'
