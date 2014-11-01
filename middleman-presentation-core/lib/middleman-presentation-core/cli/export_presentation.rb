@@ -25,7 +25,7 @@ module Middleman
           @date  = Middleman::Presentation.config.date.to_s
           @source_directory = File.join(@configuration_file.directory, @environment.build_directory)
           @output_file = File.expand_path(
-            options.fetch('output_file', ActiveSupport::Inflector.transliterate( @date.to_s + '-' + @title).parameterize + '.zip')
+            options.fetch('output_file', ActiveSupport::Inflector.transliterate(@date.to_s + '-' + @title).parameterize + '.zip')
           )
 
           fail Middleman::Presentation.t('errors.zip_filename_error', name: File.basename(@output_file)) unless @output_file.end_with? '.zip'

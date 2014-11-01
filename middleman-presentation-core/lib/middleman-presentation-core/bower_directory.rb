@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Make it easier to build path to bower directory
     class BowerDirectory
       private
 

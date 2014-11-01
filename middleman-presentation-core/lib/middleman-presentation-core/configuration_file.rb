@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Find the config.rb of middleman
     class ConfigurationFile
       extend Forwardable
 

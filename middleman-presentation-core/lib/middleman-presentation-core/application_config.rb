@@ -8,7 +8,7 @@ module Middleman
       option :project_id, nil
       option :version, nil
 
-      option :date , Time.now.strftime('%Y-%m-%d %H:%M:%S')
+      option :date, Time.now.strftime('%Y-%m-%d %H:%M:%S')
       option :speaker, process_environment.fetch('USER')
       option :license, 'CC BY 4.0'
       option :bower_directory, 'vendor/assets/components'

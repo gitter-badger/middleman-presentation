@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Cli
+      # Bundle shared methods for all cli classes
       module Shared
         def self.included(base)
           base.extend ClassMethods
@@ -16,7 +17,7 @@ module Middleman
         def bower_directory
           @bower_directory ||= BowerDirectory.new(
             root_directory: ConfigurationFile.new.directory,
-            directory: options[:bower_directory],
+            directory: options[:bower_directory]
           )
         end
 
@@ -41,6 +42,7 @@ module Middleman
           system(editor.join(' '))
         end
 
+        # The class methods
         module ClassMethods
           def self.exit_on_failure?
             true

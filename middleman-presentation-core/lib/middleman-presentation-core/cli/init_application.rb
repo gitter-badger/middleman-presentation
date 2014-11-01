@@ -30,7 +30,7 @@ module Middleman
                    options[:configuration_file]
                  end
 
-          FileUtils.cp file , "#{file}.bkp" if File.exist?(file) && options[:force]
+          FileUtils.cp file, "#{file}.bkp" if File.exist?(file) && options[:force]
 
           if options[:local]
             create_file(
@@ -39,7 +39,7 @@ module Middleman
               force: options[:force]
             )
           else
-            template 'config.yaml.tt', @configuration_file , force: options[:force]
+            template 'config.yaml.tt', @configuration_file, force: options[:force]
           end
         end
       end

@@ -128,10 +128,10 @@ RSpec.describe ComponentsManager do
                Base path: test.d
         Resource locator: http://www.example.com
                  Version: 0.0.1
-        Importable files: 
-          Loadable files: 
-         Ignorable files: 
-            Output paths: 
+        Importable files:
+          Loadable files:
+         Ignorable files:
+            Output paths:
         1 row in set
       EOS
     end

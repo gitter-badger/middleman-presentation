@@ -290,7 +290,7 @@ module Middleman
 
             @bower_directory = BowerDirectory.new(
               root_directory: File.join(working_directory, directory),
-              directory: options[:bower_directory],
+              directory: options[:bower_directory]
             )
           end
 

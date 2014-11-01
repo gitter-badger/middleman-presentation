@@ -1,8 +1,8 @@
 # encoding: utf-8
 module Middleman
   module Presentation
+    # Abstraction for middleman environment
     class MiddlemanEnvironment
-
       def build_directory
         server_instance.build_dir
       end
