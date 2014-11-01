@@ -163,7 +163,7 @@ module Middleman
 
         def add_configuration_for_middleman_presentation
           append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
-          activate :sprockets
+          activate :sprockets unless respond_to? :sprockets
           activate :presentation
           EOS
 
@@ -294,16 +294,12 @@ module Middleman
             )
           end
 
-          def data_directory
-            File.join root_directory, 'data'
-          end
-
           def middleman_source_directory
-            File.join root_directory, 'source'
+            File.join(root_directory, 'source')
           end
 
           def slides_directory
-            File.join middleman_source_directory, Middleman::Presentation.config.slides_directory
+            File.join(root_directory, 'source', Middleman::Presentation.config.slides_directory)
           end
         end
       end

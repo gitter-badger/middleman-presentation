@@ -25,13 +25,22 @@ module Middleman
 
       def sources_directory
         server_instance.source_dir
+        #File.join(configuration_file.directory, 'source')
       end
 
       def slides_directory
-        File.join(sources_directory, Middleman::Presentation.config.slides_directory)
+        File.join(sources_directory, application_config.slides_directory)
       end
 
       private
+
+      def configuration_file
+        @configuration_file ||= ConfigurationFile.new
+      end
+
+      def application_config
+        Middleman::Presentation.config
+      end
 
       def server_instance
         @server_instance ||= proc { ::Middleman::Application.server.inst }.call

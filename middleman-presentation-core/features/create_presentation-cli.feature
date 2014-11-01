@@ -322,11 +322,9 @@ Feature: Initialize presentation
   Scenario: Change presentation size
     Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation" --view-port 1024 768`
     When I cd to "presentation1"
-    Then the file "data/config.yml" should contain:
+    Then the file ".middleman-presentation.yaml" should contain:
     """
-    width: 1024
-    """
-    Then the file "data/config.yml" should contain:
-    """
-    height: 768
+    view_port: 
+      - 1024
+      - 768
     """
