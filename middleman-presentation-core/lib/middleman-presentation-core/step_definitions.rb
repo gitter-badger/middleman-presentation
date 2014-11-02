@@ -220,4 +220,3 @@ When(/^I open "([^\"]*)"$/) do |url|
     step "I go to \"#{url}\""
   end
 end
-
