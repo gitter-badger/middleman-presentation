@@ -154,19 +154,12 @@ Feature: Rename slide
     When I successfully run `middleman-presentation change slide 01`
     Then a slide named "01.html.md" should exist
 
-  Scenario: Missing slide name
-    When I run `middleman-presentation change slide --type md`
-    Then the output should contain:
-    """
-    No value provided for required arguments 'names'
-    """
-
   Scenario: Non existing slide
     Given a slide named "01.html.erb" does not exist
     When I run `middleman-presentation change slide 01 --type md`
     Then the output should contain:
     """
-    I cannot find a slide which has base name "01"
+    I cannot find a slide which matches "01"
     """
 
   Scenario: Edit after change
