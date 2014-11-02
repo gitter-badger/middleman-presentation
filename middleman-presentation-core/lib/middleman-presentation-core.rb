@@ -122,3 +122,5 @@ require 'middleman-presentation-core/test_helpers'
 
 require 'middleman-presentation-core/middleman_extension'
 require 'middleman-presentation-core/register_extension'
+
+require 'middleman-presentation-core/start'
