@@ -110,6 +110,7 @@ module Middleman
         /\.ttf$/
       ]
 
+      option :sources_directory, 'source'
       option :images_directory, 'images'
       option :scripts_directory, 'javascripts'
       option :stylesheets_directory, 'stylesheets'

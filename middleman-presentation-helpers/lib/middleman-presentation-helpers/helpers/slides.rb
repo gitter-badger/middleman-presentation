@@ -8,15 +8,13 @@ module Middleman
         # Yield slides
         def yield_slides
           environment = Middleman::Presentation::MiddlemanEnvironment.new
-          configuration_file = Middleman::Presentation::ConfigurationFile.new
-          root_directory = configuration_file.directory
 
-          list = SlideList.new(Dir.glob(File.join(environment.slides_directory, '**', '*')), slide_builder: ExistingSlide, base_path: environment.sources_directory) do |l|
+          list = SlideList.new(Dir.glob(File.join(environment.slides_path, '**', '*')), slide_builder: ExistingSlide, base_path: environment.sources_path) do |l|
             l.transform_with Transformers::FileKeeper.new
             l.transform_with Transformers::RemoveDuplicateSlides.new raise_error: true
-            l.transform_with Transformers::IgnoreSlides.new ignore_file: File.join(root_directory, Middleman::Presentation.config.slides_ignore_file)
+            l.transform_with Transformers::IgnoreSlides.new ignore_file: File.join(environment.root_path, Middleman::Presentation.config.slides_ignore_file)
             l.transform_with Transformers::SortSlides.new
-            l.transform_with Transformers::GroupSlides.new template: Erubis::Eruby.new(GroupTemplate.new(working_directory: root_directory).content)
+            l.transform_with Transformers::GroupSlides.new template: Erubis::Eruby.new(GroupTemplate.new(working_directory: environment.root_path).content)
           end
 
           list.all.map do |element|

@@ -70,11 +70,11 @@ module Middleman
       end
 
       def slides_directory
-        File.join(application_config.source_directory, application_config.slides_directory)
+        File.join(application_config.sources_directory, application_config.slides_directory)
       end
 
       def slides_path
-        File.join(root_path, application_config.source_directory, application_config.slides_directory)
+        File.join(root_path, application_config.sources_directory, application_config.slides_directory)
       end
 
       #def bower_directory

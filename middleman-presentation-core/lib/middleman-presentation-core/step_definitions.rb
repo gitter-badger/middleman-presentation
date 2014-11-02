@@ -214,3 +214,10 @@ When(/^I run `([^`]+)` in debug mode$/) do |cmd|
     system(cmd)
   end
 end
+
+When(/^I open "([^\"]*)"$/) do |url|
+  in_current_dir do
+    step "I go to \"#{url}\""
+  end
+end
+
