@@ -9,5 +9,5 @@ Feature: Show available components
     When I successfully run `middleman-presentation list components`
     Then the output should contain:
     """
-    | Name  
+    Name:
     """

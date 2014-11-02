@@ -53,6 +53,16 @@ module Middleman
           css_classes.each { |klass| puts format '  %20s: %s', klass.name, klass.files.to_list }
           puts
         end
+
+        no_commands do
+          # Overwrite bower directory
+          def bower_directory
+            @bower_directory ||= BowerDirectory.new(
+              root_directory: MiddlemanEnvironment.new(strict: false).root_path,
+              directory: options[:bower_directory]
+            )
+          end
+        end
       end
     end
   end
