@@ -33,10 +33,14 @@ Feature: Edit slide
     <h1>Hello World</h1>
     </section>
     """
-    When I successfully run `middleman-presentation edit slide 0. --editor-command echo`
+    When I successfully run `middleman-presentation edit slide '0\d\d' --editor-command echo`
     Then the output should not contain:
     """
     01.html.erb
+    """
+    And the output should contain:
+    """
+    002.html.erb
     """
 
   Scenario: Matching substring

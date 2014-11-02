@@ -117,6 +117,10 @@ module Middleman
       option :fonts_directory, 'fonts'
       option :build_directory, 'build'
 
+      def preferred_configuration_file
+        ::File.expand_path(::File.join('~', '.config', _application_name, _config_file))
+      end
+
       private
 
       def _application_name

@@ -21,6 +21,7 @@ module Middleman
         def set_variables_for_templates
           @version            = Middleman::Presentation::VERSION
           @config             = Middleman::Presentation.config
+          @configuration_file = options[:configuration_file]
         end
 
         def write_new_configuration
@@ -32,6 +33,9 @@ module Middleman
 
           FileUtils.cp file, "#{file}.bkp" if File.exist?(file) && options[:force]
 
+          require 'pry'
+          binding.pry
+
           if options[:local]
             create_file(
               file,
@@ -40,6 +44,16 @@ module Middleman
             )
           else
             template 'config.yaml.tt', @configuration_file, force: options[:force]
+          end
+        end
+
+        no_commands do
+          # Overwrite bower directory
+          def bower_directory
+            @bower_directory ||= BowerDirectory.new(
+              root_directory: MiddlemanEnvironment.new(strict: false).root_path,
+              directory: options[:bower_directory]
+            )
           end
         end
       end
