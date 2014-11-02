@@ -150,6 +150,9 @@ de:
     configs:
       show:
         title: 'Anzeige der Konfiguration.'
+        used_config_files: 
+          zero: 'Es wurden keine Konfigurationsdateien für "middleman-presentation" auf Ihrem System gefunden. Es werden daher die Standardwerte angezeigt.'
+          other: 'Verwendete Konfigurationsdateien: %{files}'
         options:
           defaults: 'Anzeige der Konfiguration mit Standard-Werten.'
     helpers:

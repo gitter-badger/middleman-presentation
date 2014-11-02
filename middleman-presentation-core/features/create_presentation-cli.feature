@@ -325,6 +325,6 @@ Feature: Initialize presentation
     Then the file ".middleman-presentation.yaml" should contain:
     """
     view_port: 
-      - 1024
-      - 768
+    - 1024
+    - 768
     """

@@ -150,6 +150,9 @@ en:
     configs:
       show:
         title: 'Show configuration'
+        used_config_files: 
+          zero: 'No configuration files for "middleman-presentation" found on your system. The values shown below are the default values.'
+          other: 'Used configuration files: %{files}'
         options:
           defaults: 'Show default configuration'
     helpers:

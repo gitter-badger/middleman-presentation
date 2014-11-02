@@ -48,12 +48,24 @@ module Middleman
         def config
           enable_debug_mode
 
-          puts format("Used config file: %s\n", Middleman::Presentation.config.file)
+          files = Middleman::Presentation.config.files
+          puts Middleman::Presentation.t('views.configs.show.used_config_files', files: files.to_list, count: files.size)
+          puts
 
           if options[:defaults]
             puts Middleman::Presentation.config.defaults.to_s
           else
             puts Middleman::Presentation.config.to_s
+          end
+        end
+
+        no_commands do
+          # Overwrite bower directory
+          def bower_directory
+            @bower_directory ||= BowerDirectory.new(
+              root_directory: MiddlemanEnvironment.new(strict: false).root_path,
+              directory: options[:bower_directory]
+            )
           end
         end
       end
