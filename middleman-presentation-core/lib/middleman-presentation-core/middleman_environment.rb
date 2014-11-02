@@ -77,14 +77,13 @@ module Middleman
         File.join(root_path, application_config.sources_directory, application_config.slides_directory)
       end
 
-      #def bower_directory
-      #  File.basename bower_path
+      def bower_directory
+        File.basename bower_path
+      end
 
-      #end
-
-      #def bower_path
-      #  File.join(root_path, application_config.bower_directory)
-      #end
+      def bower_path
+        File.join(root_path, application_config.bower_directory)
+      end
 
       private
 

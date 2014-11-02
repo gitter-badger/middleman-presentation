@@ -7,7 +7,7 @@ SimpleCov.start
 
 # middleman
 require 'middleman-core'
-#require 'middleman-core/step_definitions'
+# require 'middleman-core/step_definitions'
 require 'middleman-core/step_definitions/builder_steps'
 require 'middleman-core/step_definitions/middleman_steps'
 require 'middleman-presentation-core/middleman_step_definitions'

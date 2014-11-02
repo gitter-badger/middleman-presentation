@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'tmp/**/*'
+    - lib/middleman-presentation-core/middleman_step_definitions.rb
 
 # Configuration parameters: AllowURI.
 Metrics/LineLength:
