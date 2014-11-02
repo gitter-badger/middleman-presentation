@@ -32,6 +32,7 @@ end
 
 Given /^the Server is running$/ do
   root_dir = File.expand_path(current_dir)
+  in_current_dir do
 
   if File.exists?(File.join(root_dir, 'source'))
     ENV['MM_SOURCE'] = 'source'
@@ -47,14 +48,17 @@ Given /^the Server is running$/ do
     set :show_exceptions, false
   }
 
-  @server_inst = Middleman::Application.server.inst do
-    initialize_commands.each do |p|
-      instance_exec(&p)
+  in_current_dir do
+    @server_inst = Middleman::Application.server.inst do
+      initialize_commands.each do |p|
+        instance_exec(&p)
+      end
     end
   end
 
   app_rack = @server_inst.class.to_rack_app
   @browser = ::Rack::Test::Session.new(::Rack::MockSession.new(app_rack))
+  end
 end
 
 Given /^the Server is running at "([^\"]*)"$/ do |app_path|
