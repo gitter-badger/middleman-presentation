@@ -17,12 +17,13 @@ module Middleman
         end
 
         def set_variables
-          @destination = File.join(options[:directory], File.basename(file))
-          @source      = File.expand_path('../../../../templates', __FILE__)
+          @source = File.expand_path('../../../../templates', __FILE__)
         end
 
         def copy_templates
-          PredefinedSlideTemplateDirectory.new(working_directory: @source).template_files.each { |file| copy_file file, @destination }
+          PredefinedSlideTemplateDirectory.new(working_directory: @source).template_files.each do |file|
+            copy_file file, File.join(options[:directory], File.basename(file))
+          end
         end
       end
     end
