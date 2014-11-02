@@ -44,8 +44,17 @@ Feature: Initialize middleman-presentation
     Given I set the environment variables to:
     | variable | value  |
     | USER     | my_user|
+    And I create a new presentation with title "My Presentation"
     When I successfully run `middleman-presentation init application --local`
     Then the presentation config file for middleman-presentation should contain:
     """
+    title: My Presentation
     """
-
+    And the presentation config file for middleman-presentation should contain:
+    """
+    version: v0.0.1
+    """
+    And the presentation config file for middleman-presentation should contain:
+    """
+    speaker: my_user
+    """

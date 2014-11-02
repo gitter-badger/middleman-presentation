@@ -25,7 +25,7 @@ module Middleman
 
         def write_new_configuration
           file = if options[:local]
-                   File.join(root_directory, '.middleman-presentation.yaml')
+                   File.join(MiddlemanEnvironment.new.root_path, '.middleman-presentation.yaml')
                  else
                    options[:configuration_file]
                  end
