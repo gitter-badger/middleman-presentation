@@ -182,7 +182,7 @@ module Middleman
 
           set :js_dir, Middleman::Presentation.config.scripts_directory
           set :images_dir, Middleman::Presentation.config.images_directory
-          set :build_dir, Middleman::Presentation.config.scripts_directory
+          set :build_dir, Middleman::Presentation.config.build_directory
           set :css_dir, Middleman::Presentation.config.stylesheets_directory
           set :source_dir, Middleman::Presentation.config.sources_directory
 
