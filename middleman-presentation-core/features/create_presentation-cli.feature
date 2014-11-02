@@ -324,7 +324,7 @@ Feature: Initialize presentation
     When I cd to "presentation1"
     Then the file ".middleman-presentation.yaml" should contain:
     """
-    view_port: 
+    view_port:
     - '1024'
     - '768'
     """
