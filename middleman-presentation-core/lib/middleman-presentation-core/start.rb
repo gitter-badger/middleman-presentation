@@ -43,6 +43,13 @@ module Middleman
           Middleman::Presentation.assets_manager.each_loadable_asset do |a|
             sprockets.import_asset a.load_path, &a.destination_path_resolver
           end
+
+          configure :build do
+            if Middleman::Presentation.config.minify_assets
+              activate :minify_css
+              activate :minify_javascript
+            end
+          end
         end
       end
     end

@@ -3,6 +3,7 @@
   * F: Add helpers to show available "assets", "frontend components", "plugins", ...
   * F: Add helper to create plugins
   * F: Add helper to change slide names
+  * F: Support for minifying assets during build
   * F: New wrapper commands added: Build presentation, serve presentation
   * F: Support for nested template engines per slide, e.g. 01.html.md.erb => '1. eRuby, 2. Markdown'
   * I: Moved slide helper to "middleman-presentation"-executable

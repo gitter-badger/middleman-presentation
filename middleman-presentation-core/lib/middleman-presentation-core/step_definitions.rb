@@ -215,8 +215,8 @@ When(/^I run `([^`]+)` in debug mode$/) do |cmd|
   end
 end
 
-When(/^I open "([^\"]*)"$/) do |url|
+Then(/^the size of "(.*?)" should be much smaller than from  "(.*?)"$/) do |file1, file2|
   in_current_dir do
-    step "I go to \"#{url}\""
+    expect(File.size(file1)).to be < File.size(file2)
   end
 end

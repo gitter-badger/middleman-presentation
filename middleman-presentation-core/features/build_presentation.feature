@@ -37,3 +37,28 @@ Feature: Build presentation
     Then a file named "fonts/fontawesome/fonts/fontawesome-webfont.eot" should not exist
     Then a file named "fonts/fontawesome/fonts/fontawesome-webfont.ttf" should not exist
 
+  Scenario: Minify assets
+    Given a user config file for middleman-presentation with:
+    """
+    minify_assets: true
+    """
+    And a file named "source/stylesheets/test.scss" with:
+    """
+    .test1 {
+      font-size: 1px;
+    }
+
+    .test2 {
+      font-size: 1px;
+    }
+
+    .test3 {
+      font-size: 1px;
+    }
+
+    .test4 {
+      font-size: 1px;
+    }
+    """
+    When I successfully run `middleman-presentation build presentation`
+    Then the size of "build/stylesheets/test.css" should be much smaller than from  "source/stylesheets/test.scss"
