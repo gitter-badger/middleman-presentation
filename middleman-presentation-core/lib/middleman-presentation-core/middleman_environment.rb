@@ -5,12 +5,13 @@ module Middleman
     class MiddlemanEnvironment
       private
 
-      attr_reader :strict
+      attr_reader :strict, :application_config
 
       public
 
       def initialize(strict: true)
-        @strict = strict
+        @strict             = strict
+        @application_config = Middleman::Presentation.config
       end
 
       def root_path
@@ -89,10 +90,6 @@ module Middleman
 
       def configuration_file
         @configuration_file ||= ConfigurationFile.new
-      end
-
-      def application_config
-        Middleman::Presentation.config
       end
 
       def server_instance
