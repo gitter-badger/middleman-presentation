@@ -18,9 +18,9 @@ module Middleman
           set :build_dir, Middleman::Presentation.config.build_directory
           set :css_dir, Middleman::Presentation.config.stylesheets_directory
           set :source_dir, Middleman::Presentation.config.sources_directory
+          set :bower_dir, Middleman::Presentation.config.bower_directory
 
-          bower_directory = Middleman::Presentation::BowerDirectory.new(root_directory: root, directory: Middleman::Presentation.config.bower_directory)
-          Middleman::Presentation::AssetsLoader.new(bower_directory: bower_directory).load_at_presentation_runtime
+          Middleman::Presentation::AssetsLoader.new(bower_directory: MiddlemanEnvironment.new.bower_path).load_at_presentation_runtime
 
           helpers Middleman::Presentation.helpers_manager.available_helpers
 

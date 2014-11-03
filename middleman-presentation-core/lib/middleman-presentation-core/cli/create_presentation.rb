@@ -103,6 +103,8 @@ module Middleman
           Middleman::Presentation.config.default_transition_type  = options[:default_transition_type]
           Middleman::Presentation.config.default_transition_speed = options[:default_transition_speed]
           Middleman::Presentation.config.view_port                = options[:view_port]
+
+          Middleman::Presentation.config.bower_directory          = options[:bower_directory]
         end
 
         def add_gems_to_gem_file
@@ -148,6 +150,9 @@ module Middleman
 
         def create_bower_configuration_files
           assets_loader.load_for_bower_update
+
+          environment = MiddlemanEnvironment.new(strict: false)
+          @bower_directory = File.join(environment.root_path, directory, environment.bower_directory)
 
           template '.bowerrc.tt', File.join(root_directory, '.bowerrc'), force: options[:force]
           template 'bower.json.tt', File.join(root_directory, 'bower.json'), force: options[:force]
@@ -245,17 +250,6 @@ module Middleman
 
           def root_directory
             @root_directory ||= File.expand_path directory
-          end
-
-          def bower_directory
-            return @bower_directory if @bower_directory
-
-            working_directory = MiddlemanEnvironment.new(strict: false).root_path
-
-            @bower_directory = BowerDirectory.new(
-              root_directory: File.join(working_directory, directory),
-              directory: options[:bower_directory]
-            )
           end
 
           def middleman_source_directory
