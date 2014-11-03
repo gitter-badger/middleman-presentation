@@ -207,3 +207,7 @@ en:
       title: Questions
     end:
       title: The End
+    agenda:
+      title: Agenda
+      entry_one: Entry one
+      entry_two: Entry two

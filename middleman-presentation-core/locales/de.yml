@@ -204,3 +204,7 @@ de:
       title: Fragen
     end:
       title: Ende
+    agenda:
+      title: Agenda
+      entry_one: TOP 1
+      entry_two: TOP 2

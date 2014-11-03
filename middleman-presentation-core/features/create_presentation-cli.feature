@@ -19,7 +19,8 @@ Feature: Initialize presentation
     And a file named ".bowerrc" should exist
     And a file named ".gitignore" should exist
     And a file named "source/layout.erb" should exist
-    And a file named "source/slides/00.html.erb" should exist
+    And a file named "source/slides/00_00.html.erb" should exist
+    And a file named "source/slides/00_01.html.md" should exist
     And a file named "source/index.html.erb" should exist
     And a file named "source/stylesheets/application.scss" should exist
     And a file named "source/javascripts/application.js" should exist

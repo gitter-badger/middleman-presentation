@@ -1,0 +1,6 @@
+<section>
+# <%= Middleman::Presentation.t('slides.agenda.title', locale: @language) %>
+
+* <%= Middleman::Presentation.t('slides.agenda.entry_one', locale: @language) %>
+* <%= Middleman::Presentation.t('slides.agenda.entry_two', locale: @language) %>
+</section>
