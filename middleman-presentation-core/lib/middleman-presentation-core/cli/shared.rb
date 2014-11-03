@@ -14,7 +14,7 @@ module Middleman
         end
 
         # Create bower directory
-        def bower_directory
+        def bower_path
           MiddlemanEnvironment.new.bower_path
         end
 
@@ -22,7 +22,7 @@ module Middleman
         def assets_loader
           return @assets_loader if @assets_loader
 
-          @assets_loader = Middleman::Presentation::AssetsLoader.new(bower_directory: bower_directory)
+          @assets_loader = Middleman::Presentation::AssetsLoader.new(bower_directory: bower_path)
         end
 
         def open_in_editor(paths)

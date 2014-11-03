@@ -58,6 +58,13 @@ module Middleman
             puts Middleman::Presentation.config.to_s
           end
         end
+
+        no_commands do
+          # Overwrite for assets_loader
+          def bower_path
+            MiddlemanEnvironment.new(strict: false).bower_path
+          end
+        end
       end
     end
   end

@@ -151,9 +151,7 @@ module Middleman
         def create_bower_configuration_files
           assets_loader.load_for_bower_update
 
-          environment = MiddlemanEnvironment.new(strict: false)
-          @bower_directory = File.join(environment.root_path, directory, environment.bower_directory)
-
+          @bower_directory = MiddlemanEnvironment.new(strict: false).bower_directory
           template '.bowerrc.tt', File.join(root_directory, '.bowerrc'), force: options[:force]
           template 'bower.json.tt', File.join(root_directory, 'bower.json'), force: options[:force]
         end
@@ -250,6 +248,14 @@ module Middleman
 
           def root_directory
             @root_directory ||= File.expand_path directory
+          end
+
+          # Overwrite for assets_loader
+          def bower_path
+            return @bower_path if @bower_path
+
+            environment = MiddlemanEnvironment.new(strict: false)
+            @bower_path = File.join(environment.root_path, directory, environment.bower_directory)
           end
 
           def middleman_source_directory

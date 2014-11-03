@@ -53,6 +53,13 @@ module Middleman
           css_classes.each { |klass| puts format '  %20s: %s', klass.name, klass.files.to_list }
           puts
         end
+
+        no_commands do
+          # Overwrite for assets_loader
+          def bower_path
+            MiddlemanEnvironment.new(strict: false).bower_path
+          end
+        end
       end
     end
   end
