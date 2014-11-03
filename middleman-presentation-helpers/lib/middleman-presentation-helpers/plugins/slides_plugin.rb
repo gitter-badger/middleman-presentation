@@ -9,10 +9,12 @@ module Middleman
 
         output_paths = {
           %r{plugin/notes/notes\.html$} => Pathname.new('javascripts/reveal.js/plugin/notes/notes.html'),
+        #  /pdf\.css$/ => Pathname.new('stylesheets/reveal.js/css/print/pdf.css')
         }
 
         loadable_files = [
           %r{plugin/notes/notes\.html$},
+        #  /pdf\.css$/,
           %r{reveal\.js/.*/.*\.js$}
         ]
 
