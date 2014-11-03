@@ -21,9 +21,9 @@ module Middleman
       def initialize(path:, base_path: path, name: path, **args)
         super(**args)
 
-        @path = path
+        @path = Pathname.new(path)
         @name = name
-        @base_path = base_path
+        @base_path = Pathname.new(base_path)
       end
 
       def root_directory; end

@@ -7,7 +7,7 @@ RSpec.describe AssetComponent do
       component = AssetComponent.new(path: 'test1')
 
       expect(component.name).to eq 'test1'
-      expect(component.path).to eq 'test1'
+      expect(component.path).to eq Pathname.new('test1')
     end
   end
 end

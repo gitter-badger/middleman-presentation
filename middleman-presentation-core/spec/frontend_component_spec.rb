@@ -77,7 +77,7 @@ RSpec.describe FrontendComponent do
       component = FrontendComponent.new(name: name, version: 'latest')
       component.root_directory = root_directory
 
-      expect(component.path).to eq File.join(root_directory, name)
+      expect(component.path).to eq Pathname.new(File.join(root_directory, name))
     end
   end
 
@@ -88,7 +88,7 @@ RSpec.describe FrontendComponent do
       component = FrontendComponent.new(name: 'test', version: 'latest')
       component.root_directory = root_directory
 
-      expect(component.base_path).to eq root_directory
+      expect(component.base_path).to eq Pathname.new(root_directory)
     end
   end
 end

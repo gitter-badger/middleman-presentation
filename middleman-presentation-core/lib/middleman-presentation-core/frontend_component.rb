@@ -58,12 +58,12 @@ module Middleman
         args << root_directory if root_directory
         args << name.to_s
 
-        File.join(*args)
+        Pathname.new(File.join(*args))
       end
 
       # Base path for component
       def base_path
-        File.dirname(path)
+        path.dirname
       end
 
       # Should middleman-presentation fetch the component
