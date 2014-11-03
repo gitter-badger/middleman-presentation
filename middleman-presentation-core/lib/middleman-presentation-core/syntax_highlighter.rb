@@ -1,8 +1,11 @@
 # encoding: utf-8
 require 'kramdown'
 
+# External
 module Kramdown
+  # External
   module Converter
+    # External
     module SyntaxHighlighter
       # Middleman Presentation Converter
       module MiddlemanPresentation
@@ -12,11 +15,11 @@ module Kramdown
 
           case type
           when :span
-            %{<code class=\"#{opts[:inline_code_class]}\">#{text}</code>}
+            %(<code class=\"#{opts[:inline_code_class]}\">#{text}</code>)
           when :block
-            %{<pre class=\"#{opts[:code_block_class]}\"><code class=\"#{opts[:language_prefix]}#{lang}\">#{text}</code></pre>}
+            %(<pre class=\"#{opts[:code_block_class]}\"><code class=\"#{opts[:language_prefix]}#{lang}\">#{text}</code></pre>)
           else
-            %{<pre class=\"#{opts[:code_block_class]}\"><code class=\"#{opts[:language_prefix]}#{lang}\">#{text}</code></pre>}
+            %(<pre class=\"#{opts[:code_block_class]}\"><code class=\"#{opts[:language_prefix]}#{lang}\">#{text}</code></pre>)
           end
         end
       end

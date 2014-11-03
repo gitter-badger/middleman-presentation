@@ -25,14 +25,14 @@ module Middleman
 
           set :markdown_engine, :kramdown
           set :markdown,
-            parse_block_html: true,
-            tables: true,
-            syntax_highlighter: 'middleman_presentation',
-            syntax_highlighter_opts: {
-              code_block_class: 'mp-code-block',
-              inline_code_class: 'mp-code-inline'
-            },
-            smart_quotes: true
+              parse_block_html: true,
+              tables: true,
+              syntax_highlighter: 'middleman_presentation',
+              syntax_highlighter_opts: {
+                code_block_class: 'mp-code-block',
+                inline_code_class: 'mp-code-inline'
+              },
+              smart_quotes: true
 
           # ignore slides so that a user doesn't need to prepend slide names
           # with an underscore

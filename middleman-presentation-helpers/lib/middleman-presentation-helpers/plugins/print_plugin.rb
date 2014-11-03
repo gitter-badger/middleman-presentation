@@ -9,7 +9,7 @@ module Middleman
 
         add_assets(
           path: File.expand_path('../../../../vendor/assets', __FILE__),
-          loadable_files: %w(pdf.scss),
+          loadable_files: %w(pdf.scss)
         )
       end
     end

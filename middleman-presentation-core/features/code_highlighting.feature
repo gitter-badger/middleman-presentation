@@ -13,6 +13,7 @@ Feature: Code highlighting in Markdown slides
     """
     <section>
     # Hello World
+
     ~~~ ruby
     puts 42
     ~~~
