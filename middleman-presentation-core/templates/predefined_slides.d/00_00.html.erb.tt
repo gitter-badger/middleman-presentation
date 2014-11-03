@@ -1,5 +1,6 @@
 <section class="mp-start-slide" data-state="mp-start-slide">
-  <div class="mp-headline">
+<ul class="mp-layout-centered-elements">
+  <li class="mp-column-2_3-columns">
     <h1><%%= Middleman::Presentation.config.title %></h1>
     <h2><%%= Middleman::Presentation.config.subtitle %></h2>
 
@@ -17,8 +18,10 @@
 <%%- if Middleman::Presentation.config.license -%>
     <p class="mp-license"><%%= Middleman::Presentation.config.license %></p>
 <%%- end -%>
-  </div>
-
-  <img class="mp-logo" alt="Logo" src="<%%= asset_path(:images, 'logo.png') %>">
-  <div class="mp-logo"></div>
+  </li>
+  <li class="mp-column-1_3-columns">
+    <img class="mp-logo" alt="Logo" src="<%%= asset_path(:images, 'logo.png') %>">
+    <div class="mp-logo"></div>
+  </li>
+</ul>
 </section>
