@@ -22,7 +22,7 @@ module Middleman
       end
 
       def build_directory
-        File.basename build_path
+        application_config.build_directory
       end
 
       def build_path
@@ -30,7 +30,7 @@ module Middleman
       end
 
       def stylesheets_directory
-        File.basename stylesheets_path
+        application_config.stylesheets_directory
       end
 
       def stylesheets_path
@@ -38,7 +38,7 @@ module Middleman
       end
 
       def scripts_directory
-        File.basename scripts_path
+        application_config.scripts_directory
       end
 
       def scripts_path
@@ -46,7 +46,7 @@ module Middleman
       end
 
       def images_directory
-        File.basename images_path
+        application_config.images_directory
       end
 
       def images_path
@@ -54,7 +54,7 @@ module Middleman
       end
 
       def fonts_directory
-        File.basename fonts_path
+        application_config.fonts_directory
       end
 
       def fonts_path
@@ -62,7 +62,7 @@ module Middleman
       end
 
       def sources_directory
-        File.basename sources_path
+        application_config.sources_directory
       end
 
       def sources_path
@@ -78,7 +78,7 @@ module Middleman
       end
 
       def bower_directory
-        File.basename bower_path
+        application_config.bower_directory
       end
 
       def bower_path

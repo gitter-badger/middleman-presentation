@@ -34,7 +34,7 @@ module Middleman
           # all fetchable components reside in the bower directory. Their
           # assets are required with "component_name/path/to/asset.scss".
           # Therefore it's suffice enough to add the bower directory only.
-          sprockets.append_path File.join(root, bower_directory.relative_path)
+          sprockets.append_path Pathname.new(File.join(root, Middleman::Presentation::MiddlemanEnvironment.new.bower_directory))
 
           # all non fetchable components can be hidden in rubygems and
           # therefor the full path to that components needs to be added
