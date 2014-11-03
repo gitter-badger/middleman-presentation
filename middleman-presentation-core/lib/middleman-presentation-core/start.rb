@@ -24,7 +24,8 @@ module Middleman
           helpers Middleman::Presentation.helpers_manager.available_helpers
 
           set :markdown_engine, :kramdown
-          set :markdown, parse_block_html: true, tables: true
+          #set :markdown, parse_block_html: true, tables: true, syntax_highlighter: nil, smart_quotes: true
+          set :markdown, parse_block_html: true, tables: true, syntax_highlighter: :middleman_presentation, smart_quotes: true
 
           # ignore slides so that a user doesn't need to prepend slide names
           # with an underscore
