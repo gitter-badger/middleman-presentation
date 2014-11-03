@@ -15,10 +15,7 @@ module Middleman
 
         # Create bower directory
         def bower_directory
-          @bower_directory ||= BowerDirectory.new(
-            root_directory: MiddlemanEnvironment.new.root_path,
-            directory: options[:bower_directory]
-          )
+          MiddlemanEnvironment.new.bower_path
         end
 
         # Create assets loader base on bower directory

@@ -53,7 +53,7 @@ module Middleman
       private
 
       def set_bower_directory
-        application.components_manager.bower_directory = bower_directory.absolute_path if bower_directory
+        application.components_manager.bower_directory = bower_directory if bower_directory
       end
 
       def activate_core_plugins
@@ -79,7 +79,7 @@ module Middleman
       end
 
       def add_assets_from_bower_directory
-        application.components_manager.add AssetComponent.new(path: bower_directory.absolute_path, loadable_files: Middleman::Presentation.config.loadable_assets_for_installed_components)
+        application.components_manager.add AssetComponent.new(path: bower_directory, loadable_files: Middleman::Presentation.config.loadable_assets_for_installed_components)
       end
 
       # Load default components

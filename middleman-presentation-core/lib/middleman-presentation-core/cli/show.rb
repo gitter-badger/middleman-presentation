@@ -58,16 +58,6 @@ module Middleman
             puts Middleman::Presentation.config.to_s
           end
         end
-
-        no_commands do
-          # Overwrite bower directory
-          def bower_directory
-            @bower_directory ||= BowerDirectory.new(
-              root_directory: MiddlemanEnvironment.new(strict: false).root_path,
-              directory: options[:bower_directory]
-            )
-          end
-        end
       end
     end
   end

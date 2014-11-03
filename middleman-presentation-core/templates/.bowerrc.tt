@@ -1,4 +1,4 @@
 {
-  "directory": "<%= @bower_directory.relative_path %>",
+  "directory": "<%= @bower_directory %>",
     "json": "bower.json"
 }
