@@ -4,23 +4,22 @@ require 'kramdown'
 module Kramdown
   module Converter
     module SyntaxHighlighter
-      # Plain converter
+      # Middleman Presentation Converter
       module MiddlemanPresentation
-        def self.call(_converter, text, _lang, _type, _unused_opts)
-          #text
+        def self.call(converter, text, lang, _type, _unused_opts)
+          opts = converter.options[:syntax_highlighter_opts].dup
+
+          %{<pre class=\"#{opts[:pre_block_class]}\"><code class=\"#{lang}\">#{ERB::Util.html_escape(text)}</code></pre>}
         end
       end
     end
   end
 end
 
-require 'pry'
-binding.pry
-
 module Kramdown
   module Converter
-    klass_name = MiddlemanPresentation
-    kn_down    = klass_name.underscore
+    klass   = ::Kramdown::Converter::SyntaxHighlighter::MiddlemanPresentation
+    kn_down = :middleman_presentation
 
     add_syntax_highlighter(kn_down) do |converter, text, lang, type, opts|
       add_syntax_highlighter(kn_down, klass)
