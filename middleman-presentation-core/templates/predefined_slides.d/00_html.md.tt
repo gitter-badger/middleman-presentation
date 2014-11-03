@@ -1,5 +1,0 @@
-<section>
-# <%= Middleman::Presentation.t('slides.agenda.title', locale: @language) %>
-
-* Entry one
-</section>

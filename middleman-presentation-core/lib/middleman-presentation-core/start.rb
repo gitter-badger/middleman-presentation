@@ -18,14 +18,13 @@ module Middleman
           set :build_dir, Middleman::Presentation.config.build_directory
           set :css_dir, Middleman::Presentation.config.stylesheets_directory
           set :source_dir, Middleman::Presentation.config.sources_directory
-          set :bower_dir, Middleman::Presentation.config.bower_directory
 
           Middleman::Presentation::AssetsLoader.new(bower_directory: MiddlemanEnvironment.new.bower_path).load_at_presentation_runtime
 
           helpers Middleman::Presentation.helpers_manager.available_helpers
 
           set :markdown_engine, :kramdown
-          set :markdown, parse_block_html: true
+          set :markdown, parse_block_html: true, tables: true
 
           # ignore slides so that a user doesn't need to prepend slide names
           # with an underscore
