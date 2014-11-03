@@ -38,7 +38,11 @@ module Middleman
 
           # all non fetchable components can be hidden in rubygems and
           # therefor the full path to that components needs to be added
-          Middleman::Presentation.components_manager.each_nonfetchable_component { |c| sprockets.append_path c.path }
+          Middleman::Presentation.components_manager.each_nonfetchable_component do |c|
+            next if sprockets.appended_paths.include? c.path
+
+            sprockets.append_path c.path
+          end
 
           Middleman::Presentation.assets_manager.each_loadable_asset do |a|
             sprockets.import_asset a.load_path, &a.destination_path_resolver
