@@ -5,6 +5,8 @@ module Middleman
       # Build presentation
       class Build < Base
         register BuildPresentation, 'presentation', 'presentation', 'Build presentation'
+
+        default_command :presentation
       end
     end
   end
