@@ -29,7 +29,8 @@ module Middleman
             tables: true,
             syntax_highlighter: 'middleman_presentation',
             syntax_highlighter_opts: {
-              pre_block_class: 'mp-code-block'
+              code_block_class: 'mp-code-block',
+              inline_code_class: 'mp-code-inline'
             },
             smart_quotes: true
 

@@ -6,10 +6,18 @@ module Kramdown
     module SyntaxHighlighter
       # Middleman Presentation Converter
       module MiddlemanPresentation
-        def self.call(converter, text, lang, _type, _unused_opts)
+        def self.call(converter, text, lang, type, _unused_opts)
           opts = converter.options[:syntax_highlighter_opts].dup
+          text = ERB::Util.html_escape(text)
 
-          %{<pre class=\"#{opts[:pre_block_class]}\"><code class=\"#{lang}\">#{ERB::Util.html_escape(text)}</code></pre>}
+          case type
+          when :span
+            %{<code class=\"#{opts[:inline_code_class]}\">#{text}</code>}
+          when :block
+            %{<pre class=\"#{opts[:code_block_class]}\"><code class=\"#{opts[:language_prefix]}#{lang}\">#{text}</code></pre>}
+          else
+            %{<pre class=\"#{opts[:code_block_class]}\"><code class=\"#{opts[:language_prefix]}#{lang}\">#{text}</code></pre>}
+          end
         end
       end
     end
