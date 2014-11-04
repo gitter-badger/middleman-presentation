@@ -7,6 +7,7 @@
   * F: New wrapper commands added: Build presentation, serve presentation
   * F: Support for nested template engines per slide, e.g. 01.html.md.erb => '1. eRuby, 2. Markdown'
   * I: Moved slide helper to "middleman-presentation"-executable
+  * I: Use highlight.js directly. It's more uptodate
   * I: --force-flag for "create presentation"-command
   * I: Add debug-mode via --debug-mode-flag
   * I: Export command now creates a generated presentation as zip file
