@@ -1,22 +1,27 @@
 <section class="mp-last-slide">
   <h1><%= Middleman::Presentation.t('slides.contact.title', locale: @language) %></h1>
-  <div class="mp-logo-contact mp-with-list"></div>
-  <img class="mp-logo-contact mp-with-list" alt="Contact Image" src="<%%= asset_path(:images, 'logo-contact.png') %>">
-  <ul class="mp-with-image mp-iconless-list">
-<% if @email_address -%>
-    <li>
-    <i class=mp-mail></i><a href="mailto:<%= @email_address %>" class="mp-external-url"><%= @email_address %></a>
+  <ul class="mp-layout-grid-centered">
+    <li class"mp-layout-grid-column-33">
+      <div class="mp-logo-contact"></div>
     </li>
-<% end -%>
-<% if @phone_number -%>
-    <li>
-    <i class=mp-phone></i><%= @phone_number %>
+    <li class"mp-layout-grid-column-33">
+      <ul class="mp-list-with-icons">
+    <% if @email_address -%>
+        <li>
+        <i class="mp-icon-contact-mail"></i><a href="mailto:<%= @email_address %>" class="mp-external-url"><%= @email_address %></a>
+        </li>
+    <% end -%>
+    <% if @phone_number -%>
+        <li>
+        <i class="mp-icon-contact-phone"></i><%= @phone_number %>
+        </li>
+    <% end -%>
+    <% if @github_url -%>
+        <li>
+        <i class="mp-icon-contact-github"></i><a href="<%= @github_url %>" class="mp-external-url" target="_blank"><%= File.basename(URI.parse(@github_url).path) %></a>
+        </li>
+    <% end -%>
+      </ul>
     </li>
-<% end -%>
-<% if @github_url -%>
-    <li>
-    <i class=mp-github></i><a href="<%= @github_url %>" class="mp-external-url" target="_blank"><%= File.basename(URI.parse(@github_url).path) %></a>
-    </li>
-<% end -%>
   </ul>
 </section>

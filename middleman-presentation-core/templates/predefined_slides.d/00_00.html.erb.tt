@@ -1,26 +1,25 @@
 <section class="mp-start-slide" data-state="mp-start-slide">
-<ul class="mp-layout-centered-elements">
-  <li class="mp-column-2_3-columns">
-    <h1><%%= Middleman::Presentation.config.title %></h1>
-    <h2><%%= Middleman::Presentation.config.subtitle %></h2>
+<ul class="mp-layout-grid-centered">
+  <li class="mp-layout-grid-column-66">
+    <h1><%= Middleman::Presentation.config.title %></h1>
+    <h2><%= Middleman::Presentation.config.subtitle %></h2>
 
     <p class="mp-speaker">
-    <small><%%= Middleman::Presentation.config.date %>&nbsp;&ndash;&nbsp;
-    <%%= Middleman::Presentation.config.speaker -%>
-<%%- if Middleman::Presentation.config.company -%>
-    (<%%= Middleman::Presentation.config.company %>)
-<%%- end -%>
+    <small><%= Middleman::Presentation.config.date %>&nbsp;&ndash;&nbsp;
+    <%= Middleman::Presentation.config.speaker -%>
+<%- if Middleman::Presentation.config.company -%>
+    (<%= Middleman::Presentation.config.company %>)
+<%- end -%>
     </small>
     </p>
-<%%- if Middleman::Presentation.config.version -%>
-    <p class="mp-version"><%%= Middleman::Presentation.config.version %></p>
-<%%- end -%>
-<%%- if Middleman::Presentation.config.license -%>
-    <p class="mp-license"><%%= Middleman::Presentation.config.license %></p>
-<%%- end -%>
+<%- if Middleman::Presentation.config.version -%>
+    <p class="mp-version"><%= Middleman::Presentation.config.version %></p>
+<%- end -%>
+<%- if Middleman::Presentation.config.license -%>
+    <p class="mp-license"><%= Middleman::Presentation.config.license %></p>
+<%- end -%>
   </li>
-  <li class="mp-column-1_3-columns">
-    <img class="mp-logo" alt="Logo" src="<%%= asset_path(:images, 'logo.png') %>">
+  <li class="mp-layout-grid-column-33">
     <div class="mp-logo"></div>
   </li>
 </ul>
