@@ -802,6 +802,47 @@ assets given here are loaded AFTER assets of any plugin you activated.
 Look [here](https://github.com/maxmeyer/middleman-presentation/blob/middleman-presentation-core/lib/middleman-presentation-core/assets_loader.rb)
 if you're interested in which order assets are imported.
 
+
+## Embedded Code in Slides (Syntax Highlighting)
+
+`middleman-presentation` supports syntax highlighting in `<code>`-blocks. It
+does not matter if you've got a Markdown- or whatevery-template-format. It uses
+[`highlight.js`](https://github.com/isagalaev/highlight.js) behind the scenes.
+Please be aware I decided to use the `latest` version downloaded via `bower`. I
+do not use the version which comes with `reveal.js`.
+
+### Highlighting
+
+*Markdown*
+
+```markdown
+~~~ ruby
+puts 42
+~~~
+```
+
+*HTML*
+
+```html
+<pre><code class="ruby">puts 42</code></pre>
+```
+
+### Disable highlight
+
+*Markdown*
+
+```markdown
+~~~ nohighlight
+puts 42
+~~~
+```
+
+*HTML*
+
+```html
+<pre><code class="nohighlight">puts 42</code></pre>
+```
+
 ## Development
 
 Make sure you've got a working internet connection before running the tests. To
