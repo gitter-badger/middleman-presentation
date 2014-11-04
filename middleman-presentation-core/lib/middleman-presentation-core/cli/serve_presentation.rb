@@ -14,8 +14,8 @@ module Middleman
 
         def build_presentation
           Middleman::Presentation.logger.info Middleman::Presentation.t(
-            'views.presentation.build.headline',
-            title: @title
+            'views.presentation.serve.headline',
+            title: Middleman::Presentation.config.title
           )
 
           cmd = []

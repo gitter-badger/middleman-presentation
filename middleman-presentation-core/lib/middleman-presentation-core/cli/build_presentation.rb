@@ -6,8 +6,6 @@ module Middleman
       class BuildPresentation < BaseGroup
         include Thor::Actions
 
-        class_option :title, default: Middleman::Presentation.config.title, desc: Middleman::Presentation.t('views.presentations.build.options.title')
-
         desc Middleman::Presentation.t('views.presentation.build.title')
 
         def initialize_generator
@@ -28,7 +26,6 @@ module Middleman
         end
 
         def extract_data
-          @title                 = options[:title]
           @images_directory      = @environment.images_directory
           @stylesheets_directory = @environment.stylesheets_directory
           @javascripts_directory = @environment.scripts_directory
@@ -39,7 +36,7 @@ module Middleman
         def build_presentation
           Middleman::Presentation.logger.info Middleman::Presentation.t(
             'views.presentation.build.headline',
-            title: @title
+            title: Middleman::Presentation.config.title
           )
 
           cmd = []
