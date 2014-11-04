@@ -36,10 +36,10 @@ Feature: Initialize presentation
     And the file "source/stylesheets/application.scss" should contain:
     """
     @import 'normalize.css/normalize';
+    @import 'highlightjs/styles/zenburn';
     @import 'reveal.js/css/reveal.min';
     @import 'reveal.js/css/theme/template/mixins';
     @import 'reveal.js/css/theme/template/settings';
-    @import 'reveal.js/lib/css/zenburn';
     @import 'middleman-presentation-helpers/footer/footer';
     @import 'middleman-presentation-helpers/image_gallery/image_gallery';
     @import 'middleman-presentation-helpers/images/images';
@@ -60,10 +60,10 @@ Feature: Initialize presentation
     Then the file "source/stylesheets/application.scss" should contain:
     """
     @import 'normalize.css/normalize';
+    @import 'highlightjs/styles/zenburn';
     @import 'reveal.js/css/reveal.min';
     @import 'reveal.js/css/theme/template/mixins';
     @import 'reveal.js/css/theme/template/settings';
-    @import 'reveal.js/lib/css/zenburn';
     @import 'middleman-presentation-helpers/footer/footer';
     @import 'middleman-presentation-helpers/image_gallery/image_gallery';
     @import 'middleman-presentation-helpers/images/images';
