@@ -27,7 +27,9 @@ module Kramdown
   end
 end
 
+# External
 module Kramdown
+  # External
   module Converter
     klass   = ::Kramdown::Converter::SyntaxHighlighter::MiddlemanPresentation
     kn_down = :middleman_presentation
