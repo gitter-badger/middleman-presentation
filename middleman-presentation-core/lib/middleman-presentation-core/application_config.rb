@@ -35,14 +35,37 @@ module Middleman
       option :plugin_prefix, 'middleman-presentation'
 
       option :components, []
-      option :activate_controls, true
-      option :activate_progress, true
-      option :activate_history, true
+
+      option :width, 960
+      option :height, 700
+      option :margin, 0.1
+      option :min_scale, 0.2
+      option :max_scale, 1.0
       option :activate_center, true
+      option :activate_controls, true
+      option :activate_embedded, false
+      option :activate_fragments, true
+      option :activate_history, false
+      option :activate_history, true
+      option :activate_keyboard, true
+      option :activate_loop, false
+      option :activate_mouse_wheel, true
+      option :activate_overview, true
+      option :activate_progress, true
+      option :activate_rtl, false
       option :activate_slide_number, true
-      option :default_transition_type, 'linear'
+      option :activate_touch, true
+      option :auto_slide, 0
+      option :auto_slide_stoppable, true
+      option :default_background_transition, 'default'
       option :default_transition_speed, 'default'
-      option :view_port, %w(960 700 0.1)
+      option :default_transition_type, 'linear'
+      option :hide_address_bar, true
+      option :parallax_background_image, ''
+      option :parallax_background_size, ''
+      option :preview_links, false
+      option :view_distance, 3
+
       option :install_assets, true
       option :initialize_git, true
       option :check_for_bower, true

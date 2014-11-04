@@ -60,34 +60,54 @@ en:
         options:
           activate_center: 'Activate center in reveal.js'
           activate_controls: 'Activate controls in reveal.js'
+          activate_embedded: Activate embedded mode
+          activate_fragments: Activate fragements
           activate_history: 'Activate history in reveal.js'
+          activate_keyboard: Activate keyboard shortcuts
+          activate_loop: Loop presentation
+          activate_mouse_wheel: Activate mouse wheel for slide navigation
+          activate_overview: Activate slides overview
           activate_progress: 'Activate progress in reveal.js'
+          activate_rtl: Right to left for slides
           activate_slide_number: 'Activate slide number in reveal.js'
+          activate_touch: Activate touch gestures for presentation
           audience: 'Audience of presentation'
           author: 'Author of presentation'
+          auto_slide: Waiting time for automatic slide switch in milliseconds
+          auto_slide_stoppable: Stop automatic slide switch on user input
           bower_directory: 'Directory for bower components in "source"-directory'
           check_for_bowe: 'Check if bower is installed on the system'
           company: 'Company or employer or organization of speaker'
           create_predefined_slides: 'Install predefined slides'
           date: 'Date of presentation'
+          default_background_transition: Default switch animation for slideswith full-screen-backgrounds
           default_transition_speed: 'Default speed for slide transition. Can be overwridden per slide.'
           default_transition_type: 'Default slide transition. Can be overwridden per slide.'
           description: 'Description for presentation'
           email_address: 'Email address to contact speaker'
+          force: 'Overwrite existing files'
           github_url: 'Url to Github account of speaker'
+          height: Height of presentation
+          hide_address_bar: Hide navigation bar of browser
           homepage: 'Homepage of company and/or speaker'
           initialize_git: 'Initialize git repository'
           install_assets: 'Install assets'
           language: 'Language to use for translatable slide templates, e.g. "de", "en"'
           license: 'License of the presentation, e.g. CC BY'
           location: 'Location where the presentation take place'
+          margin: Whitespace around slides
+          max_scale: Max scale for slides
+          min_scale: Min scale for slides
+          parallax_background_image: Parallax background image
+          parallax_background_size: Parallax background size
           phone_number: 'Phone number to contact speaker'
+          preview_links: Preview external links in iframe
           speaker: 'Name of speaker'
           subtitle: 'Subtitle of presentation'
           title: 'Title of presentation'
           version: 'Version number for your presentation'
-          view_port: 'Size of presentation and margin: Width Height Margin'
-          force: 'Overwrite existing files'
+          view_distance: Amount of future slides
+          width: Width of presentation
         arguments:
           directory: 'Directory to create presentation in'
     plugins:

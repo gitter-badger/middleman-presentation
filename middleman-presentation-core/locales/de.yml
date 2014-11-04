@@ -60,34 +60,54 @@ de:
         options:
           activate_center: 'Aktiviere "center" in reveal.js'
           activate_controls: 'Aktiviere "controls" in reveal.js'
+          activate_embedded: Aktiviere den Embedded-Modus
+          activate_fragments: Aktiviere Fragmente
           activate_history: 'Aktiviere "history" in reveal.js'
+          activate_keyboard: Aktiviere Shortcuts für die Tastaturnavigation
+          activate_loop: Ständige Wiederholung der Präsentation
+          activate_mouse_wheel: Ermögliche die Navigation durch die Folien mit dem Mausrad
+          activate_overview: Aktivere die Folienübersicht
           activate_progress: 'Aktiviere "progress" in reveal.js'
+          activate_rtl: Anzeige der Folien von Rechts nach Links
           activate_slide_number: 'Aktiviere "slide number" in reveal.js'
+          activate_touch: Aktivere Touchgesten für die Präsentation
           audience: 'Zielgruppe der Präsentation'
           author: 'Autor der Präsentation'
+          auto_slide: Wartezeit für den automatischen Wechsel zwischen den Folien in Millisekunden
+          auto_slide_stoppable: Stoppe den automatischen Wechsel zwischen Folien nach einer Benutzereingabe
           bower_directory: 'Verzeichnis für die "bower"-Komponenten im "source"-Verzeichnis'
           check_for_bowe: 'Prüfung durchführen, ob "bower" auf dem System installiert ist'
           company: 'Unternehmen oder Arbeitgeber des Präsentierenden'
           create_predefined_slides: 'Installiere vordefinierte Folien'
           date: 'Datum der Präsentation'
+          default_background_transition: Standard-Animation für Vollbild-Hintergründe beim Wechsel der Folien
           default_transition_speed: 'Standard-Geschwindigkeit beim Wechsel der Folien'
-          default_transition_type: 'Standard-Anmiation beim Wechsel der Folien'
+          default_transition_type: 'Standard-Animation beim Wechsel der Folien'
           description: 'Beschreibung für die Präsentation'
           email_address: 'E-Mail-Adresse des Präsentierenden'
+          force: 'Überschreibe existierende Dateien'
           github_url: 'URL zum Github Benutzerkonto des Präsentierenden'
+          height: Höhe der Präsentation
+          hide_address_bar: Ausblenden der Browser-Adresszeile auf Mobilen Endgeräten
           homepage: 'Webseite des Unternehmens oder des Präsentierenden'
           initialize_git: 'Initialisiere git repository'
           install_assets: 'Installiere Assets'
           language: 'Sprache, welche für übersetzbare Inhalte der vordefinierten Folien genutzt werden kann, z.B. "de", "en"'
           license: 'Lizenz unter der die Präsentation veröffentlicht wird, z.B. CC BY'
           location: 'Örtlichkeit in dem die Präsentation vorgetragen wird'
+          margin: Freiraum um die einzelnen Folien
+          max_scale: Obergrenze für die Skalierung der Folien
+          min_scale: Untergrenze für die Skalierung der Folien
+          parallax_background_image: Parallax Hintergrund-Bild
+          parallax_background_size: Parallax Hintergrund-Größe
           phone_number: 'Telefonnumer des Präsentierenden'
+          preview_links: Zeige eine Vorschauer externer Links an
           speaker: 'Name des Präsentierenden'
           subtitle: 'Sub-Titel für die die Präsentation'
           title: 'Titel der Präsentation'
           version: 'Versionsnummer für die Präsentation'
-          view_port: 'Größe der Präsentation und der Abstand vom Rand zum Inhalt als Verhältnis zur Größe der Präsentation: Breite Höhe Abstand'
-          force: 'Überschreibe existierende Dateien'
+          view_distance: Menge der zukünftigen Folien, welche angezeigt werden sollen
+          width: Breite der Präsentation
         arguments:
           directory: 'Verzeichnis in dem die Präsentation erstellt werden soll'
     plugins:

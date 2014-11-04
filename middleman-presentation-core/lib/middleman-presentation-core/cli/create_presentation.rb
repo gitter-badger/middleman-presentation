@@ -23,15 +23,35 @@ module Middleman
         class_option :email_address, default: Middleman::Presentation.config.email_address, desc: Middleman::Presentation.t('views.presentations.create.options.email_address')
         class_option :github_url, default: Middleman::Presentation.config.github_url, desc: Middleman::Presentation.t('views.presentations.create.options.github_url')
 
-        class_option :activate_controls, type: :boolean, default: Middleman::Presentation.config.activate_controls, desc: Middleman::Presentation.t('views.presentations.create.options.activate_controls')
-        class_option :activate_progress, type: :boolean, default: Middleman::Presentation.config.activate_progress, desc: Middleman::Presentation.t('views.presentations.create.options.activate_progress')
-        class_option :activate_history, type: :boolean, default: Middleman::Presentation.config.activate_history, desc: Middleman::Presentation.t('views.presentations.create.options.activate_history')
+        class_option :width, default: Middleman::Presentation.config.width, desc: Middleman::Presentation.t('views.presentations.create.options.width')
+        class_option :height, default: Middleman::Presentation.config.height, desc: Middleman::Presentation.t('views.presentations.create.options.height')
+        class_option :margin, default: Middleman::Presentation.config.margin, desc: Middleman::Presentation.t('views.presentations.create.options.margin')
+        class_option :min_scale, default: Middleman::Presentation.config.min_scale, desc: Middleman::Presentation.t('views.presentations.create.options.min_scale')
+        class_option :max_scale, default: Middleman::Presentation.config.max_scale, desc: Middleman::Presentation.t('views.presentations.create.options.max_scale')
         class_option :activate_center, type: :boolean, default: Middleman::Presentation.config.activate_center, desc: Middleman::Presentation.t('views.presentations.create.options.activate_center')
+        class_option :activate_controls, type: :boolean, default: Middleman::Presentation.config.activate_controls, desc: Middleman::Presentation.t('views.presentations.create.options.activate_controls')
+        class_option :activate_embedded, type: :boolean, default: Middleman::Presentation.config.activate_embedded, desc: Middleman::Presentation.t('views.presentations.create.options.activate_embedded')
+        class_option :activate_fragments, type: :boolean, default: Middleman::Presentation.config.activate_fragments, desc: Middleman::Presentation.t('views.presentations.create.options.activate_fragments')
+        class_option :activate_history, type: :boolean, default: Middleman::Presentation.config.activate_history, desc: Middleman::Presentation.t('views.presentations.create.options.activate_history')
+        class_option :activate_history, type: :boolean, default: Middleman::Presentation.config.activate_history, desc: Middleman::Presentation.t('views.presentations.create.options.activate_history')
+        class_option :activate_keyboard, type: :boolean, default: Middleman::Presentation.config.activate_keyboard, desc: Middleman::Presentation.t('views.presentations.create.options.activate_keyboard')
+        class_option :activate_loop, type: :boolean, default: Middleman::Presentation.config.activate_loop, desc: Middleman::Presentation.t('views.presentations.create.options.activate_loop')
+        class_option :activate_mouse_wheel, type: :boolean, default: Middleman::Presentation.config.activate_mouse_wheel, desc: Middleman::Presentation.t('views.presentations.create.options.activate_mouse_wheel')
+        class_option :activate_overview, type: :boolean, default: Middleman::Presentation.config.activate_overview, desc: Middleman::Presentation.t('views.presentations.create.options.activate_overview')
+        class_option :activate_progress, type: :boolean, default: Middleman::Presentation.config.activate_progress, desc: Middleman::Presentation.t('views.presentations.create.options.activate_progress')
+        class_option :activate_rtl, type: :boolean, default: Middleman::Presentation.config.activate_rtl, desc: Middleman::Presentation.t('views.presentations.create.options.activate_rtl')
         class_option :activate_slide_number, type: :boolean, default: Middleman::Presentation.config.activate_slide_number, desc: Middleman::Presentation.t('views.presentations.create.options.activate_slide_number')
-
-        class_option :default_transition_type, default: Middleman::Presentation.config.default_transition_type, desc: Middleman::Presentation.t('views.presentations.create.options.default_transition_type')
+        class_option :activate_touch, type: :boolean, default: Middleman::Presentation.config.activate_touch, desc: Middleman::Presentation.t('views.presentations.create.options.activate_touch')
+        class_option :auto_slide, type: :numeric, default: Middleman::Presentation.config.auto_slide, desc: Middleman::Presentation.t('views.presentations.create.options.auto_slide')
+        class_option :auto_slide_stoppable, type: :boolean, default: Middleman::Presentation.config.auto_slide_stoppable, desc: Middleman::Presentation.t('views.presentations.create.options.auto_slide_stoppable')
+        class_option :default_background_transition, default: Middleman::Presentation.config.default_background_transition, desc: Middleman::Presentation.t('views.presentations.create.options.default_background_transition')
         class_option :default_transition_speed, default: Middleman::Presentation.config.default_transition_speed, desc: Middleman::Presentation.t('views.presentations.create.options.default_transition_speed')
-        class_option :view_port, type: :array, default: Middleman::Presentation.config.view_port, desc: Middleman::Presentation.t('views.presentations.create.options.view_port')
+        class_option :default_transition_type, default: Middleman::Presentation.config.default_transition_type, desc: Middleman::Presentation.t('views.presentations.create.options.default_transition_type')
+        class_option :hide_address_bar, type: :boolean, default: Middleman::Presentation.config.hide_address_bar, desc: Middleman::Presentation.t('views.presentations.create.options.hide_address_bar')
+        class_option :parallax_background_image, default: Middleman::Presentation.config.parallax_background_image, desc: Middleman::Presentation.t('views.presentations.create.options.parallax_background_image')
+        class_option :parallax_background_size, default: Middleman::Presentation.config.parallax_background_size, desc: Middleman::Presentation.t('views.presentations.create.options.parallax_background_size')
+        class_option :preview_links, type: :boolean, default: Middleman::Presentation.config.preview_links, desc: Middleman::Presentation.t('views.presentations.create.options.preview_links')
+        class_option :view_distance, type: :numeric, default: Middleman::Presentation.config.view_distance, desc: Middleman::Presentation.t('views.presentations.create.options.view_distance')
 
         class_option :install_assets, type: :boolean, default: Middleman::Presentation.config.install_assets, desc: Middleman::Presentation.t('views.presentations.create.options.install_assets')
         class_option :initialize_git, type: :boolean, default: Middleman::Presentation.config.initialize_git, desc: Middleman::Presentation.t('views.presentations.create.options.initialize_git')
@@ -95,14 +115,35 @@ module Middleman
           Middleman::Presentation.config.version         = options[:version]
           Middleman::Presentation.config.project_id      = format '%s-%s', ActiveSupport::Inflector.transliterate(options[:title]).parameterize, SecureRandom.hex
 
-          Middleman::Presentation.config.activate_controls        = options[:activate_controls]
-          Middleman::Presentation.config.activate_progress        = options[:activate_progress]
-          Middleman::Presentation.config.activate_history         = options[:activate_history]
-          Middleman::Presentation.config.activate_center          = options[:activate_center]
-          Middleman::Presentation.config.activate_slide_number    = options[:activate_slide_number]
-          Middleman::Presentation.config.default_transition_type  = options[:default_transition_type]
-          Middleman::Presentation.config.default_transition_speed = options[:default_transition_speed]
-          Middleman::Presentation.config.view_port                = options[:view_port]
+          Middleman::Presentation.config.width                         = options[:width]
+          Middleman::Presentation.config.height                        = options[:height]
+          Middleman::Presentation.config.margin                        = options[:margin]
+          Middleman::Presentation.config.min_scale                     = options[:min_scale]
+          Middleman::Presentation.config.max_scale                     = options[:max_scale]
+          Middleman::Presentation.config.activate_center               = options[:activate_center]
+          Middleman::Presentation.config.activate_controls             = options[:activate_controls]
+          Middleman::Presentation.config.activate_embedded             = options[:activate_embedded]
+          Middleman::Presentation.config.activate_fragments            = options[:activate_fragments]
+          Middleman::Presentation.config.activate_history              = options[:activate_history]
+          Middleman::Presentation.config.activate_history              = options[:activate_history]
+          Middleman::Presentation.config.activate_keyboard             = options[:activate_keyboard]
+          Middleman::Presentation.config.activate_loop                 = options[:activate_loop]
+          Middleman::Presentation.config.activate_mouse_wheel          = options[:activate_mouse_wheel]
+          Middleman::Presentation.config.activate_overview             = options[:activate_overview]
+          Middleman::Presentation.config.activate_progress             = options[:activate_progress]
+          Middleman::Presentation.config.activate_rtl                  = options[:activate_rtl]
+          Middleman::Presentation.config.activate_slide_number         = options[:activate_slide_number]
+          Middleman::Presentation.config.activate_touch                = options[:activate_touch]
+          Middleman::Presentation.config.auto_slide                    = options[:auto_slide]
+          Middleman::Presentation.config.auto_slide_stoppable          = options[:auto_slide_stoppable]
+          Middleman::Presentation.config.default_background_transition = options[:default_background_transition]
+          Middleman::Presentation.config.default_transition_speed      = options[:default_transition_speed]
+          Middleman::Presentation.config.default_transition_type       = options[:default_transition_type]
+          Middleman::Presentation.config.hide_address_bar              = options[:hide_address_bar]
+          Middleman::Presentation.config.parallax_background_image     = options[:parallax_background_image]
+          Middleman::Presentation.config.parallax_background_size      = options[:parallax_background_size]
+          Middleman::Presentation.config.preview_links                 = options[:preview_links]
+          Middleman::Presentation.config.view_distance                 = options[:view_distance]
 
           Middleman::Presentation.config.bower_directory          = options[:bower_directory]
         end
