@@ -14,7 +14,7 @@ module Middleman
         add_component(
           name: :'highlightjs',
           version: 'latest',
-          importable_files: %w(railscasts.css),
+          importable_files: %w(zenburn.css),
           loadable_files: loadable_files
         )
       end
