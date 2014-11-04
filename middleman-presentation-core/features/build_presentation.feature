@@ -16,7 +16,6 @@ Feature: Build presentation
     Then a file named "index.html" should exist
     Then a file named "stylesheets/application.css" should exist
     Then a file named "javascripts/application.js" should exist
-    Then a file named "stylesheets/reveal.js/css/print/pdf.css" should exist
     Then a file named "javascripts/reveal.js/plugin/highlight/highlight.js" should exist
     Then a file named "javascripts/reveal.js/plugin/zoom-js/zoom.js" should exist
     Then a file named "javascripts/reveal.js/plugin/notes/notes.js" should exist
