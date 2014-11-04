@@ -45,7 +45,6 @@ module Middleman
       option :activate_controls, true
       option :activate_embedded, false
       option :activate_fragments, true
-      option :activate_history, false
       option :activate_history, true
       option :activate_keyboard, true
       option :activate_loop, false
@@ -93,30 +92,52 @@ module Middleman
       option :force_create_presentation, false
       option :debug_mode, false
       option :exportable_options, %w(
-        bower_directory
-        view_port
-        activate_progress
-        activeate_history
-        activate_slide_number
         activate_center
-        default_transition_type
-        default_transition_speed
-        speaker
-        title
-        date
+        activate_controls
+        activate_embedded
+        activate_fragments
+        activate_history
+        activate_keyboard
+        activate_loop
+        activate_mouse_wheel
+        activate_overview
+        activate_progress
+        activate_rtl
+        activate_slide_number
+        activate_touch
+        activeate_history
+        audience
         author
-        description
-        subtitle
-        homepage
+        auto_slide
+        auto_slide_stoppable
+        bower_directory
         company
+        date
+        default_background_transition
+        default_transition_speed
+        default_transition_type
+        description
+        email_address
+        github_url
+        height
+        hide_address_bar
+        homepage
         license
         location
-        audience
-        email_address
+        margin
+        max_scale
+        min_scale
+        parallax_background_image
+        parallax_background_size
         phone_number
-        github_url
+        preview_links
         project_id
+        speaker
+        subtitle
+        title
         version
+        view_distance
+        width
       )
 
       option :loadable_assets_for_installed_components, [

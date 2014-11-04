@@ -99,7 +99,7 @@
         // Number of milliseconds between automatically proceeding to the
         // next slide, disabled when set to 0, this value can be overwritten
         // by using a data-autoslide attribute on your slides
-        autoSlide: <%%= Middleman::Presentation.config.auto_slide %>'
+        autoSlide: <%%= Middleman::Presentation.config.auto_slide %>,
         // Stop auto-sliding after user input
         autoSlideStoppable: <%%= Middleman::Presentation.config.auto_slide_stoppable %>,
         // Enable slide navigation via mouse wheel
@@ -119,7 +119,7 @@
         // Parallax background image
         parallaxBackgroundImage: '<%%= Middleman::Presentation.config.parallax_background_image %>',
         // Parallax background size
-        parallaxBackgroundSize: '<%%= Middleman::Presentation.config.parallax_background_size %>'
+        parallaxBackgroundSize: '<%%= Middleman::Presentation.config.parallax_background_size %>',
         dependencies: [
           { src: '<%%= asset_path(:js, "reveal.js/lib/js/classList.js") %>', condition: function() { return !document.body.classList; } },
           { src: '<%%= asset_path(:js, "highlightjs/highlight.pack.js") %>', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },

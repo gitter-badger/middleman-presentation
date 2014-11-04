@@ -7,7 +7,6 @@ Feature: Code highlighting in Markdown slides
   Background:
     Given I create a new presentation with title "My Presentation"
 
-  @wip
   Scenario: Code block
     Given a slide named "01.html.md" with:
     """
@@ -27,7 +26,6 @@ Feature: Code highlighting in Markdown slides
   </code></pre>  </div>
     """
 
-    @wip
   Scenario: Inline code
     Given a slide named "01.html.md" with:
     """
