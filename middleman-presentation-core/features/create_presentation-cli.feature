@@ -321,38 +321,17 @@ Feature: Initialize presentation
     And a directory named "vendor/assets/components/impress.js" should exist
 
   Scenario: Change presentation size
-    Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation" --view-port 1024 768`
+    Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation" --width 1024 --height 768 --margin 0.5`
     When I cd to "presentation1"
     Then the file ".middleman-presentation.yaml" should contain:
     """
-    activate_center: true
-    activate_controls: true
-    activate_fragments: true
-    activate_history: true
-    activate_keyboard: true
-    activate_mouse_wheel: true
-    activate_overview: true
-    activate_progress: true
-    activate_slide_number: true
-    activate_touch: true
-    author: User
-    auto_slide: 0
-    auto_slide_stoppable: true
-    bower_directory: vendor/assets/components
-    date: 04.11.2014
-    default_background_transition: default
-    default_transition_speed: default
-    default_transition_type: linear
-    height: 700
-    hide_address_bar: true
-    license: CC BY 4.0
-    margin: 0.1
-    max_scale: 1.0
-    min_scale: 0.2
-    project_id: my-presentation-3a4825f5afc509ce6abc3d99bdf45320
-    speaker: travis
-    title: My Presentation
-    version: v0.0.1
-    view_distance: 3
-    width: 960
+    width: 1024
+    """
+    And the file ".middleman-presentation.yaml" should contain:
+    """
+    height: 768
+    """
+    And the file ".middleman-presentation.yaml" should contain:
+    """
+    margin: 0.5
     """
