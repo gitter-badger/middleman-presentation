@@ -146,13 +146,25 @@ namespace :bootstrap do
   end
 
   desc 'Bootstrap project for ci'
-  task :ci do
+  task :ci => 'test:cache_paths' do
+    Rake::Task['bootstrap'].invoke
+  end
+
+  task :shell_environment do
     ENV['BUNDLE_PATH'] = File.expand_path('../tmp/bundler_cache', __FILE__)
     ENV['GEM_HOME'] = File.expand_path('../tmp/bundler_cache', __FILE__)
+    ENV['bower_storage__packages'] = File.expand_path('../tmp/bower_cache', __FILE__)
 
     puts format('BUNDLE_PATH: %s', ENV['BUNDLE_PATH'])
     puts format('GEM_HOME:    %s', ENV['GEM_HOME'])
-
-    Rake::Task['bootstrap'].invoke
+    puts format('BOWER_CACHE:    %s', ENV['bower_storage__packages'])
   end
+
+  task :gem_requirements do
+    Bundler.require
+  end
+end
+
+task :ci => ['bootstrap:shell_environment', 'bootstrap:gem_requirements'] do
+  Rake::Task['test:coveralls'].invoke
 end

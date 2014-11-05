@@ -5,20 +5,20 @@ Before do
   ENV['MM_ENV'] = 'development'
   ENV['MP_ENV'] = 'test'
 
-  step 'I set the bower cache directory'
-  step 'I set the bundler cache directory'
+#  step 'I set the bower cache directory'
+#  step 'I set the bundler cache directory'
   step 'a mocked home directory'
   step 'git is configured with username "User" and email-address "email@example.com"'
   step 'I set the language for the shell to "en_GB.UTF-8"'
 end
 
-Given(/I set the bower cache directory/) do
-  ENV['bower_storage__packages'] = File.expand_path('../../../../tmp/bower_cache', __FILE__)
-end
-
-Given(/I set the bundler cache directory/) do
-  ENV['BUNDLE_PATH'] = File.expand_path('../../../../tmp/bundler_cache', __FILE__)
-end
+#Given(/I set the bower cache directory/) do
+#  ENV['bower_storage__packages'] = File.expand_path('../../../../tmp/bower_cache', __FILE__)
+#end
+#
+#Given(/I set the bundler cache directory/) do
+#  ENV['BUNDLE_PATH'] = File.expand_path('../../../../tmp/bundler_cache', __FILE__)
+#end
 
 # Clean environment
 Around do |_, block|

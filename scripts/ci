@@ -1,6 +1,3 @@
 #!/bin/sh
 
-echo "BUNDLE_HOME: $BUNDLE_PATH"
-echo "GEM_HOME: $GEM_HOME"
-
-bundle exec rake test:coveralls
+rake ci
