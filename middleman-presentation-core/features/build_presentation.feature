@@ -19,7 +19,7 @@ Feature: Build presentation
     Then a file named "javascripts/reveal.js/plugin/highlight/highlight.js" should exist
     Then a file named "javascripts/reveal.js/plugin/zoom-js/zoom.js" should exist
     Then a file named "javascripts/reveal.js/plugin/notes/notes.js" should exist
-    Then a file named "stylesheets/middleman-presentation/print/pdf.css" should exist
+    Then a file named "stylesheets/middleman-presentation-helpers/print/pdf.css" should exist
 
   Scenario: Change loadable default assets
     Given a user config file for middleman-presentation with:
