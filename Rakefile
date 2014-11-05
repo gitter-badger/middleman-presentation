@@ -157,3 +157,9 @@ namespace :bootstrap do
     Bundler.require
   end
 end
+
+namespace :documentation do
+  task :inch do
+    sh 'inch'
+  end
+end
