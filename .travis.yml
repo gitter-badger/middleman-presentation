@@ -1,9 +1,9 @@
 language: ruby
-bundler_args: --without development
+bundler_args: --without debug
 rvm:
   - 2.1.0
   - 2.1.1
   - 2.1.2
   - 2.1.3
-install: scripts/bootstrap_ci
-script: scripts/ci
+install: scripts/bootstrap
+script: scripts/test

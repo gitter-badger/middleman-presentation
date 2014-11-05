@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -n "$TRAVIS" ]; then
+  rake test:ci
+else
+  rake test
+fi

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-gem install rake
-rake bootstrap:ci
-

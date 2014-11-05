@@ -34,13 +34,6 @@ group :development, :test do
   gem 'mutant', require: false
   gem 'mutant-rspec', require: false
 
-  if !ENV.key?('CI') && !ENV.key?('TRAVIS')
-    gem 'byebug'
-    gem 'pry'
-    gem 'pry-byebug', require: false
-    gem 'pry-doc', require: false
-  end
-
   gem 'foreman', require: false
   gem 'github-markup'
   gem 'redcarpet', require: false
@@ -56,4 +49,11 @@ group :development, :test do
 
   gem 'therubyracer'
   gem 'therubyrhino'
+end
+
+group :debug do
+  gem 'byebug'
+  gem 'pry'
+  gem 'pry-byebug', require: false
+  gem 'pry-doc', require: false
 end

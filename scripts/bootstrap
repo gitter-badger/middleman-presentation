@@ -1,4 +1,9 @@
 #!/bin/sh
 
 gem install rake
-rake bootstrap
+
+if [ -n "$TRAVIS" ]; then
+  rake bootstrap:ci
+else
+  rake bootstrap
+fi
