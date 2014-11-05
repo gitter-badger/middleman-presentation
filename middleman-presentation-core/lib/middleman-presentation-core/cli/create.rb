@@ -8,7 +8,6 @@ module Middleman
         register(CreatePresentation, 'presentation', 'presentation [DIR]', Middleman::Presentation.t('views.presentations.create.title'))
         register(CreateSlide, 'slide', 'slide [DIR]', Middleman::Presentation.t('views.slides.create.title'))
         register(CreatePlugin, 'plugin', 'plugin NAME', Middleman::Presentation.t('views.plugin.create.title'))
-        register(CreateBundlerConfig, 'bundler_config', 'bundler_config', Middleman::Presentation.t('views.bundler_config.create.title'))
 
         default_command :slide
       end

@@ -111,9 +111,6 @@ en:
           width: Width of presentation
         arguments:
           directory: 'Directory to create presentation in'
-    bundler_config:
-      create:
-        title: Create bundler config files
     plugins:
       create:
         title: 'Create a new plugin for middleman-presentation'
