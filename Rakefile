@@ -7,16 +7,21 @@ Rake::TaskManager.record_task_metadata = true
 
 desc 'Run tests'
 task :test => ['test:core', 'test:helpers']
-task 'test:ci' => ['bootstrap:shell_environment', 'bootstrap:gem_requirements'] do
-  Rake::Task['test:coveralls'].invoke
-end
+task 'test:ci' => ['bootstrap:shell_environment', 'bootstrap:gem_requirements', 'test:freeze_bundle', :test]
 
 namespace :test do
+  desc 'Freeze bundle'
+  task :freeze_bundle do |t|
+    puts t.comment
+    ENV['BUNDLE_FROZEN'] = '1'
+    puts format('BUNDLE_FROZEN: %s', ENV['BUNDLE_FROZEN'])
+  end
+
   desc 'Run tests for core'
   task :core do |t|
     Dir.chdir 'middleman-presentation-core' do
       puts t.comment
-      sh 'rake test'
+      sh 'rake test:coveralls'
     end
   end
 
@@ -24,7 +29,7 @@ namespace :test do
   task :helpers do |t|
     Dir.chdir 'middleman-presentation-helpers' do
       puts t.comment
-      sh 'rake test'
+      sh 'rake test:coveralls'
     end
   end
 end
@@ -91,21 +96,22 @@ namespace :bootstrap do
     FileUtils.rm_rf File.expand_path('../tmp/bower_cache', __FILE__)
   end
 
-  desc 'Set paths in shell environment for caches'
+  desc 'Prepare shell environment for testin'
   task :shell_environment do |t|
     puts t.comment
     ENV['BUNDLE_PATH'] = File.expand_path('../tmp/bundler_cache', __FILE__)
     ENV['GEM_HOME'] = File.expand_path('../tmp/bundler_cache', __FILE__)
     ENV['bower_storage__packages'] = File.expand_path('../tmp/bower_cache', __FILE__)
 
-    puts format('BUNDLE_PATH: %s', ENV['BUNDLE_PATH'])
-    puts format('GEM_HOME:    %s', ENV['GEM_HOME'])
-    puts format('BOWER_CACHE:    %s', ENV['bower_storage__packages'])
+    puts format('BUNDLE_PATH:   %s', ENV['BUNDLE_PATH'])
+    puts format('GEM_HOME:      %s', ENV['GEM_HOME'])
+    puts format('BOWER_CACHE:   %s', ENV['bower_storage__packages'])
   end
 
   desc 'Require gems'
   task :gem_requirements do |t|
     puts t.comment
+    require 'bundler'
     Bundler.require
   end
 end
