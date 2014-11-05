@@ -64,12 +64,12 @@ module Middleman
         class_option :force, type: :boolean, default: Middleman::Presentation.config.force_create_presentation, desc: Middleman::Presentation.t('views.presentations.create.options.force')
         class_option :runtime_environment, default: Middleman::Presentation.config.runtime_environment, desc: Middleman::Presentation.t('views.presentations.create.options.runtime_environment')
 
-          class_option :sources_directory, default: Middleman::Presentation.config.sources_directory, desc: Middleman::Presentation.t('views.presentations.create.options.sources_directory')
-          class_option :images_directory, default: Middleman::Presentation.config.images_directory, desc: Middleman::Presentation.t('views.presentations.create.options.images_directory')
-          class_option :scripts_directory, default: Middleman::Presentation.config.scripts_directory, desc: Middleman::Presentation.t('views.presentations.create.options.scripts_directory')
-          class_option :stylesheets_directory, default: Middleman::Presentation.config.stylesheets_directory, desc: Middleman::Presentation.t('views.presentations.create.options.stylesheets_directory')
-          class_option :fonts_directory, default: Middleman::Presentation.config.fonts_directory, desc: Middleman::Presentation.t('views.presentations.create.options.fonts_directory')
-          class_option :build_directory, default: Middleman::Presentation.config.build_directory, desc: Middleman::Presentation.t('views.presentations.create.options.build_directory')
+        class_option :sources_directory, default: Middleman::Presentation.config.sources_directory, desc: Middleman::Presentation.t('views.presentations.create.options.sources_directory')
+        class_option :images_directory, default: Middleman::Presentation.config.images_directory, desc: Middleman::Presentation.t('views.presentations.create.options.images_directory')
+        class_option :scripts_directory, default: Middleman::Presentation.config.scripts_directory, desc: Middleman::Presentation.t('views.presentations.create.options.scripts_directory')
+        class_option :stylesheets_directory, default: Middleman::Presentation.config.stylesheets_directory, desc: Middleman::Presentation.t('views.presentations.create.options.stylesheets_directory')
+        class_option :fonts_directory, default: Middleman::Presentation.config.fonts_directory, desc: Middleman::Presentation.t('views.presentations.create.options.fonts_directory')
+        class_option :build_directory, default: Middleman::Presentation.config.build_directory, desc: Middleman::Presentation.t('views.presentations.create.options.build_directory')
 
         argument :directory, default: Dir.getwd, desc: Middleman::Presentation.t('views.presentations.create.arguments.directory')
 
@@ -214,13 +214,13 @@ module Middleman
           return unless options[:create_predefined_slides]
 
           PredefinedSlideTemplateDirectory.new(working_directory: middleman_environment.root_path).template_files.each do |file|
-            template file, 
-              File.join(
-                middleman_environment.sources_path, 
-                Middleman::Presentation.config.slides_directory, 
-                File.basename(file, '.tt')
-            ),
-            force: options[:force]
+            template file,
+                     File.join(
+                       middleman_environment.sources_path,
+                       Middleman::Presentation.config.slides_directory,
+                       File.basename(file, '.tt')
+                   ),
+                     force: options[:force]
           end
         end
 
