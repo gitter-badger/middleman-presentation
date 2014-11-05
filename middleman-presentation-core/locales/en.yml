@@ -35,6 +35,7 @@ en:
         debug_mode: 'Enable debug mode.'
         edit: 'Start ENV["EDITOR"] to edit slide.'
         editor_command: 'editor command to be used, e.g. ENV["EDITOR"] --servername presentation --remote-tab'
+        regex: Search using regular expressions.
     runners:
       init:
         title: 'Initialize system, presentation, ...'

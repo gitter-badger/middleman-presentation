@@ -9,6 +9,7 @@ module Middleman
         class_option :error_on_duplicates, type: :boolean, default: Middleman::Presentation.config.error_on_duplicates, desc: Middleman::Presentation.t('views.slides.change.options.error_on_duplicates')
         class_option :base_name, desc: Middleman::Presentation.t('views.slides.change.options.base_name')
         class_option :type, desc: Middleman::Presentation.t('views.slides.change.options.type')
+        class_option :regex, type: :boolean, default: Middleman::Presentation.config.use_regex, desc: Middleman::Presentation.t('views.application.options.regex')
 
         argument :names, required: false, default: [], type: :array, desc: Middleman::Presentation.t('views.slides.change.arguments.names')
         def make_middleman_environment_available
@@ -32,7 +33,11 @@ module Middleman
             if names.blank?
               true
             else
-              names.any? { |n| s.base_name =~ /#{n}/ }
+              if options[:regex]
+                names.any? { |n| s.base_name =~ /#{n}/ }
+              else
+                names.any? { |n| s.base_name == n }
+              end
             end
           end
 
@@ -54,24 +59,22 @@ module Middleman
             )
 
             OpenStruct.new(
-              source: old_slide.path,
-              source_short: old_slide.relative_path,
-              destination: new_slide.path,
-              destination_short: new_slide.relative_path
+              source: old_slide,
+              destination: new_slide,
             )
           end
 
           move_jobs.each do |j|
             if j.source == j.destination
-              $stderr.puts format('%-20s %-s -> %-s', 'ignore'.colorize(color: :yellow, mode: :bold), j.source_short, j.destination_short)
+              $stderr.puts format('%-20s %-s -> %-s', 'ignore'.colorize(color: :yellow, mode: :bold), j.source.relative_path, j.destination.relative_path)
               next
             end
 
-            $stderr.puts format('%-20s %-s -> %-s', 'rename '.colorize(color: :green, mode: :bold), j.source_short, j.destination_short)
-            FileUtils.mv j.source, j.destination, force: true
+            $stderr.puts format('%-20s %-s -> %-s', 'rename '.colorize(color: :green, mode: :bold), j.source.relative_path, j.destination.relative_path)
+            FileUtils.mv j.source.path, j.destination.path, force: true
           end
 
-          invoke 'middleman:presentation:cli:edit_slide', names, options.extract!('editor_command') if options['edit']
+          invoke 'middleman:presentation:cli:edit_slide', move_jobs.map(&:destination).map(&:base_name) , options.extract!('editor_command') if options['edit']
         end
       end
     end

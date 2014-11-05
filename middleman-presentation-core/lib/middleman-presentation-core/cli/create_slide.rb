@@ -44,7 +44,7 @@ module Middleman
             slide.write(title: options[:title])
           end
 
-          invoke 'middleman:presentation:cli:edit_slide', names, options.extract!('editor_command') if options['edit']
+          invoke 'middleman:presentation:cli:edit_slide', slide_list.map(&:base_name), options.extract!('editor_command') if options['edit']
         end
       end
     end

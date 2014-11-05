@@ -97,7 +97,7 @@ Feature: Rename slide
     <h1>Hello World</h1>
     </section>
     """
-    When I successfully run `middleman-presentation change slide 0 --type md`
+    When I successfully run `middleman-presentation change slide 0 --type md --regex`
     Then a slide named "01.html.md" should exist
     Then a slide named "02.html.md" should exist
 
@@ -120,7 +120,7 @@ Feature: Rename slide
     <h1>Hello World</h1>
     </section>
     """
-    When I successfully run `middleman-presentation change slide '0[0-1]' --type md`
+    When I successfully run `middleman-presentation change slide '0[0-1]' --type md --regex`
     Then a slide named "00.html.md" should exist
     Then a slide named "01.html.md" should exist
 

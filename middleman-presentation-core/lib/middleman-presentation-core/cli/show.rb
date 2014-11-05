@@ -48,13 +48,12 @@ module Middleman
         def config
           enable_debug_mode
 
-          files = Middleman::Presentation.config.files
-          puts Middleman::Presentation.t('views.configs.show.used_config_files', files: files.to_list, count: files.size)
-          puts
-
           if options[:defaults]
             puts Middleman::Presentation.config.defaults.to_s
           else
+            files = Middleman::Presentation.config.files
+            puts Middleman::Presentation.t('views.configs.show.used_config_files', files: files.to_list, count: files.size)
+            puts
             puts Middleman::Presentation.config.to_s
           end
         end

@@ -33,7 +33,7 @@ Feature: Edit slide
     <h1>Hello World</h1>
     </section>
     """
-    When I successfully run `middleman-presentation edit slide '0\d\d' --editor-command echo`
+    When I successfully run `middleman-presentation edit slide '0\d\d' --editor-command echo --regex`
     Then the output should not contain:
     """
     01.html.erb
@@ -56,9 +56,15 @@ Feature: Edit slide
     <h1>Hello World</h1>
     </section>
     """
-    When I successfully run `middleman-presentation change slide 0 --type md`
-    Then a slide named "01.html.md" should exist
-    Then a slide named "02.html.md" should exist
+    When I successfully run `middleman-presentation edit slide 0 --type md --regex --editor-command echo`
+    Then the output should not contain:
+    """
+    01.html.erb
+    """
+    And the output should not contain:
+    """
+    02.html.erb
+    """
 
   Scenario: Multiple slides
     Given a slide named "01.html.erb" with:

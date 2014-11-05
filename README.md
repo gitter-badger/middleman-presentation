@@ -268,7 +268,7 @@ There are two ways to edit a slide:
 
 The first way is the more obvious one. Run `middleman-presentation` and tell it
 to open a slide. If the requested slide does not exist, it will output an error
-message. 
+message.
 
 ```bash
 bundle exec middleman-presentation edit slide 01
@@ -280,6 +280,11 @@ If you want to open all existing slides you just need to leave out the
 ```bash
 bundle exec middleman-presentation edit slide
 ```
+
+By default the `edit`-command compares the input agains the base name of a
+slide (file name: "01.html.erb", base name: "01"). You want to match against
+the full file name you can use the `--regex`-option which also switches from
+string to regex matching.
 
 If you want to create non-existing slides along editing existing ones, you need
 to run the `create slide`-command with the `--edit`-option.

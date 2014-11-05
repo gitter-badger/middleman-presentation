@@ -35,6 +35,7 @@ de:
         debug_mode: 'Aktiviere DEBUG-Modus.'
         edit: 'Start des Editors aus ENV["EDITOR"] um eine Folie zu editieren.'
         editor_command: 'Editor-Kommando, welches benutzt werden soll, z.B. "ENV["EDITOR"] --servername presentation --remote-tab".'
+        regex: Suche mit Hilfe regulärer Ausdrücke
     runners:
       init:
         title: 'Initialisiere ...'

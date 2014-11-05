@@ -5,6 +5,7 @@ module Middleman
       # Create slide
       class EditSlide < BaseGroup
         class_option :editor_command, default: Middleman::Presentation.config.editor_command, desc: Middleman::Presentation.t('views.application.options.editor_command')
+        class_option :regex, type: :boolean, default: Middleman::Presentation.config.use_regex, desc: Middleman::Presentation.t('views.application.options.regex')
 
         argument :names, default: [], required: false, type: :array, desc: Middleman::Presentation.t('views.slides.edit.arguments.names')
 
@@ -15,19 +16,23 @@ module Middleman
         def edit_slide
           enable_debug_mode
 
-          slides = SlideList.new(
-            Dir.glob(File.join(@environment.slides_directory, '**', '*')),
+          existing_slides = SlideList.new(
+            Dir.glob(File.join(@environment.slides_path, '**', '*')),
             slide_builder: ExistingSlide,
-            base_path: @environment.sources_directory
+            base_path: @environment.sources_path
           ) do |l|
             l.transform_with Transformers::FileKeeper.new
           end
 
-          found_slides = slides.select do |s|
+          found_slides = existing_slides.select do |s|
             if names.blank?
               true
             else
-              names.any? { |n| s.base_name =~ /#{n}/ }
+              if options[:regex]
+                names.any? { |n| s.base_name =~ /#{n}/ }
+              else
+                names.any? { |n| s.base_name == n }
+              end
             end
           end
 

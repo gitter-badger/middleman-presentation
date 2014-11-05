@@ -164,6 +164,7 @@ module Middleman
       option :minify_assets, false
 
       option :runtime_environment, ENV['MP_ENV'].to_s.to_sym
+      option :use_regex, false
 
       def preferred_configuration_file
         ::File.expand_path(::File.join('~', '.config', _application_name, _config_file))
