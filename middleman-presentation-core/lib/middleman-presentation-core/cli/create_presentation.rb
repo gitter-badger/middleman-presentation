@@ -79,7 +79,7 @@ module Middleman
           enable_debug_mode
         end
 
-        def add_to_source_path
+        def add_to_sources_path
           source_paths << File.expand_path('../../../../templates', __FILE__)
         end
 
@@ -158,14 +158,14 @@ module Middleman
 
         def create_source_directory
           [
-            :source_path,
+            :sources_path,
             :images_path,
             :scripts_path,
             :stylesheets_path,
             :fonts_path,
             :build_path
           ].each do |dir|
-            empty_directory middleman_environment.public_send dir, force: options[:force]
+            empty_directory middleman_environment.public_send(dir), force: options[:force]
           end
         end
 
@@ -185,8 +185,8 @@ module Middleman
           assets_loader.load_for_bower_update
 
           @bower_directory = middleman_environment.bower_directory
-          template '.bowerrc.tt', File.join(root_directory, '.bowerrc'), force: options[:force]
-          template 'bower.json.tt', File.join(root_directory, 'bower.json'), force: options[:force]
+          template '.bowerrc.tt', File.join(middleman_environment.root_path, '.bowerrc'), force: options[:force]
+          template 'bower.json.tt', File.join(middleman_environment.root_path, 'bower.json'), force: options[:force]
         end
 
         def create_rake_file
@@ -231,7 +231,7 @@ module Middleman
         def create_helper_scripts
           %w(start bootstrap slide presentation build export).each do |s|
             copy_file File.join('script', s), File.join(middleman_environment.root_path, 'script', s), force: options[:force]
-            chmod File.join(root_directory, 'script', s), 0755, force: options[:force]
+            chmod File.join(middleman_environment.root_path, 'script', s), 0755, force: options[:force]
           end
         end
 
@@ -283,8 +283,11 @@ module Middleman
             @middleman_environment
           end
 
-          def slides_directory
-            
+          def bower_path
+            return @bower_path if @bower_path
+
+            environment = MiddlemanEnvironment.new(strict: false)
+            @bower_path = File.join(environment.root_path, directory, environment.bower_directory)
           end
         end
       end
