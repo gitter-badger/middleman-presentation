@@ -169,6 +169,7 @@ module Middleman
         end
 
         def create_gemfile
+          @rubygem_path = File.expand_path('../../../../../', __FILE__)
           template 'Gemfile.tt', File.join(middleman_environment.root_path, 'Gemfile'), force: options[:force]
         end
 
