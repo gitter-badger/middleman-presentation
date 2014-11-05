@@ -57,11 +57,11 @@ Feature: Edit slide
     </section>
     """
     When I successfully run `middleman-presentation edit slide 0 --type md --regex --editor-command echo`
-    Then the output should not contain:
+    Then the output should contain:
     """
     01.html.erb
     """
-    And the output should not contain:
+    And the output should contain:
     """
     02.html.erb
     """
