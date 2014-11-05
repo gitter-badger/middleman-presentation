@@ -64,6 +64,13 @@ module Middleman
         class_option :force, type: :boolean, default: Middleman::Presentation.config.force_create_presentation, desc: Middleman::Presentation.t('views.presentations.create.options.force')
         class_option :runtime_environment, default: Middleman::Presentation.config.runtime_environment, desc: Middleman::Presentation.t('views.presentations.create.options.runtime_environment')
 
+          class_option :sources_directory, default: Middleman::Presentation.config.sources_directory, desc: Middleman::Presentation.t('views.presentations.create.options.sources_directory')
+          class_option :images_directory, default: Middleman::Presentation.config.images_directory, desc: Middleman::Presentation.t('views.presentations.create.options.images_directory')
+          class_option :scripts_directory, default: Middleman::Presentation.config.scripts_directory, desc: Middleman::Presentation.t('views.presentations.create.options.scripts_directory')
+          class_option :stylesheets_directory, default: Middleman::Presentation.config.stylesheets_directory, desc: Middleman::Presentation.t('views.presentations.create.options.stylesheets_directory')
+          class_option :fonts_directory, default: Middleman::Presentation.config.fonts_directory, desc: Middleman::Presentation.t('views.presentations.create.options.fonts_directory')
+          class_option :build_directory, default: Middleman::Presentation.config.build_directory, desc: Middleman::Presentation.t('views.presentations.create.options.build_directory')
+
         argument :directory, default: Dir.getwd, desc: Middleman::Presentation.t('views.presentations.create.arguments.directory')
 
         desc Middleman::Presentation.t('views.presentations.create.title')
@@ -136,19 +143,39 @@ module Middleman
           Middleman::Presentation.config.bower_directory          = options[:bower_directory]
 
           Middleman::Presentation.config.runtime_environment      = options[:runtime_environment]
+
+          Middleman::Presentation.config.sources_directory = options[:sources_directory]
+          Middleman::Presentation.config.images_directory = options[:images_directory]
+          Middleman::Presentation.config.scripts_directory = options[:scripts_directory]
+          Middleman::Presentation.config.stylesheets_directory = options[:stylesheets_directory]
+          Middleman::Presentation.config.fonts_directory = options[:fonts_directory]
+          Middleman::Presentation.config.build_directory = options[:build_directory]
+        end
+
+        def create_root_directory
+          empty_directory directory, force: options[:force]
         end
 
         def create_source_directory
-          empty_directory File.join(directory, 'source'), force: options[:force]
+          [
+            :source_path,
+            :images_path,
+            :scripts_path,
+            :stylesheets_path,
+            :fonts_path,
+            :build_path
+          ].each do |dir|
+            empty_directory middleman_environment.public_send dir, force: options[:force]
+          end
         end
 
         def create_gemfile
-          template 'Gemfile.tt', File.join(root_directory, 'Gemfile'), force: options[:force]
+          template 'Gemfile.tt', File.join(middleman_environment.root_path, 'Gemfile'), force: options[:force]
         end
 
         def create_config_file
           create_file(
-            File.join(root_directory, '.middleman-presentation.yaml'),
+            File.join(middleman_environment.root_path, '.middleman-presentation.yaml'),
             Middleman::Presentation.config.to_yaml(keys: Middleman::Presentation.config.exportable_options, remove_blank: true),
             force: options[:force]
           )
@@ -157,51 +184,53 @@ module Middleman
         def create_bower_configuration_files
           assets_loader.load_for_bower_update
 
-          @bower_directory = MiddlemanEnvironment.new(strict: false).bower_directory
+          @bower_directory = middleman_environment.bower_directory
           template '.bowerrc.tt', File.join(root_directory, '.bowerrc'), force: options[:force]
           template 'bower.json.tt', File.join(root_directory, 'bower.json'), force: options[:force]
         end
 
         def create_rake_file
-          template 'Rakefile', File.join(root_directory, 'Rakefile'), force: options[:force]
+          template 'Rakefile', File.join(middleman_environment.root_path, 'Rakefile'), force: options[:force]
         end
 
         def create_slides_ignore_file
-          create_file File.join(root_directory, Middleman::Presentation.config.slides_ignore_file), "# empty\n", force: options[:force]
+          create_file File.join(middleman_environment.root_path, Middleman::Presentation.config.slides_ignore_file), "# empty\n", force: options[:force]
         end
 
         def add_configuration_for_middleman_presentation
-          template 'config.rb.tt', File.join(root_directory, 'config.rb'), force: options[:force]
+          template 'config.rb.tt', File.join(middleman_environment.root_path, 'config.rb'), force: options[:force]
         end
 
         def add_patterns_to_gitignore
-          template 'gitignore.tt', File.join(root_directory, '.gitignore'), force: options[:force]
-        end
-
-        def create_image_directory
-          empty_directory File.join(middleman_source_directory, 'images'), force: options[:force]
+          template 'gitignore.tt', File.join(middleman_environment.root_path, '.gitignore'), force: options[:force]
         end
 
         def create_presentation_layout
-          template 'source/layout.erb', File.join(middleman_source_directory, 'layout.erb'), force: options[:force]
-          copy_file 'source/index.html.erb', File.join(middleman_source_directory, 'index.html.erb'), force: options[:force]
+          template 'source/layout.erb', File.join(middleman_environment.sources_path, 'layout.erb'), force: options[:force]
+          copy_file 'source/index.html.erb', File.join(middleman_environment.sources_path, 'index.html.erb'), force: options[:force]
         end
 
         def create_default_slides
           return unless options[:create_predefined_slides]
 
-          PredefinedSlideTemplateDirectory.new(working_directory: root_directory).template_files.each do |file|
-            template file, File.join(slides_directory, File.basename(file, '.tt')), force: options[:force]
+          PredefinedSlideTemplateDirectory.new(working_directory: middleman_environment.root_path).template_files.each do |file|
+            template file, 
+              File.join(
+                middleman_environment.sources_path, 
+                Middleman::Presentation.config.slides_directory, 
+                File.basename(file, '.tt')
+            ),
+            force: options[:force]
           end
         end
 
         def create_default_license_file_to_presentation
-          copy_file 'LICENSE.presentation', File.join(root_directory, 'LICENSE.presentation'), force: options[:force]
+          copy_file 'LICENSE.presentation', File.join(middleman_environment.root_path, 'LICENSE.presentation'), force: options[:force]
         end
 
         def create_helper_scripts
           %w(start bootstrap slide presentation build export).each do |s|
-            copy_file File.join('script', s), File.join(root_directory, 'script', s), force: options[:force]
+            copy_file File.join('script', s), File.join(middleman_environment.root_path, 'script', s), force: options[:force]
             chmod File.join(root_directory, 'script', s), 0755, force: options[:force]
           end
         end
@@ -227,8 +256,8 @@ module Middleman
         def create_application_asset_files
           assets_loader.load_for_asset_aggregators
 
-          template 'source/stylesheets/application.scss.tt', File.join(middleman_source_directory, 'stylesheets', 'application.scss'), force: options[:force]
-          template 'source/javascripts/application.js.tt', File.join(middleman_source_directory, 'javascripts', 'application.js'), force: options[:force]
+          template 'source/stylesheets/application.scss.tt', File.join(middleman_environment.sources_path, 'stylesheets', 'application.scss'), force: options[:force]
+          template 'source/javascripts/application.js.tt', File.join(middleman_environment.sources_path, 'javascripts', 'application.js'), force: options[:force]
         end
 
         def initialize_git_directory
@@ -242,24 +271,20 @@ module Middleman
         end
 
         no_commands do
-          def root_directory
-            @root_directory ||= File.expand_path directory
-          end
-
           # Overwrite for assets_loader
-          def bower_path
-            return @bower_path if @bower_path
+          def middleman_environment
+            return @middleman_environment if @middleman_environment
 
-            environment = MiddlemanEnvironment.new(strict: false)
-            @bower_path = File.join(environment.root_path, directory, environment.bower_directory)
-          end
+            Dir.chdir directory do
+              @middleman_environment = MiddlemanEnvironment.new(strict: false)
+              @middleman_environment.root_path
+            end
 
-          def middleman_source_directory
-            File.join(root_directory, 'source')
+            @middleman_environment
           end
 
           def slides_directory
-            File.join(root_directory, 'source', Middleman::Presentation.config.slides_directory)
+            
           end
         end
       end

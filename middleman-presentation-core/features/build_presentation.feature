@@ -11,7 +11,6 @@ Feature: Build presentation
     When I successfully run `middleman-presentation build presentation`
     And I cd to "build"
     Then a file named "config.ru" should exist
-    Then a file named "stylesheets/application.css" should exist
     Then a file named "javascripts/application.js" should exist
     Then a file named "index.html" should exist
     Then a file named "stylesheets/application.css" should exist
