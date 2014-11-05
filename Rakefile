@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'fedux_org_stdlib/core_ext/array/list'
 require 'English'
 
 Rake::TaskManager.record_task_metadata = true

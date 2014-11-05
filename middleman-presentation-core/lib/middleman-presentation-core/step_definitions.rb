@@ -65,7 +65,7 @@ Given(/^I create a new presentation with title "([^"]+)"(?: for speaker "([^"]+)
   options[:speaker] = speaker if speaker
   options[:date] = date if date
 
-  step %(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}` in debug mode)
+  step %(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
   step 'I cd to "presentation1"'
 end
 
@@ -100,12 +100,6 @@ end
 Given(/^a plugin named "(.*?)" does not exist$/) do |name|
   step %(I remove the directory "#{name}")
 end
-
-# Given(/^I run tests in ci mode$/) do
-#   ENV['BUNDLE_PATH'] = File.expand_path('../../../../tmp/bundler_cache', __FILE__)
-#   ENV['GEM_HOME'] = File.expand_path('../../../../tmp/bundler_cache', __FILE__)
-#   ENV['bower_storage__packages'] = File.expand_path('../../../../tmp/bower_cache', __FILE__)
-# end
 
 Then(%r{^a plugin named "(.*?)" should exist( with default files/directories created)?$}) do |name, default_files|
   step %(a directory named "#{name}" should exist)
