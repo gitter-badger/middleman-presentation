@@ -24,12 +24,52 @@ namespace :test do
     end
   end
 
+  desc 'Run rubocop tests for core'
+  task 'core:rubocop' do |t|
+    Dir.chdir 'middleman-presentation-core' do
+      puts t.comment
+      sh 'rake test:rubocop'
+    end
+  end
+
+  desc 'Run rspec tests for core'
+  task 'core:rspec' do |t|
+    Dir.chdir 'middleman-presentation-core' do
+      puts t.comment
+      sh 'rake test:rspec'
+    end
+  end
+
   desc 'Run tests for helpers'
   task :helpers do |t|
     Dir.chdir 'middleman-presentation-helpers' do
       puts t.comment
       sh 'rake test:coveralls'
     end
+  end
+
+  desc 'Run rubocop tests for helpers'
+  task 'helpers:rubocop' do |t|
+    Dir.chdir 'middleman-presentation-helpers' do
+      puts t.comment
+      sh 'rake test:rubocop'
+    end
+  end
+
+  desc 'Run rspec tests for helpers'
+  task 'helpers:rspec' do |t|
+    Dir.chdir 'middleman-presentation-helpers' do
+      puts t.comment
+      sh 'rake test:rspec'
+    end
+  end
+end
+
+namespace :source do
+  desc 'Push sources'
+  task :push => [ 'test:core:rspec', 'test:core:rubocop', 'test:helpers:rspec', 'test:helpers:rubocop'] do |t|
+    puts t.comment
+    sh 'git push'
   end
 end
 
