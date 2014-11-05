@@ -845,13 +845,42 @@ puts 42
 
 ## Development
 
+### Introduction
+
 Make sure you've got a working internet connection before running the tests. To
-keep the source code repository lean there tests that download assets via bower.
+keep the source code repository lean there tests that download assets via
+`bower` and install gems via `bundler`.
 
 If you care about licensing, please have a look at [LICENSE.txt](LICENSE.txt).
 As this software would not be possible without the wonderful gems out there,
 there's also an overview about all the licenses used by the required gems at
 [doc/licenses/dependencies.html](doc/licenses/dependencies.html). 
+
+### Getting started
+
+1. Install ruby
+2. Run bootstrapping-script
+
+   This script will install `rake` and call `rake`-tasks to prepare your
+   environment:
+
+   * Install `bower`
+   * Install `gems`
+
+   ```bash
+   scripts/bootstrap
+   ```
+
+3. Run testing-script
+
+   Just to make sure, that everything is fine and nothing is broken, please run
+   the testing-scrip before start to develop new code or fix bugs.
+
+   ```bash
+   scripts/test
+   ```
+
+### Tips
 
 If you get some weird errors during testing, make sure have got enough space at
 `/tmp`. This directory is used by `bower` to temporary store downloaded assets.
@@ -872,5 +901,3 @@ lsof <file>
 ## Contributing
 
 Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
-
-
