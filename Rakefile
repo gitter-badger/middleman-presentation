@@ -96,7 +96,7 @@ namespace :bootstrap do
     FileUtils.rm_rf File.expand_path('../tmp/bower_cache', __FILE__)
   end
 
-  desc 'Prepare shell environment for testin'
+  desc 'Prepare shell environment for testing'
   task :shell_environment do |t|
     puts t.comment
     ENV['BUNDLE_PATH'] = File.expand_path('../tmp/bundler_cache', __FILE__)
