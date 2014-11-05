@@ -60,7 +60,7 @@ module Middleman
 
             OpenStruct.new(
               source: old_slide,
-              destination: new_slide,
+              destination: new_slide
             )
           end
 
@@ -74,7 +74,7 @@ module Middleman
             FileUtils.mv j.source.path, j.destination.path, force: true
           end
 
-          invoke 'middleman:presentation:cli:edit_slide', move_jobs.map(&:destination).map(&:base_name) , options.extract!('editor_command') if options['edit']
+          invoke 'middleman:presentation:cli:edit_slide', move_jobs.map(&:destination).map(&:base_name), options.extract!('editor_command') if options['edit']
         end
       end
     end
