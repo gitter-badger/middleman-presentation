@@ -15,8 +15,6 @@ gem 'middleman-presentation-helpers', path: File.expand_path('../middleman-prese
 group :development, :test do
   gem 'middleman-presentation-simple_plugin', path: File.expand_path('../middleman-presentation-core/fixtures/middleman-presentation-simple_plugin', __FILE__), require: false
 
-  gem 'parallel_tests', require: false
-
   gem 'stackprof'
   gem 'rspec', require: false
   gem 'fuubar', require: false
