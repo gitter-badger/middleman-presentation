@@ -175,11 +175,7 @@ module Middleman
         end
 
         def add_patterns_to_gitignore
-          append_to_file File.join(root_directory, '.gitignore'), <<-EOS.strip_heredoc, force: options[:force]
-          *.zip
-          *.tar.gz
-          tmp/
-          EOS
+          template 'gitignore.tt', File.join(root_directory, '.gitignore'), force: options[:force]
         end
 
         def create_image_directory
