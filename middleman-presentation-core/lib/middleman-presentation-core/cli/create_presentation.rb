@@ -62,6 +62,7 @@ module Middleman
         class_option :language, default: Middleman::Presentation.config.presentation_language, desc: Middleman::Presentation.t('views.presentations.create.options.language')
         class_option :version, default: Middleman::Presentation.config.default_version_number, desc: Middleman::Presentation.t('views.presentations.create.options.version')
         class_option :force, type: :boolean, default: Middleman::Presentation.config.force_create_presentation, desc: Middleman::Presentation.t('views.presentations.create.options.force')
+        class_option :runtime_environment, default: Middleman::Presentation.config.runtime_environment, desc: Middleman::Presentation.t('views.presentations.create.options.runtime_environment')
 
         argument :directory, default: Dir.getwd, desc: Middleman::Presentation.t('views.presentations.create.arguments.directory')
 
@@ -73,19 +74,6 @@ module Middleman
 
         def add_to_source_path
           source_paths << File.expand_path('../../../../templates', __FILE__)
-        end
-
-        def initialize_middleman
-          cmd = []
-          cmd << 'middleman init'
-          cmd << '--skip-bundle'
-          cmd << "--template empty #{directory}"
-          cmd << '--force' if options[:force]
-
-          # Bundler.with_clean_env { run(cmd.join(' '), capture: false) }
-          run(cmd.join(' '), capture: false)
-
-          fail Thor::Error, Middleman::Presentation.t('errors.init_middleman_failed') unless $CHILD_STATUS.exitstatus == 0
         end
 
         def set_language
@@ -146,42 +134,19 @@ module Middleman
           Middleman::Presentation.config.view_distance                 = options[:view_distance]
 
           Middleman::Presentation.config.bower_directory          = options[:bower_directory]
+
+          Middleman::Presentation.config.runtime_environment      = options[:runtime_environment]
         end
 
-        def add_gems_to_gem_file
-          if ENV['MP_ENV'] == 'test'
-            append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
-
-              # Make sure the paths are correct, otherwise you get
-              # Bundler-errors a la `Path does not exist`
-              gem 'middleman-presentation', path: '#{File.expand_path('../../../../../', __FILE__)}'
-              gem 'middleman-presentation-core', path: '#{File.expand_path('../../../../../middleman-presentation-core', __FILE__)}', require: false
-              gem 'middleman-presentation-helpers', path: '#{File.expand_path('../../../../../middleman-presentation-helpers', __FILE__)}', require: false
-              gem 'middleman-presentation-simple_plugin', path: '#{File.expand_path('../../../../../middleman-presentation-core/fixtures/middleman-presentation-simple_plugin', __FILE__)}', require: false
-            EOS
-          else
-            append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
-
-              gem 'middleman-presentation'
-            EOS
-          end
-
-          append_to_file File.join(root_directory, 'Gemfile'), <<-EOS.strip_heredoc, force: options[:force]
-
-          group :development, :test do
-            gem 'pry'
-            gem 'byebug'
-            gem 'pry-byebug'
-          end
-
-          gem 'kramdown'
-          gem 'github-markup'
-          gem 'liquid'
-          gem 'rake'
-          EOS
+        def create_source_directory
+          empty_directory File.join(directory, 'source'), force: options[:force]
         end
 
-        def create_middleman_data_files
+        def create_gemfile
+          template 'Gemfile.tt', File.join(root_directory, 'Gemfile'), force: options[:force]
+        end
+
+        def create_config_file
           create_file(
             File.join(root_directory, '.middleman-presentation.yaml'),
             Middleman::Presentation.config.to_yaml(keys: Middleman::Presentation.config.exportable_options, remove_blank: true),
@@ -206,11 +171,7 @@ module Middleman
         end
 
         def add_configuration_for_middleman_presentation
-          append_to_file File.join(root_directory, 'config.rb'), <<-EOS.strip_heredoc, force: options[:force]
-
-          activate :presentation
-          Middleman::Presentation.start(self)
-          EOS
+          template 'config.rb.tt', File.join(root_directory, 'config.rb'), force: options[:force]
         end
 
         def add_patterns_to_gitignore
@@ -285,8 +246,6 @@ module Middleman
         end
 
         no_commands do
-          attr_reader :root_directory
-
           def root_directory
             @root_directory ||= File.expand_path directory
           end

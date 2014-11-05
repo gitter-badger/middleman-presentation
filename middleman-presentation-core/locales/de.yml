@@ -58,6 +58,7 @@ de:
       create:
         title: 'Erzeuge eine neue Präsentation in Verzeichnis DIR (standard: aktuelles Arbeitsverzeichnis)'
         options:
+          runtime_environment: Laufzeit-Umgebung in der middleman-presentation läuft, z.B. "test"
           activate_center: 'Aktiviere "center" in reveal.js'
           activate_controls: 'Aktiviere "controls" in reveal.js'
           activate_embedded: Aktiviere den Embedded-Modus
@@ -110,6 +111,9 @@ de:
           width: Breite der Präsentation
         arguments:
           directory: 'Verzeichnis in dem die Präsentation erstellt werden soll'
+    bundler_config:
+      create:
+        title: Erzeuge Konfigurationsdateien für "bundler"
     plugins:
       create:
         title: 'Erstellen eines neuen Plugins für "middleman-presentation"'

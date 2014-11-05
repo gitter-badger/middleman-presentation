@@ -1,0 +1,6 @@
+<% if @bundle_path -%>
+BUNDLE_PATH: <%= @bundle_path %>
+<% end -%>
+<% if @bundle_frozen -%>
+BUNDLE_FROZEN: <%= @bundle_frozen %>
+<% end -%>

@@ -58,6 +58,7 @@ en:
       create:
         title: 'Initialize a new presentation in DIR (default: $PWD)'
         options:
+          runtime_environment: Runtime environment in which middleman-presentation is running, e.g. "test"
           activate_center: 'Activate center in reveal.js'
           activate_controls: 'Activate controls in reveal.js'
           activate_embedded: Activate embedded mode
@@ -110,6 +111,9 @@ en:
           width: Width of presentation
         arguments:
           directory: 'Directory to create presentation in'
+    bundler_config:
+      create:
+        title: Create bundler config files
     plugins:
       create:
         title: 'Create a new plugin for middleman-presentation'

@@ -1,0 +1,28 @@
+source 'https://rubygems.org'
+
+gem 'middleman'
+
+# For faster file watcher updates on Windows:
+# gem 'wdm', :platforms => [:mswin, :mingw]
+
+<% if Middleman::Presentation.config.runtime_environment == :test -%>
+# Make sure the paths are correct, otherwise you get
+# Bundler-errors a la `Path does not exist`
+gem 'middleman-presentation', path: '#{File.expand_path('../../../../../', __FILE__)}'
+gem 'middleman-presentation-core', path: '#{File.expand_path('../../../../../middleman-presentation-core', __FILE__)}', require: false
+gem 'middleman-presentation-helpers', path: '#{File.expand_path('../../../../../middleman-presentation-helpers', __FILE__)}', require: false
+gem 'middleman-presentation-simple_plugin', path: '#{File.expand_path('../../../../../middleman-presentation-core/fixtures/middleman-presentation-simple_plugin', __FILE__)}', require: false
+<% else -%>
+gem 'middleman-presentation'
+<% end -%>
+
+gem 'kramdown'
+gem 'github-markup'
+gem 'liquid'
+gem 'rake'
+
+group :debug do
+  gem 'pry'
+  gem 'byebug'
+  gem 'pry-byebug'
+end

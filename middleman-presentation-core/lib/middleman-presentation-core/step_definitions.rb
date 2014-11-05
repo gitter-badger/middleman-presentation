@@ -6,8 +6,20 @@ Before do
   ENV['MP_ENV'] = 'test'
 
   step 'a mocked home directory'
+  step 'I configure bundler for fast testing'
   step 'git is configured with username "User" and email-address "email@example.com"'
   step 'I set the language for the shell to "en_GB.UTF-8"'
+end
+
+Given(/I configure bundler for fast testing/) do
+  config = []
+  config << "BUNDLE_PATH: #{ENV['BUNDLE_PATH']}" if ENV.key? 'BUNDLE_PATH'
+  config << "BUNDLE_FROZEN: #{ENV['BUNDLE_PATH']}" if ENV.key? 'BUNDLE_FROZEN'
+
+  config_file = File.join ENV['HOME'], '.bundle', 'config'
+
+  FileUtils.mkdir_p File.dirname(config_file)
+  File.write config_file, config.join("\n")
 end
 
 # Clean environment
@@ -53,9 +65,8 @@ Given(/^I create a new presentation with title "([^"]+)"(?: for speaker "([^"]+)
   options[:speaker] = speaker if speaker
   options[:date] = date if date
 
-  step %(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}`)
+  step %(I successfully run `middleman-presentation create presentation presentation1 #{options.to_options.join(' ')}` in debug mode)
   step 'I cd to "presentation1"'
-  # step 'I remove all bundler files'
 end
 
 Given(/^I prepend "([^"]+)" to environment variable "([^"]+)"$/) do |value, variable|
@@ -78,9 +89,23 @@ Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
   step %(I remove the directory "middleman-presentation-theme-#{name}")
 end
 
+Given(/^a file named "(.*?)" does not exist$/) do |name|
+  FileUtils.rm_rf absolute_path(name)
+end
+
+Given(/^a directory named "(.*?)" does not exist$/) do |name|
+  step %(I remove the directory "#{name}")
+end
+
 Given(/^a plugin named "(.*?)" does not exist$/) do |name|
   step %(I remove the directory "#{name}")
 end
+
+# Given(/^I run tests in ci mode$/) do
+#   ENV['BUNDLE_PATH'] = File.expand_path('../../../../tmp/bundler_cache', __FILE__)
+#   ENV['GEM_HOME'] = File.expand_path('../../../../tmp/bundler_cache', __FILE__)
+#   ENV['bower_storage__packages'] = File.expand_path('../../../../tmp/bower_cache', __FILE__)
+# end
 
 Then(%r{^a plugin named "(.*?)" should exist( with default files/directories created)?$}) do |name, default_files|
   step %(a directory named "#{name}" should exist)
@@ -158,9 +183,7 @@ Then(/^a directory named "(.*?)" is a git repository$/) do |name|
 end
 
 Given(/^a slide named "(.*?)" does not exist$/) do |name|
-  in_current_dir do
-    FileUtils.rm_rf File.expand_path(File.join('source', 'slides', name))
-  end
+  FileUtils.rm_rf absolute_path('source', 'slides', name)
 end
 
 Then(/^a slide named "(.*?)" should exist$/) do |name|
@@ -170,18 +193,6 @@ end
 Then(/^a slide named "(.*?)" should exist with:$/) do |name, string|
   step %(the file "source/slides/#{name}" should contain:), string
 end
-
-Given(/I remove all bundler files$/) do
-  FileUtils.rm_f File.expand_path(File.join(current_dir, 'Gemfile'))
-  FileUtils.rm_f File.expand_path(File.join(current_dir, 'Gemfile.lock'))
-end
-
-# Given(/I replace all bundler files$/) do
-#  src = File.expand_path(File.join('..', '..', '..', '..', 'Gemfile'), __FILE__)
-#  dst = File.expand_path(File.join(current_dir, 'Gemfile'))
-#
-#  FileUtils.cp src, dst
-# end
 
 When(/^I successfully run `([^`]+)` in clean environment$/) do |command|
   Bundler.with_clean_env do
@@ -193,6 +204,10 @@ Given(/^I add a stylesheet asset named "(.*?)" to the presentation$/) do |asset|
   import_string = "@import '#{asset}';"
 
   step 'I append to "source/stylesheets/application.scss" with:', import_string
+end
+
+When(/^I successfully run `([^`]+)` in debug mode$/) do |cmd|
+  step "I run `#{cmd}` in debug mode"
 end
 
 When(/^I run `([^`]+)` in debug mode$/) do |cmd|
