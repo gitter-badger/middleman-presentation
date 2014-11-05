@@ -142,11 +142,11 @@ namespace :bootstrap do
   task :shell_environment do |t|
     puts t.comment
     ENV['BUNDLE_PATH'] = File.expand_path('../tmp/bundler_cache', __FILE__)
-    # ENV['GEM_HOME'] = File.expand_path('../tmp/bundler_cache', __FILE__)
+    ENV['GEM_HOME'] = File.expand_path('../tmp/bundler_cache', __FILE__)
     ENV['bower_storage__packages'] = File.expand_path('../tmp/bower_cache', __FILE__)
 
     puts format('BUNDLE_PATH:   %s', ENV['BUNDLE_PATH'])
-    # puts format('GEM_HOME:      %s', ENV['GEM_HOME'])
+    puts format('GEM_HOME:      %s', ENV['GEM_HOME'])
     puts format('BOWER_CACHE:   %s', ENV['bower_storage__packages'])
   end
 

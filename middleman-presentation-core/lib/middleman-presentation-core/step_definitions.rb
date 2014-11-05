@@ -14,7 +14,6 @@ end
 Given(/I configure bundler for fast testing/) do
   config = []
   config << "BUNDLE_PATH: #{ENV['BUNDLE_PATH']}" if ENV.key? 'BUNDLE_PATH'
-  config << "BUNDLE_FROZEN: #{ENV['BUNDLE_FROZEN']}" if ENV.key? 'BUNDLE_FROZEN'
 
   config_file = File.join ENV['HOME'], '.bundle', 'config'
 
