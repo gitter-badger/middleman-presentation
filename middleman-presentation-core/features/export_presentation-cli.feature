@@ -5,9 +5,7 @@ Feature: Export presentation
   In order to give to the audience
 
   Background:
-    Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation" --date "20140901"`
-    And I cd to "presentation1"
-    And I remove all bundler files
+    Given I create a new presentation with title "My Presentation" on "20140901"
 
   Scenario: Default file name
     When I successfully run `middleman-presentation export presentation`
