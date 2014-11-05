@@ -2,7 +2,7 @@
 
 gem install rake
 
-if [ -n "$TRAVIS" ]; then
+if [ -n "$CI" ]; then
   rake bootstrap:ci
 else
   rake bootstrap
