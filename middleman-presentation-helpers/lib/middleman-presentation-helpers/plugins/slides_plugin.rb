@@ -8,7 +8,7 @@ module Middleman
         extend PluginApi
 
         output_paths = {
-          %r{plugin/notes/notes\.html$} => Pathname.new('javascripts/reveal.js/plugin/notes/notes.html'),
+          %r{plugin/notes/notes\.html$} => Pathname.new('javascripts/reveal.js/plugin/notes/notes.html')
         }
 
         loadable_files = [

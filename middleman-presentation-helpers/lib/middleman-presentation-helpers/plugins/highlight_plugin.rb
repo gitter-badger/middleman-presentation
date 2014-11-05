@@ -8,7 +8,7 @@ module Middleman
         extend PluginApi
 
         loadable_files = [
-          %r{.*\.js$}
+          /.*\.js$/
         ]
 
         add_component(
