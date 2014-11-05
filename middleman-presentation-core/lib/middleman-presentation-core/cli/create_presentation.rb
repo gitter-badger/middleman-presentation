@@ -156,14 +156,13 @@ module Middleman
           empty_directory directory, force: options[:force]
         end
 
-        def create_source_directory
+        def create_directories
           [
-            :sources_path,
+            # :sources_path, # implicit created
             :images_path,
             :scripts_path,
             :stylesheets_path,
-            :fonts_path,
-            :build_path
+            :fonts_path
           ].each do |dir|
             empty_directory middleman_environment.public_send(dir), force: options[:force]
           end

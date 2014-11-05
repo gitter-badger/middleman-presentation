@@ -27,7 +27,7 @@ module Middleman
       end
 
       def build_path
-        File.join(root_path, application_config.build_directory)
+        File.join(sources_path, application_config.build_directory)
       end
 
       def stylesheets_directory
@@ -35,7 +35,7 @@ module Middleman
       end
 
       def stylesheets_path
-        File.join(root_path, application_config.stylesheets_directory)
+        File.join(sources_path, application_config.stylesheets_directory)
       end
 
       def scripts_directory
@@ -43,7 +43,7 @@ module Middleman
       end
 
       def scripts_path
-        File.join(root_path, application_config.scripts_directory)
+        File.join(sources_path, application_config.scripts_directory)
       end
 
       def images_directory
@@ -51,7 +51,7 @@ module Middleman
       end
 
       def images_path
-        File.join(root_path, application_config.images_directory)
+        File.join(sources_path, application_config.images_directory)
       end
 
       def fonts_directory
@@ -59,7 +59,7 @@ module Middleman
       end
 
       def fonts_path
-        File.join(root_path, application_config.fonts_directory)
+        File.join(sources_path, application_config.fonts_directory)
       end
 
       def sources_directory
