@@ -44,6 +44,7 @@ module Middleman
           cmd << '--verbose' if options[:debug_mode]
 
           system cmd.join(' ')
+
           fail Thor::Error, Middleman::Presentation.t('errors.middleman_build_error', result: '') unless $CHILD_STATUS.exitstatus == 0
         end
 

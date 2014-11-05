@@ -16,6 +16,10 @@ gem 'middleman-presentation-simple_plugin', path: "#{File.expand_path('../../../
 gem 'middleman-presentation'
 <% end -%>
 
+# Choose one to make `execjs` happy
+# gem 'therubyracer'
+# gem 'therubyrhino'
+
 gem 'kramdown'
 gem 'github-markup'
 gem 'liquid'
