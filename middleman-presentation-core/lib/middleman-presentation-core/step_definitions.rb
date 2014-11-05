@@ -82,7 +82,7 @@ Given(/^a project template named "(.*?)" with:$/) do |name, string|
 end
 
 Given(/^a user template named "(.*?)" with:$/) do |name, string|
-  step %(a file named "~/.config/middleman/presentation/templates/#{name}" with:), string
+  step %(a file named "~/.config/middleman-presentation/templates/#{name}" with:), string
 end
 
 Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
