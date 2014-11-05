@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/maxmeyer/middleman-presentation.png?branch=master)](https://travis-ci.org/maxmeyer/middleman-presentation)
 [![Coverage Status](https://coveralls.io/repos/maxmeyer/middleman-presentation/badge.png?branch=master)](https://coveralls.io/r/maxmeyer/middleman-presentation?branch=master)
 [![Gem Version](https://badge.fury.io/rb/middleman-presentation.svg)](http://badge.fury.io/rb/middleman-presentation)
+[![Inline docs](http://inch-ci.org/github/maxmeyer/middleman-presentation.svg?branch=master)](http://inch-ci.org/github/maxmeyer/middleman-presentation) 
 
 This project helps you to build wonderful presentations based on
 [HTML](http://www.w3.org/html/) and JavaScript. The JavaScript-part is powered
