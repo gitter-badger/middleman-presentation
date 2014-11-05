@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'fedux_org_stdlib/core_ext/array/list'
+require 'English'
 
 @repositories = [
   'core',
@@ -124,5 +125,34 @@ namespace :gem do
         end
       end
     end
+  end
+end
+
+desc 'Bootstrap project'
+task :bootstrap => ['bootstrap:bower', 'bootstrap:bundler']
+
+namespace :bootstrap do
+  desc 'Bootstrap bower'
+  task :bower do
+    sh 'npm install -g bower'
+
+    fail RuntimeError, "Make sure you've got 'npm' and 'bower' installed on your system! 'npm' comes with nodejs. Please see http://nodejs.org/ for information about 'node.js/npm' and http://bower.io/ for more information about installing 'bower' on your system." unless $CHILD_STATUS.exitstatus == 0
+  end
+
+  desc 'Bootstrap bundler'
+  task :bundler do
+    sh 'gem install bundler'
+    sh 'bundle install'
+  end
+
+  desc 'Bootstrap project for ci'
+  task :ci do
+    ENV['BUNDLE_PATH'] = File.expand_path('../tmp/bundler_cache', __FILE__)
+    ENV['GEM_HOME'] = File.expand_path('../tmp/bundler_cache', __FILE__)
+
+    puts format('BUNDLE_PATH: %s', ENV['BUNDLE_PATH'])
+    puts format('GEM_HOME:    %s', ENV['GEM_HOME'])
+
+    Rake::Task['bootstrap'].invoke
   end
 end

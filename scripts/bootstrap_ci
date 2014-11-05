@@ -1,16 +1,5 @@
 #!/bin/sh
 
-npm install -g bower
+gem install rake
+rake bootstrap:ci
 
-if [ "$?" -ne "0" ]; then
-  echo "Make sure you've got 'npm' and 'bower' installed on your system! 'npm' comes with nodejs. Please see http://nodejs.org/ for information about 'node.js/npm' and http://bower.io/ for more information about installing 'bower' on your system." >&2
-fi
-
-export BUNDLE_PATH=$PWD/tmp/bundler_cache
-export GEM_HOME=$PWD/tmp/bundler_cache
-
-echo "BUNDLE_HOME: $BUNDLE_PATH"
-echo "GEM_HOME: $GEM_HOME"
-
-gem install bundler
-bundle install
