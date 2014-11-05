@@ -1,6 +1,5 @@
 env:
-  global:
-    - CI: '1'
+  - CI=1
 language: ruby
 bundler_args: --without debug
 rvm:
