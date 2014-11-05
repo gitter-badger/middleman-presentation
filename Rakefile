@@ -65,6 +65,9 @@ namespace :test do
   end
 end
 
+desc 'Push sources'
+task :push => 'source:push'
+
 namespace :source do
   desc 'Push sources'
   task :push => [ 'test:core:rspec', 'test:core:rubocop', 'test:helpers:rspec', 'test:helpers:rubocop'] do |t|
