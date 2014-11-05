@@ -885,6 +885,16 @@ there's also an overview about all the licenses used by the required gems at
    scripts/test
    ```
 
+### Task Automation
+
+I chose to use `rake` to automate a lot of tasks.  There's a `Rakefile` for each
+sub-project and one main `Rakefile`. Please run the following command to get an
+overview about all commands.
+
+```bash
+rake -T
+```
+
 ### Tips
 
 If you get some weird errors during testing, make sure have got enough space at

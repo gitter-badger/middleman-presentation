@@ -325,13 +325,13 @@ Feature: Initialize presentation
     When I cd to "presentation1"
     Then the file ".middleman-presentation.yaml" should contain:
     """
-    width: 1024
+    width: '1024'
     """
     And the file ".middleman-presentation.yaml" should contain:
     """
-    height: 768
+    height: '768'
     """
     And the file ".middleman-presentation.yaml" should contain:
     """
-    margin: 0.5
+    margin: '0.5'
     """
