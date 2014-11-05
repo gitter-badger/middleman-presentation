@@ -35,6 +35,7 @@ module Middleman
 
       def enable_debug_mode
         self.debug_mode = true
+        Middleman::Presentation.config.debugging_libraries.each { |l| require l }
       end
 
       def stylable_files
