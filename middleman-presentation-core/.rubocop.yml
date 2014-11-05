@@ -47,3 +47,6 @@ Style/RegexpLiteral:
 
 Metrics/AbcSize:
   Enabled: false
+
+Lint/Debugger:
+  Enabled: false
