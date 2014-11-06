@@ -206,12 +206,6 @@ Feature: Add new slide
     Then a slide named "01.html.liquid" should exist with:
     """
     <section>
-      <h1>
-        My Title
-      </h1>
-    </section>
-
-    <section>
     <h1>{{ page_title }}</h1>
     <h2>My Title<h2>
     </section>
