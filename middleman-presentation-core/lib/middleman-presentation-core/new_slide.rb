@@ -79,6 +79,7 @@ module Middleman
       # It either uses previously set content or generates content by using a
       # predefined template
       def content(**data)
+        binding.pry
         Erubis::Eruby.new(template.content).result(data)
       end
 

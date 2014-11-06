@@ -200,12 +200,17 @@ Feature: Add new slide
     """
     <section>
     <h1>{{ page_title }}</h1>
-    <h2><%= title %><h2>
     </section>
     """
     When I successfully run `middleman-presentation create slide 01.liquid --title "My Title"`
     Then a slide named "01.html.liquid" should exist with:
     """
+    <section>
+      <h1>
+        My Title
+      </h1>
+    </section>
+
     <section>
     <h1>{{ page_title }}</h1>
     <h2>My Title<h2>

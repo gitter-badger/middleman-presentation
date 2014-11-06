@@ -3,6 +3,10 @@ module Middleman
   module Presentation
     # Erb template for a new slide
     class ErbTemplate < FeduxOrgStdlib::FileTemplate
+      def application_name
+        'middleman-presentation'
+      end
+
       def fallback_template_directory
         File.expand_path('../../../templates/slides', __FILE__)
       end
