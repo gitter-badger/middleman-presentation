@@ -195,7 +195,37 @@ Feature: Add new slide
     </section>
     """
 
-  Scenario: User template
+  Scenario: User markdown template 
+    Given a user template named "markdown.tt" with:
+    """
+    <section>
+    # Hey ya
+    </section>
+    """
+    When I successfully run `middleman-presentation create slide 01.md --title "My Title"`
+    Then a slide named "01.html.liquid" should exist with:
+    """
+    <section>
+    # Hey ya
+    </section>
+    """
+
+  Scenario: User erb template 
+    Given a user template named "erb.tt" with:
+    """
+    <section>
+    <h1><%= title %></h1>
+    </section>
+    """
+    When I successfully run `middleman-presentation create slide 01.erb --title "My Title"`
+    Then a slide named "01.html.liquid" should exist with:
+    """
+    <section>
+    <h1>My Title<h1>
+    </section>
+    """
+
+  Scenario: User liquid template 
     Given a user template named "liquid.tt" with:
     """
     <section>
