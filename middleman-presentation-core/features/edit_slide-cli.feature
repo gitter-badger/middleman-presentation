@@ -5,7 +5,7 @@ Feature: Edit slide
   In order to make changes
 
   Background:
-    Given I create a new presentation with title "My Presentation"
+    Given I use presentation fixture "presentation1" with title "My Presentation"
 
   Scenario: Existing slide
     Given a slide named "01.html.erb" with:

@@ -10,7 +10,7 @@ Feature: Support plugins for middleman-presentation
     plugins:
       - middleman-presentation-simple_plugin
     """
-    And I create a new presentation with title "My Presentation"
+    And I use presentation fixture "presentation1" with title "My Presentation"
 
   Scenario: Use method in plugin
     Given a slide named "01.html.erb" with:

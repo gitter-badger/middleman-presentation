@@ -1,4 +1,13 @@
 # encoding: utf-8
+Before do 
+  $aruba_cleanup ||= false
+
+  return $aruba_cleanup if $aruba_cleanup
+
+  FileUtils.rm_rf temporary_fixture_path('.')
+
+  $aruba_cleanup = true
+end 
 
 Before do
   @aruba_timeout_seconds = 120
@@ -37,6 +46,25 @@ When(/^I start debugging/) do
   # rubocop:enable Lint/Debugger
 
   ''
+end
+
+Given(/^I use presentation fixture "([^"]+)" with title "([^"]+)"(?: and date "([^"]+))?$/) do |name, title, date|
+  directory = []
+  directory << name
+  directory << ('-' + title)
+  directory << ('-' + date) if date
+
+  directory = directory.join.characterize
+
+  command = []
+  command << "middleman-presentation create presentation #{temporary_fixture_path(directory)}"
+  command << "--title #{title}"
+  command << "--date #{date}" if date
+
+  system(command.join(' ')) unless temporary_fixture_exist?(directory)
+
+  FileUtils.cp_r temporary_fixture_path(directory), absolute_path(name) 
+  step %(I cd to "#{name}")
 end
 
 Given(/^I set the language for the shell to "([^"]+)"$/) do |language|

@@ -5,7 +5,7 @@ Feature: Grouping slides
   In order to use vertical slides feature
 
   Background:
-    Given I create a new presentation with title "My Presentation"
+    Given I use presentation fixture "presentation1" with title "My Presentation"
 
   Scenario: Read slides from filesystem
     Given a slide named "01namespace/01.html.erb" with:

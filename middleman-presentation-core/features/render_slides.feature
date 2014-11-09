@@ -5,7 +5,7 @@ Feature: Render different kind of templates
   In order to reduce the amount of time to create a new presentation
 
   Background:
-    Given I create a new presentation with title "My Presentation"
+    Given I use presentation fixture "presentation1" with title "My Presentation"
 
   Scenario: Markdown Slide
     Given a slide named "01.html.md" with:

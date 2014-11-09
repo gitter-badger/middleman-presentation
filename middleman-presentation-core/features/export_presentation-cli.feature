@@ -5,7 +5,7 @@ Feature: Export presentation
   In order to give to the audience
 
   Background:
-    Given I create a new presentation with title "My Presentation" on "20140901"
+    Given I use presentation fixture "presentation1" with title "My Presentation" and date "20140901"
 
   Scenario: Default file name
     When I successfully run `middleman-presentation export presentation`

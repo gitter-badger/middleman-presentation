@@ -5,7 +5,7 @@ Feature: Image Gallery
   In order to spent as less time as possible on it
 
   Background:
-    Given I create a new presentation with title "My Presentation"
+    Given I use presentation fixture "image_gallery" with title "My Presentation"
     And an image "image01.png" at "images/image01.png"
     And an image "image02.png" at "images/image02.png"
 
