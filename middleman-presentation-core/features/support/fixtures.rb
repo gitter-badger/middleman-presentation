@@ -17,3 +17,5 @@ module Middleman
 end
 
 World(Middleman::Presentation::FeatureHelper::Fixtures)
+
+FileUtils.rm_rf Middleman::Presentation::TestHelpers.temporary_fixture_path('.')

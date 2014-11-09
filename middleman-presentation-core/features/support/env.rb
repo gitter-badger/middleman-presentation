@@ -23,5 +23,3 @@ ENV['TEST'] = 'true'
 ENV['AUTOLOAD_SPROCKETS'] = 'false'
 
 PROJECT_ROOT_PATH = File.expand_path('../../../', __FILE__)
-
-FileUtils.rm_rf Middleman::Presentation::TestHelpers.temporary_fixture_path('.')
