@@ -86,7 +86,7 @@ module Middleman
 
       option :edit_created_slide, false
       option :edit_changed_slide, false
-      option :editor_command, process_environment.fetch('EDITOR', 'vim')
+      option :editor_command, FeduxOrgStdlib::Editor.new.path
       option :error_on_duplicates, true
 
       option :force_create_presentation, false
