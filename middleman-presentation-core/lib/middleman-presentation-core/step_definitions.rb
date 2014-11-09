@@ -1,15 +1,5 @@
 # encoding: utf-8
 Before do
-  $aruba_cleanup ||= false
-
-  return $aruba_cleanup if $aruba_cleanup
-
-  FileUtils.rm_rf temporary_fixture_path('.')
-
-  $aruba_cleanup = true
-end
-
-Before do
   @aruba_timeout_seconds = 120
   ENV['MM_ENV'] = 'development'
   ENV['MP_ENV'] = 'test'

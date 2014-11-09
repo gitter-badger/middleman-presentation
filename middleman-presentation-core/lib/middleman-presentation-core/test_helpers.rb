@@ -15,6 +15,8 @@ module Middleman
       def temporary_fixture_exist?(name)
         File.exist? File.expand_path("../../../tmp/fixtures/#{name}", __FILE__)
       end
+
+      module_function :temporary_fixture_path
     end
   end
 end
