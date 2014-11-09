@@ -24,12 +24,12 @@ module Middleman
           @date  = Middleman::Presentation.config.date.to_s
           @source_directory = @environment.build_path
           @output_file = File.expand_path(
-            options.fetch('output_file', ActiveSupport::Inflector.transliterate(@date.to_s + '-' + @title).parameterize + '.zip')
+            options.fetch('output_file', (@date.to_s + '-' + @title).characterize + '.zip')
           )
 
           fail Middleman::Presentation.t('errors.zip_filename_error', name: File.basename(@output_file)) unless @output_file.end_with? '.zip'
 
-          @prefix                = options.fetch('prefix', ActiveSupport::Inflector.transliterate(@date.to_s + '-' + @title.to_s).parameterize + '/')
+          @prefix                = options.fetch('prefix', (@date.to_s + '-' + @title.to_s).characterize + '/')
           @images_directory      = @environment.images_directory
           @stylesheets_directory = @environment.stylesheets_directory
           @javascripts_directory = @environment.scripts_directory
