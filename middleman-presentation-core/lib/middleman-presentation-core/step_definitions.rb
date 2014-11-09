@@ -39,6 +39,8 @@ When(/^I start debugging/) do
 end
 
 Given(/^I use presentation fixture "([^"]+)" with title "([^"]+)"(?: and date "([^"]+))?$/) do |name, title, date|
+  require 'pry'
+  binding.pry
   directory = []
   directory << name
   directory << ('-' + title)
@@ -48,8 +50,8 @@ Given(/^I use presentation fixture "([^"]+)" with title "([^"]+)"(?: and date "(
 
   command = []
   command << "middleman-presentation create presentation #{temporary_fixture_path(directory)}"
-  command << "--title #{title}"
-  command << "--date #{date}" if date
+  command << "--title '#{title}'"
+  command << "--date '#{date}'" if date
 
   system(command.join(' ')) unless temporary_fixture_exist?(directory)
 
