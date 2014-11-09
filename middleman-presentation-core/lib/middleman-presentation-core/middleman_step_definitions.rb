@@ -34,40 +34,40 @@ Given /^the Server is running$/ do
   root_dir = File.expand_path(current_dir)
   in_current_dir do
 
-  if File.exists?(File.join(root_dir, 'source'))
-    ENV['MM_SOURCE'] = 'source'
-  else
-    ENV['MM_SOURCE'] = ''
-  end
+    if File.exist?(File.join(root_dir, 'source'))
+      ENV['MM_SOURCE'] = 'source'
+    else
+      ENV['MM_SOURCE'] = ''
+    end
 
-  ENV['MM_ROOT'] = root_dir
+    ENV['MM_ROOT'] = root_dir
 
-  initialize_commands = @initialize_commands || []
-  initialize_commands.unshift lambda {
-    set :environment, @current_env || :development
-    set :show_exceptions, false
-  }
+    initialize_commands = @initialize_commands || []
+    initialize_commands.unshift lambda {
+      set :environment, @current_env || :development
+      set :show_exceptions, false
+    }
 
-  in_current_dir do
-    @server_inst = Middleman::Application.server.inst do
-      initialize_commands.each do |p|
-        instance_exec(&p)
+    in_current_dir do
+      @server_inst = Middleman::Application.server.inst do
+        initialize_commands.each do |p|
+          instance_exec(&p)
+        end
       end
     end
-  end
 
-  app_rack = @server_inst.class.to_rack_app
-  @browser = ::Rack::Test::Session.new(::Rack::MockSession.new(app_rack))
+    app_rack = @server_inst.class.to_rack_app
+    @browser = ::Rack::Test::Session.new(::Rack::MockSession.new(app_rack))
   end
 end
 
 Given /^the Server is running at "([^\"]*)"$/ do |app_path|
-  step %Q{a fixture app "#{app_path}"}
-  step %Q{the Server is running}
+  step %(a fixture app "#{app_path}")
+  step %(the Server is running)
 end
 
 Given /^a template named "([^\"]*)" with:$/ do |name, string|
-  step %Q{a file named "source/#{name}" with:}, string
+  step %(a file named "source/#{name}" with:), string
 end
 
 When /^I go to "([^\"]*)"$/ do |url|
@@ -78,7 +78,7 @@ end
 
 Then /^going to "([^\"]*)" should not raise an exception$/ do |url|
   in_current_dir do
-    expect{ @browser.get(URI.escape(url)) }.to_not raise_exception
+    expect { @browser.get(URI.escape(url)) }.to_not raise_exception
   end
 end
 
@@ -126,6 +126,6 @@ end
 
 Then /^I should see "([^\"]*)" lines$/ do |lines|
   in_current_dir do
-    expect(@browser.last_response.body.chomp.split($/).length).to eq(lines.to_i)
+    expect(@browser.last_response.body.chomp.split($INPUT_RECORD_SEPARATOR).length).to eq(lines.to_i)
   end
 end

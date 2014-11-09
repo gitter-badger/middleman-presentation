@@ -1,5 +1,5 @@
 # encoding: utf-8
-Before do 
+Before do
   $aruba_cleanup ||= false
 
   return $aruba_cleanup if $aruba_cleanup
@@ -7,7 +7,7 @@ Before do
   FileUtils.rm_rf temporary_fixture_path('.')
 
   $aruba_cleanup = true
-end 
+end
 
 Before do
   @aruba_timeout_seconds = 120
@@ -63,7 +63,7 @@ Given(/^I use presentation fixture "([^"]+)" with title "([^"]+)"(?: and date "(
 
   system(command.join(' ')) unless temporary_fixture_exist?(directory)
 
-  FileUtils.cp_r temporary_fixture_path(directory), absolute_path(name) 
+  FileUtils.cp_r temporary_fixture_path(directory), absolute_path(name)
   step %(I cd to "#{name}")
 end
 

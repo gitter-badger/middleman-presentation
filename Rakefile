@@ -5,7 +5,7 @@ require 'English'
 Rake::TaskManager.record_task_metadata = true
 
 desc 'Run tests'
-task :test => ['test:core', 'test:helpers']
+task test: ['test:core', 'test:helpers']
 task 'test:ci' => ['bootstrap:shell_environment', 'bootstrap:gem_requirements', 'test:freeze_bundle', :test]
 
 namespace :test do
@@ -66,11 +66,11 @@ namespace :test do
 end
 
 desc 'Push sources'
-task :push => 'source:push'
+task push: 'source:push'
 
 namespace :source do
   desc 'Push sources'
-  task :push => [ 'test:core:rspec', 'test:core:rubocop', 'test:helpers:rspec', 'test:helpers:rubocop'] do |t|
+  task push: ['test:core:rspec', 'test:core:rubocop', 'test:helpers:rspec', 'test:helpers:rubocop'] do |t|
     puts t.comment
     sh 'git push'
   end
@@ -82,7 +82,7 @@ end
   namespace "gem:#{task_name}" do
     desc "#{task_name.capitalize} main"
     task :main do |t|
-      Dir.chdir "middleman-presentation" do
+      Dir.chdir 'middleman-presentation' do
         puts t.comment
         sh "rake gem:#{task_name}"
       end
@@ -90,7 +90,7 @@ end
 
     desc "#{task_name.capitalize} core"
     task :core do |t|
-      Dir.chdir "middleman-presentation-core" do
+      Dir.chdir 'middleman-presentation-core' do
         puts t.comment
         sh "rake gem:#{task_name}"
       end
@@ -98,7 +98,7 @@ end
 
     desc "#{task_name.capitalize} helpers"
     task :helpers do |t|
-      Dir.chdir "middleman-presentation-helpers" do
+      Dir.chdir 'middleman-presentation-helpers' do
         puts t.comment
         sh "rake gem:#{task_name}"
       end
@@ -107,7 +107,7 @@ end
 end
 
 desc 'Bootstrap project'
-task :bootstrap => ['bootstrap:bower', 'bootstrap:bundler']
+task bootstrap: ['bootstrap:bower', 'bootstrap:bundler']
 
 desc 'Bootstrap project for ci'
 task 'bootstrap:ci' => ['bootstrap:shell_environment', 'bootstrap:clean_caches'] do
