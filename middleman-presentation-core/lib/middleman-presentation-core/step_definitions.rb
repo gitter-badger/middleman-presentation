@@ -39,8 +39,6 @@ When(/^I start debugging/) do
 end
 
 Given(/^I use presentation fixture "([^"]+)" with title "([^"]+)"(?: and date "([^"]+))?$/) do |name, title, date|
-  require 'pry'
-  binding.pry
   directory = []
   directory << name
   directory << ('-' + title)
