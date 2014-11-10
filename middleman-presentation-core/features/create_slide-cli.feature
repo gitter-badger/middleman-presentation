@@ -5,7 +5,7 @@ Feature: Add new slide
   In order do build it
 
   Background:
-    Given I use presentation fixture "presentation1" with title "My Presentation"
+    Given I use presentation fixture "simple1" with title "My Presentation"
 
   Scenario: Custom Slide
     When I successfully run `middleman-presentation create slide 01`

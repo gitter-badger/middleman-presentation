@@ -5,7 +5,7 @@ Feature: Rename slide
   In order to make its name fit the need
 
   Background:
-    Given I use presentation fixture "presentation1" with title "My Presentation"
+    Given I use presentation fixture "simple1" with title "My Presentation"
 
   Scenario: Full-name
     Given a slide named "01.html.erb" with:

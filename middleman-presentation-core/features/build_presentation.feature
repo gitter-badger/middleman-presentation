@@ -5,7 +5,7 @@ Feature: Build presentation
   In order to use it
 
   Background:
-    Given I use presentation fixture "presentation1" with title "My Presentation"
+    Given I use presentation fixture "simple1" with title "My Presentation"
 
   Scenario: Build it
     When I successfully run `middleman-presentation build presentation`

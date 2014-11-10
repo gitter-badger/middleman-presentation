@@ -5,7 +5,7 @@ Feature: Use templates for new slides
   In order do build it
 
   Background:
-    Given I use presentation fixture "presentation1" with title "My Presentation"
+    Given I use presentation fixture "simple1" with title "My Presentation"
 
   Scenario: Project Erb Slide template
     And a project template named "erb.tt" with:

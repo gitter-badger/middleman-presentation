@@ -5,7 +5,7 @@ Feature: Run presentation
   In order to use it
 
   Background:
-    Given I use presentation fixture "presentation1" with title "My Presentation"
+    Given I use presentation fixture "simple1" with title "My Presentation"
 
   Scenario: Simple Slide
     Given a slide named "01.html.erb" with:

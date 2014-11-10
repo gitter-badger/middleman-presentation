@@ -5,7 +5,7 @@ Feature: Ignore slides
   In order to make them invisible
 
   Background:
-    Given I use presentation fixture "presentation1" with title "My Presentation"
+    Given I use presentation fixture "simple1" with title "My Presentation"
 
   Scenario: Ignore a slide by basename
     Given a slide named "01.html.md" with:

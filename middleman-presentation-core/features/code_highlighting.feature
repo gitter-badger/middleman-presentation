@@ -5,7 +5,7 @@ Feature: Code highlighting in Markdown slides
   In order to make it more understandable for the audience
 
   Background:
-    Given I use presentation fixture "presentation1" with title "My Presentation"
+    Given I use presentation fixture "simple1" with title "My Presentation"
 
   Scenario: Code block
     Given a slide named "01.html.md" with:
