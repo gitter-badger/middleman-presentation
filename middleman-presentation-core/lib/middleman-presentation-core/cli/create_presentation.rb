@@ -83,6 +83,10 @@ module Middleman
           source_paths << File.expand_path('../../../../templates', __FILE__)
         end
 
+        def expand_directory
+          @directory = File.expand_path(directory)
+        end
+
         def set_language
           @language = FeduxOrgStdlib::ShellLanguageDetector.new.detect(
             allowed: Middleman::Presentation.locale_configurator.available_locales,
@@ -287,7 +291,7 @@ module Middleman
             return @bower_path if @bower_path
 
             environment = MiddlemanEnvironment.new(strict: false)
-            @bower_path = File.join(environment.root_path, directory, environment.bower_directory)
+            @bower_path = File.join(directory, environment.bower_directory)
           end
         end
       end

@@ -10,7 +10,7 @@ module Middleman
       public
 
       def initialize(bower_directory:)
-        @application    = Middleman::Presentation
+        @application     = Middleman::Presentation
         @bower_directory = bower_directory
       end
 

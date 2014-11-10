@@ -335,3 +335,15 @@ Feature: Initialize presentation
     """
     margin: '0.5'
     """
+
+  Scenario: Expand ~
+    Given I successfully run `middleman-presentation create presentation ~/presentation1 --title "My Presentation"`
+    When I cd to "presentation1"
+    Then the file "source/javascripts/application.js" should contain:
+    """
+    //= require jquery/dist/jquery
+    //= require reveal.js/js/reveal.min
+    //= require reveal.js/lib/js/head.min
+    //= require middleman-presentation-helpers/footer/footer
+    //= require lightbox2/js/lightbox
+    """
