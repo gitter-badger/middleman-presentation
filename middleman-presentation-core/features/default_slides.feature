@@ -4,14 +4,16 @@ Feature: Default slides
   I want to use default slides
   In order to reuse them
 
-  Scenario: Contact information
+  Background:
     Given a user config file for middleman-presentation with:
     """
     github_url: http://example.com
     email_address: mail@example.com
     phone_number: 1111
     """
-    And I create a new presentation with title "My Presentation"
+    And I use presentation fixture "default_slides1" with title "My Presentation"
+
+  Scenario: Contact information
     When the Server is running
     And I go to "/"
     Then I should see:
@@ -32,7 +34,6 @@ Feature: Default slides
     """
 
   Scenario: Agenda
-    Given I create a new presentation with title "My Presentation"
     When the Server is running
     And I go to "/"
     Then I should see:
@@ -41,7 +42,6 @@ Feature: Default slides
     """
 
   Scenario: Questions
-    Given I create a new presentation with title "My Presentation"
     When the Server is running
     And I go to "/"
     Then I should see:
@@ -50,7 +50,6 @@ Feature: Default slides
     """
 
   Scenario: The end
-    Given I create a new presentation with title "My Presentation"
     When the Server is running
     And I go to "/"
     Then I should see:

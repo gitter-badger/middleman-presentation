@@ -4,6 +4,9 @@ Feature: Use templates for new slides
   I want to add a new slide based on a template
   In order do build it
 
+  Background:
+    Given I use presentation fixture "presentation1" with title "My Presentation"
+
   Scenario: Project Erb Slide template
     And a project template named "erb.tt" with:
     """
