@@ -33,9 +33,9 @@ Feature: Configuration
     When I successfully run `middleman-presentation show config`
     Then the output should contain:
     """
-    .slidesignore
+    .ignore
     """
-    Then the output should contain:
+    And the output should contain:
     """
     blub/asdf
     """

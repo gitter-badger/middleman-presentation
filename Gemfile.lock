@@ -49,6 +49,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.7)
       i18n (~> 0.6, >= 0.6.9)
@@ -130,7 +131,8 @@ GEM
     eventmachine (1.0.3)
     execjs (2.2.2)
     facter (2.3.0)
-    fedux_org-stdlib (0.10.1)
+      CFPropertyList (~> 2.2.6)
+    fedux_org-stdlib (0.10.3)
       activesupport
     ffi (1.9.6)
     filegen (0.4.3)
