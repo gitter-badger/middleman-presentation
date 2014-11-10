@@ -23,3 +23,19 @@ Feature: Configuration
     """
     .slidesignore
     """
+
+  Scenario: Merge configuration
+    Given I use presentation fixture "simple1" with title "My Presentation"
+    And a presentation config file for middleman-presentation with:
+    """
+    bower_directory: blub/asdf
+    """
+    When I successfully run `middleman-presentation show config`
+    Then the output should contain:
+    """
+    .slidesignore
+    """
+    Then the output should contain:
+    """
+    blub/asdf
+    """
