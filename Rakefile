@@ -76,6 +76,9 @@ namespace :source do
   end
 end
 
+# Run some tests before releasing
+task 'gem:release' => ['test:core:rspec', 'test:core:rubocop', 'test:helpers:rspec', 'test:helpers:rubocop']
+
 %w(build install release).each do |task_name|
   desc task_name.capitalize
   task "gem:#{task_name}" => ["#{task_name}:core", "#{task_name}:helpers", "#{task_name}:main"]
