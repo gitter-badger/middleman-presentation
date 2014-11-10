@@ -5,8 +5,7 @@ Feature: Show version number
   In order to display it
 
   Scenario: Default version number
-    Given I successfully run `middleman-presentation create presentation presentation1 --title "Test"`
-    And I cd to "presentation1"
+    Given I use presentation fixture "simple1" with title "My Presentation"
     And the Server is running
     When I go to "/"
     Then I should see:

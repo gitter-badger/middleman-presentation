@@ -5,7 +5,7 @@ Feature: Show available components
   In order to have an overview
 
   Scenario: List available components
-    Given I create a new presentation with title "My Presentation"
+    Given I use presentation fixture "simple1" with title "My Presentation"
     When I successfully run `middleman-presentation list components`
     Then the output should contain:
     """
