@@ -10,14 +10,14 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.15.8)
-      middleman-presentation-core (= 0.15.8)
+    middleman-presentation (0.16.0)
+      middleman-presentation-core (= 0.16.0)
       middleman-presentation-helpers (>= 0.0.6)
 
 PATH
   remote: middleman-presentation-core
   specs:
-    middleman-presentation-core (0.15.8)
+    middleman-presentation-core (0.16.0)
       addressable (~> 2.3.5)
       bundler
       erubis
@@ -49,7 +49,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.7)
       i18n (~> 0.6, >= 0.6.9)
@@ -131,7 +130,6 @@ GEM
     eventmachine (1.0.3)
     execjs (2.2.2)
     facter (2.3.0)
-      CFPropertyList (~> 2.2.6)
     fedux_org-stdlib (0.10.1)
       activesupport
     ffi (1.9.6)
