@@ -10,14 +10,14 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.16.0)
-      middleman-presentation-core (= 0.16.0)
+    middleman-presentation (0.16.0.alpha)
+      middleman-presentation-core (= 0.16.0.alpha)
       middleman-presentation-helpers (>= 0.0.6)
 
 PATH
   remote: middleman-presentation-core
   specs:
-    middleman-presentation-core (0.16.0)
+    middleman-presentation-core (0.16.0.alpha)
       addressable (~> 2.3.5)
       bundler
       erubis
