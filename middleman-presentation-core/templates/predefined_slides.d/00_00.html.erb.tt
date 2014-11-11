@@ -4,19 +4,18 @@
     <h1><%%= Middleman::Presentation.config.title %></h1>
     <h2><%%= Middleman::Presentation.config.subtitle %></h2>
 
-    <p class="mp-speaker">
-    <small><%%= Middleman::Presentation.config.date %>&nbsp;&ndash;&nbsp;
-    <%%= Middleman::Presentation.config.speaker -%>
+    <div>
+      <p class="mp-date"><%%= Middleman::Presentation.config.date %></p>
+      <p class="mp-speaker"><%%= Middleman::Presentation.config.speaker -%></p>
 <%%- if Middleman::Presentation.config.company -%>
-    (<%%= Middleman::Presentation.config.company %>)
+      <p class="mp-company"><%%= Middleman::Presentation.config.company %></p>
 <%%- end -%>
-    </small>
-    </p>
+    </div>
 <%%- if Middleman::Presentation.config.version -%>
-    <p class="mp-version"><%%= Middleman::Presentation.config.version %></p>
+      <p class="mp-version"><%%= Middleman::Presentation.config.version %></p>
 <%%- end -%>
 <%%- if Middleman::Presentation.config.license -%>
-    <p class="mp-license"><%%= Middleman::Presentation.config.license %></p>
+      <p class="mp-license"><%%= Middleman::Presentation.config.license %></p>
 <%%- end -%>
   </li>
   <li class="mp-layout-grid-column-33">

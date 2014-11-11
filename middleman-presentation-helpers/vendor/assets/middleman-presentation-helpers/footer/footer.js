@@ -1,9 +1,11 @@
 check = function() {
   if ($('.mp-start-slide .present').length > 0) {
-    $('.mp-copyright-notice').hide();
+    //$('.controls').hide();
+    $('.mp-presentation-footer').hide();
     $('.slide-number').hide();
   } else {
-    $('.mp-copyright-notice').show();
+    //$('.controls').show();
+    $('.mp-presentation-footer').show();
     $('.slide-number').show();
   }
 }

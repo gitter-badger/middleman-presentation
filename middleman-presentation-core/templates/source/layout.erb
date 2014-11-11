@@ -42,7 +42,7 @@
       <div class="slides">
         <%%= yield %>
       </div>
-      <footer class="mp-site-footer">
+      <footer class="mp-presentation-footer">
         <div class="mp-copyright-notice">
           &copy; <%%= Time.now.strftime('%Y') %>&nbsp;&nbsp;<%%= Middleman::Presentation.config.author -%>,&nbsp;
         <span class="mp-license">
@@ -64,13 +64,13 @@
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: <%%= Middleman::Presentation.config.width %>,
-        height: <%%= Middleman::Presentation.config.height %>,
+        width: '<%%= Middleman::Presentation.config.width %>',
+        height: '<%%= Middleman::Presentation.config.height %>',
         // Factor of the display size that should remain empty around the content
         margin: <%%= Middleman::Presentation.config.margin %>,
         // Bounds for smallest/largest possible scale to apply to content
-        minScale: <%%= Middleman::Presentation.config.min_scale %>,
-        maxScale: <%%= Middleman::Presentation.config.max_scale %>,
+        minScale: '<%%= Middleman::Presentation.config.min_scale %>',
+        maxScale: '<%%= Middleman::Presentation.config.max_scale %>',
         // Display controls in the bottom right corner
         controls: <%%= Middleman::Presentation.config.activate_controls %>,
         // Display a presentation progress bar
