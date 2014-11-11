@@ -7,6 +7,7 @@ module Middleman
       option :subtitle, nil
       option :project_id, nil
       option :version, nil
+      option :smart_quotes, ['rdquo', 'rsquo', 'ldquo', 'rdquo']
 
       option :date, Time.now.strftime('%Y-%m-%d %H:%M:%S')
       option :speaker, process_environment.fetch('USER')

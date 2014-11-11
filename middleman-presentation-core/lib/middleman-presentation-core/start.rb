@@ -32,7 +32,7 @@ module Middleman
                 code_block_class: 'mp-code-block',
                 inline_code_class: 'mp-code-inline'
               },
-              smart_quotes: true
+              smart_quotes: Middleman::Presentation.config.smart_quotes
 
           # ignore slides so that a user doesn't need to prepend slide names
           # with an underscore
