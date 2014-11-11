@@ -6,6 +6,7 @@
   * F: Support for minifying assets during build
   * F: New wrapper commands added: Build presentation, serve presentation
   * F: Support for nested template engines per slide, e.g. 01.html.md.erb => '1. eRuby, 2. Markdown'
+  * F: Activate support for smart quotes in markdown documents
   * I: Moved slide helper to "middleman-presentation"-executable
   * I: Use highlight.js directly. It's more uptodate
   * I: --force-flag for "create presentation"-command

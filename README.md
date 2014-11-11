@@ -896,7 +896,9 @@ overview about all commands.
 rake -T
 ```
 
-### Tips
+## Tips
+
+### Weird Errors
 
 If you get some weird errors during testing, make sure have got enough space at
 `/tmp`. This directory is used by `bower` to temporary store downloaded assets.
@@ -912,6 +914,48 @@ To find the process which uses this file, run this command:
 
 ```bash
 lsof <file>
+```
+
+### Quoting in Markdown Documents
+
+If you're German or French you might want to change the default quotes which
+are used by `kramdown` to transform `'` and `"`. There's a configuration option
+for this.
+
+*Kramdown Default*
+
+This is the default kramdown uses:
+
+```yaml
+smart_quotes:
+  - lsquo # opening '
+  - rsquo # closing '
+  - ldquo # opening "
+  - rdquo # opening "
+```
+
+*German*
+
+If you're German use this setting:
+
+```yaml
+smart_quotes:
+  - lsquo # opening '
+  - rsquo # closing '
+  - bdquo # opening "
+  - rdquo # opening "
+```
+
+*Disable smart quotes*
+
+If you want to "disable" smart quotes, just use this setting:
+
+```yaml
+smart_quotes:
+  - apos  # opening '
+  - apos  # closing '
+  - quote # opening "
+  - quote # opening "
 ```
 
 ## Contributing

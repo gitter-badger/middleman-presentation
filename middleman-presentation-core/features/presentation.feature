@@ -11,8 +11,6 @@ Feature: Run presentation
     Given a slide named "01.html.erb" with:
     """
     <section>
-    </section>
-    <section>
     <h1>Hello World</h1>
     </section>
     """
@@ -55,3 +53,4 @@ Feature: Run presentation
     """
     #When I go to "images/lightbox2/img/close.png"
     #Then the status code should be "200"
+
