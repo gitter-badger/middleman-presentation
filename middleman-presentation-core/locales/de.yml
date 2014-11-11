@@ -209,6 +209,9 @@ de:
       serve:
         title: Zeige Präsentation
         headline: Zeige Präsentation "%{title}"
+        options:
+          network_port: Netzwerk-Port, an dem der Server lauschen soll
+          network_interface: Netwerk-Schnittstelle, an der der Server lauschen soll
       build:
         title: Präsentation generieren
         headline: Generiere die Präsentation "%{title}"

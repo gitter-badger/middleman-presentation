@@ -13,16 +13,16 @@ options.verbose = false
 OptionParser.new do |opts|
   opts.banner = 'Usage: script/start [options]'
 
-  opts.on('-p PORT', '--port PORT', 'Port to listen on') do |p|
+  opts.on('-p PORT', '--network-port PORT', 'Port to listen on') do |p|
     options.listen.port = p
   end
 
-  opts.on('-h HOST', '--host HOST', 'Host to listen on') do |h|
-    options.listen.host = h
+  opts.on('-i INTERFACE', '--network-interface INTERFACE', 'Interface to listen on') do |h|
+    options.listen.interface = h
   end
 
-  opts.on('-v', '--verbose', 'Verbose mode') do |_h|
-    options.verbose = true
+  opts.on('-d', '--debug-mode', 'Debug mode') do |_h|
+    options.debug_mode = true
   end
 
 end.parse!
@@ -35,9 +35,9 @@ Process.waitpid(launchy_pid)
 
 command = []
 command << 'bundle exec'
-command << 'middleman server'
-command << "-p #{options.listen.port}"
-command << "-h #{options.listen.host}"
-command << '--verbose' if options.verbose
+command << 'middleman-presentation serve'
+command << "--network-port #{options.listen.port}"
+command << "--network-interface #{options.listen.interface}"
+command << '--debug-mode' if options.debug_mode
 
 system(command.join(' '))

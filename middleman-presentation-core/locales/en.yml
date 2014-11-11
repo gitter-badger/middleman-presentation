@@ -209,6 +209,9 @@ en:
       serve:
         title: Serve presentation
         headline: Serve presentation "%{title}"
+        options:
+          network_port: Networkport the server listens on
+          network_interface: Networkinterface the server listens on
       build:
         title: Build presentation
         headline: Build presentation "%{title}"

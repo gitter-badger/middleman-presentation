@@ -6,7 +6,8 @@ module Middleman
       class ServePresentation < BaseGroup
         include Thor::Actions
 
-        desc Middleman::Presentation.t('views.presentation.serve.title')
+        class_option :network_port, type: :numeric, default: Middleman::Presentation.config.network_port, desc: Middleman::Presentation.t('views.presentation.serve.options.network_port')
+        class_option :network_interface, default: Middleman::Presentation.config.network_interface, desc: Middleman::Presentation.t('views.presentation.serve.options.network_interface')
 
         def initialize_generator
           enable_debug_mode
@@ -20,6 +21,8 @@ module Middleman
 
           cmd = []
           cmd << 'middleman server'
+          cmd << "-p #{options[:network_port]}"
+          cmd << "-h #{options[:network_interface]}"
           cmd << '--verbose' if options[:debug_mode]
 
           run(cmd.join(' '))
