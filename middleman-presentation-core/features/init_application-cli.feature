@@ -43,7 +43,7 @@ Feature: Initialize middleman-presentation
     Given I set the environment variables to:
     | variable | value  |
     | USER     | my_user|
-    And I use presentation fixture "simple1" with title "My Presentation"
+    And I use presentation fixture "local_config1" with title "My Presentation"
     When I successfully run `middleman-presentation init application --local`
     Then the presentation config file for middleman-presentation should contain:
     """
