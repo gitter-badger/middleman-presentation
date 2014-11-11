@@ -17,13 +17,14 @@ unnecessary background images from printing */
 
 body {
   font-size: 18pt;
-  width: 297mm;
-  height: 229mm;
+  width: 295mm;
+  height: 210mm;
   margin: 0 auto !important;
   border: 0;
   padding: 0;
   float: none !important;
   overflow: visible;
+  margin: 0;
 }
 
 html {
@@ -33,7 +34,7 @@ html {
 }
 
 @page {
-  size: landscape;
+  size: a4 landscape;
   margin: 0;
 }
 
@@ -119,13 +120,16 @@ ul, ol, div, p {
 }
 .reveal .slides section {
 
-  page-break-after: always !important;
+  //page-break-after: always !important;
+  page-break-before: none !important;
+  page-break-after: none !important;
+  page-break-inside: avoid !important;
 
   visibility: visible !important;
   position: relative !important;
   width: 100% !important;
-  height: 229mm !important;
-  min-height: 229mm !important;
+  height: 205mm !important;
+  min-height: 205mm !important;
   display: block !important;
   overflow: hidden !important;
 
