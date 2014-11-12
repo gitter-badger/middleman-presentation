@@ -33,8 +33,7 @@ Feature: Add meta data fields
     </section>
     """
     When the Server is running
-    And I go to "/"
-    Then I should see:
+    And I go to "/" and see the following error message:
     """
     You entered an unknown metadata field "author".
     """
