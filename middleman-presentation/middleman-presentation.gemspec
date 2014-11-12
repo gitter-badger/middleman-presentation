@@ -20,5 +20,5 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.1.0'
 
   spec.add_dependency 'middleman-presentation-core', spec.version
-  spec.add_dependency 'middleman-presentation-helpers', '>= 0.0.6'
+  spec.add_dependency 'middleman-presentation-helpers', '>= 0.1.0.beta'
 end
