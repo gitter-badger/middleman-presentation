@@ -9,5 +9,5 @@ Feature: Show known assets
     When I successfully run `middleman-presentation list assets`
     Then the output should contain:
     """
-    | Source path
+    Source path
     """
