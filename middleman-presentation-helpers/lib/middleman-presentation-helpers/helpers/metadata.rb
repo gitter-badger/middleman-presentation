@@ -2,6 +2,7 @@
 module Middleman
   module Presentation
     module Helpers
+      # Meta daa helper
       module Metadata
         def metadata_markup(requested_fields, allowed_fields)
           requested_fields = Array(requested_fields).map(&:to_sym)
