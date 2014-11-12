@@ -609,8 +609,8 @@ You can store those templates in different directories. They are read in the
 given order.
 
 1. presentation local templates (`<presentation root>/templates/<template>`)
-2. user local templates (`~/.config/middleman/presentation/templates/<template>`, `~/.middleman/presentation/templates/<template>`)
-3. system local templates (`/etc/middleman/presentation/templates/<template>`)
+2. user local templates (`~/.config/middleman-presentation/templates/<template>`, `~/.middleman-presentation/templates/<template>`)
+3. system local templates (`/etc/middleman-presentation/templates/<template>`)
 
 
 There are four different templates available:
@@ -689,7 +689,7 @@ with the gem.
 
 If you want to modify the existing predefined slides, run the following command first,
 it will copy the files to
-`~/.config/middleman/presentation/templates/predefined_slides.d`.
+`~/.config/middleman-presentation/templates/predefined_slides.d`.
 
 ```
 middleman-presentation init predefined_slides
