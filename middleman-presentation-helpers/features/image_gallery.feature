@@ -34,9 +34,7 @@ Feature: Image Gallery
     When I go to "/stylesheets/application.css"
     Then I should see:
     """
-    .lightboxOverlay {
-      overflow: scroll;
-    }
+    overflow: scroll;
     """
 
   Scenario: Images with titles
