@@ -9,7 +9,6 @@ Feature: Image Gallery
     And an image "image01.png" at "images/image01.png"
     And an image "image02.png" at "images/image02.png"
 
-    @wip
   Scenario: Images only
     Given a slide named "01.html.erb" with:
     """

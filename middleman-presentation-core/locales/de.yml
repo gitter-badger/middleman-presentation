@@ -1,6 +1,9 @@
 ---
 de:
   errors:
+    unknown_metadata_fields:
+      one: Es soll ein unbekanntes Metadatum angezeigt werden %{fields}.
+      one: Es sollen unbekannte Metadaten angezeigt werden %{fields}.
     standard_error: "Es ist ein Fehler aufgetreten. Die Fehlermeldung lautet wie folgt:\n%{message}"
     argument_error: Der Wert "%{value}" für "%{argument}" ist unzulässig.
     middleman_build_error: 'Es ist ein Fehler beim Generieren der statischen Variante der Präsentation aufgetreten:'

@@ -1,6 +1,9 @@
 ---
 en:
   errors:
+    unknown_metadata_fields:
+      one: You entered an unknown metadata field %{fields}.
+      other: You entered an unknown metadata fields %{fields}.
     standard_error: "An error occured. Please see the attached message\n%{message}."
     invalid_component: Sorry, but argument "%{argument}" needs to respond to "#root_directory=".
     argument_error: The value "%{value}" for "%{argument}" is invalid.
