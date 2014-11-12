@@ -166,7 +166,7 @@ module Middleman
       option :fonts_directory, 'fonts'
       option :build_directory, 'build'
 
-      option :minify_assets, false
+      option :minify_assets, true
 
       option :runtime_environment, ENV['MP_ENV'].to_s.to_sym
       option :use_regex, false
