@@ -9,7 +9,7 @@ module Middleman
       option :title, nil
       option :subtitle, nil
       option :project_id, nil
-      option :version, nil
+      option :version, 'v0.0.1'
       option :smart_quotes, ['rdquo', 'rsquo', 'ldquo', 'rdquo']
 
       option :date, Time.now.strftime('%Y-%m-%d %H:%M:%S')

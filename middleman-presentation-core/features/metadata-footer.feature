@@ -7,20 +7,6 @@ Feature: Display metadata in footer
   Background:
     Given I use presentation fixture "simple1" with title "My Presentation"
 
-  Scenario: Request field for footer
-    Given a presentation config file for middleman-presentation with:
-    """
-    speaker: Max Mustermann
-    metadata_footer:
-      - speaker
-    """
-    Given the Server is running
-    And I go to "/"
-    Then I should see:
-    """
-    Max Mustermann
-    """
-
   Scenario: Display only requested fields
     Given a presentation config file for middleman-presentation with:
     """
@@ -28,6 +14,7 @@ Feature: Display metadata in footer
     date: 2014-05-01
     metadata_footer:
       - speaker
+    metadata_headline: []
     """
     Given the Server is running
     And I go to "/"
@@ -35,7 +22,7 @@ Feature: Display metadata in footer
     """
     Max Mustermann
     """
-    And I should not see:
+    Then I should not see:
     """
     2014-05-01
     """

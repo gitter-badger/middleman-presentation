@@ -7,7 +7,6 @@ Feature: Add meta data fields
   Background:
     Given I use presentation fixture "simple1" with title "My Presentation"
 
-    @wip
   Scenario: Generate meta data
     Given a presentation config file for middleman-presentation with:
     """

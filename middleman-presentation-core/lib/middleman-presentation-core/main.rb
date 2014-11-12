@@ -4,7 +4,7 @@ module Middleman
   # Presentation extension
   module Presentation
     @logger                      = Logger.new
-    @config                      = ApplicationConfig.new(merge_files: true)
+    @config                      = ApplicationConfig.new(merge_files: true, safe: true)
     @helpers_manager             = HelpersManager.new
     @assets_manager              = AssetsManager.new
     @components_manager          = ComponentsManager.new
