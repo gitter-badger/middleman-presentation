@@ -218,13 +218,15 @@ module Middleman
           return unless options[:create_predefined_slides]
 
           PredefinedSlideTemplateDirectory.new(working_directory: middleman_environment.root_path).template_files.each do |file|
-            template file,
-                     File.join(
-                       middleman_environment.sources_path,
-                       Middleman::Presentation.config.slides_directory,
-                       File.basename(file, '.tt')
-                   ),
-                     force: options[:force]
+            template(
+              file,
+              File.join(
+                middleman_environment.sources_path,
+                Middleman::Presentation.config.slides_directory,
+                File.basename(file, '.tt')
+              ),
+              force: options[:force]
+            )
           end
         end
 
