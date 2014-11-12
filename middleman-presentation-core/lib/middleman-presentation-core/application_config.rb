@@ -13,6 +13,7 @@ module Middleman
       option :smart_quotes, ['rdquo', 'rsquo', 'ldquo', 'rdquo']
 
       option :date, Time.now.strftime('%Y-%m-%d %H:%M:%S')
+      option :copyright, '&copy;' + Time.now.strftime('%Y')
       option :speaker, process_environment.fetch('USER')
       option :license, 'CC BY 4.0'
       option :bower_directory, 'vendor/assets/components'
@@ -171,6 +172,9 @@ module Middleman
       option :use_regex, false
 
       option :debugging_libraries, %w(pry byebug)
+
+      option :metadata_headline, [:date, :speaker, :company, :version, :license]
+      option :metadata_footer, [:copyright, :author, :license]
 
       def preferred_configuration_file
         ::File.expand_path(::File.join('~', '.config', _application_name, _config_file))

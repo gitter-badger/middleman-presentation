@@ -18,6 +18,7 @@ module Middleman
         def template
           <<-EOS.strip_heredoc
         <%- fields.each do |f| -%>
+        <%- next if f.blank? -%>
         <span class="mp-meta-<%= f %>">
           <%= Middleman::Presentation.config.send_public f %>
         </span>

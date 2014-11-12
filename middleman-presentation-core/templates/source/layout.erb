@@ -43,15 +43,8 @@
         <%%= yield %>
       </div>
       <footer class="mp-presentation-footer">
-        <div class="mp-copyright-notice">
-          &copy; <%%= Time.now.strftime('%Y') %>&nbsp;&nbsp;<%%= Middleman::Presentation.config.author -%>,&nbsp;
-        <span class="mp-license">
-          <%%- if Middleman::Presentation.config.license -%>
-            <%%= Middleman::Presentation.config.license %>
-        <%%- end -%>
-        </span>
+        <%%= metadata_markup(Middleman::Presentation.config.metadata_footer, Middleman::Presentation.config.known_options) %>
         <a href="?print-pdf" class="mp-print-link"><i class="mp-print"></i></a>
-      </div>
       </footer>
     </div>
 

@@ -916,6 +916,58 @@ To find the process which uses this file, run this command:
 lsof <file>
 ```
 
+### Modifying footer metadata fields
+
+There's a configuration option which needs to be modified to change the fields,
+which are displayed in the footer. Every field is surrounded with `<span
+class="mp-meta-field_name">field_value</span>`. You can use every field from
+your `middleman-presentation`-config - [Configuration](#configuration).
+
+```yaml
+# Default
+metadata_footer:
+  - :date
+  - :author
+  - :license
+```
+
+To style your footer, you can use the following snipped:
+
+```sass
+footer.mp-presentation-footer {
+  .mp-meta-field_name {
+    // your style
+  }
+}
+```
+
+### Modifying headline metadata fields
+
+There's a configuration option which needs to be modified to change the fields,
+which are displayed in the footer. Every field is surrounded with `<span
+class="mp-meta-field_name">field_value</span>`. You can use every field from
+your `middleman-presentation`-config - [Configuration](#configuration).
+
+```yaml
+# Default
+metadata_headline:
+  - :date
+  - :speaker
+  - :company
+  - :version
+  - :license
+```
+
+To style your footer, you can use the following snipped:
+
+```sass
+span.mp-meta {
+  .mp-meta-field_name {
+    // your style
+  }
+}
+```
+
 ### Quoting in Markdown Documents
 
 If you're German or French you might want to change the default quotes which
