@@ -695,6 +695,12 @@ it will copy the files to
 middleman-presentation init predefined_slides
 ```
 
+Make sure that your templates end with with `.tt`. Otherwise they will not be
+used. Also make sure, that you use the correct `erb`-Markup. If code should be
+evaluated when creating a new presentation use `<% %>`, `<%= %>` etc. If you
+have code which should be evaluated on presentation runtime, please use `<%%
+%>`, `<%%= %>` - see doubled "%".
+
 ## Configuration
 
 <a name="configuration"></a>
