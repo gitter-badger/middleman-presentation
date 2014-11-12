@@ -3,14 +3,14 @@ module Middleman
   module Presentation
     module Helpers
       module Metadata
-        def metadata_markup(requested_fields:, allowed_fields:)
+        def metadata_markup(requested_fields, allowed_fields)
           requested_fields = Array(requested_fields)
           allowed_fields   = Array(allowed_fields)
-          unknown_fields   = allowed_fields - requested_fields
+          unknown_fields   = requested_fields - allowed_fields
 
           fail ArgumentError, Middleman::Presentation.t('errors.unknown_metadata_fields', fields: unknown_fields.to_list) unless unknown_fields.blank?
 
-          Erubis::Eruby.new(template).result(fields: requested_fields)
+          Erubis::Eruby.new(template).result(fields: requested_fields.map(&:to_sym))
         end
 
         private
@@ -20,7 +20,7 @@ module Middleman
         <%- fields.each do |f| -%>
         <%- next if f.blank? -%>
         <span class="mp-meta-<%= f %>">
-          <%= Middleman::Presentation.config.send_public f %>
+          <%= Middleman::Presentation.config.public_send f %>
         </span>
         <%- end -%>
           EOS
