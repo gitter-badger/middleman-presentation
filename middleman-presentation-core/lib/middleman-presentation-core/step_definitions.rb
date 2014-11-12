@@ -67,7 +67,7 @@ Given(/only the executables of gems "([^"]+)" can be found in PATH/) do |gems|
   dirs.concat gems.split(/,\s?/).map(&:strip).each_with_object([]) do |e, a|
     gem = Gem::Specification.find_by_name(e)
 
-    next if gem.blank?
+    fail RuntimeError, e if gem.blank?
 
     a << gem.bin_dir
   end
