@@ -40,7 +40,7 @@ module Middleman
           }
         end
 
-        List.new(data).to_s(fields: [:source_path, :destination_path, :loadable, :importable])
+        List.new(data).to_s(fields: [:source_path, :destination_path, :loadable, :importable], vertical: true)
       end
 
       # Iterate over each loadable asset

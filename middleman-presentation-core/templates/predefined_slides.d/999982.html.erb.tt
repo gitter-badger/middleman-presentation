@@ -1,4 +1,4 @@
-<section>
+<section class="mp-last-slide">
   <h2><%= Middleman::Presentation.t('slides.end.title', locale: @language) %></h2>
   <i class="mp-icon mp-icon-absolute-large mp-icon-the-end"></i>
 </section>
