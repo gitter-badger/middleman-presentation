@@ -99,7 +99,7 @@ RSpec.describe AssetsManager do
       manager.load_from_list list
       result = manager.to_s
 
-      expect(result).to include 'Source Path'
+      expect(result).to include 'Source path'
       expect(result).to include 'image1.png'
     end
   end
