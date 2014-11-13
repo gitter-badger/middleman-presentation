@@ -38,7 +38,7 @@ group :development, :test do
   gem 'tmrb', require: false
   gem 'yard', require: false
   gem 'inch', require: false
-  gem 'license_finder'
+  gem 'license_finder', require: false
   gem 'filegen', require: false
   gem 'travis-lint', require: false
   gem 'command_exec', require: false
