@@ -177,7 +177,7 @@ Feature: Initialize presentation
     Fragen
     """
 
-  Scenario: Use englisch language in slides based if garbabe in environment variable
+  Scenario: Use english language in slides based if garbabe in environment variable
     Given I set the environment variables to:
       | variable | value |
       | LANG     | asdf  |
@@ -188,7 +188,7 @@ Feature: Initialize presentation
     Questions
     """
 
-  Scenario: Use englisch language in slides if given garbabe on command line
+  Scenario: Use english language in slides if given garbabe on command line
     Given I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"  --language adsfasdfn`
     When I cd to "presentation1"
     And the file "source/slides/999980.html.erb" should contain:
