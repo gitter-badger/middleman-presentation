@@ -111,6 +111,10 @@ Given(/^a user template named "(.*?)" with:$/) do |name, string|
   step %(a file named "~/.config/middleman-presentation/templates/#{name}" with:), string
 end
 
+Given(/^a user defined predefined slide named "(.*?)" with:$/) do |name, string|
+  step %(a file named "~/.config/middleman-presentation/predefined_slides.d/#{name}" with:), string
+end
+
 Given(/^a presentation theme named "(.*?)" does not exist$/) do |name|
   step %(I remove the directory "middleman-presentation-theme-#{name}")
 end
