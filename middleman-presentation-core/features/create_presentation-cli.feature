@@ -25,6 +25,7 @@ Feature: Initialize presentation
     And a file named "source/stylesheets/application.scss" should exist
     And a file named "source/javascripts/application.js" should exist
     And a file named "script/start" should exist
+    And a file named "LICENSE.md" should exist
     And a file named "Rakefile" should exist
     And a directory named "source/images" should exist
     And a directory named "vendor/assets/components" should exist

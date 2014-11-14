@@ -1,0 +1,41 @@
+# Presentation "<%= @title %>"
+
+## Metadata
+
+This ZIP-file contains the presentation "<%= @title %>" authored by <%= @author
+%> and presented by "<%= @speaker %>". It was held on <%= @date %>.
+
+## Run presentation
+
+### Use rubygem `rack`
+
+*Install `rack`*
+
+```bash
+gem install rack
+```
+
+*Run rack*
+
+```bash
+rackup
+```
+
+### Use normal webservers
+
+Just copy the files from this ZIP-file to your `docroot` and configure your
+webserver correctly.
+
+If you're a Linux-guy and your favorite distribution comes with a static
+non-configurable webserver like `darkhttpd` you can serve this presentation
+with the following command:
+
+```bash
+unzip <presentation>.zip
+cd <presentation>
+darkhttpd ./
+```
+
+## License
+
+Please see the included license <%= File.basename(@license_dst) %>.

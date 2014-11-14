@@ -31,6 +31,15 @@ module Middleman
           @javascripts_directory = @environment.scripts_directory
           @fonts_directory       = @environment.fonts_directory
           @rackup_config_file    = File.join @environment.build_directory, 'config.ru'
+          @readme_file           = File.join @environment.build_directory, 'README.md'
+
+          @license_src           = File.join @environment.root_path, 'LICENSE.md'
+          @license_dst           = File.join @environment.build_path, 'LICENSE.md'
+
+          @title                 = Middleman::Presentation.config.title
+          @subtitle              = Middleman::Presentation.config.subtitle
+          @author                = Middleman::Presentation.config.author
+          @speaker               = Middleman::Presentation.config.speaker
         end
 
         def build_presentation
@@ -50,6 +59,14 @@ module Middleman
 
         def add_rackup_file
           template 'rackup.config.erb', @rackup_config_file
+        end
+
+        def add_readme
+          template 'build.readme.md', @readme_file
+        end
+
+        def add_license
+          FileUtils.cp @license_src, @license_dst
         end
       end
     end
