@@ -34,12 +34,13 @@ module Middleman
           @readme_file           = File.join @environment.build_directory, 'README.md'
 
           @license_src           = File.join @environment.root_path, 'LICENSE.md'
-          @license_dst           = File.join @environment.build_path, 'LICENSE.md'
+          @license_dst           = File.join @environment.build_directory, 'LICENSE.md'
 
           @title                 = Middleman::Presentation.config.title
           @subtitle              = Middleman::Presentation.config.subtitle
           @author                = Middleman::Presentation.config.author
           @speaker               = Middleman::Presentation.config.speaker
+          @date                  = Middleman::Presentation.config.date
         end
 
         def build_presentation
@@ -66,7 +67,7 @@ module Middleman
         end
 
         def add_license
-          FileUtils.cp @license_src, @license_dst
+          copy_file @license_src, @license_dst
         end
       end
     end

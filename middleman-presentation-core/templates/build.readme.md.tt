@@ -2,8 +2,7 @@
 
 ## Metadata
 
-This ZIP-file contains the presentation "<%= @title %>" authored by <%= @author
-%> and presented by "<%= @speaker %>". It was held on <%= @date %>.
+This ZIP-file contains the presentation "<%= @title %>" authored by "<%= @author %>" and presented by "<%= @speaker %>". It was held on "<%= @date %>".
 
 ## Run presentation
 
@@ -38,4 +37,4 @@ darkhttpd ./
 
 ## License
 
-Please see the included license <%= File.basename(@license_dst) %>.
+Please see the included license "<%= File.basename(@license_dst) %>".

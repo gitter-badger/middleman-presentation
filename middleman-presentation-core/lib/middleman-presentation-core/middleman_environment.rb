@@ -27,7 +27,7 @@ module Middleman
       end
 
       def build_path
-        File.join(sources_path, application_config.build_directory)
+        File.join(root_path, application_config.build_directory)
       end
 
       def stylesheets_directory
