@@ -80,7 +80,6 @@ Feature: Build presentation
     And I cd to "build"
     Then a file named "LICENSE.presentation" should exist
 
-    @wip
   Scenario: Use different readme template
     Given a user template named "build_readme.md.tt" with:
     """

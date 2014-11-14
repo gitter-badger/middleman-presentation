@@ -5,6 +5,7 @@ module Middleman
     class ApplicationConfig < FeduxOrgStdlib::AppConfig
       option :network_port, (1024..65535).to_a.sample
       option :network_interface, '127.0.0.1'
+      option :open_in_browser, false
 
       option :title, nil
       option :subtitle, nil
@@ -96,6 +97,12 @@ module Middleman
 
       option :force_create_presentation, false
       option :debug_mode, false
+
+      option :local_options, %w(
+        network_port
+        network_interface
+      )
+
       option :exportable_options, %w(
         activate_center
         activate_controls
@@ -194,6 +201,8 @@ module Middleman
         [
           ::File.expand_path(::File.join(ConfigurationFile.new(raise_error: false).directory.to_s, format('.%s%s', _application_name, _config_file_suffix))),
           ::File.expand_path(::File.join(ConfigurationFile.new(raise_error: false).directory.to_s, format('%s%s', _application_name, _config_file_suffix))),
+          ::File.expand_path(::File.join(ConfigurationFile.new(raise_error: false).directory.to_s, format('.%s.local%s', _application_name, _config_file_suffix))),
+          ::File.expand_path(::File.join(ConfigurationFile.new(raise_error: false).directory.to_s, format('%s.local%s', _application_name, _config_file_suffix))),
           ::File.expand_path(::File.join('~', '.config', _application_name, _config_file)),
           ::File.expand_path(::File.join('~', format('.%s', _application_name), _config_file)),
           ::File.expand_path(::File.join('~', format('.%s%s', _application_name, _config_file_suffix))),

@@ -33,6 +33,10 @@ Feature: Initialize presentation
     """
     project_id:
     """
+    And the file ".middleman-presentation.local.yaml" should contain:
+    """
+    network_port:
+    """
     Then a directory named "vendor/assets/components/middleman-presentation-theme-default" should exist
     And the file "source/stylesheets/application.scss" should contain:
     """

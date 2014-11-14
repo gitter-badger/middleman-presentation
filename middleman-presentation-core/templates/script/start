@@ -28,19 +28,18 @@ OptionParser.new do |opts|
     options.debug_mode = true
   end
 
+  opts.on('-o', '--open-in-browser', 'Open presentation in browser') do |_h|
+    options.open_in_browser = true
+  end
+
 end.parse!
-
-launchy_pid = fork do
-  system("bundle exec launchy #{options.listen}")
-end
-
-Process.waitpid(launchy_pid)
 
 command = []
 command << 'bundle exec'
 command << 'middleman-presentation serve'
 command << "--network-port #{options.listen.port}"
 command << "--network-interface #{options.listen.interface}"
+command << '--open-in-browser' if options.open_in_browser
 command << '--debug-mode' if options.debug_mode
 
 system(command.join(' '))

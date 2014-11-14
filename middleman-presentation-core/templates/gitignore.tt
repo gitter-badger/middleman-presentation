@@ -12,3 +12,7 @@
 *.zip
 *.tar.gz
 tmp/
+
+# local config file
+.middleman-presentation.local.yaml
+middleman-presentation.local.yaml
