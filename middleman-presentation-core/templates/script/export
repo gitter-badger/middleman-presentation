@@ -1,3 +1,2 @@
 #!/bin/sh
-
-bundle exec middleman-presentation export presentation
+bundle exec middleman-presentation export presentation $*
