@@ -215,6 +215,7 @@ de:
         options:
           network_port: Netzwerk-Port, an dem der Server lauschen soll
           network_interface: Netwerk-Schnittstelle, an der der Server lauschen soll
+          open_in_browser: Öffne Präsentation im Browser
       build:
         title: Präsentation generieren
         headline: Generiere die Präsentation "%{title}"

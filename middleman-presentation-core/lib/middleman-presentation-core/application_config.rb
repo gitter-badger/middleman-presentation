@@ -5,6 +5,7 @@ module Middleman
     class ApplicationConfig < FeduxOrgStdlib::AppConfig
       option :network_port, 4567
       option :network_interface, '127.0.0.1'
+      option :open_in_browser, false
 
       option :title, nil
       option :subtitle, nil
