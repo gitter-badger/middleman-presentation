@@ -99,8 +99,8 @@ module Middleman
       option :debug_mode, false
 
       option :local_options, %w(
-      network_port
-      network_interface
+        network_port
+        network_interface
       )
 
       option :exportable_options, %w(
