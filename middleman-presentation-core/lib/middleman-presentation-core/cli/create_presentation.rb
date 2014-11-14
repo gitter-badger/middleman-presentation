@@ -70,6 +70,8 @@ module Middleman
         class_option :stylesheets_directory, default: Middleman::Presentation.config.stylesheets_directory, desc: Middleman::Presentation.t('views.presentations.create.options.stylesheets_directory')
         class_option :fonts_directory, default: Middleman::Presentation.config.fonts_directory, desc: Middleman::Presentation.t('views.presentations.create.options.fonts_directory')
         class_option :build_directory, default: Middleman::Presentation.config.build_directory, desc: Middleman::Presentation.t('views.presentations.create.options.build_directory')
+        class_option :network_port, default: Middleman::Presentation.config.network_port, desc: Middleman::Presentation.t('views.presentations.create.options.network_port')
+        class_option :network_interface, default: Middleman::Presentation.config.network_interface, desc: Middleman::Presentation.t('views.presentations.create.options.network_interface')
 
         argument :directory, default: Dir.getwd, desc: Middleman::Presentation.t('views.presentations.create.arguments.directory')
 
@@ -154,6 +156,9 @@ module Middleman
           Middleman::Presentation.config.stylesheets_directory = options[:stylesheets_directory]
           Middleman::Presentation.config.fonts_directory = options[:fonts_directory]
           Middleman::Presentation.config.build_directory = options[:build_directory]
+
+          Middleman::Presentation.config.network_port = options[:network_port]
+          Middleman::Presentation.config.network_interface = options[:network_interface]
         end
 
         def create_root_directory

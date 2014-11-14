@@ -3,7 +3,7 @@ module Middleman
   module Presentation
     # Configuration for presentation extension
     class ApplicationConfig < FeduxOrgStdlib::AppConfig
-      option :network_port, 4567
+      option :network_port, (1024..65535).to_a.sample
       option :network_interface, '127.0.0.1'
 
       option :title, nil

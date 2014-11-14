@@ -62,6 +62,8 @@ de:
       create:
         title: 'Erzeuge eine neue Präsentation in Verzeichnis DIR (standard: aktuelles Arbeitsverzeichnis)'
         options:
+          network_port: Netzwerk-Port, an dem der Server lauschen soll
+          network_interface: Netwerk-Schnittstelle, an der der Server lauschen soll
           runtime_environment: Laufzeit-Umgebung in der middleman-presentation läuft, z.B. "test"
           activate_center: 'Aktiviere "center" in reveal.js'
           activate_controls: 'Aktiviere "controls" in reveal.js'
