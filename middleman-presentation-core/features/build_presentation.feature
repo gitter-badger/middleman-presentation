@@ -62,3 +62,33 @@ Feature: Build presentation
     """
     When I successfully run `middleman-presentation build presentation`
     Then the size of "build/stylesheets/test.css" should be much smaller than from  "source/stylesheets/test.scss"
+
+  Scenario: No license file
+    Given a file named "LICENSE.md" does not exist
+    When I successfully run `middleman-presentation build presentation`
+    And I cd to "build"
+    Then a file named "LICENSE.md" should not exist
+    And the output should not contain:
+    """
+    create  build/LICENSE
+    """
+
+  Scenario: Non default license file
+    Given an empty file named "LICENSE.presentation"
+    And a file named "LICENSE.md" does not exist
+    When I successfully run `middleman-presentation build presentation`
+    And I cd to "build"
+    Then a file named "LICENSE.presentation" should exist
+
+    @wip
+  Scenario: Use different readme template
+    Given a user template named "build_readme.md.tt" with:
+    """
+    # My readme
+    """
+    When I successfully run `middleman-presentation build presentation`
+    And I cd to "build"
+    Then the file "README.md" should contain:
+    """
+    # My readme
+    """

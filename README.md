@@ -935,6 +935,18 @@ If you prefer to use a different file extension rename just change the file exte
 * `presentation_license.erb.tt` will become `LICENSE.erb`
 * &hellip;
 
+### Use default readme template for all your built presentations
+
+If you place a readme template at
+`.config/middleman-presentation/templates/build_readme.md.tt`, this
+template will be used every time you build a new presentation to create the
+included readme file.
+
+If you prefer to use a different file extension rename just change the file extension of your template:
+
+* `build_readme.md.tt` will become `README.md`
+* `build_readme.erb.tt` will become `README.erb`
+* &hellip;
 
 ### Modifying footer metadata fields
 

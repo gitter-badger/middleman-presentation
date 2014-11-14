@@ -37,4 +37,4 @@ darkhttpd ./
 
 ## License
 
-Please see the included license "<%= File.basename(@license_dst) %>".
+Please see the included license "<%= File.basename(@license_file) %>".
