@@ -3,7 +3,7 @@
 require 'optparse'
 require 'ostruct'
 require 'addressable/uri'
-require 'middleman/presentation/application_config'
+require 'middleman-presentation-core'
 
 config = Middleman::Presentation::ApplicationConfig.new(merge_files: true, safe: true)
 
@@ -38,7 +38,7 @@ command = []
 command << 'bundle exec'
 command << 'middleman-presentation serve'
 command << "--network-port #{options.listen.port}"
-command << "--network-interface #{options.listen.interface}"
+command << "--network-interface #{options.listen.host}"
 command << '--open-in-browser' if options.open_in_browser
 command << '--debug-mode' if options.debug_mode
 
