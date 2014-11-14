@@ -39,7 +39,11 @@ module Middleman
               force: options[:force]
             )
           else
-            template 'config.yaml.tt', file, force: options[:force]
+            create_file(
+              file,
+              Middleman::Presentation.config.to_yaml(keys: Middleman::Presentation.config.known_options, remove_blank: false, prepend: '# '),
+              force: options[:force]
+            )
           end
         end
       end

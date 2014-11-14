@@ -36,7 +36,13 @@ Feature: Initialize middleman-presentation
     """
     And the user config file for middleman-presentation should contain:
     """
-    # theme: {:name=>"middleman-presentation-theme-default", :github=>"maxmeyer/middleman-presentation-theme-default", :importable_files=>[/stylesheets\/middleman-presentation-theme-default.scss$/], :loadable_files=>[/.*\.png$/]}
+    # theme:
+    #   name: middleman-presentation-theme-default
+    #   github: maxmeyer/middleman-presentation-theme-default
+    #   importable_files:
+    #   - !ruby/regexp /stylesheets\/middleman-presentation-theme-default.scss$/
+    #   loadable_files:
+    #   - !ruby/regexp /.*\.png$/
     """
 
   Scenario: Local for presentation
