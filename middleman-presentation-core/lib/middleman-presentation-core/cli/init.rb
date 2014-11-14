@@ -6,6 +6,8 @@ module Middleman
       class Init < Base
         register(InitApplication, 'application', 'application', Middleman::Presentation.t('views.applications.init.title'))
         register(InitPredefinedSlides, 'predefined_slides', 'predefined_slides', Middleman::Presentation.t('views.predefined_slides.init.title'))
+
+        default_command :application
       end
     end
   end

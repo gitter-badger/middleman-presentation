@@ -5,6 +5,8 @@ module Middleman
       # Run command
       class Export < Base
         register ExportPresentation, 'presentation', 'presentation', 'Export presentation'
+
+        default_command :presentation
       end
     end
   end
