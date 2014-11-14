@@ -233,7 +233,7 @@ module Middleman
         def create_default_license_file_to_presentation
           license_template = PresentationLicenseTemplate.new
 
-          copy_file license_template.file, File.join(middleman_environment.root_path, "LICENSE.#{license_template.proposed_extname}"), force: options[:force]
+          copy_file license_template.file, File.join(middleman_environment.root_path, "LICENSE#{license_template.proposed_extname}"), force: options[:force]
         end
 
         def create_helper_scripts

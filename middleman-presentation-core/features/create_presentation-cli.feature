@@ -275,3 +275,27 @@ Feature: Initialize presentation
     //= require middleman-presentation-helpers/footer/footer
     //= require lightbox2/js/lightbox
     """
+
+  Scenario: Use different license file
+    Given a user template named "presentation_license.md.tt" with:
+    """
+    # License ABC
+    """
+    When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
+    And I cd to "presentation1"
+    Then the file "LICENSE.md" should contain:
+    """
+    # License ABC
+    """
+
+  Scenario: Use different license file with different format
+    Given a user template named "presentation_license.erb.tt" with:
+    """
+    <h1>License ABC</h1>
+    """
+    When I successfully run `middleman-presentation create presentation presentation1 --title "My Presentation"`
+    And I cd to "presentation1"
+    Then the file "LICENSE.erb" should contain:
+    """
+    <h1>License ABC</h1>
+    """

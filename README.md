@@ -922,6 +922,20 @@ To find the process which uses this file, run this command:
 lsof <file>
 ```
 
+### Use default license template for all your presentations
+
+If you place a license template at
+`.config/middleman-presentation/templates/presentation_license.md.tt`, this
+template will be used every time you create a new presentation to create the
+included license file.
+
+If you prefer to use a different file extension rename just change the file extension of your template:
+
+* `presentation_license.md.tt` will become `LICENSE.md`
+* `presentation_license.erb.tt` will become `LICENSE.erb`
+* &hellip;
+
+
 ### Modifying footer metadata fields
 
 There's a configuration option which needs to be modified to change the fields,
