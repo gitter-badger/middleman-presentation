@@ -96,6 +96,12 @@ module Middleman
 
       option :force_create_presentation, false
       option :debug_mode, false
+
+      option :local_options, %w(
+      network_port
+      network_interface
+      )
+
       option :exportable_options, %w(
         activate_center
         activate_controls
@@ -194,6 +200,8 @@ module Middleman
         [
           ::File.expand_path(::File.join(ConfigurationFile.new(raise_error: false).directory.to_s, format('.%s%s', _application_name, _config_file_suffix))),
           ::File.expand_path(::File.join(ConfigurationFile.new(raise_error: false).directory.to_s, format('%s%s', _application_name, _config_file_suffix))),
+          ::File.expand_path(::File.join(ConfigurationFile.new(raise_error: false).directory.to_s, format('.%s.local%s', _application_name, _config_file_suffix))),
+          ::File.expand_path(::File.join(ConfigurationFile.new(raise_error: false).directory.to_s, format('%s.local%s', _application_name, _config_file_suffix))),
           ::File.expand_path(::File.join('~', '.config', _application_name, _config_file)),
           ::File.expand_path(::File.join('~', format('.%s', _application_name), _config_file)),
           ::File.expand_path(::File.join('~', format('.%s%s', _application_name, _config_file_suffix))),

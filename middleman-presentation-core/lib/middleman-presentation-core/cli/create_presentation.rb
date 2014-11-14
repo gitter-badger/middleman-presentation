@@ -177,10 +177,18 @@ module Middleman
           template 'Gemfile.tt', File.join(middleman_environment.root_path, 'Gemfile'), force: options[:force]
         end
 
-        def create_config_file
+        def create_presentation_config_file
           create_file(
             File.join(middleman_environment.root_path, '.middleman-presentation.yaml'),
             Middleman::Presentation.config.to_yaml(keys: Middleman::Presentation.config.exportable_options, remove_blank: true),
+            force: options[:force]
+          )
+        end
+
+        def create_local_config_file
+          create_file(
+            File.join(middleman_environment.root_path, '.middleman-presentation.local.yaml'),
+            Middleman::Presentation.config.to_yaml(keys: Middleman::Presentation.config.local_options, remove_blank: true),
             force: options[:force]
           )
         end
