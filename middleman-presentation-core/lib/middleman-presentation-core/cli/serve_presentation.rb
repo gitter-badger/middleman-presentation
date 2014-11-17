@@ -20,13 +20,7 @@ module Middleman
             title: Middleman::Presentation.config.title
           )
 
-          if options[:open_in_browser]
-            launchy_pid = fork do
-              system("launchy #{Addressable::URI.parse("http://#{network_interface}:#{network_port}")}")
-            end
-
-            Process.waitpid(launchy_pid)
-          end
+          Launchy.open(Addressable::URI.parse("http://#{options[:network_interface]}:#{options[:network_port]}")) if options[:open_in_browser]
 
           cmd = []
           cmd << 'middleman server'
