@@ -22,8 +22,8 @@ func main() {
   listen := fmt.Sprintf("%s:%d", "127.0.0.1", port)
 
 
-  fmt.Print("Open browser with " + listen + "\n")
-  err = open.Run("http://" + listen)
+  fmt.Print("Open browser with http://" + listen + "\n")
+  err = open.Start("http://" + listen)
 
   if err != nil {
     log.Fatal(err)
