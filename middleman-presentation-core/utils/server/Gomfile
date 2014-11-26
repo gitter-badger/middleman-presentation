@@ -1,0 +1,5 @@
+
+gom 'github.com/gorilla/handlers'
+gom 'github.com/skratchdot/open-golang/open'
+gom 'gopkg.in/check.v1'
+gom 'github.com/smartystreets/goconvey'

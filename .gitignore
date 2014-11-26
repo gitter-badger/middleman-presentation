@@ -32,3 +32,4 @@ pkg/
 doc/yard/
 .yardoc
 /vendor/
+_vendor/
