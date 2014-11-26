@@ -60,6 +60,11 @@ module Middleman
           template 'rackup.config.erb', @rackup_config_file
         end
 
+        def add_server_executables
+          pattern = File.expand_path('../../../../utils/server/bin/*', __FILE__)
+          Dir.glob(pattern).each { |f| FileUtils.cp f, @environment.build_path }
+        end
+
         def add_readme
           template_file = BuildReadmeTemplate.new
           template template_file.file, File.join(@environment.build_directory, "README#{template_file.proposed_extname}"), force: options[:force]
