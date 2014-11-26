@@ -223,6 +223,7 @@ de:
         headline: Generiere die Präsentation "%{title}"
         options:
           title: 'Titel der Präsentation'
+          add_static_servers: 'Ergänze statische Webserver zu der generierten Präsentation'
       export:
         title: Präsentation exportieren
         headline: Exportiere die Präsentation "%{title}" nach "%{file}"

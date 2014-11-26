@@ -6,33 +6,73 @@ This ZIP-file contains the presentation "<%= @title %>" authored by "<%= @author
 
 ## Run presentation
 
+
 ### Use rubygem `rack`
 
-*Install `rack`*
+**Install `rack`**
 
 ```bash
 gem install rack
 ```
 
-*Run rack*
+**Unzip presentation**
+
+```bash
+unzip <presentation>.zip
+```
+
+**Switch working directory**
+
+```bash
+cd <presentation>
+```
+
+**Run rack**
 
 ```bash
 rackup
 ```
 
+<%- if @add_static_servers -%>
+### Use static webserver
+
+There are static webservers for Windows (64bit), Linux (64bit) and Mac OS X
+(64bit) available in this package.
+
+**Unzip presentation**
+
+```bash
+unzip <presentation>.zip
+```
+
+**Switch working directory**
+
+```bash
+cd <presentation>
+```
+
+**Start webserver**
+
+```bash
+./server.<Operating System>.<Architecture>
+```
+
+<%- end -%>
 ### Use normal webservers
 
 Just copy the files from this ZIP-file to your `docroot` and configure your
 webserver correctly.
 
-If you're a Linux-guy and your favorite distribution comes with a static
-non-configurable webserver like `darkhttpd` you can serve this presentation
-with the following command:
+**Unzip presentation**
 
 ```bash
 unzip <presentation>.zip
-cd <presentation>
-darkhttpd ./
+```
+
+**Copy presentation**
+
+```bash
+mv <presentation> <docroot>
 ```
 
 ## License

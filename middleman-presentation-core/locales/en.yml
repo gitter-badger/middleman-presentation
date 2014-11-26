@@ -223,6 +223,7 @@ en:
         headline: Build presentation "%{title}"
         options:
           title: 'Title of presentation'
+          add_static_servers: 'Add static webservers to built presentation'
       export:
         title: Export presentation
         headline: Export presentation "%{title}" to file "%{file}"

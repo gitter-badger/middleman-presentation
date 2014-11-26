@@ -43,6 +43,7 @@ And then execute:
     $ bundle
 
 ### External Dependencies
+<a name="external_dependencies"></a>
 
 **Nodejs**
 
@@ -868,16 +869,36 @@ As this software would not be possible without the wonderful gems out there,
 there's also an overview about all the licenses used by the required gems at
 [doc/licenses/dependencies.html](doc/licenses/dependencies.html). 
 
+### External Dependencies
+
+The dependencies listed here are additional to the ones listed
+[here](#external_dependencies).
+
+**Go Language**
+
+To make it easier for users to serve a pre-built presentation
+`middleman-presentation` uses a [static
+webserver](https://github.com/dg-ratiodata/local_webserver) build with
+[Go](https://www.golang.org). This webserver is pre-compiled if you are using
+the `rubygem`. You need to install `Go` and build it yourself when cloning this
+repository. There's a `rake`-task for that.
+
+```bash
+cd middleman-presentation-core
+rake server:fetch
+```
+
 ### Getting started
 
 1. Install ruby
 2. Run bootstrapping-script
 
-   This script will install `rake` and call `rake`-tasks to prepare your
-   environment:
+   It's quite **important** that you run this script. This script will install
+   `rake` and call `rake`-tasks to prepare your environment.
 
    * Install `bower`
    * Install `gems`
+   * Download and compile static webserver
 
    ```bash
    scripts/bootstrap

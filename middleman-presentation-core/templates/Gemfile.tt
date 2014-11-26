@@ -6,12 +6,12 @@ source 'https://rubygems.org'
 <% if Middleman::Presentation.config.runtime_environment == :test -%>
 # Make sure the paths are correct, otherwise you get
 # Bundler-errors a la `Path does not exist`
-gem 'middleman-presentation', path: '<%= File.join(@rubygem_path, 'middleman-presentation') %>'
+gem 'middleman-presentation', path: '<%= File.join(@rubygem_path, 'middleman-presentation') %>', '~> <%= @library_version %>'
 gem 'middleman-presentation-core', path: '<%= File.join(@rubygem_path, 'middleman-presentation-core') %>'
 gem 'middleman-presentation-helpers', path: '<%= File.join(@rubygem_path, 'middleman-presentation-helpers') %>'
 gem 'middleman-presentation-simple_plugin', path: '<%= File.join(@rubygem_path, 'middleman-presentation-core/fixtures/middleman-presentation-simple_plugin') %>'
 <% else -%>
-gem 'middleman-presentation'
+gem 'middleman-presentation', '~> <%= @library_version %>'
 <% end -%>
 
 # Choose one to make `execjs` happy

@@ -95,3 +95,10 @@ Feature: Build presentation
     """
     # My readme
     """
+
+  Scenario: Disable executables
+    When I successfully run `middleman-presentation build presentation --add-static-servers=false`
+    And I cd to "build"
+    Then a file named "server.darwin.amd64" should not exist
+    And a file named "server.linux.amd64" should not exist
+    And a file named "server.windows.amd64.exe" should not exist

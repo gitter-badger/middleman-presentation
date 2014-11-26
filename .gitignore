@@ -32,6 +32,6 @@ pkg/
 doc/yard/
 .yardoc
 /vendor/
-_vendor/
+middleman-presentation-core/utils/server/
 
 bin/

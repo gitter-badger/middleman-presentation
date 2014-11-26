@@ -110,7 +110,7 @@ task 'gem:release' => ['test:core:rspec', 'test:core:rubocop', 'test:helpers:rsp
 end
 
 desc 'Bootstrap project'
-task bootstrap: ['bootstrap:bower', 'bootstrap:bundler']
+task bootstrap: ['bootstrap:bower', 'bootstrap:webserver', 'bootstrap:bundler']
 
 desc 'Bootstrap project for ci'
 task 'bootstrap:ci' => ['bootstrap:shell_environment', 'bootstrap:clean_caches'] do
@@ -131,6 +131,13 @@ namespace :bootstrap do
     puts t.comment
     sh 'gem install bundler'
     sh 'bundle install'
+  end
+
+  task :webserver do |t|
+    puts t.comment
+    Dir.chdir 'middleman-presentation-core' do
+      sh 'rake server:fetch'
+    end
   end
 
   desc 'Clean bower and bundler caches'
