@@ -3,7 +3,7 @@
 set -e
 
 function output_error_log {
-  [[ -f error.log ]] && ( cat error.log; rm error.log )
+  [[ -f error.log ]] && ( cat error.log >&2; rm error.log)
 }
 
 echo -n '[CHECK] ruby installed? '
