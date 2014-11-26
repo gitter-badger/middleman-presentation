@@ -198,3 +198,22 @@ namespace :archlinux do
     end
   end
 end
+
+task 'gem:build' => 'server:fetch'
+
+namespace :server do
+  task :fetch do
+    if Dir.glob('utils/server/*').empty?
+      FileUtils.rm_rf 'tmp/server'
+
+      sh 'git clone https://github.com/dg-ratiodata/local_webserver tmp/server'
+
+      Dir.chdir 'tmp/server' do
+        sh 'rake'
+      end
+
+      FileUtils.mkdir_p 'utils/server'
+      FileUtils.cp Dir.glob('tmp/server/bin/*'), 'utils/server'
+    end
+  end
+end
