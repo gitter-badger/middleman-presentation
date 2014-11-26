@@ -2,16 +2,20 @@
 
 set -e
 
+function output_error_log {
+  [[ -f error.log ]] && ( cat error.log; rm error.log )
+}
+
 echo -n '[CHECK] ruby installed? '
-which 'ruby' >/dev/null 2>&1 || ( echo -e "FAILED\n\nCould not find \`ruby\`. Please install ruby or add it to PATH"; exit 1 )
+which 'ruby1' >/dev/null 2>error.log || ( echo -e "FAILED\n\nCould not find \`ruby\`. Please install ruby or add it to PATH"; output_error_log; exit 1 )
 echo OK
 
 echo -n '[CHECK] go installed? '
-which 'go'  >/dev/null 2>&1 || ( echo -e "FAILED\n\nCould not find \`go\`. Please install go or add it to PATH"; exit 1 )
+which 'go'  >/dev/null 2>error.log || ( echo -e "FAILED\n\nCould not find \`go\`. Please install go or add it to PATH"; output_error_log; exit 1 )
 echo OK
 
 echo -n '[INSTALL] rubygem "rake" '
-gem install rake >/dev/null 2>&1 || ( echo -e "FAILED\n\nAn error occurred during installation of rake. Run \`gem install rake\` yourself."; exit 1 )
+gem install rake >/dev/null 2>error.log || ( echo -e "FAILED\n\nAn error occurred during installation of rake. Run \`gem install rake\` yourself."; output_error_log; exit 1 )
 echo OK
 
 if [ -n "$CI" ]; then
@@ -21,5 +25,6 @@ else
 fi
 
 echo -n "[RAKE] $rake_task "
-rake $rake_task >/dev/null 2>&1 || ( echo -e "FAILED\n\nAn error occurred during run of rake-task \"$rake_task\". Run \`rake $rake_task\` yourself."; exit 1 )
+rake $rake_task >/dev/null 2>error.log || ( echo -e "FAILED\n\nAn error occurred during run of rake-task \"$rake_task\". Run \`rake $rake_task\` yourself."; output_error_log; exit 1 )
 echo OK
+
