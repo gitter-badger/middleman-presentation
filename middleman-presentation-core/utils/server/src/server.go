@@ -23,7 +23,7 @@ func main() {
 
 
   fmt.Print("Open browser with http://" + listen + "\n")
-  err = open.Start("http://" + listen)
+  err = open.Start("http://" + listen + "/index.html")
 
   if err != nil {
     log.Fatal(err)
