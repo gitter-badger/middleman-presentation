@@ -8,6 +8,10 @@ module Middleman
 
         desc Middleman::Presentation.t('views.presentation.build.title')
 
+        class_option :add_server_window64, type: :boolean, default: Middleman::Presentation.config.add_server_window64, desc: Middleman::Presentation.t('views.presentation.build.options.add_server_window64')
+        class_option :add_server_linux64, type: :boolean, default: Middleman::Presentation.config.add_server_linux64, desc: Middleman::Presentation.t('views.presentation.build.options.add_server_linux64')
+        class_option :add_server_darwin64, type: :boolean, default: Middleman::Presentation.config.add_server_darwin64, desc: Middleman::Presentation.t('views.presentation.build.options.add_server_darwin64')
+
         def initialize_generator
           enable_debug_mode
         end
@@ -61,8 +65,15 @@ module Middleman
         end
 
         def add_server_executables
-          pattern = File.expand_path('../../../../utils/server/bin/*', __FILE__)
-          Dir.glob(pattern).each { |f| FileUtils.cp f, @environment.build_path }
+          path = File.expand_path('../../../../utils/server/bin/', __FILE__)
+
+          server_files = []
+          server_files << 'server.linux.amd64' if options[:add_server_linux64]
+          server_files << 'server' if options[:add_server_linux64]
+          server_files << 'server.windows.amd64' if options[:add_server_windows64]
+          server_files << 'server.darwin.amd64' if options[:add_server_darwin64]
+
+          server_files.each { |f| FileUtils.cp File.join(path,f), @environment.build_path }
         end
 
         def add_readme

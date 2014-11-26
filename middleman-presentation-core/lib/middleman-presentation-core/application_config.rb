@@ -183,6 +183,10 @@ module Middleman
       option :metadata_headline, [:date, :speaker, :company, :version, :license]
       option :metadata_footer, [:copyright, :author, :license]
 
+      option :add_server_window64, true
+      option :add_server_linux64, true
+      option :add_server_darwin64, true
+
       def preferred_configuration_file
         ::File.expand_path(::File.join('~', '.config', _application_name, _config_file))
       end
