@@ -3,6 +3,7 @@ package main
 import "net/http"
 import "path/filepath"
 import "os"
+import "os/signal"
 import "log"
 import "math/rand"
 import "fmt"
@@ -11,6 +12,15 @@ import "github.com/gorilla/handlers"
 import "github.com/skratchdot/open-golang/open"
 
 func main() {
+  go func(){
+    sigchan := make(chan os.Signal, 1)
+    signal.Notify(sigchan, os.Interrupt)
+    <-sigchan
+    fmt.Print("Captured CTRL-C. Exit..\n")
+
+    os.Exit(0)
+  }()
+
   dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
 
   if err != nil {
