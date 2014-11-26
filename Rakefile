@@ -110,10 +110,10 @@ task 'gem:release' => ['test:core:rspec', 'test:core:rubocop', 'test:helpers:rsp
 end
 
 desc 'Bootstrap project'
-task bootstrap: ['bootstrap:bower', 'bootstrap:webserver', 'bootstrap:bundler']
+task bootstrap: %w(bootstrap:bower bootstrap:bundler bootstrap:webserver)
 
 desc 'Bootstrap project for ci'
-task 'bootstrap:ci' => ['bootstrap:shell_environment', 'bootstrap:clean_caches'] do
+task 'bootstrap:ci' => %w(bootstrap:shell_environment bootstrap:clean_caches) do
   Rake::Task['bootstrap'].invoke
 end
 
