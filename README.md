@@ -881,11 +881,32 @@ To make it easier for users to serve a pre-built presentation
 webserver](https://github.com/dg-ratiodata/local_webserver) build with
 [Go](https://www.golang.org). This webserver is pre-compiled if you are using
 the `rubygem`. You need to install `Go` and build it yourself when cloning this
-repository. There's a `rake`-task for that.
+repository. 
+
+See [this page](http://docs.drone.io/golang.html) for a good introduction for a
+`Go`-installation which can compile `Go`-binaries for multiple operating
+systems - tested on Archlinux (64bit) only.
+
+*Clone repository*
 
 ```bash
-cd middleman-presentation-core
-rake server:fetch
+hg clone -u release https://code.google.com/p/go <golang_path>
+hg update default
+```
+
+*Build go*
+
+```bash
+cd <golang_path>
+GOOS=windows GOARCH=amd64 ./make.bash --no-clean 2> /dev/null 1> /dev/null
+GOOS=darwin  GOARCH=amd64 ./make.bash --no-clean 2> /dev/null 1> /dev/null
+GOOS=linux  GOARCH=amd64 ./make.bash --no-clean 2> /dev/null 1> /dev/null
+```
+
+*Add to PATH*
+
+```bash
+export PATH=<golang_path>/bin:$PATH
 ```
 
 ### Getting started
