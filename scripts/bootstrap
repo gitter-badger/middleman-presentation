@@ -7,7 +7,7 @@ function output_error_log {
 }
 
 echo -n '[CHECK] ruby installed? '
-which 'ruby1' >/dev/null 2>error.log || ( echo -e "FAILED\n\nCould not find \`ruby\`. Please install ruby or add it to PATH"; output_error_log; exit 1 )
+which 'ruby' >/dev/null 2>error.log || ( echo -e "FAILED\n\nCould not find \`ruby\`. Please install ruby or add it to PATH"; output_error_log; exit 1 )
 echo OK
 
 echo -n '[CHECK] go installed? '
