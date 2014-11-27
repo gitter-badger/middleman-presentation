@@ -209,7 +209,7 @@ namespace :server do
       sh 'git clone https://github.com/dg-ratiodata/local_webserver tmp/server'
 
       Dir.chdir 'tmp/server' do
-        sh 'rake'
+        sh './build.sh'
       end
 
       FileUtils.mkdir_p 'utils/server'
