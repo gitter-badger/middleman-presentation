@@ -1,7 +1,8 @@
 #!/usr/bin/env rake
 
 require 'filegen'
-require 'fedux_org_stdlib/rake_tasks'
+require 'fedux_org_stdlib/rake_tasks/project'
+require 'fedux_org_stdlib/rake_tasks/webserver'
 require 'active_support/all'
 require 'open3'
 
@@ -200,20 +201,3 @@ namespace :archlinux do
 end
 
 task 'gem:build' => 'server:fetch'
-
-namespace :server do
-  task :fetch do
-    if Dir.glob('utils/server/*').empty?
-      FileUtils.rm_rf 'tmp/server'
-
-      sh 'git clone https://github.com/dg-ratiodata/local_webserver tmp/server'
-
-      Dir.chdir 'tmp/server' do
-        sh './build.sh'
-      end
-
-      FileUtils.mkdir_p 'utils/server'
-      FileUtils.cp Dir.glob('tmp/server/bin/*'), 'utils/server'
-    end
-  end
-end
