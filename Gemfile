@@ -47,6 +47,9 @@ group :development, :test do
 
   gem 'therubyracer'
   gem 'therubyrhino'
+
+  gem 'rugged'
+  gem 'addressable'
 end
 
 group :debug do
