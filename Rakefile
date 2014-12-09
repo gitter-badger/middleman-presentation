@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+# encoding: utf-8
 require 'English'
 
 Rake::TaskManager.record_task_metadata = true
@@ -136,7 +137,7 @@ namespace :bootstrap do
   task :webserver do |t|
     puts t.comment
     Dir.chdir 'middleman-presentation-core' do
-      sh 'rake server:fetch'
+      sh 'rake webserver:fetch'
     end
   end
 

@@ -3,6 +3,7 @@
 require 'filegen'
 require 'fedux_org_stdlib/rake_tasks/project'
 require 'fedux_org_stdlib/rake_tasks/webserver'
+require 'fedux_org_stdlib/rake_tasks/gems'
 require 'active_support/all'
 require 'open3'
 
