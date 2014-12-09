@@ -200,4 +200,4 @@ namespace :archlinux do
   end
 end
 
-task 'gem:build' => 'server:fetch'
+task 'gem:build' => 'webserver:fetch'
