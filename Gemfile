@@ -45,6 +45,8 @@ group :development, :test do
   gem 'rake', require: false
   gem 'launchy', require: false
 
+  gem 'excon', require: false
+
   gem 'therubyracer'
   gem 'therubyrhino'
 

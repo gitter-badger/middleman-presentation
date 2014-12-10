@@ -127,6 +127,7 @@ GEM
     equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    excon (0.41.0)
     execjs (2.2.2)
     facter (2.3.0)
       CFPropertyList (~> 2.2.6)
@@ -383,6 +384,7 @@ DEPENDENCIES
   coveralls
   cucumber
   erubis
+  excon
   filegen
   foreman
   fuubar
