@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/cucumber/aruba.git
-  revision: dc0a8b71eb1b1dc6d3bd21f1a4bb5b4e564a4ba1
+  revision: ec87d91bb43011eb49b619d58c16a9fa22b5ac2f
   specs:
     aruba (0.6.1)
       childprocess (>= 0.3.6)
@@ -127,11 +127,11 @@ GEM
     equalizer (0.0.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    excon (0.41.0)
+    excon (0.42.1)
     execjs (2.2.2)
     facter (2.3.0)
       CFPropertyList (~> 2.2.6)
-    fedux_org-stdlib (0.11.1)
+    fedux_org-stdlib (0.11.2)
       activesupport
     ffi (1.9.6)
     filegen (0.4.3)
@@ -249,7 +249,7 @@ GEM
     mutant-rspec (0.7.1)
       mutant (~> 0.7.1)
       rspec-core (>= 3.0.0, < 3.2.0)
-    netrc (0.9.0)
+    netrc (0.10.0)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     padrino-helpers (0.12.4)
@@ -285,7 +285,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    redcarpet (3.2.1)
+    redcarpet (3.2.2)
     ref (1.0.5)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
@@ -303,7 +303,7 @@ GEM
     rspec-mocks (3.1.3)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
-    rubocop (0.27.1)
+    rubocop (0.28.0)
       astrolabe (~> 1.3)
       parser (>= 2.2.0.pre.7, < 3.0)
       powerpack (~> 0.0.6)
