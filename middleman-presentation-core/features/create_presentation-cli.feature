@@ -62,6 +62,7 @@ Feature: Initialize presentation
     //= require lightbox2/js/lightbox
     """
 
+    @announce
   Scenario: Initialize in test directory
     Given I successfully run `middleman-presentation create presentation test/presentation1 --title "My Presentation"`
     When I cd to "test/presentation1"
