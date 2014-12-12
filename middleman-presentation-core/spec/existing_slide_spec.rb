@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 RSpec.describe ExistingSlide do
-
   context '#file_name' do
     it 'extracts file name' do
       slide1 = ExistingSlide.new(absolute_path('source', 'slides', '01.html.md'))

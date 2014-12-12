@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 RSpec.describe NewSlide do
-
   context '#<=>' do
     it 'compares slides with same file name' do
       slide1 = NewSlide.new('01.md', base_path: absolute_path('source', 'slides'))

@@ -138,5 +138,4 @@ RSpec.describe ComponentsManager do
       # rubocop:enable Style/TrailingWhitespace
     end
   end
-
 end

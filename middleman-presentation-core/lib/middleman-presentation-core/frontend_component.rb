@@ -32,8 +32,6 @@ module Middleman
                                   @to_s = value
                                 end
                               end.new(version)
-                            else
-                              nil
                             end
         fail ArgumentError, Middleman::Presentation.t('errors.undefined_arguments', arguments: %w(resource_locator github version).to_list) if @resource_locator.blank?
 

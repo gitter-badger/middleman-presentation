@@ -132,6 +132,5 @@ RSpec.describe PresentationHelper do
 
       expect(helper.available_methods).to eq [:helper1]
     end
-
   end
 end

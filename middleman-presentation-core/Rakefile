@@ -81,7 +81,6 @@ def extract_sha
 end
 
 namespace :package do
-
   desc 'build gem package'
   task :gem do
     sh 'RAILS_ENV=production bundle exec rake -f Rakefile.rails assets:clobber'

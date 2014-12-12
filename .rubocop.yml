@@ -1,4 +1,6 @@
 AllCops:
   Exclude:
     - 'tmp/**/*'
-    - '*cache/**/*'
+    - 'middleman-presentation-core/tmp/bower_cache/**/*'
+    - Gemfile
+    - Rakefile

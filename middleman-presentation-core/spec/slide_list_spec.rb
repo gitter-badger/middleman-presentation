@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 RSpec.describe SlideList do
-
   context '#initialize' do
     it 'requires a list of patterns' do
       slide = double('Middleman::Presentation::NewSlide')

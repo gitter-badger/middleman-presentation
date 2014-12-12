@@ -24,7 +24,6 @@ module Middleman
 
         Zip::File.open(destination_file, Zip::File::CREATE) do |file|
           Dir.glob(File.join(source_directory, '**', '*')).each do |filename|
-
             path = ''
             path << prefix if prefix
             path << Pathname.new(filename).relative_path_from(Pathname.new(source_directory)).to_s

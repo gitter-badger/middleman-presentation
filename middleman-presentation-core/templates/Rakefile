@@ -32,7 +32,6 @@ desc 'Export presentation as tar-archive'
 task export: 'export:tar'
 
 namespace :edit do
-
   desc 'Edit all user defined slides'
   task slides: 'slides:user_defined'
 
