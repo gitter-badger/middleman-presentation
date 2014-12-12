@@ -1,7 +1,22 @@
-#!/bin/sh
+#!/bin/bash
+
+set -e
+
+function output_error_log {
+  [[ -f error.log ]] && ( cat error.log >&2; rm error.log)
+}
+
+info_msg="\e[0;32m[INFO]\e[0;30m"
+error_msg="\e[0;31mFAILED\e[0;30m"
 
 if [ -n "$CI" ]; then
-  rake test:ci
+  echo -e "$info_msg Testing in CI mode"
+  rake_task='test:ci'
 else
-  rake test
+  echo -e "$info_msg Testing in normal mode"
+  rake_task='test'
 fi
+
+echo -en "$info_msg Running rake task \"$rake_task\" "
+rake $rake_task >/dev/null 2>error.log || ( echo -e "$error_msg\n\nAn error occurred during run of rake-task \"$rake_task\". Run \`rake $rake_task\` yourself."; output_error_log; exit 1 )
+echo OK

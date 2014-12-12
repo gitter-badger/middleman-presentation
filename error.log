@@ -1,4 +1,0 @@
-npm install -g bower
-gem install bundler
-bundle install
-rake webserver:fetch
