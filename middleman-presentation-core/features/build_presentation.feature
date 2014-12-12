@@ -14,7 +14,6 @@ Feature: Build presentation
     And a file named "server.darwin.amd64" should exist
     And a file named "server.linux.amd64" should exist
     And a file named "server.windows.amd64.exe" should exist
-    And a file named "server" should exist
     And a file named "javascripts/application.js" should exist
     And a file named "index.html" should exist
     And a file named "stylesheets/application.css" should exist
