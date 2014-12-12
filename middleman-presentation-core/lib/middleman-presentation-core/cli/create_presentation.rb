@@ -6,6 +6,10 @@ module Middleman
       class CreatePresentation < BaseGroup
         include Thor::Actions
 
+        def self.exit_on_failure?
+          true
+        end
+
         class_option :speaker, required: true, default: Middleman::Presentation.config.speaker, desc: Middleman::Presentation.t('views.presentations.create.options.speaker')
         class_option :title, required: true, desc: Middleman::Presentation.t('views.presentations.create.options.title')
         class_option :date, required: true, default: Time.now.strftime('%d.%m.%Y'), desc: Middleman::Presentation.t('views.presentations.create.options.date')
@@ -261,16 +265,18 @@ module Middleman
           inside directory do
             fail Thor::Error, Middleman::Presentation.t('errors.bower_command_not_found', path: ENV['PATH']) if options[:check_for_bower] && File.which('bower').blank?
 
-            result = run('bower update', capture: true) if options[:install_assets] == true
-            fail Thor::Error, Middleman::Presentation.t('errors.bower_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
+            system('bower update') || \
+              fail(Thor::Error, Middleman::Presentation.t('errors.bower_command_failed', result: '')) \
+              if options[:install_assets] == true
           end
         end
 
         def install_gems
           inside directory do
             Bundler.with_clean_env do
-              result = run('bundle install', capture: true) if options[:install_assets] == true
-              fail Thor::Error, Middleman::Presentation.t('errors.bundle_command_failed', result: result) unless $CHILD_STATUS.exitstatus == 0
+              system('bundle install') || \
+                fail(Thor::Error, Middleman::Presentation.t('errors.bundle_command_failed', result: '')) \
+                if options[:install_assets] == true
             end
           end
         end
