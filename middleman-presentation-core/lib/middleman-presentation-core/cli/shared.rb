@@ -41,9 +41,6 @@ module Middleman
 
         # The class methods
         module ClassMethods
-          def self.exit_on_failure?
-            true
-          end
         end
       end
     end
