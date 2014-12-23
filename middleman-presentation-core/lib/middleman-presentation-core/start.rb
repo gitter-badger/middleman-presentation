@@ -60,6 +60,7 @@ module Middleman
             if Middleman::Presentation.config.minify_assets
               activate :minify_css
               activate :minify_javascript
+              activate :minify_html
             end
           end
         end
