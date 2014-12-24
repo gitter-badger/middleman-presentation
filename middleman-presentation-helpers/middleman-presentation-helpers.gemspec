@@ -1,11 +1,12 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('../../middleman-presentation-core/lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'middleman-presentation-helpers/version'
+
+require 'middleman-presentation-core/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'middleman-presentation-helpers'
-  spec.version       = Middleman::Presentation::Helpers::VERSION
+  spec.version       = Middleman::Presentation::VERSION
   spec.authors       = ['Max Meyer']
   spec.email         = ['dev@fedux.org']
   spec.summary       = 'Helpers for middleman-presentation'

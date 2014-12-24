@@ -1,5 +1,7 @@
 # encoding: utf-8
-$LOAD_PATH.push File.expand_path('../../middleman-presentation-core/lib', __FILE__)
+lib = File.expand_path('../../middleman-presentation-core/lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require 'middleman-presentation-core/version'
 
 Gem::Specification.new do |spec|
@@ -21,5 +23,5 @@ Gem::Specification.new do |spec|
   spec.default_executable    = 'mp'
 
   spec.add_dependency 'middleman-presentation-core', spec.version
-  spec.add_dependency 'middleman-presentation-helpers', '>= 0.1.0.beta'
+  spec.add_dependency 'middleman-presentation-helpers', spec.version
 end
