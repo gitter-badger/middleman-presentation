@@ -1,5 +1,7 @@
 # encoding: utf-8
-$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+lib = File.expand_path('../../middleman-presentation-core/lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require 'middleman-presentation-core/version'
 
 Gem::Specification.new do |spec|
