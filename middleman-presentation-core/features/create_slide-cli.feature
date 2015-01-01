@@ -131,14 +131,14 @@ Feature: Add new slide
     """
 
   Scenario: Using eruby in editor command
-    When I successfully run `middleman-presentation create slide 02 03 --edit --editor-command "echo <%= project_id %>"`
+    When I successfully run `middleman-presentation create slide 02 03 --edit --editor-command "echo <%= generated_presentation_id %>"`
     Then the output should contain:
     """
     my-presentation
     """
 
   Scenario: Using eruby in editor command and shell escape
-    When I successfully run `middleman-presentation create slide 02 03 --edit --editor-command "echo <%= Shellwords.shellescape(project_id) %>"`
+    When I successfully run `middleman-presentation create slide 02 03 --edit --editor-command "echo <%= Shellwords.shellescape(generated_presentation_id) %>"`
     Then the output should contain:
     """
     my-presentation

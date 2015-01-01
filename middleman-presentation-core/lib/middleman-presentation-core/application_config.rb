@@ -9,7 +9,7 @@ module Middleman
 
       option :title, nil
       option :subtitle, nil
-      option :project_id, nil
+      option :generated_presentation_id, nil
       option :version, 'v0.0.1'
       option :smart_quotes, %w(rdquo rsquo ldquo rdquo)
 
@@ -143,7 +143,7 @@ module Middleman
         parallax_background_size
         phone_number
         preview_links
-        project_id
+        generated_presentation_id
         speaker
         subtitle
         title

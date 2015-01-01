@@ -118,7 +118,7 @@ module Middleman
           Middleman::Presentation.config.github_url      = options[:github_url]
 
           Middleman::Presentation.config.version         = options[:version]
-          Middleman::Presentation.config.project_id      = format '%s-%s', options[:title].characterize, SecureRandom.hex
+          Middleman::Presentation.config.generated_presentation_id = format '%s-%s', options[:title].characterize, SecureRandom.hex
 
           Middleman::Presentation.config.width                         = options[:width]
           Middleman::Presentation.config.height                        = options[:height]
