@@ -1,21 +1,3 @@
 # encoding: utf-8
-module Middleman
-  module Presentation
-    module FeatureHelper
-      # Helper for fixtures
-      module Fixtures
-        def fixtures_manager
-          @fixtures_manager ||= FeduxOrgStdlib::FixturesManagement::FixturesManager.new
-
-          @fixtures_manager.load_fixtures(File.expand_path('../../../fixtures', __FILE__))
-
-          @fixtures_manager
-        end
-      end
-    end
-  end
-end
-
-World(Middleman::Presentation::FeatureHelper::Fixtures)
-
-FileUtils.rm_rf Middleman::Presentation::TestHelpers.temporary_fixture_path('.')
+require 'middleman-presentation-helpers/test_helpers'
+FileUtils.rm_rf Middleman::Presentation::Helpers::Test.temporary_fixture_path('.')
