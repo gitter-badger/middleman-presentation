@@ -34,7 +34,7 @@ Feature: Initialize presentation
     And a directory named "vendor/assets/components" should exist
     And the file ".middleman-presentation.yaml" should contain:
     """
-    generated_generated_presentation_id:
+    generated_presentation_id:
     """
     And the file ".middleman-presentation.local.yaml" should contain:
     """
@@ -125,7 +125,7 @@ Feature: Initialize presentation
     And I cd to "presentation1"
     And the file ".middleman-presentation.yaml" should contain:
     """
-    generated_generated_presentation_id: uoa
+    generated_presentation_id: uoa
     """
 
   Scenario: Use language from configuration file
