@@ -9,3 +9,4 @@ rvm:
   - 2.2.0
 install: scripts/bootstrap
 script: scripts/test
+cache: bundler
