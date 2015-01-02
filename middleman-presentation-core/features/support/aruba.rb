@@ -11,4 +11,4 @@ module FeatureHelper
   end
 end
 
-World(Middleman::Presentation::FeatureHelper::Aruba)
+World(FeatureHelper::Aruba)

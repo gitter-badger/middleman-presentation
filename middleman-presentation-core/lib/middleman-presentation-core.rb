@@ -122,7 +122,6 @@ require 'middleman-presentation-core/cli/init'
 require 'middleman-presentation-core/cli/runner'
 
 require 'middleman-presentation-core/utils'
-require 'middleman-presentation-core/test_helpers'
 
 require 'middleman-presentation-core/middleman_extension'
 require 'middleman-presentation-core/register_extension'
