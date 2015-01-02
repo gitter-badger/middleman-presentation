@@ -1,20 +1,16 @@
 # encoding: utf-8
 
 # Test helpers
-require 'middleman-presentation-core/test_helpers'
+require 'middleman-presentation-helpers/test_helpers'
 
-module Middleman
-  module Presentation
-    # Spec Helpers
-    module SpecHelper
-      # Helpers for ci
-      module Ci
-        include Middleman::Presentation::TestHelpers
-      end
-    end
+# Spec Helpers
+module SpecHelper
+  # Helpers for ci
+  module Ci
+    include Middleman::Presentation::Helpers::Test
   end
 end
 
 RSpec.configure do |c|
-  c.include Middleman::Presentation::SpecHelper::Ci
+  c.include SpecHelper::Ci
 end
