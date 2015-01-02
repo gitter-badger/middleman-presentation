@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'middleman', '~> 3.3.5'
   spec.add_dependency 'middleman-sprockets', '~> 3.3.8'
-  spec.add_dependency 'middleman-minify-html', '~> 3.5.2'
+  spec.add_dependency 'middleman-minify-html'
   spec.add_dependency 'bundler'
   spec.add_dependency 'tzinfo', '>= 0.3.0'
   spec.add_dependency 'addressable', '~> 2.3.5'

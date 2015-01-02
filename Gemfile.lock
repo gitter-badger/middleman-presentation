@@ -12,7 +12,7 @@ PATH
   specs:
     middleman-presentation (0.16.0.rc1)
       middleman-presentation-core (= 0.16.0.rc1)
-      middleman-presentation-helpers (>= 0.1.0.beta)
+      middleman-presentation-helpers (= 0.16.0.rc1)
 
 PATH
   remote: middleman-presentation-core
@@ -29,6 +29,7 @@ PATH
       launchy (~> 2.4.2)
       liquid
       middleman (~> 3.3.5)
+      middleman-minify-html
       middleman-sprockets (~> 3.3.8)
       nokogiri
       rake
@@ -44,11 +45,12 @@ PATH
 PATH
   remote: middleman-presentation-helpers
   specs:
-    middleman-presentation-helpers (0.1.0.rc1)
+    middleman-presentation-helpers (0.16.0.rc1)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.8)
       i18n (~> 0.6, >= 0.6.9)
@@ -129,7 +131,8 @@ GEM
     excon (0.42.1)
     execjs (2.2.2)
     facter (2.3.0)
-    fedux_org-stdlib (0.11.2)
+      CFPropertyList (~> 2.2.6)
+    fedux_org-stdlib (0.11.9)
       activesupport
     ffi (1.9.6)
     filegen (0.4.3)
@@ -151,6 +154,7 @@ GEM
     hitimes (1.2.2)
     hooks (0.4.0)
       uber (~> 0.0.4)
+    htmlcompressor (0.1.2)
     http_parser.rb (0.6.0)
     httparty (0.13.3)
       json (~> 1.8)
@@ -209,13 +213,16 @@ GEM
       em-websocket (~> 0.5.1)
       middleman-core (~> 3.2)
       rack-livereload (~> 0.3.15)
+    middleman-minify-html (3.4.0)
+      htmlcompressor (~> 0.1.0)
+      middleman-core (>= 3.2)
     middleman-sprockets (3.3.10)
       middleman-core (~> 3.3)
       sprockets (~> 2.12.1)
       sprockets-helpers (~> 1.1.0)
       sprockets-sass (~> 1.2.0)
     mime-types (2.4.3)
-    mini_portile (0.6.1)
+    mini_portile (0.6.2)
     minitest (5.4.3)
     morpher (0.2.3)
       abstract_type (~> 0.0.7)
@@ -288,7 +295,7 @@ GEM
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rouge (1.7.4)
+    rouge (1.7.7)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)

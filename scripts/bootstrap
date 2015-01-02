@@ -26,5 +26,5 @@ else
 fi
 
 echo -en "$info_msg Running rake task \"$rake_task\" "
-rake --trace $rake_task >/dev/null 2>error.log || ( echo -e "$error_msg\n\nAn error occurred during run of rake-task \"$rake_task\". Run \`rake $rake_task\` yourself."; output_error_log; exit 1 )
+rake --trace $rake_task >error.log 2>&1 || ( echo -e "$error_msg\n\nAn error occurred during run of rake-task \"$rake_task\". Run \`rake $rake_task\` yourself."; output_error_log; exit 1 )
 echo OK
