@@ -3,6 +3,6 @@
 module Middleman
   # Presentation
   module Presentation
-    VERSION = '0.16.0.rc1'
+    VERSION = '0.16.0.rc2'
   end
 end
