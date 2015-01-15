@@ -15,6 +15,7 @@
   * I: Move helpers to helper-gem (based on plugin-support)
   * I: Localize cli
   * I: A lot of code refactoring
+  * I: Make it compatible with reveal.js >= 3
 * 0.15
   * F: Support for predefined slide templates added
   * F: Show default values of configuration controlled by option in config-command
