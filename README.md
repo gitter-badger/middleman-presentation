@@ -26,6 +26,11 @@ Why you would like to use `middleman-presentation` instead of pure `reveal.js`?
 * It provides templates, but give you the freedom to define your own ones
 * It can be extended by using ruby
 
+`middleman-presentation` in the media:
+
+* http://ruby5.envylabs.com/episodes/522-episode-485-august-1st-2014
+
+
 ## Installation
 
 ### Gem
