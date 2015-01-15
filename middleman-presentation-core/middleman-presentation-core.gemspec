@@ -3,6 +3,7 @@ lib = File.expand_path('../../middleman-presentation-core/lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'middleman-presentation-core/version'
+require 'middleman-presentation-core/ruby'
 
 Gem::Specification.new do |spec|
   spec.name                  = 'middleman-presentation-core'
@@ -19,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.test_files            = spec.files.grep(%r{^(test|spec|features)/})
 
   spec.require_paths         = ['lib']
-  spec.required_ruby_version = '>= 2.1.0'
+  spec.required_ruby_version = Middleman::Presentation::REQUIRED_RUBY_VERSION
 
   spec.add_dependency 'middleman', '~> 3.3.5'
   spec.add_dependency 'middleman-sprockets', '~> 3.3.8'
