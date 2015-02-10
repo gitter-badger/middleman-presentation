@@ -169,6 +169,12 @@ namespace :bootstrap do
   end
 end
 
+namespace :docker do
+  task :build do
+    sh 'docker build -t middleman-presentation:latest .'
+  end
+end
+
 namespace :documentation do
   task :inch do
     sh 'inch'
