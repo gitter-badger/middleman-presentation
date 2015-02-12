@@ -1,8 +1,8 @@
 FROM ruby:2.2
 MAINTAINER Max Meyer <dev@fedux.org>
 
-ENV http_proxy http://172.17.42.1:3128
-ENV https_proxy https://172.17.42.1:3128
+# ENV http_proxy http://172.17.42.1:3128
+# ENV https_proxy https://172.17.42.1:3128
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -10,8 +10,8 @@ RUN apt-get update -y
 RUN apt-get install -y nodejs
 RUN apt-get install -y npm
 
-# RUN npm config set proxy http://172.17.42.1:3128
-# RUN npm config set https-proxy http://172.17.42.1:3128
+RUN npm config set proxy http://172.17.42.1:3128
+RUN npm config set https-proxy http://172.17.42.1:3128
 RUN npm install -g bower
 
 RUN gem install therubyracer
