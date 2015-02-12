@@ -3,6 +3,6 @@
 module Middleman
   # Presentation
   module Presentation
-    VERSION = '0.16.0.rc2'
+    REQUIRED_RUBY_VERSION = '>= 2.1.0'
   end
 end

@@ -45,7 +45,7 @@ Feature: Initialize presentation
     """
     @import 'normalize.css/normalize';
     @import 'highlightjs/styles/zenburn';
-    @import 'reveal.js/css/reveal.min';
+    @import 'reveal.js/css/reveal';
     @import 'reveal.js/css/theme/template/mixins';
     @import 'reveal.js/css/theme/template/settings';
     @import 'middleman-presentation-helpers/footer/footer';
@@ -56,7 +56,7 @@ Feature: Initialize presentation
     And the file "source/javascripts/application.js" should contain:
     """
     //= require jquery/dist/jquery
-    //= require reveal.js/js/reveal.min
+    //= require reveal.js/js/reveal
     //= require reveal.js/lib/js/head.min
     //= require middleman-presentation-helpers/footer/footer
     //= require lightbox2/js/lightbox
@@ -69,7 +69,7 @@ Feature: Initialize presentation
     """
     @import 'normalize.css/normalize';
     @import 'highlightjs/styles/zenburn';
-    @import 'reveal.js/css/reveal.min';
+    @import 'reveal.js/css/reveal';
     @import 'reveal.js/css/theme/template/mixins';
     @import 'reveal.js/css/theme/template/settings';
     @import 'middleman-presentation-helpers/footer/footer';
@@ -80,7 +80,7 @@ Feature: Initialize presentation
     And the file "source/javascripts/application.js" should contain:
     """
     //= require jquery/dist/jquery
-    //= require reveal.js/js/reveal.min
+    //= require reveal.js/js/reveal
     //= require reveal.js/lib/js/head.min
     //= require middleman-presentation-helpers/footer/footer
     //= require lightbox2/js/lightbox
@@ -277,7 +277,7 @@ Feature: Initialize presentation
     Then the file "source/javascripts/application.js" should contain:
     """
     //= require jquery/dist/jquery
-    //= require reveal.js/js/reveal.min
+    //= require reveal.js/js/reveal
     //= require reveal.js/lib/js/head.min
     //= require middleman-presentation-helpers/footer/footer
     //= require lightbox2/js/lightbox
