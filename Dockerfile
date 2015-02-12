@@ -9,6 +9,9 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -y
 RUN apt-get install -y nodejs
 RUN apt-get install -y npm
+
+# RUN npm config set proxy http://172.17.42.1:3128
+# RUN npm config set https-proxy http://172.17.42.1:3128
 RUN npm install -g bower
 
 RUN gem install therubyracer
