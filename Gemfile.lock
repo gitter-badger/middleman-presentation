@@ -36,6 +36,7 @@ PATH
       rake
       rouge
       rubyzip (~> 1.1.6)
+      thor (~> 0.19.1)
       tzinfo (>= 0.3.0)
 
 PATH
