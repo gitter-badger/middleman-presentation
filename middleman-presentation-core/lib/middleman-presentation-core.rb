@@ -4,6 +4,7 @@ require 'middleman-core/cli'
 require 'middleman-sprockets'
 
 require 'set'
+require 'erubis'
 require 'bundler'
 require 'English'
 # require 'ptools'
