@@ -40,5 +40,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'i18n'
   spec.add_dependency 'hirb'
   spec.add_dependency 'rouge'
+  spec.add_dependency 'colorize'
   #  spec.add_dependency 'ptools', '>= 1.2.6'
 end
