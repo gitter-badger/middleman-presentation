@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rake'
   spec.add_dependency 'rubyzip', '~> 1.1.6'
   spec.add_dependency 'liquid'
+  spec.add_dependency 'thor', '~> 0.19.1'
   spec.add_dependency 'erubis'
   spec.add_dependency 'kramdown'
   spec.add_dependency 'nokogiri'
@@ -40,5 +41,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'i18n'
   spec.add_dependency 'hirb'
   spec.add_dependency 'rouge'
+  spec.add_dependency 'colorize'
   #  spec.add_dependency 'ptools', '>= 1.2.6'
 end

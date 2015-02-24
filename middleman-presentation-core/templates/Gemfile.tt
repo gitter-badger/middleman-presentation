@@ -22,6 +22,7 @@ gem 'kramdown'
 gem 'github-markup'
 gem 'liquid'
 gem 'rake'
+gem 'middleman-minify-html'
 
 group :debug do
   gem 'pry'

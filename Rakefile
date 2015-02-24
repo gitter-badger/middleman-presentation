@@ -180,3 +180,13 @@ namespace :documentation do
     sh 'inch'
   end
 end
+
+namespace :docker do
+  task :build do
+    sh 'docker build -t middleman-presentation:latest .'
+  end
+
+  task :run do
+    sh 'docker run --name middleman-presentation1 --rm -it middleman-presentation:latest bash'
+  end
+end
