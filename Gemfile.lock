@@ -10,31 +10,31 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.16.0)
-      middleman-presentation-core (= 0.16.0)
-      middleman-presentation-helpers (= 0.16.0)
+    middleman-presentation (0.16.1)
+      middleman-presentation-core (= 0.16.1)
+      middleman-presentation-helpers (= 0.16.1)
 
 PATH
   remote: middleman-presentation-core
   specs:
-    middleman-presentation-core (0.16.0)
+    middleman-presentation-core (0.16.1)
       addressable (~> 2.3.5)
-      bundler
-      colorize
-      erubis
-      facter
-      fedux_org-stdlib (>= 0.11.1)
-      hirb
-      i18n
-      kramdown
+      bundler (~> 1.7.12)
+      colorize (~> 0.7.5)
+      erubis (~> 2.7.0)
+      facter (~> 2.4.1)
+      fedux_org-stdlib (>= 0.11.16)
+      hirb (~> 0.7.3)
+      i18n (~> 0.7.0)
+      kramdown (~> 1.5.0)
       launchy (~> 2.4.2)
-      liquid
+      liquid (~> 3.0.1)
       middleman (~> 3.3.5)
-      middleman-minify-html
+      middleman-minify-html (~> 3.4.0)
       middleman-sprockets (~> 3.3.8)
-      nokogiri
-      rake
-      rouge
+      nokogiri (~> 1.6.6)
+      rake (~> 10.0)
+      rouge (~> 1.8.0)
       rubyzip (~> 1.1.6)
       thor (~> 0.19.1)
       tzinfo (>= 0.3.0)
@@ -47,12 +47,11 @@ PATH
 PATH
   remote: middleman-presentation-helpers
   specs:
-    middleman-presentation-helpers (0.16.0)
+    middleman-presentation-helpers (0.16.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.9)
       i18n (~> 0.6, >= 0.6.9)
@@ -134,8 +133,7 @@ GEM
     excon (0.44.3)
     execjs (2.3.0)
     facter (2.4.1)
-      CFPropertyList (~> 2.2.6)
-    fedux_org-stdlib (0.11.15)
+    fedux_org-stdlib (0.11.16)
       activesupport
     ffi (1.9.6)
     filegen (0.4.3)
