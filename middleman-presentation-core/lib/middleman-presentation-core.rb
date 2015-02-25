@@ -3,6 +3,8 @@ require 'middleman-core'
 require 'middleman-core/cli'
 require 'middleman-sprockets'
 
+require 'psych'
+
 require 'set'
 require 'erubis'
 require 'bundler'
