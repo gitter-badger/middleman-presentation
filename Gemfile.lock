@@ -10,14 +10,14 @@ GIT
 PATH
   remote: .
   specs:
-    middleman-presentation (0.16.1)
-      middleman-presentation-core (= 0.16.1)
-      middleman-presentation-helpers (= 0.16.1)
+    middleman-presentation (0.16.2)
+      middleman-presentation-core (= 0.16.2)
+      middleman-presentation-helpers (= 0.16.2)
 
 PATH
   remote: middleman-presentation-core
   specs:
-    middleman-presentation-core (0.16.1)
+    middleman-presentation-core (0.16.2)
       addressable (~> 2.3.5)
       bundler (~> 1.7.12)
       colorize (~> 0.7.5)
@@ -47,7 +47,7 @@ PATH
 PATH
   remote: middleman-presentation-helpers
   specs:
-    middleman-presentation-helpers (0.16.1)
+    middleman-presentation-helpers (0.16.2)
 
 GEM
   remote: https://rubygems.org/
