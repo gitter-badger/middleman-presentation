@@ -19,7 +19,7 @@ PATH
   specs:
     middleman-presentation-core (0.16.3)
       addressable (~> 2.3.5)
-      bundler (~> 1.7)
+      bundler
       colorize (~> 0.7.5)
       erubis (~> 2.7.0)
       facter (~> 2.4.1)
