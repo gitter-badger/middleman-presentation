@@ -1,4 +1,4 @@
-* 0.16.4
+* 0.17
   * I: Add middleman-autoprefixer to make it easier to use new css features in
     all browsers by prefixing them automatically
 * 0.16.3
