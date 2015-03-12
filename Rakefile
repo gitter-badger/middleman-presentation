@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+begin
+  require 'fedux_org_stdlib/rake_tasks/gems'
+  require 'fedux_org_stdlib/rake_tasks/software_version/bump'
+rescue LoadError
+  $stderr.puts 'Make sure you\'ve got "fedux_org-stdlib" installed' unless ENV['CI']
+end
+
 # encoding: utf-8
 require 'English'
 
