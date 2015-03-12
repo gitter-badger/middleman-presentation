@@ -17,7 +17,7 @@ Here are some ways *you* can contribute:
 * by closing [issues][]
 * by reviewing patches
 
-[issues]: https://github.com/maxmeyer/middleman-presentation/issues
+[issues]: https://github.com/fedux-org/middleman-presentation/issues
 
 ## Submitting an Issue
 
