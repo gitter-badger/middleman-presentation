@@ -1,3 +1,10 @@
+* 0.17
+  * I: Add middleman-autoprefixer to make it easier to use new css features in
+    all browsers by prefixing them automatically
+* 0.16.3
+  * I: Not that strict with version for bundler
+* 0.16.2
+  * I: Add version numbers to dependencies
 * 0.16
   * F: Introduce plugin-support (technical preview)
   * F: Add helpers to show available "assets", "frontend components", "plugins", ...
