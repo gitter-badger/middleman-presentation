@@ -23,6 +23,7 @@ gem 'github-markup'
 gem 'liquid'
 gem 'rake'
 gem 'middleman-minify-html'
+gem 'middleman-autoprefixer'
 
 group :debug do
   gem 'pry'

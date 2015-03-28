@@ -15,6 +15,14 @@ Feature: Initialize presentation
     """
     middleman-presentation
     """
+    And the file "Gemfile" should contain:
+    """
+    middleman-minify-html
+    """
+    And the file "Gemfile" should contain:
+    """
+    middleman-autoprefixer
+    """
     And a file named "bower.json" should exist
     And a file named ".bowerrc" should exist
     And a file named ".gitignore" should exist
