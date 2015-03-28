@@ -22,7 +22,7 @@ group :development, :test do
   gem 'rubocop', '>= 0.25.0', require: false
   gem 'coveralls', require: false
   gem 'cucumber', require: false
-  gem 'aruba', git: 'https://github.com/cucumber/aruba.git'
+  gem 'aruba'
   gem 'bundler', require: false
   gem 'erubis'
   gem 'versionomy', require: false
@@ -59,4 +59,7 @@ group :debug do
   gem 'pry'
   gem 'pry-byebug', require: false
   gem 'pry-doc', require: false
+  gem 'pry-stack_explorer', require: false
+  gem 'pry-rescue', require: false
+  gem 'pry-exception_explorer', require: false
 end
