@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - 'tmp/**/*'
     - lib/middleman-presentation-core/middleman_step_definitions.rb
+  DisplayCopNames: true
 
 # Configuration parameters: AllowURI.
 Metrics/LineLength:
