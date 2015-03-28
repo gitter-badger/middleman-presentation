@@ -313,12 +313,12 @@ bundle exec middleman-presentation create slide --edit --editor-command "nano" 0
 
 The `editor-command`-string is also parsed by Erubis which makes the data
 available in `metadata.yml` accessible to you. You can use this to start a vim server
-with the presentation's project id as server name. This can be handy if you work more
+with the presentation's id as server name. This can be handy if you work more
 or less simultaneously on diffent presentations. To make the use of the project
 id as server name more stable you should use [`Shellwords.shellescape`](http://www.ruby-doc.org/stdlib-2.1.2/libdoc/shellwords/rdoc/Shellwords.html#method-c-shellescape).
 
 ```bash
-bundle exec middleman-presentation create slide --edit --editor-command "vim --servername <%= Shellwords.shellescape(project_id) %> --remote-tab 2>/dev/null" 01 02 03
+bundle exec middleman-presentation create slide --edit --editor-command "vim --servername <%= Shellwords.shellescape(generated_presentation_id) %> --remote-tab 2>/dev/null" 01 02 03
 ```
 
 ### Rename a slide
