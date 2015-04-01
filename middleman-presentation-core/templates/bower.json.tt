@@ -1,5 +1,5 @@
 {
-  "name": "<%= Middleman::Presentation.config.title %>",
+  "name": "<%= Middleman::Presentation.config.generated_presentation_id %>",
     "dependencies": {
 <% Middleman::Presentation.components_manager.each_fetchable_component do |component, is_last| -%>
     "<%= component.name %>": "<%= component.resource_locator %>"<% unless is_last -%>,<% end %>

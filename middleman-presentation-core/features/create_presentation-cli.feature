@@ -314,3 +314,11 @@ Feature: Initialize presentation
     """
     <h1>License ABC</h1>
     """
+
+  Scenario: Use title with "
+    Given I successfully run `middleman-presentation create presentation presentation1 --title "My \\"Presentation\\""`
+    When I cd to "presentation1"
+    Then the file "bower.json" should contain:
+    """
+    my-presentation-
+    """
