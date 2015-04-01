@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    middleman-presentation (0.17.1)
-      middleman-presentation-core (= 0.17.1)
-      middleman-presentation-helpers (= 0.17.1)
+    middleman-presentation (0.17.2)
+      middleman-presentation-core (= 0.17.2)
+      middleman-presentation-helpers (= 0.17.2)
 
 PATH
   remote: middleman-presentation-core
   specs:
-    middleman-presentation-core (0.17.1)
+    middleman-presentation-core (0.17.2)
       addressable (~> 2.3.5)
       bundler
       colorize (~> 0.7.5)
@@ -39,12 +39,11 @@ PATH
 PATH
   remote: middleman-presentation-helpers
   specs:
-    middleman-presentation-helpers (0.17.1)
+    middleman-presentation-helpers (0.17.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.10)
       i18n (~> 0.6, >= 0.6.9)
@@ -137,7 +136,6 @@ GEM
     excon (0.45.1)
     execjs (2.4.0)
     facter (2.4.1)
-      CFPropertyList (~> 2.2.6)
     fedux_org-stdlib (0.11.16)
       activesupport
     ffi (1.9.8)
