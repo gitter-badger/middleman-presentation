@@ -6,9 +6,9 @@ module Middleman
       class ServePresentation < BaseGroup
         include Thor::Actions
 
-        class_option :network_port, type: :numeric, default: Middleman::Presentation.config.network_port, desc: Middleman::Presentation.t('views.presentation.serve.options.network_port')
-        class_option :network_interface, default: Middleman::Presentation.config.network_interface, desc: Middleman::Presentation.t('views.presentation.serve.options.network_interface')
-        class_option :open_in_browser, type: :boolean, default: Middleman::Presentation.config.open_in_browser, desc: Middleman::Presentation.t('views.presentation.serve.options.open_in_browser')
+        class_option :network_port, type: :numeric, default: Middleman::Presentation.config.network_port, desc: Middleman::Presentation.t('views.presentation.serve.options.network_port'), alias: '-p'
+        class_option :network_interface, default: Middleman::Presentation.config.network_interface, desc: Middleman::Presentation.t('views.presentation.serve.options.network_interface'), alias: '-i'
+        class_option :open_in_browser, type: :boolean, default: Middleman::Presentation.config.open_in_browser, desc: Middleman::Presentation.t('views.presentation.serve.options.open_in_browser'), alias: '-o'
 
         def initialize_generator
           enable_debug_mode
