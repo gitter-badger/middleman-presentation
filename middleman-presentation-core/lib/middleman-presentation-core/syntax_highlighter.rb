@@ -11,14 +11,17 @@ module Kramdown
       module MiddlemanPresentation
         def self.call(converter, text, lang, type, _unused_opts)
           opts = converter.options[:syntax_highlighter_opts].dup
-          text = ERB::Util.html_escape(text)
 
-          case type
-          when :span
+          if lang.to_s.start_with? 'mermaid-'
+            %(<div class=\"mermaid #{opts[:code_block_class]}\">#{text}</div>)
+          elsif type == :span
+            text = ERB::Util.html_escape(text)
             %(<code class=\"#{opts[:inline_code_class]}\">#{text}</code>)
-          when :block
+          elsif type == :block
+            text = ERB::Util.html_escape(text)
             %(<pre class=\"#{opts[:code_block_class]}\"><code class=\"#{opts[:language_prefix]}#{lang}\">#{text}</code></pre>)
           else
+            text = ERB::Util.html_escape(text)
             %(<pre class=\"#{opts[:code_block_class]}\"><code class=\"#{opts[:language_prefix]}#{lang}\">#{text}</code></pre>)
           end
         end
