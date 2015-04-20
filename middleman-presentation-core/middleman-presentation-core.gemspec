@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'liquid', '~>3.0.1'
   spec.add_dependency 'thor', '~> 0.19.1'
   spec.add_dependency 'erubis', '~>2.7.0'
-  spec.add_dependency 'kramdown', '~>1.5.0'
+  spec.add_dependency 'kramdown', '~>1.6.0'
   spec.add_dependency 'nokogiri', '~> 1.6.6'
   spec.add_dependency 'facter', '~>2.4.1'
   spec.add_dependency 'i18n', '~> 0.7.0'
