@@ -4,7 +4,7 @@ module Middleman
     module Cli
       # Create slide
       class ChangeSlide < BaseGroup
-        class_option :edit, default: Middleman::Presentation.config.edit_changed_slide, desc: Middleman::Presentation.t('views.application.options.edit')
+        class_option :edit, type: :boolean, default: Middleman::Presentation.config.edit_changed_slide, desc: Middleman::Presentation.t('views.application.options.edit')
         class_option :editor_command, default: Middleman::Presentation.config.editor_command, desc: Middleman::Presentation.t('views.application.options.editor_command')
         class_option :error_on_duplicates, type: :boolean, default: Middleman::Presentation.config.error_on_duplicates, desc: Middleman::Presentation.t('views.slides.change.options.error_on_duplicates')
         class_option :base_name, desc: Middleman::Presentation.t('views.slides.change.options.base_name')

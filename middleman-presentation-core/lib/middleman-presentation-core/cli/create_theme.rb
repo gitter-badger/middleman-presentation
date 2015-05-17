@@ -9,9 +9,9 @@ module Middleman
         desc Middleman::Presentation.t('views.themes.create.title')
 
         class_option :prefix, default: Middleman::Presentation.config.theme_prefix, desc: Middleman::Presentation.t('views.themes.create.options.prefix')
-        class_option :stylesheets_directory, default: Middleman::Presentation.config.create_stylesheets_directory, desc: Middleman::Presentation.t('views.themes.create.options.stylesheets_directory')
-        class_option :javascripts_directory, default: Middleman::Presentation.config.create_javascripts_directory, desc: Middleman::Presentation.t('views.themes.create.options.javascripts_directory')
-        class_option :images_directory, default: Middleman::Presentation.config.create_images_directory, desc: Middleman::Presentation.t('views.themes.create.options.images_directory')
+        class_option :stylesheets_directory, type: :boolean, default: Middleman::Presentation.config.create_stylesheets_directory, desc: Middleman::Presentation.t('views.themes.create.options.stylesheets_directory')
+        class_option :javascripts_directory, type: :boolean, default: Middleman::Presentation.config.create_javascripts_directory, desc: Middleman::Presentation.t('views.themes.create.options.javascripts_directory')
+        class_option :images_directory, type: :boolean, default: Middleman::Presentation.config.create_images_directory, desc: Middleman::Presentation.t('views.themes.create.options.images_directory')
         class_option :author, default: Middleman::Presentation.config.author, desc: Middleman::Presentation.t('views.themes.create.options.author')
         class_option :email, desc: Middleman::Presentation.t('views.themes.create.options.email')
         class_option :homepage, desc: Middleman::Presentation.t('views.themes.create.options.homepage')
