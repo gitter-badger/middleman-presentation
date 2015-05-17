@@ -20,7 +20,7 @@ PATH
       kramdown (~> 1.5.0)
       launchy (~> 2.4.2)
       liquid (~> 3.0.1)
-      middleman (~> 3.3.5)
+      middleman (~> 3.3.12)
       middleman-autoprefixer (~> 2.4.3)
       middleman-minify-html (~> 3.4.0)
       middleman-sprockets (~> 3.3.8)
@@ -44,7 +44,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.2.8)
     abstract_type (0.0.7)
     activesupport (4.1.10)
       i18n (~> 0.6, >= 0.6.9)
@@ -137,7 +136,6 @@ GEM
     excon (0.45.3)
     execjs (2.5.2)
     facter (2.4.3)
-      CFPropertyList (~> 2.2.6)
     fedux_org-stdlib (0.11.16)
       activesupport
     ffi (1.9.8)
