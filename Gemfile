@@ -21,7 +21,7 @@ group :development, :test do
   gem 'simplecov', require: false
   gem 'rubocop', '>= 0.25.0', require: false
   gem 'coveralls', require: false
-  gem 'cucumber', require: false
+  gem 'cucumber', '~> 2.0', require: false
   gem 'aruba'
   gem 'bundler', require: false
   gem 'erubis'
@@ -47,8 +47,13 @@ group :development, :test do
 
   gem 'excon', require: false
 
-  gem 'therubyracer'
-  gem 'therubyrhino'
+  platform :mri do
+    gem 'therubyracer'
+  end
+
+  platform :jruby do
+    gem 'therubyrhino'
+  end
 
   gem 'rugged'
   gem 'addressable'
