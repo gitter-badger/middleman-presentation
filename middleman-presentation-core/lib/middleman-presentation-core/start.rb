@@ -19,7 +19,7 @@ module Middleman
           set :css_dir, Middleman::Presentation.config.stylesheets_directory
           set :source_dir, Middleman::Presentation.config.sources_directory
 
-          Middleman::Presentation::AssetsLoader.new(bower_directory: MiddlemanEnvironment.new.bower_path).load_at_presentation_runtime
+          Middleman::Presentation::AssetsLoader.new(bower_directory: Middleman::Presentation::MiddlemanEnvironment.new.bower_path).load_at_presentation_runtime
 
           helpers Middleman::Presentation.helpers_manager.available_helpers
 
