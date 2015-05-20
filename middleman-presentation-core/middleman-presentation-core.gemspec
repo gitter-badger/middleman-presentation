@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   spec.require_paths         = ['lib']
   spec.required_ruby_version = Middleman::Presentation::REQUIRED_RUBY_VERSION
 
-  spec.add_dependency 'middleman', '~> 3.3.12'
+  spec.add_dependency 'middleman', '~> 3.3'
   spec.add_dependency 'middleman-sprockets', '~> 3.3.8'
   spec.add_dependency 'middleman-minify-html', '~>3.4.0'
   spec.add_dependency 'middleman-autoprefixer', '~>2.4.3'
