@@ -7,7 +7,7 @@ module Middleman
         include Thor::Actions
 
         class_option :network_port, type: :numeric, default: Middleman::Presentation.config.network_port, desc: Middleman::Presentation.t('views.presentation.serve.options.network_port')
-        class_option :network_interface, default: Middleman::Presentation.config.network_interface, desc: Middleman::Presentation.t('views.presentation.serve.options.network_interface')
+        class_option :hostname, default: Middleman::Presentation.config.hostname, desc: Middleman::Presentation.t('views.presentation.serve.options.hostname')
         class_option :open_in_browser, type: :boolean, default: Middleman::Presentation.config.open_in_browser, desc: Middleman::Presentation.t('views.presentation.serve.options.open_in_browser')
 
         def initialize_generator
@@ -20,12 +20,12 @@ module Middleman
             title: Middleman::Presentation.config.title
           )
 
-          Launchy.open(Addressable::URI.parse("http://#{options[:network_interface]}:#{options[:network_port]}")) if options[:open_in_browser]
+          Launchy.open(Addressable::URI.parse("http://#{options[:hostname]}:#{options[:network_port]}")) if options[:open_in_browser]
 
           cmd = []
           cmd << 'middleman server'
           cmd << "-p #{options[:network_port]}"
-          cmd << "-h #{options[:network_interface]}"
+          cmd << "-h #{options[:hostname]}" unless options[:hostname].nil? || options[:hostname].empty?
           cmd << '--verbose' if options[:debug_mode]
 
           run(cmd.join(' '))

@@ -4,7 +4,7 @@ module Middleman
     # Configuration for presentation extension
     class ApplicationConfig < FeduxOrgStdlib::AppConfig
       option :network_port, (1024..65_535).to_a.sample
-      option :network_interface, '127.0.0.1'
+      option :hostname, '127.0.0.1'
       option :open_in_browser, false
 
       option :title, nil
@@ -100,7 +100,7 @@ module Middleman
 
       option :local_options, %w(
         network_port
-        network_interface
+        hostname
       )
 
       option :exportable_options, %w(
