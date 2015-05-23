@@ -1,5 +1,7 @@
 # middleman-presentation
 
+[![Join the chat at https://gitter.im/fedux-org/middleman-presentation](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/fedux-org/middleman-presentation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/fedux-org/middleman-presentation.png?branch=master)](https://travis-ci.org/fedux-org/middleman-presentation)
 [![Coverage Status](https://coveralls.io/repos/maxmeyer/middleman-presentation/badge.png?branch=master)](https://coveralls.io/r/maxmeyer/middleman-presentation?branch=master)
 [![Gem Version](https://badge.fury.io/rb/middleman-presentation.svg)](http://badge.fury.io/rb/middleman-presentation)
